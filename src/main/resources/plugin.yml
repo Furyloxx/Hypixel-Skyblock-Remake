@@ -1,0 +1,5 @@
+name: Spectaculation
+version: ${project.version}
+main: me.adarsh.godspunkycore.Spectaculation
+authors: [ super ]
+description: ridiculousness
