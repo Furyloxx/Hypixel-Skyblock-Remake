@@ -157,7 +157,7 @@ public class Repeater
                         ((TickingSet) set).tick(player, SItem.find(inventory.getHelmet()), SItem.find(inventory.getChestplate()), SItem.find(inventory.getLeggings()), SItem.find(inventory.getBoots()), Repeater.this.counters);
 
                     // Sidebar
-                    Sidebar sidebar = new Sidebar("" + ChatColor.YELLOW + ChatColor.BOLD + "SKYBLOCK", "SKYBLOCK");
+                    Sidebar sidebar = new Sidebar("" + ChatColor.YELLOW + ChatColor.BOLD + "GodSpunky SKYBLOCK", "GodSpunky SKYBLOCK");
                     sidebar.add(ChatColor.GRAY + SUtil.getDate());
                     sidebar.add("  ");
                     sidebar.add(" " + SkyBlockCalendar.getMonthName() + " " + SUtil.ntify(SkyBlockCalendar.getDay()));
@@ -232,7 +232,7 @@ public class Repeater
                         }
                         sidebar.add("     ");
                     }
-                    sidebar.add(ChatColor.YELLOW + "recreation");
+                    sidebar.add(ChatColor.YELLOW + "Play.GodSpunky.tk");
                     sidebar.apply(player);
                 }
                 counters[0]++;
