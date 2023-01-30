@@ -3,20 +3,20 @@
 # Authors- Adarsh, Devil
 
 
-#Todo
+# Todo
 
--Some new bosses
+- Some new bosses
 
--some new mobs
+- some new mobs
 
--dungeon boss fights(without generation)
+- dungeon boss fights(without generation)
 
--some new items
+- some new items
 
--some new slayer
+- some new slayer
 
--recode Skyblock Menu
+- recode Skyblock Menu
 
--setup regions and mob spawner
+- setup regions and mob spawner
 
--item builder like Gk skyblock (not ingame) using config
+- item builder like Gk skyblock (not ingame) using config
