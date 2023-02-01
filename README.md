@@ -1,6 +1,7 @@
 # GodSpunkySkyblockCore
 
-# Authors- Adarsh, Devil
+# Authors
+- Adarsh, Devil
 
 
 # Todo
