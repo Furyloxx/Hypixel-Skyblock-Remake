@@ -1,23 +1,20 @@
-package me.adarsh.godspunkycore;
+package me.superischroma.spectaculation;
 
-import me.adarsh.godspunkycore.entity.StaticDragonManager;
-import me.adarsh.godspunkycore.item.Ownable;
-import me.adarsh.godspunkycore.item.SItem;
-import me.adarsh.godspunkycore.item.SMaterial;
-import me.adarsh.godspunkycore.item.SpecificItemType;
-import me.adarsh.godspunkycore.item.armor.ArmorSet;
-import me.adarsh.godspunkycore.item.armor.TickingSet;
-import me.adarsh.godspunkycore.potion.ActivePotionEffect;
-import me.adarsh.godspunkycore.region.Region;
-import me.adarsh.godspunkycore.region.RegionType;
-import me.adarsh.godspunkycore.sidebar.Sidebar;
-import me.adarsh.godspunkycore.slayer.SlayerQuest;
-import me.adarsh.godspunkycore.user.PlayerStatistic;
-import me.adarsh.godspunkycore.user.PlayerStatistics;
-import me.adarsh.godspunkycore.user.PlayerUtils;
-import me.adarsh.godspunkycore.user.User;
-import me.adarsh.godspunkycore.util.DefenseReplacement;
-import me.adarsh.godspunkycore.util.SUtil;
+import me.superischroma.spectaculation.entity.StaticDragonManager;
+import me.superischroma.spectaculation.item.Ownable;
+import me.superischroma.spectaculation.item.SItem;
+import me.superischroma.spectaculation.item.SMaterial;
+import me.superischroma.spectaculation.item.SpecificItemType;
+import me.superischroma.spectaculation.item.armor.ArmorSet;
+import me.superischroma.spectaculation.item.armor.TickingSet;
+import me.superischroma.spectaculation.potion.ActivePotionEffect;
+import me.superischroma.spectaculation.region.Region;
+import me.superischroma.spectaculation.region.RegionType;
+import me.superischroma.spectaculation.sidebar.Sidebar;
+import me.superischroma.spectaculation.slayer.SlayerQuest;
+import me.superischroma.spectaculation.user.*;
+import me.superischroma.spectaculation.util.DefenseReplacement;
+import me.superischroma.spectaculation.util.SUtil;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -66,12 +63,9 @@ public class Repeater
 
                     // Hand Validation and Hand Statistics
                     SItem hand = SItem.find(inventory.getItemInHand());
-                    if (hand == null)
-                    {
-                        hand = SItem.of(inventory.getItemInHand());
-                        if (hand != null)
-                            player.setItemInHand(hand.getStack());
-                    }
+                  
+                    //        player.setItemInHand(hand.getStack());
+                    
                     PlayerUtils.updateHandStatistics(hand, statistics);
                     PlayerUtils.updatePetStatistics(statistics);
                     User user = User.getUser(player.getUniqueId());
@@ -232,7 +226,7 @@ public class Repeater
                         }
                         sidebar.add("     ");
                     }
-                    sidebar.add(ChatColor.YELLOW + "mc.godspunky.in");
+                    sidebar.add(ChatColor.YELLOW + "recreation");
                     sidebar.apply(player);
                 }
                 counters[0]++;
@@ -250,4 +244,5 @@ public class Repeater
         for (BukkitTask task : this.tasks)
             task.cancel();
     }
+
 }
