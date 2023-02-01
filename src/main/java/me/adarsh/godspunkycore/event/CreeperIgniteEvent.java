@@ -3,10 +3,16 @@ package me.adarsh.godspunkycore.event;
 import org.bukkit.entity.Creeper;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 
-public class CreeperIgniteEvent extends EntityEvent implements Cancellable
-{
+public class CreeperIgniteEvent extends EntityEvent implements Cancellable, Listener {
+
+    public void onExplode(EntityExplodeEvent event){
+        event.setCancelled(true);
+    }
+
     private static final HandlerList handlers = new HandlerList();
     private boolean cancelled;
 

@@ -21,30 +21,25 @@ public class SkyBlockMenuGUI extends GUI
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e)
-    {
+    public void onOpen(GUIOpenEvent e) {
         fill(BLACK_STAINED_GLASS_PANE);
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
         PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(player.getUniqueId());
         set(GUIClickableItem.getCloseItem(49));
-        set(new GUIClickableItem()
-        {
+        set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e)
-            {
+            public void run(InventoryClickEvent e) {
                 GUIType.SKYBLOCK_PROFILE.getGUI().open((Player) e.getWhoClicked());
             }
 
             @Override
-            public int getSlot()
-            {
+            public int getSlot() {
                 return 13;
             }
 
             @Override
-            public ItemStack getItem()
-            {
+            public ItemStack getItem() {
                 return SUtil.getSkullStack(ChatColor.GREEN + "Your SkyBlock Profile", player.getName(), 1,
                         ChatColor.RED + "  ❤ Health " + ChatColor.WHITE + SUtil.commaify(statistics.getMaxHealth().addAll()) + " HP",
                         ChatColor.GREEN + "  ❈ Defense " + ChatColor.WHITE + SUtil.commaify(statistics.getDefense().addAll()),
@@ -61,23 +56,19 @@ public class SkyBlockMenuGUI extends GUI
             }
         });
 
-        set(new GUIClickableItem()
-        {
+        set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e)
-            {
+            public void run(InventoryClickEvent e) {
                 GUIType.SKILL_MENU.getGUI().open(player);
             }
 
             @Override
-            public int getSlot()
-            {
+            public int getSlot() {
                 return 19;
             }
 
             @Override
-            public ItemStack getItem()
-            {
+            public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.GREEN + "Your Skills", Material.DIAMOND_SWORD, (short) 0, 1,
                         ChatColor.GRAY + "View your Skill progression and",
                         ChatColor.GRAY + "rewards.",
@@ -87,23 +78,19 @@ public class SkyBlockMenuGUI extends GUI
         });
 
         String[] progress = ItemCollection.getProgress(player, null);
-        set(new GUIClickableItem()
-        {
+        set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e)
-            {
+            public void run(InventoryClickEvent e) {
                 GUIType.COLLECTION_MENU.getGUI().open(player);
             }
 
             @Override
-            public int getSlot()
-            {
+            public int getSlot() {
                 return 20;
             }
 
             @Override
-            public ItemStack getItem()
-            {
+            public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.GREEN + "Collection", Material.PAINTING, (short) 0, 1,
                         ChatColor.GRAY + "View all of the items available",
                         ChatColor.GRAY + "in SkyBlock. Collect more of an",
@@ -117,24 +104,20 @@ public class SkyBlockMenuGUI extends GUI
                         ChatColor.YELLOW + "Click to view!");
             }
         });
-        set(new GUIClickableItem()
-        {
+        set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e)
-            {
+            public void run(InventoryClickEvent e) {
                 player.playSound(player.getLocation(), Sound.CHEST_OPEN, 1f, 0f);
                 player.openInventory(player.getEnderChest());
             }
 
             @Override
-            public int getSlot()
-            {
+            public int getSlot() {
                 return 25;
             }
 
             @Override
-            public ItemStack getItem()
-            {
+            public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.GREEN + "Ender Chest", Material.ENDER_CHEST,
                         (short) 0, 1,
                         ChatColor.GRAY + "Store global items that you want",
@@ -144,25 +127,20 @@ public class SkyBlockMenuGUI extends GUI
                         ChatColor.YELLOW + "Click to open!");
             }
         });
-        if (user.getEffects().size() > 0)
-        {
-            set(new GUIClickableItem()
-            {
+        if (user.getEffects().size() > 0) {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
+                public void run(InventoryClickEvent e) {
                     GUIType.ACTIVE_EFFECTS.getGUI().open(player);
                 }
 
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return 29;
                 }
 
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return SUtil.getStack(ChatColor.GREEN + "Active Effects", Material.POTION, (short) 0, 1,
                             ChatColor.GRAY + "View and manage all of your",
                             ChatColor.GRAY + "active potion effects.",
@@ -174,31 +152,26 @@ public class SkyBlockMenuGUI extends GUI
                 }
             });
         }
-        if (user.getPets().size() > 0)
-        {
+        if (user.getPets().size() > 0) {
             Pet.PetItem active = user.getActivePet();
             String name;
             if (active == null)
                 name = ChatColor.RED + "None";
             else
                 name = active.getRarity().getColor() + active.getType().getDisplayName(active.getType().getData());
-            set(new GUIClickableItem()
-            {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
+                public void run(InventoryClickEvent e) {
                     GUIType.PETS.getGUI().open(player);
                 }
 
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return 30;
                 }
 
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return SUtil.getStack(ChatColor.GREEN + "Pets", Material.BONE, (short) 0, 1,
                             ChatColor.GRAY + "View and manage all of your",
                             ChatColor.GRAY + "Pets.",
@@ -213,48 +186,39 @@ public class SkyBlockMenuGUI extends GUI
                 }
             });
         }
-        set(new GUIClickableItem()
-        {
+        set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e)
-            {
+            public void run(InventoryClickEvent e) {
                 GUIType.CRAFTING_TABLE.getGUI().open(player);
             }
 
             @Override
-            public int getSlot()
-            {
+            public int getSlot() {
                 return 31;
             }
 
             @Override
-            public ItemStack getItem()
-            {
+            public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.GREEN + "Crafting Table", Material.WORKBENCH, (short) 0, 1,
                         ChatColor.GRAY + "Opens the crafting grid.",
                         " ",
                         ChatColor.YELLOW + "Click to open!");
             }
         });
-        if (user.hasCollection(ItemCollection.STRING, 3))
-        {
-            set(new GUIClickableItem()
-            {
+        if (user.hasCollection(ItemCollection.STRING, 3)) {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
+                public void run(InventoryClickEvent e) {
                     GUIType.QUIVER.getGUI().open(player);
                 }
 
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return 44;
                 }
 
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return SUtil.getSkullURLStack(ChatColor.GREEN + "Quiver", "1f8405116c1daa7ce2f012591458d50246d0a467bcb95a5a2c033aefd6008b63", 1,
                             ChatColor.GRAY + "A masterfully crafted Quiver",
                             ChatColor.GRAY + "which holds any kind of",

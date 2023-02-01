@@ -1,5 +1,5 @@
-name: Spectaculation
+name: GodSpunkySkyblockCore
 version: ${project.version}
 main: me.adarsh.godspunkycore.Spectaculation
-authors: [ super ]
-description: ridiculousness
+authors: [ Adarsh ]
+description: A core for godspunky skyblock
