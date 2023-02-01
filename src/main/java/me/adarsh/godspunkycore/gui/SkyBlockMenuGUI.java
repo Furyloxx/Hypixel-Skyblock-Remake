@@ -13,10 +13,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class SkyBlockMenuGUI extends GUI
-{
-    public SkyBlockMenuGUI()
-    {
+public class SkyBlockMenuGUI extends GUI {
+    public SkyBlockMenuGUI() {
         super("SkyBlock Menu", 54);
     }
 

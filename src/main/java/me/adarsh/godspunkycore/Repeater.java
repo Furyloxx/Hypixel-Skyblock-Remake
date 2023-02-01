@@ -232,7 +232,7 @@ public class Repeater
                         }
                         sidebar.add("     ");
                     }
-                    sidebar.add(ChatColor.YELLOW + "Play.GodSpunky.tk");
+                    sidebar.add(ChatColor.YELLOW + "mc.godspunky.in");
                     sidebar.apply(player);
                 }
                 counters[0]++;
@@ -250,5 +250,4 @@ public class Repeater
         for (BukkitTask task : this.tasks)
             task.cancel();
     }
-
 }
