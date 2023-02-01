@@ -7,7 +7,10 @@ import me.adarsh.godspunkycore.item.armor.ArmorSet;
 import me.adarsh.godspunkycore.item.armor.BigBounceBoots;
 import me.adarsh.godspunkycore.item.armor.ObsidianChestplate;
 import me.adarsh.godspunkycore.item.armor.SpidersBoots;
+import me.adarsh.godspunkycore.item.armor.ender.EnderArmorBoots;
 import me.adarsh.godspunkycore.item.armor.ender.EnderArmorChestplate;
+import me.adarsh.godspunkycore.item.armor.ender.EnderArmorHelmet;
+import me.adarsh.godspunkycore.item.armor.ender.EnderArmorLeggings;
 import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondBoots;
 import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondChestplate;
 import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondHelmet;
@@ -139,7 +142,11 @@ public enum SMaterial
     PROTECTOR_DRAGON_BOOTS(Material.LEATHER_BOOTS, ProtectorDragonBoots.class),
     PROTECTOR_DRAGON_FRAGMENT(Material.SKULL_ITEM, ProtectorDragonFragment.class),
     // Ender Armor
-    ENDER_ARMOR_HELMET(Material.CHAINMAIL_CHESTPLATE, EnderArmorChestplate.class),
+    ENDER_ARMOR_HELMET(Material.SKULL_ITEM, EnderArmorHelmet.class),
+    ENDER_ARMOR_CHESTPLATE(Material.CHAINMAIL_CHESTPLATE, EnderArmorChestplate.class),
+    ENDER_ARMOR_LEGGINGS(Material.CHAINMAIL_LEGGINGS, EnderArmorLeggings.class),
+    ENDER_ARMOR_BOOTS(Material.CHAINMAIL_BOOTS, EnderArmorBoots.class),
+
     // Lapis Armor
     LAPIS_ARMOR_HELMET(Material.SEA_LANTERN, LapisArmorHelmet.class),
     LAPIS_ARMOR_CHESTPLATE(Material.LEATHER_CHESTPLATE, LapisArmorChestplate.class),
