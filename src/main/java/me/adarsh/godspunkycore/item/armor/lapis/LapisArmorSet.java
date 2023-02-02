@@ -46,10 +46,8 @@ public class LapisArmorSet implements ArmorSet
     }
 
     @Override
-    public PlayerBoostStatistics whileHasFullSet(Player player)
-    {
-        return new PlayerBoostStatistics()
-        {
+    public PlayerBoostStatistics whileHasFullSet(Player player) {
+        return new PlayerBoostStatistics() {
             @Override
             public String getDisplayName()
             {

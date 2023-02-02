@@ -1,4 +1,3 @@
-package me.superischroma.spectaculation;
 package me.adarsh.godspunkycore;
 
 import me.adarsh.godspunkycore.entity.StaticDragonManager;
