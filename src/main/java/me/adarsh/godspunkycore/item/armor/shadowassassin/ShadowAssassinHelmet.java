@@ -1,16 +1,16 @@
 package me.adarsh.godspunkycore.item.armor.shadowassassin;
 
-import me.adarsh.godspunkycore.item.GenericItemType;
-import me.adarsh.godspunkycore.item.MaterialFunction;
-import me.adarsh.godspunkycore.item.Rarity;
-import me.adarsh.godspunkycore.item.SpecificItemType;
-import me.adarsh.godspunkycore.item.armor.LeatherArmorStatistics;
+import me.adarsh.godspunkycore.item.*;
 
-public class ShadowAssassinChestplate implements LeatherArmorStatistics, MaterialFunction {
+public class ShadowAssassinHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
+    @Override
+    public String getURL() {
+        return "9598fcbbf65b9ff66da99487403e4baf7e4c50144d06c7417bbded578d76d004";
+    }
 
     @Override
     public String getDisplayName() {
-        return "Shadow Assassin Chestplate";
+        return "Shadow Assassin Helmet";
     }
 
     @Override
@@ -28,13 +28,13 @@ public class ShadowAssassinChestplate implements LeatherArmorStatistics, Materia
     @Override
     public double getBaseHealth()
     {
-        return 240;
+        return 160;
     }
 
     @Override
     public double getBaseDefense()
     {
-        return 110;
+        return 70;
     }
 
     @Override
@@ -54,13 +54,14 @@ public class ShadowAssassinChestplate implements LeatherArmorStatistics, Materia
     }
 
     @Override
-    public int getColor() {
-        return 0x000000;
+    public SpecificItemType getSpecificType()
+    {
+        return SpecificItemType.HELMET;
     }
 
     @Override
-    public SpecificItemType getSpecificType()
+    public String getLore()
     {
-        return SpecificItemType.CHESTPLATE;
+        return null;
     }
 }

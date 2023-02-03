@@ -17,7 +17,10 @@ import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondHelmet;
 import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondLeggings;
 import me.adarsh.godspunkycore.item.armor.lapis.*;
 import me.adarsh.godspunkycore.item.armor.miner.*;
+import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinBoots;
 import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinChestplate;
+import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinHelmet;
+import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinLeggings;
 import me.adarsh.godspunkycore.item.armor.vanilla.chainmail.ChainmailBoots;
 import me.adarsh.godspunkycore.item.armor.vanilla.chainmail.ChainmailChestplate;
 import me.adarsh.godspunkycore.item.armor.vanilla.chainmail.ChainmailHelmet;
@@ -144,7 +147,10 @@ public enum SMaterial
     PROTECTOR_DRAGON_BOOTS(Material.LEATHER_BOOTS, ProtectorDragonBoots.class),
     PROTECTOR_DRAGON_FRAGMENT(Material.SKULL_ITEM, ProtectorDragonFragment.class),
     //Shadow Assassin Armor
+    SHADOW_ASSASSIN_HELMET(Material.SKULL_ITEM, ShadowAssassinHelmet.class),
     SHADOW_ASSASSIN_CHESTPLATE(Material.LEATHER_CHESTPLATE, ShadowAssassinChestplate.class),
+    SHADOW_ASSASSIN_LEGGINGS(Material.LEATHER_LEGGINGS, ShadowAssassinLeggings.class),
+    SHADOW_ASSASSIN_BOOTS(Material.LEATHER_CHESTPLATE, ShadowAssassinBoots.class),
     // Ender Armor
     ENDER_ARMOR_HELMET(Material.SKULL_ITEM, EnderArmorHelmet.class),
     ENDER_ARMOR_CHESTPLATE(Material.CHAINMAIL_CHESTPLATE, EnderArmorChestplate.class),

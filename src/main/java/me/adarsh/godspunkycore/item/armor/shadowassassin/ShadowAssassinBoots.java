@@ -6,11 +6,11 @@ import me.adarsh.godspunkycore.item.Rarity;
 import me.adarsh.godspunkycore.item.SpecificItemType;
 import me.adarsh.godspunkycore.item.armor.LeatherArmorStatistics;
 
-public class ShadowAssassinChestplate implements LeatherArmorStatistics, MaterialFunction {
+public class ShadowAssassinBoots implements LeatherArmorStatistics, MaterialFunction {
 
     @Override
     public String getDisplayName() {
-        return "Shadow Assassin Chestplate";
+        return "Shadow Assassin Boots";
     }
 
     @Override
@@ -28,13 +28,13 @@ public class ShadowAssassinChestplate implements LeatherArmorStatistics, Materia
     @Override
     public double getBaseHealth()
     {
-        return 240;
+        return 125;
     }
 
     @Override
     public double getBaseDefense()
     {
-        return 110;
+        return 55;
     }
 
     @Override
@@ -61,6 +61,6 @@ public class ShadowAssassinChestplate implements LeatherArmorStatistics, Materia
     @Override
     public SpecificItemType getSpecificType()
     {
-        return SpecificItemType.CHESTPLATE;
+        return SpecificItemType.BOOTS;
     }
 }
