@@ -17,6 +17,7 @@ import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondHelmet;
 import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondLeggings;
 import me.adarsh.godspunkycore.item.armor.lapis.*;
 import me.adarsh.godspunkycore.item.armor.miner.*;
+import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinChestplate;
 import me.adarsh.godspunkycore.item.armor.vanilla.chainmail.ChainmailBoots;
 import me.adarsh.godspunkycore.item.armor.vanilla.chainmail.ChainmailChestplate;
 import me.adarsh.godspunkycore.item.armor.vanilla.chainmail.ChainmailHelmet;
@@ -90,6 +91,7 @@ public enum SMaterial
     ASPECT_OF_THE_JERRY(Material.WOOD_SWORD, AspectOfTheJerry.class),
     ROGUE_SWORD(Material.GOLD_SWORD, RogueSword.class),
     EMERALD_BLADE(Material.EMERALD, EmeraldBlade.class),
+    GOLEM_SWORD(Material.IRON_SWORD, GolemSword.class),
     // Dragon Assets
     SUMMONING_EYE(Material.SKULL_ITEM, SummoningEye.class),
     SLEEPING_EYE(Material.SKULL_ITEM, SleepingEye.class),
@@ -141,6 +143,8 @@ public enum SMaterial
     PROTECTOR_DRAGON_LEGGINGS(Material.LEATHER_LEGGINGS, ProtectorDragonLeggings.class),
     PROTECTOR_DRAGON_BOOTS(Material.LEATHER_BOOTS, ProtectorDragonBoots.class),
     PROTECTOR_DRAGON_FRAGMENT(Material.SKULL_ITEM, ProtectorDragonFragment.class),
+    //Shadow Assassin Armor
+    SHADOW_ASSASSIN_CHESTPLATE(Material.LEATHER_CHESTPLATE, ShadowAssassinChestplate.class),
     // Ender Armor
     ENDER_ARMOR_HELMET(Material.SKULL_ITEM, EnderArmorHelmet.class),
     ENDER_ARMOR_CHESTPLATE(Material.CHAINMAIL_CHESTPLATE, EnderArmorChestplate.class),
