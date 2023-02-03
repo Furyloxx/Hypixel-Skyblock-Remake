@@ -229,7 +229,7 @@ public class Repeater
                         }
                         sidebar.add("     ");
                     }
-                    sidebar.add(ChatColor.YELLOW + "recreation");
+                    sidebar.add(ChatColor.YELLOW + "mc.godspunky.in");
                     sidebar.apply(player);
                 }
                 counters[0]++;
