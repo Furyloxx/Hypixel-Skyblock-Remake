@@ -11,6 +11,10 @@ import me.adarsh.godspunkycore.item.armor.ender.EnderArmorBoots;
 import me.adarsh.godspunkycore.item.armor.ender.EnderArmorChestplate;
 import me.adarsh.godspunkycore.item.armor.ender.EnderArmorHelmet;
 import me.adarsh.godspunkycore.item.armor.ender.EnderArmorLeggings;
+import me.adarsh.godspunkycore.item.armor.farm.FarmSuitBoots;
+import me.adarsh.godspunkycore.item.armor.farm.FarmSuitChestplate;
+import me.adarsh.godspunkycore.item.armor.farm.FarmSuitHelmet;
+import me.adarsh.godspunkycore.item.armor.farm.FarmSuitLeggings;
 import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondBoots;
 import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondChestplate;
 import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondHelmet;
@@ -171,6 +175,11 @@ public enum SMaterial
     PUMPKIN_ARMOR_CHESTPLATE(Material.LEATHER_CHESTPLATE, PumpkinArmorChestplate.class),
     PUMPKIN_ARMOR_LEGGINGS(Material.LEATHER_LEGGINGS, PumpkinArmorLeggings.class),
     PUMPKIN_ARMOR_BOOTS(Material.LEATHER_BOOTS, PumpkinArmorBoots.class),
+    // Farm Suit
+    FARM_SUIT_HELMET(Material.LEATHER_HELMET, FarmSuitHelmet.class),
+    FARM_SUIT_CHESTPLATE(Material.LEATHER_CHESTPLATE, FarmSuitChestplate.class),
+    FARM_SUIT_LEGGINGS(Material.LEATHER_LEGGINGS, FarmSuitLeggings.class),
+    FARM_SUIT_BOOTS(Material.LEATHER_BOOTS, FarmSuitBoots.class),
     // Miner Armor
     MINER_HELMET(Material.DIAMOND_HELMET, MinerHelmet.class),
     MINER_CHESTPLATE(Material.DIAMOND_CHESTPLATE, MinerChestplate.class),
