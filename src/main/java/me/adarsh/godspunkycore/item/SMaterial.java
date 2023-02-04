@@ -17,6 +17,10 @@ import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondHelmet;
 import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondLeggings;
 import me.adarsh.godspunkycore.item.armor.lapis.*;
 import me.adarsh.godspunkycore.item.armor.miner.*;
+import me.adarsh.godspunkycore.item.armor.pumpkin.PumpkinArmorBoots;
+import me.adarsh.godspunkycore.item.armor.pumpkin.PumpkinArmorChestplate;
+import me.adarsh.godspunkycore.item.armor.pumpkin.PumpkinArmorHelmet;
+import me.adarsh.godspunkycore.item.armor.pumpkin.PumpkinArmorLeggings;
 import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinBoots;
 import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinChestplate;
 import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinHelmet;
@@ -150,7 +154,7 @@ public enum SMaterial
     SHADOW_ASSASSIN_HELMET(Material.SKULL_ITEM, ShadowAssassinHelmet.class),
     SHADOW_ASSASSIN_CHESTPLATE(Material.LEATHER_CHESTPLATE, ShadowAssassinChestplate.class),
     SHADOW_ASSASSIN_LEGGINGS(Material.LEATHER_LEGGINGS, ShadowAssassinLeggings.class),
-    SHADOW_ASSASSIN_BOOTS(Material.LEATHER_CHESTPLATE, ShadowAssassinBoots.class),
+    SHADOW_ASSASSIN_BOOTS(Material.LEATHER_BOOTS, ShadowAssassinBoots.class),
     // Ender Armor
     ENDER_ARMOR_HELMET(Material.SKULL_ITEM, EnderArmorHelmet.class),
     ENDER_ARMOR_CHESTPLATE(Material.CHAINMAIL_CHESTPLATE, EnderArmorChestplate.class),
@@ -162,6 +166,11 @@ public enum SMaterial
     LAPIS_ARMOR_CHESTPLATE(Material.LEATHER_CHESTPLATE, LapisArmorChestplate.class),
     LAPIS_ARMOR_LEGGINGS(Material.LEATHER_LEGGINGS, LapisArmorLeggings.class),
     LAPIS_ARMOR_BOOTS(Material.LEATHER_BOOTS, LapisArmorBoots.class),
+    // Pumpkin Armor
+    PUMPKIN_ARMOR_HELMET(Material.LEATHER_HELMET, PumpkinArmorHelmet.class),
+    PUMPKIN_ARMOR_CHESTPLATE(Material.LEATHER_CHESTPLATE, PumpkinArmorChestplate.class),
+    PUMPKIN_ARMOR_LEGGINGS(Material.LEATHER_LEGGINGS, PumpkinArmorLeggings.class),
+    PUMPKIN_ARMOR_BOOTS(Material.LEATHER_BOOTS, PumpkinArmorBoots.class),
     // Miner Armor
     MINER_HELMET(Material.DIAMOND_HELMET, MinerHelmet.class),
     MINER_CHESTPLATE(Material.DIAMOND_CHESTPLATE, MinerChestplate.class),
