@@ -7,6 +7,10 @@ import me.adarsh.godspunkycore.item.armor.ArmorSet;
 import me.adarsh.godspunkycore.item.armor.BigBounceBoots;
 import me.adarsh.godspunkycore.item.armor.ObsidianChestplate;
 import me.adarsh.godspunkycore.item.armor.SpidersBoots;
+import me.adarsh.godspunkycore.item.armor.angler.AnglerBoots;
+import me.adarsh.godspunkycore.item.armor.angler.AnglerChestplate;
+import me.adarsh.godspunkycore.item.armor.angler.AnglerHelmet;
+import me.adarsh.godspunkycore.item.armor.angler.AnglerLeggings;
 import me.adarsh.godspunkycore.item.armor.ender.EnderArmorBoots;
 import me.adarsh.godspunkycore.item.armor.ender.EnderArmorChestplate;
 import me.adarsh.godspunkycore.item.armor.ender.EnderArmorHelmet;
@@ -20,7 +24,15 @@ import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondChestplate;
 import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondHelmet;
 import me.adarsh.godspunkycore.item.armor.hardened.HardenedDiamondLeggings;
 import me.adarsh.godspunkycore.item.armor.lapis.*;
+import me.adarsh.godspunkycore.item.armor.leaflet.LeafletBoots;
+import me.adarsh.godspunkycore.item.armor.leaflet.LeafletChestplate;
+import me.adarsh.godspunkycore.item.armor.leaflet.LeafletHelmet;
+import me.adarsh.godspunkycore.item.armor.leaflet.LeafletLeggings;
 import me.adarsh.godspunkycore.item.armor.miner.*;
+import me.adarsh.godspunkycore.item.armor.mushroom.MushroomBoots;
+import me.adarsh.godspunkycore.item.armor.mushroom.MushroomChestplate;
+import me.adarsh.godspunkycore.item.armor.mushroom.MushroomHelmet;
+import me.adarsh.godspunkycore.item.armor.mushroom.MushroomLeggings;
 import me.adarsh.godspunkycore.item.armor.pumpkin.PumpkinArmorBoots;
 import me.adarsh.godspunkycore.item.armor.pumpkin.PumpkinArmorChestplate;
 import me.adarsh.godspunkycore.item.armor.pumpkin.PumpkinArmorHelmet;
@@ -180,6 +192,24 @@ public enum SMaterial
     FARM_SUIT_CHESTPLATE(Material.LEATHER_CHESTPLATE, FarmSuitChestplate.class),
     FARM_SUIT_LEGGINGS(Material.LEATHER_LEGGINGS, FarmSuitLeggings.class),
     FARM_SUIT_BOOTS(Material.LEATHER_BOOTS, FarmSuitBoots.class),
+    // Mushroom Armor
+    MUSHROOM_HELMET(Material.LEATHER_HELMET, MushroomHelmet.class),
+    MUSHROOM_CHESTPLATE(Material.LEATHER_CHESTPLATE, MushroomChestplate.class),
+    MUSHROOM_LEGGINGS(Material.LEATHER_LEGGINGS, MushroomLeggings.class),
+    MUSHROOM_BOOTS(Material.LEATHER_BOOTS, MushroomBoots.class),
+    // Angler Armor
+    ANGLER_HELMET(Material.DIAMOND_HELMET, AnglerHelmet.class),
+    ANGLER_CHESTPLATE(Material.LEATHER_CHESTPLATE, AnglerChestplate.class),
+    ANGLER_LEGGINGS(Material.LEATHER_LEGGINGS, AnglerLeggings.class),
+    ANGLER_BOOTS(Material.LEATHER_BOOTS, AnglerBoots.class),
+    // Leaflet Armor
+    LEAFLET_HELMET(Material.LEAVES, LeafletHelmet.class),
+    LEAFLET_CHESTPLATE(Material.LEATHER_CHESTPLATE, LeafletChestplate.class),
+    LEAFLET_LEGGINGS(Material.LEATHER_LEGGINGS, LeafletLeggings.class),
+    LEAFLET_BOOTS(Material.LEATHER_BOOTS, LeafletBoots.class),
+
+
+
     // Miner Armor
     MINER_HELMET(Material.DIAMOND_HELMET, MinerHelmet.class),
     MINER_CHESTPLATE(Material.DIAMOND_CHESTPLATE, MinerChestplate.class),
