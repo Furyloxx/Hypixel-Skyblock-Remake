@@ -2,6 +2,7 @@ package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.auction.AuctionItem;
 import me.adarsh.godspunkycore.gui.AuctionViewGUI;
+import me.adarsh.godspunkycore.gui.GUIType;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 
@@ -9,27 +10,12 @@ import java.util.List;
 import java.util.UUID;
 
 @CommandParameters(description = "Modify your coin amount.", usage = "/<command> <auction uuid/player name>", aliases = "auction,ah")
-public class AuctionHouseCommand extends SCommand
-{
+public class AuctionHouseCommand extends SCommand {
     @Override
-    public void run(CommandSource sender, String[] args)
-    {
-        if (args.length != 1) throw new CommandArgumentException();
-        if (sender instanceof ConsoleCommandSender) throw new CommandFailException("Console senders cannot use this command!");
-        try
-        {
-            UUID uuid = UUID.fromString(args[0]);
-            AuctionItem item = AuctionItem.getAuction(uuid);
-            if (item == null)
-                throw new IllegalArgumentException();
-            new AuctionViewGUI(item).open(sender.getPlayer());
+    public void run(CommandSource sender, String[] args) {
+        if (sender instanceof ConsoleCommandSender){
+            return;
         }
-        catch (IllegalArgumentException ex)
-        {
-            List<AuctionItem> items = AuctionItem.getOwnedAuctions(args[0]);
-            if (items == null)
-                throw new CommandFailException("This player has no auctions!");
-            send(ChatColor.RED + "This feature is not complete yet!");
-        }
+        GUIType.AUCTION_HOUSE.getGUI().open(sender.getPlayer());
     }
 }

@@ -41,6 +41,8 @@ import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinBoots;
 import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinChestplate;
 import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinHelmet;
 import me.adarsh.godspunkycore.item.armor.shadowassassin.ShadowAssassinLeggings;
+import me.adarsh.godspunkycore.item.armor.terror.TerrorChestplate;
+import me.adarsh.godspunkycore.item.armor.terror.TerrorHelmet;
 import me.adarsh.godspunkycore.item.armor.vanilla.chainmail.ChainmailBoots;
 import me.adarsh.godspunkycore.item.armor.vanilla.chainmail.ChainmailChestplate;
 import me.adarsh.godspunkycore.item.armor.vanilla.chainmail.ChainmailHelmet;
@@ -115,6 +117,9 @@ public enum SMaterial
     ROGUE_SWORD(Material.GOLD_SWORD, RogueSword.class),
     EMERALD_BLADE(Material.EMERALD, EmeraldBlade.class),
     GOLEM_SWORD(Material.IRON_SWORD, GolemSword.class),
+    // Terror Armor
+    TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),
+    TERROR_CHESTPLATE(Material.LEATHER_CHESTPLATE, TerrorChestplate.class),
     // Dragon Assets
     SUMMONING_EYE(Material.SKULL_ITEM, SummoningEye.class),
     SLEEPING_EYE(Material.SKULL_ITEM, SleepingEye.class),

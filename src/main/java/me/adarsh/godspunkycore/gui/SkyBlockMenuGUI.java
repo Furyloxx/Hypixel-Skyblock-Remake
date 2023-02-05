@@ -6,6 +6,7 @@ import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
+import net.milkbowl.vault.chat.Chat;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -150,6 +151,7 @@ public class SkyBlockMenuGUI extends GUI {
                 }
             });
         }
+
         if (user.getPets().size() > 0) {
             Pet.PetItem active = user.getActivePet();
             String name;
@@ -157,7 +159,7 @@ public class SkyBlockMenuGUI extends GUI {
                 name = ChatColor.RED + "None";
             else
                 name = active.getRarity().getColor() + active.getType().getDisplayName(active.getType().getData());
-            set(new GUIClickableItem() {
+            set(new GUIClickableItem(){
                 @Override
                 public void run(InventoryClickEvent e) {
                     GUIType.PETS.getGUI().open(player);
@@ -226,5 +228,28 @@ public class SkyBlockMenuGUI extends GUI {
                 }
             });
         }
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                GUIType.BANKER.getGUI().open(player);
+            }
+
+            @Override
+            public int getSlot() {
+                return 33;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getSkullURLStack(ChatColor.GREEN + "Personal Bank", "209299a117bee88d3262f6ab98211fba344ecae39b47ec848129706dedc81e4f", 1,
+                        ChatColor.GRAY + "Contact your banker from",
+                        ChatColor.GRAY + "anywhere.",
+                        ChatColor.GRAY + "Cooldown:" + ChatColor.RED + " Soon",
+                        " ",
+                        ChatColor.GRAY + "Banker Status:",
+                        ChatColor.GREEN + "Availabe");
+            }
+        });
     }
+
 }
