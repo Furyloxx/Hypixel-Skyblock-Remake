@@ -2,4 +2,4 @@ hub_world: 'world'
 islands:
   x: 0
   z: 0
-  schematic: 'private_island.schematic'
+schematic: 'private_island.schematic'

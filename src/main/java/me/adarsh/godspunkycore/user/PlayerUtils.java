@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.user;
 
 import com.google.common.util.concurrent.AtomicDouble;
+import jdk.tools.jlink.plugin.Plugin;
 import me.adarsh.godspunkycore.Repeater;
 import me.adarsh.godspunkycore.Spectaculation;
 import me.adarsh.godspunkycore.config.Config;
@@ -39,6 +40,8 @@ import java.util.*;
 
 public final class PlayerUtils
 {
+
+    public static Spectaculation spectaculation;
     public static final Map<UUID, PlayerStatistics> STATISTICS_CACHE = new HashMap<>();
     private static final Map<UUID, List<SMaterial>> COOLDOWN_MAP = new HashMap<>();
 
@@ -527,7 +530,7 @@ public final class PlayerUtils
             double zOffset = config.getDouble("islands.z");
             if (xOffset < -25000000.0 || xOffset > 25000000.0)
                 zOffset += User.ISLAND_SIZE * 2.0;
-            File file = new File(config.getString("islands.schematic"));
+            File file = new File(spectaculation.getDataFolder(), config.getString("island.schematic"));
             SUtil.pasteSchematic(file, new Location(world, 7.0 + xOffset, 100.0, 7.0 + zOffset), true);
             SUtil.setBlocks(new Location(world, 7.0 + xOffset, 104.0, 44.0 + zOffset),
                     new Location(world, 5.0 + xOffset, 100.0, 44.0 + zOffset), Material.PORTAL, false);
