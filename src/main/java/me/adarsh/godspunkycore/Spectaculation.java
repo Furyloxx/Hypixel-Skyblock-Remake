@@ -15,6 +15,7 @@ import me.adarsh.godspunkycore.item.ItemListener;
 import me.adarsh.godspunkycore.item.SItem;
 import me.adarsh.godspunkycore.item.SMaterial;
 import me.adarsh.godspunkycore.item.pet.Pet;
+import me.adarsh.godspunkycore.launchpads.LaunchPadHandler;
 import me.adarsh.godspunkycore.listener.BlockListener;
 import me.adarsh.godspunkycore.listener.PlayerListener;
 import me.adarsh.godspunkycore.listener.ServerPingListener;
@@ -47,11 +48,10 @@ import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
 
-public final class Spectaculation extends JavaPlugin
-{
+public final class Spectaculation extends JavaPlugin {
     private static Spectaculation plugin;
-    public static Spectaculation getPlugin()
-    {
+
+    public static Spectaculation getPlugin() {
         return plugin;
     }
 
@@ -64,19 +64,19 @@ public final class Spectaculation extends JavaPlugin
     public SQLRegionData regionData;
     public SQLWorldData worldData;
     public CommandLoader cl;
+
+    private LaunchPadHandler launchPadHandler;
     public Repeater repeater;
 
     @Override
-    public void onLoad()
-    {
+    public void onLoad() {
         SLog.info("Loading Bukkit-serializable classes...");
         loadSerializableClasses();
     }
 
     @SneakyThrows
     @Override
-    public void onEnable()
-    {
+    public void onEnable() {
         plugin = this;
         SLog.info("Loading YAML data...");
         config = new Config("config.yml");
@@ -84,19 +84,17 @@ public final class Spectaculation extends JavaPlugin
         blocks = new Config("blocks.yml");
         spawners = new Config("spawners.yml");
         SLog.info("Loading command map...");
-        try
-        {
+        try {
             Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
             f.setAccessible(true);
             commandMap = (CommandMap) f.get(Bukkit.getServer());
-        }
-        catch (IllegalAccessException | NoSuchFieldException e)
-        {
+        } catch (IllegalAccessException | NoSuchFieldException e) {
             SLog.severe("Couldn't load command map: ");
             e.printStackTrace();
         }
         SLog.info("Loading SQL database...");
         sql = new SQLDatabase();
+        this.registerLaunchPads();
         regionData = new SQLRegionData();
         worldData = new SQLWorldData();
         cl = new CommandLoader();
@@ -116,10 +114,8 @@ public final class Spectaculation extends JavaPlugin
         AuctionItem.loadAuctionsFromDisk();
         SkyBlockCalendar.ELAPSED = plugin.config.getLong("timeElapsed");
         SLog.info("Synchronizing world time with calendar time and removing world entities...");
-        for (World world : Bukkit.getWorlds())
-        {
-            for (Entity entity : world.getEntities())
-            {
+        for (World world : Bukkit.getWorlds()) {
+            for (Entity entity : world.getEntities()) {
                 if (entity instanceof HumanEntity) continue;
                 entity.remove();
             }
@@ -131,34 +127,29 @@ public final class Spectaculation extends JavaPlugin
         }
         SLog.info("Loading items...");
         Class.forName("me.adarsh.godspunkycore.item.SMaterial"); // ensuring materials are loaded prior to this
-        for (SMaterial material : SMaterial.values())
-        {
+        for (SMaterial material : SMaterial.values()) {
             if (material.hasClass())
                 material.getStatistics().load();
         }
         SLog.info("Converting craft recipes into Spectaculation recipes...");
-        for (Iterator<Recipe> iter = Bukkit.recipeIterator(); iter.hasNext();)
-        {
+        for (Iterator<Recipe> iter = Bukkit.recipeIterator(); iter.hasNext(); ) {
             Recipe recipe = iter.next();
             if (recipe.getResult() == null)
                 continue;
             Material result = recipe.getResult().getType();
-            if (recipe instanceof ShapedRecipe)
-            {
+            if (recipe instanceof ShapedRecipe) {
                 ShapedRecipe shaped = (ShapedRecipe) recipe;
                 me.adarsh.godspunkycore.item.ShapedRecipe specShaped = new me.adarsh.godspunkycore.item.ShapedRecipe(SItem.convert(shaped.getResult()),
                         Groups.EXCHANGEABLE_RECIPE_RESULTS.contains(result))
                         .shape(shaped.getShape());
-                for (Map.Entry<Character, ItemStack> entry : shaped.getIngredientMap().entrySet())
-                {
+                for (Map.Entry<Character, ItemStack> entry : shaped.getIngredientMap().entrySet()) {
                     if (entry.getValue() == null)
                         continue;
                     ItemStack stack = entry.getValue();
                     specShaped.set(entry.getKey(), SMaterial.getSpecEquivalent(stack.getType(), stack.getDurability()), stack.getAmount());
                 }
             }
-            if (recipe instanceof ShapelessRecipe)
-            {
+            if (recipe instanceof ShapelessRecipe) {
                 ShapelessRecipe shapeless = (ShapelessRecipe) recipe;
                 me.adarsh.godspunkycore.item.ShapelessRecipe specShapeless = new me.adarsh.godspunkycore.item.ShapelessRecipe(SItem.convert(shapeless.getResult()),
                         Groups.EXCHANGEABLE_RECIPE_RESULTS.contains(result));
@@ -170,13 +161,10 @@ public final class Spectaculation extends JavaPlugin
     }
 
     @Override
-    public void onDisable()
-    {
+    public void onDisable() {
         SLog.info("Killing all non-human entities...");
-        for (World world : Bukkit.getWorlds())
-        {
-            for (Entity entity : world.getEntities())
-            {
+        for (World world : Bukkit.getWorlds()) {
+            for (Entity entity : world.getEntities()) {
                 if (entity instanceof HumanEntity) continue;
                 entity.remove();
             }
@@ -199,8 +187,7 @@ public final class Spectaculation extends JavaPlugin
         SLog.info("Disabled " + this.getDescription().getFullName());
     }
 
-    private void loadCommands()
-    {
+    private void loadCommands() {
         cl.register(new SpectaculationCommand());
         cl.register(new RegionCommand());
         cl.register(new PlayEnumSoundCommand());
@@ -234,8 +221,7 @@ public final class Spectaculation extends JavaPlugin
         cl.register(new ReforgeGUICommand());
     }
 
-    private void loadListeners()
-    {
+    private void loadListeners() {
         new BlockListener();
         new PlayerListener();
         new ServerPingListener();
@@ -244,12 +230,18 @@ public final class Spectaculation extends JavaPlugin
         new WorldListener();
     }
 
-    private void registerTraits()
-    {
+    private void registerTraits() {
     }
 
-    private void startPopulators()
-    {
+    public LaunchPadHandler registerLaunchPads() {
+
+        long start = System.currentTimeMillis();
+
+        this.launchPadHandler = new LaunchPadHandler();
+        return null;
+    }
+
+    private void startPopulators() {
         // Deep Caverns
         new EntityPopulator(5, 10, 200, SEntityType.ENCHANTED_DIAMOND_SKELETON, RegionType.OBSIDIAN_SANCTUARY).start();
         new EntityPopulator(5, 10, 200, SEntityType.ENCHANTED_DIAMOND_ZOMBIE, RegionType.OBSIDIAN_SANCTUARY).start();
@@ -293,8 +285,7 @@ public final class Spectaculation extends JavaPlugin
         new EntityPopulator(5, 15, 200, SEntityType.PACK_SPIRIT, RegionType.HOWLING_CAVE).start();
     }
 
-    private void loadSerializableClasses()
-    {
+    private void loadSerializableClasses() {
         ConfigurationSerialization.registerClass(SlayerQuest.class, "SlayerQuest");
         ConfigurationSerialization.registerClass(Pet.PetItem.class, "PetItem");
         ConfigurationSerialization.registerClass(SItem.class, "SItem");
@@ -304,3 +295,4 @@ public final class Spectaculation extends JavaPlugin
         ConfigurationSerialization.registerClass(AuctionBid.class, "AuctionBid");
     }
 }
+

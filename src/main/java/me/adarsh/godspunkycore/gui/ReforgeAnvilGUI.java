@@ -48,8 +48,8 @@ public class ReforgeAnvilGUI extends GUI
     {
         super("Reforge Item", 45);
         fill(BLACK_STAINED_GLASS_PANE);
-        //fill(RED_STAINED_GLASS_PANE, 0, 36);
-        //fill(RED_STAINED_GLASS_PANE, 8, 44);
+        fill(RED_STAINED_GLASS_PANE, 0, 36);
+        fill(RED_STAINED_GLASS_PANE, 8, 44);
         set(GUIClickableItem.getCloseItem(40));
         set(new GUIClickableItem()
         {
