@@ -517,8 +517,7 @@ public final class PlayerUtils
         return false;
     }
 
-    public static void sendToIsland(Player player)
-    {
+    public static void sendToIsland(Player player) {
         World world = Bukkit.getWorld("islands");
         if (world == null)
             world = new BlankWorldCreator("islands").createWorld();
@@ -530,10 +529,9 @@ public final class PlayerUtils
             double zOffset = config.getDouble("islands.z");
             if (xOffset < -25000000.0 || xOffset > 25000000.0)
                 zOffset += User.ISLAND_SIZE * 2.0;
-            File file = new File(spectaculation.getDataFolder(), config.getString("island.schematic"));
-            SUtil.pasteSchematic(file, new Location(world, 7.0 + xOffset, 100.0, 7.0 + zOffset), true);
-            SUtil.setBlocks(new Location(world, 7.0 + xOffset, 104.0, 44.0 + zOffset),
-                    new Location(world, 5.0 + xOffset, 100.0, 44.0 + zOffset), Material.PORTAL, false);
+            SUtil.pasteSchematic(new File("plugins/GodSpunkySkyblockCore/private_island.schematic"), new Location(world, 7.0 + xOffset, 100.0, 7.0 + zOffset), true);
+            SUtil.setBlocks(new Location(world, 7.0 + xOffset, 104.0, 43.0 + zOffset),
+                    new Location(world, 5.0 + xOffset, 100.0, 43.0 + zOffset), Material.PORTAL, false);
             user.setIslandLocation(7.5 + xOffset, 7.5 + zOffset);
             user.save();
             if (xOffset > 0)
