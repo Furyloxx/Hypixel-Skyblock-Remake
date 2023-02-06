@@ -17,6 +17,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import static org.bukkit.craftbukkit.v1_8_R3.util.CraftMagicNumbers.getItem;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 
 public class CraftingTableGUI extends GUI implements BlockBasedGUI
 {
@@ -191,4 +194,35 @@ public class CraftingTableGUI extends GUI implements BlockBasedGUI
         }
         return -1;
     }
+     
+    @Override
+     public void onClose(InventoryCloseEvent event) {
+     Player p = (Player) event.getPlayer();
+
+        ItemStack item = event.getInventory().getItem(10);
+        ItemStack item2 = event.getInventory().getItem(11);
+        ItemStack item3 = event.getInventory().getItem(12);
+        ItemStack item4 = event.getInventory().getItem(19);
+        ItemStack item5 = event.getInventory().getItem(20);
+        ItemStack item6 = event.getInventory().getItem(21);
+        ItemStack item7 = event.getInventory().getItem(28);
+        ItemStack item8 = event.getInventory().getItem(29);
+        ItemStack item9 = event.getInventory().getItem(30);
+        
+
+        if(event.getInventory().getTitle().equalsIgnoreCase("Craft Item")) {
+            
+            if (event.getInventory().getItem(10) != null) event.getPlayer().getInventory().addItem(item);
+            if (event.getInventory().getItem(11) != null) event.getPlayer().getInventory().addItem(item2);
+            if (event.getInventory().getItem(12) != null) event.getPlayer().getInventory().addItem(item3);
+            if (event.getInventory().getItem(19) != null) event.getPlayer().getInventory().addItem(item4);
+            if (event.getInventory().getItem(20) != null) event.getPlayer().getInventory().addItem(item5);
+            if (event.getInventory().getItem(21) != null) event.getPlayer().getInventory().addItem(item6);
+            if (event.getInventory().getItem(28) != null) event.getPlayer().getInventory().addItem(item7);
+            if (event.getInventory().getItem(29) != null) event.getPlayer().getInventory().addItem(item8);
+            if (event.getInventory().getItem(30) != null) event.getPlayer().getInventory().addItem(item9);
+        }
+     }
 }
+     
+     
