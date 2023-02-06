@@ -232,6 +232,7 @@ public final class Spectaculation extends JavaPlugin
         cl.register(new FarmMerchantCommand());
         cl.register(new LiftCommand());
         cl.register(new ReforgeGUICommand());
+        cl.register(new BankCommand());
     }
 
     private void loadListeners()
