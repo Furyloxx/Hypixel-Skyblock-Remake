@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.user;
 
 import com.google.common.util.concurrent.AtomicDouble;
-import jdk.tools.jlink.plugin.Plugin;
 import me.adarsh.godspunkycore.Repeater;
 import me.adarsh.godspunkycore.Spectaculation;
 import me.adarsh.godspunkycore.config.Config;

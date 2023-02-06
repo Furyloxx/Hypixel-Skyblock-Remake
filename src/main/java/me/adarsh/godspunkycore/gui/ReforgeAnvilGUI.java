@@ -18,6 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 
 public class ReforgeAnvilGUI extends GUI
 {
@@ -131,8 +132,8 @@ public class ReforgeAnvilGUI extends GUI
                     inventory.setItem(22, DEFAULT_REFORGE_ITEM);
                     return;
                 }
-                //SUtil.border(inventory, this, LIME_STAINED_GLASS_PANE, 0, 36, true, false);
-                //SUtil.border(inventory, this, LIME_STAINED_GLASS_PANE, 8, 44, true, false);
+               // SUtil.border(inventory, this, LIME_STAINED_GLASS_PANE, 0, 36, true, false);
+               //SUtil.border(inventory, this, LIME_STAINED_GLASS_PANE, 8, 44, true, false);
                 inventory.setItem(22, SUtil.getStack(ChatColor.GREEN + "Reforge Item", Material.ANVIL, (short) 0, 1,
                         ChatColor.GRAY + "Reforges the above item, giving",
                         ChatColor.GRAY + "it a random item modifier that",
@@ -145,4 +146,18 @@ public class ReforgeAnvilGUI extends GUI
             }
         }.runTaskLater(Spectaculation.getPlugin(), 1);
     }
+     @Override
+     public void onClose(InventoryCloseEvent event) {
+     Player p = (Player) event.getPlayer();
+
+        ItemStack item = event.getInventory().getItem(13);
+     
+        
+
+        if(event.getInventory().getTitle().equalsIgnoreCase("Reforge Item")) {
+            
+            if (event.getInventory().getItem(13) != null) event.getPlayer().getInventory().addItem(item);
+           
+        }
+     }
 }
