@@ -30,6 +30,10 @@ public interface Reforge
         return RarityValue.zeroDouble();
     }
 
+    default RarityValue<Double> getDefence(){return RarityValue.zeroDouble();}
+    default RarityValue<Double> getHealth(){return  RarityValue.zeroDouble();}
+    default RarityValue<Double> getSpeed(){return RarityValue.zeroDouble();}
+
     default List<GenericItemType> getCompatibleTypes()
     {
         return Arrays.asList(GenericItemType.values());

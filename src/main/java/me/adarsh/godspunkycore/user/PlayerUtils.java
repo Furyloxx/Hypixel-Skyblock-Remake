@@ -74,7 +74,9 @@ public final class PlayerUtils
     {
         DoublePlayerStatistic strength = statistics.getStrength(),
                 intelligence = statistics.getIntelligence();
-        DoublePlayerStatistic critChance = statistics.getCritChance(), critDamage = statistics.getCritDamage();
+        DoublePlayerStatistic critChance = statistics.getCritChance(), critDamage = statistics.getCritDamage(), speed = statistics.getSpeed();
+        DoublePlayerStatistic defence = statistics.getDefense(),
+                health = statistics.getMaxHealth();
         if (hand != null && hand.getType().getStatistics().getType() != GenericItemType.ARMOR)
         {
             Reforge reforge = hand.getReforge() == null ? Reforge.blank() : hand.getReforge();
@@ -82,6 +84,9 @@ public final class PlayerUtils
             critDamage.set(PlayerStatistic.HAND, reforge.getCritDamage().getForRarity(hand.getRarity()));
             critChance.set(PlayerStatistic.HAND, reforge.getCritChance().getForRarity(hand.getRarity()));
             intelligence.set(PlayerStatistic.HAND, reforge.getIntelligence().getForRarity(hand.getRarity()));
+            defence.set(PlayerStatistic.HAND, reforge.getDefence().getForRarity(hand.getRarity()));
+            health.set(PlayerStatistic.HAND, reforge.getHealth().getForRarity(hand.getRarity()));
+            speed.set(PlayerStatistic.HAND, reforge.getSpeed().getForRarity(hand.getRarity()));
             PlayerBoostStatistics handStatistics = hand.getType().getBoostStatistics();
             if (handStatistics != null)
                 strength.add(PlayerStatistic.HAND, handStatistics.getBaseStrength());
@@ -113,6 +118,9 @@ public final class PlayerUtils
             critDamage.set(slot, reforge.getCritDamage().getForRarity(piece.getRarity()));
             critChance.set(slot, reforge.getCritChance().getForRarity(piece.getRarity()));
             intelligence.set(slot, reforge.getIntelligence().getForRarity(piece.getRarity()));
+            defense.set(slot, reforge.getDefence().getForRarity(piece.getRarity()));
+            health.set(slot, reforge.getHealth().getForRarity(piece.getRarity()));
+            speed.set(slot, reforge.getSpeed().getForRarity(piece.getRarity()));
             PlayerBoostStatistics pieceStatistics = piece.getType().getBoostStatistics();
 
             if (pieceStatistics != null)
@@ -246,6 +254,9 @@ public final class PlayerUtils
             critDamage.set(slot, reforge.getCritDamage().getForRarity(sItem.getRarity()));
             critChance.set(slot, reforge.getCritChance().getForRarity(sItem.getRarity()));
             intelligence.set(slot, reforge.getIntelligence().getForRarity(sItem.getRarity()));
+            defense.set(slot, reforge.getDefence().getForRarity(sItem.getRarity()));
+            health.set(slot, reforge.getHealth().getForRarity(sItem.getRarity()));
+            speed.set(slot, reforge.getSpeed().getForRarity(sItem.getRarity()));
             PlayerBoostStatistics sItemStatistics = sItem.getType().getBoostStatistics();
             if (sItemStatistics != null)
                 addBoostStatistics(statistics, slot, sItemStatistics);

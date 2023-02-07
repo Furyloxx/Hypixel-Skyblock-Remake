@@ -1,16 +1,22 @@
 package me.adarsh.godspunkycore.reforge;
 
 import lombok.Getter;
+import me.adarsh.godspunkycore.reforge.armor.FierceReforge;
+import me.adarsh.godspunkycore.reforge.ranged_weapon.RapidReforge;
+import me.adarsh.godspunkycore.reforge.weapon.*;
 
-public enum ReforgeType
-{
-    OVERPOWERED(OverpoweredReforge.class, false),
-    SUPERGENIUS(SupergeniusReforge.class, false),
+public enum ReforgeType {
     SPICY(SpicyReforge.class),
     FIERCE(FierceReforge.class),
     HEROIC(HeroicReforge.class),
     ODD(OddReforge.class),
-    RAPID(RapidReforge.class);
+    RAPID(RapidReforge.class),
+    EPIC(EpicReforge.class),
+    FAIR(FairReforge.class),
+    GENTLE(GentleReforge.class),
+    LEGENDARY(LegendaryReforge.class),
+    SHARP(SharpReforge.class);
+
 
     private final Class<? extends Reforge> clazz;
     @Getter

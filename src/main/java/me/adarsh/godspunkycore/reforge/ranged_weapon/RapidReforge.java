@@ -1,7 +1,8 @@
-package me.adarsh.godspunkycore.reforge;
+package me.adarsh.godspunkycore.reforge.ranged_weapon;
 
 import me.adarsh.godspunkycore.item.GenericItemType;
 import me.adarsh.godspunkycore.item.RarityValue;
+import me.adarsh.godspunkycore.reforge.Reforge;
 
 import java.util.Collections;
 import java.util.List;
