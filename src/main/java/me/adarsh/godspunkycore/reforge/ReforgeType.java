@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.reforge;
 
 import lombok.Getter;
-import me.adarsh.godspunkycore.reforge.armor.FierceReforge;
+import me.adarsh.godspunkycore.reforge.armor.*;
 import me.adarsh.godspunkycore.reforge.ranged_weapon.RapidReforge;
 import me.adarsh.godspunkycore.reforge.weapon.*;
 
@@ -15,7 +15,15 @@ public enum ReforgeType {
     FAIR(FairReforge.class),
     GENTLE(GentleReforge.class),
     LEGENDARY(LegendaryReforge.class),
-    SHARP(SharpReforge.class);
+    SHARP(SharpReforge.class),
+    CLEAN(CleanReforge.class),
+    HEAVY(HeavyReforge.class),
+    LIGHT(LightReforge.class),
+    MYTHIC(MythicReforge.class),
+    PURE(PureReforge.class),
+    SMART(SmartReforge.class),
+    TITANIC(TitanicReforge.class),
+    WISE(WiseReforge.class);
 
 
     private final Class<? extends Reforge> clazz;
