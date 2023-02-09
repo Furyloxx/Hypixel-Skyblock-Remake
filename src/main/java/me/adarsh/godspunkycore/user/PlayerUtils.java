@@ -530,7 +530,7 @@ public final class PlayerUtils
     public static void sendToIsland(Player player) {
         World world = Bukkit.getWorld("islands");
         if (world == null)
-            world = new BlankWorldCreator("islands").createWorld();
+            world = new BlankWorldCreator("islands"+"-"+player.getUniqueId()).createWorld();
         User user = User.getUser(player.getUniqueId());
         if (user.getIslandX() == null)
         {

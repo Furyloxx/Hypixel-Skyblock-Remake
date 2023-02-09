@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.gui;
 
 import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.item.GenericItemType;
 import me.adarsh.godspunkycore.item.Rarity;
 import me.adarsh.godspunkycore.item.Reforgable;
 import me.adarsh.godspunkycore.item.SItem;
@@ -48,9 +49,8 @@ public class ReforgeAnvilGUI extends GUI
     {
         super("Reforge Item", 45);
         fill(BLACK_STAINED_GLASS_PANE);
-        //fill(RED_STAINED_GLASS_PANE, 0, 36);
-        //fill(RED_STAINED_GLASS_PANE, 8, 44);
         set(GUIClickableItem.getCloseItem(40));
+
         set(new GUIClickableItem()
         {
 
@@ -127,8 +127,6 @@ public class ReforgeAnvilGUI extends GUI
                 SItem sItem = SItem.find(inventory.getItem(13));
                 if (sItem == null)
                 {
-                    //SUtil.border(inventory, this, RED_STAINED_GLASS_PANE, 0, 36, true, false);
-                    //SUtil.border(inventory, this, RED_STAINED_GLASS_PANE, 8, 44, true, false);
                     inventory.setItem(22, DEFAULT_REFORGE_ITEM);
                     return;
                 }

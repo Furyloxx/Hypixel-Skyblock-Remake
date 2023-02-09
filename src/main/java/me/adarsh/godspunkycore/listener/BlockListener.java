@@ -1,42 +1,42 @@
 package me.adarsh.godspunkycore.listener;
 
+import me.adarsh.godspunkycore.Spectaculation;
 import me.adarsh.godspunkycore.command.RegionCommand;
 import me.adarsh.godspunkycore.region.Region;
 import me.adarsh.godspunkycore.region.RegionGenerator;
+import me.adarsh.godspunkycore.user.User;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 public class BlockListener extends PListener
 {
     @EventHandler
-    public void onBlockInteract(PlayerInteractEvent e)
-    {
+    public void onBlockInteract(PlayerInteractEvent e) {
         Block block = e.getClickedBlock();
         if (block == null) return;
         Player player = e.getPlayer();
         if (!RegionCommand.REGION_GENERATION_MAP.containsKey(player)) return;
         e.setCancelled(true);
         RegionGenerator generator = RegionCommand.REGION_GENERATION_MAP.get(player);
-        switch (generator.getPhase())
-        {
-            case 1:
-            {
+        switch (generator.getPhase()) {
+            case 1: {
                 generator.setFirstLocation(block.getLocation());
                 generator.setPhase(2);
                 player.sendMessage(ChatColor.GRAY + "Set your clicked block as the first location of the region!");
                 player.sendMessage(ChatColor.DARK_AQUA + "Click the second corner of your region.");
                 break;
             }
-            case 2:
-            {
+            case 2: {
                 generator.setSecondLocation(block.getLocation());
                 if (generator.getModificationType().equals("create"))
                     Region.create(generator.getName(), generator.getFirstLocation(), generator.getSecondLocation(), generator.getType());
-                else
-                {
+                else {
                     Region region = Region.get(generator.getName());
                     region.setFirstLocation(generator.getFirstLocation());
                     region.setSecondLocation(generator.getSecondLocation());
@@ -49,4 +49,17 @@ public class BlockListener extends PListener
             }
         }
     }
-}
+            @EventHandler
+            public void BlockPlace(BlockPlaceEvent e){
+               Player player = e.getPlayer();
+                Block block = e.getBlock();
+                World world = Bukkit.getWorld("islands");
+                if (player.getWorld().equals(world)){
+                    e.setCancelled(false);
+                }else{
+                    e.setCancelled(true);
+                }
+            }
+        }
+
+

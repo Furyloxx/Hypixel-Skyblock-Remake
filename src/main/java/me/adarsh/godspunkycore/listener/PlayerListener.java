@@ -13,7 +13,6 @@ import me.adarsh.godspunkycore.item.accessory.AccessoryFunction;
 import me.adarsh.godspunkycore.item.bow.BowFunction;
 import me.adarsh.godspunkycore.item.pet.Pet;
 import me.adarsh.godspunkycore.item.pet.PetAbility;
-import me.adarsh.godspunkycore.launchpads.LaunchPadHandler;
 import me.adarsh.godspunkycore.potion.PotionEffect;
 import me.adarsh.godspunkycore.skill.Skill;
 import me.adarsh.godspunkycore.slayer.SlayerQuest;
@@ -49,20 +48,16 @@ public class PlayerListener extends PListener
     private static final Map<UUID, CombatAction> COMBAT_MAP = new HashMap<>();
 
     @EventHandler
-    public void onPlayerMove(PlayerMoveEvent e)
-    {
+    public void onPlayerMove(PlayerMoveEvent e) {
         Player player = e.getPlayer();
         SBlock block = SBlock.getBlock(player.getLocation().clone().subtract(0, 0.3, 0));
         if ((player.getGameMode() != GameMode.CREATIVE && player.getGameMode() != GameMode.SPECTATOR) && e.getTo().getY() <= -20.0)
             User.getUser(player.getUniqueId()).kill(EntityDamageEvent.DamageCause.VOID, null);
         if (block == null) return;
-        if (block.getType() == SMaterial.BOUNCER)
-        {
+        if (block.getType() == SMaterial.BOUNCER) {
             player.setVelocity(player.getVelocity().setY(block.getDataFloat("bounce")));
-            new BukkitRunnable()
-            {
-                public void run()
-                {
+            new BukkitRunnable() {
+                public void run() {
                     player.setVelocity(new Vector(block.getDataFloat("velX"), block.getDataFloat("velY"), block.getDataFloat("velZ")));
                 }
             }.runTaskLater(Spectaculation.getPlugin(), block.getDataLong("delay"));
@@ -73,8 +68,7 @@ public class PlayerListener extends PListener
         s.setPassenger(player);
         s.setGravity(true);
         s.setVisible(false);
-        new BukkitRunnable()
-        {
+        new BukkitRunnable() {
             public void run() // if the launch is longer than 10 seconds, boot off the passenger
             {
                 s.eject();
@@ -95,19 +89,11 @@ public class PlayerListener extends PListener
                 }
             }.runTaskLater(Spectaculation.getPlugin(), block.getDataLong("delay"));
         }
-        Location to = e.getTo();
-
-            Location bottom = new Location(to.getWorld(), to.getX(), to.getY() - 1, to.getZ());
-
-            if (bottom.getBlock().getType().equals(SLIME_BLOCK)) {
-                LaunchPadHandler padHandler = new LaunchPadHandler();
-                String pad = padHandler.closeTo(player);
-                if (!pad.equals("NONE")) {
-                    padHandler.launch(player, pad);
-                }
-        }
-
     }
+
+
+
+
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e)
