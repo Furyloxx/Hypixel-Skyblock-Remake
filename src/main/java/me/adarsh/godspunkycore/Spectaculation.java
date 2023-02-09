@@ -44,6 +44,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
+import me.adarsh.godspunkycore.listener.VisitMenuListener;
 
 public final class Spectaculation extends JavaPlugin {
     private static Spectaculation plugin;
@@ -224,6 +225,7 @@ public final class Spectaculation extends JavaPlugin {
     private void loadListeners() {
         new BlockListener();
         new PlayerListener();
+        new VisitMenuListener();
         new ServerPingListener();
         new ItemListener();
         new GUIListener();

@@ -6,6 +6,7 @@ import me.adarsh.godspunkycore.enchantment.Enchantment;
 import me.adarsh.godspunkycore.enchantment.EnchantmentType;
 import me.adarsh.godspunkycore.entity.SEntity;
 import me.adarsh.godspunkycore.entity.SEntityType;
+import me.adarsh.godspunkycore.island.IslandManager;
 import me.adarsh.godspunkycore.item.SBlock;
 import me.adarsh.godspunkycore.item.SItem;
 import me.adarsh.godspunkycore.item.SMaterial;
@@ -103,6 +104,9 @@ public class PlayerListener extends PListener
         if (!PlayerUtils.STATISTICS_CACHE.containsKey(player.getUniqueId())) PlayerUtils.STATISTICS_CACHE.put(player.getUniqueId(), PlayerUtils.getStatistics(player));
         for (Skill skill : Skill.getSkills())
             skill.onSkillUpdate(user, user.getSkillXP(skill));
+        IslandManager.createIsland(e.getPlayer());
+        Location loc2 = new Location(IslandManager.getIsland(player), 0, 100, 0);
+        player.teleport(loc2);
     }
 
     @EventHandler
