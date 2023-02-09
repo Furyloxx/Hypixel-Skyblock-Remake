@@ -15,7 +15,6 @@ import me.adarsh.godspunkycore.item.ItemListener;
 import me.adarsh.godspunkycore.item.SItem;
 import me.adarsh.godspunkycore.item.SMaterial;
 import me.adarsh.godspunkycore.item.pet.Pet;
-import me.adarsh.godspunkycore.launchpads.LaunchPadHandler;
 import me.adarsh.godspunkycore.listener.BlockListener;
 import me.adarsh.godspunkycore.listener.PlayerListener;
 import me.adarsh.godspunkycore.listener.ServerPingListener;
@@ -63,7 +62,6 @@ public final class Spectaculation extends JavaPlugin {
     public SQLWorldData worldData;
     public CommandLoader cl;
 
-    private LaunchPadHandler launchPadHandler;
     public Repeater repeater;
 
     // todo Minions
@@ -95,7 +93,6 @@ public final class Spectaculation extends JavaPlugin {
         }
         SLog.info("Loading SQL database...");
         sql = new SQLDatabase();
-        this.registerLaunchPads();
         regionData = new SQLRegionData();
         worldData = new SQLWorldData();
         cl = new CommandLoader();
@@ -234,14 +231,6 @@ public final class Spectaculation extends JavaPlugin {
     }
 
     private void registerTraits() {
-    }
-
-    public LaunchPadHandler registerLaunchPads() {
-
-        long start = System.currentTimeMillis();
-
-        this.launchPadHandler = new LaunchPadHandler();
-        return null;
     }
 
     private void startPopulators() {
