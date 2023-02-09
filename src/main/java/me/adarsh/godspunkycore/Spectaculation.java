@@ -63,6 +63,7 @@ public final class Spectaculation extends JavaPlugin {
     public SQLWorldData worldData;
     public CommandLoader cl;
 
+
     private LaunchPadHandler launchPadHandler;
     public Repeater repeater;
 
@@ -297,5 +298,6 @@ public final class Spectaculation extends JavaPlugin {
         ConfigurationSerialization.registerClass(SerialNBTTagCompound.class, "SerialNBTTagCompound");
         ConfigurationSerialization.registerClass(AuctionBid.class, "AuctionBid");
     }
+
 }
 
