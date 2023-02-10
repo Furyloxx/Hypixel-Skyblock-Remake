@@ -527,7 +527,7 @@ public final class PlayerUtils
         return false;
     }
 
-    public static void sendToIsland(Player player) {
+    /*public static void sendToIsland(Player player) {
         World world = Bukkit.getWorld("islands");
         if (world == null)
             world = new BlankWorldCreator("islands"+"-"+player.getUniqueId()).createWorld();
@@ -560,7 +560,7 @@ public final class PlayerUtils
         World finalWorld = world;
         SUtil.delay(() -> player.teleport(finalWorld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
                 SUtil.blackMagic(user.getIslandZ())).getLocation().add(0.5, 1.0, 0.5)), 10);
-    }
+    }*/
 
     public static PotionEffect getPotionEffect(Player player, org.bukkit.potion.PotionEffectType type)
     {

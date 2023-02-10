@@ -1144,20 +1144,6 @@ public class SUtil
         builder.append(minutes).append("m ").append(seconds).append("s");
         return builder.toString();
     }
-    public static String[] buildLore(String lore) {
-        return ChatColor.translateAlternateColorCodes('&', lore).split("\n");
-    }
-
-    public String[] buildLore(String lore, char defaultColor) {
-        String[] built = buildLore(lore);
-
-        for (int i = 0; i < built.length; i++) {
-            built[i] = "" + '&' + defaultColor + built[i];
-        }
-
-        return ChatColor.translateAlternateColorCodes('&', String.join("\n", built)).split("\n");
-    }
-
 
 
     public static String getAuctionSetupFormattedTime(long millis)
