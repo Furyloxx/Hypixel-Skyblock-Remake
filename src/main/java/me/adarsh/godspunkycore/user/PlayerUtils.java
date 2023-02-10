@@ -3,6 +3,7 @@ package me.adarsh.godspunkycore.user;
 import com.google.common.util.concurrent.AtomicDouble;
 import me.adarsh.godspunkycore.Repeater;
 import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.config.Config;
 import me.adarsh.godspunkycore.enchantment.Enchantment;
 import me.adarsh.godspunkycore.enchantment.EnchantmentType;
 import me.adarsh.godspunkycore.entity.EntityDrop;
@@ -20,13 +21,11 @@ import me.adarsh.godspunkycore.reforge.Reforge;
 import me.adarsh.godspunkycore.skill.CombatSkill;
 import me.adarsh.godspunkycore.skill.Skill;
 import me.adarsh.godspunkycore.slayer.SlayerQuest;
+import me.adarsh.godspunkycore.util.BlankWorldCreator;
 import me.adarsh.godspunkycore.util.DefenseReplacement;
 import me.adarsh.godspunkycore.util.Groups;
 import me.adarsh.godspunkycore.util.SUtil;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -35,6 +34,7 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.File;
 import java.util.*;
 
 public final class PlayerUtils
@@ -42,6 +42,8 @@ public final class PlayerUtils
 
     public static Spectaculation spectaculation;
     public static final Map<UUID, PlayerStatistics> STATISTICS_CACHE = new HashMap<>();
+
+    public static final String ISLAND_PREFIX = "island-";
     private static final Map<UUID, List<SMaterial>> COOLDOWN_MAP = new HashMap<>();
 
     public static PlayerStatistics getStatistics(Player player)
@@ -527,8 +529,8 @@ public final class PlayerUtils
         return false;
     }
 
-    /*public static void sendToIsland(Player player) {
-        World world = Bukkit.getWorld("islands");
+    public static void sendToIsland(Player player) {
+        World world = Bukkit.getWorld(ISLAND_PREFIX + player.getUniqueId().toString());
         if (world == null)
             world = new BlankWorldCreator("islands"+"-"+player.getUniqueId()).createWorld();
         User user = User.getUser(player.getUniqueId());
@@ -560,7 +562,7 @@ public final class PlayerUtils
         World finalWorld = world;
         SUtil.delay(() -> player.teleport(finalWorld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
                 SUtil.blackMagic(user.getIslandZ())).getLocation().add(0.5, 1.0, 0.5)), 10);
-    }*/
+    }
 
     public static PotionEffect getPotionEffect(Player player, org.bukkit.potion.PotionEffectType type)
     {

@@ -60,6 +60,8 @@ public class User
     private Double islandX;
     @Getter
     private Double islandZ;
+
+    public static final String ISLAND_PREFIX = "island-";
     @Getter
     private Region lastRegion;
     @Getter
@@ -818,7 +820,8 @@ public class User
 
     public boolean isOnIsland(Location location)
     {
-        World world = Bukkit.getWorld("islands");
+        Player player = Bukkit.getPlayer(uuid);
+        World world = Bukkit.getWorld(ISLAND_PREFIX + player.getUniqueId().toString());
         if (world == null)
             return false;
         double x = location.getX();
