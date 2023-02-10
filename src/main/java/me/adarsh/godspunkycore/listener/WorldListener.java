@@ -261,7 +261,7 @@ public class WorldListener extends PListener
         ALREADY_TELEPORTING.add(entity.getUniqueId());
         SUtil.delay(() -> ALREADY_TELEPORTING.remove(entity.getUniqueId()), 15);
         entity.sendMessage(ChatColor.GRAY + "Sending you to your island...");
-        PlayerUtils.sendToIsland((Player) entity);
+        //PlayerUtils.sendToIsland((Player) entity);
     }
 
     @EventHandler

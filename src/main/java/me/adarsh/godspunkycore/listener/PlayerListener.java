@@ -36,13 +36,13 @@ import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class PlayerListener extends PListener
-{
+public class PlayerListener extends PListener {
     private static final Map<UUID, BowShooting> BOW_MAP = new HashMap<>();
     private static final Map<UUID, CombatAction> COMBAT_MAP = new HashMap<>();
 
@@ -91,21 +91,25 @@ public class PlayerListener extends PListener
     }
 
 
-
-
-
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e)
-    {
+    public void onPlayerJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
-        if (!PlayerUtils.STATISTICS_CACHE.containsKey(player.getUniqueId())) PlayerUtils.STATISTICS_CACHE.put(player.getUniqueId(), PlayerUtils.getStatistics(player));
+        if (!PlayerUtils.STATISTICS_CACHE.containsKey(player.getUniqueId()))
+            PlayerUtils.STATISTICS_CACHE.put(player.getUniqueId(), PlayerUtils.getStatistics(player));
         for (Skill skill : Skill.getSkills())
             skill.onSkillUpdate(user, user.getSkillXP(skill));
-        IslandManager.createIsland(e.getPlayer());
-        Location loc2 = new Location(IslandManager.getIsland(player), 0, 100, 0);
-        player.teleport(loc2);
-    }
+        player.sendMessage(ChatColor.GOLD + " " + "Teleporting to island");
+            IslandManager.createIsland(player);
+        }
+
+
+
+
+
+
+
+
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent e)

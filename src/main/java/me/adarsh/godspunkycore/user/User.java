@@ -818,16 +818,14 @@ public class User
         return isOnIsland(block.getLocation());
     }
 
-    public boolean isOnIsland(Location location)
-    {
+    public boolean isOnIsland(Location location) {
         Player player = Bukkit.getPlayer(uuid);
         World world = Bukkit.getWorld(ISLAND_PREFIX + player.getUniqueId().toString());
         if (world == null)
             return false;
         double x = location.getX();
         double z = location.getZ();
-        return world.getUID().equals(location.getWorld().getUID()) &&
-                x >= islandX - ISLAND_SIZE && x <= islandX + ISLAND_SIZE && z >= islandZ - ISLAND_SIZE && z <= islandZ + ISLAND_SIZE;
+        return world.getUID().equals(location.getWorld().getUID());
     }
 
     public boolean isOnUserIsland()

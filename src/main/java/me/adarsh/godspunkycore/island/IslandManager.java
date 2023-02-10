@@ -36,6 +36,8 @@ public class IslandManager {
         File worldFile = new File(Bukkit.getWorldContainer(), ISLAND_PREFIX + player.getUniqueId().toString());
         if (worldFile.exists()) {
             Bukkit.createWorld(new WorldCreator(worldFile.getName()));
+            Location loc2 = new Location(IslandManager.getIsland(player), 0, 100, 0);
+            player.teleport(loc2);
             return;
         }
 
