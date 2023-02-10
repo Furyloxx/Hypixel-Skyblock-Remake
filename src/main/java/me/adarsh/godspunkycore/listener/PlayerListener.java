@@ -41,8 +41,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static me.adarsh.godspunkycore.item.SMaterial.SLIME_BLOCK;
-
 public class PlayerListener extends PListener
 {
     private static final Map<UUID, BowShooting> BOW_MAP = new HashMap<>();

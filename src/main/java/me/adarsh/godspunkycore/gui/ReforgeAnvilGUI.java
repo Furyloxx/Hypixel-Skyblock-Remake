@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.gui;
 
 import me.adarsh.godspunkycore.Spectaculation;
-import me.adarsh.godspunkycore.item.GenericItemType;
 import me.adarsh.godspunkycore.item.Rarity;
 import me.adarsh.godspunkycore.item.Reforgable;
 import me.adarsh.godspunkycore.item.SItem;
@@ -13,13 +12,13 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import org.bukkit.event.inventory.InventoryCloseEvent;
 
 public class ReforgeAnvilGUI extends GUI
 {

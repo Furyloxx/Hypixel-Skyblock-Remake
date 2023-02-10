@@ -1,8 +1,6 @@
 package me.adarsh.godspunkycore.item.weapon;
 
 import me.adarsh.godspunkycore.item.*;
-import me.adarsh.godspunkycore.user.PlayerUtils;
-import org.bukkit.entity.Player;
 
 public class RevenantFalchion implements ToolStatistics, MaterialFunction, Ability
 {

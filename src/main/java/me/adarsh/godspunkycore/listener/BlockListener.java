@@ -1,10 +1,8 @@
 package me.adarsh.godspunkycore.listener;
 
-import me.adarsh.godspunkycore.Spectaculation;
 import me.adarsh.godspunkycore.command.RegionCommand;
 import me.adarsh.godspunkycore.region.Region;
 import me.adarsh.godspunkycore.region.RegionGenerator;
-import me.adarsh.godspunkycore.user.User;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
