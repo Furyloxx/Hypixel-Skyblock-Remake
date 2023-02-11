@@ -223,7 +223,6 @@ public final class Spectaculation extends JavaPlugin {
     private void loadListeners() {
         new BlockListener();
         new PlayerListener();
-        new VisitMenuListener();
         new ServerPingListener();
         new ItemListener();
         new GUIListener();

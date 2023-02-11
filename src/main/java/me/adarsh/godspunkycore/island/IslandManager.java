@@ -23,11 +23,7 @@ public class IslandManager {
     public static final String ISLAND_PREFIX = "island-";
 
     public static World getIsland(Player player) {
-        return Bukkit.getWorld(ISLAND_PREFIX + player.getUniqueId().toString());
-    }
-
-    public static World getIsland(UUID uuid) {
-        return Bukkit.getWorld(ISLAND_PREFIX + uuid.toString());
+        return Bukkit.getWorld("island-" + player.getUniqueId());
     }
 
 
