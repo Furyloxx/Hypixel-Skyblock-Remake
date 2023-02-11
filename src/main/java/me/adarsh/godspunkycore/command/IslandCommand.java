@@ -1,6 +1,5 @@
 package me.adarsh.godspunkycore.command;
 
-import me.adarsh.godspunkycore.island.IslandManager;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -19,13 +18,5 @@ public class IslandCommand extends SCommand {
         if (sender instanceof ConsoleCommandSender)
             throw new CommandFailException("Console senders cannot use this command!");
         Player player = sender.getPlayer();
-        File worldFile = new File(Bukkit.getWorldContainer(), ISLAND_PREFIX + player.getUniqueId().toString());
-        if (worldFile.exists()) {
-            Location loc2 = new Location(IslandManager.getIsland(player), 0, 100, 0);
-            player.teleport(loc2);
-            return;
-        } else {
-            IslandManager.createIsland(sender.getPlayer());
-        }
     }
 }

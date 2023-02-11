@@ -1,21 +1,25 @@
 package me.adarsh.godspunkycore.command;
 
-import me.adarsh.godspunkycore.island.IslandManager;
 import org.bukkit.*;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @CommandParameters(description = "Spec test command.", aliases = "test")
-public class SpecTestCommand extends SCommand {
+public class SpecTestCommand extends SCommand implements Listener {
     @Override
     public void run(CommandSource sender, String[] args) {
-        Player player = sender.getPlayer();
+        /* Player player = sender.getPlayer();
         if (sender instanceof ConsoleCommandSender)
             throw new CommandFailException("Console senders cannot use this command!");
         if (args.length == 0) {
@@ -23,9 +27,12 @@ public class SpecTestCommand extends SCommand {
             return;
         }
 
-        OfflinePlayer target = Bukkit.getOfflinePlayer(args[0]);
-        if (target.hasPlayedBefore()) {
-            Inventory menu = Bukkit.createInventory(null, 36, "Visit " + target.getName());
+        String playername = args[0];
+
+        Player target = Bukkit.getServer().getPlayer(playername);
+        File worldFile = new File(Bukkit.getWorldContainer(), ISLAND_PREFIX + target.getUniqueId());
+        if (worldFile.exists()) {
+            Inventory menu = Bukkit.createInventory(null, 36, "Visit ");
             ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) SkullType.PLAYER.ordinal());
             SkullMeta itemMeta = (SkullMeta) skull.getItemMeta();
             itemMeta.setOwner(target.getName());
@@ -45,10 +52,18 @@ public class SpecTestCommand extends SCommand {
 
             menu.setItem(13, skull);
 
+
             player.openInventory(menu);
-        }
+        }*/
     }
 }
+
+
+
+
+
+
+
 
 
 

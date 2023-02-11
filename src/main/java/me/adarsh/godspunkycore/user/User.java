@@ -820,7 +820,7 @@ public class User
 
     public boolean isOnIsland(Location location) {
         Player player = Bukkit.getPlayer(uuid);
-        World world = Bukkit.getWorld(ISLAND_PREFIX + player.getUniqueId().toString());
+        World world = Bukkit.getWorld("island-" + player.getUniqueId().toString());
         if (world == null)
             return false;
         double x = location.getX();
@@ -833,7 +833,7 @@ public class User
         Player player = Bukkit.getPlayer(uuid);
         if (player == null)
             return false;
-        World world = Bukkit.getWorld("island");
+        World world = Bukkit.getWorld("island-" + player.getUniqueId());
         if (world == null)
             return false;
         double x = player.getLocation().getX();

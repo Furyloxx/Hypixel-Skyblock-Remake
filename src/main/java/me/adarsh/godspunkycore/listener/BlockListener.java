@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.listener;
 
 import me.adarsh.godspunkycore.command.RegionCommand;
-import me.adarsh.godspunkycore.island.IslandManager;
 import me.adarsh.godspunkycore.region.Region;
 import me.adarsh.godspunkycore.region.RegionGenerator;
 import org.bukkit.Bukkit;
@@ -52,7 +51,7 @@ public class BlockListener extends PListener
             public void BlockPlace(BlockPlaceEvent e){
                Player player = e.getPlayer();
                 Block block = e.getBlock();
-                World world = Bukkit.getWorld(IslandManager.ISLAND_PREFIX + player.getUniqueId().toString());
+                World world = Bukkit.getWorld("island-" + player.getUniqueId().toString());
                 if (player.getWorld().equals(world)){
                     e.setCancelled(false);
                 }else{

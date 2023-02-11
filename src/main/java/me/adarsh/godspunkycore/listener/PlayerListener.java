@@ -2,11 +2,11 @@ package me.adarsh.godspunkycore.listener;
 
 import com.google.common.util.concurrent.AtomicDouble;
 import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.command.SpecTestCommand;
 import me.adarsh.godspunkycore.enchantment.Enchantment;
 import me.adarsh.godspunkycore.enchantment.EnchantmentType;
 import me.adarsh.godspunkycore.entity.SEntity;
 import me.adarsh.godspunkycore.entity.SEntityType;
-import me.adarsh.godspunkycore.island.IslandManager;
 import me.adarsh.godspunkycore.item.SBlock;
 import me.adarsh.godspunkycore.item.SItem;
 import me.adarsh.godspunkycore.item.SMaterial;
@@ -101,7 +101,6 @@ public class PlayerListener extends PListener {
         for (Skill skill : Skill.getSkills())
             skill.onSkillUpdate(user, user.getSkillXP(skill));
         player.sendMessage(ChatColor.GOLD + " " + "Teleporting to island");
-        IslandManager.createIsland(player);
     }
 
     @EventHandler
@@ -416,18 +415,6 @@ public class PlayerListener extends PListener {
 
         float getForce();
     }
-
-    @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) throws Exception {
-        Player player = (Player) e.getWhoClicked();
-        if (e.getView().getTitle().startsWith("Visit")) {
-            if (e.getCurrentItem().getType().equals(Material.SKULL_ITEM)) {
-                OfflinePlayer target = Bukkit.getOfflinePlayer(e.getView().getTitle().split(" ")[1]);
-                player.teleport(new Location(IslandManager.getIsland(target.getPlayer()), 0, 100, 0));
-                if (target.isOnline()) {
-                    target.getPlayer().sendMessage(ChatColor.AQUA + "[SKYBLOCK] " + ChatColor.GRAY + player.getName() + ChatColor.YELLOW + " is visiting your island!");
-                }
-            }
-        }
-    }
 }
+
+
