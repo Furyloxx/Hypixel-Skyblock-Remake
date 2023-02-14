@@ -188,6 +188,7 @@ public final class Spectaculation extends JavaPlugin {
     private void loadCommands() {
         cl.register(new SpectaculationCommand());
         cl.register(new RegionCommand());
+        cl.register(new VisitCommand());
         cl.register(new PlayEnumSoundCommand());
         cl.register(new PlayEnumEffectCommand());
         cl.register(new SpawnSpecCommand());

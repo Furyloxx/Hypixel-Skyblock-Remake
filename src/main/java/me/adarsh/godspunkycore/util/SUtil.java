@@ -1169,4 +1169,7 @@ public class SUtil
         }
         return dur;
     }
+    public static org.bukkit.World getIsland(Player player){
+        return Bukkit.getWorld("island-" + player.getUniqueId());
+    }
 }

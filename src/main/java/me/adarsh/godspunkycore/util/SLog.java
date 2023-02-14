@@ -1,12 +1,14 @@
 package me.adarsh.godspunkycore.util;
 
+import org.bukkit.ChatColor;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SLog
 {
     private static final Logger LOGGER = Logger.getLogger("Minecraft");
-    private static final String PREFIX = "[Spectaculation]";
+    private static final String PREFIX = "[GodSkyblockCore]";
 
     private static void log(Object o, Level l)
     {

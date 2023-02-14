@@ -51,7 +51,7 @@ public class BlockListener extends PListener
             public void BlockPlace(BlockPlaceEvent e){
                Player player = e.getPlayer();
                 Block block = e.getBlock();
-                World world = Bukkit.getWorld("island-" + player.getUniqueId().toString());
+                World world = Bukkit.getWorld("island_" + player.getName());
                 if (player.getWorld().equals(world)){
                     e.setCancelled(false);
                 }else{

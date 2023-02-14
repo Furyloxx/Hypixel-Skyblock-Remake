@@ -820,7 +820,7 @@ public class User
 
     public boolean isOnIsland(Location location) {
         Player player = Bukkit.getPlayer(uuid);
-        World world = Bukkit.getWorld("island-" + player.getUniqueId().toString());
+        World world = Bukkit.getWorld("island_" + player.getName());
         if (world == null)
             return false;
         double x = location.getX();
@@ -833,7 +833,7 @@ public class User
         Player player = Bukkit.getPlayer(uuid);
         if (player == null)
             return false;
-        World world = Bukkit.getWorld("island-" + player.getUniqueId());
+        World world = Bukkit.getWorld("island_" + player.getName());
         if (world == null)
             return false;
         double x = player.getLocation().getX();
@@ -866,7 +866,7 @@ public class User
         if (player == null) return;
         if (isOnIsland())
         {
-            World world = Bukkit.getWorld("island-" + player.getUniqueId());
+            World world = Bukkit.getWorld("island_" + player.getName());
             player.teleport(world.getHighestBlockAt(SUtil.blackMagic(islandX),
                     SUtil.blackMagic(islandZ)).getLocation().add(0.5, 1.0, 0.5));
         }

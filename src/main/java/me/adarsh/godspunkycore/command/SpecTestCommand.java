@@ -1,7 +1,10 @@
 package me.adarsh.godspunkycore.command;
 
+import com.sk89q.worldedit.bukkit.BukkitPlayer;
+import me.adarsh.godspunkycore.user.User;
 import org.bukkit.*;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,44 +22,37 @@ import java.util.List;
 public class SpecTestCommand extends SCommand implements Listener {
     @Override
     public void run(CommandSource sender, String[] args) {
-        /* Player player = sender.getPlayer();
+        Player player = sender.getPlayer();
         if (sender instanceof ConsoleCommandSender)
             throw new CommandFailException("Console senders cannot use this command!");
-        if (args.length == 0) {
-            player.sendMessage("Plz input Player Name");
-            return;
-        }
+           /*String target = args[0];
+        //final OfflinePlayer target = (OfflinePlayer)Bukkit.getPlayer(args[0]);
 
-        String playername = args[0];
-
-        Player target = Bukkit.getServer().getPlayer(playername);
-        File worldFile = new File(Bukkit.getWorldContainer(), ISLAND_PREFIX + target.getUniqueId());
-        if (worldFile.exists()) {
-            Inventory menu = Bukkit.createInventory(null, 36, "Visit ");
+            Inventory menu = Bukkit.createInventory(null, 36, "Visit " + target);
             ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) SkullType.PLAYER.ordinal());
             SkullMeta itemMeta = (SkullMeta) skull.getItemMeta();
-            itemMeta.setOwner(target.getName());
+            itemMeta.setOwner(target);
             List<String> lore = new ArrayList<>();
             itemMeta.setDisplayName(ChatColor.GREEN + "Visit player island");
             lore.add(ChatColor.GRAY + "Players:");
-            lore.add(ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + target.getName());
+            lore.add(ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + target);
             lore.add(" ");
             lore.add(ChatColor.GRAY + "Profile: " + ChatColor.YELLOW + "Strawberry");
             lore.add(" ");
-            lore.add(ChatColor.GRAY + "Players: " + ChatColor.GREEN + target.getName());
-            lore.add(ChatColor.GRAY + "Server: " + ChatColor.DARK_GRAY + "Island_" + target.getName());
+            lore.add(ChatColor.GRAY + "Players: " + ChatColor.GREEN + target);
+            lore.add(ChatColor.GRAY + "Server: " + ChatColor.DARK_GRAY + "Island_" + target);
             lore.add(" ");
             lore.add(ChatColor.YELLOW + "Click to visit!");
             itemMeta.setLore(lore);
             skull.setItemMeta(itemMeta);
 
             menu.setItem(13, skull);
+            player.openInventory(menu);*/
 
-
-            player.openInventory(menu);
-        }*/
+        }
     }
-}
+
+
 
 
 

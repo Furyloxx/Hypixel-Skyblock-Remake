@@ -47,6 +47,9 @@ public class PlayerListener extends PListener {
     private static final Map<UUID, BowShooting> BOW_MAP = new HashMap<>();
     private static final Map<UUID, CombatAction> COMBAT_MAP = new HashMap<>();
 
+    private static final Map<UUID, User> USER_CACHE = new HashMap<>();
+    private UUID uuid;
+
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
         Player player = e.getPlayer();
@@ -100,7 +103,6 @@ public class PlayerListener extends PListener {
             PlayerUtils.STATISTICS_CACHE.put(player.getUniqueId(), PlayerUtils.getStatistics(player));
         for (Skill skill : Skill.getSkills())
             skill.onSkillUpdate(user, user.getSkillXP(skill));
-        player.sendMessage(ChatColor.GOLD + " " + "Teleporting to island");
     }
 
     @EventHandler
@@ -415,6 +417,27 @@ public class PlayerListener extends PListener {
 
         float getForce();
     }
-}
+
+    public static org.bukkit.World getIsland(Player player) {
+        return Bukkit.getWorld("island_" + player.getName());
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent e) {
+        Player player = (Player) e.getWhoClicked();
+        if (e.getView().getTitle().contains("Visit")) {
+            e.setCancelled(true);
+            if (e.getCurrentItem().getType().equals(Material.SKULL_ITEM)) {
+                String name = ChatColor.stripColor(e.getView().getTitle().replace("Visit ", ""));
+                e.getWhoClicked().closeInventory();
+                final OfflinePlayer target = (OfflinePlayer)Bukkit.getPlayer(name);
+               World targetworld = Bukkit.getWorld("island_" + name);
+                SUtil.delay(() -> player.teleport(new Location(targetworld, 0, 100, 0)) , 20);
+                player.sendMessage(ChatColor.GOLD +""+ ChatColor.BOLD + "Teleporting");
+                }
+            }
+        }
+    }
+
 
 
