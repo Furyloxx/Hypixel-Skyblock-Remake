@@ -18,6 +18,7 @@ import me.adarsh.godspunkycore.item.pet.Pet;
 import me.adarsh.godspunkycore.potion.ActivePotionEffect;
 import me.adarsh.godspunkycore.potion.PotionEffect;
 import me.adarsh.godspunkycore.potion.PotionEffectType;
+import me.adarsh.godspunkycore.region.Cuboid;
 import me.adarsh.godspunkycore.region.Region;
 import me.adarsh.godspunkycore.region.RegionType;
 import me.adarsh.godspunkycore.skill.*;
@@ -61,7 +62,6 @@ public class User
     @Getter
     private Double islandZ;
 
-    public static final String ISLAND_PREFIX = "island-";
     @Getter
     private Region lastRegion;
     @Getter
@@ -812,6 +812,26 @@ public class User
             return false;
         return isOnIsland(player.getLocation());
     }
+    public boolean isOnUserIsland()
+    {
+        Player player = Bukkit.getPlayer(uuid);
+        if (player == null)
+            return false;
+        World world = Bukkit.getWorld("islands");
+        if (world == null)
+            return false;
+        User user = User.getUser(player.getUniqueId());
+        double x = player.getLocation().getX();
+        double z = player.getLocation().getZ();
+        double islandX = user.getIslandX();
+        double islandZ = user.getIslandZ();
+        Location loc1 = new Location(world, 1, 1, 1);
+        loc1.add(1, 1, 1);
+        Location loc2 = new Location(world, 3, 3, 3);
+        loc2.subtract(1, 1, 1);
+        Cuboid cuboid = new Cuboid(loc1, loc2);
+        return cuboid.contains(player.getLocation());
+    }
 
     public boolean isOnIsland(Block block)
     {
@@ -820,7 +840,7 @@ public class User
 
     public boolean isOnIsland(Location location) {
         Player player = Bukkit.getPlayer(uuid);
-        World world = Bukkit.getWorld("island_" + player.getName());
+        World world = Bukkit.getWorld("islands");
         if (world == null)
             return false;
         double x = location.getX();
@@ -828,19 +848,7 @@ public class User
         return world.getUID().equals(location.getWorld().getUID());
     }
 
-    public boolean isOnUserIsland()
-    {
-        Player player = Bukkit.getPlayer(uuid);
-        if (player == null)
-            return false;
-        World world = Bukkit.getWorld("island_" + player.getName());
-        if (world == null)
-            return false;
-        double x = player.getLocation().getX();
-        double z = player.getLocation().getZ();
-        return world.getUID().equals(player.getWorld().getUID()) &&
-                x < islandX - ISLAND_SIZE && x > islandX + ISLAND_SIZE && z < islandZ - ISLAND_SIZE && z > islandZ + ISLAND_SIZE;
-    }
+
 
     public List<AuctionItem> getBids()
     {
@@ -866,9 +874,8 @@ public class User
         if (player == null) return;
         if (isOnIsland())
         {
-            World world = Bukkit.getWorld("island_" + player.getName());
-            player.teleport(world.getHighestBlockAt(SUtil.blackMagic(islandX),
-                    SUtil.blackMagic(islandZ)).getLocation().add(0.5, 1.0, 0.5));
+            World world = Bukkit.getWorld("islands");
+            SUtil.delay(() -> player.teleport(new Location(world , 0 , 100 , 0)),10);
         }
         else
         {

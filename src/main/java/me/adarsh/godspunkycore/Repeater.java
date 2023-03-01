@@ -180,8 +180,7 @@ public class Repeater
                     }
                     if (user.isOnIsland())
                         location = ChatColor.GREEN + "Your Island";
-                    if (user.isOnUserIsland())
-                        location = ChatColor.AQUA + "Unknown Island";
+
                     sidebar.add(ChatColor.GRAY + " ⏣ " + location);
                     sidebar.add(" ");
                     StringBuilder coinsDisplay = new StringBuilder();

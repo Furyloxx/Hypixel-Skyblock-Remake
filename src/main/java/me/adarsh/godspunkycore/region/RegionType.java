@@ -7,6 +7,10 @@ import org.bukkit.ChatColor;
 public enum RegionType
 {
     VILLAGE("Village"),
+
+    PRIVATE_ISLAND("Private Island"),
+
+    UNKNOW_ISLAND("Unknow island"),
     MOUNTAIN("Mountain"),
     FOREST("Forest"),
     FARM("Farm"),
@@ -47,6 +51,8 @@ public enum RegionType
     ;
 
     private final String name;
+
+
     private final ChatColor color;
 
     RegionType(String name, ChatColor color)

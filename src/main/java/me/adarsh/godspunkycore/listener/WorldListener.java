@@ -7,13 +7,13 @@ import me.adarsh.godspunkycore.entity.caverns.CreeperFunction;
 import me.adarsh.godspunkycore.entity.nms.Dragon;
 import me.adarsh.godspunkycore.event.CreeperIgniteEvent;
 import me.adarsh.godspunkycore.item.*;
+import me.adarsh.godspunkycore.region.Cuboid;
 import me.adarsh.godspunkycore.region.Region;
 import me.adarsh.godspunkycore.region.RegionType;
 import me.adarsh.godspunkycore.skill.FarmingSkill;
 import me.adarsh.godspunkycore.skill.ForagingSkill;
 import me.adarsh.godspunkycore.skill.MiningSkill;
 import me.adarsh.godspunkycore.skill.Skill;
-import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.Groups;
 import me.adarsh.godspunkycore.util.SUtil;
@@ -22,6 +22,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerPortalEvent;
@@ -32,22 +33,19 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.*;
 
-public class WorldListener extends PListener
-{
+public class WorldListener extends PListener {
     private static final Map<UUID, List<BlockState>> RESTORER = new HashMap<>();
     private static final List<UUID> ALREADY_TELEPORTING = new ArrayList<>();
 
     @EventHandler
-    public void onCreatureSpawn(CreatureSpawnEvent e)
-    {
+    public void onCreatureSpawn(CreatureSpawnEvent e) {
         if (e.getSpawnReason() != CreatureSpawnEvent.SpawnReason.NATURAL) return;
         if (e.getEntity() instanceof FallingBlock) return;
         e.setCancelled(true);
     }
 
     @EventHandler
-    public void onEntityChangeBlock(EntityChangeBlockEvent e)
-    {
+    public void onEntityChangeBlock(EntityChangeBlockEvent e) {
         if (e.getEntity().getType() == EntityType.ENDERMAN)
             e.setCancelled(true);
         if (e.getBlock().getType() == Material.SOIL && e.getTo() == Material.DIRT)
@@ -55,38 +53,33 @@ public class WorldListener extends PListener
     }
 
     @EventHandler
-    public void onEntityExplode(EntityExplodeEvent e)
-    {
+    public void onEntityExplode(EntityExplodeEvent e) {
         Entity entity = e.getEntity();
         if (entity instanceof EnderDragonPart || entity instanceof EnderDragon || entity instanceof Creeper)
             e.blockList().clear();
     }
 
     @EventHandler
-    public void onBlockIgnite(BlockIgniteEvent e)
-    {
+    public void onBlockIgnite(BlockIgniteEvent e) {
         if (e.getIgnitingEntity() instanceof Fireball)
             e.setCancelled(true);
     }
 
     @EventHandler
-    public void onBlockFade(BlockFadeEvent e)
-    {
+    public void onBlockFade(BlockFadeEvent e) {
         if (e.getNewState().getType() == Material.DIRT || e.getNewState().getType() == Material.GRASS)
             e.setCancelled(true);
     }
 
     @EventHandler
-    public void onEntityDeath(EntityDeathEvent e)
-    {
+    public void onEntityDeath(EntityDeathEvent e) {
         Entity entity = e.getEntity();
         if (!entity.hasMetadata("specEntityObject")) return;
         e.getDrops().clear();
     }
 
     @EventHandler
-    public void onCreeperIgnite(CreeperIgniteEvent e)
-    {
+    public void onCreeperIgnite(CreeperIgniteEvent e) {
         Creeper creeper = e.getEntity();
         SEntity sEntity = SEntity.findSEntity(creeper);
         if (sEntity == null) return;
@@ -95,30 +88,24 @@ public class WorldListener extends PListener
     }
 
     @EventHandler
-    public void onLeafDecay(LeavesDecayEvent e)
-    {
+    public void onLeafDecay(LeavesDecayEvent e) {
         e.setCancelled(true);
     }
 
     @EventHandler
-    public void onBlockBreak(BlockBreakEvent e)
-    {
+    public void onBlockBreak(BlockBreakEvent e) {
         Block block = e.getBlock();
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
         SMaterial equiv = SMaterial.getSpecEquivalent(block.getType(), block.getData());
         Region region = Region.getRegionOfBlock(block);
         Collection<ItemStack> drops = block.getDrops(e.getPlayer().getItemInHand());
-        if (player.getGameMode() != GameMode.CREATIVE)
-        {
+        if (player.getGameMode() != GameMode.CREATIVE) {
             boolean allowBreak = false;
-            if (region != null)
-            {
-                if (Groups.FORAGING_REGIONS.contains(region.getType()))
-                {
+            if (region != null) {
+                if (Groups.FORAGING_REGIONS.contains(region.getType())) {
                     if (block.getType() == Material.LOG || block.getType() == Material.LOG_2 || block.getType() == Material.LEAVES ||
-                            block.getType() == Material.LEAVES_2)
-                    {
+                            block.getType() == Material.LEAVES_2) {
                         allowBreak = true;
                         int level = Skill.getLevel(user.getSkillXP(ForagingSkill.INSTANCE), ForagingSkill.INSTANCE.hasSixtyLevels());
                         double d = ForagingSkill.INSTANCE.getDoubleDropChance(level);
@@ -127,21 +114,17 @@ public class WorldListener extends PListener
                         addToRestorer(block, player);
                     }
                 }
-                if (Groups.FARMING_REGIONS.contains(region.getType()))
-                {
-                    if (Groups.FARMING_MATERIALS.contains(block.getType()))
-                    {
+                if (Groups.FARMING_REGIONS.contains(region.getType())) {
+                    if (Groups.FARMING_MATERIALS.contains(block.getType())) {
                         allowBreak = true;
                         int level = Skill.getLevel(user.getSkillXP(FarmingSkill.INSTANCE), FarmingSkill.INSTANCE.hasSixtyLevels());
                         double d = FarmingSkill.INSTANCE.getDoubleDropChance(level);
                         extraDrops(drops, d, 0.0, block);
                     }
                 }
-                if (Groups.MINING_REGIONS.contains(region.getType()))
-                {
+                if (Groups.MINING_REGIONS.contains(region.getType())) {
                     Material type = block.getType();
-                    switch (type)
-                    {
+                    switch (type) {
                         case COAL_ORE:
                         case DIAMOND_BLOCK:
                         case DIAMOND_ORE:
@@ -149,13 +132,11 @@ public class WorldListener extends PListener
                         case GOLD_ORE:
                         case IRON_ORE:
                         case LAPIS_ORE:
-                        case REDSTONE_ORE:
-                        {
+                        case REDSTONE_ORE: {
                             block.setType(Material.STONE);
                             break;
                         }
-                        case STONE:
-                        {
+                        case STONE: {
                             if (block.getData() != 0)
                                 break;
                             block.setType(Material.COBBLESTONE);
@@ -164,23 +145,20 @@ public class WorldListener extends PListener
                         case OBSIDIAN:
                         case ENDER_STONE:
                         case NETHERRACK:
-                        case COBBLESTONE:
-                        {
+                        case COBBLESTONE: {
                             block.setType(Material.BEDROCK);
                             regenerateLater(block, 3 * 20, region.getType());
                             break;
                         }
                     }
-                    if (type != block.getType())
-                    {
+                    if (type != block.getType()) {
                         e.setCancelled(true);
                         if (equiv.getStatistics() instanceof ExperienceRewardStatistics)
                             Skill.reward(((ExperienceRewardStatistics) equiv.getStatistics()).getRewardedSkill(), ((ExperienceRewardStatistics) equiv.getStatistics()).getRewardXP(), player);
                         int level = Skill.getLevel(user.getSkillXP(MiningSkill.INSTANCE), MiningSkill.INSTANCE.hasSixtyLevels());
                         double d = MiningSkill.INSTANCE.getDoubleDropChance(level);
                         double t = MiningSkill.INSTANCE.getTripleDropChance(level);
-                        for (ItemStack drop : drops)
-                        {
+                        for (ItemStack drop : drops) {
                             SItem conv = SItem.convert(drop);
                             conv.setOrigin(ItemOrigin.NATURAL_BLOCK);
                             block.getWorld().dropItemNaturally(block.getLocation().clone().add(0.5, 0.5, 0.5),
@@ -188,18 +166,32 @@ public class WorldListener extends PListener
                         }
                         extraDrops(drops, d, t, block);
                     }
-                    if (block.getType() == Material.GLOWSTONE)
-                    {
+                    if (block.getType() == Material.GLOWSTONE) {
                         allowBreak = true;
                         addToRestorer(block, player);
                     }
                 }
+                /*World world = Bukkit.getWorld("islands");
+                World hubworld = Bukkit.getWorld("Hypixel");
+                double islandX = user.getIslandX();
+                double islandZ = user.getIslandZ();
+                Location loc1 = new Location(world, islandX, 100, islandZ);
+                loc1.add(100, 100, 100);
+                Location loc2 = new Location(world, islandX, 100, islandZ);
+                loc2.subtract(100, 100, 100);
+                Cuboid cuboid = new Cuboid(loc1, loc2);
+                if (cuboid.contains(player.getLocation())) {
+                    allowBreak = true;*/
+
+
+                if (user.isOnIsland(block))
+                    allowBreak = true;
+
+                if (!allowBreak)
+                    e.setCancelled(true);
             }
-            if (user.isOnIsland(block))
-                allowBreak = true;
-            if (!allowBreak)
-                e.setCancelled(true);
         }
+
         if (equiv.getStatistics() instanceof ExperienceRewardStatistics && !e.isCancelled())
             Skill.reward(((ExperienceRewardStatistics) equiv.getStatistics()).getRewardedSkill(), ((ExperienceRewardStatistics) equiv.getStatistics()).getRewardXP(), player);
         SBlock sBlock = SBlock.getBlock(e.getBlock().getLocation());
