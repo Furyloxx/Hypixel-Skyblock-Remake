@@ -3,8 +3,7 @@ package me.adarsh.godspunkycore;
 import java.util.Arrays;
 import java.util.List;
 
-public final class SkyBlockCalendar
-{
+public final class SkyBlockCalendar {
     public static final List<String> MONTH_NAMES = Arrays.asList("Early Spring", "Spring",
             "Late Spring", "Early Summer", "Summer", "Late Summer", "Early Autumn",
             "Autumn", "Late Autumn", "Early Winter", "Winter", "Late Winter");
@@ -15,37 +14,32 @@ public final class SkyBlockCalendar
     public static final int DAY = 24000;
     //public static final long HOUR = 50000L;
 
-    private SkyBlockCalendar() {}
+    private SkyBlockCalendar() {
+    }
 
-    public static int getYear()
-    {
+    public static int getYear() {
         return (int) (ELAPSED / YEAR);
     }
 
-    public static int getMonth()
-    {
+    public static int getMonth() {
         return ((int) (ELAPSED / MONTH) % 12) + 1;
     }
 
-    public static int getDay()
-    {
+    public static int getDay() {
         return ((int) (ELAPSED / DAY) % 31) + 1;
     }
 
-    public static String getMonthName(int month)
-    {
+    public static String getMonthName(int month) {
         if (month < 1 || month > 12)
             return "Unknown Month";
         return MONTH_NAMES.get(month - 1);
     }
 
-    public static String getMonthName()
-    {
+    public static String getMonthName() {
         return getMonthName(getMonth());
     }
 
-    public static void saveElapsed()
-    {
+    public static void saveElapsed() {
         Spectaculation plugin = Spectaculation.getPlugin();
         plugin.config.set("timeElapsed", ELAPSED);
         plugin.config.save();

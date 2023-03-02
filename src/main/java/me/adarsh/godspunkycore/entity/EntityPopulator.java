@@ -14,11 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-public class EntityPopulator
-{
+public class EntityPopulator {
     private static final List<EntityPopulator> POPULATORS = new ArrayList<>();
-    public static List<EntityPopulator> getPopulators()
-    {
+
+    public static List<EntityPopulator> getPopulators() {
         return POPULATORS;
     }
 
@@ -32,8 +31,7 @@ public class EntityPopulator
     private BukkitTask task;
     private final List<SEntity> spawned;
 
-    public EntityPopulator(int amount, int max, long delay, SEntityType type, RegionType regionType, Predicate<World> condition)
-    {
+    public EntityPopulator(int amount, int max, long delay, SEntityType type, RegionType regionType, Predicate<World> condition) {
         this.amount = amount;
         this.max = max;
         this.delay = delay;
@@ -44,23 +42,18 @@ public class EntityPopulator
         POPULATORS.add(this);
     }
 
-    public EntityPopulator(int amount, int max, long delay, SEntityType type, RegionType regionType)
-    {
+    public EntityPopulator(int amount, int max, long delay, SEntityType type, RegionType regionType) {
         this(amount, max, delay, type, regionType, null);
     }
 
-    public void start()
-    {
-        this.task = new BukkitRunnable()
-        {
-            public void run()
-            {
+    public void start() {
+        this.task = new BukkitRunnable() {
+            public void run() {
                 spawned.removeIf(sEntity -> sEntity.getEntity().isDead());
                 List<Region> regions = Region.getRegionsOfType(regionType);
                 if (regions.isEmpty())
                     return;
-                if (Region.getPlayersWithinRegionType(regionType).isEmpty())
-                {
+                if (Region.getPlayersWithinRegionType(regionType).isEmpty()) {
                     for (SEntity s : spawned)
                         s.remove();
                     spawned.clear();
@@ -70,12 +63,10 @@ public class EntityPopulator
                     return;
                 if (spawned.size() >= max)
                     return;
-                for (int i = 0; i < amount; i++)
-                {
+                for (int i = 0; i < amount; i++) {
                     Location available;
                     int attempts = 0;
-                    do
-                    {
+                    do {
                         available = SUtil.getRandom(regions).getRandomAvailableLocation();
                         attempts++;
                     }
@@ -87,14 +78,12 @@ public class EntityPopulator
         }.runTaskTimer(Spectaculation.getPlugin(), 0, delay);
     }
 
-    public void stop()
-    {
+    public void stop() {
         if (this.task == null) return;
         this.task.cancel();
     }
 
-    public static void stopAll()
-    {
+    public static void stopAll() {
         for (EntityPopulator populator : POPULATORS)
             populator.stop();
     }

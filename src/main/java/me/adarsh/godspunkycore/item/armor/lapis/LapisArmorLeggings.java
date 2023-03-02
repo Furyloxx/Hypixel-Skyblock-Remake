@@ -6,41 +6,34 @@ import me.adarsh.godspunkycore.item.Rarity;
 import me.adarsh.godspunkycore.item.SpecificItemType;
 import me.adarsh.godspunkycore.item.armor.LeatherArmorStatistics;
 
-public class LapisArmorLeggings implements LeatherArmorStatistics, MaterialFunction
-{
+public class LapisArmorLeggings implements LeatherArmorStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Lapis Armor Leggings";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.UNCOMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ARMOR;
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.LEGGINGS;
     }
-    
+
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 35;
     }
 
     @Override
-    public int getColor()
-    {
+    public int getColor() {
         return 0x0000FF;
     }
 }

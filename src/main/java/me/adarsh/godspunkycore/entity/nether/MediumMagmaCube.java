@@ -3,41 +3,34 @@ package me.adarsh.godspunkycore.entity.nether;
 import me.adarsh.godspunkycore.entity.EntityFunction;
 import me.adarsh.godspunkycore.entity.SlimeStatistics;
 
-public class MediumMagmaCube implements SlimeStatistics, EntityFunction
-{
+public class MediumMagmaCube implements SlimeStatistics, EntityFunction {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Magma Cube";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 250.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 120.0;
     }
 
     @Override
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 4.0;
     }
 
     @Override
-    public int getSize()
-    {
+    public int getSize() {
         return 5;
     }
 
     @Override
-    public boolean split()
-    {
+    public boolean split() {
         return false;
     }
 }

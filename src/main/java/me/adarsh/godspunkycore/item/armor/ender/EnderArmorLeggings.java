@@ -18,8 +18,7 @@ public class EnderArmorLeggings implements LeatherArmorStatistics, MaterialFunct
     }
 
     @Override
-    public double getBaseHealth()
-    {
+    public double getBaseHealth() {
         return 25;
     }
 
@@ -29,14 +28,12 @@ public class EnderArmorLeggings implements LeatherArmorStatistics, MaterialFunct
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.LEGGINGS;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 50;
     }
 

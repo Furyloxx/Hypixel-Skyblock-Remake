@@ -5,29 +5,24 @@ import me.adarsh.godspunkycore.item.MaterialFunction;
 import me.adarsh.godspunkycore.item.MaterialStatistics;
 import me.adarsh.godspunkycore.item.Rarity;
 
-public class OverfluxCapacitor implements MaterialStatistics, MaterialFunction
-{
+public class OverfluxCapacitor implements MaterialStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Overflux Capacitor";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.EPIC;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 
     @Override
-    public boolean isEnchanted()
-    {
+    public boolean isEnchanted() {
         return true;
     }
 }

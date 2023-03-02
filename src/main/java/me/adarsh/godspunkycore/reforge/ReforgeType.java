@@ -30,39 +30,30 @@ public enum ReforgeType {
     @Getter
     private final boolean accessible;
 
-    ReforgeType(Class<? extends Reforge> clazz, boolean accessible)
-    {
+    ReforgeType(Class<? extends Reforge> clazz, boolean accessible) {
         this.clazz = clazz;
         this.accessible = accessible;
     }
 
-    ReforgeType(Class<? extends Reforge> clazz)
-    {
+    ReforgeType(Class<? extends Reforge> clazz) {
         this(clazz, true);
     }
 
-    public Reforge getReforge()
-    {
-        try
-        {
+    public Reforge getReforge() {
+        try {
             return clazz.newInstance();
-        }
-        catch (InstantiationException | IllegalAccessException e)
-        {
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static ReforgeType getReforgeType(String name)
-    {
+    public static ReforgeType getReforgeType(String name) {
         return valueOf(name.toUpperCase());
     }
 
-    public static ReforgeType getByClass(Class<? extends Reforge> clazz)
-    {
-        for (ReforgeType type : values())
-        {
+    public static ReforgeType getByClass(Class<? extends Reforge> clazz) {
+        for (ReforgeType type : values()) {
             if (type.clazz == clazz)
                 return type;
         }

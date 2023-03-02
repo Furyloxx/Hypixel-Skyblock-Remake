@@ -2,35 +2,29 @@ package me.adarsh.godspunkycore.item.armor.vanilla.chainmail;
 
 import me.adarsh.godspunkycore.item.*;
 
-public class ChainmailLeggings implements ToolStatistics, MaterialFunction
-{
+public class ChainmailLeggings implements ToolStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Chainmail Chestplate";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.COMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ARMOR;
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.LEGGINGS;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 20;
     }
 }

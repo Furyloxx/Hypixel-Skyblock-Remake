@@ -10,29 +10,24 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Collections;
 import java.util.List;
 
-public class CryptGhoul extends BaseZombie
-{
+public class CryptGhoul extends BaseZombie {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Crypt Ghoul";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 2000.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 350.0;
     }
 
     @Override
-    public SEntityEquipment getEntityEquipment()
-    {
+    public SEntityEquipment getEntityEquipment() {
         return new SEntityEquipment(new ItemStack(Material.IRON_SWORD),
                 null,
                 new ItemStack(Material.CHAINMAIL_CHESTPLATE),
@@ -41,31 +36,26 @@ public class CryptGhoul extends BaseZombie
     }
 
     @Override
-    public List<EntityDrop> drops()
-    {
+    public List<EntityDrop> drops() {
         return Collections.singletonList(new EntityDrop(new ItemStack(Material.ROTTEN_FLESH, SUtil.random(1, 3)), EntityDropType.GUARANTEED, 1.0));
     }
 
     @Override
-    public double getMovementSpeed()
-    {
+    public double getMovementSpeed() {
         return 0.35;
     }
 
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 30.0;
     }
 
     @Override
-    public boolean isBaby()
-    {
+    public boolean isBaby() {
         return false;
     }
 
     @Override
-    public boolean isVillager()
-    {
+    public boolean isVillager() {
         return false;
     }
 }

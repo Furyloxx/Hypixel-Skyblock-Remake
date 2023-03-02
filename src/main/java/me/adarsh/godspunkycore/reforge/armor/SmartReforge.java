@@ -15,17 +15,17 @@ public class SmartReforge implements Reforge {
 
     @Override
     public RarityValue<Double> getIntelligence() {
-        return new RarityValue<>(20.0,40.0,60.0,80.0,100.0,120.0);
+        return new RarityValue<>(20.0, 40.0, 60.0, 80.0, 100.0, 120.0);
     }
 
     @Override
     public RarityValue<Double> getDefence() {
-        return new RarityValue<>(4.0,6.0,9.0,12.0,15.0,20.0);
+        return new RarityValue<>(4.0, 6.0, 9.0, 12.0, 15.0, 20.0);
     }
 
     @Override
     public RarityValue<Double> getHealth() {
-        return new RarityValue<>(4.0,6.0,9.0,12.0,15.0,20.0);
+        return new RarityValue<>(4.0, 6.0, 9.0, 12.0, 15.0, 20.0);
     }
 
     @Override

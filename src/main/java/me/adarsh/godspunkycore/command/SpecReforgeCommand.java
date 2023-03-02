@@ -8,13 +8,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 @CommandParameters(description = "Reforge an item from Spec.", aliases = "sref", permission = "spt.item")
-public class SpecReforgeCommand extends SCommand
-{
+public class SpecReforgeCommand extends SCommand {
     @Override
-    public void run(CommandSource sender, String[] args)
-    {
+    public void run(CommandSource sender, String[] args) {
         if (args.length != 1) throw new CommandArgumentException();
-        if (sender instanceof ConsoleCommandSender) throw new CommandFailException("Console senders cannot use this command!");
+        if (sender instanceof ConsoleCommandSender)
+            throw new CommandFailException("Console senders cannot use this command!");
         Player player = sender.getPlayer();
         ItemStack stack = player.getInventory().getItemInHand();
         if (stack == null) throw new CommandFailException("You don't have anything in your hand!");

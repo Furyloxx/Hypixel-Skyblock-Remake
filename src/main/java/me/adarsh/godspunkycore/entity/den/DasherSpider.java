@@ -1,34 +1,28 @@
 package me.adarsh.godspunkycore.entity.den;
 
-public class DasherSpider extends BaseSpider
-{
+public class DasherSpider extends BaseSpider {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Dasher Spider";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 160.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 55.0;
     }
 
     @Override
-    public double getMovementSpeed()
-    {
+    public double getMovementSpeed() {
         return 0.4;
     }
 
     @Override
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 10.8;
     }
 }

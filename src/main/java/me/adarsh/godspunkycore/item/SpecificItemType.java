@@ -2,8 +2,7 @@ package me.adarsh.godspunkycore.item;
 
 import lombok.Getter;
 
-public enum SpecificItemType
-{
+public enum SpecificItemType {
     SWORD(false),
     HELMET(false),
     CHESTPLATE(false),
@@ -25,18 +24,15 @@ public enum SpecificItemType
     @Getter
     private final boolean stackable;
 
-    SpecificItemType(boolean stackable)
-    {
+    SpecificItemType(boolean stackable) {
         this.stackable = stackable;
     }
 
-    SpecificItemType()
-    {
+    SpecificItemType() {
         this(true);
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name().replaceAll("_", " ");
     }
 }

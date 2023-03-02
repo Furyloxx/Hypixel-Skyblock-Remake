@@ -7,16 +7,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
-public class SkyBlockProfileGUI extends GUI
-{
-    public SkyBlockProfileGUI()
-    {
+public class SkyBlockProfileGUI extends GUI {
+    public SkyBlockProfileGUI() {
         super("Your SkyBlock Profile", 54);
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e)
-    {
+    public void onOpen(GUIOpenEvent e) {
         fill(BLACK_STAINED_GLASS_PANE);
         set(GUIClickableItem.createGUIOpenerItem(GUIType.SKYBLOCK_MENU, e.getPlayer(), ChatColor.GREEN + "Go Back", 48, Material.ARROW,
                 ChatColor.GRAY + "To SkyBlock Menu"));

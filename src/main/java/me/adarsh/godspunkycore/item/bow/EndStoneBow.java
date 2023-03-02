@@ -4,72 +4,60 @@ import me.adarsh.godspunkycore.item.*;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
-public class EndStoneBow implements ToolStatistics, MaterialFunction, Ability
-{
+public class EndStoneBow implements ToolStatistics, MaterialFunction, Ability {
     @Override
-    public String getAbilityName()
-    {
+    public String getAbilityName() {
         return "Extreme Focus";
     }
 
     @Override
-    public String getAbilityDescription()
-    {
+    public String getAbilityDescription() {
         return "Consumes all your Mana, and your next hit will deal that much more Damage!";
     }
 
     @Override
-    public void onAbilityUse(Player player, SItem sItem)
-    {
+    public void onAbilityUse(Player player, SItem sItem) {
         player.sendMessage(ChatColor.GRAY + "Incomplete ability.");
     }
 
     @Override
-    public int getAbilityCooldownTicks()
-    {
+    public int getAbilityCooldownTicks() {
         return 0;
     }
 
     @Override
-    public int getManaCost()
-    {
+    public int getManaCost() {
         return -1;
     }
 
     // TODO: TEMPORARY
     @Override
-    public AbilityActivation getAbilityActivation()
-    {
+    public AbilityActivation getAbilityActivation() {
         return AbilityActivation.NO_ACTIVATION;
     }
 
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "End Stone Bow";
     }
 
     @Override
-    public int getBaseDamage()
-    {
+    public int getBaseDamage() {
         return 140;
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.EPIC;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.RANGED_WEAPON;
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.BOW;
     }
 }

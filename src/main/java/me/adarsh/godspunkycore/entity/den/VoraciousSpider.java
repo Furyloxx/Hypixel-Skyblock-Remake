@@ -1,28 +1,23 @@
 package me.adarsh.godspunkycore.entity.den;
 
-public class VoraciousSpider extends BaseSpider
-{
+public class VoraciousSpider extends BaseSpider {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Voracious Spider";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 1000.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 100.0;
     }
 
     @Override
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 10.8;
     }
 }

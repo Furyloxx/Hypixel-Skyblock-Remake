@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.item;
 
-public enum EventType
-{
+public enum EventType {
     KILL,
     DEATH
 }

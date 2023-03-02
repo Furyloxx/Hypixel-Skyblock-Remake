@@ -10,51 +10,42 @@ import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
-public class UncollidableArmorStand extends EntityArmorStand implements EntityStatistics, EntityFunction, SNMSEntity
-{
-    public UncollidableArmorStand(World world)
-    {
+public class UncollidableArmorStand extends EntityArmorStand implements EntityStatistics, EntityFunction, SNMSEntity {
+    public UncollidableArmorStand(World world) {
         super(world);
         n(true);
     }
 
-    public UncollidableArmorStand()
-    {
+    public UncollidableArmorStand() {
         this(((CraftWorld) Bukkit.getWorlds().get(0)).getHandle());
     }
 
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return null;
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 1.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 0;
     }
 
     @Override
-    public boolean hasNameTag()
-    {
+    public boolean hasNameTag() {
         return false;
     }
 
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 0.0;
     }
 
     @Override
-    public LivingEntity spawn(Location location)
-    {
+    public LivingEntity spawn(Location location) {
         this.world = ((CraftWorld) location.getWorld()).getHandle();
         this.setPosition(location.getX(), location.getY(), location.getZ());
         this.world.addEntity(this, CreatureSpawnEvent.SpawnReason.CUSTOM);

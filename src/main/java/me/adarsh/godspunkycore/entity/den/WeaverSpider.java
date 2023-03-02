@@ -1,54 +1,44 @@
 package me.adarsh.godspunkycore.entity.den;
 
-public class WeaverSpider extends BaseSpider
-{
+public class WeaverSpider extends BaseSpider {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Splitter Spider";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 160.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 35.0;
     }
 
     @Override
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 9.7;
     }
 
-    public static class Strong extends BaseSpider
-    {
+    public static class Strong extends BaseSpider {
         @Override
-        public String getEntityName()
-        {
+        public String getEntityName() {
             return "Splitter Spider";
         }
 
         @Override
-        public double getEntityMaxHealth()
-        {
+        public double getEntityMaxHealth() {
             return 200.0;
         }
 
         @Override
-        public double getDamageDealt()
-        {
+        public double getDamageDealt() {
             return 45.0;
         }
 
         @Override
-        public double getXPDropped()
-        {
+        public double getXPDropped() {
             return 8.0;
         }
     }

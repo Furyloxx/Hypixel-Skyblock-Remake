@@ -3,45 +3,37 @@ package me.adarsh.godspunkycore.item.enchanting;
 import me.adarsh.godspunkycore.enchantment.Enchantment;
 import me.adarsh.godspunkycore.item.*;
 
-public class EnchantedBook implements MaterialStatistics, MaterialFunction, Enchantable
-{
+public class EnchantedBook implements MaterialStatistics, MaterialFunction, Enchantable {
     private static final MaterialQuantifiable PAPER_16 = new MaterialQuantifiable(SMaterial.PAPER, 16);
 
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Enchanted Book";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.COMMON;
     }
 
     @Override
-    public String getLore()
-    {
+    public String getLore() {
         return "Use this on an item in an Anvil to apply it!";
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 
     @Override
-    public void onInstanceUpdate(SItem instance)
-    {
+    public void onInstanceUpdate(SItem instance) {
         int max = 1;
-        for (Enchantment enchantment : instance.getEnchantments())
-        {
+        for (Enchantment enchantment : instance.getEnchantments()) {
             if (enchantment.getLevel() > max)
                 max = enchantment.getLevel();
         }
-        switch (max)
-        {
+        switch (max) {
             case 1:
             case 2:
             case 3:

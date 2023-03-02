@@ -17,8 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class CategoryCollectionGUI extends GUI
-{
+public class CategoryCollectionGUI extends GUI {
     private static final int[] INTERIOR = new int[]{
             10, 11, 12, 13, 14, 15, 16,
             19, 20, 21, 22, 23, 24, 25,
@@ -29,21 +28,18 @@ public class CategoryCollectionGUI extends GUI
     private final ItemCollectionCategory category;
     private int page;
 
-    public CategoryCollectionGUI(ItemCollectionCategory category, int page)
-    {
+    public CategoryCollectionGUI(ItemCollectionCategory category, int page) {
         super(category.getName() + " Collection", 54);
         this.category = category;
         this.page = page;
     }
 
-    public CategoryCollectionGUI(ItemCollectionCategory category)
-    {
+    public CategoryCollectionGUI(ItemCollectionCategory category) {
         this(category, 1);
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e)
-    {
+    public void onOpen(GUIOpenEvent e) {
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
         border(BLACK_STAINED_GLASS_PANE);
@@ -51,44 +47,38 @@ public class CategoryCollectionGUI extends GUI
         paged.addAll(ItemCollection.getCategoryCollections(category));
         if (paged.size() == 0) page = 0;
         int finalPage = page;
-        if (page > 1)
-        {
-            set(new GUIClickableItem()
-            {
+        if (page > 1) {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
+                public void run(InventoryClickEvent e) {
                     new CategoryCollectionGUI(category, finalPage - 1).open((Player) e.getWhoClicked());
                 }
+
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return 45;
                 }
+
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return SUtil.createNamedItemStack(Material.ARROW, ChatColor.GRAY + "<-");
                 }
             });
         }
-        if (page != paged.getPageCount())
-        {
-            set(new GUIClickableItem()
-            {
+        if (page != paged.getPageCount()) {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
+                public void run(InventoryClickEvent e) {
                     new CategoryCollectionGUI(category, finalPage + 1).open((Player) e.getWhoClicked());
                 }
+
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return 53;
                 }
+
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return SUtil.createNamedItemStack(Material.ARROW, ChatColor.GRAY + "->");
                 }
             });
@@ -98,29 +88,25 @@ public class CategoryCollectionGUI extends GUI
         set(GUIClickableItem.getCloseItem(49));
         List<ItemCollection> p = paged.getPage(page);
         if (p == null) return;
-        for (int i = 0; i < p.size(); i++)
-        {
+        for (int i = 0; i < p.size(); i++) {
             int slot = INTERIOR[i];
             ItemCollection collection = p.get(i);
             int amount = user.getCollection(collection);
-            if (amount != 0)
-            {
+            if (amount != 0) {
                 List<String> lore = new ArrayList<>(
                         Arrays.asList(ChatColor.GRAY + "View all your " + collection.getName() + " Collection",
                                 ChatColor.GRAY + "progress and rewards!", " "));
                 int tier = collection.getTier(amount);
                 int next = tier + 1;
                 int nextReq = collection.getRequirementForTier(next);
-                if (nextReq != -1)
-                {
+                if (nextReq != -1) {
                     String numeral = SUtil.toRomanNumeral(next);
                     lore.add(SUtil.createProgressText("Progress to " + collection.getName() + " " + numeral,
                             amount, nextReq));
                     lore.add(SUtil.createLineProgressBar(20, ChatColor.DARK_GREEN, amount, nextReq));
                     lore.add(" ");
                     ItemCollectionRewards rewards = collection.getRewardsFor(next);
-                    if (rewards != null && rewards.size() != 0)
-                    {
+                    if (rewards != null && rewards.size() != 0) {
                         lore.add(ChatColor.GRAY + collection.getName() + " " + numeral + " Reward" + (rewards.size() != 1 ? "s" : ""));
                         for (ItemCollectionReward reward : rewards)
                             lore.add(ChatColor.GRAY + " " + reward.toRewardString());
@@ -128,21 +114,19 @@ public class CategoryCollectionGUI extends GUI
                     }
                 }
                 lore.add(ChatColor.YELLOW + "Click to view!");
-                set(new GUIClickableItem()
-                {
+                set(new GUIClickableItem() {
                     @Override
-                    public void run(InventoryClickEvent e)
-                    {
+                    public void run(InventoryClickEvent e) {
                         new ItemCollectionGUI(collection).open(player);
                     }
+
                     @Override
-                    public int getSlot()
-                    {
+                    public int getSlot() {
                         return slot;
                     }
+
                     @Override
-                    public ItemStack getItem()
-                    {
+                    public ItemStack getItem() {
                         return SUtil.getStack(ChatColor.YELLOW + collection.getName() + (tier != 0 ? " " + SUtil.toRomanNumeral(tier) : ""),
                                 collection.getMaterial().getCraftMaterial(), collection.getData(), 1,
                                 lore);

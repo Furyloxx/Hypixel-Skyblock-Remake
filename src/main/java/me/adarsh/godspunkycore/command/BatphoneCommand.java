@@ -13,15 +13,14 @@ import java.util.List;
 import java.util.UUID;
 
 @CommandParameters(description = "Hidden command for Maddox Batphone.")
-public class BatphoneCommand extends SCommand
-{
+public class BatphoneCommand extends SCommand {
     public static final UUID ACCESS_KEY = UUID.randomUUID();
     public static final List<String> KEYS = new ArrayList<>();
 
     @Override
-    public void run(CommandSource sender, String[] args)
-    {
-        if (sender instanceof ConsoleCommandSender) throw new CommandFailException("Console senders cannot use this command!");
+    public void run(CommandSource sender, String[] args) {
+        if (sender instanceof ConsoleCommandSender)
+            throw new CommandFailException("Console senders cannot use this command!");
         if (!args[0].equals(ACCESS_KEY.toString()))
             return;
         if (!KEYS.contains(args[1]))

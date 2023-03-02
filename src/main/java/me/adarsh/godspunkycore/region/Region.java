@@ -16,8 +16,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
-public class Region
-{
+public class Region {
     private static final Map<String, Region> REGION_CACHE = new HashMap<>();
 
     protected static final Spectaculation plugin = Spectaculation.getPlugin();
@@ -32,8 +31,7 @@ public class Region
     @Getter
     private List<BlockState> capture;
 
-    public Region(String name, Location firstLocation, Location secondLocation, RegionType type)
-    {
+    public Region(String name, Location firstLocation, Location secondLocation, RegionType type) {
         this.name = name.toLowerCase();
         this.firstLocation = firstLocation;
         this.secondLocation = secondLocation;
@@ -42,30 +40,25 @@ public class Region
         REGION_CACHE.put(this.name, this);
     }
 
-    public void save()
-    {
+    public void save() {
         plugin.regionData.save(this);
     }
 
-    public void delete()
-    {
+    public void delete() {
         REGION_CACHE.remove(name);
         plugin.regionData.delete(this);
     }
 
-    public static List<Entity> getPlayersWithinRegionType(RegionType type)
-    {
+    public static List<Entity> getPlayersWithinRegionType(RegionType type) {
         List<Entity> players = new ArrayList<>();
         for (Region region : getRegionsOfType(type))
             players.addAll(region.getPlayersWithinRegion());
         return players;
     }
 
-    public static Region getRegionOfEntity(Entity entity)
-    {
+    public static Region getRegionOfEntity(Entity entity) {
         List<Region> possible = new ArrayList<>();
-        for (Region region : getRegions())
-        {
+        for (Region region : getRegions()) {
             if (region.insideRegion(entity))
                 possible.add(region);
         }
@@ -74,21 +67,17 @@ public class Region
         return possible.size() != 0 ? possible.get(0) : null;
     }
 
-    public static Region getQuickRegionOfEntity(Entity entity)
-    {
-        for (Region region : getRegions())
-        {
+    public static Region getQuickRegionOfEntity(Entity entity) {
+        for (Region region : getRegions()) {
             if (region.insideRegion(entity))
                 return region;
         }
         return null;
     }
 
-    public static Region getRegionOfBlock(Block block)
-    {
+    public static Region getRegionOfBlock(Block block) {
         List<Region> possible = new ArrayList<>();
-        for (Region region : getRegions())
-        {
+        for (Region region : getRegions()) {
             if (region.insideRegion(block))
                 possible.add(region);
         }
@@ -97,8 +86,7 @@ public class Region
         return possible.size() != 0 ? possible.get(0) : null;
     }
 
-    public boolean insideRegion(Entity entity)
-    {
+    public boolean insideRegion(Entity entity) {
         List<Integer> bounds = getBounds();
         Location location = entity.getLocation();
         double x = location.getX();
@@ -112,8 +100,7 @@ public class Region
                 z >= (double) bounds.get(4) && z <= (double) bounds.get(5);
     }
 
-    public boolean insideRegion(Block block)
-    {
+    public boolean insideRegion(Block block) {
         List<Integer> bounds = getBounds();
         Location location = block.getLocation();
         double x = location.getX();
@@ -127,11 +114,9 @@ public class Region
                 z >= (double) bounds.get(4) && z <= (double) bounds.get(5);
     }
 
-    public List<Location> getAvailableTeleportLocations()
-    {
+    public List<Location> getAvailableTeleportLocations() {
         List<Location> locations = new ArrayList<>();
-        for (Location location : getLocations())
-        {
+        for (Location location : getLocations()) {
             Block block = location.getBlock();
             if (block.getType() == Material.AIR || block.getType() == Material.WATER)
                 continue;
@@ -145,19 +130,15 @@ public class Region
         return locations;
     }
 
-    public List<Location> getLocations()
-    {
+    public List<Location> getLocations() {
         if (!firstLocation.getWorld().getName().equals(secondLocation.getWorld().getName()))
             return null;
         List<Integer> bounds = getBounds();
         World world = firstLocation.getWorld();
         List<Location> locations = new ArrayList<>();
-        for (int y = bounds.get(2); y <= bounds.get(3); y++)
-        {
-            for (int x = bounds.get(0); x <= bounds.get(1); x++)
-            {
-                for (int z = bounds.get(4); z <= bounds.get(5); z++)
-                {
+        for (int y = bounds.get(2); y <= bounds.get(3); y++) {
+            for (int x = bounds.get(0); x <= bounds.get(1); x++) {
+                for (int z = bounds.get(4); z <= bounds.get(5); z++) {
                     locations.add(new Location(world, x, y, z));
                 }
             }
@@ -165,19 +146,15 @@ public class Region
         return locations;
     }
 
-    public void captureRegion()
-    {
+    public void captureRegion() {
         if (!firstLocation.getWorld().getName().equals(secondLocation.getWorld().getName()))
             return;
         List<Integer> bounds = getBounds();
         World world = firstLocation.getWorld();
         List<BlockState> states = new ArrayList<>();
-        for (int y = bounds.get(2); y <= bounds.get(3); y++)
-        {
-            for (int x = bounds.get(0); x <= bounds.get(1); x++)
-            {
-                for (int z = bounds.get(4); z <= bounds.get(5); z++)
-                {
+        for (int y = bounds.get(2); y <= bounds.get(3); y++) {
+            for (int x = bounds.get(0); x <= bounds.get(1); x++) {
+                for (int z = bounds.get(4); z <= bounds.get(5); z++) {
                     states.add(new Location(world, x, y, z).getBlock().getState());
                 }
             }
@@ -185,12 +162,10 @@ public class Region
         capture = states;
     }
 
-    public void pasteRegionCapture()
-    {
+    public void pasteRegionCapture() {
         if (capture == null)
             return;
-        for (BlockState state : capture)
-        {
+        for (BlockState state : capture) {
             state.getBlock().setType(state.getType());
             state.setRawData(state.getRawData());
             state.update();
@@ -198,31 +173,26 @@ public class Region
         capture = null;
     }
 
-    public Location getRandomLocation()
-    {
+    public Location getRandomLocation() {
         List<Integer> bounds = getBounds();
         return new Location(firstLocation.getWorld(), SUtil.random(bounds.get(0), bounds.get(1)),
                 SUtil.random(bounds.get(2), bounds.get(3)), SUtil.random(bounds.get(4), bounds.get(5)));
     }
 
-    public Location getRandomAvailableLocation()
-    {
+    public Location getRandomAvailableLocation() {
         Location r = getRandomLocation();
         List<Location> possible = new ArrayList<>();
-        for (int y = getBounds().get(3); y >= getBounds().get(2); y--)
-        {
+        for (int y = getBounds().get(3); y >= getBounds().get(2); y--) {
             Block test = firstLocation.getWorld().getBlockAt(r.getBlockX(), y, r.getBlockZ());
             if (test.getType() != Material.AIR && test.getLocation().clone().add(0, 1, 0).getBlock().getType() == Material.AIR &&
-                    test.getLocation().clone().add(0, 2, 0).getBlock().getType() == Material.AIR)
-            {
+                    test.getLocation().clone().add(0, 2, 0).getBlock().getType() == Material.AIR) {
                 possible.add(test.getLocation().clone().add(0, 1, 0));
             }
         }
         return !possible.isEmpty() ? SUtil.getRandom(possible) : null;
     }
 
-    public List<Integer> getBounds()
-    {
+    public List<Integer> getBounds() {
         int sx = Math.min(firstLocation.getBlockX(), secondLocation.getBlockX()),
                 ex = Math.max(firstLocation.getBlockX(), secondLocation.getBlockX()),
                 sy = Math.min(firstLocation.getBlockY(), secondLocation.getBlockY()),
@@ -232,36 +202,30 @@ public class Region
         return Arrays.asList(sx, ex, sy, ey, sz, ez);
     }
 
-    public List<Entity> getPlayersWithinRegion()
-    {
+    public List<Entity> getPlayersWithinRegion() {
         List<Entity> entities = new ArrayList<>(firstLocation.getWorld().getEntitiesByClasses(Player.class));
         return entities.stream().filter(this::insideRegion).collect(Collectors.toList());
     }
 
-    public static Region create(String name, Location firstLocation, Location secondLocation, RegionType type)
-    {
+    public static Region create(String name, Location firstLocation, Location secondLocation, RegionType type) {
         return plugin.regionData.create(name, firstLocation, secondLocation, type);
     }
 
-    public static Region get(String name)
-    {
+    public static Region get(String name) {
         if (REGION_CACHE.containsKey(name))
             return REGION_CACHE.get(name);
         return plugin.regionData.get(name);
     }
 
-    public static List<Region> getRegions()
-    {
+    public static List<Region> getRegions() {
         return new ArrayList<>(REGION_CACHE.values());
     }
 
-    public static List<Region> getRegionsOfType(RegionType type)
-    {
+    public static List<Region> getRegionsOfType(RegionType type) {
         return getRegions().stream().filter(region -> region.getType() == type).collect(Collectors.toList());
     }
 
-    public static void cacheRegions()
-    {
+    public static void cacheRegions() {
         for (Region region : plugin.regionData.getAll())
             REGION_CACHE.put(region.getName(), region);
     }

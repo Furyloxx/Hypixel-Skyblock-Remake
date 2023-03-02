@@ -28,7 +28,7 @@ public class MushroomHelmet implements LeatherArmorStatistics, MaterialFunction 
     }
 
     @Override
-    public SpecificItemType getSpecificType(){
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.HELMET;
     }
 

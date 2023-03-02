@@ -38,8 +38,7 @@ public class PumpkinArmorBoots implements LeatherArmorStatistics, MaterialFuncti
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.BOOTS;
     }
 }

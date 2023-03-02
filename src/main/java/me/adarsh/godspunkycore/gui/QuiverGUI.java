@@ -12,18 +12,15 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Map;
 
-public class QuiverGUI extends GUI
-{
-    public QuiverGUI()
-    {
+public class QuiverGUI extends GUI {
+    public QuiverGUI() {
         super("Quiver", 36);
         fill(BLACK_STAINED_GLASS_PANE, 27, 35);
         set(GUIClickableItem.getCloseItem(31));
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e)
-    {
+    public void onOpen(GUIOpenEvent e) {
         set(GUIClickableItem.createGUIOpenerItem(GUIType.SKYBLOCK_MENU, e.getPlayer(), ChatColor.GREEN + "Go Back", 30, Material.ARROW));
         User user = User.getUser(e.getPlayer().getUniqueId());
         Inventory inventory = e.getInventory();
@@ -32,17 +29,14 @@ public class QuiverGUI extends GUI
     }
 
     @Override
-    public void onClose(InventoryCloseEvent e)
-    {
+    public void onClose(InventoryCloseEvent e) {
         User user = User.getUser(e.getPlayer().getUniqueId());
         Inventory inventory = e.getInventory();
         user.clearQuiver();
-        for (int i = 0; i < 27; i++)
-        {
+        for (int i = 0; i < 27; i++) {
             ItemStack stack = inventory.getItem(i);
             SItem sItem = SItem.find(stack);
-            if (sItem == null)
-            {
+            if (sItem == null) {
                 sItem = SItem.of(stack);
                 if (sItem == null)
                     continue;

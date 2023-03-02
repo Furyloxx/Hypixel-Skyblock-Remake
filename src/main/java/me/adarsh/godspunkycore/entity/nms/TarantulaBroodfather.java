@@ -25,8 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, EntityFunction, EntityStatistics, SlayerBoss
-{
+public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, EntityFunction, EntityStatistics, SlayerBoss {
     private static final TieredValue<Double> MAX_HEALTH_VALUES = new TieredValue<>(750.0, 30000.0, 900000.0, 2400000.0);
     private static final TieredValue<Double> DAMAGE_VALUES = new TieredValue<>(35.0, 110.0, 525.0, 1325.0);
 
@@ -36,29 +35,25 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
     private SEntity top;
     private final UUID spawnerUUID;
 
-    public TarantulaBroodfather(Integer tier, UUID spawnerUUID)
-    {
+    public TarantulaBroodfather(Integer tier, UUID spawnerUUID) {
         super(((CraftWorld) Bukkit.getWorlds().get(0)).getHandle());
         this.tier = tier;
         this.end = System.currentTimeMillis() + 180000;
         this.spawnerUUID = spawnerUUID;
     }
 
-    public TarantulaBroodfather(World world)
-    {
+    public TarantulaBroodfather(World world) {
         super(world);
         this.tier = 1;
         this.end = System.currentTimeMillis() + 180000;
         this.spawnerUUID = UUID.randomUUID();
     }
 
-    public void t_()
-    {
+    public void t_() {
         super.t_();
         Player player = Bukkit.getPlayer(spawnerUUID);
         if (player == null) return;
-        if (System.currentTimeMillis() > end)
-        {
+        if (System.currentTimeMillis() > end) {
             User.getUser(player.getUniqueId()).failSlayerQuest();
             return;
         }
@@ -69,8 +64,7 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
     }
 
     @Override
-    public void onSpawn(LivingEntity entity, SEntity sEntity)
-    {
+    public void onSpawn(LivingEntity entity, SEntity sEntity) {
         top = new SEntity(entity, SEntityType.TOP_CAVE_SPIDER, this);
         entity.setPassenger(top.getEntity());
         hologram = new SEntity(entity.getLocation().add(0, 1.3, 0), SEntityType.UNCOLLIDABLE_ARMOR_STAND);
@@ -81,12 +75,9 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
         if (player == null) return;
         if (tier >= 2) // noxious
         {
-            new BukkitRunnable()
-            {
-                public void run()
-                {
-                    if (entity.isDead())
-                    {
+            new BukkitRunnable() {
+                public void run() {
+                    if (entity.isDead()) {
                         cancel();
                         return;
                     }
@@ -95,13 +86,10 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
                 }
             }.runTaskTimer(Spectaculation.getPlugin(), 20, 20);
         }
-        new BukkitRunnable()
-        {
-            public void run()
-            {
+        new BukkitRunnable() {
+            public void run() {
                 Entity e = getBukkitEntity();
-                if (e.isDead())
-                {
+                if (e.isDead()) {
                     cancel();
                     return;
                 }
@@ -119,45 +107,38 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
     }
 
     @Override
-    public void onDeath(SEntity sEntity, Entity killed, Entity damager)
-    {
+    public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
         hologram.remove();
         top.remove();
     }
 
     @Override
-    public void onDamage(SEntity sEntity, Entity damager, EntityDamageByEntityEvent e, AtomicDouble damage)
-    {
+    public void onDamage(SEntity sEntity, Entity damager, EntityDamageByEntityEvent e, AtomicDouble damage) {
         top.getEntity().damage(damage.get());
     }
 
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Tarantula Broodfather";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return MAX_HEALTH_VALUES.getByNumber(tier);
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return DAMAGE_VALUES.getByNumber(tier);
     }
 
     @Override
-    public double getMovementSpeed()
-    {
+    public double getMovementSpeed() {
         return 0.55;
     }
 
     @Override
-    public LivingEntity spawn(Location location)
-    {
+    public LivingEntity spawn(Location location) {
         this.world = ((CraftWorld) location.getWorld()).getHandle();
         this.setPosition(location.getX(), location.getY(), location.getZ());
         this.world.addEntity(this, CreatureSpawnEvent.SpawnReason.CUSTOM);
@@ -165,8 +146,7 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
     }
 
     @Override
-    public List<EntityDrop> drops()
-    {
+    public List<EntityDrop> drops() {
         List<EntityDrop> drops = new ArrayList<>();
         int web = SUtil.random(1, 3);
         if (tier == 2) web = SUtil.random(9, 18);
@@ -174,8 +154,7 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
         if (tier == 4) web = SUtil.random(52, 64);
         drops.add(new EntityDrop(SUtil.setStackAmount(SItem.of(SMaterial.TARANTULA_WEB).getStack(), web),
                 EntityDropType.GUARANTEED, 1.0));
-        if (tier >= 2)
-        {
+        if (tier >= 2) {
             int toxicArrowPoison = 16;
             if (tier == 3) toxicArrowPoison = SUtil.random(24, 30);
             if (tier == 4) toxicArrowPoison = SUtil.random(60, 64);
@@ -183,8 +162,7 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
                     EntityDropType.OCCASIONAL, 0.2));
             drops.add(new EntityDrop(SMaterial.BITE_RUNE, EntityDropType.RARE, 0.05));
         }
-        if (tier >= 3)
-        {
+        if (tier >= 3) {
             SItem arthoBook = SItem.of(SMaterial.ENCHANTED_BOOK);
             arthoBook.addEnchantment(EnchantmentType.BANE_OF_ARTHROPODS, 6);
             drops.add(new EntityDrop(SMaterial.SPIDER_CATALYST, EntityDropType.EXTRAORDINARILY_RARE, 0.01));
@@ -197,65 +175,54 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
         return drops;
     }
 
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 0.0;
     }
 
     @Override
-    public UUID getSpawnerUUID()
-    {
+    public UUID getSpawnerUUID() {
         return spawnerUUID;
     }
 
-    public static class TopCaveSpider implements EntityStatistics, EntityFunction
-    {
+    public static class TopCaveSpider implements EntityStatistics, EntityFunction {
         private final TarantulaBroodfather parent;
 
-        public TopCaveSpider(TarantulaBroodfather parent)
-        {
+        public TopCaveSpider(TarantulaBroodfather parent) {
             this.parent = parent;
         }
 
         @Override
-        public String getEntityName()
-        {
+        public String getEntityName() {
             return "";
         }
 
         @Override
-        public double getEntityMaxHealth()
-        {
+        public double getEntityMaxHealth() {
             return Double.MAX_VALUE;
         }
 
         @Override
-        public double getDamageDealt()
-        {
+        public double getDamageDealt() {
             return 0;
         }
 
         @Override
-        public double getXPDropped()
-        {
+        public double getXPDropped() {
             return 0.0;
         }
 
         @Override
-        public boolean hasNameTag()
-        {
+        public boolean hasNameTag() {
             return false;
         }
 
         @Override
-        public void onSpawn(LivingEntity entity, SEntity sEntity)
-        {
+        public void onSpawn(LivingEntity entity, SEntity sEntity) {
             entity.setCustomNameVisible(true);
         }
 
         @Override
-        public boolean tick(LivingEntity entity)
-        {
+        public boolean tick(LivingEntity entity) {
             Spider taran = (Spider) parent.getBukkitEntity();
             entity.setCustomName(ChatColor.RED + parent.getEntityName() + " " + ChatColor.GREEN + (int) (taran.getHealth()) +
                     ChatColor.WHITE + "/" + ChatColor.GREEN + (int) taran.getMaxHealth() + ChatColor.RED + "❤");
@@ -263,8 +230,7 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
         }
 
         @Override
-        public void onDamage(SEntity sEntity, Entity damager, EntityDamageByEntityEvent e, AtomicDouble damage)
-        {
+        public void onDamage(SEntity sEntity, Entity damager, EntityDamageByEntityEvent e, AtomicDouble damage) {
             e.setCancelled(true);
             Spider taran = (Spider) parent.getBukkitEntity();
             taran.damage(0.0, damager);

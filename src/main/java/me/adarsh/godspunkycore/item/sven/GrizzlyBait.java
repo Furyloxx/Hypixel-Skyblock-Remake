@@ -5,23 +5,19 @@ import me.adarsh.godspunkycore.item.MaterialFunction;
 import me.adarsh.godspunkycore.item.MaterialStatistics;
 import me.adarsh.godspunkycore.item.Rarity;
 
-public class GrizzlyBait implements MaterialStatistics, MaterialFunction
-{
+public class GrizzlyBait implements MaterialStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Grizzly Bait";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.RARE;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 }

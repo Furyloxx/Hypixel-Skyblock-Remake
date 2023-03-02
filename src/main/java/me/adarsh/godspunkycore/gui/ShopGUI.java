@@ -20,8 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class ShopGUI extends GUI
-{
+public class ShopGUI extends GUI {
     private static final Map<UUID, StackArrayList<SItem>> BUYBACK_HISTORY = new HashMap<>();
 
     private static final int[] INTERIOR = new int[]{
@@ -34,21 +33,18 @@ public class ShopGUI extends GUI
     private final SItem[] items;
     private int page;
 
-    protected ShopGUI(String title, int page, SItem... items)
-    {
+    protected ShopGUI(String title, int page, SItem... items) {
         super(title, 54);
         this.page = page;
         this.items = items;
     }
 
-    protected ShopGUI(String name, SItem... items)
-    {
+    protected ShopGUI(String name, SItem... items) {
         this(name, 1, items);
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e)
-    {
+    public void onOpen(GUIOpenEvent e) {
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
         border(BLACK_STAINED_GLASS_PANE);
@@ -56,72 +52,61 @@ public class ShopGUI extends GUI
         paged.addAll(items);
         if (paged.size() == 0) page = 0;
         int finalPage = page;
-        if (page > 1)
-        {
-            set(new GUIClickableItem()
-            {
+        if (page > 1) {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
+                public void run(InventoryClickEvent e) {
                     new ShopGUI(title, finalPage - 1, items).open((Player) e.getWhoClicked());
                 }
+
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return 45;
                 }
+
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return SUtil.createNamedItemStack(Material.ARROW, ChatColor.GRAY + "<-");
                 }
             });
         }
-        if (page != paged.getPageCount())
-        {
-            set(new GUIClickableItem()
-            {
+        if (page != paged.getPageCount()) {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
+                public void run(InventoryClickEvent e) {
                     new ShopGUI(title, finalPage + 1, items).open((Player) e.getWhoClicked());
                 }
+
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return 53;
                 }
+
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return SUtil.createNamedItemStack(Material.ARROW, ChatColor.GRAY + "->");
                 }
             });
         }
         UUID uuid = player.getUniqueId();
         StackArrayList<SItem> buyback = BUYBACK_HISTORY.get(uuid);
-        set(new GUIClickableItem()
-        {
+        set(new GUIClickableItem() {
             @Override
-            public int getSlot()
-            {
+            public int getSlot() {
                 return 49;
             }
 
             @Override
-            public void run(InventoryClickEvent e)
-            {
+            public void run(InventoryClickEvent e) {
                 if (!BUYBACK_HISTORY.containsKey(uuid) || BUYBACK_HISTORY.get(player.getUniqueId()).size() == 0)
                     return;
                 long value = buyback.last().getType().getStatistics().getValue() * buyback.last().getStack().getAmount();
-                if (value > user.getCoins())
-                {
+                if (value > user.getCoins()) {
                     player.sendMessage(ChatColor.RED + "You don't have enough coins!");
                     return;
                 }
                 Map<Integer, ItemStack> m = player.getInventory().addItem(buyback.pop().getStack());
-                if (m.size() != 0)
-                {
+                if (m.size() != 0) {
                     player.sendMessage(ChatColor.RED + "Free up inventory space to purchase this!");
                     return;
                 }
@@ -133,10 +118,8 @@ public class ShopGUI extends GUI
             }
 
             @Override
-            public ItemStack getItem()
-            {
-                if (!BUYBACK_HISTORY.containsKey(uuid) || BUYBACK_HISTORY.get(player.getUniqueId()).size() == 0)
-                {
+            public ItemStack getItem() {
+                if (!BUYBACK_HISTORY.containsKey(uuid) || BUYBACK_HISTORY.get(player.getUniqueId()).size() == 0) {
                     return SUtil.getStack(ChatColor.GREEN + "Sell Item", Material.HOPPER, (short) 0, 1,
                             ChatColor.GRAY + "Click items in your inventory to",
                             ChatColor.GRAY + "sell them to this Shop!");
@@ -157,8 +140,7 @@ public class ShopGUI extends GUI
         });
         List<SItem> p = paged.getPage(page);
         if (p == null) return;
-        for (int i = 0; i < p.size(); i++)
-        {
+        for (int i = 0; i < p.size(); i++) {
             int slot = INTERIOR[i];
             SItem item = p.get(i).clone();
             ItemMeta meta = item.getStack().getItemMeta();
@@ -177,24 +159,19 @@ public class ShopGUI extends GUI
             meta.setLore(lore);
             item.getStack().setItemMeta(meta);
             int finalI = i;
-            set(new GUIClickableItem()
-            {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
-                    if ((type == null || type.isStackable()) && e.getClick() == ClickType.RIGHT)
-                    {
+                public void run(InventoryClickEvent e) {
+                    if ((type == null || type.isStackable()) && e.getClick() == ClickType.RIGHT) {
                         new ShopTradingOptionsGUI(p.get(finalI), ShopGUI.this).open(player);
                         return;
                     }
-                    if (price > user.getCoins())
-                    {
+                    if (price > user.getCoins()) {
                         player.sendMessage(ChatColor.RED + "You don't have enough coins!");
                         return;
                     }
                     Map<Integer, ItemStack> m = player.getInventory().addItem(p.get(finalI).clone().getStack());
-                    if (m.size() != 0)
-                    {
+                    if (m.size() != 0) {
                         player.sendMessage(ChatColor.RED + "Free up inventory space to purchase this!");
                         return;
                     }
@@ -203,14 +180,12 @@ public class ShopGUI extends GUI
                 }
 
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return slot;
                 }
 
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return item.getStack();
                 }
             });
@@ -218,8 +193,7 @@ public class ShopGUI extends GUI
     }
 
     @Override
-    public void onBottomClick(InventoryClickEvent e)
-    {
+    public void onBottomClick(InventoryClickEvent e) {
         ItemStack current = e.getCurrentItem();
         if (current == null) return;
         if (current.getType() == Material.AIR) return;
@@ -230,8 +204,7 @@ public class ShopGUI extends GUI
         Player player = (Player) e.getWhoClicked();
         User user = User.getUser(player.getUniqueId());
         StackArrayList<SItem> buyback = BUYBACK_HISTORY.get(player.getUniqueId());
-        if (buyback == null)
-        {
+        if (buyback == null) {
             BUYBACK_HISTORY.put(player.getUniqueId(), new StackArrayList<>());
             buyback = BUYBACK_HISTORY.get(player.getUniqueId());
         }

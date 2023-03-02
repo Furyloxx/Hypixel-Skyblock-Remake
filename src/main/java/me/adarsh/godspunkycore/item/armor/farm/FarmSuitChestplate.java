@@ -33,8 +33,7 @@ public class FarmSuitChestplate implements LeatherArmorStatistics, MaterialFunct
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.CHESTPLATE;
     }
 }

@@ -2,53 +2,44 @@ package me.adarsh.godspunkycore.item.dragon.protector;
 
 import me.adarsh.godspunkycore.item.*;
 
-public class ProtectorDragonHelmet implements MaterialFunction, SkullStatistics, ToolStatistics
-{
+public class ProtectorDragonHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override
-    public double getBaseHealth()
-    {
+    public double getBaseHealth() {
         return 70;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 135;
     }
 
     @Override
-    public String getURL()
-    {
+    public String getURL() {
         return "f37a596cdc4b11a9948ffa38c2aa3c6942ef449eb0a3982281d3a5b5a14ef6ae";
     }
 
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Protector Dragon Helmet";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.LEGENDARY;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ARMOR;
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.HELMET;
     }
 
     @Override
-    public String getLore()
-    {
+    public String getLore() {
         return null;
     }
 }

@@ -5,23 +5,19 @@ import me.adarsh.godspunkycore.item.MaterialFunction;
 import me.adarsh.godspunkycore.item.MaterialStatistics;
 import me.adarsh.godspunkycore.item.Rarity;
 
-public class FlySwatter implements MaterialStatistics, MaterialFunction
-{
+public class FlySwatter implements MaterialStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Fly Swatter";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.EPIC;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 }

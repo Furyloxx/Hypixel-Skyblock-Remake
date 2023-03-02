@@ -12,8 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Getter
-public class SlayerBossType
-{
+public class SlayerBossType {
     private static final List<SlayerBossType> TYPES = new ArrayList<>();
 
     private static final SlayerAbility LIFE_DRAIN = new SlayerAbility(ChatColor.RED + "Life Drain",
@@ -87,8 +86,7 @@ public class SlayerBossType
     private final int cost;
     private final List<SlayerAbility> abilities;
 
-    SlayerBossType(String namespace, String name, SEntityType specType, int tier, String description, SlayerMobType type, int health, int dps, int tdps, int rewardXP, int spawnXP, int cost, SlayerAbility... abilities)
-    {
+    SlayerBossType(String namespace, String name, SEntityType specType, int tier, String description, SlayerMobType type, int health, int dps, int tdps, int rewardXP, int spawnXP, int cost, SlayerAbility... abilities) {
         this.namespace = namespace;
         this.name = name;
         this.specType = specType;
@@ -105,54 +103,51 @@ public class SlayerBossType
         TYPES.add(this);
     }
 
-    SlayerBossType(String namespace, String name, SEntityType specType, int tier, String description, SlayerMobType type, int health, int dps, int rewardXP, int spawnXP, int cost, SlayerAbility... abilities)
-    {
+    SlayerBossType(String namespace, String name, SEntityType specType, int tier, String description, SlayerMobType type, int health, int dps, int rewardXP, int spawnXP, int cost, SlayerAbility... abilities) {
         this(namespace, name, specType, tier, description, type, health, dps, 0, rewardXP, spawnXP, cost, abilities);
     }
 
-    public static ChatColor getColorForTier(int tier)
-    {
-        switch (tier)
-        {
-            case 2: return ChatColor.YELLOW;
-            case 3: return ChatColor.RED;
-            case 4: return ChatColor.DARK_RED;
-            case 5: return ChatColor.DARK_PURPLE;
-            default: return ChatColor.GREEN;
+    public static ChatColor getColorForTier(int tier) {
+        switch (tier) {
+            case 2:
+                return ChatColor.YELLOW;
+            case 3:
+                return ChatColor.RED;
+            case 4:
+                return ChatColor.DARK_RED;
+            case 5:
+                return ChatColor.DARK_PURPLE;
+            default:
+                return ChatColor.GREEN;
         }
     }
 
-    public int getXPReqForLevel(int level)
-    {
-        switch (type)
-        {
+    public int getXPReqForLevel(int level) {
+        switch (type) {
             case ZOMBIE:
                 return SUtil.getOrDefault(Arrays.asList(5, 15, 200, 1000, 5000, 20000, 100000, 400000, 1000000), level, 1000000);
             case SPIDER:
                 return SUtil.getOrDefault(Arrays.asList(5, 25, 200, 1000, 5000, 20000, 100000, 400000, 1000000), level, 1000000);
             case WOLF:
                 return SUtil.getOrDefault(Arrays.asList(10, 30, 250, 1500, 5000, 20000, 100000, 400000, 1000000), level, 1000000);
-            default: return 1000000;
+            default:
+                return 1000000;
         }
     }
 
-    public static SlayerBossType getByNamespace(String namespace)
-    {
-        for (SlayerBossType type : TYPES)
-        {
+    public static SlayerBossType getByNamespace(String namespace) {
+        for (SlayerBossType type : TYPES) {
             if (namespace.toLowerCase().equals(type.namespace.toLowerCase()))
                 return type;
         }
         return null;
     }
 
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return getColorForTier(tier) + name + " " + SUtil.toRomanNumeral(tier);
     }
 
-    public List<String> asLore(boolean affordable)
-    {
+    public List<String> asLore(boolean affordable) {
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_GRAY + description);
         lore.add("");
@@ -160,8 +155,7 @@ public class SlayerBossType
         lore.add(ChatColor.GRAY + "Damage: " + ChatColor.RED + SUtil.commaify(dps) + ChatColor.GRAY + " per second");
         if (tdps != 0)
             lore.add(ChatColor.GRAY + "True Damage: " + ChatColor.WHITE + SUtil.commaify(tdps) + ChatColor.GRAY + " per second");
-        for (SlayerAbility ability : abilities)
-        {
+        for (SlayerAbility ability : abilities) {
             lore.add("");
             lore.add(ability.getName());
             for (String line : ability.getDescription())
@@ -177,8 +171,7 @@ public class SlayerBossType
         return lore;
     }
 
-    public List<String> asHiddenLore(boolean affordable)
-    {
+    public List<String> asHiddenLore(boolean affordable) {
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.DARK_GRAY + description);
         lore.add("");
@@ -196,83 +189,81 @@ public class SlayerBossType
         return lore;
     }
 
-    public enum SlayerMobType
-    {
+    public enum SlayerMobType {
         ZOMBIE,
         SPIDER,
         WOLF;
 
-        public String getName()
-        {
-            switch (this)
-            {
-                case ZOMBIE: return "Zombie";
-                case SPIDER: return "Spider";
-                case WOLF: return "Wolf";
+        public String getName() {
+            switch (this) {
+                case ZOMBIE:
+                    return "Zombie";
+                case SPIDER:
+                    return "Spider";
+                case WOLF:
+                    return "Wolf";
             }
             return "Unknown";
         }
 
-        public String getPluralName()
-        {
-            switch (this)
-            {
-                case ZOMBIE: return "Zombies";
-                case SPIDER: return "Spiders";
-                case WOLF: return "Wolves";
+        public String getPluralName() {
+            switch (this) {
+                case ZOMBIE:
+                    return "Zombies";
+                case SPIDER:
+                    return "Spiders";
+                case WOLF:
+                    return "Wolves";
             }
             return "Unknown";
         }
 
-        public EntityType getEntityType()
-        {
-            switch (this)
-            {
-                case ZOMBIE: return EntityType.ZOMBIE;
-                case SPIDER: return EntityType.SPIDER;
-                case WOLF: return EntityType.WOLF;
+        public EntityType getEntityType() {
+            switch (this) {
+                case ZOMBIE:
+                    return EntityType.ZOMBIE;
+                case SPIDER:
+                    return EntityType.SPIDER;
+                case WOLF:
+                    return EntityType.WOLF;
             }
             return null;
         }
 
-        public Material getIcon()
-        {
-            switch (this)
-            {
-                case ZOMBIE: return Material.ROTTEN_FLESH;
-                case SPIDER: return Material.WEB;
-                case WOLF: return Material.MUTTON;
+        public Material getIcon() {
+            switch (this) {
+                case ZOMBIE:
+                    return Material.ROTTEN_FLESH;
+                case SPIDER:
+                    return Material.WEB;
+                case WOLF:
+                    return Material.MUTTON;
             }
             return Material.AIR;
         }
 
-        public int getLevelForXP(int xp)
-        {
+        public int getLevelForXP(int xp) {
             if (xp >= 1000000) return 9;
             if (xp >= 400000) return 8;
             if (xp >= 100000) return 7;
             if (xp >= 20000) return 6;
             if (xp >= 5000) return 5;
-            switch (this)
-            {
-                case ZOMBIE:
-                {
+            switch (this) {
+                case ZOMBIE: {
                     if (xp >= 1000) return 4;
                     if (xp >= 200) return 3;
                     if (xp >= 15) return 2;
                     if (xp >= 5) return 1;
                     break;
                 }
-                case SPIDER:
-                {
+                case SPIDER: {
                     if (xp >= 1000) return 4;
                     if (xp >= 200) return 3;
                     if (xp >= 25) return 2;
                     if (xp >= 5) return 1;
                     break;
                 }
-                case WOLF:
-                {
+                case WOLF: {
                     if (xp >= 1500) return 4;
                     if (xp >= 250) return 3;
                     if (xp >= 30) return 2;
@@ -285,13 +276,11 @@ public class SlayerBossType
     }
 
     @Getter
-    private static class SlayerAbility
-    {
+    private static class SlayerAbility {
         private final String name;
         private final String[] description;
 
-        public SlayerAbility(String name, String... description)
-        {
+        public SlayerAbility(String name, String... description) {
             this.name = name;
             this.description = description;
         }

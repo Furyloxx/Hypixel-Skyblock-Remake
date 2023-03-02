@@ -10,42 +10,35 @@ import org.bukkit.ChatColor;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WaterBottle implements MaterialStatistics, MaterialFunction, ItemData
-{
+public class WaterBottle implements MaterialStatistics, MaterialFunction, ItemData {
     @Override
-    public NBTTagCompound getData()
-    {
+    public NBTTagCompound getData() {
         NBTTagCompound compound = new NBTTagCompound();
         compound.setBoolean("splash", false);
         return compound;
     }
 
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Water Bottle";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.COMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 
     @Override
-    public List<String> getDataLore(String key, Object value)
-    {
+    public List<String> getDataLore(String key, Object value) {
         if (!key.equals("effects")) return null;
         NBTTagCompound compound = (NBTTagCompound) value;
         List<String> lore = new ArrayList<>();
-        for (String k : compound.c())
-        {
+        for (String k : compound.c()) {
             lore.add(" ");
             NBTTagCompound effectData = compound.getCompound(k);
             PotionEffectType type = PotionEffectType.getByNamespace(k);
@@ -61,11 +54,9 @@ public class WaterBottle implements MaterialStatistics, MaterialFunction, ItemDa
     }
 
     @Override
-    public void onInstanceUpdate(SItem instance)
-    {
+    public void onInstanceUpdate(SItem instance) {
         int max = 0;
-        for (PotionEffect effect : instance.getPotionEffects())
-        {
+        for (PotionEffect effect : instance.getPotionEffects()) {
             if (effect.getLevel() > max)
                 max = effect.getLevel();
         }

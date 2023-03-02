@@ -45,33 +45,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class ItemListener extends PListener
-{
+public class ItemListener extends PListener {
     @EventHandler
-    public void onPlayerInteract(PlayerInteractEvent e)
-    {
+    public void onPlayerInteract(PlayerInteractEvent e) {
         if (!SItem.isSpecItem(e.getItem())) return;
         SItem sItem = SItem.find(e.getItem());
         if (sItem == null) return;
         updateStatistics(e.getPlayer());
         Action action = e.getAction();
         if (sItem.getType().getStatistics().getSpecificType() == SpecificItemType.HELMET &&
-            action == Action.RIGHT_CLICK_AIR && isAir(e.getPlayer().getInventory().getHelmet()))
-        {
+                action == Action.RIGHT_CLICK_AIR && isAir(e.getPlayer().getInventory().getHelmet())) {
             e.getPlayer().getInventory().setHelmet(sItem.getStack());
             e.getPlayer().setItemInHand(null);
         }
         Player player = e.getPlayer();
         Ability ability = sItem.getType().getAbility();
-        if (ability != null)
-        {
+        if (ability != null) {
             AbilityActivation activation = ability.getAbilityActivation();
-            if (activation == AbilityActivation.LEFT_CLICK || activation == AbilityActivation.RIGHT_CLICK)
-            {
+            if (activation == AbilityActivation.LEFT_CLICK || activation == AbilityActivation.RIGHT_CLICK) {
                 if (activation == AbilityActivation.LEFT_CLICK ?
                         action == Action.LEFT_CLICK_AIR || action == Action.LEFT_CLICK_BLOCK :
-                        action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK)
-                {
+                        action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK) {
                     PlayerUtils.useAbility(player, sItem);
                 }
             }
@@ -92,14 +86,11 @@ public class ItemListener extends PListener
         SItem hand = SItem.find(player.getItemInHand());
         if (hand == null) return;
         NBTTagCompound storageData = new NBTTagCompound();
-        for (int i = 0; i < inventory.getSize(); i++)
-        {
+        for (int i = 0; i < inventory.getSize(); i++) {
             SItem sItem = SItem.find(inventory.getItem(i));
-            if (sItem == null)
-            {
+            if (sItem == null) {
                 SItem equiv = SItem.of(inventory.getItem(i));
-                if (equiv != null)
-                {
+                if (equiv != null) {
                     storageData.setByteArray(String.valueOf(i), SUtil.gzipCompress(equiv.toCompound().toString().getBytes()));
                     continue;
                 }
@@ -114,21 +105,16 @@ public class ItemListener extends PListener
     }
 
     @EventHandler
-    public void onPlayerFlight(PlayerToggleFlightEvent e)
-    {
+    public void onPlayerFlight(PlayerToggleFlightEvent e) {
         Player player = e.getPlayer();
         GameMode gameMode = player.getGameMode();
         if (gameMode == GameMode.CREATIVE || gameMode == GameMode.SPECTATOR) return;
-        for (ItemStack stack : player.getInventory().getArmorContents())
-        {
+        for (ItemStack stack : player.getInventory().getArmorContents()) {
             SItem sItem = SItem.find(stack);
-            if (sItem != null)
-            {
+            if (sItem != null) {
                 Ability ability = sItem.getType().getAbility();
-                if (ability != null)
-                {
-                    if (e.isFlying() && ability.getAbilityActivation() == AbilityActivation.FLIGHT)
-                    {
+                if (ability != null) {
+                    if (e.isFlying() && ability.getAbilityActivation() == AbilityActivation.FLIGHT) {
                         e.setCancelled(true);
                         PlayerUtils.useAbility(player, sItem);
                     }
@@ -138,10 +124,10 @@ public class ItemListener extends PListener
     }
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent e)
-    {
+    public void onInventoryClick(InventoryClickEvent e) {
         if (e.getView().getTopInventory().getType() != InventoryType.CRAFTING) return;
-        if (e.getSlotType() != InventoryType.SlotType.CONTAINER && e.getSlotType() != InventoryType.SlotType.QUICKBAR) return;
+        if (e.getSlotType() != InventoryType.SlotType.CONTAINER && e.getSlotType() != InventoryType.SlotType.QUICKBAR)
+            return;
         if (e.getAction() != InventoryAction.MOVE_TO_OTHER_INVENTORY) return;
         Inventory inventory = e.getClickedInventory();
         if (inventory == null) return;
@@ -152,7 +138,8 @@ public class ItemListener extends PListener
         if (sItem == null)
             sItem = SItem.of(current);
         updateStatistics((Player) e.getWhoClicked());
-        if (sItem.getType().getStatistics().getSpecificType() == null || sItem.getType().getStatistics().getSpecificType() != SpecificItemType.HELMET) return;
+        if (sItem.getType().getStatistics().getSpecificType() == null || sItem.getType().getStatistics().getSpecificType() != SpecificItemType.HELMET)
+            return;
         PlayerInventory playerInventory = (PlayerInventory) inventory;
         if (!isAir(playerInventory.getHelmet())) return;
         e.setCancelled(true);
@@ -161,16 +148,15 @@ public class ItemListener extends PListener
     }
 
     @EventHandler
-    public void onArmorChange(InventoryClickEvent e)
-    {
+    public void onArmorChange(InventoryClickEvent e) {
         if (e.getClickedInventory() == null) return;
-        if (e.getClickedInventory().getType() != InventoryType.PLAYER && e.getClickedInventory().getType() != InventoryType.CRAFTING) return;
+        if (e.getClickedInventory().getType() != InventoryType.PLAYER && e.getClickedInventory().getType() != InventoryType.CRAFTING)
+            return;
         updateStatistics((Player) e.getWhoClicked());
     }
 
     @EventHandler(priority = EventPriority.HIGH)
-    public void onItemClick(InventoryClickEvent e)
-    {
+    public void onItemClick(InventoryClickEvent e) {
         ItemStack stack = e.getCurrentItem();
         if (stack == null) return;
         SItem sItem = SItem.find(stack);
@@ -180,8 +166,7 @@ public class ItemListener extends PListener
     }
 
     @EventHandler
-    public void onItemMove(InventoryClickEvent e)
-    {
+    public void onItemMove(InventoryClickEvent e) {
         if (e.getClickedInventory() == null) return;
         if (e.getClickedInventory().getType() != InventoryType.PLAYER) return;
         if (e.getSlot() != 8) return;
@@ -189,19 +174,16 @@ public class ItemListener extends PListener
     }
 
     @EventHandler
-    public void onBlockPlace(BlockPlaceEvent e)
-    {
+    public void onBlockPlace(BlockPlaceEvent e) {
         SItem sItem = SItem.find(e.getItemInHand());
         if (sItem == null) return;
-        if (sItem.getType().getStatistics().getSpecificType() == SpecificItemType.HELMET && isAir(e.getPlayer().getInventory().getHelmet()))
-        {
+        if (sItem.getType().getStatistics().getSpecificType() == SpecificItemType.HELMET && isAir(e.getPlayer().getInventory().getHelmet())) {
             e.setCancelled(true);
             e.getPlayer().getInventory().setHelmet(sItem.getStack());
             e.getPlayer().setItemInHand(null);
             return;
         }
-        if (!sItem.getType().isCraft())
-        {
+        if (!sItem.getType().isCraft()) {
             if (sItem.getType().getStatistics().getType() != GenericItemType.BLOCK)
                 e.setCancelled(true);
             else
@@ -210,8 +192,7 @@ public class ItemListener extends PListener
     }
 
     @EventHandler
-    public void onFrameInteract(PlayerInteractEvent e)
-    {
+    public void onFrameInteract(PlayerInteractEvent e) {
         if (e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         Player player = e.getPlayer();
         Block block = e.getClickedBlock();
@@ -221,18 +202,15 @@ public class ItemListener extends PListener
         if (item == null) return;
         if (block.getType() != Material.ENDER_PORTAL_FRAME) return;
         SBlock sBlock = SBlock.getBlock(block.getLocation());
-        if (sBlock == null)
-        {
+        if (sBlock == null) {
             e.setCancelled(true);
             return;
         }
-        if (sBlock.getType() != SMaterial.SUMMONING_FRAME)
-        {
+        if (sBlock.getType() != SMaterial.SUMMONING_FRAME) {
             e.setCancelled(true);
             return;
         }
-        if (!block.hasMetadata("placer"))
-        {
+        if (!block.hasMetadata("placer")) {
             if (item.getType() != SMaterial.SUMMONING_EYE) return;
             block.setMetadata("placer", new FixedMetadataValue(plugin, player.getUniqueId()));
             BlockState state = block.getState();
@@ -254,18 +232,15 @@ public class ItemListener extends PListener
                     ChatColor.GRAY + "/" + ChatColor.GREEN + "8" + ChatColor.GRAY + ")");
             if (quantity != 8) return;
             List<UUID> cleared = new ArrayList<>();
-            for (List<Location> ls : StaticDragonManager.EYES.values())
-            {
-                for (Location location : ls)
-                {
+            for (List<Location> ls : StaticDragonManager.EYES.values()) {
+                for (Location location : ls) {
                     Block b = location.getBlock();
                     List<MetadataValue> values = b.getMetadata("placer");
                     Player p = Bukkit.getPlayer((UUID) values.get(0).value());
                     if (p == null) continue;
                     if (cleared.contains(p.getUniqueId())) continue;
                     PlayerInventory inventory = p.getInventory();
-                    for (int i = 0; i < inventory.getSize(); i++)
-                    {
+                    for (int i = 0; i < inventory.getSize(); i++) {
                         SItem si = SItem.find(inventory.getItem(i));
                         if (si == null) continue;
                         if (si.getType() == SMaterial.SLEEPING_EYE)
@@ -278,17 +253,13 @@ public class ItemListener extends PListener
             }
             StaticDragonManager.ACTIVE = true;
             block.getWorld().playSound(block.getLocation(), Sound.ENDERMAN_STARE, 50f, -2f);
-            new BukkitRunnable()
-            {
-                public void run()
-                {
+            new BukkitRunnable() {
+                public void run() {
                     block.getWorld().playSound(block.getLocation(), Sound.ENDERDRAGON_DEATH, 50f, -2f);
                 }
             }.runTaskLater(plugin, 90);
-            new BukkitRunnable()
-            {
-                public void run()
-                {
+            new BukkitRunnable() {
+                public void run() {
                     for (int i = 0; i < 3; i++)
                         block.getWorld().playSound(block.getLocation(), Sound.EXPLODE, 50f, -2f);
                     SEntityType dragonType = SEntityType.PROTECTOR_DRAGON;
@@ -306,8 +277,7 @@ public class ItemListener extends PListener
                     if (chance >= 96)
                         dragonType = SEntityType.SUPERIOR_DRAGON;
                     SEntity entity = new SEntity(block.getLocation().clone().add(0, 53, 0), dragonType);
-                    for (Player p : Bukkit.getOnlinePlayers())
-                    {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
                         Region area = Region.getRegionOfEntity(p);
                         if (area == null) continue;
                         if (area.getType() != RegionType.DRAGONS_NEST) continue;
@@ -326,15 +296,12 @@ public class ItemListener extends PListener
         List<MetadataValue> values = block.getMetadata("placer");
         Player p = Bukkit.getPlayer((UUID) values.get(0).value());
         if (p == null) return;
-        if (item.getType() == SMaterial.SLEEPING_EYE)
-        {
-            if (!p.getUniqueId().equals(player.getUniqueId()))
-            {
+        if (item.getType() == SMaterial.SLEEPING_EYE) {
+            if (!p.getUniqueId().equals(player.getUniqueId())) {
                 player.sendMessage(ChatColor.RED + "You can only recover Summoning Eyes that you placed!");
                 return;
             }
-            if (StaticDragonManager.ACTIVE)
-            {
+            if (StaticDragonManager.ACTIVE) {
                 player.sendMessage(ChatColor.RED + "You cannot recover Summoning Eyes after the dragon has been summoned!");
                 return;
             }
@@ -350,8 +317,7 @@ public class ItemListener extends PListener
     }
 
     @EventHandler
-    public void onItemPickup(PlayerPickupItemEvent e)
-    {
+    public void onItemPickup(PlayerPickupItemEvent e) {
         Item item = e.getItem();
         Player player = e.getPlayer();
         updateStatistics(player);
@@ -360,13 +326,10 @@ public class ItemListener extends PListener
             compound = new NBTTagCompound();
         if (!compound.hasKey("type"))
             item.getItemStack().setItemMeta(SItem.of(item.getItemStack()).getStack().getItemMeta());
-        if (item.hasMetadata("owner"))
-        {
+        if (item.hasMetadata("owner")) {
             List<MetadataValue> o = item.getMetadata("owner");
-            if (o.size() != 0)
-            {
-                if (!o.get(0).asString().equals(e.getPlayer().getUniqueId().toString()))
-                {
+            if (o.size() != 0) {
+                if (!o.get(0).asString().equals(e.getPlayer().getUniqueId().toString())) {
                     e.setCancelled(true);
                     return;
                 }
@@ -379,17 +342,14 @@ public class ItemListener extends PListener
             throw new NullPointerException("AYOOOO SOMETHING GOT FUCKED UP BRUH");
         if (item.hasMetadata("obtained"))
             Bukkit.broadcastMessage(ChatColor.GREEN + player.getName() + ChatColor.YELLOW + " has obtained " + sItem.getFullName() + ChatColor.YELLOW + "!");
-        if (sItem.getOrigin() == ItemOrigin.NATURAL_BLOCK || sItem.getOrigin() == ItemOrigin.MOB)
-        {
+        if (sItem.getOrigin() == ItemOrigin.NATURAL_BLOCK || sItem.getOrigin() == ItemOrigin.MOB) {
             sItem.setOrigin(ItemOrigin.UNKNOWN);
             ItemCollection collection = ItemCollection.getByMaterial(sItem.getType(), stack.getDurability());
-            if (collection != null)
-            {
+            if (collection != null) {
                 int prev = user.getCollection(collection);
                 user.addToCollection(collection, stack.getAmount());
                 user.save();
-                if (prev == 0)
-                {
+                if (prev == 0) {
                     player.sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + "  COLLECTION UNLOCKED " + ChatColor.RESET +
                             ChatColor.YELLOW + collection.getName());
                     player.playSound(player.getLocation(), Sound.LEVEL_UP, 1f, 2f);
@@ -399,8 +359,7 @@ public class ItemListener extends PListener
     }
 
     @EventHandler
-    public void onItemDrop(PlayerDropItemEvent e)
-    {
+    public void onItemDrop(PlayerDropItemEvent e) {
         SItem sItem = SItem.find(e.getItemDrop().getItemStack());
         if (sItem != null && (sItem.getType() == SMaterial.SKYBLOCK_MENU || sItem.getType() == SMaterial.QUIVER_ARROW))
             e.setCancelled(true);
@@ -408,8 +367,7 @@ public class ItemListener extends PListener
     }
 
     @EventHandler
-    public void onFishingRodReel(PlayerFishEvent e)
-    {
+    public void onFishingRodReel(PlayerFishEvent e) {
         SItem rod = SItem.find(e.getPlayer().getItemInHand());
         if (rod == null) return;
         e.getHook().setMetadata("owner", new FixedMetadataValue(Spectaculation.getPlugin(), e.getPlayer()));
@@ -420,26 +378,22 @@ public class ItemListener extends PListener
     }
 
     @EventHandler
-    public void onPotionSplash(PotionSplashEvent e)
-    {
+    public void onPotionSplash(PotionSplashEvent e) {
         SItem item = SItem.find(e.getPotion().getItem());
         if (item == null) return;
         if (!item.isPotion()) return;
         e.setCancelled(true);
-        for (LivingEntity entity : e.getAffectedEntities())
-        {
+        for (LivingEntity entity : e.getAffectedEntities()) {
             if (!(entity instanceof Player)) continue;
             User user = User.getUser(entity.getUniqueId());
             if (user == null) continue;
-            for (PotionEffect effect : item.getPotionEffects())
-            {
+            for (PotionEffect effect : item.getPotionEffects()) {
                 PlayerUtils.updatePotionEffects(user, PlayerUtils.STATISTICS_CACHE.get(user.getUuid()));
                 if (effect.getType().getOnDrink() != null)
                     effect.getType().getOnDrink().accept(effect, (Player) entity);
                 long ticks = (long) (effect.getDuration() * e.getIntensity(entity));
                 if ((!user.hasPotionEffect(effect.getType())) || (user.hasPotionEffect(effect.getType()) &&
-                        ticks > user.getPotionEffect(effect.getType()).getRemaining()))
-                {
+                        ticks > user.getPotionEffect(effect.getType()).getRemaining())) {
                     user.removePotionEffect(effect.getType());
                     user.addPotionEffect(new PotionEffect(effect.getType(), effect.getLevel(), ticks));
                 }
@@ -451,18 +405,15 @@ public class ItemListener extends PListener
         }
     }
 
-    private static void updateStatistics(Player player)
-    {
+    private static void updateStatistics(Player player) {
         PlayerInventory inv = player.getInventory();
         ItemStack beforeHelmet = inv.getHelmet(),
                 beforeChestplate = inv.getChestplate(),
                 beforeLeggings = inv.getLeggings(),
                 beforeBoots = inv.getBoots();
-        new BukkitRunnable()
-        {
+        new BukkitRunnable() {
             @Override
-            public void run()
-            {
+            public void run() {
                 PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(player.getUniqueId());
                 ItemStack afterHelmet = inv.getHelmet(),
                         afterChestplate = inv.getChestplate(),
@@ -486,16 +437,14 @@ public class ItemListener extends PListener
         }.runTaskLater(Spectaculation.getPlugin(), 1);
     }
 
-    private static boolean similar(ItemStack is, ItemStack is1)
-    {
+    private static boolean similar(ItemStack is, ItemStack is1) {
         if (is == null && is1 == null) return true;
         if (is != null && is1 == null) return false;
         if (is == null) return false;
         return is.isSimilar(is1);
     }
 
-    private static boolean isAir(ItemStack is)
-    {
+    private static boolean isAir(ItemStack is) {
         if (is == null) return true;
         return is.getType() == Material.AIR;
     }

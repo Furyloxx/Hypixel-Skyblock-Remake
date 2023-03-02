@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.util;
 
-public interface DefenseReplacement
-{
+public interface DefenseReplacement {
     String getReplacement();
+
     long getEnd();
 }

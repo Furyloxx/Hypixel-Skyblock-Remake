@@ -2,8 +2,7 @@ package me.adarsh.godspunkycore.gui;
 
 import me.adarsh.godspunkycore.util.SUtil;
 
-public enum GUIType
-{
+public enum GUIType {
     CRAFTING_TABLE(CraftingTableGUI.class),
     ITEM_BROWSE(ItemBrowserGUI.class),
     ANVIL(AnvilGUI.class),
@@ -23,6 +22,7 @@ public enum GUIType
     SKILL_MENU(SkillMenuGUI.class),
     PETS(PetsGUI.class),
     FARM_MERCHANT(FarmMerchantGUI.class),
+    Mine_MERCHANT(MineMerchant.class),
     ACTIVE_EFFECTS(ActiveEffectsGUI.class),
     AUCTION_HOUSE(AuctionHouseGUI.class),
     AUCTIONS_BROWSER(AuctionsBrowserGUI.class),
@@ -34,33 +34,25 @@ public enum GUIType
 
     private final Class<? extends GUI> gui;
 
-    GUIType(Class<? extends GUI> gui)
-    {
+    GUIType(Class<? extends GUI> gui) {
         this.gui = gui;
     }
 
-    public GUI getGUI()
-    {
-        try
-        {
+    public GUI getGUI() {
+        try {
             return gui.newInstance();
-        }
-        catch (IllegalAccessException | InstantiationException e)
-        {
+        } catch (IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public GUI getGUI(Object... params)
-    {
+    public GUI getGUI(Object... params) {
         return SUtil.instance(GUI.class, params);
     }
 
-    public static GUI getGUI(String title)
-    {
-        for (GUIType type : values())
-        {
+    public static GUI getGUI(String title) {
+        for (GUIType type : values()) {
             if (type.getGUI().getTitle().contains(title))
                 return type.getGUI();
         }

@@ -6,41 +6,42 @@ import me.adarsh.godspunkycore.item.RarityValue;
 import java.util.Arrays;
 import java.util.List;
 
-public interface Reforge
-{
+public interface Reforge {
     String getName();
 
-    default RarityValue<Double> getStrength()
-    {
+    default RarityValue<Double> getStrength() {
         return RarityValue.zeroDouble();
     }
 
-    default RarityValue<Double> getCritChance()
-    {
+    default RarityValue<Double> getCritChance() {
         return RarityValue.zeroDouble();
     }
 
-    default RarityValue<Double> getCritDamage()
-    {
+    default RarityValue<Double> getCritDamage() {
         return RarityValue.zeroDouble();
     }
 
-    default RarityValue<Double> getIntelligence()
-    {
+    default RarityValue<Double> getIntelligence() {
         return RarityValue.zeroDouble();
     }
 
-    default RarityValue<Double> getDefence(){return RarityValue.zeroDouble();}
-    default RarityValue<Double> getHealth(){return  RarityValue.zeroDouble();}
-    default RarityValue<Double> getSpeed(){return RarityValue.zeroDouble();}
+    default RarityValue<Double> getDefence() {
+        return RarityValue.zeroDouble();
+    }
 
-    default List<GenericItemType> getCompatibleTypes()
-    {
+    default RarityValue<Double> getHealth() {
+        return RarityValue.zeroDouble();
+    }
+
+    default RarityValue<Double> getSpeed() {
+        return RarityValue.zeroDouble();
+    }
+
+    default List<GenericItemType> getCompatibleTypes() {
         return Arrays.asList(GenericItemType.values());
     }
 
-    static Reforge blank()
-    {
+    static Reforge blank() {
         return () -> "Blank";
     }
 }

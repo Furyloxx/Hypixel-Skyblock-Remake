@@ -19,36 +19,30 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Zealot implements EndermanStatistics, EntityFunction
-{
+public class Zealot implements EndermanStatistics, EntityFunction {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Zealot";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 13000.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 1250.0;
     }
 
     @Override
-    public List<EntityDrop> drops()
-    {
+    public List<EntityDrop> drops() {
         return Arrays.asList(new EntityDrop(new ItemStack(Material.ENDER_PEARL, SUtil.random(3, 5)), EntityDropType.GUARANTEED, 1.0),
                 new EntityDrop(new ItemStack(Material.ENDER_PEARL, SUtil.random(3, 5)), EntityDropType.GUARANTEED, 0.05));
     }
 
     @Override
-    public void onDeath(SEntity sEntity, Entity killed, Entity damager)
-    {
+    public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
         Player player = (Player) damager;
         User user = User.getUser(player.getUniqueId());
         Pet pet = user.getActivePetClass();
@@ -62,73 +56,60 @@ public class Zealot implements EndermanStatistics, EntityFunction
     }
 
     @Override
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 40.0;
     }
 
-    public static class SpecialZealot implements EndermanStatistics, EntityFunction
-    {
+    public static class SpecialZealot implements EndermanStatistics, EntityFunction {
         @Override
-        public String getEntityName()
-        {
+        public String getEntityName() {
             return "Zealot";
         }
 
         @Override
-        public double getEntityMaxHealth()
-        {
+        public double getEntityMaxHealth() {
             return 2000.0;
         }
 
         @Override
-        public double getDamageDealt()
-        {
+        public double getDamageDealt() {
             return 1250.0;
         }
 
         @Override
-        public List<EntityDrop> drops()
-        {
+        public List<EntityDrop> drops() {
             return Collections.singletonList(new EntityDrop(SItem.of(SMaterial.SUMMONING_EYE).getStack(), EntityDropType.RARE, 1.0));
         }
 
         @Override
-        public MaterialData getCarriedMaterial()
-        {
+        public MaterialData getCarriedMaterial() {
             return new MaterialData(Material.ENDER_PORTAL_FRAME);
         }
 
         @Override
-        public double getXPDropped()
-        {
+        public double getXPDropped() {
             return 40.0;
         }
     }
 
-    public static class EnderChestZealot implements EndermanStatistics, EntityFunction
-    {
+    public static class EnderChestZealot implements EndermanStatistics, EntityFunction {
         @Override
-        public String getEntityName()
-        {
+        public String getEntityName() {
             return "Zealot";
         }
 
         @Override
-        public double getEntityMaxHealth()
-        {
+        public double getEntityMaxHealth() {
             return 13000.0;
         }
 
         @Override
-        public double getDamageDealt()
-        {
+        public double getDamageDealt() {
             return 1250.0;
         }
 
         @Override
-        public List<EntityDrop> drops()
-        {
+        public List<EntityDrop> drops() {
             return Arrays.asList(new EntityDrop(new ItemStack(Material.ENDER_PEARL, SUtil.random(3, 5)), EntityDropType.GUARANTEED, 1.0),
                     SUtil.getRandom(Arrays.asList(
                             new EntityDrop(SUtil.setStackAmount(SItem.of(SMaterial.ENCHANTED_ENDER_PEARL).getStack(),
@@ -139,14 +120,12 @@ public class Zealot implements EndermanStatistics, EntityFunction
         }
 
         @Override
-        public MaterialData getCarriedMaterial()
-        {
+        public MaterialData getCarriedMaterial() {
             return new MaterialData(Material.ENDER_CHEST);
         }
 
         @Override
-        public void onDeath(SEntity sEntity, Entity killed, Entity damager)
-        {
+        public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
             Player player = (Player) damager;
             User user = User.getUser(player.getUniqueId());
             Pet pet = user.getActivePetClass();
@@ -160,8 +139,7 @@ public class Zealot implements EndermanStatistics, EntityFunction
         }
 
         @Override
-        public double getXPDropped()
-        {
+        public double getXPDropped() {
             return 40.0;
         }
     }

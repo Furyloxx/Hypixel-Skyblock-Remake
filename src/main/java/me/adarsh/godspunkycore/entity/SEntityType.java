@@ -24,8 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public enum SEntityType
-{
+public enum SEntityType {
     ZEALOT(EntityType.ENDERMAN, Zealot.class),
     ENDER_CHEST_ZEALOT(EntityType.ENDERMAN, Zealot.EnderChestZealot.class),
     SPECIAL_ZEALOT(EntityType.ENDERMAN, Zealot.SpecialZealot.class),
@@ -102,8 +101,7 @@ public enum SEntityType
     @Getter
     private final boolean specific;
 
-    SEntityType(EntityType craftType, Class<?> clazz, boolean specific)
-    {
+    SEntityType(EntityType craftType, Class<?> clazz, boolean specific) {
         this.craftType = craftType;
         this.clazz = clazz;
         this.specific = specific;
@@ -111,72 +109,57 @@ public enum SEntityType
             registerEntity(name(), craftType.getTypeId(), (Class<? extends EntityInsentient>) clazz);
     }
 
-    SEntityType(EntityType craftType, Class<?> clazz)
-    {
+    SEntityType(EntityType craftType, Class<?> clazz) {
         this(craftType, clazz, false);
     }
 
-    public EntityStatistics getStatistics()
-    {
+    public EntityStatistics getStatistics() {
         Object generic = getGenericInstance();
         if (generic instanceof EntityStatistics)
             return (EntityStatistics) generic;
         return null;
     }
 
-    public EntityFunction getFunction()
-    {
+    public EntityFunction getFunction() {
         Object generic = getGenericInstance();
         if (generic instanceof EntityFunction)
             return (EntityFunction) generic;
         return null;
     }
 
-    public Object instance(Object... params)
-    {
-        try
-        {
+    public Object instance(Object... params) {
+        try {
             Class<?>[] paramTypes = new Class[params.length];
             for (int i = 0; i < paramTypes.length; i++)
                 paramTypes[i] = params[i].getClass();
             return clazz.getConstructor(paramTypes).newInstance(params);
-        }
-        catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException ex)
-        {
+        } catch (InstantiationException | IllegalAccessException | NoSuchMethodException |
+                 InvocationTargetException ex) {
             ex.printStackTrace();
             return null;
         }
     }
 
-    public Object getGenericInstance()
-    {
-        try
-        {
+    public Object getGenericInstance() {
+        try {
             return clazz.newInstance();
-        }
-        catch (InstantiationException | IllegalAccessException e)
-        {
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    private static void registerEntity(String name, int id, Class<? extends EntityInsentient> clazz)
-    {
-        try
-        {
+    private static void registerEntity(String name, int id, Class<? extends EntityInsentient> clazz) {
+        try {
             List<Map<?, ?>> dataMap = new ArrayList<>();
-            for (Field f : EntityTypes.class.getDeclaredFields())
-            {
-                if (f.getType().getSimpleName().equals(Map.class.getSimpleName()))
-                {
+            for (Field f : EntityTypes.class.getDeclaredFields()) {
+                if (f.getType().getSimpleName().equals(Map.class.getSimpleName())) {
                     f.setAccessible(true);
                     dataMap.add((Map<?, ?>) f.get(null));
                 }
             }
 
-            if (dataMap.get(2).containsKey(id))
-            {
+            if (dataMap.get(2).containsKey(id)) {
                 dataMap.get(0).remove(name);
                 dataMap.get(2).remove(id);
             }
@@ -185,15 +168,12 @@ public enum SEntityType
             method.setAccessible(true);
             method.invoke(null, clazz, name, id);
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static SEntityType getEntityType(String name)
-    {
+    public static SEntityType getEntityType(String name) {
         return valueOf(name.toUpperCase());
     }
 }

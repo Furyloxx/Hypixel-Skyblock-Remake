@@ -15,30 +15,24 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class GUIListener extends PListener
-{
+public class GUIListener extends PListener {
     private static final Map<UUID, GUIQueryItem> QUERY_MAP = new HashMap<>();
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent e)
-    {
+    public void onInventoryClick(InventoryClickEvent e) {
         GUI gui = GUI.GUI_MAP.get(e.getWhoClicked().getUniqueId());
         if (gui == null) return;
-        if (e.getClickedInventory() == e.getView().getTopInventory())
-        {
+        if (e.getClickedInventory() == e.getView().getTopInventory()) {
             int slot = e.getSlot();
             GUIItem item = gui.get(slot);
-            if (item != null)
-            {
+            if (item != null) {
                 if (!item.canPickup())
                     e.setCancelled(true);
-                if (item instanceof GUIClickableItem)
-                {
+                if (item instanceof GUIClickableItem) {
                     GUIClickableItem clickable = (GUIClickableItem) item;
                     clickable.run(e);
                 }
-                if (item instanceof GUIQueryItem)
-                {
+                if (item instanceof GUIQueryItem) {
                     GUIQueryItem query = (GUIQueryItem) item;
                     Player player = (Player) e.getWhoClicked();
                     player.closeInventory();
@@ -46,30 +40,24 @@ public class GUIListener extends PListener
                     QUERY_MAP.put(player.getUniqueId(), query);
                 }
             }
-        }
-        else
+        } else
             gui.onBottomClick(e);
         gui.update(e.getView().getTopInventory());
     }
 
     @EventHandler
-    public void onGUIOpen(GUIOpenEvent e)
-    {
+    public void onGUIOpen(GUIOpenEvent e) {
         e.getOpened().onOpen(e);
     }
 
     @EventHandler
-    public void onBlockInteract(PlayerInteractEvent e)
-    {
+    public void onBlockInteract(PlayerInteractEvent e) {
         if (e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         Block block = e.getClickedBlock();
-        for (GUIType type : GUIType.values())
-        {
+        for (GUIType type : GUIType.values()) {
             GUI gui = type.getGUI();
-            if (gui instanceof BlockBasedGUI)
-            {
-                if (((BlockBasedGUI) gui).getBlock() == block.getType())
-                {
+            if (gui instanceof BlockBasedGUI) {
+                if (((BlockBasedGUI) gui).getBlock() == block.getType()) {
                     e.setCancelled(true);
                     gui.open(e.getPlayer());
                     return;
@@ -79,8 +67,7 @@ public class GUIListener extends PListener
     }
 
     @EventHandler
-    public void onPlayerChat(AsyncPlayerChatEvent e)
-    {
+    public void onPlayerChat(AsyncPlayerChatEvent e) {
         Player player = e.getPlayer();
         if (!QUERY_MAP.containsKey(player.getUniqueId())) return;
         e.setCancelled(true);
@@ -93,8 +80,7 @@ public class GUIListener extends PListener
     }
 
     @EventHandler
-    public void onInventoryClose(InventoryCloseEvent e)
-    {
+    public void onInventoryClose(InventoryCloseEvent e) {
         if (!(e.getPlayer() instanceof Player)) return;
         Player player = (Player) e.getPlayer();
         GUI gui = GUI.GUI_MAP.get(player.getUniqueId());

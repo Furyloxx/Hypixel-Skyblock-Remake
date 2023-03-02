@@ -38,8 +38,7 @@ public class PumpkinArmorChestplate implements LeatherArmorStatistics, MaterialF
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.CHESTPLATE;
     }
 }

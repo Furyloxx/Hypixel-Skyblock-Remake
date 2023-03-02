@@ -1,28 +1,23 @@
 package me.adarsh.godspunkycore.entity.den;
 
-public class CaveSpider extends BaseSpider
-{
+public class CaveSpider extends BaseSpider {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Cave Spider";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 12.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 5.0;
     }
 
     @Override
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 5.7;
     }
 }

@@ -5,29 +5,24 @@ import me.adarsh.godspunkycore.item.MaterialFunction;
 import me.adarsh.godspunkycore.item.MaterialStatistics;
 import me.adarsh.godspunkycore.item.Rarity;
 
-public class HamsterWheel implements MaterialStatistics, MaterialFunction
-{
+public class HamsterWheel implements MaterialStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Hamster Wheel";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.RARE;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 
     @Override
-    public boolean isEnchanted()
-    {
+    public boolean isEnchanted() {
         return true;
     }
 }

@@ -12,9 +12,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -69,7 +67,7 @@ public class BlockListener extends PListener {
         if (cuboid.contains(players.getLocation())) {
             e.setCancelled(false);
         } else {
-            players.sendMessage(SUtil.getRandomVisibleColor() +""+ ChatColor.BOLD + "[GodSpunky] : You cant Place block here");
+            players.sendMessage(SUtil.getRandomVisibleColor() + "" + ChatColor.BOLD + "[GodSpunky] : You cant Place block here");
             e.setCancelled(true);
         }
     }
@@ -86,10 +84,9 @@ public class BlockListener extends PListener {
         Location loc2 = new Location(world, islandX, 100, islandZ);
         loc2.subtract(100, 100, 100);
         Cuboid cuboid = new Cuboid(loc1, loc2);
-        if (cuboid.contains(players.getLocation())) {
+        if (cuboid.contains(players.getLocation()) || WorldListener.allowBreak) {
             e.setCancelled(false);
         } else {
-            players.sendMessage(SUtil.getRandomVisibleColor() +""+ ChatColor.BOLD + "[GodSpunky] : You cant break block here");
             e.setCancelled(true);
         }
     }
@@ -118,7 +115,7 @@ public class BlockListener extends PListener {
         }else{
             e.setCancelled(true);
         }*/
-    }
+}
 
 
 

@@ -4,8 +4,7 @@ import lombok.Getter;
 import org.bukkit.ChatColor;
 
 @Getter
-public enum RegionType
-{
+public enum RegionType {
     VILLAGE("Village"),
 
     PRIVATE_ISLAND("Private Island"),
@@ -47,42 +46,35 @@ public enum RegionType
     BLAZING_FORTRESS("Blazing Fortress", ChatColor.RED),
     THE_END("The End", ChatColor.LIGHT_PURPLE),
     THE_END_NEST("The End", ChatColor.LIGHT_PURPLE),
-    DRAGONS_NEST("Dragon's Nest", ChatColor.DARK_PURPLE)
-    ;
+    DRAGONS_NEST("Dragon's Nest", ChatColor.DARK_PURPLE);
 
     private final String name;
 
 
     private final ChatColor color;
 
-    RegionType(String name, ChatColor color)
-    {
+    RegionType(String name, ChatColor color) {
         this.name = name;
         this.color = color;
     }
 
-    RegionType(String name)
-    {
+    RegionType(String name) {
         this(name, ChatColor.AQUA);
     }
 
-    RegionType()
-    {
+    RegionType() {
         this(null, ChatColor.GRAY);
     }
 
-    public static RegionType getByID(int id)
-    {
+    public static RegionType getByID(int id) {
         return RegionType.values()[id];
     }
 
-    public static RegionType getType(String string)
-    {
-        try
-        {
+    public static RegionType getType(String string) {
+        try {
             return valueOf(string);
+        } catch (IllegalArgumentException ignored) {
         }
-        catch (IllegalArgumentException ignored) {}
         return null;
     }
 }

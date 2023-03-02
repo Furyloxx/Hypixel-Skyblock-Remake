@@ -14,32 +14,27 @@ public class ShadowAssassinHelmet implements MaterialFunction, SkullStatistics, 
     }
 
     @Override
-    public double getBaseStrength()
-    {
+    public double getBaseStrength() {
         return 25;
     }
 
     @Override
-    public double getBaseCritDamage()
-    {
+    public double getBaseCritDamage() {
         return 0.25;
     }
 
     @Override
-    public double getBaseHealth()
-    {
+    public double getBaseHealth() {
         return 160;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 70;
     }
 
     @Override
-    public double getBaseSpeed()
-    {
+    public double getBaseSpeed() {
         return 0.07;
     }
 
@@ -54,14 +49,12 @@ public class ShadowAssassinHelmet implements MaterialFunction, SkullStatistics, 
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.HELMET;
     }
 
     @Override
-    public String getLore()
-    {
+    public String getLore() {
         return null;
     }
 }

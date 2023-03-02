@@ -38,8 +38,7 @@ public class PumpkinArmorLeggings implements LeatherArmorStatistics, MaterialFun
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.LEGGINGS;
     }
 }

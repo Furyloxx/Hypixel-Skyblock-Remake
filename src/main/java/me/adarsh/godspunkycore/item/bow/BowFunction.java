@@ -8,8 +8,10 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityShootBowEvent;
 
-public interface BowFunction extends MaterialFunction
-{
-    default void onBowShoot(SItem bow, EntityShootBowEvent e) {}
-    default void onBowHit(Entity hit, Player shooter, Arrow arrow, SItem weapon, AtomicDouble damage) {}
+public interface BowFunction extends MaterialFunction {
+    default void onBowShoot(SItem bow, EntityShootBowEvent e) {
+    }
+
+    default void onBowHit(Entity hit, Player shooter, Arrow arrow, SItem weapon, AtomicDouble damage) {
+    }
 }

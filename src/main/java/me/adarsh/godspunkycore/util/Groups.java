@@ -9,8 +9,7 @@ import org.bukkit.event.inventory.InventoryAction;
 import java.util.Arrays;
 import java.util.List;
 
-public final class Groups
-{
+public final class Groups {
     public static final List<Material> SWORDS = Arrays.asList(
             Material.WOOD_SWORD,
             Material.STONE_SWORD,

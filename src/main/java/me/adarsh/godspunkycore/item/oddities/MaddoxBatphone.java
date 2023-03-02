@@ -15,8 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-public class MaddoxBatphone implements SkullStatistics, MaterialFunction, Ability
-{
+public class MaddoxBatphone implements SkullStatistics, MaterialFunction, Ability {
     private static final List<String> SUCCESSFUL_RESPONSES = Arrays.asList("Hello?", "Someone answers!",
             "How does a lobster answer? Shello!",
             "Hey what do you need?",
@@ -34,62 +33,52 @@ public class MaddoxBatphone implements SkullStatistics, MaterialFunction, Abilit
     public static final List<UUID> CALL_COOLDOWN = new ArrayList<>();
 
     @Override
-    public String getURL()
-    {
+    public String getURL() {
         return "9336d7cc95cbf6689f5e8c954294ec8d1efc494a4031325bb427bc81d56a484d";
     }
 
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Maddox Batphone";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.UNCOMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 
     @Override
-    public String getAbilityName()
-    {
+    public String getAbilityName() {
         return "Whassup?";
     }
 
     @Override
-    public String getAbilityDescription()
-    {
+    public String getAbilityDescription() {
         return "Lets you call Maddox, when he's not busy.";
     }
 
     @Override
-    public int getAbilityCooldownTicks()
-    {
+    public int getAbilityCooldownTicks() {
         return 0;
     }
 
     @Override
-    public int getManaCost()
-    {
+    public int getManaCost() {
         return 0;
     }
 
     @Override
-    public boolean displayUsage()
-    {
+    public boolean displayUsage() {
         return false;
     }
 
     @Override
-    public void onAbilityUse(Player player, SItem sItem)
-    {
+    public void onAbilityUse(Player player, SItem sItem) {
         if (RING_COOLDOWN.contains(player.getUniqueId()))
             return;
         RING_COOLDOWN.add(player.getUniqueId());
@@ -98,8 +87,7 @@ public class MaddoxBatphone implements SkullStatistics, MaterialFunction, Abilit
         player.sendMessage(ChatColor.YELLOW + "✆ Ring...");
         SUtil.delay(() -> player.sendMessage(ChatColor.YELLOW + "✆ Ring... Ring..."), 18);
         SUtil.delay(() -> player.sendMessage(ChatColor.YELLOW + "✆ Ring... Ring... Ring..."), 35);
-        if (CALL_COOLDOWN.contains(player.getUniqueId()))
-        {
+        if (CALL_COOLDOWN.contains(player.getUniqueId())) {
             SUtil.delay(() -> player.sendMessage(ChatColor.RED + "✆ " + SUtil.getRandom(FAILED_RESPONSES)), 52);
             return;
         }

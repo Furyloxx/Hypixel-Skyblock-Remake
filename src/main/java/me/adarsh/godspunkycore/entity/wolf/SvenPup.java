@@ -8,16 +8,14 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Wolf;
 
-public class SvenPup extends BaseWolf
-{
+public class SvenPup extends BaseWolf {
     private final double health;
     private final double damage;
     private final CraftPlayer target;
     @Getter
     private final SvenPackmaster parent;
 
-    public SvenPup(Double health, Double damage, CraftPlayer target, SvenPackmaster parent)
-    {
+    public SvenPup(Double health, Double damage, CraftPlayer target, SvenPackmaster parent) {
         this.health = health;
         this.damage = damage;
         this.target = target;
@@ -25,49 +23,41 @@ public class SvenPup extends BaseWolf
     }
 
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Sven Pup";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return health;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return damage;
     }
 
     @Override
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 0.0;
     }
 
     @Override
-    public boolean isAngry()
-    {
+    public boolean isAngry() {
         return true;
     }
 
-    public boolean isBaby()
-    {
+    public boolean isBaby() {
         return true;
     }
 
     @Override
-    public void onSpawn(LivingEntity entity, SEntity sEntity)
-    {
+    public void onSpawn(LivingEntity entity, SEntity sEntity) {
         ((Wolf) entity).setTarget(target);
     }
 
     @Override
-    public void onDeath(SEntity sEntity, Entity killed, Entity damager)
-    {
+    public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
         parent.getPups().remove(sEntity);
     }
 }

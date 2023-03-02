@@ -2,8 +2,7 @@ package me.adarsh.godspunkycore.potion;
 
 import lombok.Getter;
 
-public enum PotionColor
-{
+public enum PotionColor {
     BLUE((short) 0),
     PURPLE((short) 1),
     LIGHT_BLUE((short) 2),
@@ -24,13 +23,11 @@ public enum PotionColor
     @Getter
     private final short data;
 
-    PotionColor(short data)
-    {
+    PotionColor(short data) {
         this.data = data;
     }
 
-    public short getSplashData()
-    {
+    public short getSplashData() {
         return (short) (data + SPLASH);
     }
 }

@@ -21,8 +21,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class AuctionItem
-{
+public class AuctionItem {
     private static final Map<UUID, AuctionItem> AUCTION_ITEM_CACHE = new HashMap<>();
     private static final Spectaculation plugin = Spectaculation.getPlugin();
     private static final File AUCTION_ITEM_FOLDER = new File(plugin.getDataFolder(), "./auctions");
@@ -44,8 +43,7 @@ public class AuctionItem
     @Getter
     private boolean bin;
 
-    private AuctionItem(UUID uuid, SItem item, long starter, long end, UUID owner, List<UUID> participants, boolean bin)
-    {
+    private AuctionItem(UUID uuid, SItem item, long starter, long end, UUID owner, List<UUID> participants, boolean bin) {
         this.uuid = uuid;
         this.item = item;
         this.starter = starter;
@@ -58,16 +56,12 @@ public class AuctionItem
         String path = uuid.toString() + ".yml";
         File configFile = new File(AUCTION_ITEM_FOLDER, path);
         boolean save = false;
-        try
-        {
-            if (!configFile.exists())
-            {
+        try {
+            if (!configFile.exists()) {
                 save = true;
                 configFile.createNewFile();
             }
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
         this.config = new Config(AUCTION_ITEM_FOLDER, path);
@@ -76,8 +70,7 @@ public class AuctionItem
         load();
     }
 
-    public void load()
-    {
+    public void load() {
         this.uuid = UUID.fromString(config.getString("uuid"));
         this.item = (SItem) config.get("item");
         this.starter = config.getLong("starter");
@@ -90,8 +83,7 @@ public class AuctionItem
         this.bin = config.getBoolean("bin");
     }
 
-    public void save()
-    {
+    public void save() {
         config.set("uuid", uuid.toString());
         config.set("item", item);
         config.set("starter", starter);
@@ -106,31 +98,25 @@ public class AuctionItem
         config.save();
     }
 
-    public boolean delete()
-    {
+    public boolean delete() {
         this.config = null;
         AUCTION_ITEM_CACHE.remove(uuid);
         return new File(AUCTION_ITEM_FOLDER, uuid.toString() + ".yml").delete();
     }
 
-    public User getOwner()
-    {
+    public User getOwner() {
         return User.getUser(owner);
     }
 
-    public boolean isExpired()
-    {
+    public boolean isExpired() {
         return System.currentTimeMillis() >= end;
     }
 
-    public User getTopBidder()
-    {
+    public User getTopBidder() {
         UUID uuid = null;
         long b = 0;
-        for (AuctionBid bid : bids)
-        {
-            if (bid.getAmount() > b)
-            {
+        for (AuctionBid bid : bids) {
+            if (bid.getAmount() > b) {
                 uuid = bid.getBidder();
                 b = bid.getAmount();
             }
@@ -138,14 +124,11 @@ public class AuctionItem
         return User.getUser(uuid);
     }
 
-    public AuctionBid getTopBid()
-    {
+    public AuctionBid getTopBid() {
         AuctionBid b = null;
         long l = 0;
-        for (AuctionBid bid : bids)
-        {
-            if (bid.getAmount() > l)
-            {
+        for (AuctionBid bid : bids) {
+            if (bid.getAmount() > l) {
                 l = bid.getAmount();
                 b = bid;
             }
@@ -153,34 +136,28 @@ public class AuctionItem
         return b;
     }
 
-    public long getTopBidAmount()
-    {
+    public long getTopBidAmount() {
         long b = 0;
-        for (AuctionBid bid : bids)
-        {
+        for (AuctionBid bid : bids) {
             if (bid.getAmount() > b)
                 b = bid.getAmount();
         }
         return b;
     }
 
-    public AuctionBid getRecentBid()
-    {
+    public AuctionBid getRecentBid() {
         return bids.size() == 0 ? null : bids.get(bids.size() - 1);
     }
 
-    public long nextBid()
-    {
+    public long nextBid() {
         long top = getTopBidAmount();
         if (top == 0)
             return starter;
         return Math.round(top * 1.15D);
     }
 
-    public AuctionBid getBid(UUID uuid)
-    {
-        for (int i = bids.size() - 1; i >= 0; i--)
-        {
+    public AuctionBid getBid(UUID uuid) {
+        for (int i = bids.size() - 1; i >= 0; i--) {
             AuctionBid bid = bids.get(i);
             if (bid.getBidder().equals(uuid))
                 return bid;
@@ -188,18 +165,15 @@ public class AuctionItem
         return null;
     }
 
-    public AuctionBid getBid(User user)
-    {
+    public AuctionBid getBid(User user) {
         return getBid(user.getUuid());
     }
 
-    public void claim(Player player)
-    {
+    public void claim(Player player) {
         if (!participants.contains(player.getUniqueId()))
             return;
         User user = User.getUser(player.getUniqueId());
-        if (player.getUniqueId().equals(owner))
-        {
+        if (player.getUniqueId().equals(owner)) {
             if (bids.size() == 0)
                 player.getInventory().addItem(item.getStack());
             else
@@ -220,23 +194,20 @@ public class AuctionItem
         removeParticipant(player.getUniqueId());
     }
 
-    public void removeParticipant(UUID uuid)
-    {
+    public void removeParticipant(UUID uuid) {
         participants.removeIf(uuid::equals);
         if (participants.size() == 0)
             delete();
     }
 
-    public void bid(User user, long amount)
-    {
+    public void bid(User user, long amount) {
         if (!participants.contains(user.getUuid()))
             participants.add(user.getUuid());
         AuctionBid prev = getBid(user);
         user.subCoins(amount - (prev != null ? prev.getAmount() : 0));
         bids.add(new AuctionBid(user.getUuid(), amount, System.currentTimeMillis()));
         String bidder = Bukkit.getOfflinePlayer(user.getUuid()).getName();
-        if (bin)
-        {
+        if (bin) {
             messageOwner(ChatColor.GOLD + "[Auction] " + ChatColor.GREEN + bidder + ChatColor.YELLOW + " bought " + item.getFullName() + ChatColor.YELLOW + " for " +
                     ChatColor.GOLD + SUtil.commaify(starter) + " coin" + (starter != 1 ? "s" : ""));
             end();
@@ -247,8 +218,7 @@ public class AuctionItem
         }
         messageOwner(ChatColor.GOLD + "[Auction] " + ChatColor.GREEN + bidder + ChatColor.YELLOW + " bid " +
                 ChatColor.GOLD + SUtil.commaify(starter) + " coin" + (starter != 1 ? "s" : "") + ChatColor.YELLOW + " on " + item.getFullName());
-        for (UUID participant : participants)
-        {
+        for (UUID participant : participants) {
             if (participant.equals(user.getUuid()))
                 continue;
             Player player = Bukkit.getPlayer(participant);
@@ -263,26 +233,22 @@ public class AuctionItem
         }
     }
 
-    public void messageOwner(String message)
-    {
+    public void messageOwner(String message) {
         User ou = getOwner();
         Player owner = Bukkit.getPlayer(ou.getUuid());
         if (owner != null)
             owner.sendMessage(message);
     }
 
-    public void end()
-    {
+    public void end() {
         this.end = System.currentTimeMillis() - 1;
     }
 
-    public long getRemaining()
-    {
+    public long getRemaining() {
         return Math.max(0L, end - System.currentTimeMillis());
     }
 
-    public ItemStack getDisplayItem(boolean inspect, boolean yourAuction)
-    {
+    public ItemStack getDisplayItem(boolean inspect, boolean yourAuction) {
         ItemStack stack = item.getStack().clone();
         ItemMeta meta = stack.getItemMeta();
         List<String> lore = meta.getLore();
@@ -293,22 +259,19 @@ public class AuctionItem
             lore.add(ChatColor.GRAY + "Buy it now: " + ChatColor.GOLD + SUtil.commaify(starter) + " coins");
         else if (top == null)
             lore.add(ChatColor.GRAY + "Starting bid: " + ChatColor.GOLD + SUtil.commaify(starter) + " coins");
-        else
-        {
+        else {
             lore.add(ChatColor.GRAY + "Bids: " + ChatColor.GREEN + bids.size() + " bids");
             lore.add(" ");
             lore.add(ChatColor.GRAY + "Top bid: " + ChatColor.GOLD + SUtil.commaify(getTopBidAmount()) + " coins");
             lore.add(ChatColor.GRAY + "Bidder: " + ChatColor.GREEN + Bukkit.getOfflinePlayer(top.getUuid()).getName());
         }
-        if (yourAuction)
-        {
+        if (yourAuction) {
             lore.add(" ");
             lore.add(ChatColor.GREEN + "This is your own auction!");
         }
         lore.add(" ");
         lore.add(ChatColor.GRAY + "Ends in: " + ChatColor.YELLOW + SUtil.getAuctionFormattedTime(getRemaining()));
-        if (inspect)
-        {
+        if (inspect) {
             lore.add(" ");
             lore.add(ChatColor.YELLOW + "Click to inspect!");
         }
@@ -318,18 +281,15 @@ public class AuctionItem
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "AuctionItem{uuid=" + uuid.toString() + ", item=" + item.toString() + ", bids=" + bids.toString() + ", end=" + end + "}";
     }
 
-    public static AuctionItem createAuction(SItem item, long starter, long end, UUID owner, boolean bin)
-    {
+    public static AuctionItem createAuction(SItem item, long starter, long end, UUID owner, boolean bin) {
         return new AuctionItem(UUID.randomUUID(), item, starter, end, owner, new ArrayList<>(Collections.singletonList(owner)), bin);
     }
 
-    public static AuctionItem getAuction(UUID uuid)
-    {
+    public static AuctionItem getAuction(UUID uuid) {
         if (AUCTION_ITEM_CACHE.containsKey(uuid))
             return AUCTION_ITEM_CACHE.get(uuid);
         if (!new File(AUCTION_ITEM_FOLDER, uuid.toString() + ".yml").exists())
@@ -337,15 +297,13 @@ public class AuctionItem
         return new AuctionItem(uuid, null, 0L, 0L, null, new ArrayList<>(), false);
     }
 
-    public static Collection<AuctionItem> getAuctions()
-    {
+    public static Collection<AuctionItem> getAuctions() {
         if (AUCTION_ITEM_FOLDER == null || !AUCTION_ITEM_FOLDER.exists())
             return new ArrayList<>();
         return AUCTION_ITEM_CACHE.values();
     }
 
-    public static List<AuctionItem> getOwnedAuctions(String name)
-    {
+    public static List<AuctionItem> getOwnedAuctions(String name) {
         OfflinePlayer player = Bukkit.getOfflinePlayer(name);
         if (player == null)
             return null;
@@ -355,8 +313,7 @@ public class AuctionItem
         return user.getAuctions();
     }
 
-    public static CompletableFuture<List<AuctionItem>> search(AuctionSettings settings)
-    {
+    public static CompletableFuture<List<AuctionItem>> search(AuctionSettings settings) {
         return CompletableFuture.supplyAsync(() ->
         {
             Stream<AuctionItem> items = getAuctions().stream();
@@ -364,8 +321,7 @@ public class AuctionItem
             // filter for category
             items = items.filter((item) -> item.getItem().getType().getStatistics().getCategory() == settings.getCategory());
             // filter for query
-            if (settings.getQuery() != null)
-            {
+            if (settings.getQuery() != null) {
                 items = items.filter((item) ->
                 {
                     String query = settings.getQuery().toLowerCase();
@@ -377,12 +333,10 @@ public class AuctionItem
             // sort
             items = items.sorted((i1, i2) ->
             {
-                switch (settings.getSort())
-                {
+                switch (settings.getSort()) {
                     case HIGHEST_BID:
                         return Long.compare(i1.getTopBidAmount(), i2.getTopBidAmount());
-                    case LOWEST_BID:
-                    {
+                    case LOWEST_BID: {
                         if (i1.getTopBidAmount() < i2.getTopBidAmount())
                             return 1;
                         else if (i2.getTopBidAmount() > i1.getTopBidAmount())
@@ -399,8 +353,7 @@ public class AuctionItem
             });
             if (settings.getTier() != null)
                 items = items.filter((item) -> item.getItem().getRarity() == settings.getTier());
-            switch (settings.getType())
-            {
+            switch (settings.getType()) {
                 case AUCTIONS_ONLY:
                     items = items.filter((item) -> !item.isBin());
                     break;
@@ -412,23 +365,18 @@ public class AuctionItem
         });
     }
 
-    public static void loadAuctionsFromDisk()
-    {
+    public static void loadAuctionsFromDisk() {
         if (!AUCTION_ITEM_FOLDER.exists())
             return;
-        for (File f : Objects.requireNonNull(AUCTION_ITEM_FOLDER.listFiles()))
-        {
+        for (File f : Objects.requireNonNull(AUCTION_ITEM_FOLDER.listFiles())) {
             String name = f.getName();
             if (!name.endsWith(".yml"))
                 continue;
             name = name.substring(0, name.length() - 4);
             UUID uuid;
-            try
-            {
+            try {
                 uuid = UUID.fromString(name);
-            }
-            catch (IllegalArgumentException ex)
-            {
+            } catch (IllegalArgumentException ex) {
                 continue;
             }
             getAuction(uuid);

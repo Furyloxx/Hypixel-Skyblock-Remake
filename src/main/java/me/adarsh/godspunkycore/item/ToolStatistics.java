@@ -2,8 +2,7 @@ package me.adarsh.godspunkycore.item;
 
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 
-public interface ToolStatistics extends PlayerBoostStatistics, Enchantable, Reforgable
-{
+public interface ToolStatistics extends PlayerBoostStatistics, Enchantable, Reforgable {
     @Override
     String getDisplayName();
 
@@ -14,14 +13,12 @@ public interface ToolStatistics extends PlayerBoostStatistics, Enchantable, Refo
     GenericItemType getType();
 
     @Override
-    default boolean isStackable()
-    {
+    default boolean isStackable() {
         return false;
     }
 
     @Override
-    default NBTTagCompound getData()
-    {
+    default NBTTagCompound getData() {
         return new NBTTagCompound();
     }
 }

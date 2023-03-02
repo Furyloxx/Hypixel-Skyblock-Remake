@@ -12,8 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-public class YourBidsGUI extends GUI
-{
+public class YourBidsGUI extends GUI {
     private static final int[] INTERIOR = new int[]{
             10, 11, 12, 13, 14, 15, 16,
             19, 20, 21, 22, 23, 24, 25,
@@ -23,42 +22,34 @@ public class YourBidsGUI extends GUI
 
     private List<AuctionItem> items;
 
-    public YourBidsGUI()
-    {
+    public YourBidsGUI() {
         super("Your Bids", 27);
         border(BLACK_STAINED_GLASS_PANE);
     }
 
     @Override
-    public void early(Player player)
-    {
+    public void early(Player player) {
         User user = User.getUser(player.getUniqueId());
         this.items = user.getBids();
         this.size = Math.max(54, (((Double) Math.ceil(items.size() / 7.0)).intValue() * 9) + 18);
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e)
-    {
+    public void onOpen(GUIOpenEvent e) {
         Player player = e.getPlayer();
         if (items == null)
             return;
         int ended = 0;
-        for (AuctionItem item : items)
-        {
+        for (AuctionItem item : items) {
             if (item.isExpired())
                 ended++;
         }
-        if (ended != 0)
-        {
+        if (ended != 0) {
             int finalEnded = ended;
-            set(new GUIClickableItem()
-            {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
-                    for (AuctionItem item : items)
-                    {
+                public void run(InventoryClickEvent e) {
+                    for (AuctionItem item : items) {
                         if (item.isExpired())
                             item.claim(player);
                     }
@@ -66,14 +57,12 @@ public class YourBidsGUI extends GUI
                 }
 
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return 21;
                 }
 
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     List<String> lore = new ArrayList<>();
                     lore.add(ChatColor.DARK_GRAY + "Ended Auctions");
                     lore.add(" ");
@@ -87,59 +76,51 @@ public class YourBidsGUI extends GUI
             });
         }
         set(GUIClickableItem.createGUIOpenerItem(GUIType.AUCTION_HOUSE, player, ChatColor.GREEN + "Go Back", 22, Material.ARROW, ChatColor.GRAY + "To Auction House"));
-        for (int i = 0; i < items.size(); i++)
-        {
+        for (int i = 0; i < items.size(); i++) {
             AuctionItem item = items.get(i);
             int slot = INTERIOR[i];
-            set(new GUIClickableItem()
-            {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
+                public void run(InventoryClickEvent e) {
                     new AuctionViewGUI(item, YourBidsGUI.this).open(player);
                 }
+
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return slot;
                 }
+
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return item.getDisplayItem(true, true);
                 }
             });
         }
     }
 
-    private enum Sort
-    {
+    private enum Sort {
         RECENTLY_UPDATED("Recently Updated"),
         HIGHEST_BID("Highest Bid"),
         MOST_BIDS("Most Bids");
 
         private final String display;
 
-        Sort(String display)
-        {
+        Sort(String display) {
             this.display = display;
         }
 
-        public String getDisplay()
-        {
+        public String getDisplay() {
             return display;
         }
 
-        public Sort previous()
-        {
+        public Sort previous() {
             int prev = ordinal() - 1;
             if (prev < 0)
                 return values()[values().length - 1];
             return values()[prev];
         }
 
-        public Sort next()
-        {
+        public Sort next() {
             int nex = ordinal() + 1;
             if (nex > values().length - 1)
                 return values()[0];

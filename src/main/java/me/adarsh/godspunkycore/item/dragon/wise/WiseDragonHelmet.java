@@ -2,59 +2,49 @@ package me.adarsh.godspunkycore.item.dragon.wise;
 
 import me.adarsh.godspunkycore.item.*;
 
-public class WiseDragonHelmet implements MaterialFunction, SkullStatistics, ToolStatistics
-{
+public class WiseDragonHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override
-    public double getBaseIntelligence()
-    {
+    public double getBaseIntelligence() {
         return 125;
     }
 
     @Override
-    public double getBaseHealth()
-    {
+    public double getBaseHealth() {
         return 70;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 110;
     }
 
     @Override
-    public String getURL()
-    {
+    public String getURL() {
         return "5a2984cf07c48da9724816a8ff0864bc68bce694ce8bd6db2112b6ba031070de";
     }
 
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Wise Dragon Helmet";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.LEGENDARY;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ARMOR;
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.HELMET;
     }
 
     @Override
-    public String getLore()
-    {
+    public String getLore() {
         return null;
     }
 }

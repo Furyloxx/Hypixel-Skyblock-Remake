@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.item;
 
-public enum AbilityActivation
-{
+public enum AbilityActivation {
     RIGHT_CLICK,
     LEFT_CLICK,
     FLIGHT,

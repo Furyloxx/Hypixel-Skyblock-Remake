@@ -9,13 +9,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
 @CommandParameters(description = "Gets the NBT of your current item.", permission = "spt.item")
-public class NBTCommand extends SCommand
-{
+public class NBTCommand extends SCommand {
     @Override
-    public void run(CommandSource sender, String[] args)
-    {
+    public void run(CommandSource sender, String[] args) {
         if (args.length != 0) throw new CommandArgumentException();
-        if (sender instanceof ConsoleCommandSender) throw new CommandFailException("Console senders cannot use this command!");
+        if (sender instanceof ConsoleCommandSender)
+            throw new CommandFailException("Console senders cannot use this command!");
         Player player = sender.getPlayer();
         PlayerInventory inv = player.getInventory();
         ItemStack stack = CraftItemStack.asNMSCopy(inv.getItemInHand());

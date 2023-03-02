@@ -14,32 +14,27 @@ public class ShadowAssassinChestplate implements LeatherArmorStatistics, Materia
     }
 
     @Override
-    public double getBaseStrength()
-    {
+    public double getBaseStrength() {
         return 25;
     }
 
     @Override
-    public double getBaseCritDamage()
-    {
+    public double getBaseCritDamage() {
         return 0.25;
     }
 
     @Override
-    public double getBaseHealth()
-    {
+    public double getBaseHealth() {
         return 240;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 110;
     }
 
     @Override
-    public double getBaseSpeed()
-    {
+    public double getBaseSpeed() {
         return 0.07;
     }
 
@@ -59,8 +54,7 @@ public class ShadowAssassinChestplate implements LeatherArmorStatistics, Materia
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.CHESTPLATE;
     }
 }

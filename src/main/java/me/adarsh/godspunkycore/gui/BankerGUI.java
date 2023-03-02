@@ -8,25 +8,20 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class BankerGUI extends GUI
-{
-    public BankerGUI()
-    {
+public class BankerGUI extends GUI {
+    public BankerGUI() {
         super("Personal Bank Account", 36);
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e)
-    {
+    public void onOpen(GUIOpenEvent e) {
         Player player = e.getPlayer();
         User user = User.getUser(e.getPlayer().getUniqueId());
         fill(BLACK_STAINED_GLASS_PANE);
         set(GUIClickableItem.getCloseItem(31));
-        set(new GUIClickableItem()
-        {
+        set(new GUIClickableItem() {
             @Override
-            public ItemStack getItem()
-            {
+            public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.GREEN + "Deposit Coins", Material.CHEST, (short) 0, 1,
                         ChatColor.GRAY + "Current balance: " + ChatColor.GOLD + SUtil.commaify(user.getBankCoins()),
                         " ",
@@ -44,22 +39,18 @@ public class BankerGUI extends GUI
             }
 
             @Override
-            public void run(InventoryClickEvent e)
-            {
+            public void run(InventoryClickEvent e) {
                 GUIType.BANKER_DEPOSIT.getGUI().open(player);
             }
 
             @Override
-            public int getSlot()
-            {
+            public int getSlot() {
                 return 11;
             }
         });
-        set(new GUIClickableItem()
-        {
+        set(new GUIClickableItem() {
             @Override
-            public ItemStack getItem()
-            {
+            public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.GREEN + "Withdraw Coins", Material.DROPPER, (short) 0, 1,
                         ChatColor.GRAY + "Current balance: " + ChatColor.GOLD + SUtil.commaify(user.getBankCoins()),
                         " ",
@@ -71,14 +62,12 @@ public class BankerGUI extends GUI
             }
 
             @Override
-            public void run(InventoryClickEvent e)
-            {
+            public void run(InventoryClickEvent e) {
                 GUIType.BANKER_WITHDRAWAL.getGUI().open(player);
             }
 
             @Override
-            public int getSlot()
-            {
+            public int getSlot() {
                 return 13;
             }
         });

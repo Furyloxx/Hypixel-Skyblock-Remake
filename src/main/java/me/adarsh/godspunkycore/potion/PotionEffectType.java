@@ -14,8 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.BiConsumer;
 
-public class PotionEffectType
-{
+public class PotionEffectType {
     private static final Map<String, PotionEffectType> POTION_EFFECT_TYPE_CACHE = new HashMap<>();
 
     public static final PotionEffectType STRENGTH = new PotionEffectType(ChatColor.DARK_RED + "Strength", "strength",
@@ -27,8 +26,8 @@ public class PotionEffectType
     public static final PotionEffectType RABBIT = new PotionEffectType(ChatColor.GREEN + "Rabbit", "rabbit",
             "Grants Jump Boost %s and +%s Speed.", PotionColor.DARK_GREEN,
             (((effect, player) ->
-                PlayerUtils.replacePotionEffect(player, new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.JUMP, (int) effect.getDuration(),
-                        effect.getLevel() % 2 == 0 ? effect.getLevel() / 2 : (effect.getLevel() + 1) / 2)))),
+                    PlayerUtils.replacePotionEffect(player, new org.bukkit.potion.PotionEffect(org.bukkit.potion.PotionEffectType.JUMP, (int) effect.getDuration(),
+                            effect.getLevel() % 2 == 0 ? effect.getLevel() / 2 : (effect.getLevel() + 1) / 2)))),
             ((statistics, slot, level) -> statistics.getSpeed().add(slot, level * 10.0 / 100.0)), false, true);
 
     public static final PotionEffectType HEALING = new PotionEffectType(ChatColor.RED + "Healing", "healing",
@@ -135,8 +134,7 @@ public class PotionEffectType
     private final boolean buff;
 
     public PotionEffectType(String name, String namespace, String description, PotionColor color,
-                            BiConsumer<PotionEffect, Player> onDrink, TriConsumer<PlayerStatistics, Integer, Integer> statsUpdate, boolean instant, boolean buff)
-    {
+                            BiConsumer<PotionEffect, Player> onDrink, TriConsumer<PlayerStatistics, Integer, Integer> statsUpdate, boolean instant, boolean buff) {
         this.name = name;
         this.namespace = namespace;
         this.description = description;
@@ -149,29 +147,24 @@ public class PotionEffectType
     }
 
     public PotionEffectType(String name, String namespace, String description, PotionColor color,
-                            TriConsumer<PlayerStatistics, Integer, Integer> statsUpdate, boolean instant, boolean buff)
-    {
+                            TriConsumer<PlayerStatistics, Integer, Integer> statsUpdate, boolean instant, boolean buff) {
         this(name, namespace, description, color, null, statsUpdate, instant, buff);
     }
 
     public PotionEffectType(String name, String namespace, String description, PotionColor color,
-                            BiConsumer<PotionEffect, Player> onDrink, boolean instant, boolean buff)
-    {
+                            BiConsumer<PotionEffect, Player> onDrink, boolean instant, boolean buff) {
         this(name, namespace, description, color, onDrink, null, instant, buff);
     }
 
-    public PotionEffectType(String name, String namespace, String description, PotionColor color, boolean instant, boolean buff)
-    {
+    public PotionEffectType(String name, String namespace, String description, PotionColor color, boolean instant, boolean buff) {
         this(name, namespace, description, color, null, null, instant, buff);
     }
 
-    public static PotionEffectType getByNamespace(String namespace)
-    {
+    public static PotionEffectType getByNamespace(String namespace) {
         return POTION_EFFECT_TYPE_CACHE.get(namespace.toLowerCase());
     }
 
-    public String getDescription(Object... objects)
-    {
+    public String getDescription(Object... objects) {
         String description = this.description;
         for (Object object : objects)
             description = description.replaceFirst("%s", String.valueOf(object));
@@ -179,8 +172,7 @@ public class PotionEffectType
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (!(o instanceof PotionEffectType)) return false;
         return ((PotionEffectType) o).namespace.equals(namespace);
     }

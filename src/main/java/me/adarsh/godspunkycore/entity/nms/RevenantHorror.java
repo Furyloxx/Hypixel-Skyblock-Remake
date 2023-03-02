@@ -22,8 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFunction, ZombieStatistics, SlayerBoss
-{
+public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFunction, ZombieStatistics, SlayerBoss {
     private static final TieredValue<Double> MAX_HEALTH_VALUES = new TieredValue<>(500.0, 20000.0, 400000.0, 1500000.0);
     private static final TieredValue<Double> DAMAGE_VALUES = new TieredValue<>(15.0, 50.0, 300.0, 1000.0);
     private static final TieredValue<Double> SPEED_VALUES = new TieredValue<>(0.35, 0.4, 0.45, 0.55);
@@ -34,8 +33,7 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
     private SEntity hologram;
     private final UUID spawnerUUID;
 
-    public RevenantHorror(Integer tier, UUID spawnerUUID)
-    {
+    public RevenantHorror(Integer tier, UUID spawnerUUID) {
         super(((CraftWorld) Bukkit.getWorlds().get(0)).getHandle());
         this.tier = tier;
         this.enraged = false;
@@ -43,8 +41,7 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
         this.spawnerUUID = spawnerUUID;
     }
 
-    public RevenantHorror(World world)
-    {
+    public RevenantHorror(World world) {
         super(world);
         this.tier = 1;
         this.enraged = false;
@@ -52,13 +49,11 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
         this.spawnerUUID = UUID.randomUUID();
     }
 
-    public void t_()
-    {
+    public void t_() {
         super.t_();
         Player player = Bukkit.getPlayer(spawnerUUID);
         if (player == null) return;
-        if (System.currentTimeMillis() > end)
-        {
+        if (System.currentTimeMillis() > end) {
             User.getUser(player.getUniqueId()).failSlayerQuest();
             return;
         }
@@ -71,10 +66,8 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
             this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(getMovementSpeed());
             player.playSound(player.getLocation(), Sound.ZOMBIE_WOODBREAK, 1f, 1f);
             player.setVelocity(new Vector(SUtil.random(-1.0, 1.0), SUtil.random(0.0, 0.5), SUtil.random(-1.0, 1.0)));
-            new BukkitRunnable()
-            {
-                public void run()
-                {
+            new BukkitRunnable() {
+                public void run() {
                     enraged = false;
                     RevenantHorror.this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(getMovementSpeed());
                 }
@@ -83,18 +76,14 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
     }
 
     @Override
-    public void onSpawn(LivingEntity entity, SEntity sEntity)
-    {
+    public void onSpawn(LivingEntity entity, SEntity sEntity) {
         hologram = new SEntity(entity.getLocation().add(0, 2.3, 0), SEntityType.UNCOLLIDABLE_ARMOR_STAND);
         ((ArmorStand) hologram.getEntity()).setVisible(false);
         ((ArmorStand) hologram.getEntity()).setGravity(false);
         hologram.getEntity().setCustomNameVisible(true);
-        new BukkitRunnable()
-        {
-            public void run()
-            {
-                if (entity.isDead())
-                {
+        new BukkitRunnable() {
+            public void run() {
+                if (entity.isDead()) {
                     cancel();
                     return;
                 }
@@ -106,12 +95,9 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
         }.runTaskTimer(Spectaculation.getPlugin(), 60, 60);
         if (tier >= 2) // pestilence
         {
-            new BukkitRunnable()
-            {
-                public void run()
-                {
-                    if (entity.isDead())
-                    {
+            new BukkitRunnable() {
+                public void run() {
+                    if (entity.isDead()) {
                         cancel();
                         return;
                     }
@@ -125,37 +111,31 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
     }
 
     @Override
-    public void onDeath(SEntity sEntity, Entity killed, Entity damager)
-    {
+    public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
         hologram.remove();
     }
 
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Revenant Horror";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return MAX_HEALTH_VALUES.getByNumber(tier);
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return DAMAGE_VALUES.getByNumber(tier) * (enraged ? 1.8 : 1.0);
     }
 
     @Override
-    public double getMovementSpeed()
-    {
+    public double getMovementSpeed() {
         return SPEED_VALUES.getByNumber(tier) * (enraged ? 1.05 : 1.0);
     }
 
-    public SEntityEquipment getEntityEquipment()
-    {
+    public SEntityEquipment getEntityEquipment() {
         return new SEntityEquipment(new ItemStack(Material.DIAMOND_HOE),
                 SItem.of(SMaterial.REVENANT_HORROR_HEAD).getStack(),
                 new ItemStack(Material.DIAMOND_CHESTPLATE),
@@ -164,8 +144,7 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
     }
 
     @Override
-    public LivingEntity spawn(Location location)
-    {
+    public LivingEntity spawn(Location location) {
         this.world = ((CraftWorld) location.getWorld()).getHandle();
         this.setPosition(location.getX(), location.getY(), location.getZ());
         this.world.addEntity(this, CreatureSpawnEvent.SpawnReason.CUSTOM);
@@ -173,8 +152,7 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
     }
 
     @Override
-    public List<EntityDrop> drops()
-    {
+    public List<EntityDrop> drops() {
         List<EntityDrop> drops = new ArrayList<>();
         int revFlesh = SUtil.random(1, 3);
         if (tier == 2) revFlesh = SUtil.random(9, 18);
@@ -182,8 +160,7 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
         if (tier == 4) revFlesh = SUtil.random(50, 64);
         drops.add(new EntityDrop(SUtil.setStackAmount(SItem.of(SMaterial.REVENANT_FLESH).getStack(), revFlesh),
                 EntityDropType.GUARANTEED, 1.0));
-        if (tier >= 2)
-        {
+        if (tier >= 2) {
             int foulFlesh = 1;
             if (tier == 3) foulFlesh = SUtil.random(1, 2);
             if (tier == 4) foulFlesh = SUtil.random(2, 3);
@@ -193,41 +170,35 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
             drops.add(new EntityDrop(SMaterial.UNDEAD_CATALYST, EntityDropType.EXTRAORDINARILY_RARE, 0.01));
             drops.add(new EntityDrop(SMaterial.REVENANT_CATALYST, EntityDropType.EXTRAORDINARILY_RARE, 0.01));
         }
-        if (tier >= 3)
-        {
+        if (tier >= 3) {
             SItem smiteBook = SItem.of(SMaterial.ENCHANTED_BOOK);
             smiteBook.addEnchantment(EnchantmentType.SMITE, 6);
             drops.add(new EntityDrop(smiteBook.getStack(), EntityDropType.EXTRAORDINARILY_RARE, 0.01));
             drops.add(new EntityDrop(SMaterial.BEHEADED_HORROR, EntityDropType.CRAZY_RARE, 0.005));
         }
-        if (tier >= 4)
-        {
+        if (tier >= 4) {
             drops.add(new EntityDrop(SMaterial.SNAKE_RUNE, EntityDropType.CRAZY_RARE, 0.005));
             drops.add(new EntityDrop(SMaterial.SCYTHE_BLADE, EntityDropType.CRAZY_RARE, 7.0 / 13000.0));
         }
         return drops;
     }
 
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 0.0;
     }
 
     @Override
-    public boolean isBaby()
-    {
+    public boolean isBaby() {
         return false;
     }
 
     @Override
-    public boolean isVillager()
-    {
+    public boolean isVillager() {
         return false;
     }
 
     @Override
-    public UUID getSpawnerUUID()
-    {
+    public UUID getSpawnerUUID() {
         return spawnerUUID;
     }
 }

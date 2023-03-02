@@ -7,41 +7,34 @@ import me.adarsh.godspunkycore.item.Rarity;
 import me.adarsh.godspunkycore.item.armor.ArmorSet;
 import org.bukkit.entity.Player;
 
-public class LapisArmorSet implements ArmorSet
-{
+public class LapisArmorSet implements ArmorSet {
     @Override
-    public String getName()
-    {
+    public String getName() {
         return "Health";
     }
 
     @Override
-    public String getDescription()
-    {
+    public String getDescription() {
         return "Increases the wearer's maximum Health by 60.";
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getHelmet()
-    {
+    public Class<? extends MaterialStatistics> getHelmet() {
         return LapisArmorHelmet.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getChestplate()
-    {
+    public Class<? extends MaterialStatistics> getChestplate() {
         return LapisArmorChestplate.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getLeggings()
-    {
+    public Class<? extends MaterialStatistics> getLeggings() {
         return LapisArmorLeggings.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getBoots()
-    {
+    public Class<? extends MaterialStatistics> getBoots() {
         return LapisArmorBoots.class;
     }
 
@@ -49,26 +42,22 @@ public class LapisArmorSet implements ArmorSet
     public PlayerBoostStatistics whileHasFullSet(Player player) {
         return new PlayerBoostStatistics() {
             @Override
-            public String getDisplayName()
-            {
+            public String getDisplayName() {
                 return null;
             }
 
             @Override
-            public Rarity getRarity()
-            {
+            public Rarity getRarity() {
                 return null;
             }
 
             @Override
-            public GenericItemType getType()
-            {
+            public GenericItemType getType() {
                 return null;
             }
 
             @Override
-            public double getBaseHealth()
-            {
+            public double getBaseHealth() {
                 return 60;
             }
         };

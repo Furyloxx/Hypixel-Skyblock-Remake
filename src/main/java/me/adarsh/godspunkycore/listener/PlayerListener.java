@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.listener;
 
 import com.google.common.util.concurrent.AtomicDouble;
-import com.sk89q.worldedit.bukkit.adapter.impl.CraftBukkit_v1_7_R4;
 import me.adarsh.godspunkycore.Spectaculation;
 import me.adarsh.godspunkycore.enchantment.Enchantment;
 import me.adarsh.godspunkycore.enchantment.EnchantmentType;
@@ -22,10 +21,7 @@ import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.*;
-import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -105,7 +101,8 @@ public class PlayerListener extends PListener {
             PlayerUtils.STATISTICS_CACHE.put(player.getUniqueId(), PlayerUtils.getStatistics(player));
         for (Skill skill : Skill.getSkills())
             skill.onSkillUpdate(user, user.getSkillXP(skill));
-        PlayerUtils.sendToIsland(player);
+        player.sendMessage(SUtil.getRandomVisibleColor() + "[GodSpunky] : Sending to island , Please wait");
+        SUtil.delay(() -> PlayerUtils.sendToIsland(player), 20);
     }
 
 
@@ -436,17 +433,17 @@ public class PlayerListener extends PListener {
                 e.getWhoClicked().closeInventory();
                 World targetworld = Bukkit.getWorld("islands");
                 OfflinePlayer op = Bukkit.getOfflinePlayer(name);
-                    if (op.hasPlayedBefore()) {
-                        UUID uuid = op.getUniqueId();
-                        User user = User.getUser(uuid);
-                        player.teleport(targetworld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
-                                SUtil.blackMagic(user.getIslandZ())).getLocation().add(0.5, 1.0, 0.5));
-                        player.sendMessage(ChatColor.GREEN + "" + "[GodSpunky] : " + "Visiting " + name + " island");
-                    }
+                if (op.hasPlayedBefore()) {
+                    UUID uuid = op.getUniqueId();
+                    User user = User.getUser(uuid);
+                    player.teleport(targetworld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
+                            SUtil.blackMagic(user.getIslandZ())).getLocation().add(0.5, 1.0, 0.5));
+                    player.sendMessage(ChatColor.GREEN + "" + "[GodSpunky] : " + "Visiting " + name + " island");
                 }
             }
         }
     }
+}
 
 
 

@@ -17,17 +17,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.stream.Collectors;
 
-public abstract class BaseWolf implements WolfStatistics, EntityFunction
-{
+public abstract class BaseWolf implements WolfStatistics, EntityFunction {
     private LivingEntity target;
 
     @Override
-    public void onSpawn(LivingEntity entity, SEntity sEntity)
-    {
-        new BukkitRunnable()
-        {
-            public void run()
-            {
+    public void onSpawn(LivingEntity entity, SEntity sEntity) {
+        new BukkitRunnable() {
+            public void run() {
                 if (entity.isDead())
                     return;
                 if (target == null || target.isDead())
@@ -46,8 +42,7 @@ public abstract class BaseWolf implements WolfStatistics, EntityFunction
     }
 
     @Override
-    public void onDeath(SEntity sEntity, Entity killed, Entity damager)
-    {
+    public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
         if (!(damager instanceof Player)) return;
         Player player = (Player) damager;
         User user = User.getUser(player.getUniqueId());
@@ -55,20 +50,17 @@ public abstract class BaseWolf implements WolfStatistics, EntityFunction
         if (quest == null) return;
         if (quest.getSpawned() != 0) return;
         Location k = killed.getLocation().clone();
-        if (SUtil.random(0, 8) == 0 && quest.getType().getTier() >= 3)
-        {
+        if (SUtil.random(0, 8) == 0 && quest.getType().getTier() >= 3) {
             SlayerQuest.playMinibossSpawn(k, player);
             SUtil.delay(() -> new SEntity(k, SEntityType.SVEN_FOLLOWER).setTarget(player), 12);
             return;
         }
-        if (SUtil.random(0, 12) == 0 && quest.getType().getTier() >= 4)
-        {
+        if (SUtil.random(0, 12) == 0 && quest.getType().getTier() >= 4) {
             SlayerQuest.playMinibossSpawn(k, player);
             SUtil.delay(() -> new SEntity(k, SEntityType.PACK_ENFORCER).setTarget(player), 12);
             return;
         }
-        if (SUtil.random(0, 25) == 0 && quest.getType().getTier() >= 4)
-        {
+        if (SUtil.random(0, 25) == 0 && quest.getType().getTier() >= 4) {
             SlayerQuest.playMinibossSpawn(k, player);
             SUtil.delay(() -> new SEntity(k, SEntityType.SVEN_ALPHA).setTarget(player), 12);
         }

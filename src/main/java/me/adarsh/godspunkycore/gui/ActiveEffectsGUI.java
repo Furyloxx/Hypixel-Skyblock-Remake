@@ -16,8 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ActiveEffectsGUI extends GUI
-{
+public class ActiveEffectsGUI extends GUI {
     private static final int[] INTERIOR = new int[]{
             10, 11, 12, 13, 14, 15, 16,
             19, 20, 21, 22, 23, 24, 25,
@@ -27,20 +26,17 @@ public class ActiveEffectsGUI extends GUI
 
     private int page;
 
-    public ActiveEffectsGUI(int page)
-    {
+    public ActiveEffectsGUI(int page) {
         super("Active Effects", 54);
         this.page = page;
     }
 
-    public ActiveEffectsGUI()
-    {
+    public ActiveEffectsGUI() {
         this(1);
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e)
-    {
+    public void onOpen(GUIOpenEvent e) {
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
         border(BLACK_STAINED_GLASS_PANE);
@@ -49,63 +45,56 @@ public class ActiveEffectsGUI extends GUI
         if (paged.size() == 0) page = 0;
         int finalPage = page;
         this.title = "(" + page + "/" + paged.getPageCount() + ") Active Effects";
-        if (page > 1)
-        {
-            set(new GUIClickableItem()
-            {
+        if (page > 1) {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
+                public void run(InventoryClickEvent e) {
                     new ActiveEffectsGUI(finalPage - 1).open((Player) e.getWhoClicked());
                 }
+
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return 45;
                 }
+
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return SUtil.createNamedItemStack(Material.ARROW, ChatColor.GRAY + "<-");
                 }
             });
         }
-        if (page != paged.getPageCount())
-        {
-            set(new GUIClickableItem()
-            {
+        if (page != paged.getPageCount()) {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
+                public void run(InventoryClickEvent e) {
                     new ActiveEffectsGUI(finalPage + 1).open((Player) e.getWhoClicked());
                 }
+
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return 53;
                 }
+
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return SUtil.createNamedItemStack(Material.ARROW, ChatColor.GRAY + "->");
                 }
             });
         }
         set(4, SUtil.getStack(ChatColor.GREEN + "Active Effects", Material.POTION, (short) 0, 1,
-            ChatColor.GRAY + "View and manage all of your",
-            ChatColor.GRAY + "active potion effects.",
-            " ",
-            ChatColor.GRAY + "Drink Potions or splash them",
-            ChatColor.GRAY + "on the ground to buff yourself!",
-            " ",
-            ChatColor.GRAY + "Currently Active: " + ChatColor.YELLOW + user.getEffects().size()));
+                ChatColor.GRAY + "View and manage all of your",
+                ChatColor.GRAY + "active potion effects.",
+                " ",
+                ChatColor.GRAY + "Drink Potions or splash them",
+                ChatColor.GRAY + "on the ground to buff yourself!",
+                " ",
+                ChatColor.GRAY + "Currently Active: " + ChatColor.YELLOW + user.getEffects().size()));
         set(GUIClickableItem.createGUIOpenerItem(GUIType.SKYBLOCK_MENU, player, ChatColor.GREEN + "Go Back", 48,
                 Material.ARROW, ChatColor.GRAY + "To SkyBlock Menu"));
         set(GUIClickableItem.getCloseItem(49));
         List<ActivePotionEffect> p = paged.getPage(page);
         if (p == null) return;
-        for (int i = 0; i < p.size(); i++)
-        {
+        for (int i = 0; i < p.size(); i++) {
             int slot = INTERIOR[i];
             ActivePotionEffect effect = p.get(i);
             List<String> lore = new ArrayList<>(Arrays.asList(" "));
@@ -118,10 +107,8 @@ public class ActiveEffectsGUI extends GUI
             set(slot, SUtil.getStack(effect.getEffect().getType().getName() + " " + SUtil.toRomanNumeral(effect.getEffect().getLevel()),
                     Material.POTION, effect.getEffect().getType().getColor().getData(), 1, lore));
         }
-        new BukkitRunnable()
-        {
-            public void run()
-            {
+        new BukkitRunnable() {
+            public void run() {
                 if (ActiveEffectsGUI.this != GUI_MAP.get(player.getUniqueId()))
                     return;
                 new ActiveEffectsGUI(page).open(player);

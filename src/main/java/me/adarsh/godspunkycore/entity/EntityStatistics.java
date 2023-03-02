@@ -1,33 +1,35 @@
 package me.adarsh.godspunkycore.entity;
 
-public interface EntityStatistics
-{
+public interface EntityStatistics {
     String getEntityName();
+
     double getEntityMaxHealth();
+
     double getDamageDealt();
+
     double getXPDropped();
-    default SEntityEquipment getEntityEquipment()
-    {
+
+    default SEntityEquipment getEntityEquipment() {
         return null;
     }
-    default double getMovementSpeed()
-    {
+
+    default double getMovementSpeed() {
         return -1.0;
     }
-    default boolean dealsTrueDamage()
-    {
+
+    default boolean dealsTrueDamage() {
         return false;
     }
-    default boolean hasNameTag()
-    {
+
+    default boolean hasNameTag() {
         return true;
     }
-    default boolean removeWhenFarAway()
-    {
+
+    default boolean removeWhenFarAway() {
         return false;
     }
-    default boolean isVisible()
-    {
+
+    default boolean isVisible() {
         return true;
     }
 }

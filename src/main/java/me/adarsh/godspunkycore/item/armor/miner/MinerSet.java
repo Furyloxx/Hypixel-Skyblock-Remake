@@ -15,53 +15,44 @@ import org.bukkit.entity.Player;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class MinerSet implements TickingSet
-{
+public class MinerSet implements TickingSet {
     @Override
-    public String getName()
-    {
+    public String getName() {
         return "Regeneration";
     }
 
     @Override
-    public String getDescription()
-    {
+    public String getDescription() {
         return "Regenerates 5% of your max Health every second if you have been out of combat for the last 8 seconds.";
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getHelmet()
-    {
+    public Class<? extends MaterialStatistics> getHelmet() {
         return MinerHelmet.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getChestplate()
-    {
+    public Class<? extends MaterialStatistics> getChestplate() {
         return MinerChestplate.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getLeggings()
-    {
+    public Class<? extends MaterialStatistics> getLeggings() {
         return MinerLeggings.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getBoots()
-    {
+    public Class<? extends MaterialStatistics> getBoots() {
         return MinerBoots.class;
     }
 
     @Override
-    public void tick(Player owner, SItem helmet, SItem chestplate, SItem leggings, SItem boots, List<AtomicInteger> counters)
-    {
+    public void tick(Player owner, SItem helmet, SItem chestplate, SItem leggings, SItem boots, List<AtomicInteger> counters) {
         PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(owner.getUniqueId());
         DoublePlayerStatistic defense = statistics.getDefense();
         PlayerListener.CombatAction action = PlayerListener.getLastCombatAction(owner);
         counters.get(0).incrementAndGet();
-        if ((action == null || (action.getTimeStamp() + 8000 <= System.currentTimeMillis() && helmet != null && chestplate != null && leggings != null && boots != null)) && counters.get(0).get() >= 2)
-        {
+        if ((action == null || (action.getTimeStamp() + 8000 <= System.currentTimeMillis() && helmet != null && chestplate != null && leggings != null && boots != null)) && counters.get(0).get() >= 2) {
             owner.setHealth(Math.min(owner.getMaxHealth(), owner.getHealth() + (owner.getMaxHealth() * 0.05)));
             counters.get(0).set(0);
         }

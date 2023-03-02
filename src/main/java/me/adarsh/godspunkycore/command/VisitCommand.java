@@ -22,25 +22,25 @@ public class VisitCommand extends SCommand implements Listener {
         if (sender instanceof ConsoleCommandSender)
             throw new CommandFailException("Console senders cannot use this command!");
         String target = args[0];
-            Inventory menu = Bukkit.createInventory(null, 36, "Visit " + target);
-            ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) SkullType.PLAYER.ordinal());
-            SkullMeta itemMeta = (SkullMeta) skull.getItemMeta();
-            itemMeta.setOwner(target);
-            List<String> lore = new ArrayList<>();
-            itemMeta.setDisplayName(ChatColor.GREEN + "Visit player island");
-            lore.add(ChatColor.GRAY + "Players:");
-            lore.add(ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + target);
-            lore.add(" ");
-            lore.add(ChatColor.GRAY + "Profile: " + ChatColor.YELLOW + "Strawberry");
-            lore.add(" ");
-            lore.add(ChatColor.GRAY + "Players: " + ChatColor.GREEN + target);
-            lore.add(ChatColor.GRAY + "Server: " + ChatColor.DARK_GRAY + "Island_" + target);
-            lore.add(" ");
-            lore.add(ChatColor.YELLOW + "Click to visit!");
-            itemMeta.setLore(lore);
-            skull.setItemMeta(itemMeta);
-            menu.setItem(13, skull);
-            player.openInventory(menu);
-        }
+        Inventory menu = Bukkit.createInventory(null, 36, "Visit " + target);
+        ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (byte) SkullType.PLAYER.ordinal());
+        SkullMeta itemMeta = (SkullMeta) skull.getItemMeta();
+        itemMeta.setOwner(target);
+        List<String> lore = new ArrayList<>();
+        itemMeta.setDisplayName(ChatColor.GREEN + "Visit player island");
+        lore.add(ChatColor.GRAY + "Players:");
+        lore.add(ChatColor.DARK_GRAY + " - " + ChatColor.GRAY + target);
+        lore.add(" ");
+        lore.add(ChatColor.GRAY + "Profile: " + ChatColor.YELLOW + "Strawberry");
+        lore.add(" ");
+        lore.add(ChatColor.GRAY + "Players: " + ChatColor.GREEN + target);
+        lore.add(ChatColor.GRAY + "Server: " + ChatColor.DARK_GRAY + "Island_" + target);
+        lore.add(" ");
+        lore.add(ChatColor.YELLOW + "Click to visit!");
+        itemMeta.setLore(lore);
+        skull.setItemMeta(itemMeta);
+        menu.setItem(13, skull);
+        player.openInventory(menu);
     }
+}
 

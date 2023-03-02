@@ -13,49 +13,41 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-public class EmeraldBlade implements ToolStatistics, MaterialFunction, Ownable
-{
+public class EmeraldBlade implements ToolStatistics, MaterialFunction, Ownable {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Emerald Blade";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.EPIC;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.WEAPON;
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.SWORD;
     }
 
     @Override
-    public int getBaseDamage()
-    {
+    public int getBaseDamage() {
         return 130;
     }
 
     @Override
-    public List<String> getListLore()
-    {
+    public List<String> getListLore() {
         return Arrays.asList("A powerful blade made from pure",
                 ChatColor.DARK_GREEN + "Emeralds" + ChatColor.GRAY + ". This blade becomes",
                 "stronger as you carry more", ChatColor.GOLD + "coins" + ChatColor.GRAY + " in your purse.");
     }
 
     @Override
-    public List<String> getDataLore(String key, Object value)
-    {
+    public List<String> getDataLore(String key, Object value) {
         if (!key.equals("owner")) return null;
         Player player = Bukkit.getPlayer(UUID.fromString(String.valueOf(value)));
         if (player == null) return null;
@@ -64,8 +56,7 @@ public class EmeraldBlade implements ToolStatistics, MaterialFunction, Ownable
     }
 
     @Override
-    public NBTTagCompound getData()
-    {
+    public NBTTagCompound getData() {
         return new NBTTagCompound();
     }
 }

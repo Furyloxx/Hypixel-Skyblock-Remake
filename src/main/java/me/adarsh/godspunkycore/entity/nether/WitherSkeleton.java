@@ -11,35 +11,29 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-public class WitherSkeleton implements SkeletonStatistics, EntityFunction
-{
+public class WitherSkeleton implements SkeletonStatistics, EntityFunction {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Wither Skeleton";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 250.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 152.0;
     }
 
     @Override
-    public boolean isWither()
-    {
+    public boolean isWither() {
         return true;
     }
 
     @Override
-    public List<EntityDrop> drops()
-    {
+    public List<EntityDrop> drops() {
         return Arrays.asList(new EntityDrop(new ItemStack(Material.BONE, 3), EntityDropType.GUARANTEED, 1.0),
                 new EntityDrop(SMaterial.COAL, EntityDropType.COMMON, 0.5),
                 new EntityDrop(SMaterial.ENCHANTED_COAL, EntityDropType.OCCASIONAL, 0.025),
@@ -47,8 +41,7 @@ public class WitherSkeleton implements SkeletonStatistics, EntityFunction
     }
 
     @Override
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 13.0;
     }
 }

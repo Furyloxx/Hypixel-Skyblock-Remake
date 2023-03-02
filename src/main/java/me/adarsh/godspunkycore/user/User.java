@@ -41,8 +41,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class User
-{
+public class User {
     public static final int ISLAND_SIZE = 125;
 
     private static final Map<UUID, User> USER_CACHE = new HashMap<>();
@@ -95,8 +94,7 @@ public class User
     @Setter
     private AuctionEscrow auctionEscrow;
 
-    private User(UUID uuid)
-    {
+    private User(UUID uuid) {
         this.uuid = uuid;
         this.collections = ItemCollection.getDefaultCollections();
         this.coins = 0;
@@ -121,16 +119,12 @@ public class User
         String path = uuid.toString() + ".yml";
         File configFile = new File(USER_FOLDER, path);
         boolean save = false;
-        try
-        {
-            if (!configFile.exists())
-            {
+        try {
+            if (!configFile.exists()) {
                 save = true;
                 configFile.createNewFile();
             }
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
         this.config = new Config(USER_FOLDER, path);
@@ -139,11 +133,9 @@ public class User
         load();
     }
 
-    public void load()
-    {
+    public void load() {
         this.uuid = UUID.fromString(config.getString("uuid"));
-        if (config.contains("collections"))
-        {
+        if (config.contains("collections")) {
             for (String identifier : config.getConfigurationSection("collections").getKeys(false))
                 this.collections.put(ItemCollection.getByIdentifier(identifier), config.getInt("collections." + identifier));
         }
@@ -152,15 +144,12 @@ public class User
         this.islandX = config.contains("island.x") ? config.getDouble("island.x") : null;
         this.islandZ = config.contains("island.z") ? config.getDouble("island.z") : null;
         this.lastRegion = config.getString("lastRegion") != null ? Region.get(config.getString("lastRegion")) : null;
-        if (config.contains("quiver"))
-        {
+        if (config.contains("quiver")) {
             for (String m : config.getConfigurationSection("quiver").getKeys(false))
                 this.quiver.put(SMaterial.getMaterial(m), config.getInt("quiver." + m));
         }
-        if (config.contains("effects"))
-        {
-            for (String key : config.getConfigurationSection("effects").getKeys(false))
-            {
+        if (config.contains("effects")) {
+            for (String key : config.getConfigurationSection("effects").getKeys(false)) {
                 this.effects.add(new ActivePotionEffect(new PotionEffect(PotionEffectType.getByNamespace(key),
                         config.getInt("effects." + key + ".level"), config.getLong("effects." + key + ".duration")),
                         config.getLong("effects." + key + ".remaining")));
@@ -178,8 +167,7 @@ public class User
         this.slayerXP[2] = config.getInt("xp.slayer.svenPackmaster");
         this.permanentCoins = config.getBoolean("permanentCoins");
         this.slayerQuest = (SlayerQuest) config.get("slayer.quest");
-        if (config.contains("pets"))
-        {
+        if (config.contains("pets")) {
             this.pets = (List<Pet.PetItem>) config.getList("pets");
         }
         this.auctionSettings = (AuctionSettings) config.get("auction.settings");
@@ -191,8 +179,7 @@ public class User
             this.auctionEscrow = new AuctionEscrow();
     }
 
-    public void save()
-    {
+    public void save() {
         config.set("uuid", uuid.toString());
         config.set("collections", null);
         for (Map.Entry<ItemCollection, Integer> entry : collections.entrySet())
@@ -207,8 +194,7 @@ public class User
         for (Map.Entry<SMaterial, Integer> entry : quiver.entrySet())
             config.set("quiver." + entry.getKey().name().toLowerCase(), entry.getValue());
         config.set("effects", null);
-        for (ActivePotionEffect effect : effects)
-        {
+        for (ActivePotionEffect effect : effects) {
             PotionEffectType type = effect.getEffect().getType();
             config.set("effects." + type.getNamespace() + ".level", effect.getEffect().getLevel());
             config.set("effects." + type.getNamespace() + ".duration", effect.getEffect().getDuration());
@@ -233,79 +219,65 @@ public class User
         config.save();
     }
 
-    public void setIslandLocation(double x, double z)
-    {
+    public void setIslandLocation(double x, double z) {
         this.islandX = x;
         this.islandZ = z;
     }
 
-    public void setLastRegion(Region lastRegion)
-    {
+    public void setLastRegion(Region lastRegion) {
         this.lastRegion = lastRegion;
     }
 
-    public void addCoins(long coins)
-    {
+    public void addCoins(long coins) {
         this.coins += coins;
     }
 
-    public void subCoins(long coins)
-    {
+    public void subCoins(long coins) {
         this.coins -= coins;
     }
 
-    public void setCoins(long coins)
-    {
+    public void setCoins(long coins) {
         this.coins = coins;
     }
 
-    public void addBankCoins(long bankCoins)
-    {
+    public void addBankCoins(long bankCoins) {
         this.bankCoins += bankCoins;
     }
 
-    public void subBankCoins(long bankCoins)
-    {
+    public void subBankCoins(long bankCoins) {
         this.bankCoins -= bankCoins;
     }
 
-    public void setBankCoins(long bankCoins)
-    {
+    public void setBankCoins(long bankCoins) {
         this.bankCoins = bankCoins;
     }
 
-    public void addToCollection(ItemCollection collection, int amount)
-    {
+    public void addToCollection(ItemCollection collection, int amount) {
         int prevTier = collection.getTier(getCollection(collection));
         int i = collections.getOrDefault(collection, 0);
         collections.put(collection, i + amount);
         updateCollection(collection, prevTier);
     }
 
-    public void addToCollection(ItemCollection collection)
-    {
+    public void addToCollection(ItemCollection collection) {
         addToCollection(collection, 1);
     }
 
-    public void setCollection(ItemCollection collection, int amount)
-    {
+    public void setCollection(ItemCollection collection, int amount) {
         int prevTier = collection.getTier(getCollection(collection));
         collections.put(collection, amount);
         updateCollection(collection, prevTier);
     }
 
-    public void zeroCollection(ItemCollection collection)
-    {
+    public void zeroCollection(ItemCollection collection) {
         int prevTier = collection.getTier(getCollection(collection));
         collections.put(collection, 0);
         updateCollection(collection, prevTier);
     }
 
-    private void updateCollection(ItemCollection collection, int prevTier)
-    {
+    private void updateCollection(ItemCollection collection, int prevTier) {
         int tier = collection.getTier(getCollection(collection));
-        if (prevTier != tier)
-        {
+        if (prevTier != tier) {
             Player player = Bukkit.getPlayer(uuid);
             if (player != null)
                 player.playSound(player.getLocation(), Sound.LEVEL_UP, 1f, 2f);
@@ -317,15 +289,13 @@ public class User
                 builder.append(ChatColor.DARK_GRAY).append(SUtil.toRomanNumeral(prevTier)).append("➜");
             builder.append(ChatColor.YELLOW).append(SUtil.toRomanNumeral(tier)).append("\n");
             ItemCollectionRewards rewards = collection.getRewardsFor(tier);
-            if (rewards != null && rewards.size() != 0)
-            {
+            if (rewards != null && rewards.size() != 0) {
                 builder.append(" \n");
                 builder.append(ChatColor.GREEN).append(ChatColor.BOLD).append("  REWARD");
                 if (rewards.size() != 1)
                     builder.append("S");
                 builder.append(ChatColor.RESET);
-                for (ItemCollectionReward reward : rewards)
-                {
+                for (ItemCollectionReward reward : rewards) {
                     reward.onAchieve(player);
                     builder.append("\n    ").append(reward.toRewardString());
                 }
@@ -335,74 +305,59 @@ public class User
         }
     }
 
-    public int getCollection(ItemCollection collection)
-    {
+    public int getCollection(ItemCollection collection) {
         return collections.get(collection);
     }
 
-    public boolean hasCollection(ItemCollection collection, int tier)
-    {
+    public boolean hasCollection(ItemCollection collection, int tier) {
         return collection.getTier(getCollection(collection)) >= tier;
     }
 
-    public void addToQuiver(SMaterial material, int amount)
-    {
+    public void addToQuiver(SMaterial material, int amount) {
         int i = quiver.getOrDefault(material, 0);
         setQuiver(material, i + amount);
     }
 
-    public void addToQuiver(SMaterial material)
-    {
+    public void addToQuiver(SMaterial material) {
         addToQuiver(material, 1);
     }
 
-    public void setQuiver(SMaterial material, int amount)
-    {
-        if (amount == 0)
-        {
+    public void setQuiver(SMaterial material, int amount) {
+        if (amount == 0) {
             quiver.remove(material);
             return;
         }
         quiver.put(material, amount);
     }
 
-    public int getQuiver(SMaterial material)
-    {
+    public int getQuiver(SMaterial material) {
         return quiver.get(material);
     }
 
-    public void subFromQuiver(SMaterial material, int amount)
-    {
+    public void subFromQuiver(SMaterial material, int amount) {
         if (!quiver.containsKey(material)) return;
         setQuiver(material, quiver.get(material) - amount);
     }
 
-    public void subFromQuiver(SMaterial material)
-    {
+    public void subFromQuiver(SMaterial material) {
         subFromQuiver(material, 1);
     }
 
-    public boolean hasQuiverItem(SMaterial material)
-    {
+    public boolean hasQuiverItem(SMaterial material) {
         return quiver.containsKey(material);
     }
 
-    public void clearQuiver()
-    {
+    public void clearQuiver() {
         quiver.clear();
     }
 
-    public void addPet(SItem item)
-    {
+    public void addPet(SItem item) {
         pets.add(new Pet.PetItem(item.getType(), item.getRarity(), item.getData().getDouble("xp")));
     }
 
-    public void equipPet(Pet.PetItem pet)
-    {
-        for (Pet.PetItem p : pets)
-        {
-            if (p.isActive())
-            {
+    public void equipPet(Pet.PetItem pet) {
+        for (Pet.PetItem p : pets) {
+            if (p.isActive()) {
                 p.setActive(false);
                 break;
             }
@@ -410,38 +365,31 @@ public class User
         pet.setActive(true);
     }
 
-    public void removePet(Pet.PetItem pet)
-    {
-        for (Iterator<Pet.PetItem> iter = pets.iterator(); iter.hasNext();)
-        {
+    public void removePet(Pet.PetItem pet) {
+        for (Iterator<Pet.PetItem> iter = pets.iterator(); iter.hasNext(); ) {
             Pet.PetItem p = iter.next();
-            if (pet.equals(p))
-            {
+            if (pet.equals(p)) {
                 iter.remove();
                 break;
             }
         }
     }
 
-    public Pet.PetItem getActivePet()
-    {
-        for (Pet.PetItem pet : pets)
-        {
+    public Pet.PetItem getActivePet() {
+        for (Pet.PetItem pet : pets) {
             if (pet.isActive())
                 return pet;
         }
         return null;
     }
 
-    public Pet getActivePetClass()
-    {
+    public Pet getActivePetClass() {
         Pet.PetItem item = getActivePet();
         if (item == null) return null;
         return (Pet) item.getType().getGenericInstance();
     }
 
-    public double getSkillXP(Skill skill)
-    {
+    public double getSkillXP(Skill skill) {
         if (skill instanceof FarmingSkill)
             return farmingXP;
         if (skill instanceof MiningSkill)
@@ -453,117 +401,95 @@ public class User
         return 0.0;
     }
 
-    public void setSkillXP(Skill skill, double xp)
-    {
+    public void setSkillXP(Skill skill, double xp) {
         double prev = 0.0;
-        if (skill instanceof FarmingSkill)
-        {
+        if (skill instanceof FarmingSkill) {
             prev = this.farmingXP;
             this.farmingXP = xp;
         }
-        if (skill instanceof MiningSkill)
-        {
+        if (skill instanceof MiningSkill) {
             prev = this.miningXP;
             this.miningXP = xp;
         }
-        if (skill instanceof CombatSkill)
-        {
+        if (skill instanceof CombatSkill) {
             prev = this.combatXP;
             this.combatXP = xp;
         }
-        if (skill instanceof ForagingSkill)
-        {
+        if (skill instanceof ForagingSkill) {
             prev = this.foragingXP;
             this.foragingXP = xp;
         }
         skill.onSkillUpdate(this, prev);
     }
 
-    public void addSkillXP(Skill skill, double xp)
-    {
+    public void addSkillXP(Skill skill, double xp) {
         setSkillXP(skill, getSkillXP(skill) + xp);
     }
 
-    public int getHighestRevenantHorror()
-    {
+    public int getHighestRevenantHorror() {
         return highestSlayers[0];
     }
 
-    public void setHighestRevenantHorror(int tier)
-    {
+    public void setHighestRevenantHorror(int tier) {
         highestSlayers[0] = tier;
     }
 
-    public int getHighestTarantulaBroodfather()
-    {
+    public int getHighestTarantulaBroodfather() {
         return highestSlayers[1];
     }
 
-    public void setHighestTarantulaBroodfather(int tier)
-    {
+    public void setHighestTarantulaBroodfather(int tier) {
         highestSlayers[1] = tier;
     }
 
-    public int getHighestSvenPackmaster()
-    {
+    public int getHighestSvenPackmaster() {
         return highestSlayers[2];
     }
 
-    public void setHighestSvenPackmaster(int tier)
-    {
+    public void setHighestSvenPackmaster(int tier) {
         highestSlayers[2] = tier;
     }
 
-    public int getZombieSlayerXP()
-    {
+    public int getZombieSlayerXP() {
         return slayerXP[0];
     }
 
-    public void setZombieSlayerXP(int xp)
-    {
+    public void setZombieSlayerXP(int xp) {
         slayerXP[0] = xp;
     }
 
-    public int getSpiderSlayerXP()
-    {
+    public int getSpiderSlayerXP() {
         return slayerXP[1];
     }
 
-    public void setSpiderSlayerXP(int xp)
-    {
+    public void setSpiderSlayerXP(int xp) {
         slayerXP[1] = xp;
     }
 
-    public int getWolfSlayerXP()
-    {
+    public int getWolfSlayerXP() {
         return slayerXP[2];
     }
 
-    public void setWolfSlayerXP(int xp)
-    {
+    public void setWolfSlayerXP(int xp) {
         slayerXP[2] = xp;
     }
 
-    public void setSlayerXP(SlayerBossType.SlayerMobType type, int xp)
-    {
+    public void setSlayerXP(SlayerBossType.SlayerMobType type, int xp) {
         slayerXP[type.ordinal()] = xp;
     }
 
-    public int getSlayerXP(SlayerBossType.SlayerMobType type)
-    {
+    public int getSlayerXP(SlayerBossType.SlayerMobType type) {
         return slayerXP[type.ordinal()];
     }
 
-    public int getSlayerCombatXPBuff()
-    {
+    public int getSlayerCombatXPBuff() {
         int buff = 0;
         for (int highest : highestSlayers)
             buff += (highest == 4 ? 5 : highest);
         return buff;
     }
 
-    public void startSlayerQuest(SlayerBossType type)
-    {
+    public void startSlayerQuest(SlayerBossType type) {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null) return;
         this.slayerQuest = new SlayerQuest(type, System.currentTimeMillis());
@@ -573,15 +499,13 @@ public class User
                 SUtil.commaify(type.getSpawnXP()) + " Combat XP" + ChatColor.GRAY + " worth of " + type.getType().getPluralName() + ".");
     }
 
-    public void failSlayerQuest()
-    {
+    public void failSlayerQuest() {
         if (slayerQuest == null) return;
         if (slayerQuest.getDied() != 0) return;
         Player player = Bukkit.getPlayer(uuid);
         if (player == null) return;
         slayerQuest.setDied(System.currentTimeMillis());
-        if (slayerQuest.getEntity() != null)
-        {
+        if (slayerQuest.getEntity() != null) {
             slayerQuest.getEntity().remove();
             slayerQuest.getEntity().getFunction().onDeath(slayerQuest.getEntity(), slayerQuest.getEntity().getEntity(), player);
         }
@@ -593,16 +517,14 @@ public class User
         }, 2);
     }
 
-    public void send(String message)
-    {
+    public void send(String message) {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null) return;
         player.sendMessage(message);
     }
 
     // this deals TRUE TRUE damage
-    public void damageEntity(LivingEntity entity, double damage)
-    {
+    public void damageEntity(LivingEntity entity, double damage) {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null) return;
         entity.damage(0.00001);
@@ -610,15 +532,13 @@ public class User
         entity.setHealth(Math.max(0.0, entity.getHealth() - damage));
     }
 
-    public void damageEntity(LivingEntity entity)
-    {
+    public void damageEntity(LivingEntity entity) {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null) return;
         entity.damage(0.0, player);
     }
 
-    public void damage(double d, EntityDamageEvent.DamageCause cause, Entity entity)
-    {
+    public void damage(double d, EntityDamageEvent.DamageCause cause, Entity entity) {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null) return;
         if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR) return;
@@ -626,8 +546,7 @@ public class User
         PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(player.getUniqueId());
         double trueDefense = statistics.getTrueDefense().addAll();
         d = d - (d * (trueDefense / (trueDefense + 100)));
-        if ((player.getHealth() + human.getAbsorptionHearts()) - d <= 0.0)
-        {
+        if ((player.getHealth() + human.getAbsorptionHearts()) - d <= 0.0) {
             kill(cause, entity);
             return;
         }
@@ -637,23 +556,19 @@ public class User
         player.setHealth(Math.max(0.0, player.getHealth() - actual));
     }
 
-    public void damage(double d)
-    {
+    public void damage(double d) {
         damage(d, EntityDamageEvent.DamageCause.CUSTOM, null);
     }
 
-    public void kill(EntityDamageEvent.DamageCause cause, Entity entity)
-    {
+    public void kill(EntityDamageEvent.DamageCause cause, Entity entity) {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null) return;
         player.setHealth(player.getMaxHealth());
-        for (int i = 0; i < player.getInventory().getSize(); i++)
-        {
+        for (int i = 0; i < player.getInventory().getSize(); i++) {
             ItemStack stack = player.getInventory().getItem(i);
             SItem sItem = SItem.find(stack);
             if (sItem == null) continue;
-            if (sItem.getType() == SMaterial.REMNANT_OF_THE_EYE && (lastRegion.getType() == RegionType.THE_END || lastRegion.getType() == RegionType.DRAGONS_NEST))
-            {
+            if (sItem.getType() == SMaterial.REMNANT_OF_THE_EYE && (lastRegion.getType() == RegionType.THE_END || lastRegion.getType() == RegionType.DRAGONS_NEST)) {
                 player.getInventory().setItem(i, new ItemStack(Material.AIR));
                 if (cause == EntityDamageEvent.DamageCause.VOID)
                     sendToSpawn();
@@ -666,60 +581,50 @@ public class User
         sendToSpawn();
         clearPotionEffects();
         String name = null;
-        if (entity != null)
-        {
+        if (entity != null) {
             SEntity sEntity = SEntity.findSEntity(entity);
             name = sEntity != null ? sEntity.getStatistics().getEntityName() : entity.getCustomName();
         }
         String message = "You died.";
         String out = "%s died.";
-        switch (cause)
-        {
-            case VOID:
-            {
+        switch (cause) {
+            case VOID: {
                 message = "You fell into the void.";
                 out = "%s fell into the void.";
                 break;
             }
-            case FALL:
-            {
+            case FALL: {
                 message = "You fell to your death.";
                 out = "%s fell to their death.";
                 break;
             }
-            case ENTITY_ATTACK:
-            {
+            case ENTITY_ATTACK: {
                 message = "You were killed by " + name + ChatColor.GRAY + ".";
                 out = "%s was killed by " + name + ChatColor.GRAY + ".";
                 break;
             }
-            case ENTITY_EXPLOSION:
-            {
+            case ENTITY_EXPLOSION: {
                 message = "You were killed by " + name + ChatColor.GRAY + "'s explosion.";
                 out = "%s was killed by " + name + ChatColor.GRAY + "'s explosion.";
                 break;
             }
             case FIRE:
-            case LAVA:
-            {
+            case LAVA: {
                 message = "You burned to death.";
                 out = "%s burned to death.";
                 break;
             }
-            case MAGIC:
-            {
+            case MAGIC: {
                 message = "You died by magic.";
                 out = "%s was killed by magic.";
                 break;
             }
-            case POISON:
-            {
+            case POISON: {
                 message = "You died by poisoning.";
                 out = "%s was killed by poisoning.";
                 break;
             }
-            case LIGHTNING:
-            {
+            case LIGHTNING: {
                 message = "You were struck by lightning and died.";
                 out = "%s was struck by lightning and killed.";
                 break;
@@ -733,8 +638,7 @@ public class User
         if ((isOnIsland() && cause == EntityDamageEvent.DamageCause.VOID) || permanentCoins)
             return;
         int piggyIndex = PlayerUtils.getSpecItemIndex(player, SMaterial.PIGGY_BANK);
-        if (piggyIndex != -1 && coins >= 20000)
-        {
+        if (piggyIndex != -1 && coins >= 20000) {
             SItem cracked = SItem.of(SMaterial.CRACKED_PIGGY_BANK);
             SItem piggy = SItem.find(player.getInventory().getItem(piggyIndex));
             if (piggy.getReforge() != null)
@@ -745,8 +649,7 @@ public class User
         }
         player.playSound(player.getLocation(), Sound.ZOMBIE_METAL, 1f, 2f);
         int crackedPiggyIndex = PlayerUtils.getSpecItemIndex(player, SMaterial.CRACKED_PIGGY_BANK);
-        if (crackedPiggyIndex != -1 && coins >= 20000)
-        {
+        if (crackedPiggyIndex != -1 && coins >= 20000) {
             SItem broken = SItem.of(SMaterial.BROKEN_PIGGY_BANK);
             SItem crackedPiggy = SItem.find(player.getInventory().getItem(crackedPiggyIndex));
             if (crackedPiggy.getReforge() != null)
@@ -764,40 +667,33 @@ public class User
         save();
     }
 
-    public void addPotionEffect(PotionEffect effect)
-    {
+    public void addPotionEffect(PotionEffect effect) {
         effects.add(new ActivePotionEffect(effect, effect.getDuration()));
     }
 
-    public void removePotionEffect(PotionEffectType type)
-    {
-        for (ActivePotionEffect effect : effects)
-        {
+    public void removePotionEffect(PotionEffectType type) {
+        for (ActivePotionEffect effect : effects) {
             if (effect.getEffect().getType() == type)
                 effect.setRemaining(0);
         }
     }
 
-    public ActivePotionEffect getPotionEffect(PotionEffectType type)
-    {
-        for (ActivePotionEffect effect : effects)
-        {
+    public ActivePotionEffect getPotionEffect(PotionEffectType type) {
+        for (ActivePotionEffect effect : effects) {
             if (effect.getEffect().getType() == type)
                 return effect;
         }
         return null;
     }
 
-    public boolean hasPotionEffect(PotionEffectType type)
-    {
+    public boolean hasPotionEffect(PotionEffectType type) {
         return effects.stream().filter(effect -> effect.getEffect().getType() == type).toArray().length != 0;
     }
 
     public void clearPotionEffects() // this kind of "sets them up" to be cleared rather than actually clearing them
     {
         Player player = Bukkit.getPlayer(uuid);
-        if (player != null)
-        {
+        if (player != null) {
             for (org.bukkit.potion.PotionEffect effect : player.getActivePotionEffects())
                 player.removePotionEffect(effect.getType());
         }
@@ -805,15 +701,14 @@ public class User
             effect.setRemaining(0);
     }
 
-    public boolean isOnIsland()
-    {
+    public boolean isOnIsland() {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null)
             return false;
         return isOnIsland(player.getLocation());
     }
-    public boolean isOnUserIsland()
-    {
+
+    public boolean isOnUserIsland() {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null)
             return false;
@@ -833,8 +728,7 @@ public class User
         return cuboid.contains(player.getLocation());
     }
 
-    public boolean isOnIsland(Block block)
-    {
+    public boolean isOnIsland(Block block) {
         return isOnIsland(block.getLocation());
     }
 
@@ -849,13 +743,10 @@ public class User
     }
 
 
-
-    public List<AuctionItem> getBids()
-    {
+    public List<AuctionItem> getBids() {
         return AuctionItem.getAuctions().stream().filter((item) ->
         {
-            for (AuctionBid bid : item.getBids())
-            {
+            for (AuctionBid bid : item.getBids()) {
                 if (bid.getBidder().equals(uuid) && item.getParticipants().contains(uuid))
                     return true;
             }
@@ -863,26 +754,20 @@ public class User
         }).collect(Collectors.toList());
     }
 
-    public List<AuctionItem> getAuctions()
-    {
+    public List<AuctionItem> getAuctions() {
         return AuctionItem.getAuctions().stream().filter((item) -> item.getOwner().getUuid().equals(uuid) && item.getParticipants().contains(uuid)).collect(Collectors.toList());
     }
 
-    public void sendToSpawn()
-    {
+    public void sendToSpawn() {
         Player player = Bukkit.getPlayer(uuid);
         if (player == null) return;
-        if (isOnIsland())
-        {
+        if (isOnIsland()) {
             World world = Bukkit.getWorld("islands");
-            SUtil.delay(() -> player.teleport(new Location(world , 0 , 100 , 0)),10);
-        }
-        else
-        {
-            if (lastRegion != null)
-            {
-                switch (lastRegion.getType())
-                {
+            player.teleport(world.getHighestBlockAt(SUtil.blackMagic(islandX),
+                    SUtil.blackMagic(islandZ)).getLocation().add(0.5, 1.0, 0.5));
+        } else {
+            if (lastRegion != null) {
+                switch (lastRegion.getType()) {
                     case BANK:
                     case FARM:
                     case RUINS:
@@ -939,21 +824,18 @@ public class User
                         player.teleport(player.getWorld().getSpawnLocation());
                         break;
                 }
-            }
-            else
+            } else
                 player.teleport(player.getWorld().getSpawnLocation());
         }
     }
 
-    public static User getUser(UUID uuid)
-    {
+    public static User getUser(UUID uuid) {
         if (uuid == null) return null;
         if (USER_CACHE.containsKey(uuid)) return USER_CACHE.get(uuid);
         return new User(uuid);
     }
 
-    public static Collection<User> getCachedUsers()
-    {
+    public static Collection<User> getCachedUsers() {
         return USER_CACHE.values();
     }
 }

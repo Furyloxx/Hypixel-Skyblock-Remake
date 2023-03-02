@@ -1,19 +1,19 @@
-package me.adarsh.godspunkycore.item.revenant;
+package me.adarsh.godspunkycore.item.mining;
 
 import me.adarsh.godspunkycore.item.GenericItemType;
 import me.adarsh.godspunkycore.item.MaterialFunction;
 import me.adarsh.godspunkycore.item.MaterialStatistics;
 import me.adarsh.godspunkycore.item.Rarity;
 
-public class RevenantFlesh implements MaterialStatistics, MaterialFunction {
+public class Coal implements MaterialStatistics, MaterialFunction {
     @Override
     public String getDisplayName() {
-        return "Revenant Flesh";
+        return "Coal";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.UNCOMMON;
+        return Rarity.COMMON;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class RevenantFlesh implements MaterialStatistics, MaterialFunction {
     }
 
     @Override
-    public boolean isEnchanted() {
-        return true;
+    public long getPrice() {
+        return 100L;
     }
 }

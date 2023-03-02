@@ -9,40 +9,33 @@ import me.adarsh.godspunkycore.util.SUtil;
 import java.util.Collections;
 import java.util.List;
 
-public class SvenAlpha extends BaseWolf
-{
+public class SvenAlpha extends BaseWolf {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Sven Alpha";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 480000.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 1300.0;
     }
 
     @Override
-    public List<EntityDrop> drops()
-    {
+    public List<EntityDrop> drops() {
         return Collections.singletonList(new EntityDrop(SUtil.setStackAmount(SItem.of(SMaterial.WOLF_TOOTH).getStack(), 5), EntityDropType.GUARANTEED, 1.0));
     }
 
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 500.0;
     }
 
     @Override
-    public boolean isAngry()
-    {
+    public boolean isAngry() {
         return true;
     }
 }

@@ -12,8 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SQLRegionData
-{
+public class SQLRegionData {
     private static final Spectaculation plugin = Spectaculation.getPlugin();
 
     private final String SELECT = "SELECT * FROM `regions` WHERE name=?";
@@ -23,27 +22,21 @@ public class SQLRegionData
     private final String COUNT = "SELECT COUNT(*) AS rows FROM `regions`";
     private final String DELETE = "DELETE FROM `regions` WHERE name=?";
 
-    public boolean exists(String regionName)
-    {
-        try (Connection connection = plugin.sql.getConnection())
-        {
+    public boolean exists(String regionName) {
+        try (Connection connection = plugin.sql.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(SELECT);
             statement.setString(1, regionName);
             ResultSet set = statement.executeQuery();
             return set.next();
-        }
-        catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return false;
     }
 
-    public Region get(String name)
-    {
+    public Region get(String name) {
         if (!exists(name)) return null;
-        try (Connection connection = plugin.sql.getConnection())
-        {
+        try (Connection connection = plugin.sql.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(SELECT);
             statement.setString(1, name);
             ResultSet set = statement.executeQuery();
@@ -59,24 +52,19 @@ public class SQLRegionData
                 return null;
             set.close();
             return new Region(name, firstLocation, secondLocation, type);
-        }
-        catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
     }
 
-    public List<Region> getAllOfType(RegionType type)
-    {
-        try (Connection connection = plugin.sql.getConnection())
-        {
+    public List<Region> getAllOfType(RegionType type) {
+        try (Connection connection = plugin.sql.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(SELECT_TYPE);
             statement.setInt(1, type.ordinal());
             ResultSet set = statement.executeQuery();
             List<Region> regions = new ArrayList<>();
-            while (set.next())
-            {
+            while (set.next()) {
                 String name = set.getString("name");
                 Location firstLocation = new Location(plugin.worldData.getWorld(set.getInt("world")), set.getInt("x1"),
                         set.getInt("y1"),
@@ -88,39 +76,31 @@ public class SQLRegionData
             }
             set.close();
             return regions;
-        }
-        catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
     }
 
 
-    public List<Region> getAll()
-    {
-        try (Connection connection = plugin.sql.getConnection())
-        {
+    public List<Region> getAll() {
+        try (Connection connection = plugin.sql.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM `regions`");
             ResultSet set = statement.executeQuery();
             List<Region> regions = new ArrayList<>();
             while (set.next()) regions.add(get(set.getString("name")));
             set.close();
             return regions;
-        }
-        catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
     }
 
-    public Region create(String name, Location firstLocation, Location secondLocation, RegionType type)
-    {
+    public Region create(String name, Location firstLocation, Location secondLocation, RegionType type) {
         name = name.toLowerCase();
         if (exists(name)) return get(name);
-        try (Connection connection = plugin.sql.getConnection())
-        {
+        try (Connection connection = plugin.sql.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(INSERT);
             statement.setString(1, name);
             statement.setInt(2, (int) firstLocation.getX());
@@ -133,18 +113,14 @@ public class SQLRegionData
             statement.setString(9, type.name());
             statement.execute();
             return new Region(name, firstLocation, secondLocation, type);
-        }
-        catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
     }
 
-    public void save(Region region)
-    {
-        try (Connection connection = plugin.sql.getConnection())
-        {
+    public void save(Region region) {
+        try (Connection connection = plugin.sql.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(UPDATE);
             statement.setInt(1, (int) region.getFirstLocation().getX());
             statement.setInt(2, (int) region.getFirstLocation().getY());
@@ -156,40 +132,30 @@ public class SQLRegionData
             statement.setString(8, region.getType().name());
             statement.setString(9, region.getName());
             statement.execute();
-        }
-        catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
 
-    public void delete(Region region)
-    {
-        try (Connection connection = plugin.sql.getConnection())
-        {
+    public void delete(Region region) {
+        try (Connection connection = plugin.sql.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(DELETE);
             statement.setString(1, region.getName());
             statement.execute();
-        }
-        catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
 
-    public int getRegionCount()
-    {
-        try (Connection connection = plugin.sql.getConnection())
-        {
+    public int getRegionCount() {
+        try (Connection connection = plugin.sql.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(COUNT);
             ResultSet set = statement.executeQuery();
             set.next();
             int count = set.getInt("rows");
             set.close();
             return count;
-        }
-        catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return 0;

@@ -7,42 +7,35 @@ import me.adarsh.godspunkycore.item.SMaterial;
 import java.util.Arrays;
 import java.util.List;
 
-public class HowlingSpirit extends BaseWolf
-{
+public class HowlingSpirit extends BaseWolf {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Howling Spirit";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 7000.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 450.0;
     }
 
     @Override
-    public List<EntityDrop> drops()
-    {
+    public List<EntityDrop> drops() {
         return Arrays.asList(new EntityDrop(SMaterial.SPRUCE_WOOD, EntityDropType.COMMON, 0.25),
                 new EntityDrop(SMaterial.DARK_OAK_WOOD, EntityDropType.COMMON, 0.25),
                 new EntityDrop(SMaterial.ACACIA_WOOD, EntityDropType.COMMON, 0.25));
     }
 
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 15.0;
     }
 
     @Override
-    public boolean isAngry()
-    {
+    public boolean isAngry() {
         return true;
     }
 }

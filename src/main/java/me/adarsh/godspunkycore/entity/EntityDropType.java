@@ -3,8 +3,7 @@ package me.adarsh.godspunkycore.entity;
 import lombok.Getter;
 import org.bukkit.ChatColor;
 
-public enum EntityDropType
-{
+public enum EntityDropType {
     GUARANTEED(ChatColor.GREEN),
     COMMON(ChatColor.GREEN),
     OCCASIONAL(ChatColor.BLUE),
@@ -16,13 +15,11 @@ public enum EntityDropType
     @Getter
     private final ChatColor color;
 
-    EntityDropType(ChatColor color)
-    {
+    EntityDropType(ChatColor color) {
         this.color = color;
     }
 
-    public String getDisplay()
-    {
+    public String getDisplay() {
         return "" + color + ChatColor.BOLD + name().replaceAll("_", " ");
     }
 }

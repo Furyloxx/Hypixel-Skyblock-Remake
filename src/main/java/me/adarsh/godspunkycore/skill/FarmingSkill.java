@@ -9,35 +9,29 @@ import org.bukkit.ChatColor;
 import java.util.Arrays;
 import java.util.List;
 
-public class FarmingSkill extends Skill
-{
+public class FarmingSkill extends Skill {
     public static final FarmingSkill INSTANCE = new FarmingSkill();
 
     @Override
-    public String getName()
-    {
+    public String getName() {
         return "Farming";
     }
 
     @Override
-    public String getAlternativeName()
-    {
+    public String getAlternativeName() {
         return "Farmhand";
     }
 
     @Override
-    public List<String> getDescription()
-    {
+    public List<String> getDescription() {
         return Arrays.asList("Harvest crops and shear sheep to", "earn Farming XP!");
     }
 
-    public double getDoubleDropChance(int level)
-    {
+    public double getDoubleDropChance(int level) {
         return (level * 4.0) / 100.0;
     }
 
-    public double getHealth(int level)
-    {
+    public double getHealth(int level) {
         int health = level * 2;
         if (level >= 15)
             health += (level - 14);
@@ -49,8 +43,7 @@ public class FarmingSkill extends Skill
     }
 
     @Override
-    public List<String> getLevelUpInformation(int level, int lastLevel, boolean showOld)
-    {
+    public List<String> getLevelUpInformation(int level, int lastLevel, boolean showOld) {
         String dropChance = (showOld ? ChatColor.DARK_GRAY + "" + lastLevel * 4 + "➜" : "") + ChatColor.GREEN + level * 4;
         int healthPlus = 2;
         if (level >= 15)
@@ -65,14 +58,12 @@ public class FarmingSkill extends Skill
     }
 
     @Override
-    public boolean hasSixtyLevels()
-    {
+    public boolean hasSixtyLevels() {
         return true;
     }
 
     @Override
-    public void onSkillUpdate(User user, double previousXP)
-    {
+    public void onSkillUpdate(User user, double previousXP) {
         super.onSkillUpdate(user, previousXP);
         PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(user.getUuid());
         statistics.zeroAll(PlayerStatistic.FARMING);

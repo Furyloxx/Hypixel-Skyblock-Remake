@@ -33,8 +33,7 @@ public class FarmSuitLeggings implements LeatherArmorStatistics, MaterialFunctio
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.LEGGINGS;
     }
 }

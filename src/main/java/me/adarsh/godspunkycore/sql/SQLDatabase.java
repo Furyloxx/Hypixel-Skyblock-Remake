@@ -8,41 +8,32 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SQLDatabase
-{
+public class SQLDatabase {
     private static final Spectaculation plugin = Spectaculation.getPlugin();
     private static final String DATABASE_FILENAME = "database.db";
 
     private Connection connection;
     private File file;
 
-    public SQLDatabase()
-    {
+    public SQLDatabase() {
         File file = new File(plugin.getDataFolder(), DATABASE_FILENAME);
-        if (!file.exists())
-        {
-            try
-            {
+        if (!file.exists()) {
+            try {
                 file.getParentFile().mkdirs();
                 file.createNewFile();
                 plugin.saveResource(DATABASE_FILENAME, false);
-            }
-            catch (IOException ex)
-            {
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
         }
         this.file = file;
     }
 
-    public Connection getConnection()
-    {
-        try
-        {
+    public Connection getConnection() {
+        try {
             Class.forName("org.sqlite.JDBC");
             Connection connection = DriverManager.getConnection("jdbc:sqlite:" + file.getAbsolutePath());
-            if (connection != null)
-            {
+            if (connection != null) {
                 connection.prepareStatement("CREATE TABLE IF NOT EXISTS `worlds` (\n" +
                         "\t`id` SMALLINT,\n" +
                         "\t`name` TEXT\n" +
@@ -70,9 +61,7 @@ public class SQLDatabase
                         ");").execute();
                 return connection;
             }
-        }
-        catch (SQLException | ClassNotFoundException ex)
-        {
+        } catch (SQLException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
         return null;

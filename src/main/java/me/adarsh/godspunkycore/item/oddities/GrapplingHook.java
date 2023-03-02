@@ -12,29 +12,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class GrapplingHook implements ToolStatistics, FishingRodFunction
-{
+public class GrapplingHook implements ToolStatistics, FishingRodFunction {
     private static final List<UUID> COOLDOWN = new ArrayList<>();
 
     @Override
-    public void onFish(SItem instance, PlayerFishEvent e)
-    {
+    public void onFish(SItem instance, PlayerFishEvent e) {
         PlayerFishEvent.State state = e.getState();
         if (state != PlayerFishEvent.State.FAILED_ATTEMPT && state != PlayerFishEvent.State.IN_GROUND) return;
         Player player = e.getPlayer();
-        if (COOLDOWN.contains(player.getUniqueId()))
-        {
+        if (COOLDOWN.contains(player.getUniqueId())) {
             player.sendMessage(ChatColor.RED + "Whow! Slow down there!");
             return;
         }
         player.setVelocity(player.getLocation().toVector().subtract(e.getHook().getLocation().toVector()).multiply(-1.0).multiply(0.5).setY(0.9));
-        if (player.getGameMode() != GameMode.CREATIVE && player.getGameMode() != GameMode.SPECTATOR)
-        {
+        if (player.getGameMode() != GameMode.CREATIVE && player.getGameMode() != GameMode.SPECTATOR) {
             COOLDOWN.add(player.getUniqueId());
-            new BukkitRunnable()
-            {
-                public void run()
-                {
+            new BukkitRunnable() {
+                public void run() {
                     COOLDOWN.remove(player.getUniqueId());
                 }
             }.runTaskLater(Spectaculation.getPlugin(), 40);
@@ -42,26 +36,22 @@ public class GrapplingHook implements ToolStatistics, FishingRodFunction
     }
 
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Grappling Hook";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.UNCOMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 
     @Override
-    public String getLore()
-    {
+    public String getLore() {
         return "Travel around in style using this Grappling Hook. 2 Second Cooldown";
     }
 }

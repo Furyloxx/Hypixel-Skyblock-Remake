@@ -7,11 +7,17 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import java.util.List;
 
-public interface PetAbility
-{
+public interface PetAbility {
     String getName();
+
     List<String> getDescription(SItem instance);
-    default void onHurt(EntityDamageByEntityEvent e, Entity damager) {}
-    default void onDamage(EntityDamageByEntityEvent e) {}
-    default void onZealotAttempt(AtomicDouble chance) {}
+
+    default void onHurt(EntityDamageByEntityEvent e, Entity damager) {
+    }
+
+    default void onDamage(EntityDamageByEntityEvent e) {
+    }
+
+    default void onZealotAttempt(AtomicDouble chance) {
+    }
 }

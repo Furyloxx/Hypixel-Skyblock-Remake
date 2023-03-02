@@ -11,29 +11,24 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-public class DiamondZombie extends BaseZombie
-{
+public class DiamondZombie extends BaseZombie {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Zombie";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 250.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 200.0;
     }
 
     @Override
-    public SEntityEquipment getEntityEquipment()
-    {
+    public SEntityEquipment getEntityEquipment() {
         return new SEntityEquipment(new ItemStack(Material.DIAMOND_SWORD),
                 new ItemStack(Material.DIAMOND_HELMET),
                 new ItemStack(Material.DIAMOND_CHESTPLATE),
@@ -42,8 +37,7 @@ public class DiamondZombie extends BaseZombie
     }
 
     @Override
-    public List<EntityDrop> drops()
-    {
+    public List<EntityDrop> drops() {
         return Arrays.asList(new EntityDrop(SMaterial.ROTTEN_FLESH, EntityDropType.GUARANTEED, 1.0),
                 new EntityDrop(SMaterial.MINER_HELMET, EntityDropType.RARE, 0.05),
                 new EntityDrop(SMaterial.MINER_CHESTPLATE, EntityDropType.RARE, 0.05),
@@ -52,20 +46,17 @@ public class DiamondZombie extends BaseZombie
     }
 
     @Override
-    public boolean isBaby()
-    {
+    public boolean isBaby() {
         return false;
     }
 
     @Override
-    public boolean isVillager()
-    {
+    public boolean isVillager() {
         return false;
     }
 
     @Override
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 20.0;
     }
 }

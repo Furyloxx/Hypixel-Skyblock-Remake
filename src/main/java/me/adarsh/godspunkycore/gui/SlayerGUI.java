@@ -11,30 +11,23 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class SlayerGUI extends GUI
-{
-    public SlayerGUI()
-    {
+public class SlayerGUI extends GUI {
+    public SlayerGUI() {
         super("Slayer", 36);
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e)
-    {
+    public void onOpen(GUIOpenEvent e) {
         Player player = e.getPlayer();
         User user = User.getUser(e.getPlayer().getUniqueId());
         fill(BLACK_STAINED_GLASS_PANE);
         set(GUIClickableItem.getCloseItem(31));
         SlayerQuest quest = user.getSlayerQuest();
-        if (quest != null)
-        {
-            if (quest.getKilled() != 0)
-            {
-                set(new GUIClickableItem()
-                {
+        if (quest != null) {
+            if (quest.getKilled() != 0) {
+                set(new GUIClickableItem() {
                     @Override
-                    public void run(InventoryClickEvent e)
-                    {
+                    public void run(InventoryClickEvent e) {
                         user.setSlayerXP(quest.getType().getType(), user.getSlayerXP(quest.getType().getType()) + quest.getType().getRewardXP());
                         int level = quest.getType().getType().getLevelForXP(user.getSlayerXP(quest.getType().getType()));
                         player.playSound(player.getLocation(), Sound.LEVEL_UP, 1f, 2f);
@@ -49,8 +42,7 @@ public class SlayerGUI extends GUI
                     }
 
                     @Override
-                    public ItemStack getItem()
-                    {
+                    public ItemStack getItem() {
                         return SUtil.getStack(ChatColor.GREEN + "Slayer Quest Complete!", quest.getType().getType().getIcon(), (short) 0, 1,
                                 ChatColor.GRAY + "You've slain the boss!",
                                 ChatColor.GRAY + "SkyBlock is now a little",
@@ -67,27 +59,21 @@ public class SlayerGUI extends GUI
                     }
 
                     @Override
-                    public int getSlot()
-                    {
+                    public int getSlot() {
                         return 13;
                     }
                 });
-            }
-            else if (quest.getDied() != 0)
-            {
-                set(new GUIClickableItem()
-                {
+            } else if (quest.getDied() != 0) {
+                set(new GUIClickableItem() {
                     @Override
-                    public void run(InventoryClickEvent e)
-                    {
+                    public void run(InventoryClickEvent e) {
                         user.setSlayerQuest(null);
                         player.sendMessage(ChatColor.YELLOW + "Your unsuccessful quest has been cleared out!");
                         GUIType.SLAYER.getGUI().open(player);
                     }
 
                     @Override
-                    public ItemStack getItem()
-                    {
+                    public ItemStack getItem() {
                         return SUtil.getStack(ChatColor.GREEN + "Slayer Quest Failed", Material.STAINED_CLAY, (short) 14, 1,
                                 ChatColor.GRAY + "You've didn't succeed in",
                                 ChatColor.GRAY + "killing the boss on your",
@@ -102,25 +88,19 @@ public class SlayerGUI extends GUI
                     }
 
                     @Override
-                    public int getSlot()
-                    {
+                    public int getSlot() {
                         return 13;
                     }
                 });
-            }
-            else
-            {
-                set(new GUIClickableItem()
-                {
+            } else {
+                set(new GUIClickableItem() {
                     @Override
-                    public void run(InventoryClickEvent e)
-                    {
+                    public void run(InventoryClickEvent e) {
                         new SlayerCancellationConfirmGUI(user).open(player);
                     }
 
                     @Override
-                    public ItemStack getItem()
-                    {
+                    public ItemStack getItem() {
                         return SUtil.getStack(ChatColor.GREEN + "Ongoing Slayer Quest", quest.getType().getType().getIcon(), (short) 0, 1,
                                 ChatColor.GRAY + "You have an active Slayer",
                                 ChatColor.GRAY + "quest.",
@@ -132,8 +112,7 @@ public class SlayerGUI extends GUI
                     }
 
                     @Override
-                    public int getSlot()
-                    {
+                    public int getSlot() {
                         return 13;
                     }
                 });
@@ -165,23 +144,19 @@ public class SlayerGUI extends GUI
                 "",
                 ChatColor.GRAY + "Tier I, II, III grant " + ChatColor.AQUA + "+1% XP" + ChatColor.GRAY + ".",
                 ChatColor.GRAY + "Tier IV grants " + ChatColor.AQUA + "+2% XP" + ChatColor.GRAY + "."));
-        set(new GUIClickableItem()
-        {
+        set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e)
-            {
+            public void run(InventoryClickEvent e) {
                 GUIType.REVENANT_HORROR.getGUI().open((Player) e.getWhoClicked());
             }
 
             @Override
-            public int getSlot()
-            {
+            public int getSlot() {
                 return 10;
             }
 
             @Override
-            public ItemStack getItem()
-            {
+            public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.RED + "☠ " + ChatColor.YELLOW + "Revenant Horror", Material.ROTTEN_FLESH, (short) 0, 1,
                         ChatColor.GRAY + "Abhorrant Zombie stuck",
                         ChatColor.GRAY + "between life and death for",
@@ -193,23 +168,19 @@ public class SlayerGUI extends GUI
             }
         });
 
-        set(new GUIClickableItem()
-        {
+        set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e)
-            {
+            public void run(InventoryClickEvent e) {
                 GUIType.TARANTULA_BROODFATHER.getGUI().open((Player) e.getWhoClicked());
             }
 
             @Override
-            public int getSlot()
-            {
+            public int getSlot() {
                 return 11;
             }
 
             @Override
-            public ItemStack getItem()
-            {
+            public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.RED + "☠ " + ChatColor.YELLOW + "Tarantula Broodfather", Material.WEB, (short) 0, 1,
                         ChatColor.GRAY + "Monstrous Spider who poisons",
                         ChatColor.GRAY + "and devours its victims.",
@@ -220,23 +191,19 @@ public class SlayerGUI extends GUI
             }
         });
 
-        set(new GUIClickableItem()
-        {
+        set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e)
-            {
+            public void run(InventoryClickEvent e) {
                 GUIType.SVEN_PACKMASTER.getGUI().open((Player) e.getWhoClicked());
             }
 
             @Override
-            public int getSlot()
-            {
+            public int getSlot() {
                 return 12;
             }
 
             @Override
-            public ItemStack getItem()
-            {
+            public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.RED + "☠ " + ChatColor.YELLOW + "Sven Packmaster", Material.MUTTON, (short) 0, 1,
                         ChatColor.GRAY + "Rabid Wolf genetically",
                         ChatColor.GRAY + "modified by a famous mad",
@@ -254,8 +221,7 @@ public class SlayerGUI extends GUI
                 ChatColor.GRAY + "development!"), 13, 16);
     }
 
-    public static String getTierText(int highest)
-    {
+    public static String getTierText(int highest) {
         if (highest == 0)
             return ChatColor.GREEN + "Not played!";
         ChatColor color = ChatColor.GREEN;

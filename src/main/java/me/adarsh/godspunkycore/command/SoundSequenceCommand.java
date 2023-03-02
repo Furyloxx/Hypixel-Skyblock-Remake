@@ -6,13 +6,12 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 @CommandParameters(description = "Play a sound sequence.", usage = "/<command> <sequence>")
-public class SoundSequenceCommand extends SCommand
-{
+public class SoundSequenceCommand extends SCommand {
     @Override
-    public void run(CommandSource sender, String[] args)
-    {
+    public void run(CommandSource sender, String[] args) {
         if (args.length != 1) throw new CommandArgumentException();
-        if (sender instanceof ConsoleCommandSender) throw new CommandFailException("Console senders cannot use this command!");
+        if (sender instanceof ConsoleCommandSender)
+            throw new CommandFailException("Console senders cannot use this command!");
         Player player = sender.getPlayer();
         SoundSequenceType type = SoundSequenceType.getByNamespace(args[0]);
         if (type == null)

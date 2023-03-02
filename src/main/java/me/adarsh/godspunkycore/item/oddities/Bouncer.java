@@ -3,29 +3,24 @@ package me.adarsh.godspunkycore.item.oddities;
 import me.adarsh.godspunkycore.item.*;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 
-public class Bouncer implements MaterialStatistics, MaterialFunction, ItemData
-{
+public class Bouncer implements MaterialStatistics, MaterialFunction, ItemData {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Bouncer";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.EXCLUSIVE;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.BLOCK;
     }
 
     @Override
-    public NBTTagCompound getData()
-    {
+    public NBTTagCompound getData() {
         NBTTagCompound compound = new NBTTagCompound();
         compound.setFloat("bounce", 1f);
         compound.setLong("delay", 20L);

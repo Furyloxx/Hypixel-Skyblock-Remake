@@ -7,8 +7,7 @@ import org.bukkit.entity.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SoundSequenceType
-{
+public class SoundSequenceType {
     private static final List<SoundSequenceType> TYPES = new ArrayList<>();
 
     public static final SoundSequenceType MADDOX_BATPHONE = new SoundSequenceType("maddox_batphone", new SoundSequence(
@@ -55,37 +54,30 @@ public class SoundSequenceType
     private final String namespace;
     private final SoundSequence sequence;
 
-    public SoundSequenceType(String namespace, SoundSequence sequence)
-    {
+    public SoundSequenceType(String namespace, SoundSequence sequence) {
         this.namespace = namespace;
         this.sequence = sequence;
         TYPES.add(this);
     }
 
-    public String getNamespace()
-    {
+    public String getNamespace() {
         return namespace;
     }
 
-    public SoundSequence getSequence()
-    {
+    public SoundSequence getSequence() {
         return sequence;
     }
 
-    public void play(Location location)
-    {
+    public void play(Location location) {
         sequence.play(location);
     }
 
-    public void play(Entity entity)
-    {
+    public void play(Entity entity) {
         sequence.play(entity);
     }
 
-    public static SoundSequenceType getByNamespace(String namespace)
-    {
-        for (SoundSequenceType type : TYPES)
-        {
+    public static SoundSequenceType getByNamespace(String namespace) {
+        for (SoundSequenceType type : TYPES) {
             if (namespace.toLowerCase().equals(type.namespace.toLowerCase()))
                 return type;
         }

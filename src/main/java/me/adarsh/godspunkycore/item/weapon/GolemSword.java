@@ -40,32 +40,27 @@ public class GolemSword implements ToolStatistics, MaterialFunction, Ability, Pl
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.WEAPON;
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.SWORD;
     }
 
     @Override
-    public int getBaseDamage()
-    {
+    public int getBaseDamage() {
         return 80;
     }
 
     @Override
-    public double getBaseStrength()
-    {
+    public double getBaseStrength() {
         return 125;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 25;
     }
 
@@ -111,10 +106,10 @@ public class GolemSword implements ToolStatistics, MaterialFunction, Ability, Pl
         ((CraftEntity) Block11).getHandle().noclip = true;
         ((CraftEntity) Block12).getHandle().noclip = true;
 
-        for (Entity entity : p.getWorld().getNearbyEntities(p.getLocation().add(p.getLocation().getDirection().multiply(3.0)), 3.0, 3.0, 3.0))
-        {
+        for (Entity entity : p.getWorld().getNearbyEntities(p.getLocation().add(p.getLocation().getDirection().multiply(3.0)), 3.0, 3.0, 3.0)) {
             if (!(entity instanceof LivingEntity)) continue;
-            if (entity instanceof Player || entity instanceof EnderDragon || entity instanceof EnderDragonPart) continue;
+            if (entity instanceof Player || entity instanceof EnderDragon || entity instanceof EnderDragonPart)
+                continue;
             User user = User.getUser(p.getUniqueId());
             user.damageEntity((LivingEntity) entity, 255.0);
         }

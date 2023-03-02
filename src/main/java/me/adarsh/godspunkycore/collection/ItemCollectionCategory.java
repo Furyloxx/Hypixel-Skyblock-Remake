@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.collection;
 
-public enum ItemCollectionCategory
-{
+public enum ItemCollectionCategory {
     FARMING,
     MINING,
     COMBAT,
@@ -9,8 +8,7 @@ public enum ItemCollectionCategory
     FISHING,
     BOSS;
 
-    public String getName()
-    {
+    public String getName() {
         return name().charAt(0) + name().substring(1).toLowerCase();
     }
 }

@@ -2,35 +2,29 @@ package me.adarsh.godspunkycore.item.armor.vanilla.diamond;
 
 import me.adarsh.godspunkycore.item.*;
 
-public class DiamondLeggings implements ToolStatistics, MaterialFunction
-{
+public class DiamondLeggings implements ToolStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Diamond Chestplate";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.UNCOMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ARMOR;
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.LEGGINGS;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 30;
     }
 }

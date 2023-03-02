@@ -25,11 +25,8 @@ import me.adarsh.godspunkycore.util.BlankWorldCreator;
 import me.adarsh.godspunkycore.util.DefenseReplacement;
 import me.adarsh.godspunkycore.util.Groups;
 import me.adarsh.godspunkycore.util.SUtil;
-import net.citizensnpcs.api.CitizensAPI;
-import net.citizensnpcs.api.npc.NPC;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -472,49 +469,13 @@ public final class PlayerUtils {
         return false;
     }
 
-    /*public static void sendToIsland(Player player) {
-        World world = Bukkit.getWorld("island_"+ player.getName());
-        if (world == null)
-            world = new BlankWorldCreator("island_"+player.getName()).createWorld();
-        User user = User.getUser(player.getUniqueId());
-        if (user.getIslandX() == null)
-        {
-            Config config = Spectaculation.getPlugin().config;
-            double xOffset = config.getDouble("islands.x");
-            double zOffset = config.getDouble("islands.z");
-            if (xOffset < -25000000.0 || xOffset > 25000000.0)
-                zOffset += User.ISLAND_SIZE * 2.0;
-            SUtil.pasteSchematic(new File("plugins/GodSpunkySkyblockCore/private_island.schematic"), new Location(world, 0.0, 100.0, 0.0), true);
-            SUtil.setBlocks(new Location(world, 7.0 + xOffset, 104.0, 43.0 + zOffset),
-                    new Location(world, 5.0 + xOffset, 100.0, 43.0 + zOffset), Material.PORTAL, false);
-            user.setIslandLocation(0.0, 0.0);
-            user.save();
-            if (xOffset > 0)
-                xOffset = xOffset * -1.0;
-            else if (xOffset <= 0)
-            {
-                if (xOffset != 0)
-                    xOffset = xOffset * -1.0;
-                xOffset += User.ISLAND_SIZE * 2.0;
-            }
-            config.set("islands.x", 0);
-            config.addDefault("islands.y" , 100);
-            config.set("islands.z", 0);
-            config.save();
-        }
-        World finalWorld = world;
-        player.sendMessage(ChatColor.AQUA +""+ChatColor.BOLD+"[GodSpunky] : "+"Sending to island");
-        SUtil.delay(() -> player.teleport(finalWorld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
-                SUtil.blackMagic(user.getIslandZ())).getLocation().add(0.5, 1.0, 0.5)), 10);
-    }*/
-    public static void sendToIsland(Player player)
-    {
+
+    public static void sendToIsland(Player player) {
         World world = Bukkit.getWorld("islands");
         if (world == null)
             world = new BlankWorldCreator("islands").createWorld();
         User user = User.getUser(player.getUniqueId());
-        if (user.getIslandX() == null)
-        {
+        if (user.getIslandX() == null) {
             Config config = Spectaculation.getPlugin().config;
             double xOffset = config.getDouble("islands.x");
             double zOffset = config.getDouble("islands.z");
@@ -528,8 +489,7 @@ public final class PlayerUtils {
             user.save();
             if (xOffset > 0)
                 xOffset = xOffset * -1.0;
-            else if (xOffset <= 0)
-            {
+            else if (xOffset <= 0) {
                 if (xOffset != 0)
                     xOffset = xOffset * -1.0;
                 xOffset += User.ISLAND_SIZE * 2.0;
@@ -539,23 +499,20 @@ public final class PlayerUtils {
             config.save();
         }
         World finalWorld = world;
-        player.sendMessage(ChatColor.AQUA +""+ChatColor.BOLD+"[GodSpunky] : "+"Sending to island");
+        player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "[GodSpunky] : " + "Sending to island");
         SUtil.delay(() -> player.teleport(finalWorld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
                 SUtil.blackMagic(user.getIslandZ())).getLocation().add(0.5, 1.0, 0.5)), 10);
     }
 
-    public static PotionEffect getPotionEffect(Player player, org.bukkit.potion.PotionEffectType type)
-    {
-        for (PotionEffect effect : player.getActivePotionEffects())
-        {
+    public static PotionEffect getPotionEffect(Player player, org.bukkit.potion.PotionEffectType type) {
+        for (PotionEffect effect : player.getActivePotionEffects()) {
             if (effect.getType().getName().equals(type.getName()))
                 return effect;
         }
         return null;
     }
 
-    public static void replacePotionEffect(Player player, PotionEffect add)
-    {
+    public static void replacePotionEffect(Player player, PotionEffect add) {
         PotionEffect effect = getPotionEffect(player, add.getType());
         if (effect != null && effect.getAmplifier() > add.getAmplifier())
             return;
@@ -563,38 +520,30 @@ public final class PlayerUtils {
         player.addPotionEffect(add);
     }
 
-    public static void handleSpecEntity(Entity entity, Player damager, AtomicDouble finalDamage)
-    {
+    public static void handleSpecEntity(Entity entity, Player damager, AtomicDouble finalDamage) {
         SEntity sEntity = SEntity.findSEntity(entity);
-        if (sEntity != null)
-        {
+        if (sEntity != null) {
             EntityFunction function = sEntity.getFunction();
             if (damager != null)
                 sEntity.addDamageFor(damager, finalDamage.get());
-            if (((LivingEntity) entity).getHealth() - finalDamage.get() <= 0.0)
-            {
+            if (((LivingEntity) entity).getHealth() - finalDamage.get() <= 0.0) {
                 if (damager != null)
                     damager.playSound(damager.getLocation(), Sound.SUCCESSFUL_HIT, 1f, 1f);
                 User user = User.getUser(damager.getUniqueId());
                 Skill.reward(CombatSkill.INSTANCE, sEntity.getStatistics().getXPDropped(), damager);
                 SlayerQuest quest = user.getSlayerQuest();
-                if (quest != null && sEntity.getSpecType().getCraftType() == quest.getType().getType().getEntityType())
-                {
+                if (quest != null && sEntity.getSpecType().getCraftType() == quest.getType().getType().getEntityType()) {
                     if (sEntity.getGenericInstance() instanceof SlayerBoss &&
-                            ((SlayerBoss) sEntity.getGenericInstance()).getSpawnerUUID().equals(damager.getUniqueId()))
-                    {
+                            ((SlayerBoss) sEntity.getGenericInstance()).getSpawnerUUID().equals(damager.getUniqueId())) {
                         quest.setKilled(System.currentTimeMillis());
                         damager.playSound(damager.getLocation(), Sound.LEVEL_UP, 1f, 2f);
                         damager.sendMessage("  " + ChatColor.GOLD + ChatColor.BOLD + "NICE! SLAYER BOSS SLAIN!");
                         damager.sendMessage("   " + ChatColor.DARK_PURPLE + ChatColor.BOLD + "→ " + ChatColor.GRAY +
                                 "Talk to Maddox to claim your " + quest.getType().getType().getName() + " Slayer XP!");
-                    }
-                    else
-                    {
+                    } else {
                         quest.setXp(quest.getXp() + sEntity.getStatistics().getXPDropped());
                         quest.setLastKilled(sEntity.getSpecType());
-                        if (quest.getXp() >= quest.getType().getSpawnXP() && quest.getSpawned() == 0)
-                        {
+                        if (quest.getXp() >= quest.getType().getSpawnXP() && quest.getSpawned() == 0) {
                             Location location = entity.getLocation().clone().add(0, 1, 0);
                             quest.setSpawned(System.currentTimeMillis());
                             SlayerQuest.playBossSpawn(location, damager);
@@ -603,8 +552,7 @@ public final class PlayerUtils {
                     }
                 }
                 boolean rare = false;
-                for (EntityDrop drop : SUtil.shuffle(function.drops()))
-                {
+                for (EntityDrop drop : SUtil.shuffle(function.drops())) {
                     EntityDropType type = drop.getType();
                     double r = SUtil.random(0.0, 1.0);
                     double magicFind = STATISTICS_CACHE.get(damager.getUniqueId()).getMagicFind().addAll() / 100.0;
@@ -619,21 +567,17 @@ public final class PlayerUtils {
                     MaterialStatistics s = sItem.getType().getStatistics();
                     String name = sItem.getRarity().getColor() + sItem.getType().getDisplayName(sItem.getVariant());
                     MaterialFunction f = sItem.getType().getFunction();
-                    if (f != null)
-                    {
+                    if (f != null) {
                         if (s.getType() != GenericItemType.ACCESSORY)
                             f.onKill(entity, damager, sItem);
                     }
-                    if (damager != null)
-                    {
-                        for (SItem accessory : PlayerUtils.getAccessories(damager))
-                        {
+                    if (damager != null) {
+                        for (SItem accessory : PlayerUtils.getAccessories(damager)) {
                             if (accessory.getType().getStatistics().getType() == GenericItemType.ACCESSORY)
                                 accessory.getType().getFunction().onKill(entity, damager, sItem);
                         }
                     }
-                    if (type != EntityDropType.GUARANTEED && type != EntityDropType.COMMON && damager != null)
-                    {
+                    if (type != EntityDropType.GUARANTEED && type != EntityDropType.COMMON && damager != null) {
                         damager.sendMessage(type.getColor() + "" + ChatColor.BOLD +
                                 (type == EntityDropType.CRAZY_RARE ? "CRAZY " : "") + "RARE DROP!  " +
                                 ChatColor.GRAY + "(" + name + ChatColor.GRAY + ")" + (magicFind != 0.0 ? ChatColor.AQUA +
@@ -651,8 +595,7 @@ public final class PlayerUtils {
         }
     }
 
-    public static boolean takeMana(Player player, int amount)
-    {
+    public static boolean takeMana(Player player, int amount) {
         int n = Repeater.MANA_MAP.get(player.getUniqueId()) - amount;
         if (n < 0)
             return false;
@@ -660,14 +603,12 @@ public final class PlayerUtils {
         return true;
     }
 
-    public static int getFinalManaCost(Player player, SItem sItem, int cost)
-    {
+    public static int getFinalManaCost(Player player, SItem sItem, int cost) {
         PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(player.getUniqueId());
         int manaPool = 100 + SUtil.blackMagic(statistics.getIntelligence().addAll());
         int updated = cost;
         ArmorSet set = PlayerUtils.STATISTICS_CACHE.get(player.getUniqueId()).getArmorSet();
-        if (set != null)
-        {
+        if (set != null) {
             if (set.equals(SMaterial.WISE_DRAGON_SET))
                 updated /= 2;
         }
@@ -681,11 +622,9 @@ public final class PlayerUtils {
         return updated;
     }
 
-    public static int getSpecItemIndex(Player player, SMaterial type)
-    {
+    public static int getSpecItemIndex(Player player, SMaterial type) {
         PlayerInventory inventory = player.getInventory();
-        for (int i = 0; i < inventory.getSize(); i++)
-        {
+        for (int i = 0; i < inventory.getSize(); i++) {
             SItem item = SItem.find(inventory.getItem(i));
             if (item != null && item.getType() == type)
                 return i;
@@ -693,8 +632,7 @@ public final class PlayerUtils {
         return -1;
     }
 
-    public static void addBoostStatistics(PlayerStatistics statistics, int slot, PlayerBoostStatistics boostStatistics)
-    {
+    public static void addBoostStatistics(PlayerStatistics statistics, int slot, PlayerBoostStatistics boostStatistics) {
         if (boostStatistics == null)
             return;
         DoublePlayerStatistic health = statistics.getMaxHealth(),
@@ -714,9 +652,9 @@ public final class PlayerUtils {
         magicFind.add(slot, boostStatistics.getBaseMagicFind());
     }
 
-    public interface DamageResult
-    {
+    public interface DamageResult {
         double getFinalDamage();
+
         boolean didCritDamage();
     }
 }

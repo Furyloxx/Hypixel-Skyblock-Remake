@@ -2,41 +2,34 @@ package me.adarsh.godspunkycore.item.enchanted;
 
 import me.adarsh.godspunkycore.item.*;
 
-public class EnchantedDarkOakWood implements EnchantedMaterialStatistics, MaterialFunction
-{
+public class EnchantedDarkOakWood implements EnchantedMaterialStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Enchanted Dark Oak Wood";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.UNCOMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 
     @Override
-    public boolean isEnchanted()
-    {
+    public boolean isEnchanted() {
         return true;
     }
 
     @Override
-    public MaterialQuantifiable getResult()
-    {
+    public MaterialQuantifiable getResult() {
         return new MaterialQuantifiable(SMaterial.ENCHANTED_DARK_OAK_WOOD);
     }
 
     @Override
-    public SMaterial getCraftingMaterial()
-    {
+    public SMaterial getCraftingMaterial() {
         return SMaterial.DARK_OAK_WOOD;
     }
 }

@@ -6,15 +6,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 
 @CommandParameters(description = "Get your current active potion effects.", aliases = "seff", permission = "spt.item")
-public class SpecEffectsCommand extends SCommand
-{
+public class SpecEffectsCommand extends SCommand {
     @Override
-    public void run(CommandSource sender, String[] args)
-    {
+    public void run(CommandSource sender, String[] args) {
         if (args.length > 1) throw new CommandArgumentException();
-        if (sender instanceof ConsoleCommandSender) throw new CommandFailException("Console senders cannot use this command!");
-        if (args.length == 1 && args[0].equalsIgnoreCase("clear"))
-        {
+        if (sender instanceof ConsoleCommandSender)
+            throw new CommandFailException("Console senders cannot use this command!");
+        if (args.length == 1 && args[0].equalsIgnoreCase("clear")) {
             sender.getUser().clearPotionEffects();
             send("Cleared active effects.");
             return;

@@ -15,19 +15,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ItemCollectionGUI extends GUI
-{
+public class ItemCollectionGUI extends GUI {
     private final ItemCollection collection;
 
-    public ItemCollectionGUI(ItemCollection collection)
-    {
+    public ItemCollectionGUI(ItemCollection collection) {
         super(collection.getName() + " Collection", 54);
         this.collection = collection;
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e)
-    {
+    public void onOpen(GUIOpenEvent e) {
         fill(BLACK_STAINED_GLASS_PANE);
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
@@ -42,8 +39,7 @@ public class ItemCollectionGUI extends GUI
         set(GUIClickableItem.createGUIOpenerItem(new CategoryCollectionGUI(collection.getCategory()), player,
                 ChatColor.GREEN + "Go Back", 48, Material.ARROW, (short) 0,
                 ChatColor.GRAY + "To " + collection.getCategory().getName() + " Collection"));
-        for (int i = 0, slot = 18; i < collection.getRewards().size(); i++, slot++)
-        {
+        for (int i = 0, slot = 18; i < collection.getRewards().size(); i++, slot++) {
             int t = i + 1;
             if (t == 28)
                 break;
@@ -53,13 +49,11 @@ public class ItemCollectionGUI extends GUI
             int finalSlot = slot;
             ChatColor color = ChatColor.RED;
             short data = 14;
-            if (amount >= rewards.getRequirement())
-            {
+            if (amount >= rewards.getRequirement()) {
                 color = ChatColor.GREEN;
                 data = 5;
             }
-            if (tier + 1 == t)
-            {
+            if (tier + 1 == t) {
                 color = ChatColor.YELLOW;
                 data = 4;
             }
@@ -68,31 +62,26 @@ public class ItemCollectionGUI extends GUI
             List<String> lore = new ArrayList<>(Arrays.asList(" ",
                     SUtil.createProgressText("Progress", amount, rewards.getRequirement()),
                     SUtil.createLineProgressBar(20, ChatColor.DARK_GREEN, amount, rewards.getRequirement()), " "));
-            if (rewards.size() != 0)
-            {
+            if (rewards.size() != 0) {
                 lore.add(ChatColor.GRAY + "Reward" + (rewards.size() != 1 ? "s" : "") + ":");
                 for (ItemCollectionReward reward : rewards)
                     lore.add(ChatColor.GRAY + " " + reward.toRewardString());
                 lore.add(" ");
             }
             lore.add(ChatColor.YELLOW + "Click to view rewards!");
-            set(new GUIClickableItem()
-            {
+            set(new GUIClickableItem() {
                 @Override
-                public void run(InventoryClickEvent e)
-                {
+                public void run(InventoryClickEvent e) {
                     // todo: rewards gui
                 }
 
                 @Override
-                public int getSlot()
-                {
+                public int getSlot() {
                     return finalSlot;
                 }
 
                 @Override
-                public ItemStack getItem()
-                {
+                public ItemStack getItem() {
                     return SUtil.getStack(finalColor + collection.getName() + " " + SUtil.toRomanNumeral(t),
                             Material.STAINED_GLASS_PANE, finalData, t, lore);
                 }

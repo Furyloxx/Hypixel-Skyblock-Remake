@@ -8,35 +8,29 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Arrays;
 import java.util.List;
 
-public class DiamondSkeleton implements EntityStatistics, EntityFunction
-{
+public class DiamondSkeleton implements EntityStatistics, EntityFunction {
     @Override
-    public String getEntityName()
-    {
+    public String getEntityName() {
         return "Skeleton";
     }
 
     @Override
-    public double getEntityMaxHealth()
-    {
+    public double getEntityMaxHealth() {
         return 250.0;
     }
 
     @Override
-    public double getDamageDealt()
-    {
+    public double getDamageDealt() {
         return 150.0;
     }
 
     @Override
-    public double getXPDropped()
-    {
+    public double getXPDropped() {
         return 20.0;
     }
 
     @Override
-    public SEntityEquipment getEntityEquipment()
-    {
+    public SEntityEquipment getEntityEquipment() {
         return new SEntityEquipment(new ItemStack(Material.BOW),
                 new ItemStack(Material.DIAMOND_HELMET),
                 new ItemStack(Material.DIAMOND_CHESTPLATE),
@@ -45,8 +39,7 @@ public class DiamondSkeleton implements EntityStatistics, EntityFunction
     }
 
     @Override
-    public List<EntityDrop> drops()
-    {
+    public List<EntityDrop> drops() {
         return Arrays.asList(new EntityDrop(new ItemStack(Material.BONE, 4), EntityDropType.GUARANTEED, 1.0),
                 new EntityDrop(SMaterial.MINER_HELMET, EntityDropType.RARE, 0.05),
                 new EntityDrop(SMaterial.MINER_CHESTPLATE, EntityDropType.RARE, 0.05),

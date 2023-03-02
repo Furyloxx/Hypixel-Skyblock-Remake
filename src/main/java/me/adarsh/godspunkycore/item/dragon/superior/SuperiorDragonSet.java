@@ -7,112 +7,92 @@ import me.adarsh.godspunkycore.item.Rarity;
 import me.adarsh.godspunkycore.item.armor.ArmorSet;
 import org.bukkit.entity.Player;
 
-public class SuperiorDragonSet implements ArmorSet
-{
+public class SuperiorDragonSet implements ArmorSet {
     @Override
-    public String getName()
-    {
+    public String getName() {
         return "Superior Blood";
     }
 
     @Override
-    public String getDescription()
-    {
+    public String getDescription() {
         return "All your stats are increased by 5% and Aspect of the Dragons ability deals 50% more Ability Damage.";
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getHelmet()
-    {
+    public Class<? extends MaterialStatistics> getHelmet() {
         return SuperiorDragonHelmet.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getChestplate()
-    {
+    public Class<? extends MaterialStatistics> getChestplate() {
         return SuperiorDragonChestplate.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getLeggings()
-    {
+    public Class<? extends MaterialStatistics> getLeggings() {
         return SuperiorDragonLeggings.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getBoots()
-    {
+    public Class<? extends MaterialStatistics> getBoots() {
         return SuperiorDragonBoots.class;
     }
 
     @Override
-    public PlayerBoostStatistics whileHasFullSet(Player player)
-    {
-        return new PlayerBoostStatistics()
-        {
+    public PlayerBoostStatistics whileHasFullSet(Player player) {
+        return new PlayerBoostStatistics() {
             @Override
-            public double getBaseSpeed()
-            {
+            public double getBaseSpeed() {
                 return 0.006;
             }
 
             @Override
-            public double getBaseHealth()
-            {
+            public double getBaseHealth() {
                 return 23;
             }
 
             @Override
-            public double getBaseStrength()
-            {
+            public double getBaseStrength() {
                 return 2;
             }
 
             @Override
-            public double getBaseCritDamage()
-            {
+            public double getBaseCritDamage() {
                 return 0.02;
             }
 
             @Override
-            public double getBaseCritChance()
-            {
+            public double getBaseCritChance() {
                 return 0.004;
             }
 
             @Override
-            public double getBaseIntelligence()
-            {
+            public double getBaseIntelligence() {
                 return 5;
             }
 
             @Override
-            public double getBaseDefense()
-            {
+            public double getBaseDefense() {
                 return 30;
             }
 
             @Override
-            public String getDisplayName()
-            {
+            public String getDisplayName() {
                 return null;
             }
 
             @Override
-            public Rarity getRarity()
-            {
+            public Rarity getRarity() {
                 return null;
             }
 
             @Override
-            public String getLore()
-            {
+            public String getLore() {
                 return null;
             }
 
             @Override
-            public GenericItemType getType()
-            {
+            public GenericItemType getType() {
                 return null;
             }
         };

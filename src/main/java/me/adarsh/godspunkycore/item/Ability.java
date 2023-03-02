@@ -2,19 +2,23 @@ package me.adarsh.godspunkycore.item;
 
 import org.bukkit.entity.Player;
 
-public interface Ability
-{
+public interface Ability {
     String getAbilityName();
+
     String getAbilityDescription();
-    default void onAbilityUse(Player player, SItem sItem) {}
+
+    default void onAbilityUse(Player player, SItem sItem) {
+    }
+
     int getAbilityCooldownTicks();
+
     int getManaCost();
-    default AbilityActivation getAbilityActivation()
-    {
+
+    default AbilityActivation getAbilityActivation() {
         return AbilityActivation.RIGHT_CLICK;
     }
-    default boolean displayUsage()
-    {
+
+    default boolean displayUsage() {
         return true;
     }
 }

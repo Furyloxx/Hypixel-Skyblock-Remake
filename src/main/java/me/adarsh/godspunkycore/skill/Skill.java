@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class Skill
-{
+public abstract class Skill {
     public static final List<Integer> XP_GOALS = Arrays.asList(0, 50, 175, 375, 675, 1175, 1925, 2925, 4425, 6425, 9925, 14925, 22425, 32425, 47425,
             67425, 97425, 147425, 222425, 322425, 522425, 822425, 1222425, 1722425, 2322425, 3022425, 3822425, 4722425,
             5722425, 6822425, 8022425, 9322425, 10722425, 12222425, 13822425, 15522425, 17322425, 19222425, 21222425,
@@ -27,36 +26,30 @@ public abstract class Skill
             15000, 17500, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 60000, 70000, 80000, 90000, 100000, 125000, 150000,
             175000, 200000, 250000, 300000, 350000, 400000, 450000, 500000, 600000, 700000, 800000, 1000000);
 
-    public static int getLevel(double xp, boolean sixty)
-    {
+    public static int getLevel(double xp, boolean sixty) {
         if (xp == 0.0)
             return 0;
         if (xp >= 55172425.0 && !sixty)
             return 50;
-        for (int i = XP_GOALS.size() - 1; i >= 0; i--)
-        {
+        for (int i = XP_GOALS.size() - 1; i >= 0; i--) {
             if (XP_GOALS.get(i) < xp)
                 return i;
         }
         return 60;
     }
 
-    public static int getCoinReward(int level)
-    {
+    public static int getCoinReward(int level) {
         return COIN_REWARDS.get(level);
     }
 
-    public static List<Skill> getSkills()
-    {
+    public static List<Skill> getSkills() {
         return Arrays.asList(FarmingSkill.INSTANCE, MiningSkill.INSTANCE, CombatSkill.INSTANCE, ForagingSkill.INSTANCE);
     }
 
-    public static double getNextXPGoal(double xp, boolean sixty)
-    {
+    public static double getNextXPGoal(double xp, boolean sixty) {
         if (xp >= 55172425.0 && !sixty)
             return 0.0;
-        for (int i = 0; i < XP_GOALS.size(); i++)
-        {
+        for (int i = 0; i < XP_GOALS.size(); i++) {
             int goal = XP_GOALS.get(i);
             if (goal > xp)
                 return goal - SUtil.getOrDefault(XP_GOALS, i - 1, 0);
@@ -64,58 +57,48 @@ public abstract class Skill
         return 0.0;
     }
 
-    public static double getNextOverallXPGoal(double xp, boolean sixty)
-    {
+    public static double getNextOverallXPGoal(double xp, boolean sixty) {
         if (xp >= 55172425.0 && !sixty)
             return 0.0;
-        for (int goal : XP_GOALS)
-        {
+        for (int goal : XP_GOALS) {
             if (goal > xp)
                 return goal;
         }
         return 0.0;
     }
 
-    public static double getXPUntilLevelUp(double xp, boolean sixty)
-    {
+    public static double getXPUntilLevelUp(double xp, boolean sixty) {
         double goal = getNextXPGoal(xp, sixty);
         if (goal == 0.0)
             return Double.POSITIVE_INFINITY;
         return goal - xp;
     }
 
-    public static DefenseReplacement getProgressReplacement(Skill skill, double xp, double additive, long end)
-    {
-        return new DefenseReplacement()
-        {
+    public static DefenseReplacement getProgressReplacement(Skill skill, double xp, double additive, long end) {
+        return new DefenseReplacement() {
             @Override
-            public String getReplacement()
-            {
+            public String getReplacement() {
                 int next = (int) getNextXPGoal(xp, skill.hasSixtyLevels());
                 return ChatColor.DARK_AQUA + "+" + SUtil.commaify(additive) + " " + skill.getName() + " (" +
                         SUtil.commaify(next - (getNextOverallXPGoal(xp, skill.hasSixtyLevels()) - xp)) + "/" + SUtil.commaify(next) + ")";
             }
 
             @Override
-            public long getEnd()
-            {
+            public long getEnd() {
                 return end;
             }
         };
     }
 
-    public static void reward(Skill rewarded, double rewardXP, Player player)
-    {
+    public static void reward(Skill rewarded, double rewardXP, Player player) {
         User user = User.getUser(player.getUniqueId());
         Pet pet = user.getActivePetClass();
-        if (pet != null && pet.getSkill() == rewarded)
-        {
+        if (pet != null && pet.getSkill() == rewarded) {
             Pet.PetItem item = user.getActivePet();
             int prevLevel = Pet.getLevel(item.getXp(), item.getRarity());
             item.setXp(item.getXp() + rewardXP);
             int level = Pet.getLevel(item.getXp(), item.getRarity());
-            if (prevLevel != level)
-            {
+            if (prevLevel != level) {
                 player.playSound(player.getLocation(), Sound.LEVEL_UP, 1f, 2f);
                 player.sendMessage(ChatColor.GREEN + "Your " + item.getRarity().getColor() + item.getType().getDisplayName(item.getType().getData()) +
                         ChatColor.GREEN + " levelled up to level " + ChatColor.BLUE + level + ChatColor.GREEN + "!");
@@ -128,16 +111,19 @@ public abstract class Skill
     }
 
     public abstract String getName();
+
     public abstract String getAlternativeName();
+
     public abstract List<String> getDescription();
+
     public abstract List<String> getLevelUpInformation(int level, int lastLevel, boolean showOld);
+
     public abstract boolean hasSixtyLevels();
-    public void onSkillUpdate(User user, double previousXP)
-    {
+
+    public void onSkillUpdate(User user, double previousXP) {
         int prevLevel = getLevel(previousXP, hasSixtyLevels());
         int level = getLevel(user.getSkillXP(this), hasSixtyLevels());
-        if (prevLevel != level)
-        {
+        if (prevLevel != level) {
             Player player = Bukkit.getPlayer(user.getUuid());
             if (player != null)
                 player.playSound(player.getLocation(), Sound.LEVEL_UP, 1f, 1f);
@@ -157,8 +143,8 @@ public abstract class Skill
             user.addCoins(getCoinReward(level));
         }
     }
-    public List<String> getRewardLore(int level, int prevLevel, boolean showOld)
-    {
+
+    public List<String> getRewardLore(int level, int prevLevel, boolean showOld) {
         List<String> lore = new ArrayList<>();
         lore.add(ChatColor.YELLOW + getAlternativeName() + " " + SUtil.toRomanNumeral(level) + ChatColor.WHITE);
         lore.addAll(getLevelUpInformation(level, prevLevel, showOld));

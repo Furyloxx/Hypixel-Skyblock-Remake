@@ -103,8 +103,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public enum SMaterial
-{
+public enum SMaterial {
     // Standard Weapons
     DAGGER(Material.IRON_SWORD, Dagger.class),
     ASPECT_OF_THE_END(Material.DIAMOND_SWORD, AspectOfTheEnd.class),
@@ -209,7 +208,6 @@ public enum SMaterial
     LEAFLET_CHESTPLATE(Material.LEATHER_CHESTPLATE, LeafletChestplate.class),
     LEAFLET_LEGGINGS(Material.LEATHER_LEGGINGS, LeafletLeggings.class),
     LEAFLET_BOOTS(Material.LEATHER_BOOTS, LeafletBoots.class),
-
 
 
     // Miner Armor
@@ -525,7 +523,7 @@ public enum SMaterial
     APPLE(Material.APPLE),
     BOW(Material.BOW, Bow.class, true),
     ARROW(Material.ARROW),
-    COAL(Material.COAL),
+    COAL(Material.COAL, Coal.class),
     DIAMOND(Material.DIAMOND),
     IRON_INGOT(Material.IRON_INGOT),
     GOLD_INGOT(Material.GOLD_INGOT),
@@ -941,8 +939,7 @@ public enum SMaterial
     @Getter
     private final String baseName;
 
-    SMaterial(Material craftMaterial, short data, Class<?> clazz, boolean craft, String baseName)
-    {
+    SMaterial(Material craftMaterial, short data, Class<?> clazz, boolean craft, String baseName) {
         this.craftMaterial = craftMaterial;
         this.data = data;
         this.clazz = clazz;
@@ -950,57 +947,45 @@ public enum SMaterial
         this.baseName = baseName;
     }
 
-    SMaterial(Material craftMaterial, short data, Class<?> clazz, boolean craft)
-    {
+    SMaterial(Material craftMaterial, short data, Class<?> clazz, boolean craft) {
         this(craftMaterial, data, clazz, craft, null);
     }
 
-    SMaterial(Material craftMaterial, Class<?> clazz, boolean craft)
-    {
+    SMaterial(Material craftMaterial, Class<?> clazz, boolean craft) {
         this(craftMaterial, (short) 0, clazz, craft);
     }
 
-    SMaterial(Material craftMaterial, Class<?> clazz)
-    {
+    SMaterial(Material craftMaterial, Class<?> clazz) {
         this(craftMaterial, clazz, false);
     }
 
-    SMaterial(Material craftMaterial, Class<?> clazz, short data)
-    {
+    SMaterial(Material craftMaterial, Class<?> clazz, short data) {
         this(craftMaterial, data, clazz, false);
     }
 
-    SMaterial(Material craftMaterial, short data, String baseName)
-    {
+    SMaterial(Material craftMaterial, short data, String baseName) {
         this(craftMaterial, data, null, true, baseName);
     }
 
-    SMaterial(Material craftMaterial)
-    {
+    SMaterial(Material craftMaterial) {
         this(craftMaterial, null, true);
     }
 
-    public static SMaterial getMaterial(String name)
-    {
-        try
-        {
+    public static SMaterial getMaterial(String name) {
+        try {
             return valueOf(name.toUpperCase());
-        }
-        catch (IllegalArgumentException ex)
-        {
+        } catch (IllegalArgumentException ex) {
             return null;
         }
     }
 
-    public static SMaterial getSpecEquivalent(Material material, short data)
-    {
+    public static SMaterial getSpecEquivalent(Material material, short data) {
         if (material == Material.LOG || material == Material.LOG_2 || material == Material.LEAVES || material == Material.LEAVES_2)
             data %= 4;
         List<SMaterial> results = Arrays.stream(values())
                 .filter((m) -> m.craft && m.getCraftMaterial() == material)
                 .collect(Collectors.toList());
-        for (SMaterial result : results)
-        {
+        for (SMaterial result : results) {
             if (result.data == data)
                 return result;
         }
@@ -1009,23 +994,18 @@ public enum SMaterial
         return results.get(0);
     }
 
-    public static <T extends ArmorSet> T registerArmorSet(Class<? extends ArmorSet> set)
-    {
-        try
-        {
+    public static <T extends ArmorSet> T registerArmorSet(Class<? extends ArmorSet> set) {
+        try {
             ArmorSet s = set.newInstance();
             CACHED_SETS.add(s);
             return (T) s;
-        }
-        catch (InstantiationException | IllegalAccessException e)
-        {
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public static ArmorSet findArmorSet(SMaterial helmet, SMaterial chestplate, SMaterial leggings, SMaterial boots)
-    {
+    public static ArmorSet findArmorSet(SMaterial helmet, SMaterial chestplate, SMaterial leggings, SMaterial boots) {
         List<ArmorSet> subList = CACHED_SETS.stream().filter(s ->
                 s.getHelmet().equals(helmet.getStatistics().getClass()) &&
                         s.getChestplate().equals(chestplate.getStatistics().getClass()) &&
@@ -1035,8 +1015,7 @@ public enum SMaterial
         return subList.get(0);
     }
 
-    public static ArmorSet findArmorSet(SMaterial piece)
-    {
+    public static ArmorSet findArmorSet(SMaterial piece) {
         List<ArmorSet> subList = CACHED_SETS.stream().filter(s ->
                 s.getHelmet().equals(piece.getStatistics().getClass()) ||
                         s.getChestplate().equals(piece.getStatistics().getClass()) ||
@@ -1046,38 +1025,33 @@ public enum SMaterial
         return subList.get(0);
     }
 
-    public MaterialFunction getFunction()
-    {
+    public MaterialFunction getFunction() {
         Object generic = getGenericInstance();
         if (generic instanceof MaterialFunction)
             return (MaterialFunction) generic;
         return null;
     }
 
-    public MaterialStatistics getStatistics()
-    {
-        if (!hasClass())
-        {
-            return new MaterialStatistics()
-            {
+    public MaterialStatistics getStatistics() {
+        if (!hasClass()) {
+            return new MaterialStatistics() {
                 @Override
-                public String getDisplayName()
-                {
+                public String getDisplayName() {
                     return null;
                 }
+
                 @Override
-                public Rarity getRarity()
-                {
+                public Rarity getRarity() {
                     return Rarity.COMMON;
                 }
+
                 @Override
-                public String getLore()
-                {
+                public String getLore() {
                     return null;
                 }
+
                 @Override
-                public GenericItemType getType()
-                {
+                public GenericItemType getType() {
                     return SUtil.getItemType(craftMaterial);
                 }
             };
@@ -1088,37 +1062,32 @@ public enum SMaterial
         return null;
     }
 
-    public String getDisplayName(short variant)
-    {
+    public String getDisplayName(short variant) {
         if (hasClass())
             return getStatistics().getDisplayName();
         return SUtil.getMaterialDisplayName(craftMaterial, variant);
     }
 
-    public TickingMaterial getTickingInstance()
-    {
+    public TickingMaterial getTickingInstance() {
         Object generic = getGenericInstance();
         if (generic instanceof TickingMaterial)
             return (TickingMaterial) generic;
         return null;
     }
 
-    public PlayerBoostStatistics getBoostStatistics()
-    {
+    public PlayerBoostStatistics getBoostStatistics() {
         MaterialStatistics statistics = getStatistics();
         if (!(statistics instanceof PlayerBoostStatistics)) return null;
         return (PlayerBoostStatistics) statistics;
     }
 
-    public SkullStatistics getSkullStatistics()
-    {
+    public SkullStatistics getSkullStatistics() {
         MaterialStatistics statistics = getStatistics();
         if (!(statistics instanceof SkullStatistics)) return null;
         return (SkullStatistics) statistics;
     }
 
-    public Ability getAbility()
-    {
+    public Ability getAbility() {
         if (!hasClass()) return null;
         Object generic = getGenericInstance();
         if (generic instanceof Ability)
@@ -1126,8 +1095,7 @@ public enum SMaterial
         return null;
     }
 
-    public OrbBuff getOrbBuff()
-    {
+    public OrbBuff getOrbBuff() {
         if (!hasClass()) return null;
         Object generic = getGenericInstance();
         if (generic instanceof OrbBuff)
@@ -1135,8 +1103,7 @@ public enum SMaterial
         return null;
     }
 
-    public ItemData getItemData()
-    {
+    public ItemData getItemData() {
         if (!hasClass()) return null;
         Object generic = getGenericInstance();
         if (generic instanceof ItemData)
@@ -1144,32 +1111,25 @@ public enum SMaterial
         return null;
     }
 
-    public Object getGenericInstance()
-    {
+    public Object getGenericInstance() {
         if (clazz == null) return null;
-        try
-        {
+        try {
             return clazz.newInstance();
-        }
-        catch (InstantiationException | IllegalAccessException e)
-        {
+        } catch (InstantiationException | IllegalAccessException e) {
         }
         return null;
     }
 
-    public boolean hasClass()
-    {
+    public boolean hasClass() {
         return clazz != null;
     }
 
-    public static ArmorSet getIncompleteArmorSet(PlayerInventory inventory)
-    {
+    public static ArmorSet getIncompleteArmorSet(PlayerInventory inventory) {
         SItem helmet = SItem.find(inventory.getHelmet());
         SItem chestplate = SItem.find(inventory.getChestplate());
         SItem leggings = SItem.find(inventory.getLeggings());
         SItem boots = SItem.find(inventory.getBoots());
-        for (ArmorSet set : CACHED_SETS)
-        {
+        for (ArmorSet set : CACHED_SETS) {
             if (set.getHelmet() != null && helmet != null && helmet.getType().getStatistics().getClass() == set.getHelmet())
                 return set;
             if (set.getChestplate() != null && chestplate != null && chestplate.getType().getStatistics().getClass() == set.getChestplate())
@@ -1182,16 +1142,14 @@ public enum SMaterial
         return null;
     }
 
-    public enum VagueEntityMaterial
-    {
+    public enum VagueEntityMaterial {
         HELMET,
         CHESTPLATE,
         LEGGINGS,
         BOOTS,
         FRAGMENT;
 
-        public SMaterial getEntityArmorPiece(SEntityType type)
-        {
+        public SMaterial getEntityArmorPiece(SEntityType type) {
             return getMaterial(type.name() + "_" + this.name());
         }
     }

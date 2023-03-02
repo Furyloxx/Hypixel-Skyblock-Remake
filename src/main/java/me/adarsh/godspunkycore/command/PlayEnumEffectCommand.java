@@ -6,13 +6,12 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 @CommandParameters(description = "Play a Bukkit enum sound.", usage = "/playenumsound <sound>")
-public class PlayEnumEffectCommand extends SCommand
-{
+public class PlayEnumEffectCommand extends SCommand {
     @Override
-    public void run(CommandSource sender, String[] args)
-    {
+    public void run(CommandSource sender, String[] args) {
         if (args.length < 1 || args.length > 2) throw new CommandArgumentException();
-        if (sender instanceof ConsoleCommandSender) throw new CommandFailException("Console senders cannot use this command!");
+        if (sender instanceof ConsoleCommandSender)
+            throw new CommandFailException("Console senders cannot use this command!");
         Player player = sender.getPlayer();
         Effect effect = Effect.valueOf(args[0].toUpperCase());
         int count = 1;

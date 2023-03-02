@@ -5,8 +5,7 @@ import lombok.Setter;
 import org.bukkit.Location;
 
 @Getter
-public class RegionGenerator
-{
+public class RegionGenerator {
     private final String modificationType;
     @Setter
     private String name;
@@ -19,8 +18,7 @@ public class RegionGenerator
     @Setter
     private int phase;
 
-    public RegionGenerator(String modificationType, String name, RegionType type)
-    {
+    public RegionGenerator(String modificationType, String name, RegionType type) {
         this.modificationType = modificationType;
         this.name = name;
         this.type = type;

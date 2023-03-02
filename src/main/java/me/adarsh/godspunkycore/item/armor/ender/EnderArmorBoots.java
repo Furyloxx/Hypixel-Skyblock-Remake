@@ -18,8 +18,7 @@ public class EnderArmorBoots implements LeatherArmorStatistics, MaterialFunction
     }
 
     @Override
-    public double getBaseHealth()
-    {
+    public double getBaseHealth() {
         return 15;
     }
 
@@ -29,14 +28,12 @@ public class EnderArmorBoots implements LeatherArmorStatistics, MaterialFunction
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.BOOTS;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 25;
     }
 

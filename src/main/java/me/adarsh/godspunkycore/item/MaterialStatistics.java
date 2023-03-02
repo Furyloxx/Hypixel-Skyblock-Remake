@@ -2,50 +2,53 @@ package me.adarsh.godspunkycore.item;
 
 import java.util.List;
 
-public interface MaterialStatistics
-{
+public interface MaterialStatistics {
     String getDisplayName();
+
     Rarity getRarity();
-    default String getLore()
-    {
+
+    default String getLore() {
         return null;
     }
-    default List<String> getListLore()
-    {
+
+    default List<String> getListLore() {
         return null;
     }
+
     GenericItemType getType();
-    default SpecificItemType getSpecificType()
-    {
+
+    default SpecificItemType getSpecificType() {
         return SpecificItemType.NONE;
     }
-    default boolean isStackable()
-    {
+
+    default boolean isStackable() {
         return true;
     }
-    default boolean isEnchanted()
-    {
+
+    default boolean isEnchanted() {
         return false;
     }
-    default boolean displayKills()
-    {
+
+    default boolean displayKills() {
         return false;
     }
-    default boolean displayRarity()
-    {
+
+    default boolean displayRarity() {
         return true;
     }
-    default long getPrice()
-    {
+
+    default long getPrice() {
         return 1;
     }
-    default long getValue()
-    {
+
+    default long getValue() {
         return 1;
     }
-    default ItemCategory getCategory()
-    {
+
+    default ItemCategory getCategory() {
         return ItemCategory.TOOLS_MISC;
     }
-    default void load() {}
+
+    default void load() {
+    }
 }

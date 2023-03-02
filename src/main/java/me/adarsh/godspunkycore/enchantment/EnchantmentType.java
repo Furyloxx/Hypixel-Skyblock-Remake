@@ -6,8 +6,7 @@ import org.bukkit.enchantments.Enchantment;
 
 import java.util.*;
 
-public class EnchantmentType
-{
+public class EnchantmentType {
     private static final Map<String, EnchantmentType> ENCHANTMENT_TYPE_CACHE = new HashMap<>();
 
     public static final EnchantmentType SHARPNESS = new EnchantmentType("Sharpness", "sharpness",
@@ -26,9 +25,9 @@ public class EnchantmentType
             "Increases bow damage by %s%.", SpecificItemType.BOW);
     public static final EnchantmentType FLAME = new EnchantmentType("Flame", "flame",
             "Arrow ignites target for 3 seconds, dealing 5 damage every second.", SpecificItemType.BOW);
-    public static final EnchantmentType SUPERS_BLESSING  = new EnchantmentType("Super's Blessing", "supers_blessing",
+    public static final EnchantmentType SUPERS_BLESSING = new EnchantmentType("Super's Blessing", "supers_blessing",
             "Blesses this item with incredible powers!");
-    public static final EnchantmentType ULTIMATE_WISE  = new EnchantmentType("Ultimate Wise", "ultimate_wise",
+    public static final EnchantmentType ULTIMATE_WISE = new EnchantmentType("Ultimate Wise", "ultimate_wise",
             "Reduces the Mana Cost of this item's ability by %s%.", true, SpecificItemType.SWORD, SpecificItemType.SHOVEL,
             SpecificItemType.SHEARS, SpecificItemType.PICKAXE, SpecificItemType.BOW, SpecificItemType.AXE, SpecificItemType.ROD,
             SpecificItemType.HOE, SpecificItemType.HELMET, SpecificItemType.CHESTPLATE, SpecificItemType.LEGGINGS, SpecificItemType.BOOTS);
@@ -59,8 +58,7 @@ public class EnchantmentType
     @Getter
     private final List<SpecificItemType> compatibleTypes;
 
-    public EnchantmentType(String name, String namespace, String description, boolean ultimate, Enchantment vanilla, SpecificItemType... compatibleTypes)
-    {
+    public EnchantmentType(String name, String namespace, String description, boolean ultimate, Enchantment vanilla, SpecificItemType... compatibleTypes) {
         this.name = name;
         this.namespace = namespace;
         this.description = description;
@@ -70,28 +68,23 @@ public class EnchantmentType
         ENCHANTMENT_TYPE_CACHE.put(namespace, this);
     }
 
-    public EnchantmentType(String name, String namespace, String description, boolean ultimate, SpecificItemType... compatibleTypes)
-    {
+    public EnchantmentType(String name, String namespace, String description, boolean ultimate, SpecificItemType... compatibleTypes) {
         this(name, namespace, description, ultimate, null, compatibleTypes);
     }
 
-    public EnchantmentType(String name, String namespace, String description, Enchantment vanilla, SpecificItemType... compatibleTypes)
-    {
+    public EnchantmentType(String name, String namespace, String description, Enchantment vanilla, SpecificItemType... compatibleTypes) {
         this(name, namespace, description, false, vanilla, compatibleTypes);
     }
 
-    public EnchantmentType(String name, String namespace, String description, SpecificItemType... compatibleTypes)
-    {
+    public EnchantmentType(String name, String namespace, String description, SpecificItemType... compatibleTypes) {
         this(name, namespace, description, false, compatibleTypes);
     }
 
-    public static EnchantmentType getByNamespace(String namespace)
-    {
+    public static EnchantmentType getByNamespace(String namespace) {
         return ENCHANTMENT_TYPE_CACHE.get(namespace.toLowerCase());
     }
 
-    public String getDescription(Object... objects)
-    {
+    public String getDescription(Object... objects) {
         String description = this.description;
         for (Object object : objects)
             description = description.replaceFirst("%s", String.valueOf(object));
@@ -99,8 +92,7 @@ public class EnchantmentType
     }
 
     @Override
-    public boolean equals(Object o)
-    {
+    public boolean equals(Object o) {
         if (!(o instanceof EnchantmentType)) return false;
         return ((EnchantmentType) o).namespace.equals(namespace);
     }

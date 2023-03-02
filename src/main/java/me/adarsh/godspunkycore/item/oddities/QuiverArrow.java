@@ -6,35 +6,29 @@ import me.adarsh.godspunkycore.item.MaterialStatistics;
 import me.adarsh.godspunkycore.item.Rarity;
 import org.bukkit.ChatColor;
 
-public class QuiverArrow implements MaterialStatistics, MaterialFunction
-{
+public class QuiverArrow implements MaterialStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return ChatColor.DARK_GRAY + "Quiver Arrow";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.COMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 
     @Override
-    public String getLore()
-    {
+    public String getLore() {
         return "This item is in your inventory because you are holding your bow currently. Switch your held item to see the item that was here before.";
     }
 
     @Override
-    public boolean displayRarity()
-    {
+    public boolean displayRarity() {
         return false;
     }
 }

@@ -5,47 +5,39 @@ import me.adarsh.godspunkycore.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.item.armor.ArmorSet;
 import org.bukkit.entity.Player;
 
-public class OldDragonSet implements ArmorSet
-{
+public class OldDragonSet implements ArmorSet {
     @Override
-    public String getName()
-    {
+    public String getName() {
         return "Old Blood";
     }
 
     @Override
-    public String getDescription()
-    {
+    public String getDescription() {
         return "Increases the strength of Growth, Protection, Feather Falling, Sugar Rush, and True Protection enchantments while worn.";
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getHelmet()
-    {
+    public Class<? extends MaterialStatistics> getHelmet() {
         return OldDragonHelmet.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getChestplate()
-    {
+    public Class<? extends MaterialStatistics> getChestplate() {
         return OldDragonChestplate.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getLeggings()
-    {
+    public Class<? extends MaterialStatistics> getLeggings() {
         return OldDragonLeggings.class;
     }
 
     @Override
-    public Class<? extends MaterialStatistics> getBoots()
-    {
+    public Class<? extends MaterialStatistics> getBoots() {
         return OldDragonBoots.class;
     }
 
     @Override
-    public PlayerBoostStatistics whileHasFullSet(Player player)
-    {
+    public PlayerBoostStatistics whileHasFullSet(Player player) {
         return null; // TODO
     }
 }

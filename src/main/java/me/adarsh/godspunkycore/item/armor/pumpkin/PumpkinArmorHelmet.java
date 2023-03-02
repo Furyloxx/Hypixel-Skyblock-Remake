@@ -38,8 +38,7 @@ public class PumpkinArmorHelmet implements LeatherArmorStatistics, MaterialFunct
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.HELMET;
     }
 }

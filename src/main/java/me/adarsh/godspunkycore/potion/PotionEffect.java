@@ -7,21 +7,18 @@ import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import java.util.Arrays;
 
 @Getter
-public class PotionEffect
-{
+public class PotionEffect {
     private final PotionEffectType type;
     private final int level;
     private final long duration;
 
-    public PotionEffect(PotionEffectType type, int level, long duration)
-    {
+    public PotionEffect(PotionEffectType type, int level, long duration) {
         this.type = type;
         this.level = level;
         this.duration = duration;
     }
 
-    public String getDescription()
-    {
+    public String getDescription() {
         if (type == PotionEffectType.STRENGTH)
             return type.getDescription(SUtil.getOrDefault(Arrays.asList(5, 12, 20, 30, 40, 50, 60, 75), level - 1, level * 10));
         if (type == PotionEffectType.RABBIT)
@@ -52,26 +49,22 @@ public class PotionEffect
         return type.getDescription();
     }
 
-    public String getDurationDisplay()
-    {
+    public String getDurationDisplay() {
         return SUtil.getFormattedTime(duration);
     }
 
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return type.getName() + " " + SUtil.toRomanNumeral(level);
     }
 
-    public NBTTagCompound toCompound()
-    {
+    public NBTTagCompound toCompound() {
         NBTTagCompound compound = new NBTTagCompound();
         compound.setInt("level", level);
         compound.setLong("duration", duration);
         return compound;
     }
 
-    public static PotionEffect ofCompound(String namespace, NBTTagCompound compound)
-    {
+    public static PotionEffect ofCompound(String namespace, NBTTagCompound compound) {
         PotionEffectType type = PotionEffectType.getByNamespace(namespace);
         int level = compound.getInt("level");
         long duration = compound.getLong("duration");

@@ -4,8 +4,7 @@ import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
-public enum ItemCategory
-{
+public enum ItemCategory {
     WEAPONS("Weapons", ChatColor.GOLD, (short) 1),
     ARMOR("Armor", ChatColor.AQUA, (short) 11),
     ACCESSORIES("Accessories", ChatColor.DARK_GREEN, (short) 13),
@@ -17,25 +16,21 @@ public enum ItemCategory
     private final ChatColor text;
     private final short item;
 
-    ItemCategory(String name, ChatColor text, short item)
-    {
+    ItemCategory(String name, ChatColor text, short item) {
         this.name = name;
         this.text = text;
         this.item = item;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public String getColoredName()
-    {
+    public String getColoredName() {
         return text + name;
     }
 
-    public ItemStack getStainedGlassPane()
-    {
+    public ItemStack getStainedGlassPane() {
         return SUtil.createColoredStainedGlassPane(item, " ");
     }
 }

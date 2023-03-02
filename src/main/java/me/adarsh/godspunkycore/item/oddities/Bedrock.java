@@ -5,29 +5,24 @@ import me.adarsh.godspunkycore.item.MaterialFunction;
 import me.adarsh.godspunkycore.item.MaterialStatistics;
 import me.adarsh.godspunkycore.item.Rarity;
 
-public class Bedrock implements MaterialStatistics, MaterialFunction
-{
+public class Bedrock implements MaterialStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Bedrock";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.LEGENDARY;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.BLOCK;
     }
 
     @Override
-    public String getLore()
-    {
+    public String getLore() {
         return "How do you have this??";
     }
 }

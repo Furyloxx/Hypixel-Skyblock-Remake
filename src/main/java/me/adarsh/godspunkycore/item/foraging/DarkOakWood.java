@@ -7,35 +7,29 @@ import me.adarsh.godspunkycore.item.Rarity;
 import me.adarsh.godspunkycore.skill.ForagingSkill;
 import me.adarsh.godspunkycore.skill.Skill;
 
-public class DarkOakWood implements ExperienceRewardStatistics, MaterialFunction
-{
+public class DarkOakWood implements ExperienceRewardStatistics, MaterialFunction {
     @Override
-    public double getRewardXP()
-    {
+    public double getRewardXP() {
         return 6.0;
     }
 
     @Override
-    public Skill getRewardedSkill()
-    {
+    public Skill getRewardedSkill() {
         return ForagingSkill.INSTANCE;
     }
 
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Dark Oak Wood";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.COMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 }

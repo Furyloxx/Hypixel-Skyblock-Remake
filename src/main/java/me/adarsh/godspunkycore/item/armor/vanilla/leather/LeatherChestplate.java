@@ -2,35 +2,29 @@ package me.adarsh.godspunkycore.item.armor.vanilla.leather;
 
 import me.adarsh.godspunkycore.item.*;
 
-public class LeatherChestplate implements ToolStatistics, MaterialFunction
-{
+public class LeatherChestplate implements ToolStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Leather Chestplate";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.COMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ARMOR;
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.CHESTPLATE;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 15;
     }
 }

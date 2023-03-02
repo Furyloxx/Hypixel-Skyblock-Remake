@@ -1,41 +1,39 @@
 package me.adarsh.godspunkycore.item;
 
-public interface PlayerBoostStatistics extends MaterialStatistics
-{
-    default int getBaseDamage()
-    {
+public interface PlayerBoostStatistics extends MaterialStatistics {
+    default int getBaseDamage() {
         return 0;
     }
-    default double getBaseStrength()
-    {
+
+    default double getBaseStrength() {
         return 0;
     }
-    default double getBaseCritChance()
-    {
+
+    default double getBaseCritChance() {
         return 0.0;
     }
-    default double getBaseCritDamage()
-    {
+
+    default double getBaseCritDamage() {
         return 0.0;
     }
-    default double getBaseMagicFind()
-    {
+
+    default double getBaseMagicFind() {
         return 0.0;
     }
-    default double getBaseIntelligence()
-    {
+
+    default double getBaseIntelligence() {
         return 0;
     }
-    default double getBaseSpeed()
-    {
+
+    default double getBaseSpeed() {
         return 0.0;
     }
-    default double getBaseHealth()
-    {
+
+    default double getBaseHealth() {
         return 0;
     }
-    default double getBaseDefense()
-    {
+
+    default double getBaseDefense() {
         return 0;
     }
 }

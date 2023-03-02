@@ -19,8 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Getter
-public class SlayerQuest implements ConfigurationSerializable
-{
+public class SlayerQuest implements ConfigurationSerializable {
     private final SlayerBossType type;
     private final long started;
     @Setter
@@ -36,15 +35,13 @@ public class SlayerQuest implements ConfigurationSerializable
     @Setter
     private SEntity entity;
 
-    public SlayerQuest(SlayerBossType type, long started)
-    {
+    public SlayerQuest(SlayerBossType type, long started) {
         this.type = type;
         this.started = started;
         this.entity = null;
     }
 
-    private SlayerQuest(SlayerBossType type, long started, double xp, long spawned, long killed, long died, SEntityType lastKilled)
-    {
+    private SlayerQuest(SlayerBossType type, long started, double xp, long spawned, long killed, long died, SEntityType lastKilled) {
         this.type = type;
         this.started = started;
         this.xp = xp;
@@ -56,8 +53,7 @@ public class SlayerQuest implements ConfigurationSerializable
     }
 
     @Override
-    public Map<String, Object> serialize()
-    {
+    public Map<String, Object> serialize() {
         Map<String, Object> map = new HashMap<>();
         map.put("type", type.getNamespace());
         map.put("started", started);
@@ -69,8 +65,7 @@ public class SlayerQuest implements ConfigurationSerializable
         return map;
     }
 
-    public static SlayerQuest deserialize(Map<String, Object> map)
-    {
+    public static SlayerQuest deserialize(Map<String, Object> map) {
         return new SlayerQuest(SlayerBossType.getByNamespace(String.valueOf(map.get("type"))),
                 ((Number) map.get("started")).longValue(),
                 ((Number) map.get("xp")).doubleValue(),
@@ -80,8 +75,7 @@ public class SlayerQuest implements ConfigurationSerializable
                 SEntityType.valueOf(String.valueOf(map.get("lastKilled"))));
     }
 
-    public static void playMinibossSpawn(Location location, Entity sound)
-    {
+    public static void playMinibossSpawn(Location location, Entity sound) {
         Location clone = location.clone();
         World world = location.getWorld();
         if (sound != null)
@@ -94,8 +88,7 @@ public class SlayerQuest implements ConfigurationSerializable
                         0, 0.0f, 0.0f, 0.0f, 0.0f, 1, 16), 3, 12);
     }
 
-    public static void playBossSpawn(Location location, Entity sound)
-    {
+    public static void playBossSpawn(Location location, Entity sound) {
         Location clone = location.clone();
         World world = location.getWorld();
         if (sound != null)
@@ -104,17 +97,14 @@ public class SlayerQuest implements ConfigurationSerializable
             SoundSequenceType.SLAYER_BOSS_SPAWN.play(clone);
         SUtil.runIntervalForTicks(() ->
         {
-            for (int i = 0; i < 50; i++)
-            {
+            for (int i = 0; i < 50; i++) {
                 world.playEffect(clone, Effect.SPELL, Effect.SPELL.getData());
                 world.playEffect(clone, Effect.FLYING_GLYPH, Effect.FLYING_GLYPH.getData());
                 world.playEffect(clone, Effect.WITCH_MAGIC, Effect.WITCH_MAGIC.getData());
             }
         }, 5, 28);
-        new BukkitRunnable()
-        {
-            public void run()
-            {
+        new BukkitRunnable() {
+            public void run() {
                 world.playEffect(clone, Effect.EXPLOSION_HUGE, Effect.EXPLOSION_HUGE.getData());
             }
         }.runTaskLater(Spectaculation.getPlugin(), 28);

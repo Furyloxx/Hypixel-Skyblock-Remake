@@ -12,8 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Getter
-public class ItemCollection
-{
+public class ItemCollection {
     private static final Map<String, ItemCollection> COLLECTION_MAP = new HashMap<>();
 
     public static final ItemCollection WHEAT = new ItemCollection("Wheat",
@@ -60,8 +59,7 @@ public class ItemCollection
     private final List<ItemCollectionRewards> rewards;
     private final boolean temporary; // TODO: remove when rewards are added
 
-    private ItemCollection(String name, ItemCollectionCategory category, SMaterial material, short data, ItemCollectionRewards... rewards)
-    {
+    private ItemCollection(String name, ItemCollectionCategory category, SMaterial material, short data, ItemCollectionRewards... rewards) {
         this.name = name;
         this.identifier = name.toLowerCase().replaceAll(" ", "_");
         this.category = category;
@@ -73,8 +71,7 @@ public class ItemCollection
     }
 
     // more of a temporary constructor until all items are added
-    private ItemCollection(String name, ItemCollectionCategory category, SMaterial material, short data, int size)
-    {
+    private ItemCollection(String name, ItemCollectionCategory category, SMaterial material, short data, int size) {
         this.name = name;
         this.identifier = name.toLowerCase().replaceAll(" ", "_");
         this.category = category;
@@ -87,13 +84,11 @@ public class ItemCollection
         COLLECTION_MAP.put(identifier, this);
     }
 
-    public static String[] getProgress(Player player, ItemCollectionCategory category)
-    {
+    public static String[] getProgress(Player player, ItemCollectionCategory category) {
         User user = User.getUser(player.getUniqueId());
         AtomicInteger found = new AtomicInteger(), completed = new AtomicInteger();
         Collection<ItemCollection> collections = category != null ? getCategoryCollections(category) : getCollections();
-        for (ItemCollection collection : collections)
-        {
+        for (ItemCollection collection : collections) {
             if (user.getCollection(collection) > 0)
                 found.incrementAndGet();
             if (user.getCollection(collection) >= collection.getMaxAmount())
@@ -101,36 +96,29 @@ public class ItemCollection
         }
         String title;
         String progress;
-        if (collections.size() == found.get())
-        {
+        if (collections.size() == found.get()) {
             title = SUtil.createProgressText("Collection Maxed Out", completed.get(), collections.size());
             progress = SUtil.createLineProgressBar(20, ChatColor.DARK_GREEN, completed.get(), collections.size());
-        }
-        else
-        {
+        } else {
             title = SUtil.createProgressText("Collection Unlocked", found.get(), collections.size());
             progress = SUtil.createLineProgressBar(20, ChatColor.DARK_GREEN, found.get(), collections.size());
         }
         return new String[]{title, progress};
     }
 
-    public int getMaxAmount()
-    {
+    public int getMaxAmount() {
         if (rewards.size() == 0 || rewards.get(rewards.size() - 1) == null)
             return 0;
         return rewards.get(rewards.size() - 1).getRequirement();
     }
 
-    public int getTierAmount()
-    {
+    public int getTierAmount() {
         return rewards.size();
     }
 
-    public int getTier(int amount)
-    {
+    public int getTier(int amount) {
         int tier = 0;
-        for (ItemCollectionRewards reward : rewards)
-        {
+        for (ItemCollectionRewards reward : rewards) {
             if (reward == null) continue;
             if (reward.getRequirement() > amount)
                 break;
@@ -139,8 +127,7 @@ public class ItemCollection
         return tier;
     }
 
-    public int getRequirementForTier(int tier)
-    {
+    public int getRequirementForTier(int tier) {
         tier -= 1;
         if (tier < 0 || tier > rewards.size() - 1)
             return -1;
@@ -150,44 +137,37 @@ public class ItemCollection
         return reward.getRequirement();
     }
 
-    public ItemCollectionRewards getRewardsFor(int tier)
-    {
+    public ItemCollectionRewards getRewardsFor(int tier) {
         tier -= 1;
         if (tier < 0 || tier > rewards.size())
             return null;
         return rewards.get(tier);
     }
 
-    public static ItemCollection getByIdentifier(String identifier)
-    {
+    public static ItemCollection getByIdentifier(String identifier) {
         return COLLECTION_MAP.get(identifier.toLowerCase());
     }
 
-    public static ItemCollection getByMaterial(SMaterial material, short data)
-    {
-        for (ItemCollection collection : COLLECTION_MAP.values())
-        {
+    public static ItemCollection getByMaterial(SMaterial material, short data) {
+        for (ItemCollection collection : COLLECTION_MAP.values()) {
             if (collection.material == material && collection.data == data)
                 return collection;
         }
         return null;
     }
 
-    public static Map<ItemCollection, Integer> getDefaultCollections()
-    {
+    public static Map<ItemCollection, Integer> getDefaultCollections() {
         Map<ItemCollection, Integer> collections = new HashMap<>();
         for (ItemCollection collection : COLLECTION_MAP.values())
             collections.put(collection, 0);
         return collections;
     }
 
-    public static Collection<ItemCollection> getCollections()
-    {
+    public static Collection<ItemCollection> getCollections() {
         return COLLECTION_MAP.values();
     }
 
-    public static List<ItemCollection> getCategoryCollections(ItemCollectionCategory category)
-    {
+    public static List<ItemCollection> getCategoryCollections(ItemCollectionCategory category) {
         return getCollections().stream().filter(collection -> collection.category == category).collect(Collectors.toList());
     }
 }

@@ -6,12 +6,11 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 @CommandParameters(description = "Browse from a catalog of items.", aliases = "browseitem,browseitems,browsei,bi,ib", permission = "spt.item")
-public class ItemBrowseCommand extends SCommand
-{
+public class ItemBrowseCommand extends SCommand {
     @Override
-    public void run(CommandSource sender, String[] args)
-    {
-        if (sender instanceof ConsoleCommandSender) throw new CommandFailException("Console senders cannot use this command!");
+    public void run(CommandSource sender, String[] args) {
+        if (sender instanceof ConsoleCommandSender)
+            throw new CommandFailException("Console senders cannot use this command!");
         Player player = sender.getPlayer();
         String query = "";
         if (args.length >= 1)

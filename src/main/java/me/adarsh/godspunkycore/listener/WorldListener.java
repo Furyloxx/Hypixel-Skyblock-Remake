@@ -7,7 +7,6 @@ import me.adarsh.godspunkycore.entity.caverns.CreeperFunction;
 import me.adarsh.godspunkycore.entity.nms.Dragon;
 import me.adarsh.godspunkycore.event.CreeperIgniteEvent;
 import me.adarsh.godspunkycore.item.*;
-import me.adarsh.godspunkycore.region.Cuboid;
 import me.adarsh.godspunkycore.region.Region;
 import me.adarsh.godspunkycore.region.RegionType;
 import me.adarsh.godspunkycore.skill.FarmingSkill;
@@ -22,7 +21,6 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.PlayerPortalEvent;
@@ -36,6 +34,8 @@ import java.util.*;
 public class WorldListener extends PListener {
     private static final Map<UUID, List<BlockState>> RESTORER = new HashMap<>();
     private static final List<UUID> ALREADY_TELEPORTING = new ArrayList<>();
+
+    public static boolean allowBreak = false;
 
     @EventHandler
     public void onCreatureSpawn(CreatureSpawnEvent e) {
@@ -100,77 +100,76 @@ public class WorldListener extends PListener {
         SMaterial equiv = SMaterial.getSpecEquivalent(block.getType(), block.getData());
         Region region = Region.getRegionOfBlock(block);
         Collection<ItemStack> drops = block.getDrops(e.getPlayer().getItemInHand());
-        if (player.getGameMode() != GameMode.CREATIVE) {
-            boolean allowBreak = false;
-            if (region != null) {
-                if (Groups.FORAGING_REGIONS.contains(region.getType())) {
-                    if (block.getType() == Material.LOG || block.getType() == Material.LOG_2 || block.getType() == Material.LEAVES ||
-                            block.getType() == Material.LEAVES_2) {
-                        allowBreak = true;
-                        int level = Skill.getLevel(user.getSkillXP(ForagingSkill.INSTANCE), ForagingSkill.INSTANCE.hasSixtyLevels());
-                        double d = ForagingSkill.INSTANCE.getDoubleDropChance(level);
-                        double t = ForagingSkill.INSTANCE.getTripleDropChance(level);
-                        extraDrops(drops, d, t, block);
-                        addToRestorer(block, player);
+
+        if (region != null) {
+            if (Groups.FORAGING_REGIONS.contains(region.getType())) {
+                if (block.getType() == Material.LOG || block.getType() == Material.LOG_2 || block.getType() == Material.LEAVES ||
+                        block.getType() == Material.LEAVES_2) {
+                    allowBreak = true;
+                    int level = Skill.getLevel(user.getSkillXP(ForagingSkill.INSTANCE), ForagingSkill.INSTANCE.hasSixtyLevels());
+                    double d = ForagingSkill.INSTANCE.getDoubleDropChance(level);
+                    double t = ForagingSkill.INSTANCE.getTripleDropChance(level);
+                    extraDrops(drops, d, t, block);
+                    addToRestorer(block, player);
+                }
+            }
+            if (Groups.FARMING_REGIONS.contains(region.getType())) {
+                if (Groups.FARMING_MATERIALS.contains(block.getType())) {
+                    allowBreak = true;
+                    int level = Skill.getLevel(user.getSkillXP(FarmingSkill.INSTANCE), FarmingSkill.INSTANCE.hasSixtyLevels());
+                    double d = FarmingSkill.INSTANCE.getDoubleDropChance(level);
+                    extraDrops(drops, d, 0.0, block);
+                }
+            }
+            if (Groups.MINING_REGIONS.contains(region.getType())) {
+                Material type = block.getType();
+                switch (type) {
+                    case COAL_ORE:
+                    case DIAMOND_BLOCK:
+                    case DIAMOND_ORE:
+                    case EMERALD_ORE:
+                    case GOLD_ORE:
+                    case IRON_ORE:
+                    case LAPIS_ORE:
+                    case REDSTONE_ORE: {
+                        block.setType(Material.STONE);
+                        break;
+                    }
+                    case STONE: {
+                        if (block.getData() != 0)
+                            break;
+                        block.setType(Material.COBBLESTONE);
+                        break;
+                    }
+                    case OBSIDIAN:
+                    case ENDER_STONE:
+                    case NETHERRACK:
+                    case COBBLESTONE: {
+                        block.setType(Material.BEDROCK);
+                        regenerateLater(block, 3 * 20, region.getType());
+                        break;
                     }
                 }
-                if (Groups.FARMING_REGIONS.contains(region.getType())) {
-                    if (Groups.FARMING_MATERIALS.contains(block.getType())) {
-                        allowBreak = true;
-                        int level = Skill.getLevel(user.getSkillXP(FarmingSkill.INSTANCE), FarmingSkill.INSTANCE.hasSixtyLevels());
-                        double d = FarmingSkill.INSTANCE.getDoubleDropChance(level);
-                        extraDrops(drops, d, 0.0, block);
+                if (type != block.getType()) {
+                    e.setCancelled(true);
+                    if (equiv.getStatistics() instanceof ExperienceRewardStatistics)
+                        Skill.reward(((ExperienceRewardStatistics) equiv.getStatistics()).getRewardedSkill(), ((ExperienceRewardStatistics) equiv.getStatistics()).getRewardXP(), player);
+                    int level = Skill.getLevel(user.getSkillXP(MiningSkill.INSTANCE), MiningSkill.INSTANCE.hasSixtyLevels());
+                    double d = MiningSkill.INSTANCE.getDoubleDropChance(level);
+                    double t = MiningSkill.INSTANCE.getTripleDropChance(level);
+                    for (ItemStack drop : drops) {
+                        SItem conv = SItem.convert(drop);
+                        conv.setOrigin(ItemOrigin.NATURAL_BLOCK);
+                        block.getWorld().dropItemNaturally(block.getLocation().clone().add(0.5, 0.5, 0.5),
+                                conv.getStack());
                     }
+                    extraDrops(drops, d, t, block);
                 }
-                if (Groups.MINING_REGIONS.contains(region.getType())) {
-                    Material type = block.getType();
-                    switch (type) {
-                        case COAL_ORE:
-                        case DIAMOND_BLOCK:
-                        case DIAMOND_ORE:
-                        case EMERALD_ORE:
-                        case GOLD_ORE:
-                        case IRON_ORE:
-                        case LAPIS_ORE:
-                        case REDSTONE_ORE: {
-                            block.setType(Material.STONE);
-                            break;
-                        }
-                        case STONE: {
-                            if (block.getData() != 0)
-                                break;
-                            block.setType(Material.COBBLESTONE);
-                            break;
-                        }
-                        case OBSIDIAN:
-                        case ENDER_STONE:
-                        case NETHERRACK:
-                        case COBBLESTONE: {
-                            block.setType(Material.BEDROCK);
-                            regenerateLater(block, 3 * 20, region.getType());
-                            break;
-                        }
-                    }
-                    if (type != block.getType()) {
-                        e.setCancelled(true);
-                        if (equiv.getStatistics() instanceof ExperienceRewardStatistics)
-                            Skill.reward(((ExperienceRewardStatistics) equiv.getStatistics()).getRewardedSkill(), ((ExperienceRewardStatistics) equiv.getStatistics()).getRewardXP(), player);
-                        int level = Skill.getLevel(user.getSkillXP(MiningSkill.INSTANCE), MiningSkill.INSTANCE.hasSixtyLevels());
-                        double d = MiningSkill.INSTANCE.getDoubleDropChance(level);
-                        double t = MiningSkill.INSTANCE.getTripleDropChance(level);
-                        for (ItemStack drop : drops) {
-                            SItem conv = SItem.convert(drop);
-                            conv.setOrigin(ItemOrigin.NATURAL_BLOCK);
-                            block.getWorld().dropItemNaturally(block.getLocation().clone().add(0.5, 0.5, 0.5),
-                                    conv.getStack());
-                        }
-                        extraDrops(drops, d, t, block);
-                    }
-                    if (block.getType() == Material.GLOWSTONE) {
-                        allowBreak = true;
-                        addToRestorer(block, player);
-                    }
+                if (block.getType() == Material.GLOWSTONE) {
+                    allowBreak = true;
+                    addToRestorer(block, player);
                 }
+            }
                 /*World world = Bukkit.getWorld("islands");
                 World hubworld = Bukkit.getWorld("Hypixel");
                 double islandX = user.getIslandX();
@@ -184,13 +183,13 @@ public class WorldListener extends PListener {
                     allowBreak = true;*/
 
 
-                if (user.isOnIsland(block))
-                    allowBreak = true;
+            if (user.isOnIsland(block))
+                allowBreak = true;
 
-                if (!allowBreak)
-                    e.setCancelled(true);
-            }
+            if (!allowBreak)
+                e.setCancelled(true);
         }
+
 
         if (equiv.getStatistics() instanceof ExperienceRewardStatistics && !e.isCancelled())
             Skill.reward(((ExperienceRewardStatistics) equiv.getStatistics()).getRewardedSkill(), ((ExperienceRewardStatistics) equiv.getStatistics()).getRewardXP(), player);
@@ -200,8 +199,7 @@ public class WorldListener extends PListener {
         if (e.isCancelled() || player.getGameMode() == GameMode.CREATIVE)
             return;
         e.setCancelled(true);
-        for (ItemStack drop : drops)
-        {
+        for (ItemStack drop : drops) {
             SItem conv = SItem.convert(drop);
             conv.setOrigin(ItemOrigin.NATURAL_BLOCK);
             block.getWorld().dropItemNaturally(block.getLocation().clone().add(0.5, 0.5, 0.5),
@@ -211,15 +209,13 @@ public class WorldListener extends PListener {
     }
 
     @EventHandler
-    public void onFarmlandDecay(BlockPhysicsEvent e)
-    {
+    public void onFarmlandDecay(BlockPhysicsEvent e) {
         if (e.getChangedType() == Material.SOIL)
             e.setCancelled(true);
     }
 
     @EventHandler
-    public void onEntityTarget(EntityTargetLivingEntityEvent e)
-    {
+    public void onEntityTarget(EntityTargetLivingEntityEvent e) {
         Entity entity = e.getEntity();
         SEntity sEntity = SEntity.findSEntity(entity);
         if (sEntity == null) return;
@@ -229,17 +225,14 @@ public class WorldListener extends PListener {
     }
 
     @EventHandler
-    public void onPortalEnter(EntityPortalEnterEvent e)
-    {
+    public void onPortalEnter(EntityPortalEnterEvent e) {
         Material portalType = e.getLocation().getBlock().getType();
         Entity entity = e.getEntity();
         if (ALREADY_TELEPORTING.contains(entity.getUniqueId()))
             return;
-        if (portalType == Material.PORTAL)
-        {
+        if (portalType == Material.PORTAL) {
             World hub = Bukkit.getWorld(!plugin.config.getString("hub_world").isEmpty() ? plugin.config.getString("hub_world") : "hub");
-            if (hub == null)
-            {
+            if (hub == null) {
                 entity.sendMessage(ChatColor.RED + "Could not find a hub world to teleport you to!");
                 return;
             }
@@ -257,49 +250,39 @@ public class WorldListener extends PListener {
     }
 
     @EventHandler
-    public void onPortal(PlayerPortalEvent e)
-    {
+    public void onPortal(PlayerPortalEvent e) {
         e.setCancelled(true);
     }
 
     @EventHandler
-    public void onPortalCreate(EntityCreatePortalEvent e)
-    {
+    public void onPortalCreate(EntityCreatePortalEvent e) {
         e.setCancelled(true);
     }
 
     @EventHandler
-    public void onWeatherChange(WeatherChangeEvent e)
-    {
+    public void onWeatherChange(WeatherChangeEvent e) {
         e.setCancelled(true);
     }
 
     @EventHandler
-    public void onSlimeSplit(SlimeSplitEvent e)
-    {
+    public void onSlimeSplit(SlimeSplitEvent e) {
         Slime slime = e.getEntity();
         SEntity sEntity = SEntity.findSEntity(slime);
-        if (sEntity != null)
-        {
+        if (sEntity != null) {
             if (sEntity.getStatistics() instanceof SlimeStatistics && !((SlimeStatistics) sEntity.getStatistics()).split())
                 e.setCancelled(true);
         }
     }
 
-    private static void addToRestorer(Block block, Player player)
-    {
+    private static void addToRestorer(Block block, Player player) {
         if (RESTORER.containsKey(player.getUniqueId()))
             RESTORER.get(player.getUniqueId()).add(block.getState());
-        else
-        {
+        else {
             RESTORER.put(player.getUniqueId(), new ArrayList<>());
             RESTORER.get(player.getUniqueId()).add(block.getState());
-            new BukkitRunnable()
-            {
-                public void run()
-                {
-                    for (BlockState state : RESTORER.get(player.getUniqueId()))
-                    {
+            new BukkitRunnable() {
+                public void run() {
+                    for (BlockState state : RESTORER.get(player.getUniqueId())) {
                         state.getBlock().setType(state.getType());
                         state.setRawData(state.getRawData());
                         state.update();
@@ -310,10 +293,8 @@ public class WorldListener extends PListener {
         }
     }
 
-    private static void extraDrops(Collection<ItemStack> drops, double d, double t, Block block)
-    {
-        for (ItemStack drop : drops)
-        {
+    private static void extraDrops(Collection<ItemStack> drops, double d, double t, Block block) {
+        for (ItemStack drop : drops) {
             int amount = 0;
             if (SUtil.random(0.0, 1.0) < t)
                 amount = 2;
@@ -326,21 +307,15 @@ public class WorldListener extends PListener {
         }
     }
 
-    private static BukkitTask regenerateLater(Block block, long ticks, RegionType type)
-    {
-        return new BukkitRunnable()
-        {
-            public void run()
-            {
+    private static BukkitTask regenerateLater(Block block, long ticks, RegionType type) {
+        return new BukkitRunnable() {
+            public void run() {
                 if (block.getType() != Material.BEDROCK)
                     return;
                 int r5 = SUtil.random(1, 5);
-                switch (type)
-                {
-                    case COAL_MINE:
-                    {
-                        if (SUtil.random(1, 15) == 1)
-                        {
+                switch (type) {
+                    case COAL_MINE: {
+                        if (SUtil.random(1, 15) == 1) {
                             block.setType(Material.COAL_ORE);
                             break;
                         }
@@ -348,75 +323,60 @@ public class WorldListener extends PListener {
                         break;
                     }
                     case GOLD_MINE:
-                    case GUNPOWDER_MINES:
-                    {
-                        if (SUtil.random(1, 20) == 1)
-                        {
+                    case GUNPOWDER_MINES: {
+                        if (SUtil.random(1, 20) == 1) {
                             block.setType(Material.GOLD_ORE);
                             break;
                         }
-                        if (r5 == 1)
-                        {
+                        if (r5 == 1) {
                             block.setType(Material.IRON_ORE);
                             break;
                         }
                         block.setType(Material.STONE);
                         break;
                     }
-                    case LAPIS_QUARRY:
-                    {
-                        if (r5 == 1)
-                        {
+                    case LAPIS_QUARRY: {
+                        if (r5 == 1) {
                             block.setType(Material.LAPIS_ORE);
                             break;
                         }
                         block.setType(Material.STONE);
                         break;
                     }
-                    case PIGMENS_DEN:
-                    {
-                        if (r5 == 1)
-                        {
+                    case PIGMENS_DEN: {
+                        if (r5 == 1) {
                             block.setType(Material.REDSTONE_ORE);
                             break;
                         }
                         block.setType(Material.STONE);
                         break;
                     }
-                    case SLIMEHILL:
-                    {
-                        if (r5 == 1)
-                        {
+                    case SLIMEHILL: {
+                        if (r5 == 1) {
                             block.setType(Material.EMERALD_ORE);
                             break;
                         }
                         block.setType(Material.STONE);
                         break;
                     }
-                    case DIAMOND_RESERVE:
-                    {
-                        if (r5 == 1)
-                        {
+                    case DIAMOND_RESERVE: {
+                        if (r5 == 1) {
                             block.setType(Material.DIAMOND_ORE);
                             break;
                         }
                         block.setType(Material.STONE);
                         break;
                     }
-                    case OBSIDIAN_SANCTUARY:
-                    {
-                        if (SUtil.random(1, 40) == 1)
-                        {
+                    case OBSIDIAN_SANCTUARY: {
+                        if (SUtil.random(1, 40) == 1) {
                             block.setType(Material.DIAMOND_BLOCK);
                             break;
                         }
-                        if (SUtil.random(1, 30) == 1)
-                        {
+                        if (SUtil.random(1, 30) == 1) {
                             block.setType(Material.OBSIDIAN);
                             break;
                         }
-                        if (r5 == 1)
-                        {
+                        if (r5 == 1) {
                             block.setType(Material.DIAMOND_ORE);
                             break;
                         }
@@ -424,18 +384,15 @@ public class WorldListener extends PListener {
                         break;
                     }
                     case THE_END:
-                    case DRAGONS_NEST:
-                    {
+                    case DRAGONS_NEST: {
                         block.setType(Material.ENDER_STONE);
                         break;
                     }
-                    case BLAZING_FORTRESS:
-                    {
+                    case BLAZING_FORTRESS: {
                         block.setType(Material.NETHERRACK);
                         break;
                     }
-                    default:
-                    {
+                    default: {
                         block.setType(Material.STONE);
                         break;
                     }

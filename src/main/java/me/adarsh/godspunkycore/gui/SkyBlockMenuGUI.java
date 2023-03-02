@@ -158,7 +158,7 @@ public class SkyBlockMenuGUI extends GUI {
                 name = ChatColor.RED + "None";
             else
                 name = active.getRarity().getColor() + active.getType().getDisplayName(active.getType().getData());
-            set(new GUIClickableItem(){
+            set(new GUIClickableItem() {
                 @Override
                 public void run(InventoryClickEvent e) {
                     GUIType.PETS.getGUI().open(player);

@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.item;
 
-public enum GenericItemType
-{
+public enum GenericItemType {
     WEAPON,
     TOOL,
     RANGED_WEAPON,

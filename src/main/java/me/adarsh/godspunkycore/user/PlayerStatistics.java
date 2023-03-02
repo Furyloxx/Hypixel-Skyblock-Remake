@@ -13,8 +13,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @Getter
-public class PlayerStatistics
-{
+public class PlayerStatistics {
     private final UUID uuid;
     private final DoublePlayerStatistic maxHealth;
     private final DoublePlayerStatistic defense;
@@ -39,8 +38,7 @@ public class PlayerStatistics
                             DoublePlayerStatistic magicFind,
                             DoublePlayerStatistic intelligence, DoublePlayerStatistic trueDefense,
                             double healthRegenerationPercentBonus,
-                            double manaRegenerationPercentBonus, ArmorSet armorSet)
-    {
+                            double manaRegenerationPercentBonus, ArmorSet armorSet) {
         this.uuid = uuid;
         this.maxHealth = maxHealth;
         this.defense = defense;
@@ -57,14 +55,10 @@ public class PlayerStatistics
         this.itemTicker = new HashMap<>();
     }
 
-    public void tickItem(int slot, long interval, Runnable runnable)
-    {
-        itemTicker.put(slot, new BukkitRunnable()
-        {
-            public void run()
-            {
-                if (Bukkit.getPlayer(uuid) == null)
-                {
+    public void tickItem(int slot, long interval, Runnable runnable) {
+        itemTicker.put(slot, new BukkitRunnable() {
+            public void run() {
+                if (Bukkit.getPlayer(uuid) == null) {
                     cancel();
                     return;
                 }
@@ -73,15 +67,13 @@ public class PlayerStatistics
         }.runTaskTimer(Spectaculation.getPlugin(), 0, interval));
     }
 
-    public void cancelTickingItem(int slot)
-    {
+    public void cancelTickingItem(int slot) {
         if (itemTicker.containsKey(slot))
             itemTicker.get(slot).cancel();
         itemTicker.remove(slot);
     }
 
-    public void zeroAll(int slot)
-    {
+    public void zeroAll(int slot) {
         maxHealth.zero(slot);
         defense.zero(slot);
         strength.zero(slot);
@@ -95,38 +87,30 @@ public class PlayerStatistics
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return maxHealth.addAll() + ", " + defense.addAll() + ", " + strength.addAll() + ", " + speed.addAll() + ", " + critChance.addAll() + ", " +
-            critDamage.addAll() + ", " + magicFind.addAll() + ", " + intelligence.addAll();
+                critDamage.addAll() + ", " + magicFind.addAll() + ", " + intelligence.addAll();
     }
 
-    public void boostManaRegeneration(double percent, long ticks)
-    {
+    public void boostManaRegeneration(double percent, long ticks) {
         manaRegenerationPercentBonus += percent;
-        new BukkitRunnable()
-        {
-            public void run()
-            {
+        new BukkitRunnable() {
+            public void run() {
                 manaRegenerationPercentBonus -= percent;
             }
         }.runTaskLater(Spectaculation.getPlugin(), ticks);
     }
 
-    public void boostHealthRegeneration(double percent, long ticks)
-    {
+    public void boostHealthRegeneration(double percent, long ticks) {
         healthRegenerationPercentBonus += percent;
-        new BukkitRunnable()
-        {
-            public void run()
-            {
+        new BukkitRunnable() {
+            public void run() {
                 healthRegenerationPercentBonus -= percent;
             }
         }.runTaskLater(Spectaculation.getPlugin(), ticks);
     }
 
-    public static PlayerStatistics blank(UUID uuid)
-    {
+    public static PlayerStatistics blank(UUID uuid) {
         return new PlayerStatistics(uuid, new DoublePlayerStatistic(100.0), new DoublePlayerStatistic(),
                 new DoublePlayerStatistic(), new DoublePlayerStatistic(1.0),
                 new DoublePlayerStatistic(0.3), new DoublePlayerStatistic(0.5), new DoublePlayerStatistic(),

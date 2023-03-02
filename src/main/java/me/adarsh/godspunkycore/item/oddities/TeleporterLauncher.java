@@ -3,35 +3,29 @@ package me.adarsh.godspunkycore.item.oddities;
 import me.adarsh.godspunkycore.item.*;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 
-public class TeleporterLauncher implements MaterialStatistics, MaterialFunction, ItemData
-{
+public class TeleporterLauncher implements MaterialStatistics, MaterialFunction, ItemData {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Teleporter Launcher";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.EXCLUSIVE;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.BLOCK;
     }
 
     @Override
-    public boolean isEnchanted()
-    {
+    public boolean isEnchanted() {
         return true;
     }
 
     @Override
-    public NBTTagCompound getData()
-    {
+    public NBTTagCompound getData() {
         NBTTagCompound compound = new NBTTagCompound();
         compound.setFloat("velX", 1f);
         compound.setFloat("velY", 1f);

@@ -3,23 +3,19 @@ package me.adarsh.godspunkycore.command;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandLoader
-{
+public class CommandLoader {
     private final List<SCommand> commands;
 
-    public CommandLoader()
-    {
+    public CommandLoader() {
         this.commands = new ArrayList<>();
     }
 
-    public void register(SCommand command)
-    {
+    public void register(SCommand command) {
         commands.add(command);
         command.register();
     }
 
-    public int getCommandAmount()
-    {
+    public int getCommandAmount() {
         return commands.size();
     }
 }

@@ -18,8 +18,7 @@ public class EnderArmorChestplate implements LeatherArmorStatistics, MaterialFun
     }
 
     @Override
-    public double getBaseHealth()
-    {
+    public double getBaseHealth() {
         return 30;
     }
 
@@ -29,14 +28,12 @@ public class EnderArmorChestplate implements LeatherArmorStatistics, MaterialFun
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.CHESTPLATE;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 60;
     }
 

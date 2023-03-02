@@ -11,24 +11,20 @@ import org.bukkit.entity.Player;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class CollectionMenuGUI extends GUI
-{
-    public CollectionMenuGUI()
-    {
+public class CollectionMenuGUI extends GUI {
+    public CollectionMenuGUI() {
         super("Collection", 54);
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e)
-    {
+    public void onOpen(GUIOpenEvent e) {
         fill(BLACK_STAINED_GLASS_PANE);
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
         set(GUIClickableItem.getCloseItem(49));
         AtomicInteger found = new AtomicInteger();
         Collection<ItemCollection> collections = ItemCollection.getCollections();
-        for (ItemCollection collection : collections)
-        {
+        for (ItemCollection collection : collections) {
             if (user.getCollection(collection) > 0)
                 found.incrementAndGet();
         }
@@ -55,16 +51,14 @@ public class CollectionMenuGUI extends GUI
                 ItemCollectionCategory.FISHING, Material.FISHING_ROD, 24, player));
     }
 
-    private static GUIClickableItem createCollectionClickable(GUI gui, ItemCollectionCategory category, Material icon, short data, int slot, Player player)
-    {
+    private static GUIClickableItem createCollectionClickable(GUI gui, ItemCollectionCategory category, Material icon, short data, int slot, Player player) {
         String[] progress = ItemCollection.getProgress(player, category);
         return GUIClickableItem.createGUIOpenerItem(gui, player, ChatColor.GREEN + category.getName() + " Collection", slot,
                 icon, data, ChatColor.GRAY + "View your " + category.getName() + " Collection!", " ",
                 progress[0], progress[1], " ", ChatColor.YELLOW + "Click to view!");
     }
 
-    private static GUIClickableItem createCollectionClickable(GUI gui, ItemCollectionCategory category, Material icon, int slot, Player player)
-    {
+    private static GUIClickableItem createCollectionClickable(GUI gui, ItemCollectionCategory category, Material icon, int slot, Player player) {
         return createCollectionClickable(gui, category, icon, (short) 0, slot, player);
     }
 

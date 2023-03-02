@@ -51,6 +51,7 @@ public class TerrorChestplate implements LeatherArmorStatistics, MaterialFunctio
     public int getColor() {
         return 0x290064;
     }
+
     @Override
     public SpecificItemType getSpecificType() {
         return SpecificItemType.CHESTPLATE;

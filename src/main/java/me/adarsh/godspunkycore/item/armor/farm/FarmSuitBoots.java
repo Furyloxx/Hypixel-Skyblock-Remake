@@ -33,8 +33,7 @@ public class FarmSuitBoots implements LeatherArmorStatistics, MaterialFunction {
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.BOOTS;
     }
 }

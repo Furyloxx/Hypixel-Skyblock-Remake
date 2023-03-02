@@ -8,29 +8,24 @@ import org.bukkit.ChatColor;
 import java.util.Collections;
 import java.util.List;
 
-public class BagOfCoins implements SkullStatistics, MaterialFunction, ItemData
-{
+public class BagOfCoins implements SkullStatistics, MaterialFunction, ItemData {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Bag of Coins";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.COMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 
     @Override
-    public void onInstanceUpdate(SItem instance)
-    {
+    public void onInstanceUpdate(SItem instance) {
         long coins = instance.getDataLong("coins");
         if (coins < 10000)
             instance.setRarity(Rarity.COMMON, false);
@@ -53,23 +48,20 @@ public class BagOfCoins implements SkullStatistics, MaterialFunction, ItemData
     }
 
     @Override
-    public NBTTagCompound getData()
-    {
+    public NBTTagCompound getData() {
         NBTTagCompound compound = new NBTTagCompound();
         compound.setLong("coins", 1);
         return compound;
     }
 
     @Override
-    public List<String> getDataLore(String key, Object value)
-    {
+    public List<String> getDataLore(String key, Object value) {
         if (!key.equals("coins")) return null;
         return Collections.singletonList(ChatColor.GOLD + "Contents: " + ChatColor.YELLOW + SUtil.commaify((long) value) + " coins");
     }
 
     @Override
-    public String getURL()
-    {
+    public String getURL() {
         return "8381c529d52e03cd74c3bf38bb6ba3fde1337ae9bf50332faa889e0a28e8081f";
     }
 }

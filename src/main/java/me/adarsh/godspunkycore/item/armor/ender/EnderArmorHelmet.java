@@ -9,14 +9,12 @@ public class EnderArmorHelmet implements MaterialFunction, SkullStatistics, Tool
     }
 
     @Override
-    public double getBaseHealth()
-    {
+    public double getBaseHealth() {
         return 20;
     }
 
     @Override
-    public double getBaseDefense()
-    {
+    public double getBaseDefense() {
         return 35;
     }
 
@@ -36,14 +34,12 @@ public class EnderArmorHelmet implements MaterialFunction, SkullStatistics, Tool
     }
 
     @Override
-    public SpecificItemType getSpecificType()
-    {
+    public SpecificItemType getSpecificType() {
         return SpecificItemType.HELMET;
     }
 
     @Override
-    public String getLore()
-    {
+    public String getLore() {
         return null;
     }
 }

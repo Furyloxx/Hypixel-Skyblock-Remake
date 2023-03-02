@@ -2,53 +2,44 @@ package me.adarsh.godspunkycore.item.enchanted;
 
 import me.adarsh.godspunkycore.item.*;
 
-public class EnchantedDiamond implements EnchantedMaterialStatistics, MaterialFunction
-{
+public class EnchantedDiamond implements EnchantedMaterialStatistics, MaterialFunction {
     @Override
-    public String getDisplayName()
-    {
+    public String getDisplayName() {
         return "Enchanted Diamond";
     }
 
     @Override
-    public Rarity getRarity()
-    {
+    public Rarity getRarity() {
         return Rarity.UNCOMMON;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 
     @Override
-    public boolean isEnchanted()
-    {
+    public boolean isEnchanted() {
         return true;
     }
 
     @Override
-    public SMaterial getCraftingMaterial()
-    {
+    public SMaterial getCraftingMaterial() {
         return SMaterial.DIAMOND;
     }
 
     @Override
-    public MaterialQuantifiable getResult()
-    {
+    public MaterialQuantifiable getResult() {
         return new MaterialQuantifiable(SMaterial.ENCHANTED_DIAMOND);
     }
 
     @Override
-    public SMaterial getBlockCraftingMaterial()
-    {
+    public SMaterial getBlockCraftingMaterial() {
         return SMaterial.DIAMOND_BLOCK;
     }
 
     @Override
-    public MaterialQuantifiable getBlockResult()
-    {
+    public MaterialQuantifiable getBlockResult() {
         return new MaterialQuantifiable(SMaterial.ENCHANTED_DIAMOND, 9);
     }
 }

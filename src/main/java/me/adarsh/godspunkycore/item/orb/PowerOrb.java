@@ -20,58 +20,49 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class PowerOrb implements SkullStatistics, MaterialFunction, Ability, OrbBuff
-{
+public abstract class PowerOrb implements SkullStatistics, MaterialFunction, Ability, OrbBuff {
     private static final Map<UUID, ArmorStand> USING_POWER_ORB_MAP = new HashMap<>();
     private static final Map<UUID, PowerOrbInstance> POWER_ORB_MAP = new HashMap<>();
 
     @Override
-    public String getAbilityName()
-    {
+    public String getAbilityName() {
         return "Deploy";
     }
 
     @Override
-    public int getAbilityCooldownTicks()
-    {
+    public int getAbilityCooldownTicks() {
         return 0;
     }
 
     @Override
-    public int getManaCost()
-    {
+    public int getManaCost() {
         return -2;
     }
 
     @Override
-    public GenericItemType getType()
-    {
+    public GenericItemType getType() {
         return GenericItemType.ITEM;
     }
 
     @Override
-    public void onAbilityUse(Player player, SItem sItem)
-    {
+    public void onAbilityUse(Player player, SItem sItem) {
         SEntity sEntity = new SEntity(player.getLocation().clone().add(player.getLocation().getDirection().multiply(1.5)), SEntityType.VELOCITY_ARMOR_STAND);
         ArmorStand stand = (ArmorStand) sEntity.getEntity();
-        if (POWER_ORB_MAP.containsKey(player.getUniqueId()))
-        {
+        if (POWER_ORB_MAP.containsKey(player.getUniqueId())) {
             PowerOrbInstance instance = POWER_ORB_MAP.get(player.getUniqueId());
             ArmorStand s = instance.getArmorStand();
             s.getWorld().playEffect(s.getLocation(), Effect.LARGE_SMOKE, Effect.LARGE_SMOKE.getData());
             s.remove();
             player.sendMessage(ChatColor.YELLOW + "Your previous " + instance.getColoredName() + ChatColor.YELLOW + " was removed!");
         }
-        POWER_ORB_MAP.put(player.getUniqueId(), new PowerOrbInstance()
-        {
+        POWER_ORB_MAP.put(player.getUniqueId(), new PowerOrbInstance() {
             @Override
-            public String getColoredName()
-            {
+            public String getColoredName() {
                 return sItem.getRarity().getColor() + sItem.getType().getDisplayName(sItem.getVariant());
             }
+
             @Override
-            public ArmorStand getArmorStand()
-            {
+            public ArmorStand getArmorStand() {
                 return stand;
             }
         });
@@ -83,12 +74,9 @@ public abstract class PowerOrb implements SkullStatistics, MaterialFunction, Abi
         stand.setHelmet(SUtil.getSkull(getURL(), null));
         stand.setVelocity(new Vector(0, 0.1, 0));
         stand.setMetadata("specUnbreakableArmorStand", new FixedMetadataValue(Spectaculation.getPlugin(), true));
-        new BukkitRunnable()
-        {
-            public void run()
-            {
-                if (stand.isDead())
-                {
+        new BukkitRunnable() {
+            public void run() {
+                if (stand.isDead()) {
                     cancel();
                     return;
                 }
@@ -96,12 +84,9 @@ public abstract class PowerOrb implements SkullStatistics, MaterialFunction, Abi
                 stand.setVelocity(new Vector(0, velClone.getY() < 0D ? 0.1 : -0.1, 0));
             }
         }.runTaskTimer(Spectaculation.getPlugin(), 25, 25);
-        new BukkitRunnable()
-        {
-            public void run()
-            {
-                if (stand.isDead())
-                {
+        new BukkitRunnable() {
+            public void run() {
+                if (stand.isDead()) {
                     cancel();
                     return;
                 }
@@ -111,31 +96,24 @@ public abstract class PowerOrb implements SkullStatistics, MaterialFunction, Abi
                 playEffect(stand.getEyeLocation().clone().add(stand.getLocation().getDirection().divide(new Vector(2, 2, 2))));
             }
         }.runTaskTimer(Spectaculation.getPlugin(), 0, 1);
-        new BukkitRunnable()
-        {
-            public void run()
-            {
-                if (stand.isDead())
-                {
+        new BukkitRunnable() {
+            public void run() {
+                if (stand.isDead()) {
                     cancel();
                     return;
                 }
                 int c = 0;
-                for (Entity entity : stand.getNearbyEntities(18, 18, 18))
-                {
+                for (Entity entity : stand.getNearbyEntities(18, 18, 18)) {
                     if (!(entity instanceof Player)) continue;
                     Player p = (Player) entity;
                     if (c >= 5) break;
                     c++;
-                    if (USING_POWER_ORB_MAP.containsKey(p.getUniqueId()))
-                    {
+                    if (USING_POWER_ORB_MAP.containsKey(p.getUniqueId())) {
                         if (!USING_POWER_ORB_MAP.get(p.getUniqueId()).equals(stand)) continue;
                     }
                     USING_POWER_ORB_MAP.put(p.getUniqueId(), stand);
-                    new BukkitRunnable()
-                    {
-                        public void run()
-                        {
+                    new BukkitRunnable() {
+                        public void run() {
                             USING_POWER_ORB_MAP.remove(p.getUniqueId());
                         }
                     }.runTaskLater(Spectaculation.getPlugin(), 20);
@@ -147,10 +125,8 @@ public abstract class PowerOrb implements SkullStatistics, MaterialFunction, Abi
                         " " + ChatColor.YELLOW + Math.max(0, seconds.decrementAndGet()) + "s");
             }
         }.runTaskTimer(Spectaculation.getPlugin(), 20, 20);
-        new BukkitRunnable()
-        {
-            public void run()
-            {
+        new BukkitRunnable() {
+            public void run() {
                 POWER_ORB_MAP.remove(player.getUniqueId());
                 stand.getWorld().playEffect(stand.getLocation(), Effect.LARGE_SMOKE, Effect.LARGE_SMOKE.getData());
                 stand.remove();
@@ -159,12 +135,14 @@ public abstract class PowerOrb implements SkullStatistics, MaterialFunction, Abi
     }
 
     protected abstract void buff(Player player);
+
     protected abstract long getOrbLifeTicks();
+
     protected abstract void playEffect(Location location);
 
-    private interface PowerOrbInstance
-    {
+    private interface PowerOrbInstance {
         String getColoredName();
+
         ArmorStand getArmorStand();
     }
 }
