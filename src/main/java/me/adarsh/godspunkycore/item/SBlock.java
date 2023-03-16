@@ -2,7 +2,7 @@ package me.adarsh.godspunkycore.item;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.util.SUtil;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import org.bukkit.Location;
@@ -10,7 +10,7 @@ import org.bukkit.configuration.ConfigurationSection;
 
 @Getter
 public class SBlock {
-    protected static final Spectaculation plugin = Spectaculation.getPlugin();
+    protected static final GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
 
     private final Location location;
     @Setter

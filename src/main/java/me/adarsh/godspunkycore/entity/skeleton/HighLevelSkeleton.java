@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.entity.skeleton;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.entity.EntityFunction;
 import me.adarsh.godspunkycore.entity.EntityStatistics;
 import me.adarsh.godspunkycore.entity.SEntity;
@@ -47,6 +47,6 @@ public class HighLevelSkeleton implements EntityStatistics, EntityFunction {
                 new SEntity(spawn, SEntityType.HIGH_LEVEL_SKELETON);
                 item.remove();
             }
-        }.runTaskLater(Spectaculation.getPlugin(), 100);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 100);
     }
 }

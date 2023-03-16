@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.sql;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class SQLDatabase {
-    private static final Spectaculation plugin = Spectaculation.getPlugin();
+    private static final GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
     private static final String DATABASE_FILENAME = "database.db";
 
     private Connection connection;

@@ -219,7 +219,7 @@ public class Repeater {
                 if (counters[1] == 5)
                     counters[1] = 1;
             }
-        }.runTaskTimer(Spectaculation.getPlugin(), 0, 10));
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, 10));
     }
 
     public void stop() {

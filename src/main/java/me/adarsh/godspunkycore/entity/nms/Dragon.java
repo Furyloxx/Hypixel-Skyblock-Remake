@@ -2,7 +2,7 @@ package me.adarsh.godspunkycore.entity.nms;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.entity.*;
 import me.adarsh.godspunkycore.item.SItem;
 import me.adarsh.godspunkycore.item.SMaterial;
@@ -132,7 +132,7 @@ public abstract class Dragon extends EntityEnderDragon implements SNMSEntity, En
                                 }
                                 frozen = false;
                             }
-                        }.runTaskLater(Spectaculation.getPlugin(), 50);
+                        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 50);
                         return;
                     }
                     case 1: {
@@ -169,7 +169,7 @@ public abstract class Dragon extends EntityEnderDragon implements SNMSEntity, En
                                         entity.teleport(location);
                                     }, 1, 120);
                                 }
-                            }.runTaskLater(Spectaculation.getPlugin(), 20);
+                            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 20);
                             new BukkitRunnable() {
                                 public void run() {
                                     SUtil.runIntervalForTicks(() ->
@@ -178,22 +178,22 @@ public abstract class Dragon extends EntityEnderDragon implements SNMSEntity, En
                                             return;
                                         Fireball fireball = entity.getWorld().spawn(entity.getEyeLocation().subtract(0.0, 8.0, 0.0)
                                                 .add(entity.getLocation().getDirection().multiply(-5.0)), Fireball.class);
-                                        fireball.setMetadata("dragon", new FixedMetadataValue(Spectaculation.getPlugin(), sEntity));
+                                        fireball.setMetadata("dragon", new FixedMetadataValue(GodSpunkySkyblockMain.getPlugin(), sEntity));
                                         fireball.setDirection(finalNear.getLocation().getDirection().multiply(-1.0).normalize());
                                     }, 5, 60);
                                 }
-                            }.runTaskLater(Spectaculation.getPlugin(), 80);
+                            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 80);
                         }
                         new BukkitRunnable() {
                             public void run() {
                                 frozen = false;
                             }
-                        }.runTaskLater(Spectaculation.getPlugin(), 140);
+                        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 140);
                         return;
                     }
                 }
             }
-        }.runTaskTimer(Spectaculation.getPlugin(), 100, attackCooldown);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 100, attackCooldown);
     }
 
     @Override
@@ -295,7 +295,7 @@ public abstract class Dragon extends EntityEnderDragon implements SNMSEntity, En
                         if (majorDrop != null) {
                             SItem sItem = SItem.of(majorDrop);
                             Item item = SUtil.spawnPersonalItem(sItem.getStack(), killed.getLocation(), player);
-                            item.setMetadata("obtained", new FixedMetadataValue(Spectaculation.getPlugin(), true));
+                            item.setMetadata("obtained", new FixedMetadataValue(GodSpunkySkyblockMain.getPlugin(), true));
                             item.setCustomNameVisible(true);
                             item.setCustomName(item.getItemStack().getAmount() + "x " + sItem.getFullName());
                         }
@@ -322,7 +322,7 @@ public abstract class Dragon extends EntityEnderDragon implements SNMSEntity, En
                     }
                 }
             }
-        }.runTaskLater(Spectaculation.getPlugin(), 200);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 200);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.item.armor;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.item.*;
 import me.adarsh.godspunkycore.user.PlayerStatistic;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
@@ -58,7 +58,7 @@ public class ObsidianChestplate implements LeatherArmorStatistics, TickingMateri
                     return;
                 statistics.getSpeed().zero(PlayerStatistic.OBSIDIAN_CHESTPLATE);
             }
-        }.runTaskLater(Spectaculation.getPlugin(), 13);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 13);
     }
 
     @Override

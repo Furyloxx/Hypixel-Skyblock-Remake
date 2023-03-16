@@ -1,16 +1,16 @@
 package me.adarsh.godspunkycore.config;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 
 public class Config extends YamlConfiguration {
-    private final Spectaculation plugin;
+    private final GodSpunkySkyblockMain plugin;
     private final File file;
 
     public Config(File parent, String name) {
-        this.plugin = Spectaculation.getPlugin();
+        this.plugin = GodSpunkySkyblockMain.getPlugin();
         this.file = new File(parent, name);
 
         if (!file.exists()) {
@@ -21,7 +21,7 @@ public class Config extends YamlConfiguration {
     }
 
     public Config(String name) {
-        this(Spectaculation.getPlugin().getDataFolder(), name);
+        this(GodSpunkySkyblockMain.getPlugin().getDataFolder(), name);
     }
 
     public void load() {

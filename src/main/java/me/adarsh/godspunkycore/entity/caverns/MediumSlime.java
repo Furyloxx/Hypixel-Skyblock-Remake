@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.entity.caverns;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.entity.EntityFunction;
 import me.adarsh.godspunkycore.entity.SlimeStatistics;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -33,7 +33,7 @@ public class MediumSlime implements SlimeStatistics, EntityFunction {
             public void run() {
                 e.getEntity().setVelocity(e.getEntity().getVelocity().clone().setY(1.5));
             }
-        }.runTaskLater(Spectaculation.getPlugin(), 1);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 1);
     }
 
     @Override

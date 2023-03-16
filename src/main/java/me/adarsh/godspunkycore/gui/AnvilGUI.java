@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.gui;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.enchantment.Enchantment;
 import me.adarsh.godspunkycore.item.SItem;
 import me.adarsh.godspunkycore.item.SMaterial;
@@ -57,7 +57,7 @@ public class AnvilGUI extends GUI implements BlockBasedGUI {
                     public void run() {
                         inventory.setItem(e.getSlot(), ANVIL_BARRIER);
                     }
-                }.runTaskLater(Spectaculation.getPlugin(), 1);
+                }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 1);
             }
 
             @Override
@@ -183,7 +183,7 @@ public class AnvilGUI extends GUI implements BlockBasedGUI {
                 inventory.setItem(13, ANVIL_BARRIER);
                 inventory.setItem(22, DEFAULT_COMBINE_ITEMS);
             }
-        }.runTaskLater(Spectaculation.getPlugin(), 1);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 1);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.entity;
 
 import lombok.Getter;
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.config.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -40,14 +40,14 @@ public class EntitySpawner {
     }
 
     public void delete() {
-        Config spawners = Spectaculation.getPlugin().spawners;
+        Config spawners = GodSpunkySkyblockMain.getPlugin().spawners;
         SPAWNER_CACHE.remove(this);
         spawners.set(uuid.toString(), null);
         spawners.save();
     }
 
     public void save() {
-        Config spawners = Spectaculation.getPlugin().spawners;
+        Config spawners = GodSpunkySkyblockMain.getPlugin().spawners;
         spawners.set(uuid.toString() + ".type", type.name());
         spawners.set(uuid.toString() + ".location", location);
         spawners.save();
@@ -59,7 +59,7 @@ public class EntitySpawner {
     }
 
     public static EntitySpawner deserialize(String key) {
-        Config spawners = Spectaculation.getPlugin().spawners;
+        Config spawners = GodSpunkySkyblockMain.getPlugin().spawners;
         return new EntitySpawner(UUID.fromString(key),
                 SEntityType.getEntityType(spawners.getString(key + ".type")),
                 (Location) spawners.get(key + ".location"));
@@ -67,7 +67,7 @@ public class EntitySpawner {
 
     public static List<EntitySpawner> getSpawners() {
         if (SPAWNER_CACHE.size() == 0) {
-            Config spawners = Spectaculation.getPlugin().spawners;
+            Config spawners = GodSpunkySkyblockMain.getPlugin().spawners;
             for (String key : spawners.getKeys(false))
                 SPAWNER_CACHE.add(EntitySpawner.deserialize(key));
         }
@@ -77,7 +77,7 @@ public class EntitySpawner {
     public static void startSpawnerTask() {
         if (SPAWNER_TASK != null)
             return;
-        SPAWNER_TASK = Spectaculation.getPlugin().getServer().getScheduler().runTaskTimer(Spectaculation.getPlugin(), () ->
+        SPAWNER_TASK = GodSpunkySkyblockMain.getPlugin().getServer().getScheduler().runTaskTimer(GodSpunkySkyblockMain.getPlugin(), () ->
         {
             List<Location> locations = new ArrayList<>(Bukkit.getOnlinePlayers().size());
             for (Player player : Bukkit.getOnlinePlayers())

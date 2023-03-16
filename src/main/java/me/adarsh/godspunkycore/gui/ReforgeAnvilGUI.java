@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.gui;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.item.Rarity;
 import me.adarsh.godspunkycore.item.Reforgable;
 import me.adarsh.godspunkycore.item.SItem;
@@ -97,7 +97,7 @@ public class ReforgeAnvilGUI extends GUI {
                     public void run() {
                         COOLDOWN.remove(player.getUniqueId());
                     }
-                }.runTaskLater(Spectaculation.getPlugin(), 20);
+                }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 20);
             }
         });
         set(13, null);
@@ -124,7 +124,7 @@ public class ReforgeAnvilGUI extends GUI {
                         " ",
                         ChatColor.YELLOW + "Click to reforge!"));
             }
-        }.runTaskLater(Spectaculation.getPlugin(), 1);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 1);
     }
 
     @Override

@@ -2,7 +2,7 @@ package me.adarsh.godspunkycore.region;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class Region {
     private static final Map<String, Region> REGION_CACHE = new HashMap<>();
 
-    protected static final Spectaculation plugin = Spectaculation.getPlugin();
+    protected static final GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
 
     protected final String name;
     @Setter

@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.item.weapon;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.item.*;
 import org.bukkit.Effect;
 import org.bukkit.Material;
@@ -72,7 +72,7 @@ public class LeapingSword implements ToolStatistics, MaterialFunction, Ability {
                 //    entity.
                 this.cancel();
             }
-        }.runTaskTimer(Spectaculation.getPlugin(), 10, 2);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 10, 2);
     }
 
     @Override

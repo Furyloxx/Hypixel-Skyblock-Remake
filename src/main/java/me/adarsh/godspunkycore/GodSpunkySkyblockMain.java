@@ -47,10 +47,10 @@ import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
 
-public final class Spectaculation extends JavaPlugin {
-    private static Spectaculation plugin;
+public final class GodSpunkySkyblockMain extends JavaPlugin {
+    private static GodSpunkySkyblockMain plugin;
 
-    public static Spectaculation getPlugin() {
+    public static GodSpunkySkyblockMain getPlugin() {
         return plugin;
     }
 
@@ -131,7 +131,7 @@ public final class Spectaculation extends JavaPlugin {
             if (material.hasClass())
                 material.getStatistics().load();
         }
-        SLog.info("Converting craft recipes into Spectaculation recipes...");
+        SLog.info("Converting craft recipes into GodSpunkySkyblockCore recipes...");
         for (Iterator<Recipe> iter = Bukkit.recipeIterator(); iter.hasNext(); ) {
             Recipe recipe = iter.next();
             if (recipe.getResult() == null)
@@ -189,7 +189,7 @@ public final class Spectaculation extends JavaPlugin {
 
 
     private void loadCommands() {
-        cl.register(new SpectaculationCommand());
+        cl.register(new GodSpunkySkyblockCoreCommand());
         cl.register(new RegionCommand());
         cl.register(new VisitCommand());
         cl.register(new PlayEnumSoundCommand());

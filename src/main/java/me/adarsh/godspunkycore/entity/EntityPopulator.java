@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.entity;
 
 import lombok.Getter;
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.region.Region;
 import me.adarsh.godspunkycore.region.RegionType;
 import me.adarsh.godspunkycore.util.SUtil;
@@ -75,7 +75,7 @@ public class EntityPopulator {
                         spawned.add(new SEntity(available.clone().add(0.5, 0.0, 0.5), type));
                 }
             }
-        }.runTaskTimer(Spectaculation.getPlugin(), 0, delay);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, delay);
     }
 
     public void stop() {

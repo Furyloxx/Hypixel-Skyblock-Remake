@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.command;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,7 +15,7 @@ import java.util.List;
 
 public abstract class SCommand implements CommandExecutor, TabCompleter {
     public static final String COMMAND_SUFFIX = "Command";
-    protected static final Spectaculation plugin = Spectaculation.getPlugin();
+    protected static final GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
 
     private CommandParameters params;
     private String name;

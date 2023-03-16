@@ -13,7 +13,7 @@ public class SpecTestCommand extends SCommand implements Listener {
         Player player = sender.getPlayer();
         if (sender instanceof ConsoleCommandSender)
             throw new CommandFailException("Console senders cannot use this command!");
-        GUIType.Mine_MERCHANT.getGUI().open(player);
+        GUIType.FARM_MERCHANT.getGUI().open(player);
 
     }
 }

@@ -40,7 +40,7 @@ public final class SkyBlockCalendar {
     }
 
     public static void saveElapsed() {
-        Spectaculation plugin = Spectaculation.getPlugin();
+        GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
         plugin.config.set("timeElapsed", ELAPSED);
         plugin.config.save();
     }

@@ -15,7 +15,7 @@ import com.sk89q.worldedit.function.operation.Operations;
 import com.sk89q.worldedit.session.ClipboardHolder;
 import com.sk89q.worldedit.world.World;
 import com.sk89q.worldedit.world.registry.WorldData;
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.enchantment.Enchantment;
 import me.adarsh.godspunkycore.gui.GUI;
 import me.adarsh.godspunkycore.item.GenericItemType;
@@ -107,7 +107,7 @@ public class SUtil {
 
     public static ItemStack getSkull(String texture, ItemStack stack, SMaterial material) {
         SkullMeta meta = (SkullMeta) stack.getItemMeta();
-        Spectaculation plugin = Spectaculation.getPlugin();
+        GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
         String stringUUID;
         if (material != null) {
             if (!plugin.heads.contains(material.name().toLowerCase())) {
@@ -307,7 +307,7 @@ public class SUtil {
                 else
                     location.getWorld().strikeLightning(location);
             }
-        }.runTaskLater(Spectaculation.getPlugin(), delay);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), delay);
     }
 
     public static void runIntervalForTicks(Runnable runnable, long interval, long end) {
@@ -320,12 +320,12 @@ public class SUtil {
                 }
                 runnable.run();
             }
-        }.runTaskTimer(Spectaculation.getPlugin(), 0, interval);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, interval);
         new BukkitRunnable() {
             public void run() {
                 stop.set(true);
             }
-        }.runTaskLater(Spectaculation.getPlugin(), end);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), end);
     }
 
     public static String getDate() {
@@ -334,7 +334,7 @@ public class SUtil {
 
     public static Item spawnPersonalItem(ItemStack stack, Location location, Player player) {
         Item item = location.getWorld().dropItem(location, stack);
-        item.setMetadata("owner", new FixedMetadataValue(Spectaculation.getPlugin(), player.getUniqueId().toString()));
+        item.setMetadata("owner", new FixedMetadataValue(GodSpunkySkyblockMain.getPlugin(), player.getUniqueId().toString()));
         return item;
     }
 
@@ -430,12 +430,12 @@ public class SUtil {
                 projectile.teleport(location);
                 projectile.setVelocity(vector.clone().multiply(-1.0).multiply(0.2));
             }
-        }.runTaskTimer(Spectaculation.getPlugin(), 0, 1);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, 1);
         new BukkitRunnable() {
             public void run() {
                 projectile.remove();
             }
-        }.runTaskLater(Spectaculation.getPlugin(), 140);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 140);
     }
 
     public static ItemStack getStack(String name, Material material, short data, int amount, List<String> lore) {
@@ -756,7 +756,7 @@ public class SUtil {
             public void run() {
                 runnable.run();
             }
-        }.runTaskLater(Spectaculation.getPlugin(), delay);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), delay);
     }
 
     public static GameProfile createGameProfile(String url) {

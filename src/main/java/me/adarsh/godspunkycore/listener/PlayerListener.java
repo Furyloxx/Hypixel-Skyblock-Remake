@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.listener;
 
 import com.google.common.util.concurrent.AtomicDouble;
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.enchantment.Enchantment;
 import me.adarsh.godspunkycore.enchantment.EnchantmentType;
 import me.adarsh.godspunkycore.entity.SEntity;
@@ -61,7 +61,7 @@ public class PlayerListener extends PListener {
                 public void run() {
                     player.setVelocity(new Vector(block.getDataFloat("velX"), block.getDataFloat("velY"), block.getDataFloat("velZ")));
                 }
-            }.runTaskLater(Spectaculation.getPlugin(), block.getDataLong("delay"));
+            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), block.getDataLong("delay"));
         }
         if (block.getType() != SMaterial.LAUNCHER && block.getType() != SMaterial.TELEPORTER_LAUNCHER) return;
         SEntity stand = new SEntity(player.getLocation(), SEntityType.VELOCITY_ARMOR_STAND);
@@ -75,7 +75,7 @@ public class PlayerListener extends PListener {
                 s.eject();
                 s.remove();
             }
-        }.runTaskLater(Spectaculation.getPlugin(), 200);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 200);
         stand.getEntity().setVelocity(new Vector(block.getDataFloat("velX"), block.getDataFloat("velY"), block.getDataFloat("velZ")));
         if (block.getType() == SMaterial.TELEPORTER_LAUNCHER) {
             new BukkitRunnable() {
@@ -88,7 +88,7 @@ public class PlayerListener extends PListener {
                             block.getDataFloat("yaw"),
                             block.getDataFloat("pitch")));
                 }
-            }.runTaskLater(Spectaculation.getPlugin(), block.getDataLong("delay"));
+            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), block.getDataLong("delay"));
         }
     }
 
@@ -304,7 +304,7 @@ public class PlayerListener extends PListener {
                     user.subFromQuiver(SMaterial.ARROW);
                     player.getInventory().setItem(8, SUtil.setStackAmount(SItem.of(SMaterial.QUIVER_ARROW).getStack(), Math.min(64, user.getQuiver(SMaterial.ARROW))));
                 }
-            }.runTaskLater(Spectaculation.getPlugin(), 1);
+            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 1);
         }
         SItem sItem = SItem.find(e.getBow());
         if (sItem != null) {
@@ -350,7 +350,7 @@ public class PlayerListener extends PListener {
                 public void run() {
                     e.getEntity().remove();
                 }
-            }.runTaskLater(Spectaculation.getPlugin(), 10);
+            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 10);
             return;
         }
         if (e.getEntity() instanceof Fireball && (e.getEntity().hasMetadata("dragon") || e.getEntity().hasMetadata("magma"))) {

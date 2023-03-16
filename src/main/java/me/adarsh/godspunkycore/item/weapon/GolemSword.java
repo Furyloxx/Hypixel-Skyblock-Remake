@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore.item.weapon;
 
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.item.*;
 import me.adarsh.godspunkycore.user.User;
 import org.bukkit.Location;
@@ -144,6 +145,6 @@ public class GolemSword implements ToolStatistics, MaterialFunction, Ability, Pl
 
 
             }
-        }.runTaskLater(me.adarsh.godspunkycore.Spectaculation.getPlugin(), 25);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 25);
     }
 }

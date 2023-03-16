@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.item.oddities;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.item.*;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -31,7 +31,7 @@ public class GrapplingHook implements ToolStatistics, FishingRodFunction {
                 public void run() {
                     COOLDOWN.remove(player.getUniqueId());
                 }
-            }.runTaskLater(Spectaculation.getPlugin(), 40);
+            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 40);
         }
     }
 

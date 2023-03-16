@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.sequence;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
@@ -52,7 +52,7 @@ public class SoundSequence implements Sequence {
                 public void run() {
                     location.getWorld().playSound(location, sound, volume, pitch);
                 }
-            }.runTaskLater(Spectaculation.getPlugin(), delay);
+            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), delay);
         }
 
         public void play(Entity entity) {

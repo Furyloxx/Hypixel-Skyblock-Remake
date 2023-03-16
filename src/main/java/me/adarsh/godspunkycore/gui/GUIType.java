@@ -22,7 +22,6 @@ public enum GUIType {
     SKILL_MENU(SkillMenuGUI.class),
     PETS(PetsGUI.class),
     FARM_MERCHANT(FarmMerchantGUI.class),
-    Mine_MERCHANT(MineMerchant.class),
     ACTIVE_EFFECTS(ActiveEffectsGUI.class),
     AUCTION_HOUSE(AuctionHouseGUI.class),
     AUCTIONS_BROWSER(AuctionsBrowserGUI.class),

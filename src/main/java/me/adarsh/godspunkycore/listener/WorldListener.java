@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.listener;
 
-import me.adarsh.godspunkycore.Spectaculation;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.entity.SEntity;
 import me.adarsh.godspunkycore.entity.SlimeStatistics;
 import me.adarsh.godspunkycore.entity.caverns.CreeperFunction;
@@ -289,7 +289,7 @@ public class WorldListener extends PListener {
                     }
                     RESTORER.remove(player.getUniqueId());
                 }
-            }.runTaskLater(Spectaculation.getPlugin(), 60 * 20);
+            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 60 * 20);
         }
     }
 
@@ -398,7 +398,7 @@ public class WorldListener extends PListener {
                     }
                 }
             }
-        }.runTaskLater(Spectaculation.getPlugin(), ticks);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), ticks);
     }
 
 }
