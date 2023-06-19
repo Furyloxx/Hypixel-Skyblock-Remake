@@ -13,6 +13,7 @@ import me.adarsh.godspunkycore.item.accessory.AccessoryFunction;
 import me.adarsh.godspunkycore.item.bow.BowFunction;
 import me.adarsh.godspunkycore.item.pet.Pet;
 import me.adarsh.godspunkycore.item.pet.PetAbility;
+import me.adarsh.godspunkycore.launchpads.LaunchPadHandler;
 import me.adarsh.godspunkycore.potion.PotionEffect;
 import me.adarsh.godspunkycore.skill.Skill;
 import me.adarsh.godspunkycore.slayer.SlayerQuest;
@@ -41,16 +42,38 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import static org.bukkit.Material.*;
+
 public class PlayerListener extends PListener {
     private static final Map<UUID, BowShooting> BOW_MAP = new HashMap<>();
     private static final Map<UUID, CombatAction> COMBAT_MAP = new HashMap<>();
 
     private static final Map<UUID, User> USER_CACHE = new HashMap<>();
     private UUID uuid;
+    private final GodSpunkySkyblockMain plugin;
+
+    public PlayerListener(GodSpunkySkyblockMain skyblock) {
+        this.plugin = skyblock;
+    }
+
 
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
+        Location to = e.getTo();
+        Location bottom = new Location(to.getWorld(), to.getX(), to.getY() - 1, to.getZ());
         Player player = e.getPlayer();
+        if (bottom.getBlock().getType().equals(SLIME_BLOCK)) {
+            LaunchPadHandler padHandler = plugin.getLaunchPadHandler();
+            String pad = padHandler.closeTo(player);
+            if (!pad.equals("NONE")) {
+                padHandler.launch(player, pad);
+            }
+        } else if (bottom.getBlock().getType().equals(ENDER_PORTAL)) {
+            player.performCommand("sb warp home");
+        } else if (to.getBlock().getType().equals(PORTAL)) {
+            player.performCommand("sb warp hub");
+        }
+
         SBlock block = SBlock.getBlock(player.getLocation().clone().subtract(0, 0.3, 0));
         if ((player.getGameMode() != GameMode.CREATIVE && player.getGameMode() != GameMode.SPECTATOR) && e.getTo().getY() <= -20.0)
             User.getUser(player.getUniqueId()).kill(EntityDamageEvent.DamageCause.VOID, null);

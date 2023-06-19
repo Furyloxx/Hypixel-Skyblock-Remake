@@ -15,6 +15,7 @@ import me.adarsh.godspunkycore.item.ItemListener;
 import me.adarsh.godspunkycore.item.SItem;
 import me.adarsh.godspunkycore.item.SMaterial;
 import me.adarsh.godspunkycore.item.pet.Pet;
+import me.adarsh.godspunkycore.launchpads.LaunchPadHandler;
 import me.adarsh.godspunkycore.listener.BlockListener;
 import me.adarsh.godspunkycore.listener.PlayerListener;
 import me.adarsh.godspunkycore.listener.ServerPingListener;
@@ -31,6 +32,7 @@ import me.adarsh.godspunkycore.util.Groups;
 import me.adarsh.godspunkycore.util.SLog;
 import me.adarsh.godspunkycore.util.SerialNBTTagCompound;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.CommandMap;
@@ -49,6 +51,7 @@ import java.util.Map;
 
 public final class GodSpunkySkyblockMain extends JavaPlugin {
     private static GodSpunkySkyblockMain plugin;
+    private LaunchPadHandler launchPadHandler;
 
     public static GodSpunkySkyblockMain getPlugin() {
         return plugin;
@@ -58,6 +61,7 @@ public final class GodSpunkySkyblockMain extends JavaPlugin {
     public Config heads;
     public Config blocks;
     public Config spawners;
+    public Config launchpads;
     public CommandMap commandMap;
     public SQLDatabase sql;
     public SQLRegionData regionData;
@@ -84,6 +88,7 @@ public final class GodSpunkySkyblockMain extends JavaPlugin {
         heads = new Config("heads.yml");
         blocks = new Config("blocks.yml");
         spawners = new Config("spawners.yml");
+        launchpads = new Config("launchpads.yml");
         SLog.info("Loading command map...");
         try {
             Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
@@ -157,6 +162,8 @@ public final class GodSpunkySkyblockMain extends JavaPlugin {
                     specShapeless.add(SMaterial.getSpecEquivalent(stack.getType(), stack.getDurability()), stack.getAmount());
             }
         }
+        SLog.info("Loading Launchpads");
+        registerLaunchPads();
         SLog.info("Enabled " + this.getDescription().getFullName());
     }
 
@@ -224,9 +231,13 @@ public final class GodSpunkySkyblockMain extends JavaPlugin {
         cl.register(new BankCommand());
     }
 
+    public void registerLaunchPads() {
+        this.launchPadHandler = new LaunchPadHandler();
+    }
+
     private void loadListeners() {
         new BlockListener();
-        new PlayerListener();
+        new PlayerListener(plugin);
         new ServerPingListener();
         new ItemListener();
         new GUIListener();
@@ -288,6 +299,10 @@ public final class GodSpunkySkyblockMain extends JavaPlugin {
         ConfigurationSerialization.registerClass(AuctionEscrow.class, "AuctionEscrow");
         ConfigurationSerialization.registerClass(SerialNBTTagCompound.class, "SerialNBTTagCompound");
         ConfigurationSerialization.registerClass(AuctionBid.class, "AuctionBid");
+    }
+
+    public LaunchPadHandler getLaunchPadHandler() {
+        return new LaunchPadHandler();
     }
 }
 
