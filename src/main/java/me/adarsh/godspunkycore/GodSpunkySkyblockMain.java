@@ -229,6 +229,7 @@ public final class GodSpunkySkyblockMain extends JavaPlugin {
         cl.register(new LiftCommand());
         cl.register(new ReforgeGUICommand());
         cl.register(new BankCommand());
+        cl.register(new ReloadCommand());
     }
 
     public void registerLaunchPads() {
