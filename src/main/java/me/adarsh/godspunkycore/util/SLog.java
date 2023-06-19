@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public class SLog {
     private static final Logger LOGGER = Logger.getLogger("Minecraft");
-    private static final String PREFIX = "[GodSpunkySkyblockCore]";
+    private static final String PREFIX = "[GodspunkySkyblockCore]";
 
     private static void log(Object o, Level l) {
         LOGGER.log(l, PREFIX + " " + o);
