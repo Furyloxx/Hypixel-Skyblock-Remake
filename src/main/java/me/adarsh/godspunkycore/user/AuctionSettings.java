@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.user;
 
-import me.adarsh.godspunkycore.item.ItemCategory;
-import me.adarsh.godspunkycore.item.Rarity;
+import me.adarsh.godspunkycore.features.item.ItemCategory;
+import me.adarsh.godspunkycore.features.item.Rarity;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 import java.util.HashMap;

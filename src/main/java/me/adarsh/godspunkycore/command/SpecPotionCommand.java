@@ -1,8 +1,8 @@
 package me.adarsh.godspunkycore.command;
 
-import me.adarsh.godspunkycore.item.SItem;
-import me.adarsh.godspunkycore.potion.PotionEffect;
-import me.adarsh.godspunkycore.potion.PotionEffectType;
+import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.potion.PotionEffect;
+import me.adarsh.godspunkycore.features.potion.PotionEffectType;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

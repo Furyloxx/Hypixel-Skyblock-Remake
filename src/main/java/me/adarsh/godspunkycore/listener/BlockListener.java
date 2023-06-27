@@ -1,9 +1,9 @@
 package me.adarsh.godspunkycore.listener;
 
 import me.adarsh.godspunkycore.command.RegionCommand;
-import me.adarsh.godspunkycore.region.Cuboid;
-import me.adarsh.godspunkycore.region.Region;
-import me.adarsh.godspunkycore.region.RegionGenerator;
+import me.adarsh.godspunkycore.features.region.Cuboid;
+import me.adarsh.godspunkycore.features.region.Region;
+import me.adarsh.godspunkycore.features.region.RegionGenerator;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.Bukkit;

@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.gui;
 
-import me.adarsh.godspunkycore.collection.ItemCollection;
-import me.adarsh.godspunkycore.skill.*;
+import me.adarsh.godspunkycore.features.collection.ItemCollection;
+import me.adarsh.godspunkycore.features.skill.*;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;

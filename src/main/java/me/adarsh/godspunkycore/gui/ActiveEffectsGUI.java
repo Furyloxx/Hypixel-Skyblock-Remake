@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.gui;
 
 import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
-import me.adarsh.godspunkycore.potion.ActivePotionEffect;
+import me.adarsh.godspunkycore.features.potion.ActivePotionEffect;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.PaginationList;
 import me.adarsh.godspunkycore.util.SUtil;

@@ -1,8 +1,8 @@
 package me.adarsh.godspunkycore.gui;
 
-import me.adarsh.godspunkycore.auction.AuctionItem;
-import me.adarsh.godspunkycore.item.ItemCategory;
-import me.adarsh.godspunkycore.item.Rarity;
+import me.adarsh.godspunkycore.features.auction.AuctionItem;
+import me.adarsh.godspunkycore.features.item.ItemCategory;
+import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.user.AuctionSettings;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.PaginationList;

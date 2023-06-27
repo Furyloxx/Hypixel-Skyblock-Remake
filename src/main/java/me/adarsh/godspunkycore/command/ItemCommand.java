@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.command;
 
-import me.adarsh.godspunkycore.item.SItem;
-import me.adarsh.godspunkycore.item.SMaterial;
+import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.item.SMaterial;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;

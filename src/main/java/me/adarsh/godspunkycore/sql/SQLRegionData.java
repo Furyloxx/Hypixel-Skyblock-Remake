@@ -1,8 +1,8 @@
 package me.adarsh.godspunkycore.sql;
 
 import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
-import me.adarsh.godspunkycore.region.Region;
-import me.adarsh.godspunkycore.region.RegionType;
+import me.adarsh.godspunkycore.features.region.Region;
+import me.adarsh.godspunkycore.features.region.RegionType;
 import org.bukkit.Location;
 
 import java.sql.Connection;

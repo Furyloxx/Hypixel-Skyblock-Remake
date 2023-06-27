@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.command;
 
-import me.adarsh.godspunkycore.potion.ActivePotionEffect;
+import me.adarsh.godspunkycore.features.potion.ActivePotionEffect;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;

@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.command;
 
-import me.adarsh.godspunkycore.entity.EntitySpawner;
-import me.adarsh.godspunkycore.entity.SEntityType;
+import me.adarsh.godspunkycore.features.entity.EntitySpawner;
+import me.adarsh.godspunkycore.features.entity.SEntityType;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;

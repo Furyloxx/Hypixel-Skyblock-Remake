@@ -1,9 +1,9 @@
 package me.adarsh.godspunkycore.gui;
 
 import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
-import me.adarsh.godspunkycore.enchantment.Enchantment;
-import me.adarsh.godspunkycore.item.SItem;
-import me.adarsh.godspunkycore.item.SMaterial;
+import me.adarsh.godspunkycore.features.enchantment.Enchantment;
+import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

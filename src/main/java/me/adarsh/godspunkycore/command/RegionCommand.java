@@ -1,8 +1,8 @@
 package me.adarsh.godspunkycore.command;
 
-import me.adarsh.godspunkycore.region.Region;
-import me.adarsh.godspunkycore.region.RegionGenerator;
-import me.adarsh.godspunkycore.region.RegionType;
+import me.adarsh.godspunkycore.features.region.Region;
+import me.adarsh.godspunkycore.features.region.RegionGenerator;
+import me.adarsh.godspunkycore.features.region.RegionType;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 

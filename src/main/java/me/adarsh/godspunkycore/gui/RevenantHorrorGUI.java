@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.gui;
 
-import me.adarsh.godspunkycore.slayer.SlayerBossType;
+import me.adarsh.godspunkycore.features.slayer.SlayerBossType;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;

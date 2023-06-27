@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.util;
 
-import me.adarsh.godspunkycore.entity.SEntityType;
-import me.adarsh.godspunkycore.region.RegionType;
+import me.adarsh.godspunkycore.features.entity.SEntityType;
+import me.adarsh.godspunkycore.features.region.RegionType;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.inventory.InventoryAction;

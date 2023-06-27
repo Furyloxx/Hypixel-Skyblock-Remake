@@ -1,8 +1,8 @@
 package me.adarsh.godspunkycore.command;
 
-import me.adarsh.godspunkycore.item.SItem;
-import me.adarsh.godspunkycore.reforge.Reforge;
-import me.adarsh.godspunkycore.reforge.ReforgeType;
+import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.reforge.Reforge;
+import me.adarsh.godspunkycore.features.reforge.ReforgeType;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

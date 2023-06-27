@@ -1,28 +1,28 @@
 package me.adarsh.godspunkycore;
 
 import lombok.SneakyThrows;
-import me.adarsh.godspunkycore.auction.AuctionBid;
-import me.adarsh.godspunkycore.auction.AuctionEscrow;
-import me.adarsh.godspunkycore.auction.AuctionItem;
+import me.adarsh.godspunkycore.features.auction.AuctionBid;
+import me.adarsh.godspunkycore.features.auction.AuctionEscrow;
+import me.adarsh.godspunkycore.features.auction.AuctionItem;
 import me.adarsh.godspunkycore.command.*;
 import me.adarsh.godspunkycore.config.Config;
-import me.adarsh.godspunkycore.entity.EntityPopulator;
-import me.adarsh.godspunkycore.entity.EntitySpawner;
-import me.adarsh.godspunkycore.entity.SEntityType;
-import me.adarsh.godspunkycore.entity.StaticDragonManager;
+import me.adarsh.godspunkycore.features.entity.EntityPopulator;
+import me.adarsh.godspunkycore.features.entity.EntitySpawner;
+import me.adarsh.godspunkycore.features.entity.SEntityType;
+import me.adarsh.godspunkycore.features.entity.StaticDragonManager;
 import me.adarsh.godspunkycore.gui.GUIListener;
-import me.adarsh.godspunkycore.item.ItemListener;
-import me.adarsh.godspunkycore.item.SItem;
-import me.adarsh.godspunkycore.item.SMaterial;
-import me.adarsh.godspunkycore.item.pet.Pet;
-import me.adarsh.godspunkycore.launchpads.LaunchPadHandler;
+import me.adarsh.godspunkycore.features.item.ItemListener;
+import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.item.SMaterial;
+import me.adarsh.godspunkycore.features.item.pet.Pet;
+import me.adarsh.godspunkycore.features.launchpads.LaunchPadHandler;
 import me.adarsh.godspunkycore.listener.BlockListener;
 import me.adarsh.godspunkycore.listener.PlayerListener;
 import me.adarsh.godspunkycore.listener.ServerPingListener;
 import me.adarsh.godspunkycore.listener.WorldListener;
-import me.adarsh.godspunkycore.region.Region;
-import me.adarsh.godspunkycore.region.RegionType;
-import me.adarsh.godspunkycore.slayer.SlayerQuest;
+import me.adarsh.godspunkycore.features.region.Region;
+import me.adarsh.godspunkycore.features.region.RegionType;
+import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
 import me.adarsh.godspunkycore.sql.SQLDatabase;
 import me.adarsh.godspunkycore.sql.SQLRegionData;
 import me.adarsh.godspunkycore.sql.SQLWorldData;
@@ -32,7 +32,6 @@ import me.adarsh.godspunkycore.util.Groups;
 import me.adarsh.godspunkycore.util.SLog;
 import me.adarsh.godspunkycore.util.SerialNBTTagCompound;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.CommandMap;
@@ -131,7 +130,7 @@ public final class GodSpunkySkyblockMain extends JavaPlugin {
             world.setTime(time);
         }
         SLog.info("Loading items...");
-        Class.forName("me.adarsh.godspunkycore.item.SMaterial"); // ensuring materials are loaded prior to this
+        Class.forName("me.adarsh.godspunkycore.features.item.SMaterial"); // ensuring materials are loaded prior to this
         for (SMaterial material : SMaterial.values()) {
             if (material.hasClass())
                 material.getStatistics().load();
@@ -144,7 +143,7 @@ public final class GodSpunkySkyblockMain extends JavaPlugin {
             Material result = recipe.getResult().getType();
             if (recipe instanceof ShapedRecipe) {
                 ShapedRecipe shaped = (ShapedRecipe) recipe;
-                me.adarsh.godspunkycore.item.ShapedRecipe specShaped = new me.adarsh.godspunkycore.item.ShapedRecipe(SItem.convert(shaped.getResult()),
+                me.adarsh.godspunkycore.features.item.ShapedRecipe specShaped = new me.adarsh.godspunkycore.features.item.ShapedRecipe(SItem.convert(shaped.getResult()),
                         Groups.EXCHANGEABLE_RECIPE_RESULTS.contains(result))
                         .shape(shaped.getShape());
                 for (Map.Entry<Character, ItemStack> entry : shaped.getIngredientMap().entrySet()) {
@@ -156,7 +155,7 @@ public final class GodSpunkySkyblockMain extends JavaPlugin {
             }
             if (recipe instanceof ShapelessRecipe) {
                 ShapelessRecipe shapeless = (ShapelessRecipe) recipe;
-                me.adarsh.godspunkycore.item.ShapelessRecipe specShapeless = new me.adarsh.godspunkycore.item.ShapelessRecipe(SItem.convert(shapeless.getResult()),
+                me.adarsh.godspunkycore.features.item.ShapelessRecipe specShapeless = new me.adarsh.godspunkycore.features.item.ShapelessRecipe(SItem.convert(shapeless.getResult()),
                         Groups.EXCHANGEABLE_RECIPE_RESULTS.contains(result));
                 for (ItemStack stack : shapeless.getIngredientList())
                     specShapeless.add(SMaterial.getSpecEquivalent(stack.getType(), stack.getDurability()), stack.getAmount());

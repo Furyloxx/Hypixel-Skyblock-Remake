@@ -3,7 +3,7 @@ package me.adarsh.godspunkycore.user;
 import lombok.Getter;
 import lombok.Setter;
 import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
-import me.adarsh.godspunkycore.item.armor.ArmorSet;
+import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;

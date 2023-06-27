@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.gui;
 
-import me.adarsh.godspunkycore.auction.AuctionBid;
-import me.adarsh.godspunkycore.auction.AuctionItem;
+import me.adarsh.godspunkycore.features.auction.AuctionBid;
+import me.adarsh.godspunkycore.features.auction.AuctionItem;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.Bukkit;

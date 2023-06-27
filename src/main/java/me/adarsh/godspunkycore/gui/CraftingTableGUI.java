@@ -1,10 +1,10 @@
 package me.adarsh.godspunkycore.gui;
 
 import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
-import me.adarsh.godspunkycore.item.MaterialQuantifiable;
-import me.adarsh.godspunkycore.item.Recipe;
-import me.adarsh.godspunkycore.item.SItem;
-import me.adarsh.godspunkycore.item.SMaterial;
+import me.adarsh.godspunkycore.features.item.MaterialQuantifiable;
+import me.adarsh.godspunkycore.features.item.Recipe;
+import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

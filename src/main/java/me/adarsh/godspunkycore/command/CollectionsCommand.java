@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.command;
 
-import me.adarsh.godspunkycore.collection.ItemCollection;
+import me.adarsh.godspunkycore.features.collection.ItemCollection;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.command.ConsoleCommandSender;
