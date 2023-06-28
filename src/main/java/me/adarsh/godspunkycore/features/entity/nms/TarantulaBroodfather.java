@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.features.entity.nms;
 
 import com.google.common.util.concurrent.AtomicDouble;
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.features.enchantment.EnchantmentType;
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
@@ -84,7 +84,7 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
                     if (player.getLocation().distance(bukkitEntity.getLocation()) > 5) return;
                     player.damage(getDamageDealt() * 0.5, entity);
                 }
-            }.runTaskTimer(Skyblock.getPlugin(), 20, 20);
+            }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 20, 20);
         }
         new BukkitRunnable() {
             public void run() {
@@ -103,7 +103,7 @@ public class TarantulaBroodfather extends EntitySpider implements SNMSEntity, En
                     vector.setY(5.0);
                 e.setVelocity(e.getVelocity().add(vector));
             }
-        }.runTaskTimer(Skyblock.getPlugin(), 40, 40);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 40, 40);
     }
 
     @Override

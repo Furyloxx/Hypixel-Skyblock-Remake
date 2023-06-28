@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.sql;
 
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SQLWorldData {
-    private static final Skyblock plugin = Skyblock.getPlugin();
+    private static final GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
 
     private final String SELECT = "SELECT * FROM `worlds` WHERE name=?";
     private final String SELECT_ID = "SELECT * FROM `worlds` WHERE id=?";

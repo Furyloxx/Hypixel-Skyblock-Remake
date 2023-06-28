@@ -2,7 +2,7 @@ package me.adarsh.godspunkycore.gui;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.util.SUtil;
@@ -182,7 +182,7 @@ public abstract class GUI {
         early(player);
         Inventory inventory = Bukkit.createInventory(player, size, title);
         GUIOpenEvent openEvent = new GUIOpenEvent(player, this, inventory);
-        Skyblock.getPlugin().getServer().getPluginManager().callEvent(openEvent);
+        GodSpunkySkyblockMain.getPlugin().getServer().getPluginManager().callEvent(openEvent);
         if (openEvent.isCancelled())
             return;
         for (GUIItem item : items)

@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.features.entity.nms;
 
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.features.enchantment.EnchantmentType;
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
@@ -71,7 +71,7 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
                     enraged = false;
                     RevenantHorror.this.getAttributeInstance(GenericAttributes.MOVEMENT_SPEED).setValue(getMovementSpeed());
                 }
-            }.runTaskLater(Skyblock.getPlugin(), 200);
+            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 200);
         }
     }
 
@@ -92,7 +92,7 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
                     return;
                 player.damage(getDamageDealt() * 0.5, entity);
             }
-        }.runTaskTimer(Skyblock.getPlugin(), 60, 60);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 60, 60);
         if (tier >= 2) // pestilence
         {
             new BukkitRunnable() {
@@ -106,7 +106,7 @@ public class RevenantHorror extends EntityZombie implements SNMSEntity, EntityFu
                         return;
                     player.damage(getDamageDealt(), entity);
                 }
-            }.runTaskTimer(Skyblock.getPlugin(), 20, 20);
+            }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 20, 20);
         }
     }
 

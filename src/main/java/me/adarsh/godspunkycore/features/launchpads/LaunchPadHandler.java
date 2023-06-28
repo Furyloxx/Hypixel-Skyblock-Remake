@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.features.launchpads;
 
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import net.minecraft.server.v1_8_R3.EnumParticle;
 import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
 import org.bukkit.Location;
@@ -27,7 +27,7 @@ public class LaunchPadHandler {
     private final List<Player> onLaunchpad;
 
     public LaunchPadHandler() {
-        this.file = new File(Skyblock.getPlugin(Skyblock.class).getDataFolder() + File.separator + LAUNCHPAD_FILE_NAME);
+        this.file = new File(GodSpunkySkyblockMain.getPlugin(GodSpunkySkyblockMain.class).getDataFolder() + File.separator + LAUNCHPAD_FILE_NAME);
         this.onLaunchpad = new ArrayList<>();
 
         this.init();
@@ -106,7 +106,7 @@ public class LaunchPadHandler {
                             player.teleport(teleport);
                             player.playSound(player.getLocation(), Sound.HORSE_ARMOR, 10, 2);
                         }
-                    }.runTask(Skyblock.getPlugin());
+                    }.runTask(GodSpunkySkyblockMain.getPlugin());
 
                     am.remove();
                     onLaunchpad.remove(player);
@@ -115,7 +115,7 @@ public class LaunchPadHandler {
                 moveToward(am, yCalculate(this.a, this.b, this.c, this.xC), to);
                 this.xC += 0.84;
             }
-        }.runTaskTimerAsynchronously(Skyblock.getPlugin(Skyblock.class), 1L, 1L);
+        }.runTaskTimerAsynchronously(GodSpunkySkyblockMain.getPlugin(GodSpunkySkyblockMain.class), 1L, 1L);
     }
 
     private void moveToward(final Entity player, double yC, Location to) {

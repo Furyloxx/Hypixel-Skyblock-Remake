@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.features.entity.nether;
 
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.features.entity.EntityFunction;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SlimeStatistics;
@@ -57,13 +57,13 @@ public class LargeMagmaCube implements SlimeStatistics, EntityFunction {
                             }
                             Fireball fireball = entity.getWorld().spawn(entity.getEyeLocation().add(
                                     entity.getEyeLocation().getDirection().multiply(3.0)), Fireball.class);
-                            fireball.setMetadata("magma", new FixedMetadataValue(Skyblock.getPlugin(), sEntity));
+                            fireball.setMetadata("magma", new FixedMetadataValue(GodSpunkySkyblockMain.getPlugin(), sEntity));
                             fireball.setDirection(target.getLocation().getDirection().multiply(-1.0).normalize());
                         }
-                    }.runTaskLater(Skyblock.getPlugin(), (i + 1) * 10);
+                    }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), (i + 1) * 10);
                 }
             }
-        }.runTaskTimer(Skyblock.getPlugin(), 60, 100);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 60, 100);
     }
 
     @Override

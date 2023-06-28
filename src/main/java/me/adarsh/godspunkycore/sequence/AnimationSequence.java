@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.sequence;
 
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
@@ -50,7 +50,7 @@ public class AnimationSequence implements Sequence {
                 public void run() {
                     location.getWorld().spigot().playEffect(location, effect, 1, data, 0.0f, 0.0f, 0.0f, speed, particleCount, 16);
                 }
-            }.runTaskLater(Skyblock.getPlugin(), delay);
+            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), delay);
         }
 
         public void play(Entity entity) {

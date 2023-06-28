@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.features.entity.wolf;
 
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.features.entity.EntityFunction;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
@@ -38,7 +38,7 @@ public abstract class BaseWolf implements WolfStatistics, EntityFunction {
                 target = found;
                 ((Wolf) entity).setTarget(target);
             }
-        }.runTaskTimer(Skyblock.getPlugin(), 20, 20);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 20, 20);
     }
 
     @Override

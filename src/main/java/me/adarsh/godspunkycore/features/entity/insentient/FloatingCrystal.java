@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.features.entity.insentient;
 
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.nms.VelocityArmorStand;
 import me.adarsh.godspunkycore.util.SUtil;
@@ -24,7 +24,7 @@ public abstract class FloatingCrystal extends VelocityArmorStand {
         stand.setVisible(false);
         stand.setHelmet(SUtil.getSkull(getURL(), null));
         stand.setVelocity(new Vector(0, 0.1, 0));
-        stand.setMetadata("specUnbreakableArmorStand", new FixedMetadataValue(Skyblock.getPlugin(), true));
+        stand.setMetadata("specUnbreakableArmorStand", new FixedMetadataValue(GodSpunkySkyblockMain.getPlugin(), true));
         new BukkitRunnable() {
             public void run() {
                 if (stand.isDead()) {
@@ -34,7 +34,7 @@ public abstract class FloatingCrystal extends VelocityArmorStand {
                 Vector velClone = stand.getVelocity().clone();
                 stand.setVelocity(new Vector(0, velClone.getY() < 0D ? 0.1 : -0.1, 0));
             }
-        }.runTaskTimer(Skyblock.getPlugin(), 15, 15);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 15, 15);
         new BukkitRunnable() {
             public void run() {
                 if (stand.isDead()) {
@@ -47,7 +47,7 @@ public abstract class FloatingCrystal extends VelocityArmorStand {
                 stand.getWorld().spigot().playEffect(stand.getEyeLocation().clone().add(SUtil.random(-0.5, 0.5), 0.0, SUtil.random(-0.5, 0.5)),
                         Effect.FIREWORKS_SPARK, 24, 1, 0, 0, 0, 1, 0, 64);
             }
-        }.runTaskTimer(Skyblock.getPlugin(), 0, 1);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, 1);
         new BukkitRunnable() {
             public void run() {
                 if (stand.isDead()) {
@@ -78,7 +78,7 @@ public abstract class FloatingCrystal extends VelocityArmorStand {
                             Effect.FIREWORKS_SPARK, 24, 1, 0, 0, 0, 1, 0, 64);
                 }
             }
-        }.runTaskTimer(Skyblock.getPlugin(), 20, 20);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 20, 20);
     }
 
     public double getXPDropped() {

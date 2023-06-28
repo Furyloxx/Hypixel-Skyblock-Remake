@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.features.item.oddities;
 
-import me.adarsh.godspunkycore.command.player.BatphoneCommand;
+import me.adarsh.godspunkycore.command.BatphoneCommand;
 import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.sequence.SoundSequenceType;
 import me.adarsh.godspunkycore.util.SUtil;

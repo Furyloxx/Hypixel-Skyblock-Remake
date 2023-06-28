@@ -2,7 +2,7 @@ package me.adarsh.godspunkycore.user;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -64,7 +64,7 @@ public class PlayerStatistics {
                 }
                 runnable.run();
             }
-        }.runTaskTimer(Skyblock.getPlugin(), 0, interval));
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, interval));
     }
 
     public void cancelTickingItem(int slot) {
@@ -98,7 +98,7 @@ public class PlayerStatistics {
             public void run() {
                 manaRegenerationPercentBonus -= percent;
             }
-        }.runTaskLater(Skyblock.getPlugin(), ticks);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), ticks);
     }
 
     public void boostHealthRegeneration(double percent, long ticks) {
@@ -107,7 +107,7 @@ public class PlayerStatistics {
             public void run() {
                 healthRegenerationPercentBonus -= percent;
             }
-        }.runTaskLater(Skyblock.getPlugin(), ticks);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), ticks);
     }
 
     public static PlayerStatistics blank(UUID uuid) {

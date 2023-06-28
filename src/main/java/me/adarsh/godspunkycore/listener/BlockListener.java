@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.listener;
 
-import me.adarsh.godspunkycore.command.admin.RegionCommand;
+import me.adarsh.godspunkycore.command.RegionCommand;
 import me.adarsh.godspunkycore.features.region.Cuboid;
 import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.region.RegionGenerator;

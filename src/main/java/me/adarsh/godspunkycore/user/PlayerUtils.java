@@ -2,7 +2,8 @@ package me.adarsh.godspunkycore.user;
 
 import com.google.common.util.concurrent.AtomicDouble;
 import me.adarsh.godspunkycore.Repeater;
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.config.Config;
 import me.adarsh.godspunkycore.features.enchantment.Enchantment;
 import me.adarsh.godspunkycore.features.enchantment.EnchantmentType;
 import me.adarsh.godspunkycore.features.entity.EntityDrop;
@@ -20,6 +21,7 @@ import me.adarsh.godspunkycore.features.reforge.Reforge;
 import me.adarsh.godspunkycore.features.skill.CombatSkill;
 import me.adarsh.godspunkycore.features.skill.Skill;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
+import me.adarsh.godspunkycore.util.BlankWorldCreator;
 import me.adarsh.godspunkycore.util.DefenseReplacement;
 import me.adarsh.godspunkycore.util.Groups;
 import me.adarsh.godspunkycore.util.SUtil;
@@ -32,11 +34,12 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.File;
 import java.util.*;
 
 public final class PlayerUtils {
 
-    public static Skyblock skyblock;
+    public static GodSpunkySkyblockMain godSpunkySkyblockMain;
     public static final Map<UUID, PlayerStatistics> STATISTICS_CACHE = new HashMap<>();
 
     public static final String ISLAND_PREFIX = "island-";
@@ -300,7 +303,7 @@ public final class PlayerUtils {
                 magicFind.sub(PlayerStatistic.BOOST, boostStatistics.getBaseMagicFind());
                 updateHealth(Bukkit.getPlayer(statistics.getUuid()), statistics);
             }
-        }.runTaskLater(Skyblock.getPlugin(), ticks);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), ticks);
         return statistics;
     }
 
@@ -423,7 +426,7 @@ public final class PlayerUtils {
                                     if (COOLDOWN_MAP.get(uuid).size() == 0)
                                         COOLDOWN_MAP.remove(uuid);
                                 }
-                            }.runTaskLater(Skyblock.getPlugin(), ability.getAbilityCooldownTicks());
+                            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), ability.getAbilityCooldownTicks());
                         }
                     } else {
                         player.playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, -4f);
@@ -464,6 +467,41 @@ public final class PlayerUtils {
                 return true;
         }
         return false;
+    }
+
+
+    public static void sendToIsland(Player player) {
+        World world = Bukkit.getWorld("islands");
+        if (world == null)
+            world = new BlankWorldCreator("islands").createWorld();
+        User user = User.getUser(player.getUniqueId());
+        if (user.getIslandX() == null) {
+            Config config = GodSpunkySkyblockMain.getPlugin().config;
+            double xOffset = config.getDouble("islands.x");
+            double zOffset = config.getDouble("islands.z");
+            if (xOffset < -25000000.0 || xOffset > 25000000.0)
+                zOffset += User.ISLAND_SIZE * 2.0;
+            File file = new File("plugins/GodSpunkySkyblockCore/private_island.schematic");
+            SUtil.pasteSchematic(file, new Location(world, 7.0 + xOffset, 100.0, 7.0 + zOffset), true);
+            SUtil.setBlocks(new Location(world, 7.0 + xOffset, 104.0, 44.0 + zOffset),
+                    new Location(world, 5.0 + xOffset, 100.0, 44.0 + zOffset), Material.PORTAL, false);
+            user.setIslandLocation(7.5 + xOffset, 7.5 + zOffset);
+            user.save();
+            if (xOffset > 0)
+                xOffset = xOffset * -1.0;
+            else if (xOffset <= 0) {
+                if (xOffset != 0)
+                    xOffset = xOffset * -1.0;
+                xOffset += User.ISLAND_SIZE * 2.0;
+            }
+            config.set("islands.x", xOffset);
+            config.set("islands.z", zOffset);
+            config.save();
+        }
+        World finalWorld = world;
+        player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "[GodSpunky] : " + "Sending to island");
+        SUtil.delay(() -> player.teleport(finalWorld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
+                SUtil.blackMagic(user.getIslandZ())).getLocation().add(0.5, 1.0, 0.5)), 10);
     }
 
     public static PotionEffect getPotionEffect(Player player, org.bukkit.potion.PotionEffectType type) {

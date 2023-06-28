@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.gui;
 
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.features.potion.ActivePotionEffect;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.PaginationList;
@@ -113,6 +113,6 @@ public class ActiveEffectsGUI extends GUI {
                     return;
                 new ActiveEffectsGUI(page).open(player);
             }
-        }.runTaskLater(Skyblock.getPlugin(), 5);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 5);
     }
 }

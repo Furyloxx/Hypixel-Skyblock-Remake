@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.gui;
 
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.features.item.MaterialQuantifiable;
 import me.adarsh.godspunkycore.features.item.Recipe;
 import me.adarsh.godspunkycore.features.item.SItem;
@@ -142,9 +142,9 @@ public class CraftingTableGUI extends GUI implements BlockBasedGUI {
                         SUtil.border(inventory, gui, SUtil.createColoredStainedGlassPane((short) 5, ""), 45, 48, true, false);
                         SUtil.border(inventory, gui, SUtil.createColoredStainedGlassPane((short) 5, ""), 50, 53, true, false);
                     }
-                }.runTaskLater(Skyblock.getPlugin(), 1);
+                }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 1);
             }
-        }.runTaskTimer(Skyblock.getPlugin(), 0, 1);
+        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, 1);
     }
 
     @Override

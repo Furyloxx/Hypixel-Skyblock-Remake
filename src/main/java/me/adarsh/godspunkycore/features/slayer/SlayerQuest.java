@@ -3,7 +3,7 @@ package me.adarsh.godspunkycore.features.slayer;
 import com.google.common.util.concurrent.AtomicDouble;
 import lombok.Getter;
 import lombok.Setter;
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
 import me.adarsh.godspunkycore.sequence.SoundSequenceType;
@@ -107,6 +107,6 @@ public class SlayerQuest implements ConfigurationSerializable {
             public void run() {
                 world.playEffect(clone, Effect.EXPLOSION_HUGE, Effect.EXPLOSION_HUGE.getData());
             }
-        }.runTaskLater(Skyblock.getPlugin(), 28);
+        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 28);
     }
 }

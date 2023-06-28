@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.sql;
 
-import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.region.RegionType;
 import org.bukkit.Location;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SQLRegionData {
-    private static final Skyblock plugin = Skyblock.getPlugin();
+    private static final GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
 
     private final String SELECT = "SELECT * FROM `regions` WHERE name=?";
     private final String SELECT_TYPE = "SELECT * FROM `regions` WHERE type=?";
