@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.features.item;
 
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.collection.ItemCollection;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
@@ -370,7 +370,7 @@ public class ItemListener extends PListener {
     public void onFishingRodReel(PlayerFishEvent e) {
         SItem rod = SItem.find(e.getPlayer().getItemInHand());
         if (rod == null) return;
-        e.getHook().setMetadata("owner", new FixedMetadataValue(GodSpunkySkyblockMain.getPlugin(), e.getPlayer()));
+        e.getHook().setMetadata("owner", new FixedMetadataValue(Skyblock.getPlugin(), e.getPlayer()));
         MaterialFunction function = rod.getType().getFunction();
         if (function == null) return;
         if (function instanceof FishingRodFunction)
@@ -434,7 +434,7 @@ public class ItemListener extends PListener {
                     PlayerUtils.updateArmorStatistics((boots = SItem.find(afterBoots)), statistics, PlayerStatistic.BOOTS);
                 PlayerUtils.updateInventoryStatistics(player, statistics);
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 1);
+        }.runTaskLater(Skyblock.getPlugin(), 1);
     }
 
     private static boolean similar(ItemStack is, ItemStack is1) {

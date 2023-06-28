@@ -2,7 +2,7 @@ package me.adarsh.godspunkycore.features.item.bow;
 
 import com.google.common.util.concurrent.AtomicDouble;
 import me.adarsh.godspunkycore.Repeater;
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.util.DefenseReplacement;
@@ -106,7 +106,7 @@ public class MosquitoBow implements ToolStatistics, BowFunction, Ability {
             }
         });
         player.setHealth(Math.min(player.getMaxHealth(), player.getHealth() + ((manaPool * 0.11) * 2)));
-        e.getProjectile().setMetadata("bite", new FixedMetadataValue(GodSpunkySkyblockMain.getPlugin(), true));
+        e.getProjectile().setMetadata("bite", new FixedMetadataValue(Skyblock.getPlugin(), true));
     }
 
     @Override

@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.features.entity.nms;
 
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.EntityStatistics;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.caverns.CreeperFunction;
@@ -54,7 +54,7 @@ public class SneakyCreeper extends EntityCreeper implements EntityStatistics, SN
             int fuseTicks = (int) f.get(this);
             if (cm() > 0 && fuseTicks == 0) {
                 CreeperIgniteEvent ignite = new CreeperIgniteEvent((Creeper) this.getBukkitEntity());
-                GodSpunkySkyblockMain.getPlugin().getServer().getPluginManager().callEvent(ignite);
+                Skyblock.getPlugin().getServer().getPluginManager().callEvent(ignite);
                 if (ignite.isCancelled())
                     return;
             }
@@ -72,7 +72,7 @@ public class SneakyCreeper extends EntityCreeper implements EntityStatistics, SN
                     return;
                 sEntity.setVisible(false);
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 35);
+        }.runTaskLater(Skyblock.getPlugin(), 35);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.features.entity;
 
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
@@ -24,7 +24,7 @@ public final class StaticDragonManager {
                 BlockState s = b.getState();
                 s.setRawData((byte) 0);
                 s.update();
-                b.removeMetadata("placer", GodSpunkySkyblockMain.getPlugin());
+                b.removeMetadata("placer", Skyblock.getPlugin());
             }
         }
         EYES.clear();

@@ -15,7 +15,8 @@ import com.sk89q.worldedit.function.operation.Operations;
 import com.sk89q.worldedit.session.ClipboardHolder;
 import com.sk89q.worldedit.world.World;
 import com.sk89q.worldedit.world.registry.WorldData;
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import lombok.experimental.UtilityClass;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.enchantment.Enchantment;
 import me.adarsh.godspunkycore.gui.GUI;
 import me.adarsh.godspunkycore.features.item.GenericItemType;
@@ -65,6 +66,7 @@ import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+@UtilityClass
 public class SUtil {
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yy");
 
@@ -107,7 +109,7 @@ public class SUtil {
 
     public static ItemStack getSkull(String texture, ItemStack stack, SMaterial material) {
         SkullMeta meta = (SkullMeta) stack.getItemMeta();
-        GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
+        Skyblock plugin = Skyblock.getPlugin();
         String stringUUID;
         if (material != null) {
             if (!plugin.heads.contains(material.name().toLowerCase())) {
@@ -307,7 +309,7 @@ public class SUtil {
                 else
                     location.getWorld().strikeLightning(location);
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), delay);
+        }.runTaskLater(Skyblock.getPlugin(), delay);
     }
 
     public static void runIntervalForTicks(Runnable runnable, long interval, long end) {
@@ -320,12 +322,12 @@ public class SUtil {
                 }
                 runnable.run();
             }
-        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, interval);
+        }.runTaskTimer(Skyblock.getPlugin(), 0, interval);
         new BukkitRunnable() {
             public void run() {
                 stop.set(true);
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), end);
+        }.runTaskLater(Skyblock.getPlugin(), end);
     }
 
     public static String getDate() {
@@ -334,7 +336,7 @@ public class SUtil {
 
     public static Item spawnPersonalItem(ItemStack stack, Location location, Player player) {
         Item item = location.getWorld().dropItem(location, stack);
-        item.setMetadata("owner", new FixedMetadataValue(GodSpunkySkyblockMain.getPlugin(), player.getUniqueId().toString()));
+        item.setMetadata("owner", new FixedMetadataValue(Skyblock.getPlugin(), player.getUniqueId().toString()));
         return item;
     }
 
@@ -430,12 +432,12 @@ public class SUtil {
                 projectile.teleport(location);
                 projectile.setVelocity(vector.clone().multiply(-1.0).multiply(0.2));
             }
-        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, 1);
+        }.runTaskTimer(Skyblock.getPlugin(), 0, 1);
         new BukkitRunnable() {
             public void run() {
                 projectile.remove();
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 140);
+        }.runTaskLater(Skyblock.getPlugin(), 140);
     }
 
     public static ItemStack getStack(String name, Material material, short data, int amount, List<String> lore) {
@@ -756,7 +758,7 @@ public class SUtil {
             public void run() {
                 runnable.run();
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), delay);
+        }.runTaskLater(Skyblock.getPlugin(), delay);
     }
 
     public static GameProfile createGameProfile(String url) {
@@ -1014,4 +1016,35 @@ public class SUtil {
         }
         return dur;
     }
+
+    public boolean deleteFolderRecursive(File folder) {
+        if (!folder.exists() || !folder.isDirectory()) return false;
+
+        boolean success = true;
+
+        for (File file : Objects.requireNonNull(folder.listFiles())) {
+            if (file.isDirectory()) for (File file1 : Objects.requireNonNull(file.listFiles())) success = file1.delete();
+            success = (file.delete() && success);
+        }
+
+        success = (folder.delete() && success);
+
+        return success;
+    }
+    public String getTimeDifferenceAndColor(long start, long end) {
+        return getColorBasedOnSize((end - start), 20, 5000, 10000) + "" + (end - start) + "ms";
+    }
+
+    public ChatColor getColorBasedOnSize(long num, int low, int med, int high) {
+        if (num <= low) {
+            return ChatColor.GREEN;
+        } else if (num <= med) {
+            return ChatColor.YELLOW;
+        } else if (num <= high) {
+            return ChatColor.RED;
+        } else {
+            return ChatColor.DARK_RED;
+        }
+    }
+
 }

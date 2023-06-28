@@ -2,7 +2,7 @@ package me.adarsh.godspunkycore.user;
 
 import com.google.common.util.concurrent.AtomicDouble;
 import me.adarsh.godspunkycore.Repeater;
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.config.Config;
 import me.adarsh.godspunkycore.features.enchantment.Enchantment;
 import me.adarsh.godspunkycore.features.enchantment.EnchantmentType;
@@ -39,7 +39,7 @@ import java.util.*;
 
 public final class PlayerUtils {
 
-    public static GodSpunkySkyblockMain godSpunkySkyblockMain;
+    public static Skyblock skyblock;
     public static final Map<UUID, PlayerStatistics> STATISTICS_CACHE = new HashMap<>();
 
     public static final String ISLAND_PREFIX = "island-";
@@ -303,7 +303,7 @@ public final class PlayerUtils {
                 magicFind.sub(PlayerStatistic.BOOST, boostStatistics.getBaseMagicFind());
                 updateHealth(Bukkit.getPlayer(statistics.getUuid()), statistics);
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), ticks);
+        }.runTaskLater(Skyblock.getPlugin(), ticks);
         return statistics;
     }
 
@@ -426,7 +426,7 @@ public final class PlayerUtils {
                                     if (COOLDOWN_MAP.get(uuid).size() == 0)
                                         COOLDOWN_MAP.remove(uuid);
                                 }
-                            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), ability.getAbilityCooldownTicks());
+                            }.runTaskLater(Skyblock.getPlugin(), ability.getAbilityCooldownTicks());
                         }
                     } else {
                         player.playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, -4f);
@@ -476,7 +476,7 @@ public final class PlayerUtils {
             world = new BlankWorldCreator("islands").createWorld();
         User user = User.getUser(player.getUniqueId());
         if (user.getIslandX() == null) {
-            Config config = GodSpunkySkyblockMain.getPlugin().config;
+            Config config = Skyblock.getPlugin().config;
             double xOffset = config.getDouble("islands.x");
             double zOffset = config.getDouble("islands.z");
             if (xOffset < -25000000.0 || xOffset > 25000000.0)

@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.features.entity;
 
 import lombok.Getter;
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.end.EndermanStatistics;
 import me.adarsh.godspunkycore.features.entity.nms.SNMSEntity;
 import me.adarsh.godspunkycore.features.entity.wolf.WolfStatistics;
@@ -25,7 +25,7 @@ import java.util.UUID;
 @Getter
 public class SEntity // 3, 4, 5
 {
-    private static final GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
+    private static final Skyblock plugin = Skyblock.getPlugin();
 
     private final SEntityType specType;
     private final LivingEntity entity;
@@ -72,7 +72,7 @@ public class SEntity // 3, 4, 5
                         cancel();
                     function.tick(entity);
                 }
-            }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, 1);
+            }.runTaskTimer(Skyblock.getPlugin(), 0, 1);
         }
         if (statistics instanceof SlimeStatistics && this.entity instanceof Slime)
             ((Slime) this.entity).setSize(((SlimeStatistics) statistics).getSize());
@@ -97,7 +97,7 @@ public class SEntity // 3, 4, 5
                 if (!statistics.isVisible())
                     ((CraftLivingEntity) entity).getHandle().setInvisible(true);
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 2);
+        }.runTaskLater(Skyblock.getPlugin(), 2);
         this.entity.setMaxHealth(statistics.getEntityMaxHealth());
         this.entity.setHealth(this.entity.getMaxHealth());
         this.entity.setMetadata("specEntityObject", new FixedMetadataValue(plugin, this));
@@ -112,7 +112,7 @@ public class SEntity // 3, 4, 5
                     entity.setCustomName(ChatColor.RED + statistics.getEntityName() + " " + ChatColor.GREEN + (int) entity.getHealth() +
                             ChatColor.WHITE + "/" + ChatColor.GREEN + (int) entity.getMaxHealth() + ChatColor.RED + "❤");
                 }
-            }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, 10);
+            }.runTaskTimer(Skyblock.getPlugin(), 0, 10);
         }
     }
 
@@ -133,7 +133,7 @@ public class SEntity // 3, 4, 5
             public void run() {
                 ((CraftLivingEntity) entity).getHandle().setInvisible(!visible);
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 2);
+        }.runTaskLater(Skyblock.getPlugin(), 2);
     }
 
     public void setTarget(LivingEntity target) {

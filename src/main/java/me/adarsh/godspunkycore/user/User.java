@@ -3,7 +3,7 @@ package me.adarsh.godspunkycore.user;
 import com.google.common.util.concurrent.AtomicDouble;
 import lombok.Getter;
 import lombok.Setter;
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.auction.AuctionBid;
 import me.adarsh.godspunkycore.features.auction.AuctionEscrow;
 import me.adarsh.godspunkycore.features.auction.AuctionItem;
@@ -45,7 +45,7 @@ public class User {
     public static final int ISLAND_SIZE = 125;
 
     private static final Map<UUID, User> USER_CACHE = new HashMap<>();
-    private static final GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
+    private static final Skyblock plugin = Skyblock.getPlugin();
     private static final File USER_FOLDER = new File(plugin.getDataFolder(), "./users");
 
     @Getter
