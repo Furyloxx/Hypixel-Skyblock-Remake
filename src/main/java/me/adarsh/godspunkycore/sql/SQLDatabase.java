@@ -2,37 +2,19 @@ package me.adarsh.godspunkycore.sql;
 
 import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
 
-import java.io.File;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class SQLDatabase {
     private static final GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
-    private static final String DATABASE_FILENAME = "database.db";
-
-    private Connection connection;
-    private File file;
-
-    public SQLDatabase() {
-        File file = new File(plugin.getDataFolder(), DATABASE_FILENAME);
-        if (!file.exists()) {
-            try {
-                file.getParentFile().mkdirs();
-                file.createNewFile();
-                plugin.saveResource(DATABASE_FILENAME, false);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-        this.file = file;
-    }
+    String url = "jdbc:mysql://188.40.143.44:3306/s57_test"+"?autoReconnect=true&zeroDateTimeBehavior=convertToNull";
+    String user = "u57_qbJP83FsYA";
+    String password = "uL4QjYAblPaZXQk@bK9qZ+tg";
 
     public Connection getConnection() {
         try {
-            Class.forName("org.sqlite.JDBC");
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:" + file.getAbsolutePath());
+            Connection connection = DriverManager.getConnection(url, user, password);
             if (connection != null) {
                 connection.prepareStatement("CREATE TABLE IF NOT EXISTS `worlds` (\n" +
                         "\t`id` SMALLINT,\n" +
@@ -61,7 +43,7 @@ public class SQLDatabase {
                         ");").execute();
                 return connection;
             }
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return null;
