@@ -1,13 +1,13 @@
 package me.adarsh.godspunkycore.sql;
 
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class SQLDatabase {
-    private static final GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
+    private static final Skyblock plugin = Skyblock.getPlugin();
     String url = "jdbc:mysql://188.40.143.44:3306/s57_test"+"?autoReconnect=true&zeroDateTimeBehavior=convertToNull";
     String user = "u57_qbJP83FsYA";
     String password = "uL4QjYAblPaZXQk@bK9qZ+tg";

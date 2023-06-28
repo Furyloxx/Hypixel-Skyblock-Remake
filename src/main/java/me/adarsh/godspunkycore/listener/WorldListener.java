@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.listener;
 
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SlimeStatistics;
 import me.adarsh.godspunkycore.features.entity.caverns.CreeperFunction;
@@ -246,7 +246,7 @@ public class WorldListener extends PListener {
         ALREADY_TELEPORTING.add(entity.getUniqueId());
         SUtil.delay(() -> ALREADY_TELEPORTING.remove(entity.getUniqueId()), 15);
         entity.sendMessage(ChatColor.GRAY + "Sending you to your island...");
-        //PlayerUtils.sendToIsland((Player) entity);
+        ((Player) entity).performCommand("sb warp hub");
     }
 
     @EventHandler
@@ -289,7 +289,7 @@ public class WorldListener extends PListener {
                     }
                     RESTORER.remove(player.getUniqueId());
                 }
-            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 60 * 20);
+            }.runTaskLater(Skyblock.getPlugin(), 60 * 20);
         }
     }
 
@@ -398,7 +398,7 @@ public class WorldListener extends PListener {
                     }
                 }
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), ticks);
+        }.runTaskLater(Skyblock.getPlugin(), ticks);
     }
 
 }

@@ -2,7 +2,7 @@ package me.adarsh.godspunkycore.features.entity.nms;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
@@ -132,7 +132,7 @@ public abstract class Dragon extends EntityEnderDragon implements SNMSEntity, En
                                 }
                                 frozen = false;
                             }
-                        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 50);
+                        }.runTaskLater(Skyblock.getPlugin(), 50);
                         return;
                     }
                     case 1: {
@@ -169,7 +169,7 @@ public abstract class Dragon extends EntityEnderDragon implements SNMSEntity, En
                                         entity.teleport(location);
                                     }, 1, 120);
                                 }
-                            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 20);
+                            }.runTaskLater(Skyblock.getPlugin(), 20);
                             new BukkitRunnable() {
                                 public void run() {
                                     SUtil.runIntervalForTicks(() ->
@@ -178,22 +178,22 @@ public abstract class Dragon extends EntityEnderDragon implements SNMSEntity, En
                                             return;
                                         Fireball fireball = entity.getWorld().spawn(entity.getEyeLocation().subtract(0.0, 8.0, 0.0)
                                                 .add(entity.getLocation().getDirection().multiply(-5.0)), Fireball.class);
-                                        fireball.setMetadata("dragon", new FixedMetadataValue(GodSpunkySkyblockMain.getPlugin(), sEntity));
+                                        fireball.setMetadata("dragon", new FixedMetadataValue(Skyblock.getPlugin(), sEntity));
                                         fireball.setDirection(finalNear.getLocation().getDirection().multiply(-1.0).normalize());
                                     }, 5, 60);
                                 }
-                            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 80);
+                            }.runTaskLater(Skyblock.getPlugin(), 80);
                         }
                         new BukkitRunnable() {
                             public void run() {
                                 frozen = false;
                             }
-                        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 140);
+                        }.runTaskLater(Skyblock.getPlugin(), 140);
                         return;
                     }
                 }
             }
-        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 100, attackCooldown);
+        }.runTaskTimer(Skyblock.getPlugin(), 100, attackCooldown);
     }
 
     @Override
@@ -295,7 +295,7 @@ public abstract class Dragon extends EntityEnderDragon implements SNMSEntity, En
                         if (majorDrop != null) {
                             SItem sItem = SItem.of(majorDrop);
                             Item item = SUtil.spawnPersonalItem(sItem.getStack(), killed.getLocation(), player);
-                            item.setMetadata("obtained", new FixedMetadataValue(GodSpunkySkyblockMain.getPlugin(), true));
+                            item.setMetadata("obtained", new FixedMetadataValue(Skyblock.getPlugin(), true));
                             item.setCustomNameVisible(true);
                             item.setCustomName(item.getItemStack().getAmount() + "x " + sItem.getFullName());
                         }
@@ -322,7 +322,7 @@ public abstract class Dragon extends EntityEnderDragon implements SNMSEntity, En
                     }
                 }
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 200);
+        }.runTaskLater(Skyblock.getPlugin(), 200);
     }
 
     @Override

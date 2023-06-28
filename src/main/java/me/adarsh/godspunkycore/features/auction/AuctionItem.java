@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.features.auction;
 
 import lombok.Getter;
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.config.Config;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.user.AuctionSettings;
@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 
 public class AuctionItem {
     private static final Map<UUID, AuctionItem> AUCTION_ITEM_CACHE = new HashMap<>();
-    private static final GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
+    private static final Skyblock plugin = Skyblock.getPlugin();
     private static final File AUCTION_ITEM_FOLDER = new File(plugin.getDataFolder(), "./auctions");
 
     private Config config;

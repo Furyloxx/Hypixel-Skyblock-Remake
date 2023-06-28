@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.features.entity.den;
 
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.EntityDrop;
 import me.adarsh.godspunkycore.features.entity.EntityDropType;
 import me.adarsh.godspunkycore.features.entity.SEntity;
@@ -50,7 +50,7 @@ public class MutantTarantula extends BaseSpider {
                     ((Player) e).damage(getDamageDealt() * 0.5, entity);
                 }
             }
-        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 20, 20);
+        }.runTaskTimer(Skyblock.getPlugin(), 20, 20);
     }
 
     @Override

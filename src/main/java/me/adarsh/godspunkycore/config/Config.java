@@ -1,16 +1,16 @@
 package me.adarsh.godspunkycore.config;
 
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 
 public class Config extends YamlConfiguration {
-    private final GodSpunkySkyblockMain plugin;
+    private final Skyblock plugin;
     private final File file;
 
     public Config(File parent, String name) {
-        this.plugin = GodSpunkySkyblockMain.getPlugin();
+        this.plugin = Skyblock.getPlugin();
         this.file = new File(parent, name);
 
         if (!file.exists()) {
@@ -21,7 +21,7 @@ public class Config extends YamlConfiguration {
     }
 
     public Config(String name) {
-        this(GodSpunkySkyblockMain.getPlugin().getDataFolder(), name);
+        this(Skyblock.getPlugin().getDataFolder(), name);
     }
 
     public void load() {

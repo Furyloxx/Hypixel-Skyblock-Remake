@@ -15,7 +15,9 @@ import com.sk89q.worldedit.function.operation.Operations;
 import com.sk89q.worldedit.session.ClipboardHolder;
 import com.sk89q.worldedit.world.World;
 import com.sk89q.worldedit.world.registry.WorldData;
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import de.tr7zw.nbtapi.NBTItem;
+import lombok.experimental.UtilityClass;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.enchantment.Enchantment;
 import me.adarsh.godspunkycore.gui.GUI;
 import me.adarsh.godspunkycore.features.item.GenericItemType;
@@ -24,6 +26,7 @@ import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.features.potion.PotionColor;
 import me.adarsh.godspunkycore.features.potion.PotionEffect;
+import me.adarsh.godspunkycore.util.item.ItemBuilder;
 import net.minecraft.server.v1_8_R3.*;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Material;
@@ -65,6 +68,7 @@ import java.util.regex.Pattern;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+@UtilityClass
 public class SUtil {
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("MM/dd/yy");
 
@@ -107,7 +111,7 @@ public class SUtil {
 
     public static ItemStack getSkull(String texture, ItemStack stack, SMaterial material) {
         SkullMeta meta = (SkullMeta) stack.getItemMeta();
-        GodSpunkySkyblockMain plugin = GodSpunkySkyblockMain.getPlugin();
+        Skyblock plugin = Skyblock.getPlugin();
         String stringUUID;
         if (material != null) {
             if (!plugin.heads.contains(material.name().toLowerCase())) {
@@ -307,7 +311,7 @@ public class SUtil {
                 else
                     location.getWorld().strikeLightning(location);
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), delay);
+        }.runTaskLater(Skyblock.getPlugin(), delay);
     }
 
     public static void runIntervalForTicks(Runnable runnable, long interval, long end) {
@@ -320,12 +324,12 @@ public class SUtil {
                 }
                 runnable.run();
             }
-        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, interval);
+        }.runTaskTimer(Skyblock.getPlugin(), 0, interval);
         new BukkitRunnable() {
             public void run() {
                 stop.set(true);
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), end);
+        }.runTaskLater(Skyblock.getPlugin(), end);
     }
 
     public static String getDate() {
@@ -334,7 +338,7 @@ public class SUtil {
 
     public static Item spawnPersonalItem(ItemStack stack, Location location, Player player) {
         Item item = location.getWorld().dropItem(location, stack);
-        item.setMetadata("owner", new FixedMetadataValue(GodSpunkySkyblockMain.getPlugin(), player.getUniqueId().toString()));
+        item.setMetadata("owner", new FixedMetadataValue(Skyblock.getPlugin(), player.getUniqueId().toString()));
         return item;
     }
 
@@ -430,12 +434,12 @@ public class SUtil {
                 projectile.teleport(location);
                 projectile.setVelocity(vector.clone().multiply(-1.0).multiply(0.2));
             }
-        }.runTaskTimer(GodSpunkySkyblockMain.getPlugin(), 0, 1);
+        }.runTaskTimer(Skyblock.getPlugin(), 0, 1);
         new BukkitRunnable() {
             public void run() {
                 projectile.remove();
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 140);
+        }.runTaskLater(Skyblock.getPlugin(), 140);
     }
 
     public static ItemStack getStack(String name, Material material, short data, int amount, List<String> lore) {
@@ -756,7 +760,7 @@ public class SUtil {
             public void run() {
                 runnable.run();
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), delay);
+        }.runTaskLater(Skyblock.getPlugin(), delay);
     }
 
     public static GameProfile createGameProfile(String url) {
@@ -1013,5 +1017,102 @@ public class SUtil {
             if (minutes != 1) dur += "s";
         }
         return dur;
+    }
+
+    public boolean deleteFolderRecursive(File folder) {
+        if (!folder.exists() || !folder.isDirectory()) return false;
+
+        boolean success = true;
+
+        for (File file : Objects.requireNonNull(folder.listFiles())) {
+            if (file.isDirectory()) for (File file1 : Objects.requireNonNull(file.listFiles())) success = file1.delete();
+            success = (file.delete() && success);
+        }
+
+        success = (folder.delete() && success);
+
+        return success;
+    }
+
+    public static Location getSpawnLocation(String skyblockLocation) {
+        skyblockLocation = ChatColor.stripColor(skyblockLocation).replaceAll(" ", "_").toLowerCase();
+        switch (skyblockLocation) {
+            case "gold_mine":
+                return new Location(Skyblock.getSkyblockWorld(), -4, 74, -273, -180, 0);
+            case "spiders_den":
+                return new Location(Skyblock.getSkyblockWorld(), -201, 84, -232, 135, 0);
+            case "the_end":
+            case "dragon's_nest":
+                return new Location(Skyblock.getSkyblockWorld(), -499, 101, -275, 90, 0);
+            case "the_park":
+            case "birch_park":
+            case "spruce_woods":
+            case "dark_thicket":
+            case "savanna_woodland":
+            case "jungle_island":
+                return new Location(Skyblock.getSkyblockWorld(), -276, 82, -12, 90, 0);
+            case "blazing_fortress":
+                return new Location(Skyblock.getSkyblockWorld(), -310, 83, -381, -180, 0);
+            case "the_barn":
+                return new Location(Skyblock.getSkyblockWorld(), 113, 71, -206, -145, 0);
+            case "mushroom_desert":
+                return new Location(Skyblock.getSkyblockWorld(), 154, 77, -364, -145, 0);
+            case "deep_caverns":
+            case "gunpowder_mines":
+            case "lapis_quarry":
+            case "pigman's_den":
+            case "slimehill":
+            case "diamond_reserve":
+            case "obsidian_sanctuary":
+                return new Location(Bukkit.getWorld("deep_caverns"), 4, 157, 83.5, -180, 0);
+        }
+
+        return new Location(Skyblock.getSkyblockWorld(), -2 , 70,  -84,  -180, 0);
+    }
+    public String getTimeDifferenceAndColor(long start, long end) {
+        return getColorBasedOnSize((end - start), 20, 5000, 10000) + "" + (end - start) + "ms";
+    }
+
+    public ChatColor getColorBasedOnSize(long num, int low, int med, int high) {
+        if (num <= low) {
+            return ChatColor.GREEN;
+        } else if (num <= med) {
+            return ChatColor.YELLOW;
+        } else if (num <= high) {
+            return ChatColor.RED;
+        } else {
+            return ChatColor.DARK_RED;
+        }
+    }
+
+    public void fillEmpty(Inventory inventory) {
+        fillEmpty(inventory, Material.STAINED_GLASS_PANE, 15);
+    }
+
+    public void fillEmpty(Inventory inventory, Material material, int data) {
+        for (int i = 0; i < inventory.getSize(); i++)
+            inventory.setItem(i, new ItemBuilder(" ", material, (short) data).toItemStack());
+    }
+
+    public String[] buildLore(String lore) {
+        return ChatColor.translateAlternateColorCodes('&', lore).split("\n");
+    }
+
+    public String[] buildLore(String lore, char defaultColor) {
+        String[] built = buildLore(lore);
+
+        for (int i = 0; i < built.length; i++) {
+            built[i] = "" + '&' + defaultColor + built[i];
+        }
+
+        return ChatColor.translateAlternateColorCodes('&', String.join("\n", built)).split("\n");
+    }
+
+    public ItemStack buildCloseButton() {
+        NBTItem item = new NBTItem(new ItemBuilder(ChatColor.RED + "Close", Material.BARRIER).toItemStack());
+
+        item.setBoolean("close", true);
+
+        return item.getItem();
     }
 }

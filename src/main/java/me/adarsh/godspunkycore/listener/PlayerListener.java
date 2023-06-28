@@ -1,11 +1,12 @@
 package me.adarsh.godspunkycore.listener;
 
 import com.google.common.util.concurrent.AtomicDouble;
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.enchantment.Enchantment;
 import me.adarsh.godspunkycore.features.enchantment.EnchantmentType;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
+import me.adarsh.godspunkycore.features.islands.IslandManager;
 import me.adarsh.godspunkycore.features.item.SBlock;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
@@ -32,15 +33,16 @@ import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
+import org.bukkit.event.world.ChunkLoadEvent;
+import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
+import me.adarsh.godspunkycore.SkyblockPlayer;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.io.IOException;
+import java.util.*;
 
 import static org.bukkit.Material.*;
 
@@ -50,9 +52,9 @@ public class PlayerListener extends PListener {
 
     private static final Map<UUID, User> USER_CACHE = new HashMap<>();
     private UUID uuid;
-    private final GodSpunkySkyblockMain plugin;
+    private final Skyblock plugin;
 
-    public PlayerListener(GodSpunkySkyblockMain skyblock) {
+    public PlayerListener(Skyblock skyblock) {
         this.plugin = skyblock;
     }
 
@@ -84,7 +86,7 @@ public class PlayerListener extends PListener {
                 public void run() {
                     player.setVelocity(new Vector(block.getDataFloat("velX"), block.getDataFloat("velY"), block.getDataFloat("velZ")));
                 }
-            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), block.getDataLong("delay"));
+            }.runTaskLater(Skyblock.getPlugin(), block.getDataLong("delay"));
         }
         if (block.getType() != SMaterial.LAUNCHER && block.getType() != SMaterial.TELEPORTER_LAUNCHER) return;
         SEntity stand = new SEntity(player.getLocation(), SEntityType.VELOCITY_ARMOR_STAND);
@@ -98,7 +100,7 @@ public class PlayerListener extends PListener {
                 s.eject();
                 s.remove();
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 200);
+        }.runTaskLater(Skyblock.getPlugin(), 200);
         stand.getEntity().setVelocity(new Vector(block.getDataFloat("velX"), block.getDataFloat("velY"), block.getDataFloat("velZ")));
         if (block.getType() == SMaterial.TELEPORTER_LAUNCHER) {
             new BukkitRunnable() {
@@ -111,21 +113,44 @@ public class PlayerListener extends PListener {
                             block.getDataFloat("yaw"),
                             block.getDataFloat("pitch")));
                 }
-            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), block.getDataLong("delay"));
+            }.runTaskLater(Skyblock.getPlugin(), block.getDataLong("delay"));
         }
     }
 
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent e) {
-        Player player = e.getPlayer();
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
         User user = User.getUser(player.getUniqueId());
         if (!PlayerUtils.STATISTICS_CACHE.containsKey(player.getUniqueId()))
             PlayerUtils.STATISTICS_CACHE.put(player.getUniqueId(), PlayerUtils.getStatistics(player));
         for (Skill skill : Skill.getSkills())
             skill.onSkillUpdate(user, user.getSkillXP(skill));
-        player.sendMessage(SUtil.getRandomVisibleColor() + "[GodSpunky] : Sending to island , Please wait");
-        SUtil.delay(() -> PlayerUtils.sendToIsland(player), 20);
+        try {
+
+
+            for (Chunk c : player.getWorld().getLoadedChunks()) {
+                Bukkit.getPluginManager().callEvent(new ChunkLoadEvent(c, false));
+            }
+
+
+            if (Bukkit.getWorld(IslandManager.ISLAND_PREFIX + player.getUniqueId()) == null) {
+                Bukkit.createWorld(new WorldCreator(IslandManager.ISLAND_PREFIX + player.getUniqueId()).type(WorldType.FLAT).generator(new ChunkGenerator() {
+                    @Override
+                    public byte[] generate(World world, Random random, int x, int z) {
+                        return new byte[32768];
+                    }
+                }));
+            }
+        } catch (Exception e) {
+            System.out.println("not able to load minions");
+        }
+    }
+
+    @EventHandler
+    public void createIsland(PlayerJoinEvent event) throws IOException {
+        event.setJoinMessage(null);
+        IslandManager.createIsland(event.getPlayer());
     }
 
 
@@ -327,7 +352,7 @@ public class PlayerListener extends PListener {
                     user.subFromQuiver(SMaterial.ARROW);
                     player.getInventory().setItem(8, SUtil.setStackAmount(SItem.of(SMaterial.QUIVER_ARROW).getStack(), Math.min(64, user.getQuiver(SMaterial.ARROW))));
                 }
-            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 1);
+            }.runTaskLater(Skyblock.getPlugin(), 1);
         }
         SItem sItem = SItem.find(e.getBow());
         if (sItem != null) {
@@ -373,7 +398,7 @@ public class PlayerListener extends PListener {
                 public void run() {
                     e.getEntity().remove();
                 }
-            }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 10);
+            }.runTaskLater(Skyblock.getPlugin(), 10);
             return;
         }
         if (e.getEntity() instanceof Fireball && (e.getEntity().hasMetadata("dragon") || e.getEntity().hasMetadata("magma"))) {
@@ -442,28 +467,24 @@ public class PlayerListener extends PListener {
         float getForce();
     }
 
-    public static org.bukkit.World getIsland(Player player) {
-        return Bukkit.getWorld("island_" + player.getName());
-    }
 
     @EventHandler
-    public void onInventoryClick(InventoryClickEvent e) {
-        Player player = (Player) e.getWhoClicked();
-        if (e.getView().getTitle().contains("Visit")) {
-            e.setCancelled(true);
-            if (e.getCurrentItem().getType().equals(Material.SKULL_ITEM)) {
-                String name = ChatColor.stripColor(e.getView().getTitle().replace("Visit ", ""));
-                e.getWhoClicked().closeInventory();
-                World targetworld = Bukkit.getWorld("islands");
-                OfflinePlayer op = Bukkit.getOfflinePlayer(name);
-                if (op.hasPlayedBefore()) {
-                    UUID uuid = op.getUniqueId();
-                    User user = User.getUser(uuid);
-                    player.teleport(targetworld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
-                            SUtil.blackMagic(user.getIslandZ())).getLocation().add(0.5, 1.0, 0.5));
-                    player.sendMessage(ChatColor.GREEN + "" + "[GodSpunky] : " + "Visiting " + name + " island");
-                }
-            }
+    public void onInventoryClick(InventoryClickEvent event) throws Exception {
+        if (event.getClickedInventory() == null || event.getCurrentItem() == null || event.getCurrentItem().getType().equals(Material.AIR)) return;
+
+        if (!event.getClickedInventory().getTitle().startsWith("Visit ")) return;
+
+        event.setCancelled(true);
+
+        if (event.getCurrentItem().getType().equals(Material.BARRIER)) event.getWhoClicked().closeInventory();
+        else if (event.getCurrentItem().getType().equals(Material.SKULL_ITEM)) {
+            event.getWhoClicked().closeInventory();
+
+            String name = ChatColor.stripColor(event.getView().getTitle().replace("Visit ", ""));
+
+            OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(name);
+
+            event.getWhoClicked().teleport(new Location(IslandManager.getIsland(offlinePlayer.getUniqueId()), 0, 100, 0));
         }
     }
 }

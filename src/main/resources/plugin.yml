@@ -1,5 +1,58 @@
 name: GodSpunkySkyblockCore
 version: ${project.version}
-main: me.adarsh.godspunkycore.GodSpunkySkyblockMain
+main: me.adarsh.godspunkycore.Skyblock
 authors: [ Adarsh, Epicportal , Devil ]
 description: A core for godspunky skyblock
+commands:
+  sb:
+    description: Skyblock
+    aliases:
+      - skyblock
+      - sky
+  warp:
+    description: Warp to a location
+    aliases:
+      - sb warp
+  auction:
+    description: Open the auction house
+    aliases:
+      - sb auction
+      - ah
+  visit:
+    description: Teleports you to a player's island
+    aliases:
+      - sb visit
+  hub:
+    description: Teleports you to the hub
+    aliases:
+      - sb hub
+  island:
+    description: Teleports you to your island
+    aliases:
+      - sb island
+      - is
+  itembrowser:
+    description: Shows itembrowser
+    aliases:
+      - sb ib
+      - ib
+  gamemode:
+    description: Change gamemode of player
+    aliases:
+      - gm
+      - sb gamemode
+  gms:
+    description: Sets gamemode to survival
+  gmc:
+    description: Sets gamemode to creatve
+  gma:
+    description: Sets gamemode to adventure
+  gmsp:
+    description: Sets gamemode to spectator
+  skyblockmenu:
+    description: Opens the skyblock menu
+    aliases:
+      - sb menu
+  region:
+    aliases:
+      - reg

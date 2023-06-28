@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.features.entity.den;
 
-import me.adarsh.godspunkycore.GodSpunkySkyblockMain;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.EntityFunction;
 import me.adarsh.godspunkycore.features.entity.SlimeStatistics;
 import me.adarsh.godspunkycore.util.SUtil;
@@ -34,7 +34,7 @@ public class SpidersDenSlime implements SlimeStatistics, EntityFunction {
             public void run() {
                 e.getEntity().setVelocity(e.getEntity().getVelocity().clone().setY(1.5));
             }
-        }.runTaskLater(GodSpunkySkyblockMain.getPlugin(), 1);
+        }.runTaskLater(Skyblock.getPlugin(), 1);
     }
 
     @Override
