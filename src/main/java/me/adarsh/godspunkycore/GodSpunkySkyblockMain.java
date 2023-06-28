@@ -1,11 +1,10 @@
 package me.adarsh.godspunkycore;
 
 import lombok.SneakyThrows;
-import me.adarsh.godspunkycore.command.admin.*;
-import me.adarsh.godspunkycore.command.player.*;
 import me.adarsh.godspunkycore.features.auction.AuctionBid;
 import me.adarsh.godspunkycore.features.auction.AuctionEscrow;
 import me.adarsh.godspunkycore.features.auction.AuctionItem;
+import me.adarsh.godspunkycore.command.*;
 import me.adarsh.godspunkycore.config.Config;
 import me.adarsh.godspunkycore.features.entity.EntityPopulator;
 import me.adarsh.godspunkycore.features.entity.EntitySpawner;
@@ -31,11 +30,8 @@ import me.adarsh.godspunkycore.user.AuctionSettings;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.Groups;
 import me.adarsh.godspunkycore.util.SLog;
-import me.adarsh.godspunkycore.util.SUtil;
 import me.adarsh.godspunkycore.util.SerialNBTTagCompound;
-import me.adarsh.godspunkycore.util.command.CommandHandler;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.command.CommandMap;
@@ -51,13 +47,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Objects;
 
-public final class Skyblock extends JavaPlugin {
-    private static Skyblock plugin;
+public final class GodSpunkySkyblockMain extends JavaPlugin {
+    private static GodSpunkySkyblockMain plugin;
     private LaunchPadHandler launchPadHandler;
 
-    public static Skyblock getPlugin() {
+    public static GodSpunkySkyblockMain getPlugin() {
         return plugin;
     }
 
@@ -70,9 +65,9 @@ public final class Skyblock extends JavaPlugin {
     public SQLDatabase sql;
     public SQLRegionData regionData;
     public SQLWorldData worldData;
+    public CommandLoader cl;
 
     public Repeater repeater;
-    private CommandHandler commandHandler;
 
     // todo Minions
 
@@ -83,34 +78,92 @@ public final class Skyblock extends JavaPlugin {
         loadSerializableClasses();
     }
 
+    @SneakyThrows
     @Override
     public void onEnable() {
-
-        this.sendMessage("Found Bukkit server v" + Bukkit.getVersion());
-        long start = System.currentTimeMillis();
         plugin = this;
-        loadymldata();
-        startServerLoop();
-        registerCommands();
+        SLog.info("Loading YAML data...");
+        config = new Config("config.yml");
+        heads = new Config("heads.yml");
+        blocks = new Config("blocks.yml");
+        spawners = new Config("spawners.yml");
+        launchpads = new Config("launchpads.yml");
+        SLog.info("Loading command map...");
+        try {
+            Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
+            f.setAccessible(true);
+            commandMap = (CommandMap) f.get(Bukkit.getServer());
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            SLog.severe("Couldn't load command map: ");
+            e.printStackTrace();
+        }
+        SLog.info("Loading SQL database...");
+        sql = new SQLDatabase();
+        regionData = new SQLRegionData();
+        worldData = new SQLWorldData();
+        cl = new CommandLoader();
+        SLog.info("Starting server loop...");
+        repeater = new Repeater();
+        SLog.info("Loading commands...");
+        loadCommands();
+        SLog.info("Loading listeners...");
         loadListeners();
-        loadDatabase();
-        loadCommandMap();
+        SLog.info("Registering Citizens traits...");
         registerTraits();
-        startEntitySpawners();
-        establishRegions();
-        loadAuctions();
-        synchronizeTime();
-
+        SLog.info("Starting entity spawners...");
+        EntitySpawner.startSpawnerTask();
+        SLog.info("Establishing player regions...");
+        Region.cacheRegions();
+        SLog.info("Loading auction items from disk...");
+        AuctionItem.loadAuctionsFromDisk();
         SkyBlockCalendar.ELAPSED = plugin.config.getLong("timeElapsed");
-
-        loadItems();
-        buildRecepies();
-
+        SLog.info("Synchronizing world time with calendar time and removing world entities...");
+        for (World world : Bukkit.getWorlds()) {
+            for (Entity entity : world.getEntities()) {
+                if (entity instanceof HumanEntity) continue;
+                entity.remove();
+            }
+            // Time Validator
+            int time = (int) ((SkyBlockCalendar.ELAPSED % 24000) - 6000);
+            if (time < 0)
+                time += 24000;
+            world.setTime(time);
+        }
+        SLog.info("Loading items...");
+        Class.forName("me.adarsh.godspunkycore.features.item.SMaterial"); // ensuring materials are loaded prior to this
+        for (SMaterial material : SMaterial.values()) {
+            if (material.hasClass())
+                material.getStatistics().load();
+        }
+        SLog.info("Converting craft recipes into GodSpunkySkyblockCore recipes...");
+        for (Iterator<Recipe> iter = Bukkit.recipeIterator(); iter.hasNext(); ) {
+            Recipe recipe = iter.next();
+            if (recipe.getResult() == null)
+                continue;
+            Material result = recipe.getResult().getType();
+            if (recipe instanceof ShapedRecipe) {
+                ShapedRecipe shaped = (ShapedRecipe) recipe;
+                me.adarsh.godspunkycore.features.item.ShapedRecipe specShaped = new me.adarsh.godspunkycore.features.item.ShapedRecipe(SItem.convert(shaped.getResult()),
+                        Groups.EXCHANGEABLE_RECIPE_RESULTS.contains(result))
+                        .shape(shaped.getShape());
+                for (Map.Entry<Character, ItemStack> entry : shaped.getIngredientMap().entrySet()) {
+                    if (entry.getValue() == null)
+                        continue;
+                    ItemStack stack = entry.getValue();
+                    specShaped.set(entry.getKey(), SMaterial.getSpecEquivalent(stack.getType(), stack.getDurability()), stack.getAmount());
+                }
+            }
+            if (recipe instanceof ShapelessRecipe) {
+                ShapelessRecipe shapeless = (ShapelessRecipe) recipe;
+                me.adarsh.godspunkycore.features.item.ShapelessRecipe specShapeless = new me.adarsh.godspunkycore.features.item.ShapelessRecipe(SItem.convert(shapeless.getResult()),
+                        Groups.EXCHANGEABLE_RECIPE_RESULTS.contains(result));
+                for (ItemStack stack : shapeless.getIngredientList())
+                    specShapeless.add(SMaterial.getSpecEquivalent(stack.getType(), stack.getDurability()), stack.getAmount());
+            }
+        }
         SLog.info("Loading Launchpads");
         registerLaunchPads();
-
-        long end = System.currentTimeMillis();
-        this.sendMessage("Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
+        SLog.info("Enabled " + this.getDescription().getFullName());
     }
 
     @Override
@@ -140,186 +193,58 @@ public final class Skyblock extends JavaPlugin {
         SLog.info("Disabled " + this.getDescription().getFullName());
     }
 
-    public void loadymldata(){
-        this.sendMessage("Loading YAML Data...");
-        long start = System.currentTimeMillis();
 
-        config = new Config("config.yml");
-        heads = new Config("heads.yml");
-        blocks = new Config("blocks.yml");
-        spawners = new Config("spawners.yml");
-        launchpads = new Config("launchpads.yml");
-
-        this.sendMessage("Successfully loaded YAML Data ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
-    }
-
-    public void startServerLoop(){
-        this.sendMessage("Starting Server Loop...");
-        long start = System.currentTimeMillis();
-
-        repeater = new Repeater();
-
-        this.sendMessage("Successfully Started Loop [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
-    }
-
-    public void registerCommands() {
-        this.sendMessage("Registering commands...");
-        long start = System.currentTimeMillis();
-
-        this.commandHandler = new CommandHandler(this,
-               new WarpCommand()
-        );
-
-        Objects.requireNonNull(getCommand("skyblock")).setExecutor(this.commandHandler);
-
-        this.sendMessage("Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
+    private void loadCommands() {
+        cl.register(new GodSpunkySkyblockCoreCommand());
+        cl.register(new RegionCommand());
+        cl.register(new VisitCommand());
+        cl.register(new PlayEnumSoundCommand());
+        cl.register(new PlayEnumEffectCommand());
+        cl.register(new SpawnSpecCommand());
+        cl.register(new ItemCommand());
+        cl.register(new SpecEnchantmentCommand());
+        cl.register(new SpecPotionCommand());
+        cl.register(new SpecEffectsCommand());
+        cl.register(new SpecReforgeCommand());
+        cl.register(new ManaCommand());
+        cl.register(new CoinsCommand());
+        cl.register(new GUICommand());
+        cl.register(new ItemBrowseCommand());
+        cl.register(new SpecRarityCommand());
+        cl.register(new RecombobulateCommand());
+        cl.register(new NBTCommand());
+        cl.register(new IslandCommand());
+        cl.register(new DataCommand());
+        cl.register(new SpecTestCommand());
+        cl.register(new SoundSequenceCommand());
+        cl.register(new BatphoneCommand());
+        cl.register(new AbsorptionCommand());
+        cl.register(new SkillsCommand());
+        cl.register(new CollectionsCommand());
+        cl.register(new MaterialDataCommand());
+        cl.register(new EntitySpawnersCommand());
+        cl.register(new AuctionHouseCommand());
+        cl.register(new FarmMerchantCommand());
+        cl.register(new LiftCommand());
+        cl.register(new ReforgeGUICommand());
+        cl.register(new BankCommand());
+        cl.register(new ReloadCommand());
     }
 
     public void registerLaunchPads() {
         this.launchPadHandler = new LaunchPadHandler();
     }
 
-    public void loadListeners() {
-        this.sendMessage("Loading Listeners...");
-        long start = System.currentTimeMillis();
-
+    private void loadListeners() {
         new BlockListener();
         new PlayerListener(plugin);
         new ServerPingListener();
         new ItemListener();
         new GUIListener();
         new WorldListener();
-
-        this.sendMessage("Successfully loaded listeners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
 
-    public void loadDatabase(){
-        this.sendMessage("Loading SQL Database...");
-        long start = System.currentTimeMillis();
-
-        sql = new SQLDatabase();
-        regionData = new SQLRegionData();
-        worldData = new SQLWorldData();
-
-        this.sendMessage("Successfully loaded SQL Database ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
-    }
-
-    public void loadCommandMap(){
-        this.sendMessage("Loading Command Maps...");
-        long start = System.currentTimeMillis();
-
-        try {
-            Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
-            f.setAccessible(true);
-            commandMap = (CommandMap) f.get(Bukkit.getServer());
-            this.sendMessage("Successfully loaded Command Maps ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
-        } catch (IllegalAccessException | NoSuchFieldException e) {
-            e.printStackTrace();
-            this.sendMessage("CANNOT LOAD COMMAND MAPS U FKIN.......");
-        }
-
-    }
-
-    public void registerTraits() {
-        this.sendMessage("Registering Traits...");
-        long start = System.currentTimeMillis();
-
-        // Nothing is here. We can add later
-
-        this.sendMessage("Successfully registered Traits ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
-    }
-
-    public void startEntitySpawners(){
-        this.sendMessage("Starting Entity Spawners...");
-        long start = System.currentTimeMillis();
-
-        EntitySpawner.startSpawnerTask();
-
-        this.sendMessage("Successfully started Entity Spawners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
-    }
-
-    public void establishRegions(){
-        this.sendMessage("Establishing player regions...");
-        long start = System.currentTimeMillis();
-
-        Region.cacheRegions();
-
-        this.sendMessage("Successfully Established Player Regions ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
-    }
-
-    public void loadAuctions(){
-        this.sendMessage("Loading Auctions...");
-        long start = System.currentTimeMillis();
-
-        AuctionItem.loadAuctionsFromDisk();
-
-        this.sendMessage("Successfully Loaded Auctions ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
-    }
-
-    public void synchronizeTime(){
-        this.sendMessage("Synchronizing world time with calendar time and removing world entities...");
-        long start = System.currentTimeMillis();
-
-        for (World world : Bukkit.getWorlds()) {
-            for (Entity entity : world.getEntities()) {
-                if (entity instanceof HumanEntity) continue;
-                entity.remove();
-            }
-            // Time Validator
-            int time = (int) ((SkyBlockCalendar.ELAPSED % 24000) - 6000);
-            if (time < 0)
-                time += 24000;
-            world.setTime(time);
-        }
-
-        this.sendMessage("Successfully Synchronized world time with calendar time and removed world entities ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
-    }
-
-    @SneakyThrows
-    public void loadItems(){
-        this.sendMessage("Loading Items...");
-        long start = System.currentTimeMillis();
-
-        Class.forName("me.adarsh.godspunkycore.features.item.SMaterial"); // ensuring materials are loaded prior to this
-        for (SMaterial material : SMaterial.values()) {
-            if (material.hasClass())
-                material.getStatistics().load();
-        }
-
-        this.sendMessage("Successfully Loaded Items ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
-    }
-
-    public void buildRecepies(){
-        this.sendMessage("Building Recepies...");
-        long start = System.currentTimeMillis();
-
-        for (Iterator<Recipe> iter = Bukkit.recipeIterator(); iter.hasNext(); ) {
-            Recipe recipe = iter.next();
-            if (recipe.getResult() == null)
-                continue;
-            Material result = recipe.getResult().getType();
-            if (recipe instanceof ShapedRecipe) {
-                ShapedRecipe shaped = (ShapedRecipe) recipe;
-                me.adarsh.godspunkycore.features.item.ShapedRecipe specShaped = new me.adarsh.godspunkycore.features.item.ShapedRecipe(SItem.convert(shaped.getResult()),
-                        Groups.EXCHANGEABLE_RECIPE_RESULTS.contains(result))
-                        .shape(shaped.getShape());
-                for (Map.Entry<Character, ItemStack> entry : shaped.getIngredientMap().entrySet()) {
-                    if (entry.getValue() == null)
-                        continue;
-                    ItemStack stack = entry.getValue();
-                    specShaped.set(entry.getKey(), SMaterial.getSpecEquivalent(stack.getType(), stack.getDurability()), stack.getAmount());
-                }
-            }
-            if (recipe instanceof ShapelessRecipe) {
-                ShapelessRecipe shapeless = (ShapelessRecipe) recipe;
-                me.adarsh.godspunkycore.features.item.ShapelessRecipe specShapeless = new me.adarsh.godspunkycore.features.item.ShapelessRecipe(SItem.convert(shapeless.getResult()),
-                        Groups.EXCHANGEABLE_RECIPE_RESULTS.contains(result));
-                for (ItemStack stack : shapeless.getIngredientList())
-                    specShapeless.add(SMaterial.getSpecEquivalent(stack.getType(), stack.getDurability()), stack.getAmount());
-            }
-        }
-
-        this.sendMessage("Successfully Built Recepies ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+    private void registerTraits() {
     }
 
     private void startPopulators() {
@@ -379,19 +304,5 @@ public final class Skyblock extends JavaPlugin {
     public LaunchPadHandler getLaunchPadHandler() {
         return new LaunchPadHandler();
     }
-    public static World getSkyblockWorld() {
-        return Bukkit.getWorld(Skyblock.getPlugin().getConfig().getString("general.skyblock_world"));
-    }
-
-    public String getPrefix() {
-        return ChatColor.translateAlternateColorCodes('&', "&7[&3S&bB&7] &f");
-    }
-    public String getVersion() {
-        return this.getDescription().getVersion();
-    }
-    public void sendMessage(String message) {
-        Bukkit.getConsoleSender().sendMessage(getPrefix() + ChatColor.translateAlternateColorCodes('&', message) + ChatColor.RESET + " ");
-    }
-
 }
 
