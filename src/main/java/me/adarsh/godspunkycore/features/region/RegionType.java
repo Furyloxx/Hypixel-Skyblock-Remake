@@ -6,9 +6,7 @@ import org.bukkit.ChatColor;
 @Getter
 public enum RegionType {
     VILLAGE("Village"),
-
     PRIVATE_ISLAND("Private Island"),
-
     UNKNOW_ISLAND("Unknow island"),
     MOUNTAIN("Mountain"),
     FOREST("Forest"),

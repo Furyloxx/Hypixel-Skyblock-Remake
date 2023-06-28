@@ -99,6 +99,8 @@ public final class Skyblock extends JavaPlugin {
         loadAuctions();
         synchronizeTime();
 
+        long end = System.currentTimeMillis();
+        this.sendMessage("Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
     }
 
     @Override
