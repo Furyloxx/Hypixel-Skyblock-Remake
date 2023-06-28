@@ -1,6 +1,5 @@
 package me.adarsh.godspunkycore;
 
-import lombok.Getter;
 import lombok.SneakyThrows;
 import me.adarsh.godspunkycore.command.admin.*;
 import me.adarsh.godspunkycore.command.player.*;
@@ -54,8 +53,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
 
-@Getter
-@SuppressWarnings({"unused", "deprecation"})
 public final class Skyblock extends JavaPlugin {
     private static Skyblock plugin;
     private LaunchPadHandler launchPadHandler;
@@ -170,20 +167,7 @@ public final class Skyblock extends JavaPlugin {
         long start = System.currentTimeMillis();
 
         this.commandHandler = new CommandHandler(this,
-                new WarpCommand(),
-                new IslandCommand(),
-                new ItemBrowseCommand(),
-                new RegionCommand(),
-                new ReloadCommand(),
-                new AuctionHouseCommand(),
-                new BankCommand(),
-                new BatphoneCommand(),
-                new FarmMerchantCommand(),
-                new GUICommand(),
-                new HubCommand(),
-                new LiftCommand(),
-                new ReforgeGUICommand(),
-                new VisitCommand()
+               new WarpCommand()
         );
 
         Objects.requireNonNull(getCommand("skyblock")).setExecutor(this.commandHandler);
