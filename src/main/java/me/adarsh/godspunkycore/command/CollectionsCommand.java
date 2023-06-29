@@ -1,11 +1,12 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.collection.ItemCollection;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.command.ConsoleCommandSender;
 
-@CommandParameters(description = "Modify your collections.", permission = "spt.collection")
+@CommandParameters(description = "Modify your collections.", permission = PlayerRank.ADMIN)
 public class CollectionsCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

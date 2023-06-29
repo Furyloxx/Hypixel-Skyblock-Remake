@@ -1,11 +1,12 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(aliases = "health")
+@CommandParameters(aliases = "health", permission = PlayerRank.ADMIN)
 public class HealthCommand extends SCommand{
 
     private PlayerStatistics statistics;

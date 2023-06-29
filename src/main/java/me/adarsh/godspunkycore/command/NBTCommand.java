@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import net.minecraft.server.v1_8_R3.ItemStack;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import org.bukkit.ChatColor;
@@ -8,7 +9,7 @@ import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
-@CommandParameters(description = "Gets the NBT of your current item.", permission = "spt.item")
+@CommandParameters(description = "Gets the NBT of your current item.", permission = PlayerRank.ADMIN)
 public class NBTCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

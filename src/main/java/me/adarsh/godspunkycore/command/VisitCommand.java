@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -14,7 +15,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-@CommandParameters(description = "Visit command.", aliases = "visit")
+@CommandParameters(description = "Visit command.", aliases = "visit", permission = PlayerRank.DEFAULT)
 public class VisitCommand extends SCommand implements Listener {
     @Override
     public void run(CommandSource sender, String[] args) {

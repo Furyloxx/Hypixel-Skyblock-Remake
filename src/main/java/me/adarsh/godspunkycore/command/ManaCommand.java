@@ -1,12 +1,13 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.Repeater;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
-@CommandParameters(description = "Modify your mana amount.", permission = "spt.item")
+@CommandParameters(description = "Modify your mana amount.", permission = PlayerRank.ADMIN)
 public class ManaCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

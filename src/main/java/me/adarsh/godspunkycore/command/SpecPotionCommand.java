@@ -3,11 +3,12 @@ package me.adarsh.godspunkycore.command;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.potion.PotionEffect;
 import me.adarsh.godspunkycore.features.potion.PotionEffectType;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-@CommandParameters(description = "Adds an potion from Spec to the specified item.", aliases = "spot", permission = "spt.item")
+@CommandParameters(description = "Adds an potion from Spec to the specified item.", aliases = "spot", permission = PlayerRank.ADMIN)
 public class SpecPotionCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

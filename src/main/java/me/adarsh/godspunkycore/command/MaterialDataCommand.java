@@ -1,10 +1,11 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-@CommandParameters(description = "Change the material data of an item.", aliases = "mdata,matdata,md", permission = "spt.item")
+@CommandParameters(description = "Change the material data of an item.", aliases = "mdata,matdata,md", permission = PlayerRank.ADMIN)
 public class MaterialDataCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

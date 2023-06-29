@@ -1,11 +1,12 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-@CommandParameters(description = "Recombobulate an item from Spec.", aliases = "recom", permission = "spt.item")
+@CommandParameters(description = "Recombobulate an item from Spec.", aliases = "recom", permission = PlayerRank.ADMIN)
 public class RecombobulateCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

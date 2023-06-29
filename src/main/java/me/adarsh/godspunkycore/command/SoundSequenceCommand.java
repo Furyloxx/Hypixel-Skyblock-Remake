@@ -1,11 +1,12 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.sequence.SoundSequenceType;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Play a sound sequence.", usage = "/<command> <sequence>")
+@CommandParameters(description = "Play a sound sequence.", usage = "/<command> <sequence>", permission = PlayerRank.DEFAULT)
 public class SoundSequenceCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {
