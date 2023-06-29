@@ -49,6 +49,7 @@ import me.adarsh.godspunkycore.features.item.armor.shadowassassin.ShadowAssassin
 import me.adarsh.godspunkycore.features.item.armor.shadowassassin.ShadowAssassinChestplate;
 import me.adarsh.godspunkycore.features.item.armor.shadowassassin.ShadowAssassinHelmet;
 import me.adarsh.godspunkycore.features.item.armor.shadowassassin.ShadowAssassinLeggings;
+import me.adarsh.godspunkycore.features.item.armor.terror.TerrorBoots;
 import me.adarsh.godspunkycore.features.item.armor.terror.TerrorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.terror.TerrorHelmet;
 import me.adarsh.godspunkycore.features.item.armor.vanilla.chainmail.ChainmailBoots;
@@ -125,6 +126,7 @@ public enum SMaterial {
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),
     TERROR_CHESTPLATE(Material.LEATHER_CHESTPLATE, TerrorChestplate.class),
+    TERROR_BOOTS(Material.LEATHER_BOOTS, TerrorBoots.class),
 
     // Necron's Armor
     NECRON_HELMET(Material.SKULL_ITEM, NecronHelmet.class),
