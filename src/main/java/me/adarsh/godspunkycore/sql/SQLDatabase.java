@@ -17,17 +17,6 @@ public class SQLDatabase {
     String user = plugin.getConfig().getString("database.user");
     String password = plugin.getConfig().getString("database.password");
 
-    public boolean isMySQLConnected() {
-        try {
-            Connection connection = DriverManager.getConnection(url, user, password);
-            return true;
-        } catch (SQLException e) {
-            plugin.sendMessage(ChatColor.RED + "Cannot connect to MySQL database");
-            plugin.sendMessage(ChatColor.YELLOW + "Switching to SQLite....");
-            return false;
-        }
-    }
-
     public SQLDatabase() {
         File file = new File(plugin.getDataFolder(), DATABASE_FILENAME);
         if (!file.exists()) {
@@ -45,7 +34,7 @@ public class SQLDatabase {
 
     public Connection getConnection() {
         try {
-            if (isMySQLConnected()){
+            if (!plugin.getConfig().getBoolean("use-sqlite")){
                 Connection connection = DriverManager.getConnection(url, user, password);
                 if (connection != null) {
                     connection.prepareStatement("CREATE TABLE IF NOT EXISTS `worlds` (\n" +
