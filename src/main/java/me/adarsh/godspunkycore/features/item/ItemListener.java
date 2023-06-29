@@ -54,7 +54,7 @@ public class ItemListener extends PListener {
         updateStatistics(e.getPlayer());
         Action action = e.getAction();
         if (sItem.getType().getStatistics().getSpecificType() == SpecificItemType.HELMET &&
-                action == Action.RIGHT_CLICK_AIR && isAir(e.getPlayer().getInventory().getHelmet())) {
+                action == Action.RIGHT_CLICK_AIR && isAir(e.getPlayer().getInventory().getHelmet()) && sItem.getType().getStatistics().getSpecificType() != SpecificItemType.ACCESSORY) {
             e.getPlayer().getInventory().setHelmet(sItem.getStack());
             e.getPlayer().setItemInHand(null);
         }
@@ -138,7 +138,7 @@ public class ItemListener extends PListener {
         if (sItem == null)
             sItem = SItem.of(current);
         updateStatistics((Player) e.getWhoClicked());
-        if (sItem.getType().getStatistics().getSpecificType() == null || sItem.getType().getStatistics().getSpecificType() != SpecificItemType.HELMET)
+        if (sItem.getType().getStatistics().getSpecificType() == null || sItem.getType().getStatistics().getSpecificType() != SpecificItemType.HELMET || sItem.getType().getStatistics().getSpecificType() != SpecificItemType.ACCESSORY)
             return;
         PlayerInventory playerInventory = (PlayerInventory) inventory;
         if (!isAir(playerInventory.getHelmet())) return;
@@ -177,7 +177,7 @@ public class ItemListener extends PListener {
     public void onBlockPlace(BlockPlaceEvent e) {
         SItem sItem = SItem.find(e.getItemInHand());
         if (sItem == null) return;
-        if (sItem.getType().getStatistics().getSpecificType() == SpecificItemType.HELMET && isAir(e.getPlayer().getInventory().getHelmet())) {
+        if (sItem.getType().getStatistics().getSpecificType() == SpecificItemType.HELMET && isAir(e.getPlayer().getInventory().getHelmet()) && sItem.getType().getStatistics().getSpecificType() != SpecificItemType.ACCESSORY) {
             e.setCancelled(true);
             e.getPlayer().getInventory().setHelmet(sItem.getStack());
             e.getPlayer().setItemInHand(null);
