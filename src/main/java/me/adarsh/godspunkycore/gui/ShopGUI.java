@@ -100,7 +100,7 @@ public class ShopGUI extends GUI {
             public void run(InventoryClickEvent e) {
                 if (!BUYBACK_HISTORY.containsKey(uuid) || BUYBACK_HISTORY.get(player.getUniqueId()).size() == 0)
                     return;
-                long value = buyback.last().getType().getStatistics().getValue() * buyback.last().getStack().getAmount();
+                long value = buyback.last().getValue() * buyback.last().getStack().getAmount();
                 if (value > user.getCoins()) {
                     player.sendMessage(ChatColor.RED + "You don't have enough coins!");
                     return;
@@ -129,7 +129,7 @@ public class ShopGUI extends GUI {
                 List<String> lore = meta.getLore();
                 lore.add(" ");
                 lore.add(ChatColor.GRAY + "Cost");
-                long price = last.getType().getStatistics().getValue() * last.getStack().getAmount();
+                long price = last.getValue() * last.getStack().getAmount();
                 lore.add(ChatColor.GOLD + SUtil.commaify(price) + " Coin" + (price != 1 ? "s" : ""));
                 lore.add(" ");
                 lore.add(ChatColor.YELLOW + "Click to buyback!");
@@ -149,7 +149,7 @@ public class ShopGUI extends GUI {
             List<String> lore = meta.getLore();
             lore.add(" ");
             lore.add(ChatColor.GRAY + "Cost");
-            long price = item.getType().getStatistics().getPrice() * item.getStack().getAmount();
+            long price = item.getPrice() * item.getStack().getAmount();
             lore.add(ChatColor.GOLD + SUtil.commaify(price) + " Coin" + (price != 1 ? "s" : ""));
             lore.add(" ");
             lore.add(ChatColor.YELLOW + "Click to trade!");
@@ -209,7 +209,7 @@ public class ShopGUI extends GUI {
             buyback = BUYBACK_HISTORY.get(player.getUniqueId());
         }
         buyback.push(item.clone());
-        long value = item.getType().getStatistics().getValue() * item.getStack().getAmount();
+        long value = item.getValue() * item.getStack().getAmount();
         user.addCoins(value);
         player.playSound(player.getLocation(), Sound.NOTE_PLING, 1f, 2f);
         player.sendMessage(ChatColor.GREEN + "You sold " + item.getFullName() +
