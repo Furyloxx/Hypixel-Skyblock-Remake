@@ -254,6 +254,25 @@ public class SItem implements Cloneable, ConfigurationSerializable {
         data.setString("reforge", ReforgeType.getByClass(reforge.getClass()).name());
         update();
     }
+    public void setValue(Double value){
+        data.setDouble("itemValue" , value);
+    }
+    public void setPrice(Double value){
+        data.setDouble("price" , value);
+    }
+    public Object getPrice() {
+        if (!data.hasKey("price")) return 0;
+        else{
+            return data.getDouble("price");
+        }
+    }
+    public double getValue() {
+        if (!data.hasKey("itemValue")) return 0;
+        else {
+            return data.getDouble("itemValue");
+        }
+    }
+
 
     public void setOrigin(ItemOrigin origin) {
         this.origin = origin;
