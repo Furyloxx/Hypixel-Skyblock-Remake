@@ -28,10 +28,7 @@ import me.adarsh.godspunkycore.sql.SQLRegionData;
 import me.adarsh.godspunkycore.sql.SQLWorldData;
 import me.adarsh.godspunkycore.user.AuctionSettings;
 import me.adarsh.godspunkycore.user.User;
-import me.adarsh.godspunkycore.util.Groups;
-import me.adarsh.godspunkycore.util.SLog;
-import me.adarsh.godspunkycore.util.SUtil;
-import me.adarsh.godspunkycore.util.SerialNBTTagCompound;
+import me.adarsh.godspunkycore.util.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -87,6 +84,7 @@ public final class Skyblock extends JavaPlugin {
         long start = System.currentTimeMillis();
         plugin = this;
         loadymldata();
+        loadIslandWorld();
         loadCommandMap();
         loadDatabase();
         cl = new CommandLoader();
@@ -95,7 +93,9 @@ public final class Skyblock extends JavaPlugin {
         loadListeners();
         registerTraits();
         startEntitySpawners();
+        buildRecepies();
         establishRegions();
+        loadItems();
         loadAuctions();
         synchronizeTime();
 
@@ -144,12 +144,12 @@ public final class Skyblock extends JavaPlugin {
     }
 
     public void startServerLoop(){
-        this.sendMessage("Starting Server Loop...");
+        this.sendMessage(SUtil.getRandomVisibleColor() +"Starting Server Loop...");
         long start = System.currentTimeMillis();
 
         repeater = new Repeater();
 
-        this.sendMessage("Successfully Started Loop [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Started Loop [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
 
@@ -395,6 +395,10 @@ public final class Skyblock extends JavaPlugin {
         ConfigurationSerialization.registerClass(AuctionEscrow.class, "AuctionEscrow");
         ConfigurationSerialization.registerClass(SerialNBTTagCompound.class, "SerialNBTTagCompound");
         ConfigurationSerialization.registerClass(AuctionBid.class, "AuctionBid");
+    }
+    public void loadIslandWorld() {
+        new BlankWorldCreator("islands").createWorld();
+
     }
 
     public LaunchPadHandler getLaunchPadHandler() {

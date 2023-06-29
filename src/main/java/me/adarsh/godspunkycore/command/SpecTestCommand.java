@@ -1,6 +1,9 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.gui.GUIType;
+import me.adarsh.godspunkycore.user.DoublePlayerStatistic;
+import me.adarsh.godspunkycore.user.PlayerStatistics;
+import me.adarsh.godspunkycore.user.PlayerUtils;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -13,7 +16,13 @@ public class SpecTestCommand extends SCommand implements Listener {
         Player player = sender.getPlayer();
         if (sender instanceof ConsoleCommandSender)
             throw new CommandFailException("Console senders cannot use this command!");
-        GUIType.FARM_MERCHANT.getGUI().open(player);
+        PlayerUtils.getStatistics(player).setMaxHealth(player.getUniqueId() , 10000.0);
+        System.out.printf("test 1 pass");
+
+
+
+        //GUIType.FARM_MERCHANT.getGUI().open(player);
+
 
     }
 }

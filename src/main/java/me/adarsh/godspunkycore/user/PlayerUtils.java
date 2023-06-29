@@ -40,6 +40,7 @@ import java.util.*;
 public final class PlayerUtils {
 
     public static Skyblock skyblock;
+
     public static final Map<UUID, PlayerStatistics> STATISTICS_CACHE = new HashMap<>();
 
     public static final String ISLAND_PREFIX = "island-";
@@ -499,9 +500,8 @@ public final class PlayerUtils {
             config.save();
         }
         World finalWorld = world;
-        player.sendMessage(ChatColor.AQUA + "" + ChatColor.BOLD + "[GodSpunky] : " + "Sending to island");
-        SUtil.delay(() -> player.teleport(finalWorld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
-                SUtil.blackMagic(user.getIslandZ())).getLocation().add(0.5, 1.0, 0.5)), 10);
+        player.teleport(finalWorld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
+                SUtil.blackMagic(user.getIslandZ())).getLocation().add(0.5, 1.0, 0.5));
     }
 
     public static PotionEffect getPotionEffect(Player player, org.bukkit.potion.PotionEffectType type) {

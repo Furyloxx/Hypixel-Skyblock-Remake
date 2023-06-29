@@ -15,15 +15,15 @@ import java.util.UUID;
 @Getter
 public class PlayerStatistics {
     private final UUID uuid;
-    private final DoublePlayerStatistic maxHealth;
-    private final DoublePlayerStatistic defense;
-    private final DoublePlayerStatistic strength;
-    private final DoublePlayerStatistic speed;
-    private final DoublePlayerStatistic critChance;
-    private final DoublePlayerStatistic critDamage;
-    private final DoublePlayerStatistic magicFind;
-    private final DoublePlayerStatistic intelligence;
-    private final DoublePlayerStatistic trueDefense;
+    private  DoublePlayerStatistic maxHealth;
+    private  DoublePlayerStatistic defense;
+    private  DoublePlayerStatistic strength;
+    private  DoublePlayerStatistic speed;
+    private  DoublePlayerStatistic critChance;
+    private  DoublePlayerStatistic critDamage;
+    private  DoublePlayerStatistic magicFind;
+    private  DoublePlayerStatistic intelligence;
+    private  DoublePlayerStatistic trueDefense;
     @Setter
     private double healthRegenerationPercentBonus;
     @Setter
@@ -53,6 +53,10 @@ public class PlayerStatistics {
         this.manaRegenerationPercentBonus = manaRegenerationPercentBonus;
         this.armorSet = armorSet;
         this.itemTicker = new HashMap<>();
+    }
+    public PlayerStatistics(UUID uuid){
+       this.uuid = uuid;
+       this.maxHealth = new DoublePlayerStatistic(10000.0);
     }
 
     public void tickItem(int slot, long interval, Runnable runnable) {
@@ -115,6 +119,14 @@ public class PlayerStatistics {
                 new DoublePlayerStatistic(), new DoublePlayerStatistic(1.0),
                 new DoublePlayerStatistic(0.3), new DoublePlayerStatistic(0.5), new DoublePlayerStatistic(),
                 new DoublePlayerStatistic(), new DoublePlayerStatistic(),
+                0.0, 0.0, null);
+    }
+
+    public static PlayerStatistics setMaxHealth(UUID uuid , double maxHealth ) {
+        return new PlayerStatistics(uuid, new DoublePlayerStatistic(maxHealth), new DoublePlayerStatistic(maxHealth),
+                new DoublePlayerStatistic(maxHealth), new DoublePlayerStatistic(1.0),
+                new DoublePlayerStatistic(0.3), new DoublePlayerStatistic(0.5), new DoublePlayerStatistic(maxHealth),
+                new DoublePlayerStatistic(maxHealth), new DoublePlayerStatistic(maxHealth),
                 0.0, 0.0, null);
     }
 }

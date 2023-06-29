@@ -54,6 +54,7 @@ public class BlockListener extends PListener {
 
     @EventHandler
     public void BlockPlace(BlockPlaceEvent e) {
+        if (!e.getPlayer().getWorld().equals(Bukkit.getWorld("islands"))) return;
         Player players = e.getPlayer();
         User user = User.getUser(players.getUniqueId());
         World world = Bukkit.getWorld("islands");
@@ -74,6 +75,7 @@ public class BlockListener extends PListener {
 
     @EventHandler
     public void BlockBreak(BlockBreakEvent e) {
+        if (!e.getPlayer().getWorld().equals(Bukkit.getWorld("islands"))) return; // if it not island world then return otherwise region system wont work
         Player players = e.getPlayer();
         User user = User.getUser(players.getUniqueId());
         World world = Bukkit.getWorld("islands");
