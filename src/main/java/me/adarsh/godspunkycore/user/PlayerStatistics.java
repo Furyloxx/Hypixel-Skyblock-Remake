@@ -25,8 +25,6 @@ public class PlayerStatistics {
     private  DoublePlayerStatistic intelligence;
     private  DoublePlayerStatistic trueDefense;
 
-    // TODO add more stats from Stats.java (enums)
-
     @Setter
     private double healthRegenerationPercentBonus;
     @Setter

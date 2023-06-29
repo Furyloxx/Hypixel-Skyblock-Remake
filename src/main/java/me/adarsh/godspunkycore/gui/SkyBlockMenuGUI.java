@@ -105,6 +105,95 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
+                // add
+            }
+
+            @Override
+            public int getSlot() {
+                return 21;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getStack(ChatColor.GREEN + "Recipe Book", Material.BOOK, (short) 0, 1,
+                        ChatColor.GRAY + "Through your adventure, you will",
+                        ChatColor.GRAY + "unlock recipes for all kinds of",
+                        ChatColor.GRAY + "special items! You can view how",
+                        ChatColor.GRAY + "to craft these items here",
+                        "",
+                        ChatColor.YELLOW + "Click to view!");
+            }
+        });
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                // add
+            }
+
+            @Override
+            public int getSlot() {
+                return 22;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getStack(ChatColor.GREEN + "Trade", Material.EMERALD, (short) 0, 1,
+                        "",
+                        ChatColor.YELLOW + "Click to view!");
+            }
+        });
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                // add
+            }
+
+            @Override
+            public int getSlot() {
+                return 23;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getStack(ChatColor.GREEN + "Quest Log", Material.BOOK_AND_QUILL, (short) 0, 1,
+                        ChatColor.GRAY + "View your available trades.",
+                        ChatColor.GRAY + "These trades are always",
+                        ChatColor.GRAY + "Availiable and accessible through",
+                        ChatColor.GRAY + "the SkyBlock Menu.",
+                        "",
+                        ChatColor.GRAY + "Trades Unlocked: " + ChatColor.YELLOW + "83.3" + ChatColor.GOLD + "%",
+                        ChatColor.DARK_GREEN + "" + ChatColor.BOLD + ChatColor.STRIKETHROUGH + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯" + ChatColor.WHITE + ChatColor.BOLD + ChatColor.STRIKETHROUGH + "⎯⎯⎯⎯" + ChatColor.YELLOW + " 20" + ChatColor.GOLD + "/" + ChatColor.YELLOW + "24",
+                        "",
+                        ChatColor.YELLOW + "Click to view!");
+            }
+        });
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                // add
+            }
+
+            @Override
+            public int getSlot() {
+                return 24;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getStack(ChatColor.GREEN + "Recipe Book", Material.WATCH, (short) 0, 1,
+                        ChatColor.GRAY + "View the SkyBlock Calendar,",
+                        ChatColor.GRAY + "upcoming events, and event",
+                        ChatColor.GRAY + "rewards!",
+                        "",
+                        ChatColor.GRAY + "Next Event: N/A",
+                        ChatColor.GRAY + "Starting in: " + ChatColor.YELLOW + "N/A",
+                        "",
+                        ChatColor.YELLOW + "Click to view!");
+            }
+        });
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
                 player.playSound(player.getLocation(), Sound.CHEST_OPEN, 1f, 0f);
                 player.openInventory(player.getEnderChest());
             }
@@ -125,6 +214,7 @@ public class SkyBlockMenuGUI extends GUI {
                         ChatColor.YELLOW + "Click to open!");
             }
         });
+
         if (user.getEffects().size() > 0) {
             set(new GUIClickableItem() {
                 @Override
