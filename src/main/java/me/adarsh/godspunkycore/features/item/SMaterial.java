@@ -23,6 +23,10 @@ import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitBoots;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitChestplate;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitHelmet;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitLeggings;
+import me.adarsh.godspunkycore.features.item.armor.goblin.GoblinBoots;
+import me.adarsh.godspunkycore.features.item.armor.goblin.GoblinChestplate;
+import me.adarsh.godspunkycore.features.item.armor.goblin.GoblinHelmet;
+import me.adarsh.godspunkycore.features.item.armor.goblin.GoblinLeggings;
 import me.adarsh.godspunkycore.features.item.armor.golem.GolemArmorBoots;
 import me.adarsh.godspunkycore.features.item.armor.golem.GolemArmorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.golem.GolemArmorHelmet;
@@ -169,6 +173,12 @@ public enum SMaterial {
     GROWTH_CHESTPLATE(Material.LEATHER_CHESTPLATE, GrowthChestplate.class),
     GROWTH_LEGGINGS(Material.LEATHER_LEGGINGS, GrowthLeggings.class),
     GROWTH_BOOTS(Material.LEATHER_BOOTS, GrowthBoots.class),
+
+    // Goblin Armor
+    GOBLIN_HELMET(Material.SKULL_ITEM, GoblinHelmet.class),
+    GOBLIN_CHESTPLATE(Material.LEATHER_CHESTPLATE, GoblinChestplate.class),
+    GOBLIN_LEGGINGS(Material.LEATHER_LEGGINGS, GoblinLeggings.class),
+    GOBLIN_BOOTS(Material.LEATHER_BOOTS, GoblinBoots.class),
 
     // Dragon Assets
     SUMMONING_EYE(Material.SKULL_ITEM, SummoningEye.class),
