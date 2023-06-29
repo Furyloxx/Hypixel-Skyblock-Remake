@@ -413,9 +413,6 @@ public final class Skyblock extends JavaPlugin {
     public String getPrefix() {
         return ChatColor.translateAlternateColorCodes('&', "&7[&aGodspunky&3Skyblock&bCore&7] &f");
     }
-    public String getVersion() {
-        return this.getDescription().getVersion();
-    }
     public void sendMessage(String message) {
         Bukkit.getConsoleSender().sendMessage(getPrefix() + ChatColor.translateAlternateColorCodes('&', message) + ChatColor.RESET + " ");
     }
