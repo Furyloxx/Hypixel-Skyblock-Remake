@@ -33,6 +33,10 @@ import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomBoots;
 import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomChestplate;
 import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomHelmet;
 import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomLeggings;
+import me.adarsh.godspunkycore.features.item.armor.necron.NecronBoots;
+import me.adarsh.godspunkycore.features.item.armor.necron.NecronChestplate;
+import me.adarsh.godspunkycore.features.item.armor.necron.NecronHelmet;
+import me.adarsh.godspunkycore.features.item.armor.necron.NecronLeggings;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorBoots;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorHelmet;
@@ -117,6 +121,12 @@ public enum SMaterial {
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),
     TERROR_CHESTPLATE(Material.LEATHER_CHESTPLATE, TerrorChestplate.class),
+
+    // Necron's Armor
+    NECRON_HELMET(Material.SKULL_ITEM, NecronHelmet.class),
+    NECRON_CHESTPLATE(Material.LEATHER_CHESTPLATE, NecronChestplate.class),
+    NECRON_LEGGINGS(Material.LEATHER_LEGGINGS, NecronLeggings.class),
+    NECRON_BOOTS(Material.LEATHER_BOOTS, NecronBoots.class),
     // Dragon Assets
     SUMMONING_EYE(Material.SKULL_ITEM, SummoningEye.class),
     SLEEPING_EYE(Material.SKULL_ITEM, SleepingEye.class),

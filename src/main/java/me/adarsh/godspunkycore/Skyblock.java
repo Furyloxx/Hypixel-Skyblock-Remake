@@ -197,8 +197,7 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new BankCommand());
         cl.register(new ReloadCommand());
         cl.register(new HubCommand());
-        cl.register(new HealthCommand());
-        cl.register(new changestats());
+        cl.register(new ChangeStatsCommand());
 
         this.sendMessage("Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
@@ -413,7 +412,7 @@ public final class Skyblock extends JavaPlugin {
     }
 
     public String getPrefix() {
-        return ChatColor.translateAlternateColorCodes('&', "&7[&3Sky&bBlock&7] &f");
+        return ChatColor.translateAlternateColorCodes('&', "&7[&aGodspunky&3Skyblock&bCore&7] &f");
     }
     public String getVersion() {
         return this.getDescription().getVersion();

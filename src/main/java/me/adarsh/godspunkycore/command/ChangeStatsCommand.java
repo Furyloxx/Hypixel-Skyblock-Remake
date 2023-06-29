@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
 @CommandParameters(description = "command to change stats.", aliases = "stats", permission = PlayerRank.ADMIN)
-public class changestats  extends SCommand implements Listener {
+public class ChangeStatsCommand extends SCommand implements Listener {
 
 
     @Override
