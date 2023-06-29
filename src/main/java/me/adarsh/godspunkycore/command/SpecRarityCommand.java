@@ -2,12 +2,13 @@ package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-@CommandParameters(description = "Modifies the rarity of an item.", aliases = "srar", permission = "spt.item")
+@CommandParameters(description = "Modifies the rarity of an item.", aliases = "srar", permission = PlayerRank.ADMIN)
 public class SpecRarityCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

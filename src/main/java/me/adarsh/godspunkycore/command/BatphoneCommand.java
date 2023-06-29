@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.gui.GUI;
 import me.adarsh.godspunkycore.gui.GUIType;
 import me.adarsh.godspunkycore.features.item.oddities.MaddoxBatphone;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@CommandParameters(description = "Hidden command for Maddox Batphone.")
+@CommandParameters(description = "Hidden command for Maddox Batphone.", permission = PlayerRank.DEFAULT)
 public class BatphoneCommand extends SCommand {
     public static final UUID ACCESS_KEY = UUID.randomUUID();
     public static final List<String> KEYS = new ArrayList<>();

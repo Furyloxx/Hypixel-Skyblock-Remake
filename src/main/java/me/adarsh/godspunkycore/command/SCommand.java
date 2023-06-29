@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -22,7 +23,7 @@ public abstract class SCommand implements CommandExecutor, TabCompleter {
     private String description;
     private String usage;
     private List<String> aliases;
-    private String permission;
+    private PlayerRank permission;
     private SECommand command;
 
     private CommandSource sender;
@@ -58,7 +59,6 @@ public abstract class SCommand implements CommandExecutor, TabCompleter {
 
         public SECommand(SCommand xc) {
             super(xc.name, xc.description, xc.usage, xc.aliases);
-            this.setPermission(xc.permission);
             this.setPermissionMessage(ChatColor.RED + "No permission. You need \"" + xc.permission + "\"");
             this.sc = xc;
         }

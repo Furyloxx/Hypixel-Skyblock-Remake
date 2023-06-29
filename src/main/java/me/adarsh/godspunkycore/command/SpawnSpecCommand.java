@@ -2,10 +2,11 @@ package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Spawn a mob from Spec.", aliases = "spspec", permission = "spt.spawn")
+@CommandParameters(description = "Spawn a mob from Spec.", aliases = "spspec", permission = PlayerRank.ADMIN)
 public class SpawnSpecCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

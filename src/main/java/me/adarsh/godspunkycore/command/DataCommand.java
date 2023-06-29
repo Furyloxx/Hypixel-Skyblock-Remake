@@ -1,12 +1,13 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
-@CommandParameters(description = "Sets data for a Spec item.", permission = "spt.item")
+@CommandParameters(description = "Sets data for a Spec item.", permission = PlayerRank.ADMIN)
 public class DataCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

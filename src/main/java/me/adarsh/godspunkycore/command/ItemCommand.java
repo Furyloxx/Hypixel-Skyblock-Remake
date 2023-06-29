@@ -2,11 +2,12 @@ package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
-@CommandParameters(description = "Gives an item from Spec.", aliases = "sitem,specitem", permission = "spt.item")
+@CommandParameters(description = "Gives an item from Spec.", aliases = "sitem,specitem", permission = PlayerRank.ADMIN)
 public class ItemCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

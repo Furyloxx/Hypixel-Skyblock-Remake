@@ -1,13 +1,14 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.features.reforge.Reforge;
 import me.adarsh.godspunkycore.features.reforge.ReforgeType;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-@CommandParameters(description = "Reforge an item from Spec.", aliases = "sref", permission = "spt.item")
+@CommandParameters(description = "Reforge an item from Spec.", aliases = "sref", permission = PlayerRank.ADMIN)
 public class SpecReforgeCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

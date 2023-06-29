@@ -2,11 +2,12 @@ package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.enchantment.EnchantmentType;
 import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-@CommandParameters(description = "Adds an enchantment from Spec to the specified item.", aliases = "sench", permission = "spt.item")
+@CommandParameters(description = "Adds an enchantment from Spec to the specified item.", aliases = "sench", permission = PlayerRank.ADMIN)
 public class SpecEnchantmentCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

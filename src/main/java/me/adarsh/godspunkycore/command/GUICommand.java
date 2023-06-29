@@ -1,11 +1,12 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.gui.GUI;
 import me.adarsh.godspunkycore.gui.GUIType;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Opens a GUI.", permission = "spt.gui.edit")
+@CommandParameters(description = "Opens a GUI.", permission = PlayerRank.BETA)
 public class GUICommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

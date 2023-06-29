@@ -2,13 +2,14 @@ package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.entity.EntitySpawner;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.List;
 
-@CommandParameters(description = "Manage entity spawners.", usage = "/<command> [create <type> | delete <index>]", aliases = "entityspawner,es,spawner,spawners", permission = "spt.entity")
+@CommandParameters(description = "Manage entity spawners.", usage = "/<command> [create <type> | delete <index>]", aliases = "entityspawner,es,spawner,spawners", permission = PlayerRank.ADMIN)
 public class EntitySpawnersCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

@@ -1,12 +1,13 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.gui.GUIType;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
 
-@CommandParameters(description = "Spec test command.", aliases = "test")
+@CommandParameters(description = "Spec test command.", aliases = "test", permission = PlayerRank.ADMIN)
 public class SpecTestCommand extends SCommand implements Listener {
     @Override
     public void run(CommandSource sender, String[] args) {

@@ -1,6 +1,8 @@
 package me.adarsh.godspunkycore.command;
 
-@CommandParameters(aliases = "sb", permission = "gs.admin")
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
+
+@CommandParameters(aliases = "sb", permission = PlayerRank.ADMIN)
 public class ReloadCommand extends SCommand{
     @Override
     public void run(CommandSource sender, String[] args) {

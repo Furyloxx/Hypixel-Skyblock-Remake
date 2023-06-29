@@ -1,12 +1,13 @@
 package me.adarsh.godspunkycore.command;
 
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 
-@CommandParameters(description = "go to or create your island", aliases = "is")
+@CommandParameters(description = "go to or create your island", aliases = "is", permission = PlayerRank.DEFAULT)
 public class IslandCommand extends SCommand {
 
     @Override

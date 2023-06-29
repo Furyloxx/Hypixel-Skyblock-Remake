@@ -1,11 +1,12 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.gui.ItemBrowserGUI;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Browse from a catalog of items.", aliases = "browseitem,browseitems,browsei,bi,ib", permission = "spt.item")
+@CommandParameters(description = "Browse from a catalog of items.", aliases = "browseitem,browseitems,browsei,bi,ib", permission = PlayerRank.BETA)
 public class ItemBrowseCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

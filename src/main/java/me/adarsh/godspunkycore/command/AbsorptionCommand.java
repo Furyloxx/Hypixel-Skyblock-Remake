@@ -1,11 +1,12 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Modify your absorption amount.", permission = "spt.player")
+@CommandParameters(description = "Modify your absorption amount.", permission = PlayerRank.ADMIN)
 public class AbsorptionCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

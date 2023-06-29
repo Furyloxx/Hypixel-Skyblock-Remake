@@ -1,11 +1,12 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.potion.ActivePotionEffect;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.command.ConsoleCommandSender;
 
-@CommandParameters(description = "Get your current active potion effects.", aliases = "seff", permission = "spt.item")
+@CommandParameters(description = "Get your current active potion effects.", aliases = "seff", permission = PlayerRank.ADMIN)
 public class SpecEffectsCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

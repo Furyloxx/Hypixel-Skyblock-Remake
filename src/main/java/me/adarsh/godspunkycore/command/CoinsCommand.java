@@ -1,10 +1,11 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.command.ConsoleCommandSender;
 
-@CommandParameters(description = "Modify your coin amount.", permission = "spt.balance")
+@CommandParameters(description = "Modify your coin amount.", permission = PlayerRank.ADMIN)
 public class CoinsCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {

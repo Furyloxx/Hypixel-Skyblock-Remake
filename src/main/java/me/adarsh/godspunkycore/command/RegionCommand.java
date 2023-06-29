@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.region.RegionGenerator;
 import me.adarsh.godspunkycore.features.region.RegionType;
@@ -9,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import java.util.HashMap;
 import java.util.Map;
 
-@CommandParameters(description = "Manage world regions.", usage = "/<command> [create <name> <type> | update <name> [type] | delete <name>]", aliases = "reg", permission = "spt.region")
+@CommandParameters(description = "Manage world regions.", usage = "/<command> [create <name> <type> | update <name> [type] | delete <name>]", aliases = "reg", permission = PlayerRank.ADMIN)
 public class RegionCommand extends SCommand {
     public static Map<CommandSender, RegionGenerator> REGION_GENERATION_MAP = new HashMap<>();
 

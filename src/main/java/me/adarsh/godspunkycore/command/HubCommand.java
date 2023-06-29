@@ -1,11 +1,12 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(aliases = "hub")
+@CommandParameters(aliases = "hub", permission = PlayerRank.DEFAULT)
 public class HubCommand extends SCommand{
     @Override
     public void run(CommandSource sender, String[] args) {

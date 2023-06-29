@@ -1,11 +1,12 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Play a Bukkit enum sound.", usage = "/playenumsound <sound>")
+@CommandParameters(description = "Play a Bukkit enum sound.", usage = "/playenumsound <sound>", permission = PlayerRank.ADMIN)
 public class PlayEnumSoundCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {
