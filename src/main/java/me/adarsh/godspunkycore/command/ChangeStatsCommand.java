@@ -11,6 +11,7 @@ import org.bukkit.event.Listener;
 @CommandParameters(description = "command to change stats.", aliases = "stats", permission = PlayerRank.ADMIN)
 public class ChangeStatsCommand extends SCommand implements Listener {
 
+    // TODO add more stats from Stats.java (enums)
 
     @Override
     public void run(CommandSource sender, String[] args) {
