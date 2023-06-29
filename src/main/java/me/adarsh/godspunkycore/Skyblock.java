@@ -83,7 +83,7 @@ public final class Skyblock extends JavaPlugin {
     @SneakyThrows
     @Override
     public void onEnable() {
-        this.sendMessage("Found Bukkit server v" + Bukkit.getVersion());
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Found Bukkit server v" + Bukkit.getVersion());
         long start = System.currentTimeMillis();
         plugin = this;
         loadymldata();
@@ -106,7 +106,7 @@ public final class Skyblock extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
 
         long end = System.currentTimeMillis();
-        this.sendMessage("Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
     }
 
     @Override
@@ -137,7 +137,7 @@ public final class Skyblock extends JavaPlugin {
     }
 
     public void loadymldata(){
-        this.sendMessage("Loading YAML Data...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Loading YAML Data...");
         long start = System.currentTimeMillis();
 
         config = new Config("config.yml");
@@ -146,7 +146,7 @@ public final class Skyblock extends JavaPlugin {
         spawners = new Config("spawners.yml");
         launchpads = new Config("launchpads.yml");
 
-        this.sendMessage("Successfully loaded YAML Data ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded YAML Data ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
 
     public void startServerLoop(){
@@ -160,7 +160,7 @@ public final class Skyblock extends JavaPlugin {
 
 
     private void loadCommands() {
-        this.sendMessage("Registering commands...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Registering commands...");
         long start = System.currentTimeMillis();
 
         cl.register(new RegionCommand());
@@ -199,7 +199,7 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new HubCommand());
         cl.register(new ChangeStatsCommand());
 
-        this.sendMessage("Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
     public void registerLaunchPads() {
@@ -207,7 +207,7 @@ public final class Skyblock extends JavaPlugin {
     }
 
     public void loadListeners() {
-        this.sendMessage("Loading Listeners...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Loading Listeners...");
         long start = System.currentTimeMillis();
 
         new BlockListener();
@@ -217,74 +217,74 @@ public final class Skyblock extends JavaPlugin {
         new GUIListener();
         new WorldListener();
 
-        this.sendMessage("Successfully loaded listeners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded listeners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
 
     public void loadDatabase(){
-        this.sendMessage("Loading SQL Database...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Loading SQL Database...");
         long start = System.currentTimeMillis();
 
         sql = new SQLDatabase();
         regionData = new SQLRegionData();
         worldData = new SQLWorldData();
 
-        this.sendMessage("Successfully loaded SQL Database ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded SQL Database ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
 
     public void loadCommandMap(){
-        this.sendMessage("Loading Command Maps...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Loading Command Maps...");
         long start = System.currentTimeMillis();
 
         try {
             Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
             f.setAccessible(true);
             commandMap = (CommandMap) f.get(Bukkit.getServer());
-            this.sendMessage("Successfully loaded Command Maps ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+            this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded Command Maps ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
         } catch (IllegalAccessException | NoSuchFieldException e) {
             e.printStackTrace();
-            this.sendMessage("CANNOT LOAD COMMAND MAPS U FKIN.......");
+            this.sendMessage(SUtil.getRandomVisibleColor() + "CANNOT LOAD COMMAND MAPS U FKIN.......");
         }
 
     }
 
     public void registerTraits() {
-        this.sendMessage("Registering Traits...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Registering Traits...");
         long start = System.currentTimeMillis();
 
         // Nothing is here. We can add later
 
-        this.sendMessage("Successfully registered Traits ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered Traits ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
 
     public void startEntitySpawners(){
-        this.sendMessage("Starting Entity Spawners...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Starting Entity Spawners...");
         long start = System.currentTimeMillis();
 
         EntitySpawner.startSpawnerTask();
 
-        this.sendMessage("Successfully started Entity Spawners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully started Entity Spawners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
 
     public void establishRegions(){
-        this.sendMessage("Establishing player regions...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Establishing player regions...");
         long start = System.currentTimeMillis();
 
         Region.cacheRegions();
 
-        this.sendMessage("Successfully Established Player Regions ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Established Player Regions ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
 
     public void loadAuctions(){
-        this.sendMessage("Loading Auctions...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Loading Auctions...");
         long start = System.currentTimeMillis();
 
         AuctionItem.loadAuctionsFromDisk();
 
-        this.sendMessage("Successfully Loaded Auctions ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Loaded Auctions ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
 
     public void synchronizeTime(){
-        this.sendMessage("Synchronizing world time with calendar time and removing world entities...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Synchronizing world time with calendar time and removing world entities...");
         long start = System.currentTimeMillis();
 
         for (World world : Bukkit.getWorlds()) {
@@ -299,12 +299,12 @@ public final class Skyblock extends JavaPlugin {
             world.setTime(time);
         }
 
-        this.sendMessage("Successfully Synchronized world time with calendar time and removed world entities ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Synchronized world time with calendar time and removed world entities ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
 
     @SneakyThrows
     public void loadItems(){
-        this.sendMessage("Loading Items...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Loading Items...");
         long start = System.currentTimeMillis();
 
         Class.forName("me.adarsh.godspunkycore.features.item.SMaterial"); // ensuring materials are loaded prior to this
@@ -313,11 +313,11 @@ public final class Skyblock extends JavaPlugin {
                 material.getStatistics().load();
         }
 
-        this.sendMessage("Successfully Loaded Items ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Loaded Items ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
 
     public void buildRecepies(){
-        this.sendMessage("Building Recepies...");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Building Recepies...");
         long start = System.currentTimeMillis();
 
         for (Iterator<Recipe> iter = Bukkit.recipeIterator(); iter.hasNext(); ) {
@@ -346,7 +346,7 @@ public final class Skyblock extends JavaPlugin {
             }
         }
 
-        this.sendMessage("Successfully Built Recepies ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Built Recepies ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
 
     private void startPopulators() {
@@ -404,7 +404,6 @@ public final class Skyblock extends JavaPlugin {
     }
     public void loadIslandWorld() {
         new BlankWorldCreator("islands").createWorld();
-
     }
 
     public LaunchPadHandler getLaunchPadHandler() {
