@@ -17,7 +17,10 @@ public class SpecTestCommand extends SCommand implements Listener {
         Player player = sender.getPlayer();
         if (sender instanceof ConsoleCommandSender)
             throw new CommandFailException("Console senders cannot use this command!");
-        PlayerUtils.getStatistics(player).setMaxHealth(player.getUniqueId() , 10000.0);
+        PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(player.getUniqueId());
+        statistics.getMaxHealth().setValue(1000.0);
+        statistics.getMaxHealth().addAll();
+
         System.out.printf("test 1 pass");
 
 

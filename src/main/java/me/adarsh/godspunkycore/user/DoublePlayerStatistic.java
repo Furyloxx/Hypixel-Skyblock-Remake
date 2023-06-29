@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class DoublePlayerStatistic implements PlayerStatistic<Double> {
     @Getter
-    private final double defaultValue;
+    private double defaultValue;
     private final ArrayList<Double> values;
 
     public DoublePlayerStatistic(double defaultValue) {
@@ -18,6 +18,9 @@ public class DoublePlayerStatistic implements PlayerStatistic<Double> {
 
     public DoublePlayerStatistic() {
         this(0.0);
+    }
+    public void setValue(double value){
+        this.defaultValue = value;
     }
 
     public Double addAll() {
