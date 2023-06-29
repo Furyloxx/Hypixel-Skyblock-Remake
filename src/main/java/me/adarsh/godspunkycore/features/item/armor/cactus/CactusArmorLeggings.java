@@ -6,22 +6,23 @@ import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.SpecificItemType;
 import me.adarsh.godspunkycore.features.item.armor.LeatherArmorStatistics;
 
-public class CactusArmorBoots implements LeatherArmorStatistics, MaterialFunction {
+public class CactusArmorLeggings implements LeatherArmorStatistics, MaterialFunction {
     @Override
     public String getLore(){
         return null;
     }
+
     @Override
     public double getBaseDefense() {
-        return 10;
+        return 20;
     }
 
     @Override
-    public double getBaseHealth(){return 5;}
+    public double getBaseHealth(){return 10;}
 
     @Override
     public String getDisplayName() {
-        return "Cactus Boots";
+        return "Cactus Leggings";
     }
 
     @Override
@@ -41,6 +42,6 @@ public class CactusArmorBoots implements LeatherArmorStatistics, MaterialFunctio
 
     @Override
     public SpecificItemType getSpecificType() {
-        return SpecificItemType.BOOTS;
+        return SpecificItemType.LEGGINGS;
     }
 }

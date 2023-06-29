@@ -11,6 +11,10 @@ import me.adarsh.godspunkycore.features.item.armor.angler.AnglerBoots;
 import me.adarsh.godspunkycore.features.item.armor.angler.AnglerChestplate;
 import me.adarsh.godspunkycore.features.item.armor.angler.AnglerHelmet;
 import me.adarsh.godspunkycore.features.item.armor.angler.AnglerLeggings;
+import me.adarsh.godspunkycore.features.item.armor.cactus.CactusArmorBoots;
+import me.adarsh.godspunkycore.features.item.armor.cactus.CactusArmorChestplate;
+import me.adarsh.godspunkycore.features.item.armor.cactus.CactusArmorHelmet;
+import me.adarsh.godspunkycore.features.item.armor.cactus.CactusArmorLeggings;
 import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorBoots;
 import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorHelmet;
@@ -127,6 +131,13 @@ public enum SMaterial {
     NECRON_CHESTPLATE(Material.LEATHER_CHESTPLATE, NecronChestplate.class),
     NECRON_LEGGINGS(Material.LEATHER_LEGGINGS, NecronLeggings.class),
     NECRON_BOOTS(Material.LEATHER_BOOTS, NecronBoots.class),
+
+    // Cactus Armor
+    CACTUS_BOOTS(Material.LEATHER_BOOTS, CactusArmorBoots.class),
+    CACTUS_LEGGINGS(Material.LEATHER_LEGGINGS, CactusArmorLeggings.class),
+    CACTUS_CHESTPLATE(Material.LEATHER_CHESTPLATE, CactusArmorChestplate.class),
+    CACTUS_HELMET(Material.LEATHER_HELMET, CactusArmorHelmet.class),
+
     // Dragon Assets
     SUMMONING_EYE(Material.SKULL_ITEM, SummoningEye.class),
     SLEEPING_EYE(Material.SKULL_ITEM, SleepingEye.class),
