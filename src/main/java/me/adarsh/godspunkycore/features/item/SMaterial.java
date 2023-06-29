@@ -69,6 +69,9 @@ import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorBoots;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorHelmet;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorLeggings;
+import me.adarsh.godspunkycore.features.item.armor.revenant.RevenantBoots;
+import me.adarsh.godspunkycore.features.item.armor.revenant.RevenantChestplate;
+import me.adarsh.godspunkycore.features.item.armor.revenant.RevenantLeggings;
 import me.adarsh.godspunkycore.features.item.armor.rosetta.RosettaBoots;
 import me.adarsh.godspunkycore.features.item.armor.rosetta.RosettaChestplate;
 import me.adarsh.godspunkycore.features.item.armor.rosetta.RosettaHelmet;
@@ -81,6 +84,10 @@ import me.adarsh.godspunkycore.features.item.armor.silverhunter.SilverHunterBoot
 import me.adarsh.godspunkycore.features.item.armor.silverhunter.SilverHunterChestplate;
 import me.adarsh.godspunkycore.features.item.armor.silverhunter.SilverHunterHelmet;
 import me.adarsh.godspunkycore.features.item.armor.silverhunter.SilverHunterLeggings;
+import me.adarsh.godspunkycore.features.item.armor.snow.SnowSuitBoots;
+import me.adarsh.godspunkycore.features.item.armor.snow.SnowSuitChestplate;
+import me.adarsh.godspunkycore.features.item.armor.snow.SnowSuitHelmet;
+import me.adarsh.godspunkycore.features.item.armor.snow.SnowSuitLeggings;
 import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterBoots;
 import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterChestplate;
 import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterHelmet;
@@ -89,6 +96,10 @@ import me.adarsh.godspunkycore.features.item.armor.sponge.SpongeBoots;
 import me.adarsh.godspunkycore.features.item.armor.sponge.SpongeChestplate;
 import me.adarsh.godspunkycore.features.item.armor.sponge.SpongeHelmet;
 import me.adarsh.godspunkycore.features.item.armor.sponge.SpongeLeggings;
+import me.adarsh.godspunkycore.features.item.armor.tarantula.TarantulaBoots;
+import me.adarsh.godspunkycore.features.item.armor.tarantula.TarantulaChestplate;
+import me.adarsh.godspunkycore.features.item.armor.tarantula.TarantulaHelmet;
+import me.adarsh.godspunkycore.features.item.armor.tarantula.TarantulaLeggings;
 import me.adarsh.godspunkycore.features.item.armor.terror.TerrorBoots;
 import me.adarsh.godspunkycore.features.item.armor.terror.TerrorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.terror.TerrorHelmet;
@@ -248,6 +259,23 @@ public enum SMaterial {
     SPONGE_CHESTPLATE(Material.LEATHER_CHESTPLATE, SpongeChestplate.class),
     SPONGE_LEGGINGS(Material.LEATHER_LEGGINGS, SpongeLeggings.class),
     SPONGE_BOOTS(Material.LEATHER_BOOTS, SpongeBoots.class),
+
+    // Tarantula Armor
+    TARANTULA_HELMET(Material.LEATHER_HELMET, TarantulaHelmet.class),
+    TARANTULA_CHESTPLATE(Material.LEATHER_CHESTPLATE, TarantulaChestplate.class),
+    TARANTULA_LEGGINGS(Material.LEATHER_LEGGINGS, TarantulaLeggings.class),
+    TARANTULA_BOOTS(Material.LEATHER_BOOTS, TarantulaBoots.class),
+
+    //Revenant Armor
+    REVENANT_CHESTPLATE(Material.DIAMOND_CHESTPLATE, RevenantChestplate.class),
+    REVENANT_LEGGINGS(Material.DIAMOND_LEGGINGS, RevenantLeggings.class),
+    REVENANT_BOOTS(Material.DIAMOND_BOOTS, RevenantBoots.class),
+
+    // Snow Suit Armor
+    SNOW_SUIT_HELMET(Material.SKULL_ITEM, SnowSuitHelmet.class),
+    SNOW_SUIT_CHESTPLATE(Material.LEATHER_CHESTPLATE, SnowSuitChestplate.class),
+    SNOW_SUIT_LEGGINGS(Material.LEATHER_LEGGINGS, SnowSuitLeggings.class),
+    SNOW_SUIT_BOOTS(Material.LEATHER_BOOTS, SnowSuitBoots.class),
 
     // Dragon Assets
     SUMMONING_EYE(Material.SKULL_ITEM, SummoningEye.class),
