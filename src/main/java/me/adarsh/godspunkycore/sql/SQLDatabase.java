@@ -8,9 +8,9 @@ import java.sql.SQLException;
 
 public class SQLDatabase {
     private static final Skyblock plugin = Skyblock.getPlugin();
-    String url = "jdbc:mysql://188.40.143.44:3306/s57_test"+"?autoReconnect=true&zeroDateTimeBehavior=convertToNull";
-    String user = "u57_qbJP83FsYA";
-    String password = "uL4QjYAblPaZXQk@bK9qZ+tg";
+    String url = "jdbc:mysql://"+plugin.getConfig().getString("database.host")+":"+plugin.getConfig().getString("database.port")+"/"+plugin.getConfig().getString("database.name")+"?autoReconnect=true&zeroDateTimeBehavior=convertToNull";
+    String user = plugin.getConfig().getString("database.user");
+    String password = plugin.getConfig().getString("database.password");
 
     public Connection getConnection() {
         try {

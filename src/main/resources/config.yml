@@ -1,4 +1,10 @@
 hub_world: 'world'
+database:
+  user: "skyblock"
+  name: "minecraft"
+  password: "P@ssword"
+  host: 127.0.0.1
+  port: 3306
 islands:
   x: 0
   z: 0
