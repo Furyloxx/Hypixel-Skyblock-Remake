@@ -1,22 +1,26 @@
-package me.adarsh.godspunkycore.features.item.armor.rosetta;
+package me.adarsh.godspunkycore.features.item.armor.golem;
 
 import me.adarsh.godspunkycore.features.item.*;
-import me.adarsh.godspunkycore.features.item.armor.LeatherArmorStatistics;
 
-public class RosettaChestplate implements ToolStatistics, MaterialFunction {
+public class GolemArmorBoots implements ToolStatistics, MaterialFunction {
     @Override
     public double getBaseDefense() {
         return 40;
     }
 
     @Override
+    public double getBaseHealth() {
+        return 40;
+    }
+
+    @Override
     public String getDisplayName() {
-        return "Rosetta's Chestplate";
+        return "Golem Armor Boots";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.UNCOMMON;
+        return Rarity.RARE;
     }
 
     @Override
@@ -26,6 +30,6 @@ public class RosettaChestplate implements ToolStatistics, MaterialFunction {
 
     @Override
     public SpecificItemType getSpecificType() {
-        return SpecificItemType.CHESTPLATE;
+        return SpecificItemType.BOOTS;
     }
 }

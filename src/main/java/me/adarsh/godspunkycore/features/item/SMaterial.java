@@ -23,6 +23,10 @@ import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitBoots;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitChestplate;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitHelmet;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitLeggings;
+import me.adarsh.godspunkycore.features.item.armor.golem.GolemArmorBoots;
+import me.adarsh.godspunkycore.features.item.armor.golem.GolemArmorChestplate;
+import me.adarsh.godspunkycore.features.item.armor.golem.GolemArmorHelmet;
+import me.adarsh.godspunkycore.features.item.armor.golem.GolemArmorLeggings;
 import me.adarsh.godspunkycore.features.item.armor.hardened.HardenedDiamondBoots;
 import me.adarsh.godspunkycore.features.item.armor.hardened.HardenedDiamondChestplate;
 import me.adarsh.godspunkycore.features.item.armor.hardened.HardenedDiamondHelmet;
@@ -149,6 +153,12 @@ public enum SMaterial {
     ROSETTA_CHESTPLATE(Material.DIAMOND_CHESTPLATE, RosettaChestplate.class),
     ROSETTA_HELMET(Material.DIAMOND_HELMET, RosettaHelmet.class),
     ROSETTA_LEGGINGS(Material.DIAMOND_LEGGINGS, RosettaLeggings.class),
+
+    // Golem Armor
+    GOLEM_BOOTS(Material.IRON_BOOTS, GolemArmorBoots.class),
+    GOLEM_LEGGINGS(Material.IRON_LEGGINGS, GolemArmorLeggings.class),
+    GOLEM_CHESTPLATE(Material.IRON_CHESTPLATE, GolemArmorChestplate.class),
+    GOLEM_HELMET(Material.IRON_HELMET, GolemArmorHelmet.class),
 
     // Dragon Assets
     SUMMONING_EYE(Material.SKULL_ITEM, SummoningEye.class),

@@ -1,12 +1,8 @@
 package me.adarsh.godspunkycore.features.item.armor.rosetta;
 
-import me.adarsh.godspunkycore.features.item.GenericItemType;
-import me.adarsh.godspunkycore.features.item.MaterialFunction;
-import me.adarsh.godspunkycore.features.item.Rarity;
-import me.adarsh.godspunkycore.features.item.SpecificItemType;
-import me.adarsh.godspunkycore.features.item.armor.LeatherArmorStatistics;
+import me.adarsh.godspunkycore.features.item.*;
 
-public class RosettaBoots implements LeatherArmorStatistics, MaterialFunction {
+public class RosettaBoots implements ToolStatistics, MaterialFunction {
     @Override
     public double getBaseDefense() {
         return 20;
@@ -25,11 +21,6 @@ public class RosettaBoots implements LeatherArmorStatistics, MaterialFunction {
     @Override
     public GenericItemType getType() {
         return GenericItemType.ARMOR;
-    }
-
-    @Override
-    public int getColor() {
-        return 0x00FF00;
     }
 
     @Override
