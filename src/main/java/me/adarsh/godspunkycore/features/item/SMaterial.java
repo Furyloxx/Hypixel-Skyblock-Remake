@@ -27,6 +27,10 @@ import me.adarsh.godspunkycore.features.item.armor.golem.GolemArmorBoots;
 import me.adarsh.godspunkycore.features.item.armor.golem.GolemArmorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.golem.GolemArmorHelmet;
 import me.adarsh.godspunkycore.features.item.armor.golem.GolemArmorLeggings;
+import me.adarsh.godspunkycore.features.item.armor.growth.GrowthBoots;
+import me.adarsh.godspunkycore.features.item.armor.growth.GrowthChestplate;
+import me.adarsh.godspunkycore.features.item.armor.growth.GrowthHelmet;
+import me.adarsh.godspunkycore.features.item.armor.growth.GrowthLeggings;
 import me.adarsh.godspunkycore.features.item.armor.hardened.HardenedDiamondBoots;
 import me.adarsh.godspunkycore.features.item.armor.hardened.HardenedDiamondChestplate;
 import me.adarsh.godspunkycore.features.item.armor.hardened.HardenedDiamondHelmet;
@@ -159,6 +163,12 @@ public enum SMaterial {
     GOLEM_LEGGINGS(Material.IRON_LEGGINGS, GolemArmorLeggings.class),
     GOLEM_CHESTPLATE(Material.IRON_CHESTPLATE, GolemArmorChestplate.class),
     GOLEM_HELMET(Material.IRON_HELMET, GolemArmorHelmet.class),
+
+    // Growth Armor
+    GROWTH_HELMET(Material.LEATHER_HELMET, GrowthHelmet.class),
+    GROWTH_CHESTPLATE(Material.LEATHER_CHESTPLATE, GrowthChestplate.class),
+    GROWTH_LEGGINGS(Material.LEATHER_LEGGINGS, GrowthLeggings.class),
+    GROWTH_BOOTS(Material.LEATHER_BOOTS, GrowthBoots.class),
 
     // Dragon Assets
     SUMMONING_EYE(Material.SKULL_ITEM, SummoningEye.class),
