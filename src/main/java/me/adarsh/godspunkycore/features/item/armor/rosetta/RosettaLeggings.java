@@ -1,4 +1,4 @@
-package me.adarsh.godspunkycore.features.item.armor.cactus;
+package me.adarsh.godspunkycore.features.item.armor.rosetta;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialFunction;
@@ -6,24 +6,20 @@ import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.SpecificItemType;
 import me.adarsh.godspunkycore.features.item.armor.LeatherArmorStatistics;
 
-public class CactusArmorChestplate implements LeatherArmorStatistics, MaterialFunction {
-
+public class RosettaLeggings implements LeatherArmorStatistics, MaterialFunction {
     @Override
     public double getBaseDefense() {
-        return 25;
+        return 30;
     }
 
     @Override
-    public double getBaseHealth(){return 15;}
-
-    @Override
     public String getDisplayName() {
-        return "Cactus Chestplate";
+        return "Rosetta's Leggings";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.COMMON;
+        return Rarity.UNCOMMON;
     }
 
     @Override
@@ -38,6 +34,6 @@ public class CactusArmorChestplate implements LeatherArmorStatistics, MaterialFu
 
     @Override
     public SpecificItemType getSpecificType() {
-        return SpecificItemType.CHESTPLATE;
+        return SpecificItemType.LEGGINGS;
     }
 }

@@ -8,10 +8,6 @@ import me.adarsh.godspunkycore.features.item.armor.LeatherArmorStatistics;
 
 public class CactusArmorBoots implements LeatherArmorStatistics, MaterialFunction {
     @Override
-    public String getLore(){
-        return null;
-    }
-    @Override
     public double getBaseDefense() {
         return 10;
     }

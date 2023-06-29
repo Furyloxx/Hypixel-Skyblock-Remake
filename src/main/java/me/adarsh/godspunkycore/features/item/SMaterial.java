@@ -45,6 +45,10 @@ import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorBoots;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorHelmet;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorLeggings;
+import me.adarsh.godspunkycore.features.item.armor.rosetta.RosettaBoots;
+import me.adarsh.godspunkycore.features.item.armor.rosetta.RosettaChestplate;
+import me.adarsh.godspunkycore.features.item.armor.rosetta.RosettaHelmet;
+import me.adarsh.godspunkycore.features.item.armor.rosetta.RosettaLeggings;
 import me.adarsh.godspunkycore.features.item.armor.shadowassassin.ShadowAssassinBoots;
 import me.adarsh.godspunkycore.features.item.armor.shadowassassin.ShadowAssassinChestplate;
 import me.adarsh.godspunkycore.features.item.armor.shadowassassin.ShadowAssassinHelmet;
@@ -139,6 +143,12 @@ public enum SMaterial {
     CACTUS_LEGGINGS(Material.LEATHER_LEGGINGS, CactusArmorLeggings.class),
     CACTUS_CHESTPLATE(Material.LEATHER_CHESTPLATE, CactusArmorChestplate.class),
     CACTUS_HELMET(Material.LEATHER_HELMET, CactusArmorHelmet.class),
+
+    // Rosetta's Armor
+    ROSETTA_BOOTS(Material.DIAMOND_BOOTS, RosettaBoots.class),
+    ROSETTA_CHESTPLATE(Material.DIAMOND_CHESTPLATE, RosettaChestplate.class),
+    ROSETTA_HELMET(Material.DIAMOND_HELMET, RosettaHelmet.class),
+    ROSETTA_LEGGINGS(Material.DIAMOND_LEGGINGS, RosettaLeggings.class),
 
     // Dragon Assets
     SUMMONING_EYE(Material.SKULL_ITEM, SummoningEye.class),
