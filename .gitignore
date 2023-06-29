@@ -7,6 +7,7 @@
 
 # IntelliJ
 out/
+server/
 
 # Compiled class file
 *.class
