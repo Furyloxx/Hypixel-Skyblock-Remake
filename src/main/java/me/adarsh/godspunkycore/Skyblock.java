@@ -197,7 +197,6 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new BankCommand());
         cl.register(new ReloadCommand());
         cl.register(new HubCommand());
-        cl.register(new HealthCommand());
         cl.register(new changestats());
 
         this.sendMessage("Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
