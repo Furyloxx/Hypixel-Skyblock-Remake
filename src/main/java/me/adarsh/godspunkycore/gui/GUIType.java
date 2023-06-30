@@ -30,6 +30,7 @@ public enum GUIType {
     MANAGE_AUCTIONS(ManageAuctionsGUI.class),
     FAST_TRAVEL(FastTravelGUI.class),
     YOUR_BIDS(YourBidsGUI.class),
+    SETTING(SettingGUI.class),
     ;
 
     private final Class<? extends GUI> gui;
