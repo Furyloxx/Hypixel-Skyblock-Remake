@@ -11,6 +11,10 @@ import me.adarsh.godspunkycore.features.item.armor.angler.AnglerBoots;
 import me.adarsh.godspunkycore.features.item.armor.angler.AnglerChestplate;
 import me.adarsh.godspunkycore.features.item.armor.angler.AnglerHelmet;
 import me.adarsh.godspunkycore.features.item.armor.angler.AnglerLeggings;
+import me.adarsh.godspunkycore.features.item.armor.batperson.BatpersonBoots;
+import me.adarsh.godspunkycore.features.item.armor.batperson.BatpersonChestplate;
+import me.adarsh.godspunkycore.features.item.armor.batperson.BatpersonHelmet;
+import me.adarsh.godspunkycore.features.item.armor.batperson.BatpersonLeggings;
 import me.adarsh.godspunkycore.features.item.armor.blaze.BlazeBoots;
 import me.adarsh.godspunkycore.features.item.armor.blaze.BlazeChestplate;
 import me.adarsh.godspunkycore.features.item.armor.blaze.BlazeHelmet;
@@ -34,6 +38,9 @@ import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorBoots;
 import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorHelmet;
 import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorLeggings;
+import me.adarsh.godspunkycore.features.item.armor.fancytuxedo.FancyTuxedoBoots;
+import me.adarsh.godspunkycore.features.item.armor.fancytuxedo.FancyTuxedoChestplate;
+import me.adarsh.godspunkycore.features.item.armor.fancytuxedo.FancyTuxedoLeggings;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitBoots;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitChestplate;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitHelmet;
@@ -103,6 +110,10 @@ import me.adarsh.godspunkycore.features.item.armor.shadowassassin.ShadowAssassin
 import me.adarsh.godspunkycore.features.item.armor.shadowassassin.ShadowAssassinChestplate;
 import me.adarsh.godspunkycore.features.item.armor.shadowassassin.ShadowAssassinHelmet;
 import me.adarsh.godspunkycore.features.item.armor.shadowassassin.ShadowAssassinLeggings;
+import me.adarsh.godspunkycore.features.item.armor.sharkscale.SharkScaleBoots;
+import me.adarsh.godspunkycore.features.item.armor.sharkscale.SharkScaleChestplate;
+import me.adarsh.godspunkycore.features.item.armor.sharkscale.SharkScaleHelmet;
+import me.adarsh.godspunkycore.features.item.armor.sharkscale.SharkScaleleggings;
 import me.adarsh.godspunkycore.features.item.armor.silverhunter.SilverHunterBoots;
 import me.adarsh.godspunkycore.features.item.armor.silverhunter.SilverHunterChestplate;
 import me.adarsh.godspunkycore.features.item.armor.silverhunter.SilverHunterHelmet;
@@ -150,6 +161,10 @@ import me.adarsh.godspunkycore.features.item.armor.vanilla.leather.LeatherBoots;
 import me.adarsh.godspunkycore.features.item.armor.vanilla.leather.LeatherChestplate;
 import me.adarsh.godspunkycore.features.item.armor.vanilla.leather.LeatherHelmet;
 import me.adarsh.godspunkycore.features.item.armor.vanilla.leather.LeatherLeggings;
+import me.adarsh.godspunkycore.features.item.armor.werewolf.WerewolfBoots;
+import me.adarsh.godspunkycore.features.item.armor.werewolf.WerewolfChestplate;
+import me.adarsh.godspunkycore.features.item.armor.werewolf.WerewolfHelmet;
+import me.adarsh.godspunkycore.features.item.armor.werewolf.WerewolfLeggings;
 import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieBoots;
 import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieChestplate;
 import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieLeggings;
@@ -357,6 +372,29 @@ public enum SMaterial {
     GLACITE_CHESTPLATE(Material.LEATHER_CHESTPLATE, GlaciteChestplate.class),
     GLACITE_LEGGINGS(Material.LEATHER_LEGGINGS, GlaciteLeggings.class),
     GLACITE_BOOTS(Material.LEATHER_BOOTS, GlaciteBoots.class),
+
+    // Shark Scale Armor
+    SHARK_SCALE_HELMET(Material.SKULL_ITEM, SharkScaleHelmet.class),
+    SHARK_SCALE_CHESTPLATE(Material.LEATHER_CHESTPLATE, SharkScaleChestplate.class),
+    SHARK_SCALE_LEGGINGS(Material.LEATHER_LEGGINGS, SharkScaleleggings.class),
+    SHARK_SCALE_BOOTS(Material.LEATHER_BOOTS, SharkScaleBoots.class),
+
+    // BatPerson Armor
+    BAT_PERSON_HELMET(Material.SKULL_ITEM, BatpersonHelmet.class),
+    BAT_PERSON_CHESTPLATE(Material.LEATHER_CHESTPLATE, BatpersonChestplate.class),
+    BAT_PERSON_LEGGINGS(Material.LEATHER_LEGGINGS, BatpersonLeggings.class),
+    BAT_PERSON_BOOTS(Material.LEATHER_BOOTS, BatpersonBoots.class),
+
+    // Werewolf Armor
+    WEREWOLF_HELMET(Material.SKULL_ITEM, WerewolfHelmet.class),
+    WEREWOLF_CHESTPLATE(Material.LEATHER_CHESTPLATE, WerewolfChestplate.class),
+    WEREWOLF_LEGGINGS(Material.LEATHER_LEGGINGS, WerewolfLeggings.class),
+    WEREWOLF_BOOTS(Material.LEATHER_BOOTS, WerewolfBoots.class),
+
+    // Fancy Tuxedo Armor
+    FANCY_TUXEDO_CHESTPLATE(Material.LEATHER_CHESTPLATE, FancyTuxedoChestplate.class),
+    FANCY_TUXEDO_LEGGINGS(Material.LEATHER_LEGGINGS, FancyTuxedoLeggings.class),
+    FANCY_TUXEDO_BOOTS(Material.LEATHER_BOOTS, FancyTuxedoBoots.class),
 
     // Dragon Assets
     SUMMONING_EYE(Material.SKULL_ITEM, SummoningEye.class),
