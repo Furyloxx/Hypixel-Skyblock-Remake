@@ -14,8 +14,7 @@ public class CategoryManger {
     static ArrayList<BazaarCategory> combatCategories = new ArrayList<>();
 
 
-
-    public static ArrayList<BazaarCategory> getFarmingCategories(){
+    public static void initItems(){
         ArrayList<SMaterial> wheatItems = new ArrayList<>();
         // like this we can add items to category
         wheatItems.add(SMaterial.WHEAT);
@@ -24,24 +23,30 @@ public class CategoryManger {
         BazaarCategory wheatCategory = new BazaarCategory(new ItemStack(Material.WHEAT) , "Wheat & Seeds" ,wheatItems);
         ArrayList<SMaterial> carrotItems = new ArrayList<>();
         // like this we can add items to category
-        carrotItems.add(SMaterial.WHEAT);
-        carrotItems.add(SMaterial.SEEDS);
+        carrotItems.add(SMaterial.CARROT);
+        carrotItems.add(SMaterial.GOLDEN_CARROT);
         // this is method to way to create Category
-        BazaarCategory carrotCategory = new BazaarCategory(new ItemStack(Material.CARROT) , "Wheat & Seeds" ,carrotItems);
+        BazaarCategory carrotCategory = new BazaarCategory(new ItemStack(Material.CARROT) , "carrot" ,carrotItems);
         // here we have to register Category
-        farmingCategories.add(wheatCategory);
         farmingCategories.add(carrotCategory);
-        return farmingCategories;
-    }
-    public static ArrayList<BazaarCategory> getMiningCategories(){
+        farmingCategories.add(wheatCategory);
         ArrayList<SMaterial> items = new ArrayList<>();
         // like this we can add items to category
         items.add(SMaterial.COBBLESTONE);
         items.add(SMaterial.STONE);
         // this is method to way to create Category
         BazaarCategory category = new BazaarCategory(new ItemStack(Material.COBBLESTONE) , "Stones" ,items);
-        farmingCategories.add(category);
+        MiningCategories.add(category);
 
+
+    }
+
+
+
+    public static ArrayList<BazaarCategory> getFarmingCategories(){
+        return farmingCategories;
+    }
+    public static ArrayList<BazaarCategory> getMiningCategories(){
         return MiningCategories;
     }
     public static ArrayList<BazaarCategory> getCombatCategories(){
