@@ -82,14 +82,12 @@ public class ItemCollection {
             new ItemCollectionRewards(50),
             new ItemCollectionRewards(100),
             new ItemCollectionRewards(250),
-            new ItemCollectionRewards(500),
             new ItemCollectionRewards(1000),
             new ItemCollectionRewards(2500),
+            new ItemCollectionRewards(5000),
             new ItemCollectionRewards(10000),
-            new ItemCollectionRewards(15000),
             new ItemCollectionRewards(25000),
-            new ItemCollectionRewards(50000),
-            new ItemCollectionRewards(100000));
+            new ItemCollectionRewards(50000));
 
     public static final ItemCollection LEATHER = new ItemCollection("Leather",
             ItemCollectionCategory.FARMING,
@@ -98,11 +96,10 @@ public class ItemCollection {
             new ItemCollectionRewards(50),
             new ItemCollectionRewards(100),
             new ItemCollectionRewards(250),
-            new ItemCollectionRewards(500),
             new ItemCollectionRewards(1000),
             new ItemCollectionRewards(2500),
+            new ItemCollectionRewards(5000),
             new ItemCollectionRewards(10000),
-            new ItemCollectionRewards(15000),
             new ItemCollectionRewards(25000),
             new ItemCollectionRewards(50000),
             new ItemCollectionRewards(100000));
