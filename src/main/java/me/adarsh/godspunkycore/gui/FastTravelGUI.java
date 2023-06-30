@@ -36,7 +36,7 @@ public class FastTravelGUI extends GUI{
             }
 
             @Override
-            public ItemStack getItem(){
+            public ItemStack getItem() {
                 return SUtil.getSkullURLStack(ChatColor.AQUA + "Private Island", "c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56", 1,
                         ChatColor.DARK_GRAY + "/warp home",
                         " ",
@@ -51,7 +51,7 @@ public class FastTravelGUI extends GUI{
             @Override
             public void run(InventoryClickEvent e) {
                 World hub = Bukkit.getWorld(!plugin.config.getString("hub_world").isEmpty() ? plugin.config.getString("hub_world") : "hub");
-                player.teleport(new Location(hub, -3 , 70 , -68));
+                player.teleport(new Location(hub, -3, 70, -68));
             }
 
             @Override
@@ -60,12 +60,162 @@ public class FastTravelGUI extends GUI{
             }
 
             @Override
-            public ItemStack getItem(){
+            public ItemStack getItem() {
                 return SUtil.getSkullURLStack(ChatColor.AQUA + "Skyblock Hub", "cf40942f364f6cbceffcf1151796410286a48b1aeba77243e218026c09cd1", 1,
                         ChatColor.DARK_GRAY + "/warp hub",
                         " ",
                         ChatColor.GRAY + "Where everything happens and",
                         ChatColor.GRAY + "anything is possible.",
+                        " ",
+                        ChatColor.YELLOW + "Click to warp!");
+            }
+
+        });
+
+        // DUNGEON TODO: coordinates
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                World hub = Bukkit.getWorld(!plugin.config.getString("dungeon_world").isEmpty() ? plugin.config.getString("dundeon_world") : "dungeon");
+                player.teleport(new Location(hub, -3, 70, -68));
+            }
+
+            @Override
+            public int getSlot() {
+                return 12;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getSkullURLStack(ChatColor.GREEN + "Dungeon Hub " + ChatColor.DARK_GRAY + "- " + ChatColor.AQUA + "Spawn", "ab738fa05b27f18874e57d95b0b6c9fadd1b558894f82e0261ba1544e6fbbf1d", 1,
+                        ChatColor.DARK_GRAY + "/warp dungeon_hub",
+                        " ",
+                        ChatColor.GRAY + "Group with friends and take on",
+                        ChatColor.GRAY + "challenging Dungeons.",
+                        " ",
+                        ChatColor.YELLOW + "Click to warp!");
+            }
+        });
+
+        // The Barn TODO: coordinates
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                World the_barn = Bukkit.getWorld(!plugin.config.getString("hub_world").isEmpty() ? plugin.config.getString("hub_world") : "the barn");
+                player.teleport(new Location(the_barn, -3 , 70 , -68));
+            }
+
+            @Override
+            public int getSlot() {
+                return 13;
+            }
+
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getSkullURLStack(ChatColor.GREEN + "The Barn" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "4d3a6bd98ac1833c664c4909ff8d2dc62ce887bdcf3cc5b3848651ae5af6b", 1,
+                        ChatColor.DARK_GRAY + "/warp barn",
+                        " ",
+                        ChatColor.GRAY + "Collect basic farming resource",
+                        ChatColor.GRAY + "from plentiful crops or the local",
+                        ChatColor.GRAY + "animal population.",
+                        " ",
+                        ChatColor.GRAY + "Main Skill: " + ChatColor.AQUA + "Farming",
+                        ChatColor.GRAY + "Island Tier" + ChatColor.YELLOW + "I",
+                        " ",
+                        ChatColor.YELLOW + "Click to warp!");
+            }
+
+        });
+
+        // The Park TODO: coordinates
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                World park = Bukkit.getWorld(!plugin.config.getString("hub_world").isEmpty() ? plugin.config.getString("hub_world") : "hub");
+                player.teleport(new Location(park, -3 , 70 , -68));
+            }
+
+            @Override
+            public int getSlot() {
+                return 13;
+            }
+
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getSkullURLStack(ChatColor.GREEN + "The Park" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "b76c7f96f862243c5a6fe727aec0b8657cd2c65a463fd816c94efe4c622c055a", 1,
+                        ChatColor.DARK_GRAY + "/warp park",
+                        " ",
+                        ChatColor.GRAY + "Chop down trees and explore to",
+                        ChatColor.GRAY + "meet various characters across",
+                        ChatColor.GRAY + "different biome layers.",
+                        " ",
+                        ChatColor.GRAY + "Main Skill: " + ChatColor.AQUA + "Foraging",
+                        ChatColor.GRAY + "Island Tier" + ChatColor.YELLOW + "I",
+                        " ",
+                        ChatColor.YELLOW + "Click to warp!");
+            }
+
+        });
+
+        // Gold Mine TODO: coordinates
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                World gold_mine = Bukkit.getWorld(!plugin.config.getString("hub_world").isEmpty() ? plugin.config.getString("hub_world") : "hub");
+                player.teleport(new Location(gold_mine, -3 , 70 , -68));
+            }
+
+            @Override
+            public int getSlot() {
+                return 13;
+            }
+
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getSkullURLStack(ChatColor.GREEN + "Gold Mine" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "73bc965d579c3c6039f0a17eb7c2e6faf538c7a5de8e60ec7a719360d0a857a9", 1,
+                        ChatColor.DARK_GRAY + "/warp gold",
+                        " ",
+                        ChatColor.GRAY + "our first stop for extended",
+                        ChatColor.GRAY + "mining related activities and home",
+                        ChatColor.GRAY + "to SkyBlock's local janitor Rusty.",
+                        " ",
+                        ChatColor.GRAY + "Main Skill: " + ChatColor.AQUA + "Mining",
+                        ChatColor.GRAY + "Island Tier" + ChatColor.YELLOW + "I",
+                        " ",
+                        ChatColor.YELLOW + "Click to warp!");
+            }
+
+        });
+
+        // Deep Caverns TODO: coordinates
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                World deep_caverns = Bukkit.getWorld(!plugin.config.getString("hub_world").isEmpty() ? plugin.config.getString("hub_world") : "the barn");
+                player.teleport(new Location(deep_caverns, -3 , 70 , -68));
+            }
+
+            @Override
+            public int getSlot() {
+                return 13;
+            }
+
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getSkullURLStack(ChatColor.GREEN + "Deep Caverns" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "569a1f114151b4521373f34bc14c2963a5011cdc25a6554c48c708cd96ebfc", 1,
+                        ChatColor.DARK_GRAY + "/warp deep", 
+                        " ",
+                        ChatColor.GRAY + "Collect basic farming resource",
+                        ChatColor.GRAY + "from plentiful crops or the local",
+                        ChatColor.GRAY + "animal population.",
+                        " ",
+                        ChatColor.GRAY + "Main Skill: " + ChatColor.AQUA + "Farming",
+                        ChatColor.GRAY + "Island Tier" + ChatColor.YELLOW + "I",
                         " ",
                         ChatColor.YELLOW + "Click to warp!");
             }
