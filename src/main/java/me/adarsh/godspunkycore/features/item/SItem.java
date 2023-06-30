@@ -254,11 +254,15 @@ public class SItem implements Cloneable, ConfigurationSerializable {
         data.setString("reforge", ReforgeType.getByClass(reforge.getClass()).name());
         update();
     }
-    public void setValue(Long value){
+    public void setValue(Long value)
+    {
         data.setLong("itemValue" , value);
+        update();
     }
-    public void setPrice(Long value){
+    public void setPrice(Long value)
+    {
         data.setLong("price" , value);
+        update();
     }
     public Long getPrice() {
         if (!data.hasKey("price")){
