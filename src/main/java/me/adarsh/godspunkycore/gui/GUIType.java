@@ -28,6 +28,7 @@ public enum GUIType {
     CREATE_AUCTION(CreateAuctionGUI.class),
     AUCTION_CONFIRM(AuctionConfirmGUI.class),
     MANAGE_AUCTIONS(ManageAuctionsGUI.class),
+    FAST_TRAVEL(FastTravelGUI.class),
     YOUR_BIDS(YourBidsGUI.class),
     ;
 
