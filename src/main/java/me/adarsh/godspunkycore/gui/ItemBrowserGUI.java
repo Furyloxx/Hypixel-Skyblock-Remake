@@ -102,7 +102,6 @@ public class ItemBrowserGUI extends GUI {
                 public void run(InventoryClickEvent e) {
                     Player player = (Player) e.getWhoClicked();
                     player.playSound(player.getLocation(), Sound.NOTE_PIANO, 1f, 1f);
-                    player.sendMessage(sItem.getType().getDisplayName(sItem.getVariant()) + ChatColor.GRAY + " has been added to your inventory.");
                     player.getInventory().addItem(SItem.of(sItem.getType(), sItem.getVariant()).getStack());
                 }
 

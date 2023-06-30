@@ -105,8 +105,6 @@ public class User {
     @Setter
     private AuctionEscrow auctionEscrow;
 
-    private int tick;
-
     private User(UUID uuid) {
         this.uuid = uuid;
         this.collections = ItemCollection.getDefaultCollections();
@@ -827,6 +825,7 @@ public class User {
 
     public void sendToSpawn() {
         Player player = Bukkit.getPlayer(uuid);
+        World w1 = Bukkit.getWorld("world");
         if (player == null) return;
         if (isOnIsland()) {
             World world = Bukkit.getWorld("islands");
@@ -851,7 +850,7 @@ public class User {
                     case BAZAAR_ALLEY:
                     case COLOSSEUM:
                     case GRAVEYARD:
-                        player.teleport(new Location(player.getWorld(), -2.5, 70.0, -85.5, 0.0f, 0.0f));
+                        player.teleport(new Location(w1, -101, 71, -56));
                         break;
                     case GOLD_MINE:
                         player.teleport(new Location(player.getWorld(), -4.5, 74.0, -272.5, 180.0f, 0.0f));
@@ -905,33 +904,4 @@ public class User {
     public static Collection<User> getCachedUsers() {
         return USER_CACHE.values();
     }
-
-    public void tick(){
-        this.tick = 0;
-        if (tick == 0){
-            IChatBaseComponent header = new ChatComponentText(
-                ChatColor.AQUA + "You are" +  ChatColor.RESET + " " +  ChatColor.AQUA + "playing on " + ChatColor.YELLOW + "" + ChatColor.BOLD + "MC.GODSPUNKY.IN\n");
-            IChatBaseComponent footer = new ChatComponentText(
-                    "\n" + ChatColor.GREEN + "" + ChatColor.BOLD + "Active Effects\n" + "" +
-                            (ChatColor.GRAY + "        You have " + ChatColor.YELLOW + effects.size() + ChatColor.GRAY + " active effects. Use\n" + ChatColor.GRAY + "\"" + ChatColor.GOLD + "/effects" + ChatColor.GRAY + "\" to see them!\n" + "\n" + ChatColor.GRAY + "         No effects active. Drink potions or splash\n" + ChatColor.GRAY + "them on the ground to buff yourself!\n\n") +
-                            ChatColor.GREEN + "Ranks, Boosters, & MORE!" + ChatColor.RESET + "" + ChatColor.RED + "" + ChatColor.BOLD + " STORE.GODSPUNKY.IN");
-
-            PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter();
-
-            try {
-                Field headerField = packet.getClass().getDeclaredField("a");
-                Field footerField = packet.getClass().getDeclaredField("b");
-                headerField.setAccessible(true);
-                footerField.setAccessible(true);
-                headerField.set(packet, header);
-                footerField.set(packet, footer);
-                headerField.setAccessible(!headerField.isAccessible());
-                footerField.setAccessible(!footerField.isAccessible());
-            } catch (Exception ex) {
-                Skyblock.getPlugin().sendMessage("&cFailed to register tab list for &8" + ex.getMessage() + "&c!");
-            }
-
-            ((CraftPlayer) Bukkit.getOnlinePlayers()).getHandle().playerConnection.sendPacket(packet);
-            }
-        }
-    }
+}

@@ -12,7 +12,6 @@ import java.util.Objects;
 public class SetRankCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String s, String[] args) {
-        if (sender instanceof Player) {
             Player player = (Player) sender;
 
             if (sender.isOp() || player.hasPermission("skyblock.admin") || player.hasPermission("skyblock.owner")) {
@@ -35,8 +34,6 @@ public class SetRankCommand implements CommandExecutor {
                 sender.sendMessage(CC.translate("&cYou need ADMIN rank to use this command."));
                 return false;
             }
-        }
-
         return false;
     }
 }

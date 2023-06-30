@@ -48,6 +48,7 @@ public enum PlayerRank {
         return this.level >= rank.level;
     }
 
+
     public static PlayerRank getRankOrDefault(int level) {
         for (PlayerRank rank : PlayerRank.values()) {
             if (rank.level == level) {

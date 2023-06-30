@@ -141,6 +141,7 @@ import me.adarsh.godspunkycore.features.item.armor.tarantula.TarantulaLeggings;
 import me.adarsh.godspunkycore.features.item.armor.terror.TerrorBoots;
 import me.adarsh.godspunkycore.features.item.armor.terror.TerrorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.terror.TerrorHelmet;
+import me.adarsh.godspunkycore.features.item.armor.terror.TerrorLeggings;
 import me.adarsh.godspunkycore.features.item.armor.vanilla.chainmail.ChainmailBoots;
 import me.adarsh.godspunkycore.features.item.armor.vanilla.chainmail.ChainmailChestplate;
 import me.adarsh.godspunkycore.features.item.armor.vanilla.chainmail.ChainmailHelmet;
@@ -236,6 +237,7 @@ public enum SMaterial {
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),
     TERROR_CHESTPLATE(Material.LEATHER_CHESTPLATE, TerrorChestplate.class),
+    TERROR_LEGGINGS(Material.LEATHER_LEGGINGS, TerrorLeggings.class),
     TERROR_BOOTS(Material.LEATHER_BOOTS, TerrorBoots.class),
 
     // Necron's Armor
