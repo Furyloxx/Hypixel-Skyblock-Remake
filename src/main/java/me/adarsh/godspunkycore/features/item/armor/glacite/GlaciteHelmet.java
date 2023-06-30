@@ -2,7 +2,7 @@ package me.adarsh.godspunkycore.features.item.armor.glacite;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class GlaciteHelmet implements MaterialFunction, ToolStatistics {
+public class GlaciteHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override
     public String getDisplayName() {
         return "Glacite Helmet";
@@ -31,6 +31,11 @@ public class GlaciteHelmet implements MaterialFunction, ToolStatistics {
     @Override
     public double getBaseSpeed() {
         return 0.10;
+    }
+
+    @Override
+    public String getURL() {
+        return "56aab58fa01fce9af469ed747aed811d7ba18c476f5a7f9088e129c31b45f3";
     }
 
 }
