@@ -379,31 +379,32 @@ public class SkyBlockMenuGUI extends GUI {
 
         // WARDROBE
 
+        // SETTINGS
+
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // TODO : ADD WARDROBE GUI
+                GUIType.SETTING.getGUI().open(player);
             }
 
             @Override
             public int getSlot() {
-                return 32;
+                return 50;
             }
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.GREEN + "Wardrobe", Material.LEATHER_CHESTPLATE,
+                return SUtil.getStack(ChatColor.GREEN + "Setting", Material.REDSTONE_TORCH_ON,
                         (short) 0, 1,
-                        ChatColor.GRAY + "Store armor sets and quickly",
-                        ChatColor.GRAY + "swap between them!",
+                        ChatColor.GRAY + "View and edit your SkyBlock",
+                        ChatColor.GRAY + "Settings.",
                         " ",
                         ChatColor.YELLOW + "Click to view!");
             }
         });
 
-        // SETTINGS TODO:
-
         // WARPS
+
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
@@ -426,8 +427,63 @@ public class SkyBlockMenuGUI extends GUI {
         });
 
         // PROFILE MANAGEMENT TODO:
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                // TODO : ADD PROFILE GUI
+            }
+
+            @Override
+            public int getSlot() {
+                return 48;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getStack(ChatColor.GREEN + "Profile Management", Material.NAME_TAG,
+                        (short) 0, 1,
+                        ChatColor.GRAY + "You can have multiple",
+                        ChatColor.GRAY + "SkyBlock profiles at the",
+                        ChatColor.GRAY + "same time.",
+                        " ",
+                        ChatColor.GRAY + "Each profile has its own",
+                        ChatColor.GRAY + "island, inventory, ques",
+                        ChatColor.GRAY + "logs...",
+                        " ",
+                        ChatColor.GRAY + "Profiles: " + ChatColor.YELLOW + "1/4",
+                        " ",
+                        ChatColor.AQUA + "Play with friends using /coop",
+                        " ",
+                        ChatColor.YELLOW + "Click to manage!");
+            }
+        });
 
         // BOOSTER COOKIE TODO:
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                GUIType.COOKIE_INFO.getGUI().open(player);
+            }
+
+            @Override
+            public int getSlot() {
+                return 51;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getStack(ChatColor.GOLD + "Booster Cookie", Material.COOKIE,
+                        (short) 0, 1,
+                        ChatColor.GRAY + "Obtain the " + ChatColor.LIGHT_PURPLE + "Cookie Buff",
+                        ChatColor.GRAY + "from Booster Cookie in the",
+                        ChatColor.GRAY + "hub'sCommunity Shop.",
+                        " ",
+                        ChatColor.GRAY + "Duration: " + ChatColor.GREEN + "0 d",
+                        ChatColor.GRAY + "Bits Available: " + ChatColor.AQUA + "0",
+                        " ",
+                        ChatColor.YELLOW + "Click to get all info!");
+            }
+        });
     }
 
 }
