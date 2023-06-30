@@ -74,10 +74,6 @@ public class BazaarCategory {
         lore.add("");
         lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Click to view product!");
         meta.setLore(lore);
-        meta.addEnchant(Enchantment.LUCK , 1 , false);
-        meta.removeItemFlags(ItemFlag.HIDE_ENCHANTS);
-        meta.removeItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.removeItemFlags(ItemFlag.HIDE_UNBREAKABLE);
         stack.setItemMeta(meta);
       return stack;
     }
@@ -85,8 +81,7 @@ public class BazaarCategory {
         ArrayList<SMaterial> items = new ArrayList<>();
         items.add(SMaterial.WHEAT);
         BazaarCategory category = new BazaarCategory(new ItemStack(Material.WHEAT) , "Wheat & Seeds" ,items);
-        categoryManger manger = new categoryManger();
-        manger.addToCategories(category);
+        CategoryManger.addToCategories(category);
     }
 }
 
