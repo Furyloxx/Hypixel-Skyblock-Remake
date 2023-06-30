@@ -564,7 +564,6 @@ public class ItemCollection {
             new ItemCollectionRewards(70000));
 
     // COMBAT
-
     public static final ItemCollection ROTTEN_FLESH = new ItemCollection("Rotten Flesh",
             ItemCollectionCategory.COMBAT,
             SMaterial.ROTTEN_FLESH,
