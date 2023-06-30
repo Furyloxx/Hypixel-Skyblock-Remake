@@ -24,6 +24,7 @@ public class PlayerStatistics {
     private  DoublePlayerStatistic magicFind;
     private  DoublePlayerStatistic intelligence;
     private  DoublePlayerStatistic trueDefense;
+
     @Setter
     private double healthRegenerationPercentBonus;
     @Setter

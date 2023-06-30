@@ -11,7 +11,6 @@ import org.bukkit.event.Listener;
 @CommandParameters(description = "command to change stats.", aliases = "stats", permission = PlayerRank.ADMIN)
 public class ChangeStatsCommand extends SCommand implements Listener {
 
-
     @Override
     public void run(CommandSource sender, String[] args) {
         Player player = sender.getPlayer();

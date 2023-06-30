@@ -1,7 +1,7 @@
 name: GodSpunkySkyblockCore
 version: ${project.version}
 main: me.adarsh.godspunkycore.Skyblock
-authors: [ Adarsh, Epicportal , Devil ]
+authors: [ Adarsh, Epicportal, Devil, Legit]
 description: A core for godspunky skyblock
 commands:
   setrank:

@@ -7,7 +7,7 @@ public enum Stats {
     crit_damage,
     crit_chance,
     speed,
-    strength
+    strength,
 
 
 
