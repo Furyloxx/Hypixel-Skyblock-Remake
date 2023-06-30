@@ -377,7 +377,29 @@ public class SkyBlockMenuGUI extends GUI {
             });
         }
 
-        // WARDROBE TODO:
+        // WARDROBE
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                // TODO : ADD WARDROBE GUI
+            }
+
+            @Override
+            public int getSlot() {
+                return 32;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getStack(ChatColor.GREEN + "Wardrobe", Material.LEATHER_CHESTPLATE,
+                        (short) 0, 1,
+                        ChatColor.GRAY + "Store armor sets and quickly",
+                        ChatColor.GRAY + "swap between them!",
+                        " ",
+                        ChatColor.YELLOW + "Click to view!");
+            }
+        });
 
         // SETTINGS TODO:
 

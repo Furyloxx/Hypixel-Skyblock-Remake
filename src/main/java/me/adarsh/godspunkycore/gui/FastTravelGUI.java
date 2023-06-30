@@ -24,6 +24,8 @@ public class FastTravelGUI extends GUI{
         Player player = e.getPlayer();
         User user = User.getUser(e.getPlayer().getUniqueId());
 
+        // ISLAND
+
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
@@ -46,6 +48,8 @@ public class FastTravelGUI extends GUI{
                         ChatColor.YELLOW + "Click to warp!");
             }
         });
+
+        // HUB
 
         set(new GUIClickableItem() {
             @Override
