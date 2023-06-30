@@ -115,7 +115,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // add
+                // TODO: Open Recipe Book Gui Line
             }
 
             @Override
@@ -140,7 +140,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // add
+                // TODO: OPEN TRADE GUI
             }
 
             @Override
@@ -161,7 +161,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // add
+                // TODO: ADD OPEN QUEST GUI
             }
 
             @Override
@@ -184,12 +184,12 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // Calendar And Event
+        // CALENDAR
 
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // add
+                // TODO: ADD OPEN CALENDAR GUI
             }
 
             @Override
@@ -199,12 +199,12 @@ public class SkyBlockMenuGUI extends GUI {
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.GREEN + "Calendar and Event", Material.WATCH, (short) 0, 1,
+                return SUtil.getStack(ChatColor.GREEN + "Calendar And Event", Material.WATCH, (short) 0, 1,
                         ChatColor.GRAY + "View the SkyBlock Calendar,",
                         ChatColor.GRAY + "upcoming events, and event",
                         ChatColor.GRAY + "rewards!",
                         "",
-                        ChatColor.GRAY + "Next Event: " + ChatColor.YELLOW + "N/A",
+                        ChatColor.GRAY + "Next Event: N/A",
                         ChatColor.GRAY + "Starting in: " + ChatColor.YELLOW + "N/A",
                         "",
                         ChatColor.YELLOW + "Click to view!");
@@ -237,7 +237,7 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // POTION AND EFFECT
+        // ACTIVE POTION
 
         if (user.getEffects().size() > 0) {
             set(new GUIClickableItem() {
@@ -265,7 +265,7 @@ public class SkyBlockMenuGUI extends GUI {
             });
         }
 
-        // PETS
+        // ACTIVE PET
 
         if (user.getPets().size() > 0) {
             Pet.PetItem active = user.getActivePet();
@@ -324,7 +324,7 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // QUIVER {REQUIRES STRING III}
+        // QUIVER {REQUIRE STRING III}
 
         if (user.hasCollection(ItemCollection.STRING, 3)) {
             set(new GUIClickableItem() {
@@ -350,7 +350,7 @@ public class SkyBlockMenuGUI extends GUI {
             });
         }
 
-        // PIGGY BANK {REQUIRES EMERALD 7}
+        // PIGGY {REQUIRE EMERALD VII}
 
         if (user.hasCollection(ItemCollection.EMERALD, 7)) {
             set(new GUIClickableItem() {
@@ -377,15 +377,6 @@ public class SkyBlockMenuGUI extends GUI {
             });
         }
 
-        // WARDROBE TODO:
-
-        // SETTINGS TODO:
-
-        // WARPS TODO:
-
-        // PROFILE MANAGEMENT TODO:
-
-        // BOOSTER COOKIE TODO:
     }
 
 }
