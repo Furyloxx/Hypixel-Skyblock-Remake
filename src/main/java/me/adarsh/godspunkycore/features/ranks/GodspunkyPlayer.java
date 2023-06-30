@@ -17,11 +17,9 @@ public class GodspunkyPlayer {
     public PlayerRank rank;
     public long lastPlayed;
     public long firstJoined;
-    private static Skyblock plugin;
+    private static Skyblock plugin = Skyblock.getPlugin();
 
-    public static void setPlugin(Skyblock plugin) {
-        GodspunkyPlayer.plugin = plugin;
-    }
+
 
     public GodspunkyPlayer(Player player) {
         this.player = player;
