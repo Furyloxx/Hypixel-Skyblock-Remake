@@ -31,6 +31,7 @@ public enum GUIType {
     FAST_TRAVEL(FastTravelGUI.class),
     YOUR_BIDS(YourBidsGUI.class),
     SETTING(SettingGUI.class),
+    COOKIE_INFO(CookieInfoGUI.class),
     ;
 
     private final Class<? extends GUI> gui;

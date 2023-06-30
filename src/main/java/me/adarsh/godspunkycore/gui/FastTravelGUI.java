@@ -31,7 +31,7 @@ public class FastTravelGUI extends GUI{
 
             @Override
             public int getSlot() {
-                return 48;
+                return 49;
             }
 
             @Override

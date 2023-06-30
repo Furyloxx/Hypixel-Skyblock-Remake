@@ -379,28 +379,6 @@ public class SkyBlockMenuGUI extends GUI {
 
         // WARDROBE
 
-        set(new GUIClickableItem() {
-            @Override
-            public void run(InventoryClickEvent e) {
-                // TODO : ADD WARDROBE GUI
-            }
-
-            @Override
-            public int getSlot() {
-                return 32;
-            }
-
-            @Override
-            public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.GREEN + "Wardrobe", Material.LEATHER_CHESTPLATE,
-                        (short) 0, 1,
-                        ChatColor.GRAY + "Store armor sets and quickly",
-                        ChatColor.GRAY + "swap between them!",
-                        " ",
-                        ChatColor.YELLOW + "Click to view!");
-            }
-        });
-
         // SETTINGS
 
         set(new GUIClickableItem() {
@@ -449,7 +427,6 @@ public class SkyBlockMenuGUI extends GUI {
         });
 
         // PROFILE MANAGEMENT TODO:
-
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
@@ -482,6 +459,31 @@ public class SkyBlockMenuGUI extends GUI {
         });
 
         // BOOSTER COOKIE TODO:
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                GUIType.COOKIE_INFO.getGUI().open(player);
+            }
+
+            @Override
+            public int getSlot() {
+                return 51;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getStack(ChatColor.GOLD + "Booster Cookie", Material.COOKIE,
+                        (short) 0, 1,
+                        ChatColor.GRAY + "Obtain the " + ChatColor.LIGHT_PURPLE + "Cookie Buff",
+                        ChatColor.GRAY + "from Booster Cookie in the",
+                        ChatColor.GRAY + "hub'sCommunity Shop.",
+                        " ",
+                        ChatColor.GRAY + "Duration: " + ChatColor.GREEN + "0 d",
+                        ChatColor.GRAY + "Bits Available: " + ChatColor.AQUA + "0",
+                        " ",
+                        ChatColor.YELLOW + "Click to get all info!");
+            }
+        });
     }
 
 }

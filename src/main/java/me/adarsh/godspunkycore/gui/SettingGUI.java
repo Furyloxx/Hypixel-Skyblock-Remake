@@ -19,6 +19,25 @@ public class SettingGUI extends GUI{
         fill(BLACK_STAINED_GLASS_PANE);
         Player player = e.getPlayer();
         User user = User.getUser(e.getPlayer().getUniqueId());
+        set(GUIClickableItem.getCloseItem(49));
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                GUIType.SKYBLOCK_MENU.getGUI().open(player);
+            }
+
+            @Override
+            public int getSlot() {
+                return 48;
+            }
+
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getStack(ChatColor.GREEN + "Go Back", Material.ARROW, (short) 0, 1,
+                        ChatColor.GRAY + "To SkyBlock Menu");
+            }
+        });
 
         // Personal
         set(new GUIClickableItem() {
