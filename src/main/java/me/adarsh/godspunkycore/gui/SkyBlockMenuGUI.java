@@ -115,7 +115,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // TODO: Open Recipe Book Gui Line
+                // TODO: ADD Recipe Book Gui
             }
 
             @Override
@@ -140,7 +140,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // TODO: OPEN TRADE GUI
+                // TODO: ADD TRADE GUI
             }
 
             @Override
@@ -403,10 +403,33 @@ public class SkyBlockMenuGUI extends GUI {
 
         // SETTINGS
 
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                // TODO : ADD SETTING GUI
+            }
+
+            @Override
+            public int getSlot() {
+                return 50;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getStack(ChatColor.GREEN + "Settings", Material.REDSTONE_TORCH_ON,
+                        (short) 0, 1,
+                        ChatColor.GRAY + "View and edit your SkyBlock",
+                        ChatColor.GRAY + "settings.",
+                        " ",
+                        ChatColor.YELLOW + "Click to view!");
+            }
+        });
+
         // PROFILE MANAGEMENT
 
         // WARP
 
+        // COOKIE
 
     }
 
