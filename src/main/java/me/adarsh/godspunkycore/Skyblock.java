@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore;
 
 import lombok.SneakyThrows;
+import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
 import me.adarsh.godspunkycore.features.ranks.PlayerChatListener;
 import me.adarsh.godspunkycore.features.ranks.PlayerJoinQuitListener;
 import me.adarsh.godspunkycore.features.ranks.SetRankCommand;
@@ -134,6 +135,7 @@ public final class Skyblock extends JavaPlugin {
             item.save();
         plugin = null;
         SLog.info("Disabled " + this.getDescription().getFullName());
+        GodspunkyPlayer.savePlayers();
     }
 
     public void loadymldata(){

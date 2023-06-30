@@ -57,17 +57,25 @@ public class GodspunkyPlayer {
     }
 
     public FileConfiguration getConfig() {
-        File file = new File(Skyblock.getPlugin().getDataFolder() + File.separator + "PlayerRanks" + File.separator + player.getUniqueId() + ".yml");
-        if(!file.exists()) {
+        Skyblock plugin = Skyblock.getPlugin();
+        if (plugin == null) {
+            // Handle the case when the plugin instance is null
+            throw new IllegalStateException("Skyblock plugin is not initialized.");
+        }
+
+        File file = new File(plugin.getDataFolder() + File.separator + "PlayerRanks" + File.separator + player.getUniqueId() + ".yml");
+        if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
         FileConfiguration config = YamlConfiguration.loadConfiguration(file);
         return config;
     }
+
 
     public Player getPlayer() {
         return this.player;

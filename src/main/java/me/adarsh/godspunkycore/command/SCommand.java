@@ -2,6 +2,7 @@ package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.ranks.PlayerRank;
+import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -67,6 +68,7 @@ public abstract class SCommand implements CommandExecutor, TabCompleter {
         public boolean execute(CommandSender sender, String commandLabel, String[] args) {
             sc.sender = new CommandSource(sender);
             try {
+                sc.checkPermission(sc.permission); // Check if player has the required rank
                 sc.run(sc.sender, args);
                 return true;
             } catch (CommandFailException | CommandPermissionException | PlayerNotFoundException ex) {
@@ -80,6 +82,7 @@ public abstract class SCommand implements CommandExecutor, TabCompleter {
                 return true;
             }
         }
+
 
         @Override
         public List<String> tabComplete(CommandSender sender, String alias, String[] args) {
@@ -102,10 +105,14 @@ public abstract class SCommand implements CommandExecutor, TabCompleter {
         player.sendMessage(ChatColor.GRAY + message);
     }
 
-    public void checkPermission(String permission) {
-        if (!sender.getSender().hasPermission(permission))
-            throw new CommandPermissionException(permission);
+    public void checkPermission(PlayerRank requiredRank) {
+        PlayerRank playerRank = getPlayerRank(sender.getPlayer());
+        if (!playerRank.isAboveOrEqual(requiredRank)) {
+            throw new CommandPermissionException(requiredRank);
+        }
     }
+
+
 
     public Player getNonNullPlayer(String name) {
         Player player = Bukkit.getPlayer(name);
@@ -113,4 +120,12 @@ public abstract class SCommand implements CommandExecutor, TabCompleter {
             throw new PlayerNotFoundException();
         return player;
     }
+
+    public PlayerRank getPlayerRank(Player player) {
+        GodspunkyPlayer godspunkyPlayer = GodspunkyPlayer.getUser(player);
+        if (godspunkyPlayer != null)
+            return godspunkyPlayer.rank;
+        return PlayerRank.DEFAULT;
+    }
+
 }
