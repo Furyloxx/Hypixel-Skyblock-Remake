@@ -121,7 +121,11 @@ public class PlayerListener extends PListener {
         for (Skill skill : Skill.getSkills())
             skill.onSkillUpdate(user, user.getSkillXP(skill));
         player.sendMessage(SUtil.getRandomVisibleColor() + "" + ChatColor.BOLD + "[GodSpunky] : Sending to island , Please wait");
-      PlayerUtils.sendToIsland(player);       // not need delay anymore as island is already loaded at startup
+      PlayerUtils.sendToIsland(player);
+      // not need delay anymore as island is already loaded at startup
+
+        if (user.getActivePet() == null) return;
+        user.spawnPet(user.getActivePet());
     }
 
 
@@ -291,6 +295,14 @@ public class PlayerListener extends PListener {
             }
         }.runTaskLater(plugin, 30);
     }
+    @EventHandler
+    public void onMove(PlayerMoveEvent e){
+        User user = User.getUser(e.getPlayer().getUniqueId());
+        if (user.getActivePet() == null) return;
+        if (user.getPetDisplay() == null) return;
+        user.updatePetLocation();
+        }
+
 
     @EventHandler
     public void onBowShoot(EntityShootBowEvent e) {

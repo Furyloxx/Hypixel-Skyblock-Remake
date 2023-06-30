@@ -10,6 +10,7 @@ import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -282,6 +283,13 @@ public abstract class Pet implements SkullStatistics, LoreableMaterialStatistics
 
         public boolean equalsItem(SItem item) {
             return type == item.getType() && rarity == item.getRarity() && xp == item.getData().getDouble("xp");
+        }
+
+        public ArmorStand getStand(User user) {
+            if (user.getPetDisplay() != null) {
+                return user.getPetDisplay();
+            }
+            return null;
         }
 
         public SItem toItem() {
