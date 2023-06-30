@@ -19,10 +19,17 @@ import me.adarsh.godspunkycore.features.item.armor.cactus.CactusArmorBoots;
 import me.adarsh.godspunkycore.features.item.armor.cactus.CactusArmorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.cactus.CactusArmorHelmet;
 import me.adarsh.godspunkycore.features.item.armor.cactus.CactusArmorLeggings;
+import me.adarsh.godspunkycore.features.item.armor.cheaptuxedo.CheapTuxedoBoots;
+import me.adarsh.godspunkycore.features.item.armor.cheaptuxedo.CheapTuxedoChestplate;
+import me.adarsh.godspunkycore.features.item.armor.cheaptuxedo.CheapTuxedoLeggings;
 import me.adarsh.godspunkycore.features.item.armor.crystal.CrystalBoots;
 import me.adarsh.godspunkycore.features.item.armor.crystal.CrystalChestplate;
 import me.adarsh.godspunkycore.features.item.armor.crystal.CrystalHelmet;
 import me.adarsh.godspunkycore.features.item.armor.crystal.CrystalLeggings;
+import me.adarsh.godspunkycore.features.item.armor.emerald.EmeraldBoots;
+import me.adarsh.godspunkycore.features.item.armor.emerald.EmeraldChestplate;
+import me.adarsh.godspunkycore.features.item.armor.emerald.EmeraldHelmet;
+import me.adarsh.godspunkycore.features.item.armor.emerald.EmeraldLeggings;
 import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorBoots;
 import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorHelmet;
@@ -31,6 +38,14 @@ import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitBoots;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitChestplate;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitHelmet;
 import me.adarsh.godspunkycore.features.item.armor.farm.FarmSuitLeggings;
+import me.adarsh.godspunkycore.features.item.armor.flamebreaker.FlamebreakerChestplate;
+import me.adarsh.godspunkycore.features.item.armor.flamebreaker.FlamebreakerHelmet;
+import me.adarsh.godspunkycore.features.item.armor.flamebreaker.FlamebreakerLeggings;
+import me.adarsh.godspunkycore.features.item.armor.flamebreaker.Flamebreakerboots;
+import me.adarsh.godspunkycore.features.item.armor.glacite.GlaciteBoots;
+import me.adarsh.godspunkycore.features.item.armor.glacite.GlaciteChestplate;
+import me.adarsh.godspunkycore.features.item.armor.glacite.GlaciteHelmet;
+import me.adarsh.godspunkycore.features.item.armor.glacite.GlaciteLeggings;
 import me.adarsh.godspunkycore.features.item.armor.goblin.GoblinBoots;
 import me.adarsh.godspunkycore.features.item.armor.goblin.GoblinChestplate;
 import me.adarsh.godspunkycore.features.item.armor.goblin.GoblinHelmet;
@@ -56,6 +71,10 @@ import me.adarsh.godspunkycore.features.item.armor.magma.MagmaBoots;
 import me.adarsh.godspunkycore.features.item.armor.magma.MagmaChestplate;
 import me.adarsh.godspunkycore.features.item.armor.magma.MagmaHelmet;
 import me.adarsh.godspunkycore.features.item.armor.magma.MagmaLeggings;
+import me.adarsh.godspunkycore.features.item.armor.mastiff.MastiffBoots;
+import me.adarsh.godspunkycore.features.item.armor.mastiff.MastiffChestplate;
+import me.adarsh.godspunkycore.features.item.armor.mastiff.MastiffHelmet;
+import me.adarsh.godspunkycore.features.item.armor.mastiff.MastiffLeggings;
 import me.adarsh.godspunkycore.features.item.armor.miner.*;
 import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomBoots;
 import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomChestplate;
@@ -65,6 +84,10 @@ import me.adarsh.godspunkycore.features.item.armor.necron.NecronBoots;
 import me.adarsh.godspunkycore.features.item.armor.necron.NecronChestplate;
 import me.adarsh.godspunkycore.features.item.armor.necron.NecronHelmet;
 import me.adarsh.godspunkycore.features.item.armor.necron.NecronLeggings;
+import me.adarsh.godspunkycore.features.item.armor.packarmor.PackBoots;
+import me.adarsh.godspunkycore.features.item.armor.packarmor.PackChestpate;
+import me.adarsh.godspunkycore.features.item.armor.packarmor.PackHelmet;
+import me.adarsh.godspunkycore.features.item.armor.packarmor.Packleggings;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorBoots;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorChestplate;
 import me.adarsh.godspunkycore.features.item.armor.pumpkin.PumpkinArmorHelmet;
@@ -96,6 +119,10 @@ import me.adarsh.godspunkycore.features.item.armor.sponge.SpongeBoots;
 import me.adarsh.godspunkycore.features.item.armor.sponge.SpongeChestplate;
 import me.adarsh.godspunkycore.features.item.armor.sponge.SpongeHelmet;
 import me.adarsh.godspunkycore.features.item.armor.sponge.SpongeLeggings;
+import me.adarsh.godspunkycore.features.item.armor.spooky.SpookyBoots;
+import me.adarsh.godspunkycore.features.item.armor.spooky.SpookyChestplate;
+import me.adarsh.godspunkycore.features.item.armor.spooky.SpookyHelmet;
+import me.adarsh.godspunkycore.features.item.armor.spooky.SpookyLeggings;
 import me.adarsh.godspunkycore.features.item.armor.tarantula.TarantulaBoots;
 import me.adarsh.godspunkycore.features.item.armor.tarantula.TarantulaChestplate;
 import me.adarsh.godspunkycore.features.item.armor.tarantula.TarantulaHelmet;
@@ -289,6 +316,47 @@ public enum SMaterial {
     SNOW_SUIT_CHESTPLATE(Material.LEATHER_CHESTPLATE, SnowSuitChestplate.class),
     SNOW_SUIT_LEGGINGS(Material.LEATHER_LEGGINGS, SnowSuitLeggings.class),
     SNOW_SUIT_BOOTS(Material.LEATHER_BOOTS, SnowSuitBoots.class),
+
+    // Flamebreaker Armor
+    FLAMEBREAKER_HELMET(Material.CHAINMAIL_HELMET, FlamebreakerHelmet.class),
+    FLAMEBREAKER_CHESTPLATE(Material.CHAINMAIL_CHESTPLATE, FlamebreakerChestplate.class),
+    FLAMEBREAKER_LEGGINGS(Material.CHAINMAIL_LEGGINGS, FlamebreakerLeggings.class),
+    FLAMEBREAKER_BOOTS(Material.CHAINMAIL_BOOTS, Flamebreakerboots.class),
+
+    // Pack Armor
+    PACK_HELMET(Material.LEATHER_HELMET, PackHelmet.class),
+    PACK_CHESTPLATE(Material.LEATHER_CHESTPLATE, PackChestpate.class),
+    PACK_LEGGINGS(Material.IRON_LEGGINGS, Packleggings.class),
+    PACK_BOOTS(Material.IRON_BOOTS, PackBoots.class),
+
+    // Emerald Armor
+    EMERALD_HELMET(Material.LEATHER_HELMET, EmeraldHelmet.class),
+    EMERALD_CHESTPLATE(Material.LEATHER_CHESTPLATE, EmeraldChestplate.class),
+    EMERALD_LEGGINGS(Material.LEATHER_LEGGINGS, EmeraldLeggings.class),
+    EMERALD_BOOTS(Material.LEATHER_BOOTS, EmeraldBoots.class),
+
+    // Cheap Tuxedo
+    CHEAP_TUXEDO_CHESTPLATE(Material.LEATHER_CHESTPLATE, CheapTuxedoChestplate.class),
+    CHEAP_TUXEDO_LEGGINGS(Material.LEATHER_LEGGINGS, CheapTuxedoLeggings.class),
+    CHEAP_TUXEDO_BOOTS(Material.LEATHER_BOOTS, CheapTuxedoBoots.class),
+
+    // Mastiff Armor
+    MASTIFF_HELMET(Material.SKULL_ITEM, MastiffHelmet.class),
+    MASTIFF_CHESTPLATE(Material.GOLD_CHESTPLATE, MastiffChestplate.class),
+    MASTIFF_LEGGINGS(Material.DIAMOND_LEGGINGS, MastiffLeggings.class),
+    MASTIFF_BOOTS(Material.DIAMOND_BOOTS, MastiffBoots.class),
+
+    // Spooky Armor
+    SPOOKY_HELMET(Material.SKULL_ITEM, SpookyHelmet.class),
+    SPOOKY_CHESTPLATE(Material.LEATHER_CHESTPLATE, SpookyChestplate.class),
+    SPOOKY_LEGGINGS(Material.LEATHER_LEGGINGS, SpookyLeggings.class),
+    SPOOKY_BOOTS(Material.LEATHER_BOOTS, SpookyBoots.class),
+
+    // Glacite Armor
+    GLACITE_HELMET(Material.PACKED_ICE, GlaciteHelmet.class),
+    GLACITE_CHESTPLATE(Material.LEATHER_CHESTPLATE, GlaciteChestplate.class),
+    GLACITE_LEGGINGS(Material.LEATHER_LEGGINGS, GlaciteLeggings.class),
+    GLACITE_BOOTS(Material.LEATHER_BOOTS, GlaciteBoots.class),
 
     // Dragon Assets
     SUMMONING_EYE(Material.SKULL_ITEM, SummoningEye.class),
