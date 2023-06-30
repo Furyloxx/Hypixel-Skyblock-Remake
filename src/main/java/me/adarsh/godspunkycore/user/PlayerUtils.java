@@ -484,8 +484,8 @@ public final class PlayerUtils {
                 zOffset += User.ISLAND_SIZE * 2.0;
             File file = new File("plugins/GodSpunkySkyblockCore/private_island.schematic");
             SUtil.pasteSchematic(file, new Location(world, 7.0 + xOffset, 100.0, 7.0 + zOffset), true);
-            SUtil.setBlocks(new Location(world, 7.0 + xOffset, 104.0, 44.0 + zOffset),
-                    new Location(world, 5.0 + xOffset, 100.0, 44.0 + zOffset), Material.PORTAL, false);
+            SUtil.setBlocks(new Location(world, 7.0 + xOffset, 104.0, 43.0 + zOffset),
+                    new Location(world, 5.0 + xOffset, 100.0, 43.0 + zOffset), Material.PORTAL, false);
             user.setIslandLocation(7.5 + xOffset, 7.5 + zOffset);
             user.save();
             if (xOffset > 0)

@@ -1,8 +1,6 @@
 package me.adarsh.godspunkycore.features.ranks;
 
 import me.adarsh.godspunkycore.Skyblock;
-import me.adarsh.godspunkycore.util.CC;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
