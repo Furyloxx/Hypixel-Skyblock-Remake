@@ -69,6 +69,7 @@ public class FastTravelGUI extends GUI{
                         " ",
                         ChatColor.YELLOW + "Click to warp!");
             }
+
         });
     }
 }
