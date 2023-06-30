@@ -177,6 +177,19 @@ public enum SMaterial {
     ROGUE_SWORD(Material.GOLD_SWORD, RogueSword.class),
     EMERALD_BLADE(Material.EMERALD, EmeraldBlade.class),
     GOLEM_SWORD(Material.IRON_SWORD, GolemSword.class),
+    SPIDER_SWORD(Material.IRON_SWORD, SpiderSword.class),
+    UNDEAD_SWORD(Material.IRON_SWORD, UndeadSword.class),
+    CLEAVER_SWORD(Material.GOLD_SWORD, CleaverSword.class),
+    END_SWORD(Material.DIAMOND_SWORD, EndSword.class),
+    FLAMING_SWORD(Material.IRON_SWORD, FlamingSword.class),
+    SILVER_FANG(Material.GHAST_TEAR, SilverFang.class),
+    EDIBLE_MACE(Material.MUTTON, EdibleMace.class),
+    FROZEN_SCYTHE(Material.IRON_HOE, FrozenScythe.class),
+    RAIDER_AXE(Material.IRON_AXE, RaiderAxe.class),
+    ZOMBIE_SWORD(Material.IRON_SWORD, ZombieSword.class),
+    DREADLORD_SWORD(Material.IRON_SWORD, DreadlordSword.class),
+    BONZO_STAFF(Material.BLAZE_ROD, BonzoStaff.class),
+    SUPER_CLEAVER(Material.GOLD_SWORD, SuperCleaver.class),
 
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),
@@ -392,6 +405,11 @@ public enum SMaterial {
     BROKEN_PIGGY_BANK(Material.SKULL_ITEM, BrokenPiggyBank.class),
     TARANTULA_TALISMAN(Material.SKULL_ITEM, TarantulaTalisman.class),
     FARMING_TALISMAN(Material.SKULL_ITEM, FarmingTalisman.class),
+    SPEED_TALISMAN(Material.SKULL_ITEM, SpeedTalisman.class),
+    SPEED_RING(Material.SKULL_ITEM, SpeedRing.class),
+    SPEED_ARTIFACT(Material.SKULL_ITEM, SpeedArtifact.class),
+    WOOD_AFFINITY_TALISMAN(Material.SKULL_ITEM, WoodAffinityTalisman.class),
+
     // Enchanted Items
     ENCHANTED_BONE(Material.BONE, EnchantedBone.class),
     ENCHANTED_OBSIDIAN(Material.OBSIDIAN, EnchantedObsidian.class),

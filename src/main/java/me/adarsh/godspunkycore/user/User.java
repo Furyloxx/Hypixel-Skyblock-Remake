@@ -25,10 +25,14 @@ import me.adarsh.godspunkycore.features.skill.*;
 import me.adarsh.godspunkycore.features.slayer.SlayerBossType;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
 import me.adarsh.godspunkycore.util.SUtil;
+import net.minecraft.server.v1_8_R3.ChatComponentText;
 import net.minecraft.server.v1_8_R3.EntityHuman;
+import net.minecraft.server.v1_8_R3.IChatBaseComponent;
+import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerListHeaderFooter;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -38,6 +42,7 @@ import org.bukkit.util.Vector;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -93,6 +98,8 @@ public class User {
     @Getter
     @Setter
     private AuctionEscrow auctionEscrow;
+
+    private int tick;
 
     private User(UUID uuid) {
         this.uuid = uuid;
@@ -838,4 +845,33 @@ public class User {
     public static Collection<User> getCachedUsers() {
         return USER_CACHE.values();
     }
-}
+
+    public void tick(){
+        this.tick = 0;
+        if (tick == 0){
+            IChatBaseComponent header = new ChatComponentText(
+                ChatColor.AQUA + "You are" +  ChatColor.RESET + " " +  ChatColor.AQUA + "playing on " + ChatColor.YELLOW + "" + ChatColor.BOLD + "MC.GODSPUNKY.IN\n");
+            IChatBaseComponent footer = new ChatComponentText(
+                    "\n" + ChatColor.GREEN + "" + ChatColor.BOLD + "Active Effects\n" + "" +
+                            (ChatColor.GRAY + "        You have " + ChatColor.YELLOW + effects.size() + ChatColor.GRAY + " active effects. Use\n" + ChatColor.GRAY + "\"" + ChatColor.GOLD + "/effects" + ChatColor.GRAY + "\" to see them!\n" + "\n" + ChatColor.GRAY + "         No effects active. Drink potions or splash\n" + ChatColor.GRAY + "them on the ground to buff yourself!\n\n") +
+                            ChatColor.GREEN + "Ranks, Boosters, & MORE!" + ChatColor.RESET + "" + ChatColor.RED + "" + ChatColor.BOLD + " STORE.GODSPUNKY.IN");
+
+            PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter();
+
+            try {
+                Field headerField = packet.getClass().getDeclaredField("a");
+                Field footerField = packet.getClass().getDeclaredField("b");
+                headerField.setAccessible(true);
+                footerField.setAccessible(true);
+                headerField.set(packet, header);
+                footerField.set(packet, footer);
+                headerField.setAccessible(!headerField.isAccessible());
+                footerField.setAccessible(!footerField.isAccessible());
+            } catch (Exception ex) {
+                Skyblock.getPlugin().sendMessage("&cFailed to register tab list for &8" + ex.getMessage() + "&c!");
+            }
+
+            ((CraftPlayer) Bukkit.getOnlinePlayers()).getHandle().playerConnection.sendPacket(packet);
+            }
+        }
+    }
