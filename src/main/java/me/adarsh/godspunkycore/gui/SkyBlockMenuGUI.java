@@ -115,7 +115,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // TODO: ADD Recipe Book Gui
+                // add
             }
 
             @Override
@@ -140,7 +140,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // TODO: ADD TRADE GUI
+                // add
             }
 
             @Override
@@ -161,7 +161,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // TODO: ADD OPEN QUEST GUI
+                // add
             }
 
             @Override
@@ -184,12 +184,12 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // CALENDAR
+        // Calendar And Event
 
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // TODO: ADD OPEN CALENDAR GUI
+                // add
             }
 
             @Override
@@ -199,12 +199,12 @@ public class SkyBlockMenuGUI extends GUI {
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.GREEN + "Calendar And Event", Material.WATCH, (short) 0, 1,
+                return SUtil.getStack(ChatColor.GREEN + "Calendar and Event", Material.WATCH, (short) 0, 1,
                         ChatColor.GRAY + "View the SkyBlock Calendar,",
                         ChatColor.GRAY + "upcoming events, and event",
                         ChatColor.GRAY + "rewards!",
                         "",
-                        ChatColor.GRAY + "Next Event: N/A",
+                        ChatColor.GRAY + "Next Event: " + ChatColor.YELLOW + "N/A",
                         ChatColor.GRAY + "Starting in: " + ChatColor.YELLOW + "N/A",
                         "",
                         ChatColor.YELLOW + "Click to view!");
@@ -237,7 +237,7 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // ACTIVE POTION
+        // POTION AND EFFECT
 
         if (user.getEffects().size() > 0) {
             set(new GUIClickableItem() {
@@ -265,7 +265,7 @@ public class SkyBlockMenuGUI extends GUI {
             });
         }
 
-        // ACTIVE PET
+        // PETS
 
         if (user.getPets().size() > 0) {
             Pet.PetItem active = user.getActivePet();
@@ -324,7 +324,7 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // QUIVER {REQUIRE STRING III}
+        // QUIVER {REQUIRES STRING III}
 
         if (user.hasCollection(ItemCollection.STRING, 3)) {
             set(new GUIClickableItem() {
@@ -350,7 +350,7 @@ public class SkyBlockMenuGUI extends GUI {
             });
         }
 
-        // PIGGY {REQUIRE EMERALD VII}
+        // PIGGY BANK {REQUIRES EMERALD 7}
 
         if (user.hasCollection(ItemCollection.EMERALD, 7)) {
             set(new GUIClickableItem() {
@@ -377,7 +377,7 @@ public class SkyBlockMenuGUI extends GUI {
             });
         }
 
-        // Wardrobe
+        // WARDROBE
 
         set(new GUIClickableItem() {
             @Override
@@ -401,36 +401,33 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // SETTINGS
+        // SETTINGS TODO:
 
+        // WARPS
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // TODO : ADD SETTING GUI
+                GUIType.FAST_TRAVEL.getGUI().open(player);
             }
 
             @Override
             public int getSlot() {
-                return 50;
+                return 47;
             }
 
             @Override
-            public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.GREEN + "Settings", Material.REDSTONE_TORCH_ON,
-                        (short) 0, 1,
-                        ChatColor.GRAY + "View and edit your SkyBlock",
-                        ChatColor.GRAY + "settings.",
-                        " ",
-                        ChatColor.YELLOW + "Click to view!");
+            public ItemStack getItem(){
+                return SUtil.getSkullURLStack(ChatColor.AQUA+ "Fast Travel", "c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56", 1,
+                        ChatColor.GRAY + "Teleport to islands you've",
+                        ChatColor.GRAY + "already visited.",
+                        "",
+                        ChatColor.YELLOW + "Click to pick location!");
             }
         });
 
-        // PROFILE MANAGEMENT
+        // PROFILE MANAGEMENT TODO:
 
-        // WARP
-
-        // COOKIE
-
+        // BOOSTER COOKIE TODO:
     }
 
 }
