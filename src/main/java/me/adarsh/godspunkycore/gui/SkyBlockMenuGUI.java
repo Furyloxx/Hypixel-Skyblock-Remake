@@ -381,7 +381,27 @@ public class SkyBlockMenuGUI extends GUI {
 
         // SETTINGS TODO:
 
-        // WARPS TODO:
+        // WARPS
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                GUIType.FAST_TRAVEL.getGUI().open(player);
+            }
+
+            @Override
+            public int getSlot() {
+                return 47;
+            }
+
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getSkullURLStack(ChatColor.AQUA+ "Fast Travel", "c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56", 1,
+                        ChatColor.GRAY + "Teleport to islands you've",
+                        ChatColor.GRAY + "already visited.",
+                        "",
+                        ChatColor.YELLOW + "Click to pick location!");
+            }
+        });
 
         // PROFILE MANAGEMENT TODO:
 

@@ -19,10 +19,6 @@ public class HubCommand extends SCommand{
             player.sendMessage(ChatColor.RED + "You need a higher rank to use this command.");
             return;
         }
-        if (player.getWorld().getName().equals(plugin.config.getString("hub_world"))){
-            player.sendMessage(plugin.getPrefix()+"You are already on hub.");
-            return;
-        }
         World hub = Bukkit.getWorld(!plugin.config.getString("hub_world").isEmpty() ? plugin.config.getString("hub_world") : "hub");
         player.teleport(new Location(hub, -3 , 70 , -68));
     }
