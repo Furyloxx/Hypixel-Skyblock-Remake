@@ -6,6 +6,6 @@ import org.bukkit.ChatColor;
 public class CommandPermissionException extends RuntimeException {
 
     public CommandPermissionException(PlayerRank permission) {
-        super(ChatColor.RED + "No permission. You need \"" + permission.getPrefix().replace("[", "").replace("]", "") + "\"");
+        super(ChatColor.RED + "You need " + permission + "  rank to use this command");
     }
 }
