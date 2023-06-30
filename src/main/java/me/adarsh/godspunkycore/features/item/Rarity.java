@@ -13,6 +13,7 @@ public enum Rarity {
     SUPREME(ChatColor.DARK_RED),
     SPECIAL(ChatColor.RED),
     VERY_SPECIAL(ChatColor.RED),
+
     EXCLUSIVE(ChatColor.GRAY);
 
     @Getter
