@@ -24,6 +24,9 @@ public class SkyBlockMenuGUI extends GUI {
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
         PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(player.getUniqueId());
+
+        // Player Profile
+
         set(GUIClickableItem.getCloseItem(49));
         set(new GUIClickableItem() {
             @Override
@@ -54,6 +57,8 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
+        // SKILLS
+
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
@@ -74,6 +79,8 @@ public class SkyBlockMenuGUI extends GUI {
                         ChatColor.YELLOW + "Click to view!");
             }
         });
+
+        // COLLECTION
 
         String[] progress = ItemCollection.getProgress(player, null);
         set(new GUIClickableItem() {
@@ -102,6 +109,9 @@ public class SkyBlockMenuGUI extends GUI {
                         ChatColor.YELLOW + "Click to view!");
             }
         });
+
+        // RECIPE BOOK
+
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
@@ -124,6 +134,9 @@ public class SkyBlockMenuGUI extends GUI {
                         ChatColor.YELLOW + "Click to view!");
             }
         });
+
+        // TRADE
+
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
@@ -142,6 +155,9 @@ public class SkyBlockMenuGUI extends GUI {
                         ChatColor.YELLOW + "Click to view!");
             }
         });
+
+        // QUEST LOG
+
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
@@ -167,6 +183,9 @@ public class SkyBlockMenuGUI extends GUI {
                         ChatColor.YELLOW + "Click to view!");
             }
         });
+
+        // Calendar And Event
+
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
@@ -180,17 +199,20 @@ public class SkyBlockMenuGUI extends GUI {
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.GREEN + "Recipe Book", Material.WATCH, (short) 0, 1,
+                return SUtil.getStack(ChatColor.GREEN + "Calendar and Event", Material.WATCH, (short) 0, 1,
                         ChatColor.GRAY + "View the SkyBlock Calendar,",
                         ChatColor.GRAY + "upcoming events, and event",
                         ChatColor.GRAY + "rewards!",
                         "",
-                        ChatColor.GRAY + "Next Event: N/A",
+                        ChatColor.GRAY + "Next Event: " + ChatColor.YELLOW + "N/A",
                         ChatColor.GRAY + "Starting in: " + ChatColor.YELLOW + "N/A",
                         "",
                         ChatColor.YELLOW + "Click to view!");
             }
         });
+
+        // ENDER CHEST
+
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
@@ -214,6 +236,8 @@ public class SkyBlockMenuGUI extends GUI {
                         ChatColor.YELLOW + "Click to open!");
             }
         });
+
+        // POTION AND EFFECT
 
         if (user.getEffects().size() > 0) {
             set(new GUIClickableItem() {
@@ -240,6 +264,8 @@ public class SkyBlockMenuGUI extends GUI {
                 }
             });
         }
+
+        // PETS
 
         if (user.getPets().size() > 0) {
             Pet.PetItem active = user.getActivePet();
@@ -275,6 +301,9 @@ public class SkyBlockMenuGUI extends GUI {
                 }
             });
         }
+
+        // CRAFTING
+
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
@@ -294,6 +323,9 @@ public class SkyBlockMenuGUI extends GUI {
                         ChatColor.YELLOW + "Click to open!");
             }
         });
+
+        // QUIVER {REQUIRES STRING III}
+
         if (user.hasCollection(ItemCollection.STRING, 3)) {
             set(new GUIClickableItem() {
                 @Override
@@ -317,28 +349,43 @@ public class SkyBlockMenuGUI extends GUI {
                 }
             });
         }
-        set(new GUIClickableItem() {
-            @Override
-            public void run(InventoryClickEvent e) {
-                GUIType.BANKER.getGUI().open(player);
-            }
 
-            @Override
-            public int getSlot() {
-                return 33;
-            }
+        // PIGGY BANK {REQUIRES EMERALD 7}
 
-            @Override
-            public ItemStack getItem() {
-                return SUtil.getSkullURLStack(ChatColor.GREEN + "Personal Bank", "209299a117bee88d3262f6ab98211fba344ecae39b47ec848129706dedc81e4f", 1,
-                        ChatColor.GRAY + "Contact your banker from",
-                        ChatColor.GRAY + "anywhere.",
-                        ChatColor.GRAY + "Cooldown:" + ChatColor.RED + " Soon",
-                        " ",
-                        ChatColor.GRAY + "Banker Status:",
-                        ChatColor.GREEN + "Availabe");
-            }
-        });
+        if (user.hasCollection(ItemCollection.EMERALD, 7)) {
+            set(new GUIClickableItem() {
+                @Override
+                public void run(InventoryClickEvent e) {
+                    GUIType.BANKER.getGUI().open(player);
+                }
+
+                @Override
+                public int getSlot() {
+                    return 33;
+                }
+
+                @Override
+                public ItemStack getItem() {
+                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Personal Bank", "209299a117bee88d3262f6ab98211fba344ecae39b47ec848129706dedc81e4f", 1,
+                            ChatColor.GRAY + "Contact your banker from",
+                            ChatColor.GRAY + "anywhere.",
+                            ChatColor.GRAY + "Cooldown:" + ChatColor.RED + " Soon",
+                            " ",
+                            ChatColor.GRAY + "Banker Status:",
+                            ChatColor.GREEN + "Availabe");
+                }
+            });
+        }
+
+        // WARDROBE TODO:
+
+        // SETTINGS TODO:
+
+        // WARPS TODO:
+
+        // PROFILE MANAGEMENT TODO:
+
+        // BOOSTER COOKIE TODO:
     }
 
 }
