@@ -767,6 +767,7 @@ public class User {
 
     public void sendToSpawn() {
         Player player = Bukkit.getPlayer(uuid);
+        World w1 = Bukkit.getWorld("world");
         if (player == null) return;
         if (isOnIsland()) {
             World world = Bukkit.getWorld("islands");
@@ -791,7 +792,7 @@ public class User {
                     case BAZAAR_ALLEY:
                     case COLOSSEUM:
                     case GRAVEYARD:
-                        player.teleport(new Location(player.getWorld(), -2.5, 70.0, -85.5, 0.0f, 0.0f));
+                        player.teleport(new Location(w1 ,-101 , 71 , -56));
                         break;
                     case GOLD_MINE:
                         player.teleport(new Location(player.getWorld(), -4.5, 74.0, -272.5, 180.0f, 0.0f));

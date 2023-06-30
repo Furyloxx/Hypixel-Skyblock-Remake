@@ -1,6 +1,8 @@
 package me.adarsh.godspunkycore.features.ranks;
 
 import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.util.CC;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -11,24 +13,27 @@ import java.util.HashMap;
 
 public class GodspunkyPlayer {
     protected Player player;
-    public static HashMap<Player, GodspunkyPlayer> players = new HashMap();
+    public static HashMap<Player, GodspunkyPlayer> players = new HashMap<>();
     public PlayerRank rank;
     public long lastPlayed;
     public long firstJoined;
+    private static Skyblock plugin;
 
+    public static void setPlugin(Skyblock plugin) {
+        GodspunkyPlayer.plugin = plugin;
+    }
 
     public GodspunkyPlayer(Player player) {
         this.player = player;
         players.put(player, this);
         FileConfiguration config = getConfig();
-        if(config.getString("rank") != null) {
+        if (config.getString("rank") != null) {
             this.rank = PlayerRank.valueOf(config.getString("rank"));
-        }
-        else {
+        } else {
             this.rank = PlayerRank.DEFAULT;
         }
         this.firstJoined = config.getLong("firstJoined");
-        if(firstJoined == 0) {
+        if (firstJoined == 0) {
             firstJoined = System.currentTimeMillis();
             config.set("firstJoined", firstJoined);
             save(config);
@@ -48,7 +53,7 @@ public class GodspunkyPlayer {
     }
 
     public void save(FileConfiguration config) {
-        File file = new File(Skyblock.getPlugin().getDataFolder() + File.separator + "PlayerRanks" + File.separator + player.getUniqueId() + ".yml");
+        File file = new File(plugin.getDataFolder() + File.separator + "PlayerRanks" + File.separator + player.getUniqueId() + ".yml");
         try {
             config.save(file);
         } catch (IOException e) {
@@ -57,12 +62,6 @@ public class GodspunkyPlayer {
     }
 
     public FileConfiguration getConfig() {
-        Skyblock plugin = Skyblock.getPlugin();
-        if (plugin == null) {
-            // Handle the case when the plugin instance is null
-            throw new IllegalStateException("Skyblock plugin is not initialized.");
-        }
-
         File file = new File(plugin.getDataFolder() + File.separator + "PlayerRanks" + File.separator + player.getUniqueId() + ".yml");
         if (!file.exists()) {
             try {
@@ -71,18 +70,16 @@ public class GodspunkyPlayer {
                 e.printStackTrace();
             }
         }
-
         FileConfiguration config = YamlConfiguration.loadConfiguration(file);
         return config;
     }
-
 
     public Player getPlayer() {
         return this.player;
     }
 
     public static GodspunkyPlayer getUser(Player player) {
-        if(players.containsKey(player))
+        if (players.containsKey(player))
             return players.get(player);
         return null;
     }
@@ -94,9 +91,8 @@ public class GodspunkyPlayer {
     }
 
     public static void savePlayers() {
-        for(Player player : players.keySet()) {
+        for (Player player : players.keySet()) {
             players.get(player).saveAll();
         }
     }
 }
-

@@ -3,6 +3,7 @@ package me.adarsh.godspunkycore.command;
 import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -23,6 +24,6 @@ public class HubCommand extends SCommand{
             return;
         }
         World hub = Bukkit.getWorld(!plugin.config.getString("hub_world").isEmpty() ? plugin.config.getString("hub_world") : "hub");
-        player.teleport(hub.getSpawnLocation());
+        player.teleport(new Location(hub, -3 , 70 , -68));
     }
 }
