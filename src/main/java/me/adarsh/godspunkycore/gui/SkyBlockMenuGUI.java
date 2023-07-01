@@ -141,7 +141,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // add
+                GUIType.TRADE.getGUI().open(player);
             }
 
             @Override

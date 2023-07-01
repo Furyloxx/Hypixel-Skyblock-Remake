@@ -38,6 +38,7 @@ public enum GUIType {
     STORAGE(StorageGUI.class),
     QUEST(QuestGUI.class),
     CALENDAR(CalendarGUI.class),
+    TRADE(TradeGUI.class),
     ;
 
     private final Class<? extends GUI> gui;
