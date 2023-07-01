@@ -213,7 +213,7 @@ public class SkyBlockMenuGUI extends GUI {
             @Override
             public void run(InventoryClickEvent e) {
                 player.playSound(player.getLocation(), Sound.CHEST_OPEN, 1f, 0f);
-                player.openInventory(player.getEnderChest());
+                GUIType.STORAGE.getGUI().open(player);
             }
 
             @Override
