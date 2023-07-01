@@ -16,6 +16,13 @@ import me.adarsh.godspunkycore.features.entity.EntityPopulator;
 import me.adarsh.godspunkycore.features.entity.EntitySpawner;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
 import me.adarsh.godspunkycore.features.entity.StaticDragonManager;
+import me.adarsh.godspunkycore.features.wardrobe.Command.WardrobeCommand;
+import me.adarsh.godspunkycore.features.wardrobe.Command.WardrobeTabCompleter;
+import me.adarsh.godspunkycore.features.wardrobe.DataManager.Page1Data;
+import me.adarsh.godspunkycore.features.wardrobe.DataManager.Page2Data;
+import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
+import me.adarsh.godspunkycore.features.wardrobe.Listener.CheckPlayerGUIListener;
+import me.adarsh.godspunkycore.features.wardrobe.Listener.WardrobeListener;
 import me.adarsh.godspunkycore.gui.GUIListener;
 import me.adarsh.godspunkycore.features.item.ItemListener;
 import me.adarsh.godspunkycore.features.item.SItem;
@@ -56,6 +63,8 @@ import java.util.Map;
 
 public final class Skyblock extends JavaPlugin {
     private static Skyblock plugin;
+    public static Page1Data Page_1;
+    public static Page2Data Page_2;
     private LaunchPadHandler launchPadHandler;
 
     public static Skyblock getPlugin() {
@@ -90,6 +99,16 @@ public final class Skyblock extends JavaPlugin {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Found Bukkit server v" + Bukkit.getVersion());
         long start = System.currentTimeMillis();
 
+        // Wardrobe data
+        Page_1 = new Page1Data(this);
+        Page_1.saveDefaultConfig();
+        Page_2 = new Page2Data(this);
+        Page_2.saveDefaultConfig();
+        // Register Command and Tabcompleter
+        new WardrobeCommand(this);
+        this.getCommand("wardrobe").setTabCompleter(new WardrobeTabCompleter());
+        new WardrobeListener(this);
+        new CheckPlayerGUIListener(this);
         plugin = this;
         loadymldata();
         loadIslandWorld();
@@ -124,6 +143,15 @@ public final class Skyblock extends JavaPlugin {
             for (Entity entity : world.getEntities()) {
                 if (entity instanceof HumanEntity) continue;
                 entity.remove();
+            }
+        }
+        for(Player p : Bukkit.getOnlinePlayers()) {
+            if (p.getOpenInventory() != null && (p.getOpenInventory().getTitle().equals(WardrobeGUI.Page1Name) || p.getOpenInventory().getTitle().equals(WardrobeGUI.Page2Name) || p.getOpenInventory().getTitle().contains("'s Wardrobe (1/2)") || p.getOpenInventory().getTitle().contains("'s Wardrobe (2/2)"))) {
+                if (p.getItemOnCursor() != null) {
+                    p.getInventory().addItem(p.getItemOnCursor());
+                    p.setItemOnCursor(null);
+                }
+                p.closeInventory();
             }
         }
         SLog.info("Stopping server loop...");
