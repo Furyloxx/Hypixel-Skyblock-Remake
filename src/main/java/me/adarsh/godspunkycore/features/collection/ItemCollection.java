@@ -64,7 +64,7 @@ public class ItemCollection {
     public static final ItemCollection COCOA_BEANS = new ItemCollection("Cocoa Beans",
             ItemCollectionCategory.FARMING,
             SMaterial.COCOA_BEANS,
-            (short) 0,
+            (short) 3,
             new ItemCollectionRewards(75),
             new ItemCollectionRewards(200),
             new ItemCollectionRewards(500),
@@ -154,7 +154,7 @@ public class ItemCollection {
 
     public static final ItemCollection POTATO = new ItemCollection("Potato",
             ItemCollectionCategory.FARMING,
-            SMaterial.POTATO,
+            SMaterial.POTATO_ITEM,
             (short) 0,
             new ItemCollectionRewards(50),
             new ItemCollectionRewards(100),
