@@ -2,7 +2,6 @@ package me.adarsh.godspunkycore.gui;
 
 import me.adarsh.godspunkycore.features.collection.ItemCollection;
 import me.adarsh.godspunkycore.features.item.pet.Pet;
-import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
@@ -383,7 +382,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                WardrobeGUI.CreateWardrobePage1(player);
+
             }
 
             @Override
