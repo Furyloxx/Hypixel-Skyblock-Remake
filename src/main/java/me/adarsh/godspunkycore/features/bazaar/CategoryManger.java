@@ -26,8 +26,9 @@ public class CategoryManger {
         carrotItems.add(SMaterial.CARROT);
         carrotItems.add(SMaterial.GOLDEN_CARROT);
         // this is method to way to create Category
-        BazaarCategory carrotCategory = new BazaarCategory(new ItemStack(Material.CARROT) , "carrot" ,carrotItems);
+        BazaarCategory carrotCategory = new BazaarCategory(new ItemStack(Material.DIAMOND) , "carrot" ,carrotItems);
         // here we have to register Category
+        carrotCategory.setIcon(new ItemStack(Material.DIAMOND));
         farmingCategories.add(carrotCategory);
         farmingCategories.add(wheatCategory);
         ArrayList<SMaterial> items = new ArrayList<>();

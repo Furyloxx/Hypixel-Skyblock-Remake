@@ -16,22 +16,9 @@ import org.bukkit.inventory.ItemStack;
 
 public class BazaarGui implements Listener {
 
-    BazaarCategory category;
 
     public void createGui(Player player, Category enumcategory) {
 
-        if (enumcategory == Category.FarmingCategory) {
-            for (BazaarCategory category : CategoryManger.getFarmingCategories()) {
-                this.category = category;
-                System.out.println(CategoryManger.farmingCategories.size());
-            }
-        }if (enumcategory == Category.MiningCategory) {
-            for (BazaarCategory category : CategoryManger.getMiningCategories()) {
-                this.category = category;
-                System.out.println(CategoryManger.farmingCategories.size());
-
-            }
-        }
             Inventory inv = Bukkit.createInventory(null, 54, "Bazaar");
             ItemStack pane = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 4);
             fillInventory(inv, pane);
@@ -47,7 +34,19 @@ public class BazaarGui implements Listener {
             inv.setItem(9 * 4 + 1, pane);
             inv.setItem(9 * 5, new ItemStack(Material.SIGN));
             inv.setItem(9 * 5 + 1, pane);
-            addItemToInventory(inv, category.getIcon());
+        if (enumcategory == Category.FarmingCategory) {
+            for (BazaarCategory category : CategoryManger.getFarmingCategories()) {
+              addItemToInventory(inv , category.createCategory());
+                System.out.println(CategoryManger.farmingCategories.size());
+            }
+        }if (enumcategory == Category.MiningCategory) {
+            for (BazaarCategory category : CategoryManger.getMiningCategories()) {
+               addItemToInventory(inv , category.createCategory());
+                System.out.println(CategoryManger.farmingCategories.size());
+
+            }
+        }
+
 
             player.openInventory(inv);
         }
@@ -78,7 +77,7 @@ public class BazaarGui implements Listener {
             ItemStack slotItem = inventory.getItem(i);
 
 
-            if (slotItem == null || slotItem.getType() == Material.AIR && slotItem != itemStack) {
+            if (slotItem == null || slotItem.getType() == Material.AIR) {
                 inventory.setItem(i, itemStack);
                 return;
             }

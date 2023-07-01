@@ -30,13 +30,6 @@ public class BazaarCategory {
         this.name = name;
         this.items = items;
     }
-    public BazaarCategory(ItemStack icon , String name , ArrayList<SMaterial> items , boolean isEnchanted){
-        this.icon = icon;
-        this.name = name;
-        this.items = items;
-        this.isEnchanted = isEnchanted;
-
-    }
 
     public String getName(){
         return name;
