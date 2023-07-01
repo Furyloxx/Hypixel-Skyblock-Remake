@@ -42,7 +42,7 @@ public class BazaarGui implements Listener {
         }if (enumcategory == Category.MiningCategory) {
             for (BazaarCategory category : CategoryManger.getMiningCategories()) {
                addItemToInventory(inv , category.createCategory());
-                System.out.println(CategoryManger.farmingCategories.size());
+                System.out.println(CategoryManger.MiningCategories.size());
 
             }
         }

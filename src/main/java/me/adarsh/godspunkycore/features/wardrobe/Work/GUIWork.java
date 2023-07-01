@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.features.item.ItemListener;
+import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
+import me.adarsh.godspunkycore.user.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -661,22 +664,23 @@ public class GUIWork {
 	}
 
 	public static void EquipArmorForPlayer(Player p, Inventory inv, int ClickedSlot) {
-		ItemStack Helmet = null;
-		ItemStack Chestplate = null;
-		ItemStack Leggings = null;
-		ItemStack Boots = null;
+		SItem Helmet = null;
+		SItem Chestplate = null;
+		SItem Leggings = null;
+		SItem Boots = null;
 		if (!inv.getItem(ClickedSlot - 36).getType().toString().contains("STAINED_GLASS_PANE"))
-			Helmet = inv.getItem(ClickedSlot - 36).clone();
+			Helmet = SItem.find(inv.getItem(ClickedSlot - 36).clone());
 		if (!inv.getItem(ClickedSlot - 27).getType().toString().contains("STAINED_GLASS_PANE"))
-			Chestplate = inv.getItem(ClickedSlot - 27).clone();
+			Chestplate = SItem.find(inv.getItem(ClickedSlot - 27).clone());
 		if (!inv.getItem(ClickedSlot - 18).getType().toString().contains("STAINED_GLASS_PANE"))
-			Leggings = inv.getItem(ClickedSlot - 18).clone();
+			Leggings = SItem.find(inv.getItem(ClickedSlot - 18).clone());
 		if (!inv.getItem(ClickedSlot - 9).getType().toString().contains("STAINED_GLASS_PANE"))
-			Boots = inv.getItem(ClickedSlot - 9).clone();
-		p.getInventory().setHelmet(Helmet);
-		p.getInventory().setChestplate(Chestplate);
-		p.getInventory().setLeggings(Leggings);
-		p.getInventory().setBoots(Boots);
+			Boots = SItem.find(inv.getItem(ClickedSlot - 9).clone());
+		p.getInventory().setHelmet(Helmet.getStack());
+		p.getInventory().setChestplate(Chestplate.getStack());
+		p.getInventory().setLeggings(Leggings.getStack());
+		p.getInventory().setBoots(Boots.getStack());
+		ItemListener.updateStatistics(p);
 	}
 
 	public static boolean GivePlayerEquippedArmor(Player p) {
@@ -720,6 +724,7 @@ public class GUIWork {
 				p.getInventory().setChestplate(Clear);
 				p.getInventory().setLeggings(Clear);
 				p.getInventory().setBoots(Clear);
+				ItemListener.updateStatistics(p);
 				return true;
 			}
 		}
@@ -733,6 +738,7 @@ public class GUIWork {
 				|| Ver.contains("1.17") || Ver.contains("1.18"))
 			sound = "ENTITY_VILLAGER_NO";
 		p.playSound(p.getLocation(), Sound.valueOf(sound), 1.0F, 1.0F);
+
 		return false;
 	}
 

@@ -405,7 +405,7 @@ public class ItemListener extends PListener {
         }
     }
 
-    private static void updateStatistics(Player player) {
+    public static void updateStatistics(Player player) {
         PlayerInventory inv = player.getInventory();
         ItemStack beforeHelmet = inv.getHelmet(),
                 beforeChestplate = inv.getChestplate(),
