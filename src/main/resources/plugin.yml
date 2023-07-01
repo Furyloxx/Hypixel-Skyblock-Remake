@@ -5,3 +5,4 @@ authors: [ Adarsh, Epicportal, Devil, Legit]
 description: A core for godspunky skyblock
 commands:
   setrank:
+  wardrobe:
