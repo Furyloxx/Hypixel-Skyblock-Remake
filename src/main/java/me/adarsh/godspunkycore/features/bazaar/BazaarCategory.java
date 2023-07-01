@@ -67,10 +67,10 @@ public class BazaarCategory {
         ItemMeta meta = stack.getItemMeta();
         meta.setDisplayName(ChatColor.YELLOW + "" + ChatColor.BOLD + name);
         ArrayList<String> lore = new ArrayList<>();
-        lore.add(items.size() + " products");
+        lore.add(ChatColor.GRAY + "" + items.size() + " products");
         lore.add("");
-        lore.add("Buy price: " + 0.0 + ChatColor.GOLD + " Coins" );
-        lore.add("Sell price: " + 0.0 + ChatColor.GOLD + " Coins" );
+        lore.add(ChatColor.GRAY + "Buy price: " + 0.0 + ChatColor.GOLD + " Coins" );
+        lore.add(ChatColor.GRAY + "Sell price: " + 0.0 + ChatColor.GOLD + " Coins" );
         lore.add("");
         lore.add(ChatColor.YELLOW + "" + ChatColor.BOLD + "Click to view product!");
         meta.setLore(lore);
@@ -78,10 +78,10 @@ public class BazaarCategory {
       return stack;
     }
     public static void init(){
-        ArrayList<SMaterial> items = new ArrayList<>();
-        items.add(SMaterial.WHEAT);
-        BazaarCategory category = new BazaarCategory(new ItemStack(Material.WHEAT) , "Wheat & Seeds" ,items);
-        CategoryManger.addToCategories(category);
+//        ArrayList<SMaterial> items = new ArrayList<>();
+//        items.add(SMaterial.WHEAT);
+//        BazaarCategory category = new BazaarCategory(new ItemStack(Material.WHEAT) , "Wheat & Seeds" ,items);
+//        CategoryManger.addToCategories(category);
     }
 }
 

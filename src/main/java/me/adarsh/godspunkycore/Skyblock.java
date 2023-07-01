@@ -1,6 +1,8 @@
 package me.adarsh.godspunkycore;
 
 import lombok.SneakyThrows;
+import me.adarsh.godspunkycore.features.bazaar.BazaarGui;
+import me.adarsh.godspunkycore.features.bazaar.CategoryManger;
 import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
 import me.adarsh.godspunkycore.features.ranks.PlayerChatListener;
 import me.adarsh.godspunkycore.features.ranks.PlayerJoinQuitListener;
@@ -122,10 +124,13 @@ public final class Skyblock extends JavaPlugin {
         establishRegions();
         loadItems();
         loadAuctions();
+        CategoryManger.initItems();
         synchronizeTime();
         this.getCommand("setrank").setExecutor(new SetRankCommand());
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
+        getServer().getPluginManager().registerEvents(new BazaarGui(), this);
+
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
@@ -248,6 +253,7 @@ public final class Skyblock extends JavaPlugin {
         new ItemListener();
         new GUIListener();
         new WorldListener();
+        new BazaarGui();
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded listeners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }

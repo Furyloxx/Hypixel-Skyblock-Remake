@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.enums.Category;
 import me.adarsh.godspunkycore.features.bazaar.BazaarGui;
 import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.command.ConsoleCommandSender;
@@ -14,9 +15,10 @@ public class SpecTestCommand extends SCommand implements Listener {
         Player player = sender.getPlayer();
         if (sender instanceof ConsoleCommandSender)
             throw new CommandFailException("Console senders cannot use this command!");
-        BazaarGui.createGui(player);
+        BazaarGui gui = new BazaarGui();
+        gui.createGui(player , Category.FarmingCategory);
 
-        // ✪
+
         //GUIType.FARM_MERCHANT.getGUI().open(player);
 
 

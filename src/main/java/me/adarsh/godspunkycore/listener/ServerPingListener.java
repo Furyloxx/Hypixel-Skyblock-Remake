@@ -9,7 +9,7 @@ import org.bukkit.util.CachedServerIcon;
 public class ServerPingListener extends PListener {
     @EventHandler
     public void onServerPing(ServerListPingEvent e) {
-        e.setMotd(ChatColor.GREEN + "        GODSPUNKY SKYBLOCK" + ChatColor.RED + "[1.8-1.16]\n                     " + SUtil.getRandomVisibleColor() + ChatColor.BOLD + "SKYBLOCK STUFF");
+        e.setMotd(ChatColor.GREEN + "            GODSPUNKY SKYBLOCK " + ChatColor.RED + "[1.8-1.16]\n                     " + SUtil.getRandomVisibleColor() + ChatColor.DARK_PURPLE+""+ChatColor.BOLD + "SKYBLOCK STUFF");
         e.setMaxPlayers(200);
     }
 }
