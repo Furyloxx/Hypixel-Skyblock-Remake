@@ -32,6 +32,7 @@ public enum GUIType {
     YOUR_BIDS(YourBidsGUI.class),
     SETTING(SettingGUI.class),
     COOKIE_INFO(CookieInfoGUI.class),
+    QUEST_LOG(QuestLogGUI.class),
     ;
 
     private final Class<? extends GUI> gui;
