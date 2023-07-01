@@ -2,6 +2,7 @@ package me.adarsh.godspunkycore.gui;
 
 import me.adarsh.godspunkycore.features.collection.ItemCollection;
 import me.adarsh.godspunkycore.features.item.armor.batperson.BatpersonLeggings;
+import me.adarsh.godspunkycore.features.item.mining.Coal;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
@@ -11,7 +12,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.material.Coal;
 
 public class TradeGUI extends GUI {
     public TradeGUI() {
