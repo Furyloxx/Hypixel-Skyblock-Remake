@@ -162,7 +162,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // add
+                GUIType.QUEST.getGUI().open(player);
             }
 
             @Override
@@ -185,7 +185,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // add
+                GUIType.CALENDAR.getGUI().open(player);
             }
 
             @Override

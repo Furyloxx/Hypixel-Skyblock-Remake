@@ -36,6 +36,8 @@ public enum GUIType {
     POTION_BAG(PotionBagGui.class),
     ACCESSORY_BAG(AccessoryBagGUI.class),
     STORAGE(StorageGUI.class),
+    QUEST(QuestGUI.class),
+    CALENDAR(CalendarGUI.class),
     ;
 
     private final Class<? extends GUI> gui;
