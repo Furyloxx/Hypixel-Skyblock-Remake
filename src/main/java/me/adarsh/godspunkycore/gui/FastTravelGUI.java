@@ -734,7 +734,7 @@ public class FastTravelGUI extends GUI{
 
             @Override
             public ItemStack getItem(){
-                return SUtil.getStack(ChatColor.GREEN + "Advanced Mode", Material.INK_SACK, (short) 2, 1,
+                return SUtil.getStack(ChatColor.GREEN + "Advanced Mode", Material.INK_SACK, (short) 10, 1,
                         ChatColor.DARK_GRAY + "Show additional convenient fast",
                         ChatColor.GRAY +"travel options such as quick",
                         ChatColor.GRAY + "Right-Click warping and extra",

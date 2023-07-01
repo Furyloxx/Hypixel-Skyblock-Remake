@@ -34,6 +34,7 @@ public enum GUIType {
     SETTING(SettingGUI.class),
     COOKIE_INFO(CookieInfoGUI.class),
     POTION_BAG(PotionBagGui.class),
+    ACCESSORY_BAG(AccessoryBagGUI.class),
     ;
 
     private final Class<? extends GUI> gui;

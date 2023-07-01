@@ -12,9 +12,9 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Map;
 
-public class PotionBagGui extends GUI {
-    public PotionBagGui() {
-        super("Potions Bag", 18);
+public class AccessoryBagGUI extends GUI {
+    public AccessoryBagGUI() {
+        super("Accessory Bag", 18);
         fill(BLACK_STAINED_GLASS_PANE, 9, 17);
         set(GUIClickableItem.getCloseItem(13));
     }
@@ -41,7 +41,7 @@ public class PotionBagGui extends GUI {
                 if (sItem == null)
                     continue;
             }
-            user.addToPotionbag(sItem.getType(), stack.getAmount());
+            user.setAccessory(sItem.getType(), stack.getAmount());
         }
         user.save();
     }

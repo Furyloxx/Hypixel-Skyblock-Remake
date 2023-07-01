@@ -352,6 +352,7 @@ public class SkyBlockMenuGUI extends GUI {
             set(new GUIClickableItem() {
                 @Override
                 public void run(InventoryClickEvent e) {
+                    GUIType.ACCESSORY_BAG.getGUI().open(player);
                 }
 
                 @Override
