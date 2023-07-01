@@ -10,9 +10,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class FastTravelGUI extends GUI{
+public class FastTravelGUI_2 extends GUI {
     private Skyblock plugin = Skyblock.getPlugin();
-    public FastTravelGUI() {
+
+    public FastTravelGUI_2() {
         super("Fast Travel", 54);
     }
 
@@ -56,7 +57,7 @@ public class FastTravelGUI extends GUI{
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getSkullURLStack(ChatColor.AQUA + "Private Island", "c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56", 1,
+                return SUtil.getStack(ChatColor.AQUA + "Private Island", Material.PAPER, (short) 0, 1,
                         ChatColor.DARK_GRAY + "/warp home",
                         " ",
                         ChatColor.GRAY + "Your very own chunk of SkyBlock.",
@@ -83,7 +84,7 @@ public class FastTravelGUI extends GUI{
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getSkullURLStack(ChatColor.AQUA + "Skyblock Hub", "cf40942f364f6cbceffcf1151796410286a48b1aeba77243e218026c09cd1", 1,
+                return SUtil.getStack(ChatColor.AQUA + "Skyblock Hub", Material.PAPER, (short) 0, 1,
                         ChatColor.DARK_GRAY + "/warp hub",
                         " ",
                         ChatColor.GRAY + "Where everything happens and",
@@ -111,7 +112,7 @@ public class FastTravelGUI extends GUI{
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getSkullURLStack(ChatColor.GREEN + "Dungeon Hub " + ChatColor.DARK_GRAY + "- " + ChatColor.AQUA + "Spawn", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                return SUtil.getStack(ChatColor.GREEN + "Dungeon Hub " + ChatColor.DARK_GRAY + "- " + ChatColor.AQUA + "Spawn", Material.BEDROCK, (short) 0, 1,
                         ChatColor.DARK_GRAY + "/warp dungeon_hub",
                         " ",
                         ChatColor.GRAY + "Group with friends and take on",
@@ -138,7 +139,7 @@ public class FastTravelGUI extends GUI{
 
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "The Barn" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "4d3a6bd98ac1833c664c4909ff8d2dc62ce887bdcf3cc5b3848651ae5af6b", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "The Barn" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.PAPER, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp barn",
                             " ",
                             ChatColor.GRAY + "Collect basic farming resource",
@@ -168,7 +169,7 @@ public class FastTravelGUI extends GUI{
 
                 @Override
                 public ItemStack getItem() {
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "The Barn" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "The Barn" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.BEDROCK, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp barn",
                             " ",
                             ChatColor.GRAY + "Collect basic farming resource",
@@ -202,7 +203,7 @@ public class FastTravelGUI extends GUI{
 
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "The Park" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "b76c7f96f862243c5a6fe727aec0b8657cd2c65a463fd816c94efe4c622c055a", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "The Park" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.PAPER, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp park",
                             " ",
                             ChatColor.GRAY + "Chop down trees and explore to",
@@ -232,7 +233,7 @@ public class FastTravelGUI extends GUI{
 
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "The Park" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "The Park" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.BEDROCK, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp park",
                             " ",
                             ChatColor.GRAY + "Chop down trees and explore to",
@@ -266,7 +267,7 @@ public class FastTravelGUI extends GUI{
 
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Gold Mine" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "73bc965d579c3c6039f0a17eb7c2e6faf538c7a5de8e60ec7a719360d0a857a9", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "Gold Mine" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.PAPER, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp gold",
                             " ",
                             ChatColor.GRAY + "our first stop for extended",
@@ -296,7 +297,7 @@ public class FastTravelGUI extends GUI{
 
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Gold Mine" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "Gold Mine" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.BEDROCK, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp gold",
                             " ",
                             ChatColor.GRAY + "our first stop for extended",
@@ -330,7 +331,7 @@ public class FastTravelGUI extends GUI{
 
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Deep Caverns" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "569a1f114151b4521373f34bc14c2963a5011cdc25a6554c48c708cd96ebfc", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "Deep Caverns" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.PAPER, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp deep",
                             " ",
                             ChatColor.GRAY + "Collect basic farming resource",
@@ -360,7 +361,7 @@ public class FastTravelGUI extends GUI{
 
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Deep Caverns" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "Deep Caverns" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.BEDROCK, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp deep",
                             " ",
                             ChatColor.GRAY + "An island that gets progressively",
@@ -393,7 +394,7 @@ public class FastTravelGUI extends GUI{
 
             @Override
             public ItemStack getItem(){
-                return SUtil.getSkullURLStack(ChatColor.GREEN + "Dwarven Mines" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                return SUtil.getStack(ChatColor.GREEN + "Dwarven Mines" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.BEDROCK, (short) 0, 1,
                         ChatColor.DARK_GRAY + "/warp dwarves",
                         " ",
                         ChatColor.GRAY + "Discover new ores and minerals and",
@@ -427,7 +428,7 @@ public class FastTravelGUI extends GUI{
 
             @Override
             public ItemStack getItem(){
-                return SUtil.getSkullURLStack(ChatColor.GREEN + "Crystal Hollows" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Entrance", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                return SUtil.getStack(ChatColor.GREEN + "Crystal Hollows" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Entrance", Material.BEDROCK, (short) 0, 1,
                         ChatColor.DARK_GRAY + "/warp crystals",
                         " ",
                         ChatColor.GRAY + "A vast series of caves and random",
@@ -462,7 +463,7 @@ public class FastTravelGUI extends GUI{
 
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Spider's Den" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "21c5840736229db9d9645bf9b409e73e706e3dc4fc30d78eb2079d20d929db9e", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "Spider's Den" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.PAPER, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp spider",
                             " ",
                             ChatColor.GRAY + "Explore a dangerous nest, discover",
@@ -492,7 +493,7 @@ public class FastTravelGUI extends GUI{
 
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Spider's Den" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "Spider's Den" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.BEDROCK, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp spider",
                             " ",
                             ChatColor.GRAY + "Explore a dangerous nest, discover",
@@ -527,7 +528,7 @@ public class FastTravelGUI extends GUI{
                 }
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "The End" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "7840b87d52271d2a755dedc82877e0ed3df67dcc42ea479ec146176b02779a5", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "The End" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.PAPER, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp end",
                             " ",
                             ChatColor.GRAY + "Fight Zealots, mine End Stone, and",
@@ -555,7 +556,7 @@ public class FastTravelGUI extends GUI{
                 }
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "The End" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "The End" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.BEDROCK, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp end",
                             " ",
                             ChatColor.GRAY + "Fight Zealots, mine End Stone, and",
@@ -588,7 +589,7 @@ public class FastTravelGUI extends GUI{
                 }
                 @Override
                 public ItemStack getItem(){
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Crimson Isle" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "721d0930bd61fea4cb9027b00e94e13d62029c524ea0b3260c747457ba1bcfa1", 1,
+                    return SUtil.getStack(ChatColor.GREEN + "Crimson Isle" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.PAPER, (short) 0, 1,
                             ChatColor.DARK_GRAY + "/warp nether",
                             " ",
                             ChatColor.GRAY + "Fight challenging bosses, discover",
@@ -612,27 +613,27 @@ public class FastTravelGUI extends GUI{
                     player1.sendMessage(plugin.getPrefix() + "You need Glowstone Dust Collection level 4 to use this.");
                 }
 
-            @Override
-            public int getSlot() {
-                return 24;
-            }
-            @Override
-            public ItemStack getItem(){
-                return SUtil.getSkullURLStack(ChatColor.GREEN + "Crimson Isle" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
-                        ChatColor.DARK_GRAY + "/warp nether",
-                        " ",
-                        ChatColor.GRAY + "Fight challenging bosses, discover",
-                        ChatColor.GRAY + "new Sea Creatures, complete epic",
-                        ChatColor.GRAY + "quests, and join your favourite",
-                        ChatColor.GRAY + "faction!",
-                        " ",
-                        ChatColor.GRAY + "Main Skill: " + ChatColor.AQUA + "Combat",
-                        ChatColor.GRAY + "Island Tier" + ChatColor.YELLOW + "IV",
-                        " ",
-                        ChatColor.YELLOW + "Click to warp!");
-            }
+                @Override
+                public int getSlot() {
+                    return 24;
+                }
+                @Override
+                public ItemStack getItem(){
+                    return SUtil.getStack(ChatColor.GREEN + "Crimson Isle" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", Material.BEDROCK, (short) 0, 1,
+                            ChatColor.DARK_GRAY + "/warp nether",
+                            " ",
+                            ChatColor.GRAY + "Fight challenging bosses, discover",
+                            ChatColor.GRAY + "new Sea Creatures, complete epic",
+                            ChatColor.GRAY + "quests, and join your favourite",
+                            ChatColor.GRAY + "faction!",
+                            " ",
+                            ChatColor.GRAY + "Main Skill: " + ChatColor.AQUA + "Combat",
+                            ChatColor.GRAY + "Island Tier" + ChatColor.YELLOW + "IV",
+                            " ",
+                            ChatColor.YELLOW + "Click to warp!");
+                }
 
-        });
+            });
         }
 
         // Garden
@@ -652,7 +653,7 @@ public class FastTravelGUI extends GUI{
 
             @Override
             public ItemStack getItem(){
-                return SUtil.getSkullURLStack(ChatColor.GREEN + "Garden", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                return SUtil.getStack(ChatColor.GREEN + "Garden", Material.BEDROCK, (short) 0, 1,
                         ChatColor.DARK_GRAY + "/warp garden",
                         " ",
                         ChatColor.GRAY + "Spawn on your very own "+ ChatColor.GREEN + "Garden.",
@@ -679,7 +680,7 @@ public class FastTravelGUI extends GUI{
 
             @Override
             public ItemStack getItem(){
-                return SUtil.getSkullURLStack(ChatColor.AQUA + "Warp to: "+ ChatColor.RED+"Jerry's Workshop", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                return SUtil.getStack(ChatColor.AQUA + "Warp to: "+ ChatColor.RED+"Jerry's Workshop", Material.BEDROCK, (short) 0, 1,
                         ChatColor.DARK_GRAY + "Teleports you to "+ChatColor.RED + "Jerry's",
                         ChatColor.RED+"Workshop. "+ ChatColor.GRAY + "Available for a",
                         ChatColor.GRAY + "limited time!",
@@ -752,7 +753,7 @@ public class FastTravelGUI extends GUI{
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                GUIType.FAST_TRAVEL_2.getGUI().open(player);
+                GUIType.FAST_TRAVEL.getGUI().open(player);
             }
 
             @Override
@@ -766,7 +767,7 @@ public class FastTravelGUI extends GUI{
                         ChatColor.DARK_GRAY + "Use paper icons, which may load this",
                         ChatColor.GRAY + "menu faster on your computer.",
                         " ",
-                        ChatColor.GRAY + "Enabled: " + ChatColor.RED + "OFF",
+                        ChatColor.GRAY + "Enabled: " + ChatColor.GREEN + "ON",
                         ChatColor.YELLOW + "Click to toggle!");
             }
 
