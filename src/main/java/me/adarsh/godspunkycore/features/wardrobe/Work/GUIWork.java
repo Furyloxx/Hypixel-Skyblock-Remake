@@ -581,6 +581,7 @@ public class GUIWork {
 						}
 					if (GivePlayerEquippedArmor(p)) {
 						EquipArmorForPlayer(p, inv, ClickedSlot);
+						ItemListener.updateStatistics(p);
 						inv.setItem(ClickedSlot, WardrobeGUI.CreateEquippedButton(ClickedSlot - 36, inv, Title));
 						return;
 					}
@@ -657,10 +658,14 @@ public class GUIWork {
 	}
 
 	public static void ClearPlayerArmor(Player p) {
-		p.getInventory().setHelmet(null);
-		p.getInventory().setChestplate(null);
-		p.getInventory().setLeggings(null);
-		p.getInventory().setBoots(null);
+		ItemStack air = new ItemStack(Material.AIR);
+		ItemListener.updateStatistics(p);
+		p.getInventory().setHelmet(air);
+		p.getInventory().setChestplate(air);
+		p.getInventory().setLeggings(air);
+		p.getInventory().setBoots(air);
+		ItemListener.updateStatistics(p);
+
 	}
 
 	public static void EquipArmorForPlayer(Player p, Inventory inv, int ClickedSlot) {
@@ -676,6 +681,7 @@ public class GUIWork {
 			Leggings = SItem.find(inv.getItem(ClickedSlot - 18).clone());
 		if (!inv.getItem(ClickedSlot - 9).getType().toString().contains("STAINED_GLASS_PANE"))
 			Boots = SItem.find(inv.getItem(ClickedSlot - 9).clone());
+		ItemListener.updateStatistics(p);
 		p.getInventory().setHelmet(Helmet.getStack());
 		p.getInventory().setChestplate(Chestplate.getStack());
 		p.getInventory().setLeggings(Leggings.getStack());

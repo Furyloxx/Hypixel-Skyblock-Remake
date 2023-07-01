@@ -1,10 +1,7 @@
 package me.adarsh.godspunkycore;
 
 import me.adarsh.godspunkycore.features.entity.StaticDragonManager;
-import me.adarsh.godspunkycore.features.item.Ownable;
-import me.adarsh.godspunkycore.features.item.SItem;
-import me.adarsh.godspunkycore.features.item.SMaterial;
-import me.adarsh.godspunkycore.features.item.SpecificItemType;
+import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
 import me.adarsh.godspunkycore.features.item.armor.TickingSet;
 import me.adarsh.godspunkycore.features.potion.ActivePotionEffect;
@@ -111,6 +108,7 @@ public class Repeater {
                     // Update Set
                     PlayerUtils.updateSetStatistics(player, SItem.find(inventory.getHelmet()),
                             SItem.find(inventory.getChestplate()), SItem.find(inventory.getLeggings()), SItem.find(inventory.getBoots()), statistics);
+                    ItemListener.updateStatistics(player);
 
                     // Set Health Statistics
                     EntityHuman human = ((CraftHumanEntity) player).getHandle();

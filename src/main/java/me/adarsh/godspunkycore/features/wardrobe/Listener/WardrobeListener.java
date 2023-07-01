@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.wardrobe.Listener;
 
 import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.features.item.ItemListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -38,6 +39,7 @@ public class WardrobeListener implements Listener{
 				if (e.getClick() == ClickType.SHIFT_LEFT || e.getClick() == ClickType.SHIFT_RIGHT) {
 					if (e.getCurrentItem() == null) return;
 					Player p = (Player) e.getWhoClicked();
+					ItemListener.updateStatistics(p);
 					if (GUIWork.ShiftClick(e.getSlot(), e.getInventory(), p, e.getCurrentItem(), e.getView().getTitle())) {
 						e.getClickedInventory().setItem(e.getSlot(), null);
 						p.updateInventory();
@@ -150,6 +152,7 @@ public class WardrobeListener implements Listener{
 		if (CheckPlayerGUI.onOpen == false) {
 			if (e.getView().getTitle().equals(WardrobeGUI.Page1Name)) {
 				Skyblock.Page_1.getConfig().set(e.getPlayer().getUniqueId().toString() + ".name", e.getPlayer().getName());
+				ItemListener.updateStatistics((Player) e.getPlayer());
 				for (int i = 0; i <= 8; i++) {
 					if (e.getInventory().getItem(i).getType().toString().contains("STAINED_GLASS_PANE")) {
 						Skyblock.Page_1.getConfig().set(e.getPlayer().getUniqueId().toString() + ".Slot-" + (i+1) + ".Helmet", "none");
