@@ -161,7 +161,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // add
+                GUIType.QUEST_LOG.getGUI().open(player);
             }
 
             @Override
@@ -172,13 +172,8 @@ public class SkyBlockMenuGUI extends GUI {
             @Override
             public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.GREEN + "Quest Log", Material.BOOK_AND_QUILL, (short) 0, 1,
-                        ChatColor.GRAY + "View your available trades.",
-                        ChatColor.GRAY + "These trades are always",
-                        ChatColor.GRAY + "Availiable and accessible through",
-                        ChatColor.GRAY + "the SkyBlock Menu.",
-                        "",
-                        ChatColor.GRAY + "Trades Unlocked: " + ChatColor.YELLOW + "83.3" + ChatColor.GOLD + "%",
-                        ChatColor.DARK_GREEN + "" + ChatColor.BOLD + ChatColor.STRIKETHROUGH + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯" + ChatColor.WHITE + ChatColor.BOLD + ChatColor.STRIKETHROUGH + "⎯⎯⎯⎯" + ChatColor.YELLOW + " 20" + ChatColor.GOLD + "/" + ChatColor.YELLOW + "24",
+                        ChatColor.GRAY + "View your active quests,",
+                        ChatColor.GRAY + "progress and rewards",
                         "",
                         ChatColor.YELLOW + "Click to view!");
             }
@@ -447,7 +442,7 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // PROFILE MANAGEMENT TODO:
+        // PROFILE MANAGEMENT
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
@@ -479,7 +474,7 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // BOOSTER COOKIE TODO:
+        // BOOSTER COOKIE
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
