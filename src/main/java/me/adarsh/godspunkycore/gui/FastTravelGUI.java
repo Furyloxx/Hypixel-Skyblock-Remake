@@ -6,6 +6,7 @@ import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
+import net.milkbowl.vault.chat.Chat;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -158,6 +159,7 @@ public class FastTravelGUI extends GUI{
                 @Override
                 public void run(InventoryClickEvent e) {
                     Player player1 = (Player) e.getWhoClicked();
+                    player1.playSound(player1.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, 0f);
                     player1.sendMessage(plugin.getPrefix() + "You need Potato Collection level 6 to use this");
                 }
 
@@ -221,6 +223,7 @@ public class FastTravelGUI extends GUI{
                 @Override
                 public void run(InventoryClickEvent e) {
                     Player player1 = (Player) e.getWhoClicked();
+                    player1.playSound(player1.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, 0f);
                     player1.sendMessage(plugin.getPrefix()+ "You need Birch Wood collection level 7 to use this");
                 }
 
@@ -284,6 +287,7 @@ public class FastTravelGUI extends GUI{
                 @Override
                 public void run(InventoryClickEvent e) {
                     Player player1 = (Player) e.getWhoClicked();
+                    player1.playSound(player1.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, 0f);
                     player1.sendMessage(plugin.getPrefix() + "You need Coal Collection level 6 to use this.");
                 }
 
@@ -347,6 +351,7 @@ public class FastTravelGUI extends GUI{
                 @Override
                 public void run(InventoryClickEvent e) {
                     Player player1 = (Player) e.getWhoClicked();
+                    player1.playSound(player1.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, 0f);
                     player1.sendMessage(plugin.getPrefix() + "You need Redstone Collection level 7 to use this.");
                 }
 
@@ -566,5 +571,208 @@ public class FastTravelGUI extends GUI{
 
             });
         }
+
+
+        // Nether
+
+        if (user.hasCollection(ItemCollection.GLOWSTONE_DUST, 4)){
+            set(new GUIClickableItem() {
+                @Override
+                public void run(InventoryClickEvent e) {
+                    Player player1 = (Player) e.getWhoClicked();
+                    World nether = Bukkit.getWorld(plugin.getConfig().getString("hub_world"));
+                    player1.teleport(new Location(nether, -3 , 70 , -68));
+                }
+
+                @Override
+                public int getSlot() {
+                    return 24;
+                }
+                @Override
+                public ItemStack getItem(){
+                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Crimson Isle" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "721d0930bd61fea4cb9027b00e94e13d62029c524ea0b3260c747457ba1bcfa1", 1,
+                            ChatColor.DARK_GRAY + "/warp nether",
+                            " ",
+                            ChatColor.GRAY + "Fight challenging bosses, discover",
+                            ChatColor.GRAY + "new Sea Creatures, complete epic",
+                            ChatColor.GRAY + "quests, and join your favourite",
+                            ChatColor.GRAY + "faction!",
+                            " ",
+                            ChatColor.GRAY + "Main Skill: " + ChatColor.AQUA + "Combat",
+                            ChatColor.GRAY + "Island Tier" + ChatColor.YELLOW + "IV",
+                            " ",
+                            ChatColor.YELLOW + "Click to warp!");
+                }
+
+            });
+        }else{
+            set(new GUIClickableItem() {
+                @Override
+                public void run(InventoryClickEvent e) {
+                    Player player1 = (Player) e.getWhoClicked();
+                    player1.playSound(player1.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, 0f);
+                    player1.sendMessage(plugin.getPrefix() + "You need Glowstone Dust Collection level 4 to use this.");
+                }
+
+            @Override
+            public int getSlot() {
+                return 24;
+            }
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getSkullURLStack(ChatColor.GREEN + "Crimson Isle" + ChatColor.GRAY + " - " + ChatColor.AQUA + "Spawn", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                        ChatColor.DARK_GRAY + "/warp nether",
+                        " ",
+                        ChatColor.GRAY + "Fight challenging bosses, discover",
+                        ChatColor.GRAY + "new Sea Creatures, complete epic",
+                        ChatColor.GRAY + "quests, and join your favourite",
+                        ChatColor.GRAY + "faction!",
+                        " ",
+                        ChatColor.GRAY + "Main Skill: " + ChatColor.AQUA + "Combat",
+                        ChatColor.GRAY + "Island Tier" + ChatColor.YELLOW + "IV",
+                        " ",
+                        ChatColor.YELLOW + "Click to warp!");
+            }
+
+        });
+        }
+
+        // Garden
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                Player player1 = (Player) e.getWhoClicked();
+                player1.playSound(player1.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, 0f);
+                player1.sendMessage(plugin.getPrefix() + "Comming Soon!");
+            }
+
+            @Override
+            public int getSlot() {
+                return 30;
+            }
+
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getSkullURLStack(ChatColor.GREEN + "Garden", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                        ChatColor.DARK_GRAY + "/warp garden",
+                        " ",
+                        ChatColor.GRAY + "Spawn on your very own "+ ChatColor.GREEN + "Garden.",
+                        " ",
+                        ChatColor.RED + "Comming Soon!");
+            }
+
+        });
+
+        // Jerry WorkShop
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                Player player1 = (Player) e.getWhoClicked();
+                player1.playSound(player1.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, 0f);
+                player1.sendMessage(plugin.getPrefix() + "Comming Soon!");
+            }
+
+            @Override
+            public int getSlot() {
+                return 32;
+            }
+
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getSkullURLStack(ChatColor.AQUA + "Warp to: "+ ChatColor.RED+"Jerry's Workshop", "1035c528036b384c53c9c8a1a125685e16bfb369c197cc9f03dfa3b835b1aa55", 1,
+                        ChatColor.DARK_GRAY + "Teleports you to "+ChatColor.RED + "Jerry's",
+                        ChatColor.RED+"Workshop. "+ ChatColor.GRAY + "Available for a",
+                        ChatColor.GRAY + "limited time!",
+                        " ",
+                        ChatColor.RED + "Comming Soon!");
+            }
+
+        });
+
+        //Island Browser
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                Player player1 = (Player) e.getWhoClicked();
+                player1.playSound(player1.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, 0f);
+                player1.sendMessage(plugin.getPrefix() + "Comming Soon!");
+            }
+
+            @Override
+            public int getSlot() {
+                return 45;
+            }
+
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getStack(ChatColor.GREEN + "Island Browser", Material.BLAZE_POWDER, (short) 0, 1,
+                        ChatColor.DARK_GRAY + "Check out the most popular",
+                        ChatColor.GRAY + "islands in Skyblock! Filter by",
+                        ChatColor.GRAY + "category tags to explore various",
+                        ChatColor.GRAY+ "types of islands.",
+                        " ",
+                        ChatColor.RED + "Comming Soon!");
+            }
+
+        });
+
+        // Advanced mode
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                Player player1 = (Player) e.getWhoClicked();
+                player1.playSound(player1.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, 0f);
+                player1.sendMessage(plugin.getPrefix() + "Comming Soon!");
+            }
+
+            @Override
+            public int getSlot() {
+                return 50;
+            }
+
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getStack(ChatColor.GREEN + "Advanced Mode", Material.INK_SACK, (short) 2, 1,
+                        ChatColor.DARK_GRAY + "Show additional convenient fast",
+                        ChatColor.GRAY +"travel options such as quick",
+                        ChatColor.GRAY + "Right-Click warping and extra",
+                        ChatColor.GRAY + "warps obtained from " + ChatColor.DARK_PURPLE + "EPIC",
+                        ChatColor.GRAY + "scrolls",
+                        " ",
+                        ChatColor.GRAY + "Enabled: " + ChatColor.GREEN + "ON",
+                        ChatColor.RED + "Comming Soon!");
+            }
+
+        });
+
+        // Paper Icon
+
+        set(new GUIClickableItem() {
+            @Override
+            public void run(InventoryClickEvent e) {
+                Player player1 = (Player) e.getWhoClicked();
+                // TODO : ADD GUI
+            }
+
+            @Override
+            public int getSlot() {
+                return 53;
+            }
+
+            @Override
+            public ItemStack getItem(){
+                return SUtil.getStack(ChatColor.GREEN + "Paper Icon", Material.EMPTY_MAP, (short) 0, 1,
+                        ChatColor.DARK_GRAY + "Use paper icons, which may load this",
+                        ChatColor.GRAY + "menu faster on your computer.",
+                        " ",
+                        ChatColor.GRAY + "Enabled: " + ChatColor.RED + "OFF",
+                        ChatColor.YELLOW + "Click to toggle!");
+            }
+
+        });
     }
 }

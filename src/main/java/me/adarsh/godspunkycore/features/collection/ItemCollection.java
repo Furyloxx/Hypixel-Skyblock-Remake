@@ -31,7 +31,7 @@ public class ItemCollection {
             new ItemCollectionRewards(15000, new ItemCollectionUpgradeReward("Medium Agronomy Sack", ChatColor.BLUE)),
             new ItemCollectionRewards(25000, new ItemCollectionUpgradeReward("Farm Armor Helmet", ChatColor.BLUE), new ItemCollectionUpgradeReward("Farm Armor Chestplate", ChatColor.BLUE),new ItemCollectionUpgradeReward("Farm Armor Leggings", ChatColor.BLUE), new ItemCollectionUpgradeReward("Farm Armor Boots", ChatColor.BLUE)),
             new ItemCollectionRewards(50000, new ItemCollectionUpgradeReward("Large Agronomy", ChatColor.DARK_PURPLE)),
-            new ItemCollectionRewards(100000, new ItemCollectionUpgradeReward("Tightly-Tied Hay Bale", ChatColor.BLUE), new ItemCollectionUpgradeReward("Enchanted Large Agronomy Sack Recipe", ChatColor.DARK_PURPLE)));
+            new ItemCollectionRewards(100000, new ItemCollectionUpgradeReward("Tightly-Tied Hay Bale", ChatColor.BLUE), new ItemCollectionUpgradeReward("Enchanted Large Agronomy Sack", ChatColor.DARK_PURPLE)));
 
     public static final ItemCollection CACTUS = new ItemCollection("Cactus",
             ItemCollectionCategory.FARMING,
@@ -49,7 +49,7 @@ public class ItemCollection {
 
     public static final ItemCollection CARROT = new ItemCollection("Carrot",
             ItemCollectionCategory.FARMING,
-            SMaterial.CARROT,
+            SMaterial.CARROT_ITEM,
             (short) 0,
             new ItemCollectionRewards(100),
             new ItemCollectionRewards(250),

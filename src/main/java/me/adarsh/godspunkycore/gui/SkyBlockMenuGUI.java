@@ -173,13 +173,8 @@ public class SkyBlockMenuGUI extends GUI {
             @Override
             public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.GREEN + "Quest Log", Material.BOOK_AND_QUILL, (short) 0, 1,
-                        ChatColor.GRAY + "View your available trades.",
-                        ChatColor.GRAY + "These trades are always",
-                        ChatColor.GRAY + "Availiable and accessible through",
-                        ChatColor.GRAY + "the SkyBlock Menu.",
-                        "",
-                        ChatColor.GRAY + "Trades Unlocked: " + ChatColor.YELLOW + "83.3" + ChatColor.GOLD + "%",
-                        ChatColor.DARK_GREEN + "" + ChatColor.BOLD + ChatColor.STRIKETHROUGH + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯" + ChatColor.WHITE + ChatColor.BOLD + ChatColor.STRIKETHROUGH + "⎯⎯⎯⎯" + ChatColor.YELLOW + " 20" + ChatColor.GOLD + "/" + ChatColor.YELLOW + "24",
+                        ChatColor.GRAY + "View your active quests,",
+                        ChatColor.GRAY + "progress, and rewards.",
                         "",
                         ChatColor.YELLOW + "Click to view!");
             }
@@ -342,6 +337,31 @@ public class SkyBlockMenuGUI extends GUI {
                 @Override
                 public ItemStack getItem() {
                     return SUtil.getSkullURLStack(ChatColor.GREEN + "Quiver", "1f8405116c1daa7ce2f012591458d50246d0a467bcb95a5a2c033aefd6008b63", 1,
+                            ChatColor.GRAY + "A masterfully crafted Quiver",
+                            ChatColor.GRAY + "which holds any kind of",
+                            ChatColor.GRAY + "projectile you can think of!",
+                            " ",
+                            ChatColor.YELLOW + "Click to open!");
+                }
+            });
+        }
+        
+        // Accessory Bag {REQUIRES REDSTONE 2}
+
+        if (user.hasCollection(ItemCollection.REDSTONE, 2)) {
+            set(new GUIClickableItem() {
+                @Override
+                public void run(InventoryClickEvent e) {
+                }
+
+                @Override
+                public int getSlot() {
+                    return 51;
+                }
+
+                @Override
+                public ItemStack getItem() {
+                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Accessory Bag", "1f8405116c1daa7ce2f012591458d50246d0a467bcb95a5a2c033aefd6008b63", 1,
                             ChatColor.GRAY + "A masterfully crafted Quiver",
                             ChatColor.GRAY + "which holds any kind of",
                             ChatColor.GRAY + "projectile you can think of!",
