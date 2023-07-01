@@ -33,6 +33,7 @@ public enum GUIType {
     YOUR_BIDS(YourBidsGUI.class),
     SETTING(SettingGUI.class),
     COOKIE_INFO(CookieInfoGUI.class),
+    POTION_BAG(PotionBagGui.class),
     ;
 
     private final Class<? extends GUI> gui;
