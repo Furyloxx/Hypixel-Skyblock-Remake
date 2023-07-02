@@ -1,6 +1,9 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import me.adarsh.godspunkycore.features.item.weapon.Abilites.jerry.JerryChineGunProjectile;
+import me.adarsh.godspunkycore.user.User;
+import org.bukkit.entity.*;
 
 public class JerryChineGun implements ToolStatistics, MaterialFunction, Ability {
 
@@ -57,5 +60,12 @@ public class JerryChineGun implements ToolStatistics, MaterialFunction, Ability 
     @Override
     public String getLore() {
         return null;
+    }
+
+    @Override
+    public void onAbilityUse(Player player, SItem sItem) {
+
+        JerryChineGunProjectile projectile = new JerryChineGunProjectile(player);
+
     }
 }

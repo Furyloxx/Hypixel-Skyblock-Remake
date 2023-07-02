@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
-import me.adarsh.godspunkycore.features.item.weapon.Abilites.BonzoStaffProjectile;
+import me.adarsh.godspunkycore.features.item.weapon.Abilites.bonzo.BonzoStaffProjectile;
 import org.bukkit.entity.*;
 
 public class BonzoStaff implements ToolStatistics, MaterialFunction, Ability  {
