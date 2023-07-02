@@ -141,7 +141,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // add
+                GUIType.TRADE.getGUI().open(player);
             }
 
             @Override
@@ -162,7 +162,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // add
+                GUIType.QUEST.getGUI().open(player);
             }
 
             @Override
@@ -173,13 +173,8 @@ public class SkyBlockMenuGUI extends GUI {
             @Override
             public ItemStack getItem() {
                 return SUtil.getStack(ChatColor.GREEN + "Quest Log", Material.BOOK_AND_QUILL, (short) 0, 1,
-                        ChatColor.GRAY + "View your available trades.",
-                        ChatColor.GRAY + "These trades are always",
-                        ChatColor.GRAY + "Availiable and accessible through",
-                        ChatColor.GRAY + "the SkyBlock Menu.",
-                        "",
-                        ChatColor.GRAY + "Trades Unlocked: " + ChatColor.YELLOW + "83.3" + ChatColor.GOLD + "%",
-                        ChatColor.DARK_GREEN + "" + ChatColor.BOLD + ChatColor.STRIKETHROUGH + "⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯" + ChatColor.WHITE + ChatColor.BOLD + ChatColor.STRIKETHROUGH + "⎯⎯⎯⎯" + ChatColor.YELLOW + " 20" + ChatColor.GOLD + "/" + ChatColor.YELLOW + "24",
+                        ChatColor.GRAY + "View your active quests,",
+                        ChatColor.GRAY + "progress, and rewards.",
                         "",
                         ChatColor.YELLOW + "Click to view!");
             }
@@ -190,7 +185,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // add
+                GUIType.CALENDAR.getGUI().open(player);
             }
 
             @Override
@@ -218,7 +213,7 @@ public class SkyBlockMenuGUI extends GUI {
             @Override
             public void run(InventoryClickEvent e) {
                 player.playSound(player.getLocation(), Sound.CHEST_OPEN, 1f, 0f);
-                player.openInventory(player.getEnderChest());
+                GUIType.STORAGE.getGUI().open(player);
             }
 
             @Override
@@ -341,10 +336,62 @@ public class SkyBlockMenuGUI extends GUI {
 
                 @Override
                 public ItemStack getItem() {
-                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Quiver", "1f8405116c1daa7ce2f012591458d50246d0a467bcb95a5a2c033aefd6008b63", 1,
+                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Quiver", "4cb3acdc11ca747bf710e59f4c8e9b3d949fdd364c6869831ca878f0763d1787", 1,
                             ChatColor.GRAY + "A masterfully crafted Quiver",
                             ChatColor.GRAY + "which holds any kind of",
                             ChatColor.GRAY + "projectile you can think of!",
+                            " ",
+                            ChatColor.YELLOW + "Click to open!");
+                }
+            });
+        }
+        
+        // Accessory Bag {REQUIRES REDSTONE II}
+
+        if (user.hasCollection(ItemCollection.REDSTONE, 2)) {
+            set(new GUIClickableItem() {
+                @Override
+                public void run(InventoryClickEvent e) {
+                    GUIType.ACCESSORY_BAG.getGUI().open(player);
+                }
+
+                @Override
+                public int getSlot() {
+                    return 52;
+                }
+
+                @Override
+                public ItemStack getItem() {
+                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Accessory Bag", "961a918c0c49ba8d053e522cb91abc74689367b4d8aa06bfc1ba9154730985ff", 1,
+                            ChatColor.GRAY + "A special bag that can hold",
+                            ChatColor.GRAY + "Talisman, Rings, Artifacts and",
+                            ChatColor.GRAY + "Orbs within it. All will still",
+                            ChatColor.GRAY + "work while in the bag!",
+                            " ",
+                            ChatColor.YELLOW + "Click to open!");
+                }
+            });
+        }
+
+        // Potion Bag {REQUIRES NETHER WART II}
+
+        if (user.hasCollection(ItemCollection.NETHER_WARTS, 2)) {
+            set(new GUIClickableItem() {
+                @Override
+                public void run(InventoryClickEvent e) {
+                    GUIType.POTION_BAG.getGUI().open(player);
+                }
+
+                @Override
+                public int getSlot() {
+                    return 53;
+                }
+
+                @Override
+                public ItemStack getItem() {
+                    return SUtil.getSkullURLStack(ChatColor.GREEN + "Potion Bag", "60226d4c1d30fbebecae939da900603e4cd0fed8592a1bb3e11f9ac92391a45a", 1,
+                            ChatColor.GRAY + "A handy bag for holding your",
+                            ChatColor.GRAY + "potions in.",
                             " ",
                             ChatColor.YELLOW + "Click to open!");
                 }

@@ -3,6 +3,7 @@ package me.adarsh.godspunkycore.features.entity;
 import lombok.Getter;
 import me.adarsh.godspunkycore.features.entity.caverns.*;
 import me.adarsh.godspunkycore.features.entity.den.*;
+import me.adarsh.godspunkycore.features.entity.dungeon.*;
 import me.adarsh.godspunkycore.features.entity.end.*;
 import me.adarsh.godspunkycore.features.entity.insentient.WheatCrystal;
 import me.adarsh.godspunkycore.features.entity.nether.LargeMagmaCube;
@@ -92,6 +93,16 @@ public enum SEntityType {
     SMALL_MAGMA_CUBE(EntityType.MAGMA_CUBE, SmallMagmaCube.class),
     MEDIUM_MAGMA_CUBE(EntityType.MAGMA_CUBE, MediumMagmaCube.class),
     LARGE_MAGMA_CUBE(EntityType.MAGMA_CUBE, LargeMagmaCube.class),
+    BONZO(EntityType.ZOMBIE, Bonzo.class),
+    SCARF(EntityType.ZOMBIE ,Scarf.class),
+    THE_PROFESSOR(EntityType.ZOMBIE , TheProfessor.class),
+    THORN(EntityType.GHAST , Thorn.class),
+    LIVID(EntityType.ZOMBIE , Livid.class),
+    SADAN(EntityType.ZOMBIE , Sadan.class),
+    MAXOR(EntityType.WITHER , Maxor.class),
+    STROM(EntityType.WITHER , Strom.class),
+    GOLDAR(EntityType.WITHER , Golder.class),
+    NECRON(EntityType.WITHER , Necron.class),
     ;
 
     @Getter

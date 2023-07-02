@@ -75,6 +75,10 @@ public class User {
     @Getter
     private final Map<SMaterial, Integer> quiver;
     @Getter
+    private final Map<SMaterial, Integer> accessory;
+    @Getter
+    private final Map<SMaterial, Integer> potionbag;
+    @Getter
     private final List<ActivePotionEffect> effects;
     @Getter
     private double farmingXP;
@@ -114,6 +118,8 @@ public class User {
         this.islandZ = null;
         this.lastRegion = null;
         this.quiver = new HashMap<>();
+        this.accessory = new HashMap<>();
+        this.potionbag = new HashMap<>();
         this.effects = new ArrayList<>();
         this.farmingXP = 0.0;
         this.miningXP = 0.0;
@@ -155,10 +161,20 @@ public class User {
         this.islandX = config.contains("island.x") ? config.getDouble("island.x") : null;
         this.islandZ = config.contains("island.z") ? config.getDouble("island.z") : null;
         this.lastRegion = config.getString("lastRegion") != null ? Region.get(config.getString("lastRegion")) : null;
+
         if (config.contains("quiver")) {
             for (String m : config.getConfigurationSection("quiver").getKeys(false))
                 this.quiver.put(SMaterial.getMaterial(m), config.getInt("quiver." + m));
         }
+        if (config.contains("accessory")) {
+            for (String m : config.getConfigurationSection("accessory").getKeys(false))
+                this.accessory.put(SMaterial.getMaterial(m), config.getInt("accessory." + m));
+        }
+        if (config.contains("potionbag")) {
+            for (String m : config.getConfigurationSection("potionbag").getKeys(false))
+                this.potionbag.put(SMaterial.getMaterial(m), config.getInt("potionbag." + m));
+        }
+
         if (config.contains("effects")) {
             for (String key : config.getConfigurationSection("effects").getKeys(false)) {
                 this.effects.add(new ActivePotionEffect(new PotionEffect(PotionEffectType.getByNamespace(key),
@@ -204,6 +220,12 @@ public class User {
         config.set("quiver", null);
         for (Map.Entry<SMaterial, Integer> entry : quiver.entrySet())
             config.set("quiver." + entry.getKey().name().toLowerCase(), entry.getValue());
+        config.set("accessory", null);
+        for (Map.Entry<SMaterial, Integer> entry : accessory.entrySet())
+            config.set("accessory." + entry.getKey().name().toLowerCase(), entry.getValue());
+        config.set("potionbag", null);
+        for (Map.Entry<SMaterial, Integer> entry : potionbag.entrySet())
+            config.set("potionbag." + entry.getKey().name().toLowerCase(), entry.getValue());
         config.set("effects", null);
         for (ActivePotionEffect effect : effects) {
             PotionEffectType type = effect.getEffect().getType();
@@ -329,8 +351,24 @@ public class User {
         setQuiver(material, i + amount);
     }
 
+    public void addToAccessory(SMaterial material, int amount) {
+        int i = accessory.getOrDefault(material, 0);
+        setAccessory(material, i + amount);
+    }
+
+    public void addToPotionbag(SMaterial material, int amount) {
+        int i = potionbag.getOrDefault(material, 0);
+        setPotionbag(material, i + amount);
+    }
+
     public void addToQuiver(SMaterial material) {
         addToQuiver(material, 1);
+    }
+    public void addToAccessory(SMaterial material) {
+        addToAccessory(material, 1);
+    }
+    public void addToPotionbag(SMaterial material) {
+        addToPotionbag(material, 1);
     }
 
     public void setQuiver(SMaterial material, int amount) {
@@ -340,26 +378,77 @@ public class User {
         }
         quiver.put(material, amount);
     }
+    public void setAccessory(SMaterial material, int amount) {
+        if (amount == 0) {
+            accessory.remove(material);
+            return;
+        }
+        accessory.put(material, amount);
+    }
+    public void setPotionbag(SMaterial material, int amount) {
+        if (amount == 0) {
+            potionbag.remove(material);
+            return;
+        }
+        potionbag.put(material, amount);
+    }
 
     public int getQuiver(SMaterial material) {
         return quiver.get(material);
+    }
+    public int getAccessory(SMaterial material) {
+        return accessory.get(material);
+    }
+
+    public int getPotionbag(SMaterial material) {
+        return potionbag.get(material);
     }
 
     public void subFromQuiver(SMaterial material, int amount) {
         if (!quiver.containsKey(material)) return;
         setQuiver(material, quiver.get(material) - amount);
     }
+    public void subFromAccessory(SMaterial material, int amount) {
+        if (!accessory.containsKey(material)) return;
+        setAccessory(material, accessory.get(material) - amount);
+    }
+
+    public void subFromPotionbag(SMaterial material, int amount) {
+        if (!potionbag.containsKey(material)) return;
+        setPotionbag(material, potionbag.get(material) - amount);
+    }
 
     public void subFromQuiver(SMaterial material) {
         subFromQuiver(material, 1);
+    }
+
+    public void subFromAccessory(SMaterial material) {
+        subFromAccessory(material, 1);
+    }
+
+    public void subFromPotionbag(SMaterial material) {
+        subFromPotionbag(material, 1);
     }
 
     public boolean hasQuiverItem(SMaterial material) {
         return quiver.containsKey(material);
     }
 
+    public boolean hasAccessoryItem(SMaterial material) {
+        return accessory.containsKey(material);
+    }
+    public boolean hasPotionbagItem(SMaterial material) {
+        return potionbag.containsKey(material);
+    }
+
     public void clearQuiver() {
         quiver.clear();
+    }
+    public void clearAccessory() {
+        accessory.clear();
+    }
+    public void clearPotionbag() {
+        potionbag.clear();
     }
 
     public void addPet(SItem item) {

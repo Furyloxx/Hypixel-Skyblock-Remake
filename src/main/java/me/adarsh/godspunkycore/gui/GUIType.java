@@ -29,9 +29,18 @@ public enum GUIType {
     AUCTION_CONFIRM(AuctionConfirmGUI.class),
     MANAGE_AUCTIONS(ManageAuctionsGUI.class),
     FAST_TRAVEL(FastTravelGUI.class),
+    FAST_TRAVEL_2(FastTravelGUI_2.class),
     YOUR_BIDS(YourBidsGUI.class),
     SETTING(SettingGUI.class),
     COOKIE_INFO(CookieInfoGUI.class),
+    POTION_BAG(PotionBagGui.class),
+    ACCESSORY_BAG(AccessoryBagGUI.class),
+    STORAGE(StorageGUI.class),
+    QUEST(QuestGUI.class),
+    CALENDAR(CalendarGUI.class),
+    TRADE(TradeGUI.class),
+    CATACOMB(CatacombsGUI.class),
+    CATACOMB_RULE(CatacombsGUI.class),
     ;
 
     private final Class<? extends GUI> gui;
