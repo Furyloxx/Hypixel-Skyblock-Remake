@@ -2,17 +2,16 @@ package me.adarsh.godspunkycore.features.entity.dungeon;
 
 import me.adarsh.godspunkycore.features.entity.EntityFunction;
 import me.adarsh.godspunkycore.features.entity.EntityStatistics;
-import me.adarsh.godspunkycore.features.entity.ZombieStatistics;
 
-public class Maxor implements  EntityStatistics, EntityFunction {
+public class Golder implements EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
-        return "✪ Maxor ✪";
+        return "✪ Goldor ✪";
     }
 
     @Override
     public double getEntityMaxHealth() {
-        return 100000000.0;
+        return 750000000.0;
     }
 
     @Override
@@ -26,7 +25,3 @@ public class Maxor implements  EntityStatistics, EntityFunction {
         return 300.0;
     }
 }
-
-
-
-

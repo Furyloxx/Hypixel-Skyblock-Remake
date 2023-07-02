@@ -100,6 +100,9 @@ public enum SEntityType {
     LIVID(EntityType.ZOMBIE , Livid.class),
     SADAN(EntityType.ZOMBIE , Sadan.class),
     MAXOR(EntityType.WITHER , Maxor.class),
+    STROM(EntityType.WITHER , Strom.class),
+    GOLDAR(EntityType.WITHER , Golder.class),
+    NECRON(EntityType.WITHER , Necron.class),
     ;
 
     @Getter
