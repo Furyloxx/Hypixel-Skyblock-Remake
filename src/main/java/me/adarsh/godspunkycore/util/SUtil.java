@@ -221,6 +221,27 @@ public class SUtil {
         PacketPlayOutChat packet = new PacketPlayOutChat(IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + message + "\"}"), (byte) 2);
         ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
     }
+    public static ItemStack CustomHeadTexture(String url) {
+        ItemStack skull = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
+
+        if (url == null || url.isEmpty()) return skull;
+
+        SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
+
+        GameProfile profile = new GameProfile(UUID.randomUUID(), null);
+        profile.getProperties().put("textures", new Property("textures", url));
+
+        try {
+            Field profileField = skullMeta.getClass().getDeclaredField("profile");
+            profileField.setAccessible(true);
+            profileField.set(skullMeta, profile);
+        } catch (NoSuchFieldException | IllegalAccessException | IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+
+        skull.setItemMeta(skullMeta);
+        return skull;
+    }
 
     public static GenericItemType getItemType(Material material) {
         if (material == Material.BOW) return GenericItemType.RANGED_WEAPON;

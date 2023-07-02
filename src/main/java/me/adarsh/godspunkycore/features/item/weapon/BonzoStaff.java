@@ -1,6 +1,8 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import me.adarsh.godspunkycore.features.item.weapon.Abilites.BonzoStaffProjectile;
+import org.bukkit.entity.*;
 
 public class BonzoStaff implements ToolStatistics, MaterialFunction, Ability  {
 
@@ -23,6 +25,11 @@ public class BonzoStaff implements ToolStatistics, MaterialFunction, Ability  {
     public String getAbilityDescription() {
         return "Shoots balloons that create a large explosion on impact, dealing up to 1000 damage.";
     }
+    @Override
+    public void onAbilityUse(Player player, SItem sItem) {
+   BonzoStaffProjectile projectile = new BonzoStaffProjectile(player);
+    }
+
 
     @Override
     public int getBaseDamage() {
