@@ -1,51 +1,47 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
-import me.adarsh.godspunkycore.features.item.weapon.Abilites.bonzo.BonzoStaffProjectile;
-import org.bukkit.entity.*;
 
-public class BonzoStaff implements ToolStatistics, MaterialFunction, Ability  {
+public class EmberRod implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public int getAbilityCooldownTicks() {
-        return 0;
+        return 600;
     }
 
     @Override
     public int getManaCost() {
-        return 100;
+        return 150;
     }
 
     @Override
     public String getAbilityName() {
-        return "Showtime";
+        return "Fire Blast";
     }
 
     @Override
     public String getAbilityDescription() {
-        return "Shoots balloons that create a large explosion on impact, dealing up to 1000 damage.";
+        return "Shoot 3 Fireballs which deal 30 damage in rapid succession in front of you!";
     }
-    @Override
-    public void onAbilityUse(Player player, SItem sItem) {
-
-        BonzoStaffProjectile projectile = new BonzoStaffProjectile(player);
-
-    }
-
 
     @Override
     public int getBaseDamage() {
-        return 160;
+        return 80;
+    }
+
+    @Override
+    public double getBaseStrength() {
+        return 35;
     }
 
     @Override
     public String getDisplayName() {
-        return "Bonzo's Staff";
+        return "Ember Rod";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.RARE;
+        return Rarity.EPIC;
     }
 
     @Override
@@ -65,6 +61,6 @@ public class BonzoStaff implements ToolStatistics, MaterialFunction, Ability  {
 
     @Override
     public double getBaseIntelligence() {
-        return 250;
+        return 50;
     }
 }

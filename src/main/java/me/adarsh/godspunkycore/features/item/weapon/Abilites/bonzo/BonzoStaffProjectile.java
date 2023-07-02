@@ -1,21 +1,14 @@
-package me.adarsh.godspunkycore.features.item.weapon.Abilites;
+package me.adarsh.godspunkycore.features.item.weapon.Abilites.bonzo;
 
 
 import me.adarsh.godspunkycore.Skyblock;
-import me.adarsh.godspunkycore.util.SUtil;
 import me.adarsh.godspunkycore.util.SkullMaker;
 import org.bukkit.*;
-import org.bukkit.FireworkEffect.Type;
 import org.bukkit.entity.*;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
-
-import java.util.Collection;
-import java.util.Random;
 
 public class BonzoStaffProjectile {
 

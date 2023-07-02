@@ -1,0 +1,52 @@
+package me.adarsh.godspunkycore.features.item.weapon.Abilites.jerry;
+
+import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.features.item.weapon.Abilites.bonzo.BonzoStaffRun;
+import me.adarsh.godspunkycore.util.SkullMaker;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.Sound;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
+
+public class JerryChineGunProjectile {
+
+    public JerryChineGunProjectile(Player p) {
+        p.getWorld().playSound(p.getLocation(), Sound.VILLAGER_YES, 1.0f, 10.0f);
+        final Location loc = p.getLocation();
+        loc.setY(loc.getY() + 1.2);
+        Float yaw = (float)(Math.random() * 15.0);
+        yaw = (float)(yaw - 7.5);
+        //loc.setYaw(loc.getYaw() + yaw);
+        final Vector vecTo = loc.getDirection().normalize().multiply(0.8);
+        final Entity ent = p.getWorld().spawn(loc, (Class) ArmorStand.class);
+        final ArmorStand stand = (ArmorStand)ent;
+        stand.setVisible(false);
+        stand.teleport(stand.getLocation().clone().add(vecTo));
+        stand.setArms(true);
+        stand.setGravity(false);
+        stand.setMarker(true);
+        final int i = Bukkit.getScheduler().scheduleSyncRepeatingTask(Skyblock.getPlugin(), (Runnable)new JerryChineGunRun(stand, p, vecTo), 0L, 1L);
+
+        ItemStack item = null;
+
+        item = SkullMaker.CreateFromTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2UxZmFjM2Q5NjM0NmU2MjJlODkwZjc2ZWMwMTVhNzA5YjY3MzQyMjI1N2IxNDQyMDYxYTNhYTMyNTk4MjQxMSJ9fX0=");
+        final ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("Head");
+        item.setItemMeta(meta);
+        stand.setHelmet(item);
+
+
+        new BukkitRunnable() {
+            public void run() {
+                JerryChineGunRun.cancel(i, stand);
+            }
+        }.runTaskLater(Skyblock.getPlugin(), 30L);
+
+    }
+}
