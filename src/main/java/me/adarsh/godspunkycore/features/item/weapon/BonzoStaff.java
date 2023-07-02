@@ -27,7 +27,9 @@ public class BonzoStaff implements ToolStatistics, MaterialFunction, Ability  {
     }
     @Override
     public void onAbilityUse(Player player, SItem sItem) {
-   BonzoStaffProjectile projectile = new BonzoStaffProjectile(player);
+
+        BonzoStaffProjectile projectile = new BonzoStaffProjectile(player);
+
     }
 
 
