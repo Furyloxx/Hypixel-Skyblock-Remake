@@ -1,17 +1,22 @@
 package me.adarsh.godspunkycore.features.entity;
 
+import com.mojang.authlib.GameProfile;
 import lombok.Getter;
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.end.EndermanStatistics;
 import me.adarsh.godspunkycore.features.entity.nms.SNMSEntity;
 import me.adarsh.godspunkycore.features.entity.wolf.WolfStatistics;
 import me.adarsh.godspunkycore.util.SUtil;
-import net.minecraft.server.v1_8_R3.GenericAttributes;
+import net.minecraft.server.v1_8_R3.*;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
+import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
 import org.bukkit.entity.*;
+import org.bukkit.entity.Entity;
 import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.material.MaterialData;
 import org.bukkit.metadata.FixedMetadataValue;

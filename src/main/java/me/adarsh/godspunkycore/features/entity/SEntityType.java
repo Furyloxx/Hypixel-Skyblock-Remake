@@ -14,7 +14,9 @@ import me.adarsh.godspunkycore.features.entity.nms.*;
 import me.adarsh.godspunkycore.features.entity.skeleton.HighLevelSkeleton;
 import me.adarsh.godspunkycore.features.entity.wolf.*;
 import me.adarsh.godspunkycore.features.entity.zombie.*;
+import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
+import net.minecraft.server.v1_8_R3.EntityPlayer;
 import net.minecraft.server.v1_8_R3.EntityTypes;
 import org.bukkit.entity.EntityType;
 
