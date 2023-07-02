@@ -47,7 +47,7 @@ public class BonzoStaffRun implements Runnable
                         BonzoStaffRun.this.p.getWorld().playEffect(e2.getEyeLocation(), Effect.FIREWORKS_SPARK, 1);
                         BonzoStaffRun.this.p.getWorld().playEffect(e2.getEyeLocation(), Effect.FIREWORKS_SPARK, 1);
                         User user = User.getUser(p.getUniqueId());
-                        user.damageEntity((LivingEntity) e, 500.0);
+                        user.damageEntity((LivingEntity) e, 1000.0);
                     }
                 }
                 if (BonzoStaffRun.this.stand.getEyeLocation().getBlock().getType() != Material.AIR && BonzoStaffRun.this.fly == 0) {

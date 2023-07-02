@@ -4,7 +4,7 @@ import me.adarsh.godspunkycore.features.entity.EntityFunction;
 import me.adarsh.godspunkycore.features.entity.EntityStatistics;
 import me.adarsh.godspunkycore.features.entity.ZombieStatistics;
 
-public class Maxor implements  EntityStatistics, EntityFunction {
+public class Maxor implements EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
         return "✪ Maxor ✪";

@@ -32,56 +32,21 @@ public class JerryChineGunProjectile {
         stand.setGravity(false);
         stand.setMarker(true);
         final int i = Bukkit.getScheduler().scheduleSyncRepeatingTask(Skyblock.getPlugin(), (Runnable)new JerryChineGunRun(stand, p, vecTo), 0L, 1L);
-        new BukkitRunnable() {
-            int type;
 
-            public void run() {
-                this.type = (int)(Math.random() * 5.0);
-                ItemStack item = null;
-                if (this.type == 0) {
-                    item = SkullMaker.CreateFromTexture("ce1fac3d96346e622e890f76ec015a709b673422257b1442061a3aa325982411=");
-                    final ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName("Head");
-                    item.setItemMeta(meta);
-                }
-                if (this.type == 1) {
-                    item = SkullMaker.CreateFromTexture("ce1fac3d96346e622e890f76ec015a709b673422257b1442061a3aa325982411=");
-                    final ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName("Head");
-                    item.setItemMeta(meta);
-                }
-                if (this.type == 2) {
-                    item = SkullMaker.CreateFromTexture("ce1fac3d96346e622e890f76ec015a709b673422257b1442061a3aa325982411=");
-                    final ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName("Head");
-                    item.setItemMeta(meta);
-                }
-                if (this.type == 3) {
-                    item = SkullMaker.CreateFromTexture("ce1fac3d96346e622e890f76ec015a709b673422257b1442061a3aa325982411=");
-                    final ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName("Head");
-                    item.setItemMeta(meta);
-                }
-                if (this.type == 4) {
-                    item = SkullMaker.CreateFromTexture("ce1fac3d96346e622e890f76ec015a709b673422257b1442061a3aa325982411=");
-                    final ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName("Head");
-                    item.setItemMeta(meta);
-                }
-                if (this.type == 5) {
-                    item = SkullMaker.CreateFromTexture("ce1fac3d96346e622e890f76ec015a709b673422257b1442061a3aa325982411=");
-                    final ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName("Head");
-                    item.setItemMeta(meta);
-                }
-                stand.setHelmet(item);
-            }
-        }.runTaskLater(Skyblock.getPlugin(), 3L);
+        ItemStack item = null;
+
+        item = SkullMaker.CreateFromTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2UxZmFjM2Q5NjM0NmU2MjJlODkwZjc2ZWMwMTVhNzA5YjY3MzQyMjI1N2IxNDQyMDYxYTNhYTMyNTk4MjQxMSJ9fX0=");
+        final ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("Head");
+        item.setItemMeta(meta);
+        stand.setHelmet(item);
+
+
         new BukkitRunnable() {
             public void run() {
                 JerryChineGunRun.cancel(i, stand);
-
             }
         }.runTaskLater(Skyblock.getPlugin(), 30L);
+
     }
 }
