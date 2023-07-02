@@ -39,6 +39,8 @@ public enum GUIType {
     QUEST(QuestGUI.class),
     CALENDAR(CalendarGUI.class),
     TRADE(TradeGUI.class),
+    CATACOMB(CatacombsGUI.class),
+    CATACOMB_RULE(CatacombsGUI.class),
     ;
 
     private final Class<? extends GUI> gui;
