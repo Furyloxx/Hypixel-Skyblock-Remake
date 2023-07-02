@@ -180,6 +180,7 @@ import me.adarsh.godspunkycore.features.item.dragon.wise.*;
 import me.adarsh.godspunkycore.features.item.dragon.young.*;
 import me.adarsh.godspunkycore.features.item.enchanted.*;
 import me.adarsh.godspunkycore.features.item.enchanting.EnchantedBook;
+import me.adarsh.godspunkycore.features.item.entity.Bonzo.BonzoMask;
 import me.adarsh.godspunkycore.features.item.entity.RevenantHorrorHead;
 import me.adarsh.godspunkycore.features.item.exclusive.TestItem;
 import me.adarsh.godspunkycore.features.item.exclusive.WheatCrystal;
@@ -560,6 +561,7 @@ public enum SMaterial {
     WEAK_WOLF_CATALYST(Material.BONE, WeakWolfCatalyst.class),
     // Entity Items
     REVENANT_HORROR_HEAD(Material.SKULL_ITEM, RevenantHorrorHead.class),
+    BONZO_MASK(Material.SKULL_ITEM, BonzoMask.class),
     // Power Orbs
     RADIANT_POWER_ORB(Material.SKULL_ITEM, RadiantPowerOrb.class),
     MANA_FLUX_POWER_ORB(Material.SKULL_ITEM, ManaFluxPowerOrb.class),
@@ -570,6 +572,7 @@ public enum SMaterial {
     // Enchanting & Reforging
     ENCHANTED_BOOK(Material.ENCHANTED_BOOK, EnchantedBook.class, true),
     RECOMBOBULATOR_3000(Material.SKULL_ITEM, Recombobulator3000.class),
+
     // Storage
     SMALL_BACKPACK(Material.SKULL_ITEM, SmallBackpack.class),
     MEDIUM_BACKPACK(Material.SKULL_ITEM, MediumBackpack.class),
