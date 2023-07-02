@@ -1038,6 +1038,7 @@ public enum SMaterial {
     COOKED_SALMON(Material.COOKED_FISH, (short) 1, "Cooked Salmon"),
     COARSE_DIRT(Material.DIRT, (short) 1, "Coarse Dirt"),
     PODZOL(Material.DIRT, (short) 2, "Podzol"),
+    GOLDEN_HORSE_ARMOR(Material.GOLD_BARDING, (short) 0, "Golden Horse Armor"),
     LILAC(Material.DOUBLE_PLANT, (short) 1, "Lilac"),
     DOUBLE_TALLGRASS(Material.DOUBLE_PLANT, (short) 2, "Double Tallgrass"),
     LARGE_FERN(Material.DOUBLE_PLANT, (short) 3, "Large Fern"),
