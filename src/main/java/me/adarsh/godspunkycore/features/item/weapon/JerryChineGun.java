@@ -29,7 +29,7 @@ public class JerryChineGun implements ToolStatistics, MaterialFunction, Ability 
 
     @Override
     public int getAbilityCooldownTicks() {
-        return 80;
+        return 0;
     }
 
     @Override
