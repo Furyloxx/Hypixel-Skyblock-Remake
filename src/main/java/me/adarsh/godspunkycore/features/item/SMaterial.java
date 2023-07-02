@@ -234,6 +234,16 @@ public enum SMaterial {
     DREADLORD_SWORD(Material.IRON_SWORD, DreadlordSword.class),
     BONZO_STAFF(Material.BLAZE_ROD, BonzoStaff.class),
     SUPER_CLEAVER(Material.GOLD_SWORD, SuperCleaver.class),
+    EMBER_ROD(Material.BLAZE_ROD, EmberRod.class),
+    INK_WAND(Material.STICK, InkWand.class),
+    REAPER_FALCHION(Material.DIAMOND_SWORD, ReaperFalchion.class),
+    ZOMBIE_KNIGHT_SWORD(Material.IRON_SWORD, ZmobieKnightSword.class),
+    HYPER_CLEAVER(Material.GOLD_SWORD, HyperCleaver.class),
+    GIANT_CLEAVER(Material.GOLD_SWORD, GiantCleaver.class),
+    SPIRIT_SWORD(Material.IRON_SWORD, SpiritSword.class),
+    FEL_SWORD(Material.STONE_SWORD, FelSword.class),
+    ASPECT_OF_THE_VOID(Material.DIAMOND_SPADE, AspectOfTheVoid.class),
+    JERRY_CHINE_GUN(Material.GOLD_BARDING, JerryChineGun.class),
 
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),
