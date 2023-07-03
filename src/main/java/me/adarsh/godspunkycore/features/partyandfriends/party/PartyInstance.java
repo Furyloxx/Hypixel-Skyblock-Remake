@@ -111,16 +111,23 @@ public final class PartyInstance {
         partyMembers.remove(player);
 
         for (GodspunkyPlayer member : partyMembers) {
-            if (member == player) return;
+            if (member == player) continue;
+            String message;
+            if (player.rank == PlayerRank.DEFAULT) {
+                message = "&7" + player.getPlayer().getDisplayName() + " has left the party.";
+            } else {
+                message = player.rank.getPrefix() + " " + player.getPlayer().getDisplayName() + " has left the party.";
+            }
             member.sendMessages(
                     "&9&m-----------------------------",
-                    "&e" + player.rank.getPrefix() + " has left the party.",
+                    message,
                     "&9&m-----------------------------"
             );
         }
 
         player.setCurrentParty(null);
     }
+
 
     public void kickMember(GodspunkyPlayer kicker, GodspunkyPlayer toKick) {
         if (!inParty(toKick)) {

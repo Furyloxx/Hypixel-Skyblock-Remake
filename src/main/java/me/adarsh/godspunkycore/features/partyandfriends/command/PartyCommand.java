@@ -20,12 +20,12 @@ public final class PartyCommand extends SCommand {
 
     @Override
     public void run(CommandSource sender, String[] args) {
-        Player p = sender.getPlayer();
-        GodspunkyPlayer sbPlayer = GodspunkyPlayer.getUser(p);
+        Player player = sender.getPlayer();
+        GodspunkyPlayer sbPlayer = GodspunkyPlayer.getUser(player);
 
         switch (args.length) {
             default:
-                if (!args[0].matches("chat")) return;
+                if (!args[0].equals("chat")) return;
 
                 if (sbPlayer.getCurrentParty() == null) {
                     sbPlayer.sendMessages(
@@ -37,13 +37,15 @@ public final class PartyCommand extends SCommand {
                 }
 
                 StringBuilder message = new StringBuilder();
-                for (int i = 1; i != args.length; i++) {
+                for (int i = 1; i < args.length; i++) {
                     message.append(args[i]).append(" ");
                 }
 
                 PartyInstance partyInstance = sbPlayer.getCurrentParty();
                 for (GodspunkyPlayer member : partyInstance.getMembers()) {
-                    member.sendMessage("&9Party &8> &e" + sbPlayer.getPlayer().getDisplayName() + "&f: " + message);
+                    PlayerRank rank = member.rank;
+                    String formattedRank = rank.isDefaultPermission() ? "&7" : rank.getPrefix();
+                    member.sendMessage("&9Party &8> " + formattedRank + player.getName() + "&f: " + message);
                 }
                 return;
             case 0:
@@ -61,10 +63,10 @@ public final class PartyCommand extends SCommand {
                 switch (args[0]) {
                     default:
                         String playerName = args[0];
-                        Player player = Bukkit.getPlayer(playerName);
-                        if (player == null) return;
+                        Player invitedPlayer = Bukkit.getPlayer(playerName);
+                        if (invitedPlayer == null) return;
 
-                        GodspunkyPlayer invite = GodspunkyPlayer.getUser(player);
+                        GodspunkyPlayer invite = GodspunkyPlayer.getUser(invitedPlayer);
 
                         PartyManager partyManager = Skyblock.getPartyManager();
                         if (!partyManager.createParty(sbPlayer)) {
@@ -73,6 +75,7 @@ public final class PartyCommand extends SCommand {
                                     "&cYou're already in a party!",
                                     "&9&m-----------------------------"
                             );
+                            return;
                         }
 
                         PartyInstance createParty = partyManager.getPartyFromPlayer(sbPlayer.getPlayer().getUniqueId());
@@ -119,10 +122,10 @@ public final class PartyCommand extends SCommand {
                         return;
                     case "invite":
                         String playerName = args[1];
-                        Player player = Bukkit.getPlayer(playerName);
-                        if (player == null) return;
+                        Player invitedPlayer = Bukkit.getPlayer(playerName);
+                        if (invitedPlayer == null) return;
 
-                        GodspunkyPlayer invite = GodspunkyPlayer.getUser(player);
+                        GodspunkyPlayer invite = GodspunkyPlayer.getUser(invitedPlayer);
 
                         PartyManager partyManager = Skyblock.getPartyManager();
                         partyManager.createParty(sbPlayer);
@@ -140,8 +143,8 @@ public final class PartyCommand extends SCommand {
                             return;
                         }
 
-                        String strLeader = args[1];
-                        Player leader = Bukkit.getPlayer(strLeader);
+                        String leaderName = args[1];
+                        Player leader = Bukkit.getPlayer(leaderName);
                         if (leader == null) return;
 
                         PartyManager partyManager1 = Skyblock.getPartyManager();
@@ -152,8 +155,8 @@ public final class PartyCommand extends SCommand {
                         party.addMember(sbPlayer);
                         return;
                     case "kick":
-                        String strKick = args[1];
-                        Player kickPlayer = Bukkit.getPlayer(strKick);
+                        String playername = args[1];
+                        Player kickPlayer = Bukkit.getPlayer(playername);
                         if (kickPlayer == null) return;
 
                         if (sbPlayer.getPartyPermissions() == 0) {
@@ -179,15 +182,15 @@ public final class PartyCommand extends SCommand {
                         }
 
                         StringBuilder message2 = new StringBuilder();
-                        for (int i = 1; i != args.length; i++) {
+                        for (int i = 1; i < args.length; i++) {
                             message2.append(args[i]).append(" ");
                         }
 
                         PartyInstance partyInstance2 = sbPlayer.getCurrentParty();
                         for (GodspunkyPlayer member : partyInstance2.getMembers()) {
                             PlayerRank rank = member.rank;
-                            String rankPrefix = rank.getPrefix();
-                            member.sendMessage("&9Party &8> " + rankPrefix + "&f: " + message2);
+                            String formattedRank = rank.isDefaultPermission() ? "&7" : rank.getPrefix();
+                            member.sendMessage("&9Party &8> " + formattedRank + player.getName() + "&f: " + message2);
                         }
                         return;
                 }

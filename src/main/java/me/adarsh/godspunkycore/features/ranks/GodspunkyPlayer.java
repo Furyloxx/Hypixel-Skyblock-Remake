@@ -129,6 +129,8 @@ public class GodspunkyPlayer {
         return getCurrentParty().getPlayerPermissions(this);
     }
 
+    //hm
+
     public void sendMessage(Object message) {
         if (message instanceof String) {
             player.sendMessage(message.toString().replace('&', ChatColor.COLOR_CHAR));

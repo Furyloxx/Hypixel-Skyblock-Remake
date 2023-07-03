@@ -10,6 +10,8 @@ import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
+//hm
+
 @CommandParameters(
         description = "Manage chat settings",
         usage = "/chat {all|party|reply|skyblock-coop}",
