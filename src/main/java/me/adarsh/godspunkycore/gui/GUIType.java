@@ -41,6 +41,7 @@ public enum GUIType {
     TRADE(TradeGUI.class),
     CATACOMB(CatacombsGUI.class),
     CATACOMB_RULE(CatacombsGUI.class),
+    PROFILE_MANAGEMENT(ProfileManagementGUI.class),
     ;
 
     private final Class<? extends GUI> gui;
