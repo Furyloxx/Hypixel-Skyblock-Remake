@@ -2,46 +2,56 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class FelSword implements ToolStatistics, MaterialFunction, Ability {
+public class LividDagger implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getDisplayName() {
-        return "Fel Sword";
+        return "Livid Dagger";
     }
 
     @Override
     public int getBaseDamage() {
-        return 190;
+        return 210;
     }
 
     @Override
     public double getBaseStrength() {
-        return 135;
+        return 60;
+    }
+
+    @Override
+    public double getBaseCritChance() {
+        return 1.0;
+    }
+
+    @Override
+    public double getBaseCritDamage() {
+        return 0.5;
     }
 
     @Override
     public int getManaCost() {
-        return 0;
+        return 150;
     }
 
     @Override
     public int getAbilityCooldownTicks() {
-        return 0;
+        return 100;
     }
 
     @Override
     public String getAbilityName() {
-        return null;
+        return "Throw";
     }
 
     @Override
     public String getAbilityDescription() {
-        return null;
+        return "Throw your dagger at your enemies! Your Critical Hits deal 100% more damage if you are behind your target.";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.EPIC;
+        return Rarity.LEGENDARY;
     }
 
     @Override

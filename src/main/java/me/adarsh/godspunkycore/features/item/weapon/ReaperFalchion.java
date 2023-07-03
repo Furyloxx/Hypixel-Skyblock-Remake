@@ -41,7 +41,7 @@ public class ReaperFalchion implements ToolStatistics, MaterialFunction, Ability
 
     @Override
     public String getAbilityDescription() {
-        return "Heal 10❤ per hit. Deal +200% damage to Zombies. Receive 20% less damage from Zombies when held.";
+        return null;
     }
 
     @Override

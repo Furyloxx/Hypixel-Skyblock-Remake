@@ -2,21 +2,21 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class FelSword implements ToolStatistics, MaterialFunction, Ability {
+public class NecromancerSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getDisplayName() {
-        return "Fel Sword";
+        return "Necromancer Sword";
     }
 
     @Override
     public int getBaseDamage() {
-        return 190;
+        return 250;
     }
 
     @Override
     public double getBaseStrength() {
-        return 135;
+        return 125;
     }
 
     @Override
@@ -26,22 +26,22 @@ public class FelSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public int getAbilityCooldownTicks() {
-        return 0;
+        return 20;
     }
 
     @Override
     public String getAbilityName() {
-        return null;
+        return "Raise Souls";
     }
 
     @Override
     public String getAbilityDescription() {
-        return null;
+        return "Monsters you kill using this item will drop their soul. You can click on their souls on the ground using this item to absorb them and then spawn them to fight by your side.✎ Mana Cost is based on the power of the monsters you summon.";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.EPIC;
+        return Rarity.LEGENDARY;
     }
 
     @Override

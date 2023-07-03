@@ -2,21 +2,26 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class FelSword implements ToolStatistics, MaterialFunction, Ability {
+public class ShadowFury implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getDisplayName() {
-        return "Fel Sword";
+        return "Shadow Fury";
     }
 
     @Override
     public int getBaseDamage() {
-        return 190;
+        return 300;
     }
 
     @Override
     public double getBaseStrength() {
-        return 135;
+        return 130;
+    }
+
+    @Override
+    public double getBaseCritDamage() {
+        return 0.3;
     }
 
     @Override
@@ -26,22 +31,22 @@ public class FelSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public int getAbilityCooldownTicks() {
-        return 0;
+        return 300;
     }
 
     @Override
     public String getAbilityName() {
-        return null;
+        return "Shadow Fury";
     }
 
     @Override
     public String getAbilityDescription() {
-        return null;
+        return "Rapidly teleports you to up to 5 enemies within 12 blocks, rooting each of them and allowing you to hit them.";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.EPIC;
+        return Rarity.LEGENDARY;
     }
 
     @Override

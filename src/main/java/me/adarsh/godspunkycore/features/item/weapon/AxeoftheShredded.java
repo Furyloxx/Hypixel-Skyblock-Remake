@@ -2,26 +2,26 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class FelSword implements ToolStatistics, MaterialFunction, Ability {
+public class AxeoftheShredded implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getDisplayName() {
-        return "Fel Sword";
+        return "Axe of the Shredded";
     }
 
     @Override
     public int getBaseDamage() {
-        return 190;
+        return 140;
     }
 
     @Override
     public double getBaseStrength() {
-        return 135;
+        return 115;
     }
 
     @Override
     public int getManaCost() {
-        return 0;
+        return 20;
     }
 
     @Override
@@ -31,17 +31,17 @@ public class FelSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityName() {
-        return null;
+        return "Throw";
     }
 
     @Override
     public String getAbilityDescription() {
-        return null;
+        return "Throw your axe damaging all enemies in its path dealing 10% melee damage. Consecutive throws stack 2x damage but cost 2x mana up to 16x";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.EPIC;
+        return Rarity.LEGENDARY;
     }
 
     @Override

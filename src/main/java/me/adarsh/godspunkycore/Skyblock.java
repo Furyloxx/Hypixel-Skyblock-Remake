@@ -3,6 +3,10 @@ package me.adarsh.godspunkycore;
 import lombok.SneakyThrows;
 import me.adarsh.godspunkycore.features.bazaar.BazaarGui;
 import me.adarsh.godspunkycore.features.bazaar.CategoryManger;
+import me.adarsh.godspunkycore.features.partyandfriends.command.ChatCommand;
+import me.adarsh.godspunkycore.features.partyandfriends.command.PartyCommand;
+import me.adarsh.godspunkycore.features.partyandfriends.listener.ChatListener;
+import me.adarsh.godspunkycore.features.partyandfriends.party.PartyManager;
 import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
 import me.adarsh.godspunkycore.features.ranks.PlayerChatListener;
 import me.adarsh.godspunkycore.features.ranks.PlayerJoinQuitListener;
@@ -86,6 +90,13 @@ public final class Skyblock extends JavaPlugin {
 
     // todo Minions
 
+    private static PartyManager partyManager;
+
+    public enum ChatTypes {
+        ALL_CHAT,
+        PARTY_CHAT,
+        REPLY_CHAT
+    }
 
     @Override
     public void onLoad() {
@@ -98,6 +109,8 @@ public final class Skyblock extends JavaPlugin {
     public void onEnable() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Found Bukkit server v" + Bukkit.getVersion());
         long start = System.currentTimeMillis();
+
+        partyManager = new PartyManager();
 
         // Wardrobe data
         Page_1 = new Page1Data(this);
@@ -130,6 +143,7 @@ public final class Skyblock extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
         getServer().getPluginManager().registerEvents(new BazaarGui(), this);
+        getServer().getPluginManager().registerEvents(new ChatListener(), this);
 
 
         long end = System.currentTimeMillis();
@@ -171,6 +185,10 @@ public final class Skyblock extends JavaPlugin {
         plugin = null;
         SLog.info("Disabled " + this.getDescription().getFullName());
         GodspunkyPlayer.savePlayers();
+    }
+
+    public static PartyManager getPartyManager() {
+        return partyManager;
     }
 
     public void loadymldata(){
@@ -235,6 +253,8 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new ReloadCommand());
         cl.register(new HubCommand());
         cl.register(new ChangeStatsCommand());
+        cl.register(new ChatCommand());
+        cl.register(new PartyCommand());
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }

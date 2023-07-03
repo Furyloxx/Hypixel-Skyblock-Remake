@@ -1,32 +1,32 @@
-package me.adarsh.godspunkycore.features.item.weapon;
+package me.adarsh.godspunkycore.features.item.bow;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class FelSword implements ToolStatistics, MaterialFunction, Ability {
+public class JujuShortbow implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getDisplayName() {
-        return "Fel Sword";
+        return "Juju Shortbow";
     }
 
     @Override
     public int getBaseDamage() {
-        return 190;
+        return 310;
     }
 
     @Override
     public double getBaseStrength() {
-        return 135;
+        return 40;
     }
 
     @Override
-    public int getManaCost() {
-        return 0;
+    public double getBaseCritChance() {
+        return 0.1;
     }
 
     @Override
-    public int getAbilityCooldownTicks() {
-        return 0;
+    public double getBaseCritDamage() {
+        return 1.10;
     }
 
     @Override
@@ -40,22 +40,27 @@ public class FelSword implements ToolStatistics, MaterialFunction, Ability {
     }
 
     @Override
+    public int getAbilityCooldownTicks() {
+        return 0;
+    }
+
+    @Override
+    public int getManaCost() {
+        return 0;
+    }
+
+    @Override
     public Rarity getRarity() {
         return Rarity.EPIC;
     }
 
     @Override
     public GenericItemType getType() {
-        return GenericItemType.WEAPON;
+        return GenericItemType.RANGED_WEAPON;
     }
 
     @Override
     public SpecificItemType getSpecificType() {
-        return SpecificItemType.SWORD;
-    }
-
-    @Override
-    public String getLore() {
-        return null;
+        return SpecificItemType.BOW;
     }
 }

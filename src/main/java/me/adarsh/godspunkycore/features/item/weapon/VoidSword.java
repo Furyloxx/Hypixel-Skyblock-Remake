@@ -2,21 +2,16 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class FelSword implements ToolStatistics, MaterialFunction, Ability {
+public class VoidSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getDisplayName() {
-        return "Fel Sword";
+        return "Void Sword";
     }
 
     @Override
     public int getBaseDamage() {
-        return 190;
-    }
-
-    @Override
-    public double getBaseStrength() {
-        return 135;
+        return 125;
     }
 
     @Override
