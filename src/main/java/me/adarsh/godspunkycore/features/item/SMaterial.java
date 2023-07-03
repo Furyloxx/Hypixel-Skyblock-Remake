@@ -569,8 +569,22 @@ public enum SMaterial {
     END_STONE_BOW(Material.BOW, EndStoneBow.class),
     MOSQUITO_BOW(Material.BOW, MosquitoBow.class),
     HURRICANE_BOW(Material.BOW, HurricaneBow.class),
-
+    ARTISANAL_SHORTBOW(Material.BOW, ArtisanalShortbow.class),
     RUNAAN_BOW(Material.BOW, RunaanBow.class),
+    DECENT_BOW(Material.BOW , DecentBow.class),
+    ENDER_BOW(Material.BOW, EnderBow.class),
+    EXPLOSIVE_BOW(Material.BOW, ExplosiveBow.class),
+    JUJU_SHORTBOW(Material.BOW, JujuShortbow.class),
+    MACHINE_GUN_BOW(Material.BOW, MachineGunBow.class),
+    PRISMARINE_BOW(Material.BOW, PrismarineBow.class),
+    SAVANNA_BOW(Material.BOW, SavannaBow.class),
+    SCORPION_BOW(Material.BOW, ScorpionBow.class),
+    SNIPER_BOW(Material.BOW, SniperBow.class),
+    SOULS_REBOUND(Material.BOW, SoulsRebound.class),
+    TERMINATOR(Material.BOW, Terminator.class),
+    UNDEAD_BOW(Material.BOW, UndeadBow.class),
+    WITHER_BOW(Material.BOW, WitherBow.class),
+
     // Special
     EXTERMINATOR(Material.IRON_SWORD, Exterminator.class),
     TEST_ITEM(Material.SKULL_ITEM, TestItem.class),
