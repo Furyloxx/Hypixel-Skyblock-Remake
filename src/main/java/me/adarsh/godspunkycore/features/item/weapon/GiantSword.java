@@ -2,46 +2,41 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class FelSword implements ToolStatistics, MaterialFunction, Ability {
+public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getDisplayName() {
-        return "Fel Sword";
+        return "Giant's Sword";
     }
 
     @Override
     public int getBaseDamage() {
-        return 190;
-    }
-
-    @Override
-    public double getBaseStrength() {
-        return 135;
+        return 500;
     }
 
     @Override
     public int getManaCost() {
-        return 0;
+        return 100;
     }
 
     @Override
     public int getAbilityCooldownTicks() {
-        return 0;
+        return 600;
     }
 
     @Override
     public String getAbilityName() {
-        return null;
+        return "Giant's Slam";
     }
 
     @Override
     public String getAbilityDescription() {
-        return null;
+        return "Slam your sword into the ground dealing 100,000 damage to nearby enemies.";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.EPIC;
+        return Rarity.LEGENDARY;
     }
 
     @Override

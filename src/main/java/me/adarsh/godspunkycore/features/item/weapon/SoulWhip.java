@@ -2,21 +2,21 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class FelSword implements ToolStatistics, MaterialFunction, Ability {
+public class SoulWhip implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getDisplayName() {
-        return "Fel Sword";
+        return "Soul Whip";
     }
 
     @Override
     public int getBaseDamage() {
-        return 190;
+        return 145;
     }
 
     @Override
     public double getBaseStrength() {
-        return 135;
+        return 175;
     }
 
     @Override
@@ -31,17 +31,17 @@ public class FelSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityName() {
-        return null;
+        return "Flay";
     }
 
     @Override
     public String getAbilityDescription() {
-        return null;
+        return "Flay your whip in an arc, dealing your melee damage to all enemies in its path";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.EPIC;
+        return Rarity.LEGENDARY;
     }
 
     @Override

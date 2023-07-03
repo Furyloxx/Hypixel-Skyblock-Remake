@@ -10,7 +10,7 @@ public class UndeadSword implements ToolStatistics, MaterialFunction , Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Deals +100% damage to Zombie Pigmen, Skeletons, Withers, and Zombies";
+        return null;
     }
 
 

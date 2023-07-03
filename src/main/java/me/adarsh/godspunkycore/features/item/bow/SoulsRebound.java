@@ -1,8 +1,19 @@
-package me.adarsh.godspunkycore.features.item.weapon;
+package me.adarsh.godspunkycore.features.item.bow;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class EndSword implements ToolStatistics, MaterialFunction, Ability {
+public class SoulsRebound implements ToolStatistics, MaterialFunction, Ability {
+
+    @Override
+    public String getDisplayName() {
+        return "Soul Rebound";
+    }
+
+    @Override
+    public int getBaseDamage() {
+        return 450;
+    }
+
     @Override
     public String getAbilityName() {
         return null;
@@ -10,9 +21,8 @@ public class EndSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return null;
+            return null;
     }
-
 
     @Override
     public int getAbilityCooldownTicks() {
@@ -25,32 +35,17 @@ public class EndSword implements ToolStatistics, MaterialFunction, Ability {
     }
 
     @Override
-    public String getDisplayName() {
-        return "End Sword";
-    }
-
-    @Override
-    public int getBaseDamage() {
-        return 35;
-    }
-
-    @Override
     public Rarity getRarity() {
-        return Rarity.UNCOMMON;
+        return Rarity.EPIC;
     }
 
     @Override
     public GenericItemType getType() {
-        return GenericItemType.WEAPON;
+        return GenericItemType.RANGED_WEAPON;
     }
 
     @Override
     public SpecificItemType getSpecificType() {
-        return SpecificItemType.SWORD;
-    }
-
-    @Override
-    public String getLore() {
-        return null;
+        return SpecificItemType.BOW;
     }
 }
