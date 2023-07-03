@@ -252,6 +252,16 @@ public enum SMaterial {
     REAPER_SCYTHE(Material.DIAMOND_HOE, ReaperScythe.class),
     YETI_SWORD(Material.IRON_SWORD, YetiSword.class),
     LIVID_DAGGER(Material.IRON_SWORD, LividDagger.class),
+    SHADOW_FURY(Material.DIAMOND_SWORD, ShadowFury.class),
+    FLOWER_OF_TRUTH(Material.RED_ROSE),
+    NECROMANCER_SWORD(Material.IRON_SWORD, NecromancerSword.class),
+    GIANT_SWORD(Material.IRON_SWORD, GiantSword.class),
+    MIDAS_STAFF(Material.GOLD_SPADE, MidasStaff.class),
+    NECRONS_BLADE(Material.IRON_SWORD, NecronsBlade.class),
+    ASTRAEA(Material.IRON_SWORD, Astraea.class),
+    VALKYRIE(Material.IRON_SWORD, Valkyrie.class),
+    AXE_OF_THE_SHREDDED(Material.DIAMOND_AXE, AxeoftheShredded.class),
+    SOUL_WHIP(Material.FISHING_ROD, SoulWhip.class),
 
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),
