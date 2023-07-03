@@ -35,14 +35,14 @@ public class Bonzo implements ZombieStatistics ,EntityStatistics, EntityFunction
 
     @Override
     public List<EntityDrop> drops() {
-        return Arrays.asList(new EntityDrop(SMaterial.BONZO_STAFF, EntityDropType.EXTRAORDINARILY_RARE, 0.05),
-        new EntityDrop(SMaterial.BONZO_MASK, EntityDropType.EXTRAORDINARILY_RARE, 0.05));
+        return Arrays.asList(new EntityDrop(SMaterial.BONZO_STAFF, EntityDropType.EXTRAORDINARILY_RARE, 0.01),
+        new EntityDrop(SMaterial.BONZO_MASK, EntityDropType.EXTRAORDINARILY_RARE, 0.02));
     }
 
     @Override
     public SEntityEquipment getEntityEquipment() {
         return new SEntityEquipment(SItem.of(SMaterial.BONZO_STAFF).getStack(),
-                SItem.of(SMaterial.BONZO_MASK).getStack(),
+                null,
                 null,
                 null,
                 null);
