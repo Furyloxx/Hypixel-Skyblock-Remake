@@ -16,14 +16,13 @@ import java.util.UUID;
 
 public class MobApi {
 
-    public static void createEntity(Entity entity, Location loc, String name, String texture, String signature) {
+    public static void createEntity(Entity entity, Location loc, String name) {
         GameProfile profile = new GameProfile(UUID.randomUUID(), name);
-        profile.getProperties().put("textures", new Property("textures", texture, signature));
         WorldServer worldServer = ((CraftWorld) loc.getWorld()).getHandle();
 
         PlayerInteractManager interactManager = new PlayerInteractManager(worldServer);
-        EntityPlayer temp = new EntityPlayer(((CraftServer) Bukkit.getServer()).getServer(), worldServer, profile, interactManager);
-        PlayerDisguise mobDisguise = new PlayerDisguise(temp.getBukkitEntity().getName());
+        EntityPlayer entityPlayer = new EntityPlayer(((CraftServer) Bukkit.getServer()).getServer(), worldServer, profile, interactManager);
+        PlayerDisguise mobDisguise = new PlayerDisguise(entityPlayer.getBukkitEntity().getPlayer().getName(), "");
         mobDisguise.setEntity(entity);
         mobDisguise.startDisguise();
 
