@@ -40,8 +40,7 @@ public enum GUIType {
     CALENDAR(CalendarGUI.class),
     TRADE(TradeGUI.class),
     CATACOMB(CatacombsGUI.class),
-    CATACOMB_RULE(CatacombsRuleGUI.class),
-    PROFILE_MANAGEMENT(ProfileManagementGUI.class),
+    CATACOMB_RULE(CatacombsGUI.class),
     ;
 
     private final Class<? extends GUI> gui;

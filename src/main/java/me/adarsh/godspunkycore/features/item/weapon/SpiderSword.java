@@ -10,7 +10,7 @@ public class SpiderSword implements ToolStatistics, MaterialFunction , Ability {
 
     @Override
     public String getAbilityDescription() {
-        return null;
+        return "Deals +100% damage to Spiders, Cave Spiders, and Silverfish";
     }
 
 

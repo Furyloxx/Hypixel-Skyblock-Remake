@@ -1,14 +1,10 @@
 package me.adarsh.godspunkycore.features.ranks;
 
 import me.adarsh.godspunkycore.Skyblock;
-import me.adarsh.godspunkycore.features.partyandfriends.party.PartyInstance;
-import net.md_5.bungee.api.chat.BaseComponent;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -19,10 +15,6 @@ public class GodspunkyPlayer {
     public PlayerRank rank;
     public long lastPlayed;
     public long firstJoined;
-
-    private PartyInstance currentParty = null;
-
-    public Skyblock.ChatTypes currentChat = Skyblock.ChatTypes.ALL_CHAT;
     private static Skyblock plugin = Skyblock.getPlugin();
 
 
@@ -92,56 +84,11 @@ public class GodspunkyPlayer {
         GodspunkyPlayer rplayer = players.get(player);
         rplayer.saveAll();
         players.remove(player);
-
     }
 
     public static void savePlayers() {
         for (Player player : players.keySet()) {
             players.get(player).saveAll();
-        }
-    }
-
-    public void setCurrentParty(Object partyInstance) {
-        if(partyInstance instanceof PartyInstance) {
-            currentParty = (PartyInstance) partyInstance;
-        } else {
-            currentParty = null;
-        }
-    }
-
-    public void setPartyPermissions(int partyPermission) {
-        if(!inParty()) return;
-
-        getCurrentParty().setPermissions(this, partyPermission);
-    }
-
-    public PartyInstance getCurrentParty() {
-        return currentParty;
-    }
-
-    public boolean inParty() {
-        return currentParty != null;
-    }
-
-    public int getPartyPermissions() {
-        if(!inParty()) return 0;
-
-        return getCurrentParty().getPlayerPermissions(this);
-    }
-
-    public void sendMessage(Object message) {
-        if (message instanceof String) {
-            player.sendMessage(message.toString().replace('&', ChatColor.COLOR_CHAR));
-        } else if (message instanceof TextComponent) {
-            player.spigot().sendMessage(new BaseComponent[]{(BaseComponent) message});
-        }
-    }
-
-
-
-    public void sendMessages(Object... messages) {
-        for(Object message : messages) {
-            sendMessage(message);
         }
     }
 }

@@ -36,7 +36,7 @@ public class FelSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return null;
+        return "Every 100 Kills with this sword grants +1 ❁ Damage, up to 100 extra.";
     }
 
     @Override

@@ -36,6 +36,14 @@ public class JerryChineGunRun implements Runnable
 
                         JerryChineGunRun.this.stand.remove();
                         JerryChineGunRun.this.p.getWorld().playSound(e2.getLocation(), Sound.VILLAGER_YES, 1.0f, 1.0f);
+                        JerryChineGunRun.this.p.getWorld().playEffect(e2.getEyeLocation(), Effect.FIREWORKS_SPARK, 1);
+                        JerryChineGunRun.this.p.getWorld().playEffect(e2.getEyeLocation(), Effect.FIREWORKS_SPARK, 1);
+                        JerryChineGunRun.this.p.getWorld().playEffect(e2.getEyeLocation(), Effect.FIREWORKS_SPARK, 1);
+                        JerryChineGunRun.this.p.getWorld().playEffect(e2.getEyeLocation(), Effect.FIREWORKS_SPARK, 1);
+                        JerryChineGunRun.this.p.getWorld().playEffect(e2.getEyeLocation(), Effect.FIREWORKS_SPARK, 1);
+                        JerryChineGunRun.this.p.getWorld().playEffect(e2.getEyeLocation(), Effect.FIREWORKS_SPARK, 1);
+                        JerryChineGunRun.this.p.getWorld().playEffect(e2.getEyeLocation(), Effect.FIREWORKS_SPARK, 1);
+                        JerryChineGunRun.this.p.getWorld().playEffect(e2.getEyeLocation(), Effect.FIREWORKS_SPARK, 1);
                         User user = User.getUser(p.getUniqueId());
                         user.damageEntity((LivingEntity) e, 500.0);
                     }

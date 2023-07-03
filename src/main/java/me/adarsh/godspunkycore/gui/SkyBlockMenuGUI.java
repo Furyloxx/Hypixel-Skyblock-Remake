@@ -499,7 +499,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                GUIType.PROFILE_MANAGEMENT.getGUI().open(player);
+                // TODO : ADD PROFILE GUI
             }
 
             @Override
@@ -527,7 +527,7 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // BOOSTER COOKIE
+        // BOOSTER COOKIE TODO:
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
