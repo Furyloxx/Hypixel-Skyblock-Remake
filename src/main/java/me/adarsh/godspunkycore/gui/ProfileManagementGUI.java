@@ -99,8 +99,9 @@ public class ProfileManagementGUI extends GUI {
             }
         });
 
+
         GodspunkyPlayer data = GodspunkyPlayer.getUser(e.getPlayer());
-        if (data.rank == PlayerRank.VIP){
+        if (data.rank == PlayerRank.VIP ){
             set(new GUIClickableItem() {
                 @Override
                 public void run(InventoryClickEvent e) {
@@ -154,7 +155,8 @@ public class ProfileManagementGUI extends GUI {
             });
         }
 
-        if (data.rank == PlayerRank.MVPPLUS){
+
+        if (data.rank == PlayerRank.MVPPLUS ){
             set(new GUIClickableItem() {
                 @Override
                 public void run(InventoryClickEvent e) {
@@ -206,6 +208,8 @@ public class ProfileManagementGUI extends GUI {
                             ChatColor.GOLD + "https://godspunky.store");
                 }
             });
+
+
             set(new GUIClickableItem() {
                     @Override
                     public void run(InventoryClickEvent e) {
