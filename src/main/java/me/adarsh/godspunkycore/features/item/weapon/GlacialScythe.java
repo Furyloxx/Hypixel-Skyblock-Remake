@@ -2,26 +2,26 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class FelSword implements ToolStatistics, MaterialFunction, Ability {
+public class GlacialScythe implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getDisplayName() {
-        return "Fel Sword";
+        return "Glacial Scythe";
     }
 
     @Override
     public int getBaseDamage() {
-        return 190;
+        return 120;
     }
 
     @Override
-    public double getBaseStrength() {
-        return 135;
+    public double getBaseIntelligence() {
+        return 30;
     }
 
     @Override
     public int getManaCost() {
-        return 0;
+        return 75;
     }
 
     @Override
@@ -31,12 +31,12 @@ public class FelSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityName() {
-        return null;
+        return "Ice Bolt";
     }
 
     @Override
     public String getAbilityDescription() {
-        return null;
+        return "Shoots 1 Ice Bolt that deals 1,500 damage and slows enemies hit for 5 seconds! When hitting the ground, also creates an explosion of 3 blocks, dealing the same damage.";
     }
 
     @Override

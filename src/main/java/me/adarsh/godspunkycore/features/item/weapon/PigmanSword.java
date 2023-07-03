@@ -2,46 +2,61 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class FelSword implements ToolStatistics, MaterialFunction, Ability {
+public class PigmanSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getDisplayName() {
-        return "Fel Sword";
+        return "Pigman Sword";
     }
 
     @Override
     public int getBaseDamage() {
-        return 190;
+        return 200;
     }
 
     @Override
     public double getBaseStrength() {
-        return 135;
+        return 100;
+    }
+
+    @Override
+    public double getBaseCritChance() {
+        return 0.5;
+    }
+
+    @Override
+    public double getBaseCritDamage() {
+        return 30;
+    }
+
+    @Override
+    public double getBaseIntelligence() {
+        return 300;
     }
 
     @Override
     public int getManaCost() {
-        return 0;
+        return 400;
     }
 
     @Override
     public int getAbilityCooldownTicks() {
-        return 0;
+        return 100;
     }
 
     @Override
     public String getAbilityName() {
-        return null;
+        return "Burning Souls";
     }
 
     @Override
     public String getAbilityDescription() {
-        return null;
+        return "Gain +300 ❈ Defense for 5s and cast vortex of flames towards enemies, dealing up to 30,000 damage over 5 second";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.EPIC;
+        return Rarity.LEGENDARY;
     }
 
     @Override
@@ -59,3 +74,4 @@ public class FelSword implements ToolStatistics, MaterialFunction, Ability {
         return null;
     }
 }
+

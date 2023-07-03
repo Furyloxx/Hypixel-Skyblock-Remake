@@ -244,6 +244,14 @@ public enum SMaterial {
     FEL_SWORD(Material.STONE_SWORD, FelSword.class),
     ASPECT_OF_THE_VOID(Material.DIAMOND_SPADE, AspectOfTheVoid.class),
     JERRY_CHINE_GUN(Material.GOLD_BARDING, JerryChineGun.class),
+    VOID_SWORD(Material.DIAMOND_SWORD, VoidSword.class),
+    GLACIAL_SCYTHE(Material.DIAMOND_HOE, GlacialScythe.class),
+    MIDAS_SWORD(Material.GOLD_SWORD, MidasSword.class),
+    PIGMAN_SWORD(Material.GOLD_SWORD, PigmanSword.class),
+    POOCH_SWORD(Material.GOLD_SWORD, PoochSword.class),
+    REAPER_SCYTHE(Material.DIAMOND_HOE, ReaperScythe.class),
+    YETI_SWORD(Material.IRON_SWORD, YetiSword.class),
+    LIVID_DAGGER(Material.IRON_SWORD, LividDagger.class),
 
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),

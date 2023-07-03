@@ -2,21 +2,16 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class FelSword implements ToolStatistics, MaterialFunction, Ability {
+public class MidasSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getDisplayName() {
-        return "Fel Sword";
+        return "Mida's Sword";
     }
 
     @Override
     public int getBaseDamage() {
-        return 190;
-    }
-
-    @Override
-    public double getBaseStrength() {
-        return 135;
+        return 150;
     }
 
     @Override
@@ -31,17 +26,17 @@ public class FelSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityName() {
-        return null;
+        return "Greed";
     }
 
     @Override
     public String getAbilityDescription() {
-        return null;
+        return "The ❁ Strength and damage bonus of this item is dependent on the price paid for it at the Dark Auction! The maximum bonus of this item is 120 if the bid was 50,000,000 coins or higher!";
     }
 
     @Override
     public Rarity getRarity() {
-        return Rarity.EPIC;
+        return Rarity.LEGENDARY;
     }
 
     @Override
@@ -59,3 +54,4 @@ public class FelSword implements ToolStatistics, MaterialFunction, Ability {
         return null;
     }
 }
+

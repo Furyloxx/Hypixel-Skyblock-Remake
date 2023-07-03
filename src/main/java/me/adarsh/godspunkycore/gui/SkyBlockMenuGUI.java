@@ -527,7 +527,7 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // BOOSTER COOKIE TODO:
+        // BOOSTER COOKIE
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {

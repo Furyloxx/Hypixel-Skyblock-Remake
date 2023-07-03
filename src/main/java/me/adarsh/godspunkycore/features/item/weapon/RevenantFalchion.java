@@ -10,7 +10,7 @@ public class RevenantFalchion implements ToolStatistics, MaterialFunction, Abili
 
     @Override
     public String getAbilityDescription() {
-        return "Deals +150% damage against Zombies.";
+        return null;
     }
 
 

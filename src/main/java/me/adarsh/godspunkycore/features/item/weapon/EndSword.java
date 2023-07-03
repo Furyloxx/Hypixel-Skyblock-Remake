@@ -10,7 +10,7 @@ public class EndSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Deals +100% damage to Endermites, Endermen, and Ender Dragons.";
+        return null;
     }
 
 
