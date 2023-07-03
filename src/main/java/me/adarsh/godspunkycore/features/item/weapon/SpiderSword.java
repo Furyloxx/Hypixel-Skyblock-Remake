@@ -2,27 +2,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class SpiderSword implements ToolStatistics, MaterialFunction , Ability {
-    @Override
-    public String getAbilityName() {
-        return null;
-    }
-
-    @Override
-    public String getAbilityDescription() {
-        return "Deals +100% damage to Spiders, Cave Spiders, and Silverfish";
-    }
-
-
-    @Override
-    public int getAbilityCooldownTicks() {
-        return 0;
-    }
-
-    @Override
-    public int getManaCost() {
-        return 0;
-    }
+public class SpiderSword implements ToolStatistics, MaterialFunction {
 
     @Override
     public String getDisplayName() {

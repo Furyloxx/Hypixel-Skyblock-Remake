@@ -35,7 +35,7 @@ public class Hyperion implements ToolStatistics, MaterialFunction {
 
     @Override
     public String getLore() {
-        return "";
+        return null;
     }
 
     @Override

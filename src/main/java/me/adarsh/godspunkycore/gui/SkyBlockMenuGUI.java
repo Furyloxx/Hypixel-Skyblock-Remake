@@ -345,7 +345,7 @@ public class SkyBlockMenuGUI extends GUI {
                 }
             });
         }
-        
+
         // Accessory Bag {REQUIRES REDSTONE II}
 
         if (user.hasCollection(ItemCollection.REDSTONE, 2)) {
@@ -499,7 +499,7 @@ public class SkyBlockMenuGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                // TODO : ADD PROFILE GUI
+                GUIType.PROFILE_MANAGEMENT.getGUI().open(player);
             }
 
             @Override
@@ -527,7 +527,7 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // BOOSTER COOKIE TODO:
+        // BOOSTER COOKIE
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {

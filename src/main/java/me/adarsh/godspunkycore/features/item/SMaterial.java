@@ -551,8 +551,10 @@ public enum SMaterial {
     END_STONE_BOW(Material.BOW, EndStoneBow.class),
     MOSQUITO_BOW(Material.BOW, MosquitoBow.class),
     HURRICANE_BOW(Material.BOW, HurricaneBow.class),
-
     RUNAAN_BOW(Material.BOW, RunaanBow.class),
+    ENDER_BOW(Material.BOW, EnderBow.class),
+    EXPLOSIVE_BOW(Material.BOW, ExplosiveBow.class),
+
     // Special
     EXTERMINATOR(Material.IRON_SWORD, Exterminator.class),
     TEST_ITEM(Material.SKULL_ITEM, TestItem.class),

@@ -2,7 +2,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 
-public class ReaperFalchion implements ToolStatistics, MaterialFunction, Ability {
+public class ReaperFalchion implements ToolStatistics, MaterialFunction {
 
     @Override
     public String getDisplayName() {
@@ -22,26 +22,6 @@ public class ReaperFalchion implements ToolStatistics, MaterialFunction, Ability
     @Override
     public double getBaseIntelligence() {
         return 200;
-    }
-
-    @Override
-    public int getManaCost() {
-        return 0;
-    }
-
-    @Override
-    public int getAbilityCooldownTicks() {
-        return 0;
-    }
-
-    @Override
-    public String getAbilityName() {
-        return null;
-    }
-
-    @Override
-    public String getAbilityDescription() {
-        return "Heal 10❤ per hit. Deal +200% damage to Zombies. Receive 20% less damage from Zombies when held.";
     }
 
     @Override
