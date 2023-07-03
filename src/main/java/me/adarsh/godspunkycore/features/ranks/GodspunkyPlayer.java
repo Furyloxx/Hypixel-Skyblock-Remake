@@ -51,6 +51,7 @@ public class GodspunkyPlayer {
         config.set("rank", rank.toString());
         save(config);
     }
+    //hm
 
     public void setRank(PlayerRank rank) {
         this.rank = rank;

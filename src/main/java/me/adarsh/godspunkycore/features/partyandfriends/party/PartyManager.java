@@ -35,6 +35,7 @@ public final class PartyManager {
             );
         }
     }
+    //hm
 
     public PartyInstance getPartyFromPlayer(UUID partyLeader) {
         return parties.getOrDefault(partyLeader, null);

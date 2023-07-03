@@ -97,7 +97,7 @@ public final class Skyblock extends JavaPlugin {
         PARTY_CHAT,
         REPLY_CHAT
     }
-    //hm
+    //hmm
 
     @Override
     public void onLoad() {

@@ -11,6 +11,7 @@ import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+//hm
 
 @CommandParameters(
         description = "Adds to Party",

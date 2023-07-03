@@ -10,7 +10,7 @@ import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
-//hm
+//hmm
 
 @CommandParameters(
         description = "Manage chat settings",
