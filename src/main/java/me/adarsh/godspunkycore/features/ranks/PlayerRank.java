@@ -67,7 +67,7 @@ public enum PlayerRank {
     }
 
     public boolean isDefaultPermission() {
-        return isAboveOrEqual(DEFAULT);
+        return this == DEFAULT;
     }
 
 
