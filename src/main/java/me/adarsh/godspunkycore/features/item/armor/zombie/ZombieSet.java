@@ -1,58 +1,46 @@
-package me.adarsh.godspunkycore.features.item.armor.farm;
+package me.adarsh.godspunkycore.features.item.armor.zombie;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
 import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
-import me.adarsh.godspunkycore.features.region.Region;
-import me.adarsh.godspunkycore.features.region.RegionType;
-import me.adarsh.godspunkycore.user.User;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
-public class FarmSet implements ArmorSet {
+public class ZombieSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Bonus Speed";
+        return "Projectile Absorption";
     }
 
     @Override
     public String getDescription() {
-        return "Increases your ✦ Speed by +20 near Farming Minions or farming islands.";
+        return "Heals the wearer for 10 ❤ HP per second for 5 seconds when hit by a projectile. Note: This set has no head item.";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return FarmSuitHelmet.class;
+        return null;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return FarmSuitChestplate.class;
+        return ZombieChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return FarmSuitLeggings.class;
+        return ZombieLeggings.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return FarmSuitBoots.class;
+        return ZombieBoots.class;
     }
 
     @Override
     public PlayerBoostStatistics whileHasFullSet(Player player) {
-        User user = User.getUser(player.getUniqueId());
-        Region region = Region.getRegionOfEntity(player);
-        if (region != null && region.getType().equals(RegionType.FARM)){
             return new PlayerBoostStatistics() {
-                @Override
-                public double getBaseSpeed(){
-                    return 0.2;
-                }
                 @Override
                 public String getDisplayName() {
                     return null;
@@ -68,7 +56,5 @@ public class FarmSet implements ArmorSet {
                     return null;
                 }
             };
-        }
-        return null;
     }
 }
