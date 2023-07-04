@@ -42,7 +42,7 @@ public class MushroomSet implements ArmorSet {
 
     @Override
     public PlayerBoostStatistics whileHasFullSet(Player player) {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 1));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.NIGHT_VISION, 1, 1));
         return new PlayerBoostStatistics() {
             @Override
             public String getDisplayName() {
