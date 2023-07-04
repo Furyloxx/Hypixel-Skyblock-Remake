@@ -11,7 +11,6 @@ import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-//hm
 
 @CommandParameters(
         description = "Adds to Party",
@@ -156,8 +155,8 @@ public final class PartyCommand extends SCommand {
                         party.addMember(sbPlayer);
                         return;
                     case "kick":
-                        String playername = args[1];
-                        Player kickPlayer = Bukkit.getPlayer(playername);
+                        String playerName1 = args[1];
+                        Player kickPlayer = Bukkit.getPlayer(playerName1);
                         if (kickPlayer == null) return;
 
                         if (sbPlayer.getPartyPermissions() == 0) {

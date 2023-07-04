@@ -129,6 +129,7 @@ public final class PartyInstance {
     }
 
 
+
     public void kickMember(GodspunkyPlayer kicker, GodspunkyPlayer toKick) {
         if (!inParty(toKick)) {
             kicker.sendMessages(
