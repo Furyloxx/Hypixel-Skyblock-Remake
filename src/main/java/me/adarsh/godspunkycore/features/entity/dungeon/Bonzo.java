@@ -42,7 +42,7 @@ public class Bonzo implements ZombieStatistics ,EntityStatistics, EntityFunction
     @Override
     public SEntityEquipment getEntityEquipment() {
         return new SEntityEquipment(SItem.of(SMaterial.BONZO_STAFF).getStack(),
-                SItem.of(SMaterial.BONZO_MASK).getStack(),
+                null,
                 null,
                 null,
                 null);
