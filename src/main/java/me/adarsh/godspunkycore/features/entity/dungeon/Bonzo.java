@@ -35,8 +35,8 @@ public class Bonzo implements ZombieStatistics ,EntityStatistics, EntityFunction
 
     @Override
     public List<EntityDrop> drops() {
-        return Arrays.asList(new EntityDrop(SMaterial.BONZO_STAFF, EntityDropType.EXTRAORDINARILY_RARE, 0.71),
-        new EntityDrop(SMaterial.BONZO_MASK, EntityDropType.EXTRAORDINARILY_RARE, 0.58));
+        return Arrays.asList(new EntityDrop(SMaterial.BONZO_STAFF, EntityDropType.EXTRAORDINARILY_RARE, 0.02),
+        new EntityDrop(SMaterial.BONZO_MASK, EntityDropType.EXTRAORDINARILY_RARE, 0.01));
     }
 
     @Override
@@ -52,5 +52,6 @@ public class Bonzo implements ZombieStatistics ,EntityStatistics, EntityFunction
     public double getXPDropped() {
         return 75.0;
     }
+
 }
 
