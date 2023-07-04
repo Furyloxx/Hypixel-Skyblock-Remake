@@ -83,10 +83,7 @@ import me.adarsh.godspunkycore.features.item.armor.mastiff.MastiffChestplate;
 import me.adarsh.godspunkycore.features.item.armor.mastiff.MastiffHelmet;
 import me.adarsh.godspunkycore.features.item.armor.mastiff.MastiffLeggings;
 import me.adarsh.godspunkycore.features.item.armor.miner.*;
-import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomBoots;
-import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomChestplate;
-import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomHelmet;
-import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomLeggings;
+import me.adarsh.godspunkycore.features.item.armor.mushroom.*;
 import me.adarsh.godspunkycore.features.item.armor.necron.NecronBoots;
 import me.adarsh.godspunkycore.features.item.armor.necron.NecronChestplate;
 import me.adarsh.godspunkycore.features.item.armor.necron.NecronHelmet;
@@ -1233,6 +1230,7 @@ public enum SMaterial {
     public static ProtectorDragonSet PROTECTOR_DRAGON_SET = registerArmorSet(ProtectorDragonSet.class);
     public static LapisArmorSet LAPIS_ARMOR_SET = registerArmorSet(LapisArmorSet.class);
     public static MinerSet MINER_SET = registerArmorSet(MinerSet.class);
+    public static MushroomSet MUSHROOM_SET = registerArmorSet(MushroomSet.class);
 
     @Getter
     private final Material craftMaterial;
