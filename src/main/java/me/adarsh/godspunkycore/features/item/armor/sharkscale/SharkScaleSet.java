@@ -1,4 +1,4 @@
-package me.adarsh.godspunkycore.features.item.armor.spooky;
+package me.adarsh.godspunkycore.features.item.armor.sharkscale;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
@@ -7,35 +7,35 @@ import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
 import org.bukkit.entity.Player;
 
-public class SpookySet implements ArmorSet {
+public class SharkScaleSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Candy Man";
+        return "Absorb";
     }
 
     @Override
     public String getDescription() {
-        return "Grants an additional +5% chance to find rare Candy.";
+        return "Doubles your ❈ Defense while in water.";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return SpookyHelmet.class;
+        return SharkScaleHelmet.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return SpookyChestplate.class;
+        return SharkScaleChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return SpookyLeggings.class;
+        return SharkScaleleggings.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return SpookyBoots.class;
+        return SharkScaleBoots.class;
     }
 
     @Override

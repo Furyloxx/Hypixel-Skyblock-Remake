@@ -1,4 +1,4 @@
-package me.adarsh.godspunkycore.features.item.armor.spooky;
+package me.adarsh.godspunkycore.features.item.armor.werewolf;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
@@ -7,35 +7,35 @@ import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
 import org.bukkit.entity.Player;
 
-public class SpookySet implements ArmorSet {
+public class WereWolfSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Candy Man";
+        return "Regenerative Howl";
     }
 
     @Override
     public String getDescription() {
-        return "Grants an additional +5% chance to find rare Candy.";
+        return "Upon activating ⫽ Ferocity heal players within 25 blocks for 10% of your ❈ Defense and gain 50 ❈ Defense for 5s (stacking)";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return SpookyHelmet.class;
+        return WerewolfHelmet.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return SpookyChestplate.class;
+        return WerewolfChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return SpookyLeggings.class;
+        return WerewolfLeggings.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return SpookyBoots.class;
+        return WerewolfBoots.class;
     }
 
     @Override
@@ -58,3 +58,4 @@ public class SpookySet implements ArmorSet {
         };
     }
 }
+

@@ -1,4 +1,4 @@
-package me.adarsh.godspunkycore.features.item.armor.spooky;
+package me.adarsh.godspunkycore.features.item.armor.batperson;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
@@ -7,35 +7,35 @@ import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
 import org.bukkit.entity.Player;
 
-public class SpookySet implements ArmorSet {
+public class BatPersonSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Candy Man";
+        return "Bat Power Activate!";
     }
 
     @Override
     public String getDescription() {
-        return "Grants an additional +5% chance to find rare Candy.";
+        return "Upgrades your Grappling Hook and turns you into a true vigilante! Grants an additional +5% chance to find rare Candy.";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return SpookyHelmet.class;
+        return BatpersonHelmet.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return SpookyChestplate.class;
+        return BatpersonChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return SpookyLeggings.class;
+        return BatpersonLeggings.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return SpookyBoots.class;
+        return BatpersonBoots.class;
     }
 
     @Override

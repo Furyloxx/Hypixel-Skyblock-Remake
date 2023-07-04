@@ -1,4 +1,4 @@
-package me.adarsh.godspunkycore.features.item.armor.spooky;
+package me.adarsh.godspunkycore.features.item.armor.glacite;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
@@ -7,35 +7,35 @@ import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
 import org.bukkit.entity.Player;
 
-public class SpookySet implements ArmorSet {
+public class GlaciteSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Candy Man";
+        return "Expert Miner";
     }
 
     @Override
     public String getDescription() {
-        return "Grants an additional +5% chance to find rare Candy.";
+        return "Grants +2⸕ Mining Speed for each of your mining levels. The Defense of this item is doubled while on a mining island";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return SpookyHelmet.class;
+        return GlaciteHelmet.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return SpookyChestplate.class;
+        return GlaciteChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return SpookyLeggings.class;
+        return GlaciteLeggings.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return SpookyBoots.class;
+        return GlaciteBoots.class;
     }
 
     @Override
