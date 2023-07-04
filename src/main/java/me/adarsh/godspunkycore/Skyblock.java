@@ -95,9 +95,9 @@ public final class Skyblock extends JavaPlugin {
     public enum ChatTypes {
         ALL_CHAT,
         PARTY_CHAT,
-        REPLY_CHAT
+        REPLY_CHAT,
+        NO_CHAT
     }
-    //hmm
 
     @Override
     public void onLoad() {
