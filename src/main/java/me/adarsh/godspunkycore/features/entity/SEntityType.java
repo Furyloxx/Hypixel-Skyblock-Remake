@@ -3,7 +3,11 @@ package me.adarsh.godspunkycore.features.entity;
 import lombok.Getter;
 import me.adarsh.godspunkycore.features.entity.caverns.*;
 import me.adarsh.godspunkycore.features.entity.den.*;
-import me.adarsh.godspunkycore.features.entity.dungeon.*;
+import me.adarsh.godspunkycore.features.entity.dungeon.bosses.*;
+import me.adarsh.godspunkycore.features.entity.dungeon.minibosses.AngryArchaeologist;
+import me.adarsh.godspunkycore.features.entity.dungeon.minibosses.KingMidas;
+import me.adarsh.godspunkycore.features.entity.dungeon.minibosses.LostAdventurer;
+import me.adarsh.godspunkycore.features.entity.dungeon.minibosses.ShadowAssassin;
 import me.adarsh.godspunkycore.features.entity.end.*;
 import me.adarsh.godspunkycore.features.entity.insentient.WheatCrystal;
 import me.adarsh.godspunkycore.features.entity.nether.LargeMagmaCube;
@@ -14,9 +18,7 @@ import me.adarsh.godspunkycore.features.entity.nms.*;
 import me.adarsh.godspunkycore.features.entity.skeleton.HighLevelSkeleton;
 import me.adarsh.godspunkycore.features.entity.wolf.*;
 import me.adarsh.godspunkycore.features.entity.zombie.*;
-import net.minecraft.server.v1_8_R3.EntityHuman;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
-import net.minecraft.server.v1_8_R3.EntityPlayer;
 import net.minecraft.server.v1_8_R3.EntityTypes;
 import org.bukkit.entity.EntityType;
 
@@ -105,6 +107,10 @@ public enum SEntityType {
     STROM(EntityType.WITHER , Strom.class),
     GOLDAR(EntityType.WITHER , Golder.class),
     NECRON(EntityType.WITHER , Necron.class),
+    LOST_ADVENTURER(EntityType.ZOMBIE, LostAdventurer.class),
+    ANGRY_ARCHAEOLOGIST(EntityType.ZOMBIE, AngryArchaeologist.class),
+    SHADOW_ASSASSIN(EntityType.ZOMBIE, ShadowAssassin.class),
+    KING_MIDAS(EntityType.ZOMBIE, KingMidas.class),
     ;
 
     @Getter

@@ -1,4 +1,4 @@
-package me.adarsh.godspunkycore.features.entity.dungeon;
+package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
@@ -11,16 +11,6 @@ public class Bonzo implements ZombieStatistics ,EntityStatistics, EntityFunction
     @Override
     public String getEntityName() {
         return "✪ Bonzo ✪";
-    }
-
-    @Override
-    public boolean isBaby() {
-        return false;
-    }
-
-    @Override
-    public boolean isVillager() {
-        return false;
     }
 
     @Override
@@ -51,6 +41,10 @@ public class Bonzo implements ZombieStatistics ,EntityStatistics, EntityFunction
     @Override
     public double getXPDropped() {
         return 75.0;
+    }
+    @Override
+    public double getMovementSpeed() {
+        return 0.4;
     }
 
 }

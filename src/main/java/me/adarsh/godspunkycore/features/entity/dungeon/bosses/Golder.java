@@ -1,29 +1,27 @@
-package me.adarsh.godspunkycore.features.entity.dungeon;
+package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
 import me.adarsh.godspunkycore.features.entity.EntityFunction;
 import me.adarsh.godspunkycore.features.entity.EntityStatistics;
 
-public class Thorn implements EntityStatistics, EntityFunction {
+public class Golder implements EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
-        return "✪ Thorn ✪";
+        return "✪ Goldor ✪";
     }
 
     @Override
     public double getEntityMaxHealth() {
-        return 4000000.0;
+        return 750000000.0;
     }
 
     @Override
     public double getDamageDealt() {
-        return 8840.0;
+        return 54540.0;
     }
 
 
     @Override
     public double getXPDropped() {
-        return 200.0;
+        return 300.0;
     }
 }
-
-
