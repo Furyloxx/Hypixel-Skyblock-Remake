@@ -5,8 +5,12 @@ import me.adarsh.godspunkycore.features.item.MaterialStatistics;
 import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
+import me.adarsh.godspunkycore.features.region.Region;
+import me.adarsh.godspunkycore.features.region.RegionType;
 import me.adarsh.godspunkycore.user.User;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class FarmSet implements ArmorSet {
     @Override
@@ -42,21 +46,29 @@ public class FarmSet implements ArmorSet {
     @Override
     public PlayerBoostStatistics whileHasFullSet(Player player) {
         User user = User.getUser(player.getUniqueId());
-        return new PlayerBoostStatistics() {
-            @Override
-            public String getDisplayName() {
-                return null;
-            }
+        Region region = Region.getRegionOfEntity(player);
+        if (region != null && region.getType().equals(RegionType.FARM)){
+            return new PlayerBoostStatistics() {
+                @Override
+                public double getBaseSpeed(){
+                    return 0.2;
+                }
+                @Override
+                public String getDisplayName() {
+                    return null;
+                }
 
-            @Override
-            public Rarity getRarity() {
-                return null;
-            }
+                @Override
+                public Rarity getRarity() {
+                    return null;
+                }
 
-            @Override
-            public GenericItemType getType() {
-                return null;
-            }
-        };
+                @Override
+                public GenericItemType getType() {
+                    return null;
+                }
+            };
+        }
+        return null;
     }
 }

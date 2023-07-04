@@ -1,48 +1,52 @@
-package me.adarsh.godspunkycore.features.item.armor.golem;
+package me.adarsh.godspunkycore.features.item.armor.goblin;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
 import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
+import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletBoots;
+import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletChestplate;
+import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletHelmet;
+import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletLeggings;
+import me.adarsh.godspunkycore.user.User;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public class GolemSet implements ArmorSet {
+public class GoblinSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Absorption ";
+        return "Smart Miner";
     }
 
     @Override
     public String getDescription() {
-        return "Grants the wearer Absorption III for 20 seconds when they kill an enemy.";
+        return "Converts your Intelligence into Mining Speed. +1 Mining Speed for every 15 Intelligence removed.";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return GolemArmorHelmet.class;
+        return LeafletHelmet.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return GolemArmorChestplate.class;
+        return LeafletChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return GolemArmorLeggings.class;
+        return LeafletLeggings.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return GolemArmorBoots.class;
+        return LeafletBoots.class;
     }
 
     @Override
     public PlayerBoostStatistics whileHasFullSet(Player player) {
-        player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION,20,3));
         return new PlayerBoostStatistics() {
             @Override
             public String getDisplayName() {
@@ -50,17 +54,22 @@ public class GolemSet implements ArmorSet {
             }
 
             @Override
+            public double getBaseIntelligence(){return -15;}
+
+            @Override
             public Rarity getRarity() {
+                return Rarity.UNCOMMON;
+            }
+
+            @Override
+            public String getLore() {
                 return null;
             }
 
             @Override
             public GenericItemType getType() {
-                return null;
+                return GenericItemType.ARMOR;
             }
         };
     }
 }
-
-
-
