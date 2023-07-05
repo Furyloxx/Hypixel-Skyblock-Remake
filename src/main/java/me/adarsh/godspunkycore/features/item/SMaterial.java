@@ -191,6 +191,9 @@ public enum SMaterial {
     FEL_SWORD(Material.STONE_SWORD, FelSword.class),
     ASPECT_OF_THE_VOID(Material.DIAMOND_SPADE, AspectOfTheVoid.class),
     JERRY_CHINE_GUN(Material.GOLD_BARDING, JerryChineGun.class),
+    MIDAS_SWORD(Material.GOLD_SWORD, MidasSword.class),
+    MIDAS_STAFF(Material.GOLD_SPADE, MidasStaff.class),
+    YETI_SWORD(Material.IRON_SWORD, YetiSword.class),
 
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),

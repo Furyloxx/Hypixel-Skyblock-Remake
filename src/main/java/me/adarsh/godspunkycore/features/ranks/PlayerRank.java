@@ -70,5 +70,9 @@ public enum PlayerRank {
         return this == DEFAULT;
     }
 
+    public String getFormattedRank() {
+        return prefix;
+    }
+
 
 }

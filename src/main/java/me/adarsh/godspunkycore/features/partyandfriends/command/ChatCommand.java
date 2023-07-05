@@ -14,7 +14,7 @@ import org.bukkit.command.CommandSender;
 
 @CommandParameters(
         description = "Manage chat settings",
-        usage = "/chat {all|party|reply|skyblock-coop}",
+        usage = "/chat {all|party|reply}",
         aliases = "c",
         permission = PlayerRank.DEFAULT
 )
