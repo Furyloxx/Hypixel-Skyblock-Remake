@@ -23,11 +23,13 @@ public class DungeonGenerator {
     }
     public void deleteDungeon(Player player){
         World world = Bukkit.getWorld("Dungeon_" + player.getUniqueId());
+        Bukkit.unloadWorld(world , false);
         SUtil.deleteFolderRecursive(world.getWorldFolder());
     }
     public void deleteAllDungeons(){
         for (World world : Bukkit.getWorlds()){
             if (!world.getName().startsWith("Dungeon")) return;
+            Bukkit.unloadWorld(world , false);
             SUtil.deleteFolderRecursive(world.getWorldFolder());
             }
         }
