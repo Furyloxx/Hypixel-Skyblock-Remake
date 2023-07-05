@@ -3,6 +3,9 @@ package me.adarsh.godspunkycore.features.partyandfriends.party;
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -70,11 +73,22 @@ public final class PartyInstance {
             }
         }.runTaskLater(Skyblock.getPlugin(), 20 * 60L);
 
-        toInvite.sendMessages(
-                "&9&m-----------------------------",
-                inviter.rank.getPrefix() + " &e has invited you to join their party!"
-        );
+        String inviterName = inviter.getPlayer().getDisplayName();
+
+        String inviteMessage = "&9&m-----------------------------\n" +
+                inviterName + " &e has invited you to join their party!\n" +
+                "&aClick to accept: &7/party accept " + inviter.getPlayer().getName() + "\n" +
+                "&cClick to deny: &7/party deny " + inviter.getPlayer().getName() + "\n" +
+                "&9&m-----------------------------";
+
+        toInvite.sendMessage(inviteMessage);
+
+
+        toInvite.sendMessage(inviteMessage);
     }
+
+
+
 
     public void addMember(GodspunkyPlayer player) {
         if (inParty(player)) return;
@@ -89,7 +103,7 @@ public final class PartyInstance {
         for (GodspunkyPlayer member : partyMembers) {
             member.sendMessages(
                     "&9&m-----------------------------",
-                    "&e" + player.rank.getPrefix() + " joined the party.",
+                    "&e" + player.getPlayer().getDisplayName() + " joined the party.",
                     "&9&m-----------------------------"
             );
         }
@@ -116,7 +130,7 @@ public final class PartyInstance {
             if (player.rank == PlayerRank.DEFAULT) {
                 message = "&7" + player.getPlayer().getDisplayName() + " has left the party.";
             } else {
-                message = player.rank.getPrefix() + " " + player.getPlayer().getDisplayName() + " has left the party.";
+                message =  player.getPlayer().getDisplayName() + " has left the party.";
             }
             member.sendMessages(
                     "&9&m-----------------------------",
@@ -142,7 +156,7 @@ public final class PartyInstance {
 
         toKick.sendMessages(
                 "&9&m-----------------------------",
-                "&eYou have been kicked from the party by " + kicker.rank.getPrefix(),
+                "&eYou have been kicked from the party by " + kicker.getPlayer().getDisplayName(),
                 "&9&m-----------------------------"
         );
 
@@ -152,7 +166,7 @@ public final class PartyInstance {
         for (GodspunkyPlayer member : partyMembers) {
             member.sendMessages(
                     "&9&m-----------------------------",
-                    "&e" + toKick.rank.getPrefix() + " has been removed from the party.",
+                    "&e" + toKick.getPlayer().getDisplayName() + " has been removed from the party.",
                     "&9&m-----------------------------"
             );
         }

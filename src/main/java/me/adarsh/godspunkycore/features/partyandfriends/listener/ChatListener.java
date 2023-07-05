@@ -37,9 +37,7 @@ public final class ChatListener implements Listener {
                 }
 
                 PlayerRank rank = sbPlayer.rank;
-                String formattedRank = rank.isDefaultPermission() ? "&7" : rank.getPrefix();
-                String playerName = player.getName();
-                String message = "&9Party &8> " + formattedRank + playerName + "&f: " + event.getMessage();
+                String message = "&9Party &8> " + sbPlayer.getPlayer().getDisplayName() + "&f: " + event.getMessage();
                 partyInstance.sendMessages(message);
 
         }

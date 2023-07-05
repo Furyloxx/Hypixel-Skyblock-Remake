@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 
 @CommandParameters(
         description = "Adds to Party",
+        aliases = "p",
         permission = PlayerRank.DEFAULT)
 
 public final class PartyCommand extends SCommand {
