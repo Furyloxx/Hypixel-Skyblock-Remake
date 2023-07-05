@@ -42,6 +42,7 @@ public enum GUIType {
     CATACOMB(CatacombsGUI.class),
     CATACOMB_RULE(CatacombsGUI.class),
     ProfileManagementGUI(ProfileManagementGUI.class),
+    OTHERPLAYER_PROFILE(OtherPlayerProfile.class),
     ;
 
     private final Class<? extends GUI> gui;
