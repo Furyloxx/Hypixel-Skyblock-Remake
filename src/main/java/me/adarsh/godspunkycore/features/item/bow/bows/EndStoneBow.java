@@ -1,4 +1,4 @@
-package me.adarsh.godspunkycore.features.item.bow;
+package me.adarsh.godspunkycore.features.item.bow.bows;
 
 import me.adarsh.godspunkycore.features.item.*;
 import org.bukkit.ChatColor;

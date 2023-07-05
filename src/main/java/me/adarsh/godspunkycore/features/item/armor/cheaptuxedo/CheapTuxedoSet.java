@@ -1,50 +1,47 @@
-package me.adarsh.godspunkycore.features.item.armor.blaze;
+package me.adarsh.godspunkycore.features.item.armor.cheaptuxedo;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
 import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterBoots;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterChestplate;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterHelmet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterLeggings;
 import org.bukkit.entity.Player;
 
-public class BlazeSet implements ArmorSet {
+public class CheapTuxedoSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Blazing Aura";
+        return "Dashing";
     }
 
     @Override
     public String getDescription() {
-        return "Damages mobs in a 5 block range for 3% of their max ❤ Health per second. Also grants permanent Fire and Lava immunity.";
+        return "Max health set to 75❤. Deals +50% damage!";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return BlazeHelmet.class;
+        return null;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return BlazeChestplate.class;
+        return CheapTuxedoChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return BlazeLeggings.class;
+        return CheapTuxedoLeggings.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return BlazeBoots.class;
+        return CheapTuxedoBoots.class;
     }
 
     @Override
     public PlayerBoostStatistics whileHasFullSet(Player player) {
         return new PlayerBoostStatistics() {
+            // TODO: add ability
             @Override
             public String getDisplayName() {
                 return null;
@@ -62,5 +59,3 @@ public class BlazeSet implements ArmorSet {
         };
     }
 }
-
-

@@ -1,4 +1,4 @@
-package me.adarsh.godspunkycore.features.entity.dungeon;
+package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SMaterial;
@@ -36,6 +36,10 @@ public class Sadan implements ZombieStatistics, EntityStatistics, EntityFunction
     @Override
     public double getXPDropped() {
         return 100.0;
+    }
+    @Override
+    public double getMovementSpeed() {
+        return 0.4;
     }
 }
 

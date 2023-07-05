@@ -1,45 +1,41 @@
-package me.adarsh.godspunkycore.features.item.armor.blaze;
+package me.adarsh.godspunkycore.features.item.armor.batperson;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
 import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterBoots;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterChestplate;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterHelmet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterLeggings;
 import org.bukkit.entity.Player;
 
-public class BlazeSet implements ArmorSet {
+public class BatPersonSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Blazing Aura";
+        return "Bat Power Activate!";
     }
 
     @Override
     public String getDescription() {
-        return "Damages mobs in a 5 block range for 3% of their max ❤ Health per second. Also grants permanent Fire and Lava immunity.";
+        return "Upgrades your Grappling Hook and turns you into a true vigilante! Grants an additional +5% chance to find rare Candy.";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return BlazeHelmet.class;
+        return BatpersonHelmet.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return BlazeChestplate.class;
+        return BatpersonChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return BlazeLeggings.class;
+        return BatpersonLeggings.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return BlazeBoots.class;
+        return BatpersonBoots.class;
     }
 
     @Override
@@ -62,5 +58,3 @@ public class BlazeSet implements ArmorSet {
         };
     }
 }
-
-

@@ -1,45 +1,41 @@
-package me.adarsh.godspunkycore.features.item.armor.blaze;
+package me.adarsh.godspunkycore.features.item.armor.silverhunter;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
 import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterBoots;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterChestplate;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterHelmet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterLeggings;
 import org.bukkit.entity.Player;
 
-public class BlazeSet implements ArmorSet {
+public class SilverHunterSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Blazing Aura";
+        return "Peace Treaty";
     }
 
     @Override
     public String getDescription() {
-        return "Damages mobs in a 5 block range for 3% of their max ❤ Health per second. Also grants permanent Fire and Lava immunity.";
+        return "Gain immunity from Sea Creatures because they are immune to you and you can no longer catch them.";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return BlazeHelmet.class;
+        return SilverHunterHelmet.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return BlazeChestplate.class;
+        return SilverHunterChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return BlazeLeggings.class;
+        return SilverHunterLeggings.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return BlazeBoots.class;
+        return SilverHunterBoots.class;
     }
 
     @Override
@@ -56,11 +52,14 @@ public class BlazeSet implements ArmorSet {
             }
 
             @Override
-            public GenericItemType getType() {
+            public String getLore() {
                 return null;
+            }
+
+            @Override
+            public GenericItemType getType() {
+                return GenericItemType.ARMOR;
             }
         };
     }
 }
-
-

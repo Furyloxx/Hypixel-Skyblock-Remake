@@ -1,45 +1,44 @@
-package me.adarsh.godspunkycore.features.item.armor.blaze;
+package me.adarsh.godspunkycore.features.item.armor.pumpkin;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
 import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterBoots;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterChestplate;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterHelmet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterLeggings;
+import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomBoots;
+import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomChestplate;
+import me.adarsh.godspunkycore.features.item.armor.mushroom.MushroomHelmet;
 import org.bukkit.entity.Player;
 
-public class BlazeSet implements ArmorSet {
+public class PumpkinSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Blazing Aura";
+        return "Pumpkin Buff";
     }
 
     @Override
     public String getDescription() {
-        return "Damages mobs in a 5 block range for 3% of their max ❤ Health per second. Also grants permanent Fire and Lava immunity.";
+        return "Reduces all taken damage by +10% and deal +10% damage";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return BlazeHelmet.class;
+        return MushroomHelmet.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return BlazeChestplate.class;
+        return MushroomChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return BlazeLeggings.class;
+        return MushroomBoots.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return BlazeBoots.class;
+        return MushroomBoots.class;
     }
 
     @Override
@@ -62,5 +61,3 @@ public class BlazeSet implements ArmorSet {
         };
     }
 }
-
-

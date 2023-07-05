@@ -1,7 +1,8 @@
-package me.adarsh.godspunkycore.features.item.bow;
+package me.adarsh.godspunkycore.features.item.bow.bows;
 
 import com.google.common.util.concurrent.AtomicDouble;
 import me.adarsh.godspunkycore.features.item.*;
+import me.adarsh.godspunkycore.features.item.bow.BowFunction;
 import org.bukkit.Location;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;

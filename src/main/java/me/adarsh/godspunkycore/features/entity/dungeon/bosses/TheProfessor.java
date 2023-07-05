@@ -1,4 +1,4 @@
-package me.adarsh.godspunkycore.features.entity.dungeon;
+package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
 import me.adarsh.godspunkycore.features.entity.EntityFunction;
 import me.adarsh.godspunkycore.features.entity.EntityStatistics;
@@ -37,6 +37,11 @@ public class TheProfessor implements ZombieStatistics, EntityStatistics, EntityF
     @Override
     public double getXPDropped() {
         return 150.0;
+    }
+
+    @Override
+    public double getMovementSpeed() {
+        return 0.4;
     }
 }
 

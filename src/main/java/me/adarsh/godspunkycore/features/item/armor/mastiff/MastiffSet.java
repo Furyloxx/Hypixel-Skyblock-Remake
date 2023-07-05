@@ -1,45 +1,44 @@
-package me.adarsh.godspunkycore.features.item.armor.blaze;
+package me.adarsh.godspunkycore.features.item.armor.mastiff;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
 import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterBoots;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterChestplate;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterHelmet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterLeggings;
+import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieBoots;
+import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieChestplate;
+import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieLeggings;
 import org.bukkit.entity.Player;
 
-public class BlazeSet implements ArmorSet {
+public class MastiffSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Blazing Aura";
+        return "Absolute Unit";
     }
 
     @Override
     public String getDescription() {
-        return "Damages mobs in a 5 block range for 3% of their max ❤ Health per second. Also grants permanent Fire and Lava immunity.";
+        return "+50 ❤ HP per 1% ☠ Crit Damage. Regain 2% of max ❤ HP when hit (1s cooldown). Receive -20% damage from wolves. Your crit damage is 50% less effective.";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return BlazeHelmet.class;
+        return MastiffHelmet.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return BlazeChestplate.class;
+        return MastiffChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return BlazeLeggings.class;
+        return MastiffLeggings.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return BlazeBoots.class;
+        return MastiffBoots.class;
     }
 
     @Override
@@ -62,5 +61,3 @@ public class BlazeSet implements ArmorSet {
         };
     }
 }
-
-

@@ -1,17 +1,17 @@
-package me.adarsh.godspunkycore.features.entity.dungeon;
+package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
 import me.adarsh.godspunkycore.features.entity.EntityFunction;
 import me.adarsh.godspunkycore.features.entity.EntityStatistics;
 
-public class Necron implements EntityStatistics, EntityFunction {
+public class Strom implements EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
-        return "✪ Necron ✪";
+        return "✪ Strom ✪";
     }
 
     @Override
     public double getEntityMaxHealth() {
-        return 1000000000.0;
+        return 400000000.0;
     }
 
     @Override

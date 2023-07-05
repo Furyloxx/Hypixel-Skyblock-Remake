@@ -1,45 +1,48 @@
-package me.adarsh.godspunkycore.features.item.armor.blaze;
+package me.adarsh.godspunkycore.features.item.armor.goblin;
 
 import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialStatistics;
 import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterBoots;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterChestplate;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterHelmet;
-import me.adarsh.godspunkycore.features.item.armor.speedster.SpeedsterLeggings;
+import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletBoots;
+import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletChestplate;
+import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletHelmet;
+import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletLeggings;
+import me.adarsh.godspunkycore.user.User;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
-public class BlazeSet implements ArmorSet {
+public class GoblinSet implements ArmorSet {
     @Override
     public String getName() {
-        return "Blazing Aura";
+        return "Smart Miner";
     }
 
     @Override
     public String getDescription() {
-        return "Damages mobs in a 5 block range for 3% of their max ❤ Health per second. Also grants permanent Fire and Lava immunity.";
+        return "Converts your Intelligence into Mining Speed. +1 Mining Speed for every 15 Intelligence removed.";
     }
 
     @Override
     public Class<? extends MaterialStatistics> getHelmet() {
-        return BlazeHelmet.class;
+        return LeafletHelmet.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getChestplate() {
-        return BlazeChestplate.class;
+        return LeafletChestplate.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getLeggings() {
-        return BlazeLeggings.class;
+        return LeafletLeggings.class;
     }
 
     @Override
     public Class<? extends MaterialStatistics> getBoots() {
-        return BlazeBoots.class;
+        return LeafletBoots.class;
     }
 
     @Override
@@ -51,16 +54,22 @@ public class BlazeSet implements ArmorSet {
             }
 
             @Override
+            public double getBaseIntelligence(){return -15;}
+
+            @Override
             public Rarity getRarity() {
+                return Rarity.UNCOMMON;
+            }
+
+            @Override
+            public String getLore() {
                 return null;
             }
 
             @Override
             public GenericItemType getType() {
-                return null;
+                return GenericItemType.ARMOR;
             }
         };
     }
 }
-
-

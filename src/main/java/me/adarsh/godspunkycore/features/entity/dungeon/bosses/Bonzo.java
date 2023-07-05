@@ -1,10 +1,8 @@
-package me.adarsh.godspunkycore.features.entity.dungeon;
+package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
-import me.adarsh.godspunkycore.util.SUtil;
-import org.bukkit.entity.LivingEntity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,16 +11,6 @@ public class Bonzo implements ZombieStatistics ,EntityStatistics, EntityFunction
     @Override
     public String getEntityName() {
         return "✪ Bonzo ✪";
-    }
-
-    @Override
-    public boolean isBaby() {
-        return false;
-    }
-
-    @Override
-    public boolean isVillager() {
-        return false;
     }
 
     @Override
@@ -37,8 +25,8 @@ public class Bonzo implements ZombieStatistics ,EntityStatistics, EntityFunction
 
     @Override
     public List<EntityDrop> drops() {
-        return Arrays.asList(new EntityDrop(SMaterial.BONZO_STAFF, EntityDropType.EXTRAORDINARILY_RARE, 0.01),
-        new EntityDrop(SMaterial.BONZO_MASK, EntityDropType.EXTRAORDINARILY_RARE, 0.02));
+        return Arrays.asList(new EntityDrop(SMaterial.BONZO_STAFF, EntityDropType.EXTRAORDINARILY_RARE, 0.02),
+        new EntityDrop(SMaterial.BONZO_MASK, EntityDropType.EXTRAORDINARILY_RARE, 0.01));
     }
 
     @Override
@@ -53,6 +41,10 @@ public class Bonzo implements ZombieStatistics ,EntityStatistics, EntityFunction
     @Override
     public double getXPDropped() {
         return 75.0;
+    }
+    @Override
+    public double getMovementSpeed() {
+        return 0.4;
     }
 
 }

@@ -1,4 +1,4 @@
-package me.adarsh.godspunkycore.features.entity.dungeon;
+package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
@@ -42,6 +42,10 @@ public class Scarf implements ZombieStatistics, EntityStatistics, EntityFunction
     @Override
     public double getXPDropped() {
         return 125.0;
+    }
+    @Override
+    public double getMovementSpeed() {
+        return 0.4;
     }
 }
 

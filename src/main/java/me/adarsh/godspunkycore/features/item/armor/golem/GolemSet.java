@@ -6,6 +6,8 @@ import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class GolemSet implements ArmorSet {
     @Override
@@ -40,6 +42,7 @@ public class GolemSet implements ArmorSet {
 
     @Override
     public PlayerBoostStatistics whileHasFullSet(Player player) {
+        player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION,20,3));
         return new PlayerBoostStatistics() {
             @Override
             public String getDisplayName() {
