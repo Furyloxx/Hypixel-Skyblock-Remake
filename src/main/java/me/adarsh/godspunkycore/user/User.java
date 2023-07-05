@@ -791,6 +791,8 @@ public class User {
         SUtil.broadcastExcept(ChatColor.RED + " ☠ " + ChatColor.GRAY + String.format(out, player.getName()), player);
         if ((isOnIsland() && cause == EntityDamageEvent.DamageCause.VOID) || permanentCoins)
             return;
+        if (player.getWorld().getName().startsWith("Dungeon_"))
+            return;
         int piggyIndex = PlayerUtils.getSpecItemIndex(player, SMaterial.PIGGY_BANK);
         if (piggyIndex != -1 && coins >= 20000) {
             SItem cracked = SItem.of(SMaterial.CRACKED_PIGGY_BANK);
@@ -920,7 +922,12 @@ public class User {
             World world = Bukkit.getWorld("islands");
             player.teleport(world.getHighestBlockAt(SUtil.blackMagic(islandX),
                     SUtil.blackMagic(islandZ)).getLocation().add(0.5, 1.0, 0.5));
-        } else {
+         }
+         if (player.getWorld().getName().startsWith("Dungeon_")){
+             player.teleport(new Location(Bukkit.getWorld("Dungeon_" + player.getUniqueId()) , 2 , 100 , -1));
+         }
+
+         else {
             if (lastRegion != null) {
                 switch (lastRegion.getType()) {
                     case BANK:

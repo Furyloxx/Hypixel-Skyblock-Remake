@@ -146,8 +146,6 @@ public final class Skyblock extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
         getServer().getPluginManager().registerEvents(new BazaarGui(), this);
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
-        DungeonGenerator generator = new DungeonGenerator();
-        generator.deleteAllDungeons();
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
