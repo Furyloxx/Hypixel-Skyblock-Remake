@@ -876,12 +876,7 @@ public class User {
         double z = player.getLocation().getZ();
         double islandX = user.getIslandX();
         double islandZ = user.getIslandZ();
-        Location loc1 = new Location(world, 1, 1, 1);
-        loc1.add(1, 1, 1);
-        Location loc2 = new Location(world, 3, 3, 3);
-        loc2.subtract(1, 1, 1);
-        Cuboid cuboid = new Cuboid(loc1, loc2);
-        return cuboid.contains(player.getLocation());
+        return true;
     }
 
     public boolean isOnIsland(Block block) {
