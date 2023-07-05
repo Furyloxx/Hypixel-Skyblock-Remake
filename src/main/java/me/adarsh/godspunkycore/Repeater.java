@@ -59,9 +59,12 @@ public class Repeater {
 
                     // Hand Validation and Hand Statistics
                     SItem hand = SItem.find(inventory.getItemInHand());
-
-                    //        player.setItemInHand(hand.getStack());
-
+                    if (hand == null)
+                    {
+                        hand = SItem.of(inventory.getItemInHand());
+                        if (hand != null)
+                            player.setItemInHand(hand.getStack());
+                    }
                     PlayerUtils.updateHandStatistics(hand, statistics);
                     PlayerUtils.updatePetStatistics(statistics);
                     User user = User.getUser(player.getUniqueId());
@@ -69,7 +72,8 @@ public class Repeater {
                         effect.setRemaining(effect.getRemaining() - 10);
                     PlayerUtils.updatePotionEffects(user, statistics);
 
-                    if (hand != null) {
+                    if (hand != null)
+                    {
                         if (hand.getType().getGenericInstance() instanceof Ownable)
                             hand.getData().setString("owner", player.getUniqueId().toString());
                         hand.update();

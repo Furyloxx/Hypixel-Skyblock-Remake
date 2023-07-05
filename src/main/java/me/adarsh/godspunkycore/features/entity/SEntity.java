@@ -89,10 +89,17 @@ public class SEntity // 3, 4, 5
             else
                 ((org.bukkit.entity.Ageable) this.entity).setAdult();
         }
+
+        // add mob skin here
         if (statistics instanceof ZombieStatistics && this.entity instanceof Zombie){
             if (statistics.getEntityName().equals("✪ Bonzo ✪")){
-                MobApi.createEntity(entity , location , "✪ Bonzo ✪" , "ewogICJ0aW1lc3RhbXAiIDogMTY4ODMwNTAyMjUzMywKICAicHJvZmlsZUlkIiA6ICJkNTA1NTc0ODYwNjg0N2YyOWQ4MTg1ZGRkNzhkZWNmYyIsCiAgInByb2ZpbGVOYW1lIiA6ICJfX0RVTUJPX19fIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzUyNDliZmNlMDM1ZTI4NzdiY2IxOGU3ZjIxZjNjNjgzOTM4NDdhNDgwZDYwZjkyZWQ2MDEzMGEyZWY2ZjNmYzAiCiAgICB9CiAgfQp9" , "q9kbi3EVVmbdlVTBsefkVN0y0XGcSuqi4MGRaew11waopAbaett7cZrZRky23ksqqKzNWRsOIx7cDvbcpV04NLaZj/H4HcYgsXGKigFX/72k/M6t9sGxZht7CMLfi9aRYvrZSI9ngTb+SID3ZyrZUaqFnROZKU6qUNaWJrR1qCqv6+5m43WHMS/7ehnDJyWgalGCdJGnT7x6JJaM5jMAERQe3z37mbk5tUxIS3VSoYxovaekQhX9J535M4kkunY15xG6rPrODFiZH+WOolccg5XNiMt5ghA5DxGXnyz2qz8kg3mHVxJ+ETcczOKLDhAVDM9stBHRzpABeC47YcLaK1ZRKaAnkbAbiPx2UCHfUQtz7q0S47Dt+lTkKF51Y6QCnt5wOuYurONE05bEWHqcTgW+cBtTYlXWaQFTc3HCrGl2HWbEtqH1cUGX/bprV72ggICNo/oDhkJIiM9regyByuqLqHI/pGPvHxHSOG8hNQykiyuYuazbrSt+kbZpn2bipHL70NcDqS2Iq944dyDn9MkTp3M8NaqmIYfDs8h6gZ1phCNFemHWtd3qOJvKfhOeAJyEyNIta7g4yvsw/QsqU59GB6MDAClvi9QY3azPUYat71c8zGAAywclRu0zR2P06lcDln0AFGkO06GCG4e8Ivm9S1RhEOTJV6rYp/ITzNI=");
-                System.out.println("spawned bonzo");
+                MobApi.createEntity(entity , location , "✪ Bonzo ✪"  , "ewogICJ0aW1lc3RhbXAiIDogMTY4ODMwNTAyMjUzMywKICAicHJvZmlsZUlkIiA6ICJkNTA1NTc0ODYwNjg0N2YyOWQ4MTg1ZGRkNzhkZWNmYyIsCiAgInByb2ZpbGVOYW1lIiA6ICJfX0RVTUJPX19fIiwKICAic2lnbmF0dXJlUmVxdWlyZWQiIDogdHJ1ZSwKICAidGV4dHVyZXMiIDogewogICAgIlNLSU4iIDogewogICAgICAidXJsIiA6ICJodHRwOi8vdGV4dHVyZXMubWluZWNyYWZ0Lm5ldC90ZXh0dXJlLzUyNDliZmNlMDM1ZTI4NzdiY2IxOGU3ZjIxZjNjNjgzOTM4NDdhNDgwZDYwZjkyZWQ2MDEzMGEyZWY2ZjNmYzAiCiAgICB9CiAgfQp9" , "q9kbi3EVVmbdlVTBsefkVN0y0XGcSuqi4MGRaew11waopAbaett7cZrZRky23ksqqKzNWRsOIx7cDvbcpV04NLaZj/H4HcYgsXGKigFX/72k/M6t9sGxZht7CMLfi9aRYvrZSI9ngTb+SID3ZyrZUaqFnROZKU6qUNaWJrR1qCqv6+5m43WHMS/7ehnDJyWgalGCdJGnT7x6JJaM5jMAERQe3z37mbk5tUxIS3VSoYxovaekQhX9J535M4kkunY15xG6rPrODFiZH+WOolccg5XNiMt5ghA5DxGXnyz2qz8kg3mHVxJ+ETcczOKLDhAVDM9stBHRzpABeC47YcLaK1ZRKaAnkbAbiPx2UCHfUQtz7q0S47Dt+lTkKF51Y6QCnt5wOuYurONE05bEWHqcTgW+cBtTYlXWaQFTc3HCrGl2HWbEtqH1cUGX/bprV72ggICNo/oDhkJIiM9regyByuqLqHI/pGPvHxHSOG8hNQykiyuYuazbrSt+kbZpn2bipHL70NcDqS2Iq944dyDn9MkTp3M8NaqmIYfDs8h6gZ1phCNFemHWtd3qOJvKfhOeAJyEyNIta7g4yvsw/QsqU59GB6MDAClvi9QY3azPUYat71c8zGAAywclRu0zR2P06lcDln0AFGkO06GCG4e8Ivm9S1RhEOTJV6rYp/ITzNI=");
+
+
+                if (statistics.getEntityName().equals("livid")){
+                    MobApi.createEntity(entity , location , statistics.getEntityName() ,"texture" , "sign" );
+                }
+
             }
         }
 
