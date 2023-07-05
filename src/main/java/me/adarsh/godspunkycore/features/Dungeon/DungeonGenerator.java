@@ -13,14 +13,13 @@ import java.util.UUID;
 
 public class DungeonGenerator {
 
-
     public void CreateDungeon(Player player){
         long start = System.currentTimeMillis();
         World world = new BlankWorldCreator("Dungeon_" + player.getUniqueId()).createWorld(); // todo use team id instead of player
         File file = new File("plugins/GodSpunkySkyblockCore/f1.schematic");
         SUtil.pasteSchematic(file, new Location(world, 0, 100.0, 0 ), true);
-        player.teleport(new Location(world , 0 , 200 , 0));
-        System.out.println(SUtil.getRandomVisibleColor() + "Successfully Generated ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        player.teleport(new Location(world , 2 , 100 , -1));
+        player.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Generated Dungeon in ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
     public void deleteDungeon(Player player){
         World world = Bukkit.getWorld("Dungeon_" + player.getUniqueId());

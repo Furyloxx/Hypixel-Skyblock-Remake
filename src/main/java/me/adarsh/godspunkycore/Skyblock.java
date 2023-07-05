@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore;
 
 import lombok.SneakyThrows;
+import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
 import me.adarsh.godspunkycore.features.bazaar.BazaarGui;
 import me.adarsh.godspunkycore.features.bazaar.CategoryManger;
 import me.adarsh.godspunkycore.features.partyandfriends.command.ChatCommand;
@@ -160,6 +161,8 @@ public final class Skyblock extends JavaPlugin {
                 entity.remove();
             }
         }
+        DungeonGenerator generator = new DungeonGenerator();
+        generator.deleteAllDungeons();
         for(Player p : Bukkit.getOnlinePlayers()) {
             if (p.getOpenInventory() != null && (p.getOpenInventory().getTitle().equals(WardrobeGUI.Page1Name) || p.getOpenInventory().getTitle().equals(WardrobeGUI.Page2Name) || p.getOpenInventory().getTitle().contains("'s Wardrobe (1/2)") || p.getOpenInventory().getTitle().contains("'s Wardrobe (2/2)"))) {
                 if (p.getItemOnCursor() != null) {
