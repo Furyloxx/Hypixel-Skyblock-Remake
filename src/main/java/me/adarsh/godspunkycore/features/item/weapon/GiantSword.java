@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.entity.Player;
 
 public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
 
@@ -37,6 +38,11 @@ public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
     @Override
     public Rarity getRarity() {
         return Rarity.LEGENDARY;
+    }
+
+    @Override
+    public void onAbilityUse(Player player, SItem sItem) {
+
     }
 
     @Override
