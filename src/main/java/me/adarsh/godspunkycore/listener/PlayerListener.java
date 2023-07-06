@@ -30,8 +30,9 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.*;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -472,6 +473,18 @@ public class PlayerListener extends PListener {
                     player.sendMessage(ChatColor.GREEN + "" + "[GodSpunky] : " + "Visiting " + name + " island");
                 }
             }
+        }
+    }
+    @EventHandler
+    public void onInvFull(InventoryCloseEvent event) {
+        Player player = (Player) event.getPlayer();
+        Inventory inventory = player.getInventory();
+
+        if (inventory.firstEmpty() == -1) {
+
+            player.sendMessage(ChatColor.RED+"Your Inventory is full!");
+            SUtil.sendTitle(player,ChatColor.RED+"Inventory full!");
+            player.playSound(player.getLocation(),Sound.LEVEL_UP,1.0f,1.0f);
         }
     }
 }

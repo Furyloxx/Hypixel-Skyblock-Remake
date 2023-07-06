@@ -17,6 +17,7 @@ public class PlayerProfileListener implements Listener {
             GUIType.OTHERPLAYER_PROFILE.getGUI().open(player);
 
             String name = rightClickedPlayer.getName().toString();
+            // TODO : Update Gui with Listener
         }
     }
 }
