@@ -1,12 +1,16 @@
 package me.adarsh.godspunkycore.listener;
 
 import me.adarsh.godspunkycore.gui.GUIType;
+import me.adarsh.godspunkycore.user.PlayerStatistics;
+import me.adarsh.godspunkycore.user.User;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 public class PlayerProfileListener implements Listener {
+    public String name;
+
     @EventHandler
     public void RightClick(PlayerInteractEntityEvent event) {
         Player player = event.getPlayer();
@@ -14,10 +18,14 @@ public class PlayerProfileListener implements Listener {
         if (event.getRightClicked() instanceof Player) {
             Player rightClickedPlayer = (Player) event.getRightClicked();
 
-            GUIType.OTHERPLAYER_PROFILE.getGUI().open(player);
+            User user = User.getUser(rightClickedPlayer.getUniqueId());
 
-            String name = rightClickedPlayer.getName().toString();
-            // TODO : Update Gui with Listener
+            GUIType.OTHERPLAYER_PROFILE.getGUI().open(player);
+            GUIType.OTHERPLAYER_PROFILE.getGUI().setTitle(name);
+
+            name = rightClickedPlayer.getDisplayName();
+
+            // TODO: Update Gui with Listener
         }
     }
 }

@@ -12,8 +12,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class OtherPlayerProfile extends GUI {
+    PlayerProfileListener listener = new PlayerProfileListener();
+    String playerName = listener.name;
     public OtherPlayerProfile() {
-        super( "'s Profile", 54);
+        super("'s Profile", 54);
     }
     @Override
     public void onOpen(GUIOpenEvent e) {
@@ -182,7 +184,7 @@ public class OtherPlayerProfile extends GUI {
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getSkullStack(ChatColor.GREEN + "/NAME/", player.getName(), 1,
+                return SUtil.getSkullStack(ChatColor.GREEN + playerName, playerName, 1,
                         ChatColor.RED + "❤ Health ",
                         ChatColor.GREEN + "❈ Defense",
                         ChatColor.RED + "❂ Strength",
