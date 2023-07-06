@@ -2,8 +2,6 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
-import me.adarsh.godspunkycore.user.User;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;

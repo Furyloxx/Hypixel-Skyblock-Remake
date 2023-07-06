@@ -2,7 +2,6 @@ package me.adarsh.godspunkycore.features.partyandfriends.party;
 
 import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
 
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;

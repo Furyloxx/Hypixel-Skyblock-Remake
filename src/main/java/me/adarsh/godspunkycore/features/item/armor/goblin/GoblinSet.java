@@ -9,10 +9,7 @@ import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletBoots;
 import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletChestplate;
 import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletHelmet;
 import me.adarsh.godspunkycore.features.item.armor.leaflet.LeafletLeggings;
-import me.adarsh.godspunkycore.user.User;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 public class GoblinSet implements ArmorSet {
     @Override

@@ -1,6 +1,9 @@
 package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
-import me.adarsh.godspunkycore.features.entity.*;
+import me.adarsh.godspunkycore.features.entity.EntityFunction;
+import me.adarsh.godspunkycore.features.entity.EntityStatistics;
+import me.adarsh.godspunkycore.features.entity.SEntityEquipment;
+import me.adarsh.godspunkycore.features.entity.ZombieStatistics;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
 

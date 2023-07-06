@@ -2,7 +2,6 @@ package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
 import me.adarsh.godspunkycore.features.entity.EntityFunction;
 import me.adarsh.godspunkycore.features.entity.EntityStatistics;
-import me.adarsh.godspunkycore.features.entity.ZombieStatistics;
 
 public class Maxor implements EntityStatistics, EntityFunction {
     @Override

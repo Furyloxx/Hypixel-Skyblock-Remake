@@ -1,13 +1,9 @@
 package me.adarsh.godspunkycore.features.partyandfriends.party;
 
 import me.adarsh.godspunkycore.Skyblock;
-import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;

@@ -1,16 +1,12 @@
 package me.adarsh.godspunkycore.util;
 
-import net.minecraft.server.v1_8_R3.Packet;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Bukkit;
-import net.minecraft.server.v1_8_R3.PacketPlayOutEntityTeleport;
-import net.minecraft.server.v1_8_R3.EntityLiving;
-import java.util.ArrayList;
-import net.minecraft.server.v1_8_R3.PacketPlayOutSpawnEntityLiving;
-import net.minecraft.server.v1_8_R3.PacketPlayOutEntityDestroy;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
+
+import java.util.ArrayList;
 import java.util.List;
-import net.minecraft.server.v1_8_R3.Entity;
 
 public class PacketEntityManager
 {

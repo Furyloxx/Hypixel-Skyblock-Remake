@@ -2,8 +2,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.features.item.weapon.Abilites.jerry.JerryChineGunProjectile;
-import me.adarsh.godspunkycore.user.User;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Player;
 
 public class JerryChineGun implements ToolStatistics, MaterialFunction, Ability {
 

@@ -2,6 +2,9 @@ package me.adarsh.godspunkycore.features.wardrobe.Listener;
 
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.ItemListener;
+import me.adarsh.godspunkycore.features.wardrobe.GUI.CheckPlayerGUI;
+import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
+import me.adarsh.godspunkycore.features.wardrobe.Work.GUIWork;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -14,10 +17,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
-
-import me.adarsh.godspunkycore.features.wardrobe.GUI.CheckPlayerGUI;
-import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
-import me.adarsh.godspunkycore.features.wardrobe.Work.GUIWork;
 
 public class WardrobeListener implements Listener{
 

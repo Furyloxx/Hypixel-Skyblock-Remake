@@ -15,7 +15,6 @@ import me.adarsh.godspunkycore.features.item.pet.Pet;
 import me.adarsh.godspunkycore.features.item.pet.PetAbility;
 import me.adarsh.godspunkycore.features.launchpads.LaunchPadHandler;
 import me.adarsh.godspunkycore.features.potion.PotionEffect;
-import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.skill.Skill;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
@@ -23,7 +22,6 @@ import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.*;
-import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -32,11 +30,11 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
-import org.bukkit.event.inventory.*;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
@@ -46,7 +44,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-import static org.bukkit.Material.*;
+import static org.bukkit.Material.SLIME_BLOCK;
 
 public class PlayerListener extends PListener {
     private static final Map<UUID, BowShooting> BOW_MAP = new HashMap<>();

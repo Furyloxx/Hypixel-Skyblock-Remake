@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.listener;
 
 import me.adarsh.godspunkycore.gui.GUIType;
-import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.User;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

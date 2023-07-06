@@ -1,13 +1,12 @@
 package me.adarsh.godspunkycore.features.wardrobe.Listener;
 
 import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.features.wardrobe.GUI.CheckPlayerGUI;
+import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
-
-import me.adarsh.godspunkycore.features.wardrobe.GUI.CheckPlayerGUI;
-import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
 
 public class CheckPlayerGUIListener implements Listener {
 

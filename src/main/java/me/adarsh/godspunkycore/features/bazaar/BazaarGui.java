@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.features.bazaar;
 
 import me.adarsh.godspunkycore.enums.Category;
-import me.adarsh.godspunkycore.features.item.SMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

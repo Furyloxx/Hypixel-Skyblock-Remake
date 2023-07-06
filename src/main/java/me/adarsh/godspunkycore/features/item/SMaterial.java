@@ -113,7 +113,7 @@ import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieBoots;
 import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieChestplate;
 import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieLeggings;
 import me.adarsh.godspunkycore.features.item.axe.vanilla.*;
-import me.adarsh.godspunkycore.features.item.bow.*;
+import me.adarsh.godspunkycore.features.item.bow.Bow;
 import me.adarsh.godspunkycore.features.item.bow.bows.EndStoneBow;
 import me.adarsh.godspunkycore.features.item.bow.bows.HurricaneBow;
 import me.adarsh.godspunkycore.features.item.bow.bows.MosquitoBow;

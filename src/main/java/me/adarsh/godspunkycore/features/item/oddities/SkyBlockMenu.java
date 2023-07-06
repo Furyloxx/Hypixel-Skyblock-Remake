@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.features.item.oddities;
 
-import me.adarsh.godspunkycore.gui.GUIType;
 import me.adarsh.godspunkycore.features.item.*;
+import me.adarsh.godspunkycore.gui.GUIType;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;

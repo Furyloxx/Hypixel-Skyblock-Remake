@@ -1,10 +1,8 @@
 package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
-import me.adarsh.godspunkycore.features.entity.*;
-import me.adarsh.godspunkycore.features.item.SMaterial;
-
-import java.util.Arrays;
-import java.util.List;
+import me.adarsh.godspunkycore.features.entity.EntityFunction;
+import me.adarsh.godspunkycore.features.entity.EntityStatistics;
+import me.adarsh.godspunkycore.features.entity.ZombieStatistics;
 
 public class Sadan implements ZombieStatistics, EntityStatistics, EntityFunction {
     @Override

@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.features.item.armor.rosetta;
 
 import me.adarsh.godspunkycore.features.item.*;
-import me.adarsh.godspunkycore.features.item.armor.LeatherArmorStatistics;
 
 public class RosettaLeggings implements ToolStatistics, MaterialFunction {
     @Override

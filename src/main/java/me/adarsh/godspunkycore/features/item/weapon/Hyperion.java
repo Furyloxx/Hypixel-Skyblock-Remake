@@ -5,7 +5,6 @@ import me.adarsh.godspunkycore.features.item.*;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
 import org.bukkit.entity.Player;
@@ -93,7 +92,8 @@ public class Hyperion implements ToolStatistics, MaterialFunction , Ability{
         EntityHuman human = ((CraftHumanEntity) p).getHandle();
         human.setAbsorptionHearts(10);
 
-        // todo : loop mobs and damage them and send message
+
+        AbilityDamage.DamageNearByEntity(p , 5 , teleportLocation);
         new BukkitRunnable() {
             @Override
             public void run() {

@@ -4,25 +4,16 @@
 
 package me.adarsh.godspunkycore.features.item.weapon.Abilites.FrozenScythe;
 
-import java.util.Iterator;
-
 import me.adarsh.godspunkycore.Skyblock;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.Effect;
-import org.bukkit.Material;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Villager;
-import org.bukkit.entity.ItemFrame;
-import org.bukkit.entity.ExperienceOrb;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Entity;
 import org.bukkit.Bukkit;
-import java.util.HashMap;
-import org.bukkit.util.Vector;
+import org.bukkit.Effect;
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.ArmorStand;
+import org.bukkit.Material;
+import org.bukkit.entity.*;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
+
+import java.util.HashMap;
 
 public class FrozenScytheRun implements Runnable
 {

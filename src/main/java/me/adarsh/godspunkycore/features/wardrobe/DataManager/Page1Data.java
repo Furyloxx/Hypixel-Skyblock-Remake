@@ -1,14 +1,14 @@
 package me.adarsh.godspunkycore.features.wardrobe.DataManager;
 
+import me.adarsh.godspunkycore.Skyblock;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
-
-import me.adarsh.godspunkycore.Skyblock;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 
 public class Page1Data {
 	private Skyblock plugin;

@@ -1,9 +1,6 @@
 package me.adarsh.godspunkycore.command;
 
-import me.adarsh.godspunkycore.enums.Category;
 import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
-import me.adarsh.godspunkycore.features.bazaar.BazaarGui;
-import me.adarsh.godspunkycore.features.bazaar.BazaarSubGui;
 import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;

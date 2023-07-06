@@ -9,8 +9,6 @@ import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.region.RegionType;
 import me.adarsh.godspunkycore.user.User;
 import org.bukkit.entity.Player;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 public class FarmSet implements ArmorSet {
     @Override

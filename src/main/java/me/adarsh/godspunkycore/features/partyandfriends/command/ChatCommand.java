@@ -5,10 +5,8 @@ import me.adarsh.godspunkycore.command.CommandParameters;
 import me.adarsh.godspunkycore.command.CommandSource;
 import me.adarsh.godspunkycore.command.SCommand;
 import me.adarsh.godspunkycore.features.partyandfriends.party.PartyInstance;
-import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 
 //hmm
 

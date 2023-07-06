@@ -5,9 +5,6 @@ import me.adarsh.godspunkycore.features.item.MaterialStatistics;
 import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
-import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieBoots;
-import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieChestplate;
-import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieLeggings;
 import org.bukkit.entity.Player;
 
 public class MastiffSet implements ArmorSet {

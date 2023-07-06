@@ -4,7 +4,6 @@ import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.server.ServerListPingEvent;
-import org.bukkit.util.CachedServerIcon;
 
 public class ServerPingListener extends PListener {
     @EventHandler

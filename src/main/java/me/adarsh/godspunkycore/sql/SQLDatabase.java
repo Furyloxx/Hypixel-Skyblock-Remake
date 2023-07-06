@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.sql;
 
 import me.adarsh.godspunkycore.Skyblock;
-import org.bukkit.ChatColor;
 
 import java.io.File;
 import java.io.IOException;

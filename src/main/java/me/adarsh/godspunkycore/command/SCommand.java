@@ -1,8 +1,8 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.Skyblock;
-import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
+import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
