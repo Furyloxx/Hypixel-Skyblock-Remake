@@ -6,6 +6,8 @@ import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -66,7 +68,7 @@ public final class PartyInstance {
                 for (GodspunkyPlayer member : partyMembers) {
                     member.sendMessages(
                             "&9&m-----------------------------",
-                            "&eThe party invite to " + toInvite.getPlayer().getDisplayName() + " has expired",
+                            "&eThe party invite to " +toInvite.getPlayer().getDisplayName() + " has expired",
                             "&9&m-----------------------------"
                     );
                 }
@@ -75,14 +77,12 @@ public final class PartyInstance {
 
         String inviterName = inviter.getPlayer().getDisplayName();
 
+
         String inviteMessage = "&9&m-----------------------------\n" +
-                inviterName + " &e has invited you to join their party!\n" +
+                ChatColor.GRAY+inviter.getPlayer().getName()+ " &e has invited you to join their party!\n" +
                 "&aClick to accept: &7/party accept " + inviter.getPlayer().getName() + "\n" +
                 "&cClick to deny: &7/party deny " + inviter.getPlayer().getName() + "\n" +
                 "&9&m-----------------------------";
-
-        toInvite.sendMessage(inviteMessage);
-
 
         toInvite.sendMessage(inviteMessage);
     }
