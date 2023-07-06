@@ -34,10 +34,7 @@ import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.features.item.pet.Pet;
 import me.adarsh.godspunkycore.features.launchpads.LaunchPadHandler;
-import me.adarsh.godspunkycore.listener.BlockListener;
-import me.adarsh.godspunkycore.listener.PlayerListener;
-import me.adarsh.godspunkycore.listener.ServerPingListener;
-import me.adarsh.godspunkycore.listener.WorldListener;
+import me.adarsh.godspunkycore.listener.*;
 import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.region.RegionType;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
@@ -146,6 +143,7 @@ public final class Skyblock extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
         getServer().getPluginManager().registerEvents(new BazaarGui(), this);
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerProfileListener(), this);
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");

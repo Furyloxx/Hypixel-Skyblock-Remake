@@ -36,6 +36,8 @@ public final class ChatListener implements Listener {
                     return;
                 }
 
+                // TODO : FIX RANK
+
                 PlayerRank rank = sbPlayer.rank;
                 String message = "&9Party &8> " + sbPlayer.getPlayer().getDisplayName() + "&f: " + event.getMessage();
                 partyInstance.sendMessages(message);

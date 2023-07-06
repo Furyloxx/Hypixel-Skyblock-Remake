@@ -101,7 +101,7 @@ public class ProfileManagementGUI extends GUI {
 
 
         GodspunkyPlayer data = GodspunkyPlayer.getUser(e.getPlayer());
-        if (data.rank == PlayerRank.VIP ){
+        if (data.rank.isAboveOrEqual(PlayerRank.VIP)){
             set(new GUIClickableItem() {
                 @Override
                 public void run(InventoryClickEvent e) {
@@ -156,7 +156,7 @@ public class ProfileManagementGUI extends GUI {
         }
 
 
-        if (data.rank == PlayerRank.MVPPLUS ){
+        if (data.rank.isAboveOrEqual(PlayerRank.MVPPLUS )){
             set(new GUIClickableItem() {
                 @Override
                 public void run(InventoryClickEvent e) {
@@ -188,7 +188,7 @@ public class ProfileManagementGUI extends GUI {
                             ChatColor.YELLOW + "Click to create solo profile!");
                 }
             });
-        }else{
+        }else {
             set(new GUIClickableItem() {
                 @Override
                 public void run(InventoryClickEvent e) {
@@ -200,14 +200,15 @@ public class ProfileManagementGUI extends GUI {
                 }
 
                 @Override
-                public ItemStack getItem(){
+                public ItemStack getItem() {
                     return SUtil.getStack(ChatColor.RED + "Locked profile slot", Material.BEDROCK, (short) 0, 1,
                             ChatColor.DARK_GRAY + "Unavailable",
                             " ",
-                            ChatColor.GRAY + "Requires "+ChatColor.AQUA+"[MVP"+ChatColor.RED+"+"+ChatColor.AQUA+"]",
+                            ChatColor.GRAY + "Requires " + ChatColor.AQUA + "[MVP" + ChatColor.RED + "+" + ChatColor.AQUA + "]",
                             ChatColor.GOLD + "https://godspunky.store");
                 }
             });
+        }
 
 
             set(new GUIClickableItem() {
@@ -232,4 +233,3 @@ public class ProfileManagementGUI extends GUI {
             });
         }
     }
-}

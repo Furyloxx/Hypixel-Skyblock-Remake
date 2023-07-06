@@ -131,6 +131,12 @@ public final class PartyCommand extends SCommand {
                         PartyManager partyManager = Skyblock.getPartyManager();
                         partyManager.createParty(sbPlayer);
 
+                        sbPlayer.sendMessages(
+                                "&9&m----------------------------------------------------",
+                                "&eYou have invited "+getPlayerRank(invitedPlayer).getFormattedRank()+invitedPlayer.getDisplayName()+" to the party! They have 60 seconds to accept",
+                                "&9&m----------------------------------------------------"
+                        );
+
                         PartyInstance createParty = partyManager.getPartyFromPlayer(sbPlayer.getPlayer().getUniqueId());
                         createParty.dispatchInvite(sbPlayer, invite);
                         return;

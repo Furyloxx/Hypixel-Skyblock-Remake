@@ -121,14 +121,14 @@ public class FastTravelGUI extends GUI{
             }
         });
 
-        // The Barn TODO: coordinates
+        // The Barn
         if (user.hasCollection(ItemCollection.POTATO, 6)){
             set(new GUIClickableItem() {
                 @Override
                 public void run(InventoryClickEvent e) {
                     Player player1 = (Player) e.getWhoClicked();
                     World the_barn = Bukkit.getWorld(plugin.getConfig().getString("hub_world"));
-                    player1.teleport(new Location(the_barn, -3 , 70 , -68));
+                    player1.teleport(new Location(the_barn, 114 , 71 , -207));
                 }
 
                 @Override
@@ -184,7 +184,7 @@ public class FastTravelGUI extends GUI{
         }
 
 
-        // The Park TODO: coordinates
+        // The Park
 
         if (user.hasCollection(ItemCollection.BIRCH_WOOD, 7)){
             set(new GUIClickableItem() {
@@ -192,7 +192,7 @@ public class FastTravelGUI extends GUI{
                 public void run(InventoryClickEvent e) {
                     Player player1 = (Player) e.getWhoClicked();
                     World park = Bukkit.getWorld(plugin.getConfig().getString("hub_world"));
-                    player1.teleport(new Location(park, -3 , 70 , -68));
+                    player1.teleport(new Location(park, -276 , 82 , -12));
                 }
 
                 @Override
@@ -248,7 +248,7 @@ public class FastTravelGUI extends GUI{
             });
         }
 
-        // Gold Mine TODO: coordinates
+        // Gold Mine
 
         if (user.hasCollection(ItemCollection.COAL, 6)){
             set(new GUIClickableItem() {
@@ -256,7 +256,7 @@ public class FastTravelGUI extends GUI{
                 public void run(InventoryClickEvent e) {
                     Player player1 = (Player) e.getWhoClicked();
                     World gold_mine = Bukkit.getWorld(plugin.getConfig().getString("hub_world"));
-                    player1.teleport(new Location(gold_mine, -3 , 70 , -68));
+                    player1.teleport(new Location(gold_mine, -4 , 74 , -273));
                 }
 
                 @Override
@@ -312,7 +312,7 @@ public class FastTravelGUI extends GUI{
             });
         }
 
-        // Deep Caverns TODO: coordinates
+        // Deep Caverns
 
         if (user.hasCollection(ItemCollection.REDSTONE, 7)){
             set(new GUIClickableItem() {
@@ -320,7 +320,7 @@ public class FastTravelGUI extends GUI{
                 public void run(InventoryClickEvent e) {
                     Player player1 = (Player) e.getWhoClicked();
                     World deep_caverns = Bukkit.getWorld(plugin.getConfig().getString("hub_world"));
-                    player1.teleport(new Location(deep_caverns, -3 , 70 , -68));
+                    player1.teleport(new Location(deep_caverns, -2 , 178 , -458));
                 }
 
                 @Override
@@ -452,7 +452,7 @@ public class FastTravelGUI extends GUI{
                 public void run(InventoryClickEvent e) {
                     Player player1 = (Player) e.getWhoClicked();
                     World spider_mine = Bukkit.getWorld(plugin.getConfig().getString("hub_world"));
-                    player1.teleport(new Location(spider_mine, -3 , 70 , -68));
+                    player1.teleport(new Location(spider_mine, -201 , 84 , -232));
                 }
 
                 @Override
@@ -518,7 +518,7 @@ public class FastTravelGUI extends GUI{
                 public void run(InventoryClickEvent e) {
                     Player player1 = (Player) e.getWhoClicked();
                     World the_end = Bukkit.getWorld(plugin.getConfig().getString("hub_world"));
-                    player1.teleport(new Location(the_end, -3 , 70 , -68));
+                    player1.teleport(new Location(the_end, -499 , 101 , -275));
                 }
 
                 @Override
@@ -579,7 +579,7 @@ public class FastTravelGUI extends GUI{
                 public void run(InventoryClickEvent e) {
                     Player player1 = (Player) e.getWhoClicked();
                     World nether = Bukkit.getWorld(plugin.getConfig().getString("hub_world"));
-                    player1.teleport(new Location(nether, -3 , 70 , -68));
+                    player1.teleport(new Location(nether, -310 , 83 , -381));
                 }
 
                 @Override

@@ -194,6 +194,8 @@ public enum SMaterial {
     MIDAS_SWORD(Material.GOLD_SWORD, MidasSword.class),
     MIDAS_STAFF(Material.GOLD_SPADE, MidasStaff.class),
     YETI_SWORD(Material.IRON_SWORD, YetiSword.class),
+    GIANT_SWORD(Material.IRON_SWORD, GiantSword.class),
+    SPIRIT_SCEPTRE(Material.RED_ROSE, SpiritSceptre.class),
 
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),
