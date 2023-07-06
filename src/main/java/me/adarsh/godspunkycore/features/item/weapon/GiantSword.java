@@ -1,7 +1,20 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.Giant;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.Locale;
 
 public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
 
@@ -41,8 +54,36 @@ public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
     }
 
     @Override
-    public void onAbilityUse(Player player, SItem sItem) {
+    public void onAbilityUse(Player p, SItem sItem) {
+        Location loc = p.getLocation();
+        ItemStack sword = new ItemStack(Material.IRON_SWORD);
+        sword.addEnchantment(Enchantment.DAMAGE_ALL, 1);
+        loc.setY(loc.getY() - 2);
+        Giant giant = loc.getWorld().spawn(loc, Giant.class);
+        giant.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 2147483647, 999));
+        giant.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2147483647, 999));
+        giant.setCustomName("Dinnerbone");
+        giant.setCustomNameVisible(false);
+        giant.getEquipment().setItemInHand(sword);
+        ArmorStand holder = loc.getWorld().spawn(loc, ArmorStand.class);
+        holder.setGravity(true);
+        holder.setVisible(false);
+        holder.setCustomName(" ");
+        holder.setCustomNameVisible(false);
+        holder.setPassenger(giant);
+        AbilityDamage.DamageNearByEntity(p , 5);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                Location killloc = loc;
+                killloc.setY(0);
+                holder.teleport(loc);
+                giant.teleport(loc);
+                holder.remove();
+                giant.remove();
+            }
 
+        }.runTaskLater(Skyblock.getPlugin(), 80);
     }
 
     @Override

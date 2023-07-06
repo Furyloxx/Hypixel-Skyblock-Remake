@@ -86,7 +86,7 @@ public class SpiritSceptre implements ToolStatistics, MaterialFunction, Ability 
                     bat.getBukkitEntity().getLocation().getWorld().playEffect(bat.getBukkitEntity().getLocation(), Effect.EXPLOSION_HUGE, 2);
                     p.playSound(p.getLocation(), Sound.EXPLODE, 1.0f, 1.0f);
                 }
-                for (final org.bukkit.entity.Entity e : bat.getBukkitEntity().getNearbyEntities(1.0, 1.0, 1.0)) {
+                for (org.bukkit.entity.Entity e : bat.getBukkitEntity().getNearbyEntities(1.0, 1.0, 1.0)) {
                     if (!(e instanceof Player) && !(e instanceof EnderDragonPart) && !(e instanceof Villager) && !(e instanceof ArmorStand) && !(e instanceof ExperienceOrb)) {
                         if (!(e instanceof LivingEntity)) {
                             continue;
