@@ -1,7 +1,19 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
-public class Hyperion implements ToolStatistics, MaterialFunction {
+import net.minecraft.server.v1_8_R3.EntityHuman;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.block.Block;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.HashSet;
+
+public class Hyperion implements ToolStatistics, MaterialFunction , Ability{
 
     @Override
     public int getBaseDamage() {
@@ -41,5 +53,59 @@ public class Hyperion implements ToolStatistics, MaterialFunction {
     @Override
     public double getBaseIntelligence() {
         return 350;
+    }
+
+    @Override
+    public String getAbilityName() {
+        return "wither impact";
+    }
+
+    @Override
+    public String getAbilityDescription() {
+        return "legit will add this";
+    }
+
+    @Override
+    public int getAbilityCooldownTicks() {
+        return 0;
+    }
+
+    @Override
+    public void onAbilityUse(Player p, SItem sItem) {
+        Location loc = p.getLocation();
+        HashSet<Byte> hashSet = new HashSet<>();
+        hashSet.add((byte) 0);
+        Block block = p.getTargetBlock(hashSet, 8);
+        Location playerLocation = p.getLocation();
+        Location teleportLocation = new Location(block.getWorld(), block.getX(), block.getY(), block.getZ(), playerLocation.getYaw(), playerLocation.getPitch());
+        if (teleportLocation.getBlock().getType() != Material.AIR) {
+            teleportLocation.setY(teleportLocation.getY() + 1.0D);
+        }
+
+        if (new Location(teleportLocation.getWorld(), teleportLocation.getX(), teleportLocation.getY() + 1.0D, teleportLocation.getZ()).getBlock().getType() == Material.AIR && p.getLocation().add(p.getLocation().getDirection()).getBlock().getType() == Material.AIR) {
+            teleportLocation.setX(teleportLocation.getX() - 0.5D);
+            teleportLocation.setZ(teleportLocation.getZ() - 0.5D);
+        } else {
+            teleportLocation.setX(teleportLocation.getX() + 0.5D);
+            teleportLocation.setZ(teleportLocation.getZ() + 0.5D);
+        }
+        p.teleport(teleportLocation);
+        EntityHuman human = ((CraftHumanEntity) p).getHandle();
+        human.setAbsorptionHearts(10);
+
+        // todo : loop mobs and damage them and send message
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                human.setAbsorptionHearts(0);
+            }
+        }.runTaskLater(Skyblock.getPlugin(), 100);
+    }
+
+
+
+    @Override
+    public int getManaCost() {
+        return 100;
     }
 }
