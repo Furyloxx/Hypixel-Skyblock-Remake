@@ -86,8 +86,7 @@ public class MidasStaff implements ToolStatistics, MaterialFunction, Ability {
                     FallingBlock block3 = w.spawnFallingBlock(loc, Material.GOLD_BLOCK, (byte) 0);
                     ((CraftEntity) block3).getHandle().noclip = true;
                     loc.add(newvec.multiply(-0.5));
-
-                     // todo : loop mobs and damage them
+                      AbilityDamage.DamageNearByEntity(p , 1.5 , loc);
                 } else {
                     cancel();
                 }
