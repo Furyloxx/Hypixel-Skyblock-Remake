@@ -20,13 +20,14 @@ public class DungeonGenerator {
         long start = System.currentTimeMillis();
         World world = new BlankWorldCreator("Dungeon_" + player.getUniqueId()).createWorld(); // todo use team id instead of player
         File file = new File("plugins/GodSpunkySkyblockCore/floor1.schematic");
-        SEntityType type = SEntityType.BONZO;
+        SEntityType type = SEntityType.LOST_ADVENTURER;
         SEntity entity;
         SUtil.pasteSchematic(file, new Location(world, 0, 100.0, 0 ), true);
         player.teleport(new Location(world , 15 , 104 , -50));
         player.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Generated Dungeon in ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
-        Location loc = new Location(world, 15, 101 , -12);
+        Location loc = new Location(world, 15, 102 , -12);
         entity = new SEntity(loc, type);
+        player.sendMessage(ChatColor.GOLD+"Kill " + entity.getStatistics().getEntityName() + " To Spawn Bonzo");
     }
 
 

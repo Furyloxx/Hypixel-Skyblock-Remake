@@ -1,11 +1,16 @@
 package me.adarsh.godspunkycore.features.entity.dungeon.minibosses;
 
-import me.adarsh.godspunkycore.features.entity.EntityFunction;
-import me.adarsh.godspunkycore.features.entity.EntityStatistics;
-import me.adarsh.godspunkycore.features.entity.SEntityEquipment;
-import me.adarsh.godspunkycore.features.entity.ZombieStatistics;
+import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
+import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
+import me.adarsh.godspunkycore.user.User;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 
 public class LostAdventurer implements ZombieStatistics, EntityStatistics, EntityFunction {
     @Override
@@ -41,5 +46,14 @@ public class LostAdventurer implements ZombieStatistics, EntityStatistics, Entit
     @Override
     public double getMovementSpeed() {
         return 0.4;
+    }
+
+    @Override
+    public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
+        SEntityType type = SEntityType.BONZO;
+        World world = damager.getWorld();
+        Location loc = new Location(world, 15, 102 , -12);
+        sEntity = new SEntity(loc , type);
+        damager.sendMessage(ChatColor.GOLD+"Kill " + sEntity.getStatistics().getEntityName() + " To Win the Run");
     }
 }
