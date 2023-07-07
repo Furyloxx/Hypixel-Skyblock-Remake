@@ -13,9 +13,15 @@ import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.entity.Entity;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 public class MobApi {
+
+    public static HashMap<Entity, PlayerDisguise> getDiguested = new HashMap<>();
+    public static HashMap<Entity, String> entitys = new HashMap<>();
+
+
 
     public static void createEntity(Entity entity, Location loc, String name, String texture, String signature) {
         WrappedGameProfile wrappedGameProfile = new WrappedGameProfile(UUID.randomUUID() , name);
@@ -28,6 +34,9 @@ public class MobApi {
         mobDisguise.setEntity(entity);
         mobDisguise.setSkin(wrappedGameProfile);
         mobDisguise.startDisguise();
+        getDiguested.put(entity, mobDisguise);
+        mobDisguise.
+        entitys.put(entity, name);
     }
 }
 

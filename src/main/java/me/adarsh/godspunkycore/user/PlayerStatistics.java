@@ -122,12 +122,4 @@ public class PlayerStatistics {
                 new DoublePlayerStatistic(), new DoublePlayerStatistic(),
                 0.0, 0.0, null);
     }
-
-    public static PlayerStatistics setMaxHealth(UUID uuid , double maxHealth ) {
-        return new PlayerStatistics(uuid, new DoublePlayerStatistic(maxHealth), new DoublePlayerStatistic(maxHealth),
-                new DoublePlayerStatistic(maxHealth), new DoublePlayerStatistic(1.0),
-                new DoublePlayerStatistic(0.3), new DoublePlayerStatistic(0.5), new DoublePlayerStatistic(maxHealth),
-                new DoublePlayerStatistic(maxHealth), new DoublePlayerStatistic(maxHealth),
-                0.0, 0.0, null);
-    }
 }
