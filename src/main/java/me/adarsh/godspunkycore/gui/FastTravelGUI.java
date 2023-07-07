@@ -99,10 +99,14 @@ public class FastTravelGUI extends GUI{
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
+                Location loc = new Location(Bukkit.getWorld("DHub"), -45, 88, 13);
                 Player player1 = (Player) e.getWhoClicked();
-                player1.playSound(player1.getLocation(), Sound.ENDERMAN_TELEPORT, 1f, 0f);
-                player1.sendMessage(plugin.getPrefix() + "Comming Soon!");
+
+                if (player1 != null && loc.getWorld() != null) {
+                    player1.teleport(loc);
+                }
             }
+
 
             @Override
             public int getSlot() {
@@ -115,9 +119,7 @@ public class FastTravelGUI extends GUI{
                         ChatColor.DARK_GRAY + "/warp dungeon_hub",
                         " ",
                         ChatColor.GRAY + "Group with friends and take on",
-                        ChatColor.GRAY + "challenging Dungeons.",
-                        " ",
-                        ChatColor.RED + "Comming Soon!");
+                        ChatColor.GRAY + "challenging Dungeons.");
             }
         });
 
