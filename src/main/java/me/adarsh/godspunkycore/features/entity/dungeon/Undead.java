@@ -4,12 +4,10 @@ import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
 
-import java.util.List;
-
 public class Undead implements ZombieStatistics, EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
-        return "Crypt Undead";
+        return "Undead";
     }
 
     @Override
@@ -23,17 +21,8 @@ public class Undead implements ZombieStatistics, EntityStatistics, EntityFunctio
     }
 
     @Override
-    public SEntityEquipment getEntityEquipment() {
-        return new SEntityEquipment(SItem.of(SMaterial.BONE).getStack(),
-                null,
-                null,
-                null,
-                null);
-    }
-
-    @Override
     public double getEntityMaxHealth() {
-        return 45000;
+        return 50000;
     }
 
     @Override
@@ -45,4 +34,10 @@ public class Undead implements ZombieStatistics, EntityStatistics, EntityFunctio
     public double getXPDropped() {
         return 30.0;
     }
+
+    @Override
+    public double getMovementSpeed() {
+        return 0.1;
+    }
+
 }
