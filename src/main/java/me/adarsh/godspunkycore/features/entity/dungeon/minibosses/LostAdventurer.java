@@ -54,6 +54,6 @@ public class LostAdventurer implements ZombieStatistics, EntityStatistics, Entit
         World world = damager.getWorld();
         Location loc = new Location(world, 15, 102 , -12);
         sEntity = new SEntity(loc , type);
-        damager.sendMessage(ChatColor.GOLD+"Kill " + sEntity.getStatistics().getEntityName() + " To Win the Run");
+        damager.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fYou little brat!!"));
     }
 }

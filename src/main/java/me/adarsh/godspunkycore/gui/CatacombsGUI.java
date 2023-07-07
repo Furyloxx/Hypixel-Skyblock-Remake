@@ -7,6 +7,7 @@ import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
@@ -59,7 +60,13 @@ public class CatacombsGUI extends GUI {
         //2
         set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e) {generator.CreateDungeon(player1);}
+            public void run(InventoryClickEvent e) {
+                player1.closeInventory();
+                player1.sendMessage(ChatColor.YELLOW+"Sending you to Dungeon!");
+                player1.sendMessage(ChatColor.YELLOW+"Please wait...");
+                player1.playSound(player1.getLocation(), Sound.CREEPER_HISS,1.0f,1.0f);
+                generator.CreateDungeon(player1);
+            }
 
             @Override
             public int getSlot() {

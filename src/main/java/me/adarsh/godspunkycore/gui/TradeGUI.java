@@ -1,5 +1,9 @@
 package me.adarsh.godspunkycore.gui;
 
+import me.adarsh.godspunkycore.features.collection.ItemCollection;
+import me.adarsh.godspunkycore.features.item.SMaterial;
+import me.adarsh.godspunkycore.features.item.armor.batperson.BatpersonLeggings;
+import me.adarsh.godspunkycore.features.item.mining.Coal;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
@@ -56,8 +60,9 @@ public class TradeGUI extends GUI {
 
                 // TODO : MAKE IT FOR SB ITEMS {IT WORKS FOR VANILLA ONLY}
                 if (player.getInventory().contains(Material.LOG,1)){
-                    player.getInventory().removeItem(new ItemStack(Material.LOG));
-                    player.getInventory().addItem(new ItemStack(Material.COAL,2));
+                    player.getInventory().removeItem(new ItemStack(Material.LOG,1));
+                    player.updateInventory();
+                    player.getInventory().addItem(new ItemStack(SMaterial.COAL.getCraftMaterial(),2));
                     player.sendMessage(ChatColor.GRAY+"["+ChatColor.GREEN+"+"+ChatColor.GRAY+"] 2x Coal");
                 }else{
                     player.sendMessage(ChatColor.RED+"You don't have required items.");

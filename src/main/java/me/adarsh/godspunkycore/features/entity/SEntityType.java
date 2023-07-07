@@ -3,6 +3,7 @@ package me.adarsh.godspunkycore.features.entity;
 import lombok.Getter;
 import me.adarsh.godspunkycore.features.entity.caverns.*;
 import me.adarsh.godspunkycore.features.entity.den.*;
+import me.adarsh.godspunkycore.features.entity.dungeon.Undead;
 import me.adarsh.godspunkycore.features.entity.dungeon.bosses.*;
 import me.adarsh.godspunkycore.features.entity.dungeon.minibosses.AngryArchaeologist;
 import me.adarsh.godspunkycore.features.entity.dungeon.minibosses.KingMidas;
@@ -111,6 +112,7 @@ public enum SEntityType {
     ANGRY_ARCHAEOLOGIST(EntityType.ZOMBIE, AngryArchaeologist.class),
     SHADOW_ASSASSIN(EntityType.ZOMBIE, ShadowAssassin.class),
     KING_MIDAS(EntityType.ZOMBIE, KingMidas.class),
+    UNDEAD(EntityType.ZOMBIE, Undead.class),
     ;
 
     @Getter
