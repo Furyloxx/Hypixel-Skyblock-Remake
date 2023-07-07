@@ -85,6 +85,7 @@ public class FrozenScytheAbility
             stand3.setMarker(true);
             stand4.setMarker(true);
             stand5.setMarker(true);
+
             new BukkitRunnable() {
                 public void run() {
                     FrozenScytheAbility.throwIce(stand1, stand2, stand3, stand4, stand5, p, vecTo2, back);

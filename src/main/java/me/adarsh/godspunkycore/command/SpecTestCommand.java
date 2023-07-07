@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
+import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
@@ -14,8 +15,9 @@ public class SpecTestCommand extends SCommand implements Listener {
         Player player = sender.getPlayer();
         if (sender instanceof ConsoleCommandSender)
             throw new CommandFailException("Console senders cannot use this command!");
-        DungeonGenerator generator = new DungeonGenerator();
-        generator.CreateDungeon(player);
+     SItem sItem = SItem.of(player.getItemInHand());
+     sItem.addHotBook(3);
+        System.out.println(sItem.getHotBooks());
 
 
         //GUIType.FARM_MERCHANT.getGUI().open(player);

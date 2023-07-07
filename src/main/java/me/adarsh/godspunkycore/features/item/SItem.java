@@ -296,6 +296,15 @@ public class SItem implements Cloneable, ConfigurationSerializable {
             setRarity(type.getStatistics().getRarity());
         update();
     }
+    public void addHotBook(int value){
+        setDataInt("hotBook" ,value + getHotBooks());
+    }
+    public Integer getHotBooks() {
+        if (hasDataFor("hotBook")) {
+            return getDataInt("hotBook");
+        }
+        return 0;
+    }
 
     public Reforge getReforge() {
         if (!(type.getGenericInstance() instanceof Reforgable))
