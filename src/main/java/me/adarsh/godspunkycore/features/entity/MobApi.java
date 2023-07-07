@@ -35,7 +35,6 @@ public class MobApi {
         mobDisguise.setSkin(wrappedGameProfile);
         mobDisguise.startDisguise();
         getDiguested.put(entity, mobDisguise);
-        mobDisguise.
         entitys.put(entity, name);
     }
 }
