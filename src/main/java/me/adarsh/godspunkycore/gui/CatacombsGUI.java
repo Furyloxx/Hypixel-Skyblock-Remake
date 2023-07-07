@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore.gui;
 
+import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
@@ -25,11 +26,12 @@ public class CatacombsGUI extends GUI {
         User user = User.getUser(player1.getUniqueId());
         PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(player1.getUniqueId());
         set(GUIClickableItem.getCloseItem(49));
+        DungeonGenerator generator = new DungeonGenerator();
 
         // 1
         set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e) {}
+            public void run(InventoryClickEvent e) {};
 
             @Override
             public int getSlot() {
@@ -57,7 +59,7 @@ public class CatacombsGUI extends GUI {
         //2
         set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e) {}
+            public void run(InventoryClickEvent e) {generator.CreateDungeon(player1);}
 
             @Override
             public int getSlot() {

@@ -524,6 +524,43 @@ public class SUtil {
     }
 
     // not my code
+    public static boolean pasteSchematics(List<File> schematicFiles, List<Location> locations, boolean withAir) {
+        try {
+            WorldEdit worldEdit = WorldEdit.getInstance();
+            WorldData pasteWorldData = null;
+            EditSession editSession = null;
+            World pasteWorld = null;
+
+            for (int i = 0; i < schematicFiles.size(); i++) {
+                File schematicFile = schematicFiles.get(i);
+                Location location = locations.get(i);
+
+                com.sk89q.worldedit.Vector pasteLocation = new com.sk89q.worldedit.Vector(
+                        location.getX(), location.getY(), location.getZ());
+
+                if (i == 0) {
+                    pasteWorld = new BukkitWorld(location.getWorld());
+                    pasteWorldData = pasteWorld.getWorldData();
+                    editSession = worldEdit.getEditSessionFactory().getEditSession(pasteWorld, -1);
+                }
+
+                Clipboard clipboard = ClipboardFormat.SCHEMATIC.getReader(new FileInputStream(schematicFile)).read(pasteWorldData);
+                ClipboardHolder clipboardHolder = new ClipboardHolder(clipboard, pasteWorldData);
+                Operation operation = clipboardHolder
+                        .createPaste(editSession, pasteWorldData)
+                        .to(pasteLocation)
+                        .ignoreAirBlocks(!withAir)
+                        .build();
+                Operations.complete(operation);
+            }
+
+            return true;
+        } catch (IOException | WorldEditException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
     public static boolean pasteSchematic(File schematicFile, Location location, boolean withAir) {
         try {
             com.sk89q.worldedit.Vector pasteLocation = new com.sk89q.worldedit.Vector(
@@ -545,6 +582,7 @@ public class SUtil {
             return false;
         }
     }
+
 
     public static void setBlocks(Location c1, Location c2, Material material, boolean applyPhysics) {
         if (!c1.getWorld().getName().equals(c1.getWorld().getName()))

@@ -18,6 +18,9 @@ import me.adarsh.godspunkycore.features.item.armor.crystal.CrystalBoots;
 import me.adarsh.godspunkycore.features.item.armor.crystal.CrystalChestplate;
 import me.adarsh.godspunkycore.features.item.armor.crystal.CrystalHelmet;
 import me.adarsh.godspunkycore.features.item.armor.crystal.CrystalLeggings;
+import me.adarsh.godspunkycore.features.item.armor.eleganttuxedo.ElegantTuxedoBoots;
+import me.adarsh.godspunkycore.features.item.armor.eleganttuxedo.ElegantTuxedoChestplate;
+import me.adarsh.godspunkycore.features.item.armor.eleganttuxedo.ElegantTuxedoLeggings;
 import me.adarsh.godspunkycore.features.item.armor.emerald.EmeraldBoots;
 import me.adarsh.godspunkycore.features.item.armor.emerald.EmeraldChestplate;
 import me.adarsh.godspunkycore.features.item.armor.emerald.EmeraldHelmet;
@@ -319,6 +322,11 @@ public enum SMaterial {
     CHEAP_TUXEDO_CHESTPLATE(Material.LEATHER_CHESTPLATE, CheapTuxedoChestplate.class),
     CHEAP_TUXEDO_LEGGINGS(Material.LEATHER_LEGGINGS, CheapTuxedoLeggings.class),
     CHEAP_TUXEDO_BOOTS(Material.LEATHER_BOOTS, CheapTuxedoBoots.class),
+
+    // Elegant Tuxedo
+    ELEGANT_TUXEDO_CHESTPLATE(Material.LEATHER_CHESTPLATE, ElegantTuxedoChestplate.class),
+    ELEGANT_TUXEDO_LEGGINGS(Material.LEATHER_LEGGINGS, ElegantTuxedoLeggings.class),
+    ELEGANT_TUXEDO_BOOTS(Material.LEATHER_BOOTS, ElegantTuxedoBoots.class),
 
     // Mastiff Armor
     MASTIFF_HELMET(Material.SKULL_ITEM, MastiffHelmet.class),
