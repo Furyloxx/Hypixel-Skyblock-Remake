@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.features.ranks;
 
 import me.adarsh.godspunkycore.Skyblock;
-import me.adarsh.godspunkycore.features.partyandfriends.party.PartyInstance;
 import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -20,9 +19,7 @@ public class GodspunkyPlayer {
     public long lastPlayed;
     public long firstJoined;
 
-    private PartyInstance currentParty = null;
 
-    public Skyblock.ChatTypes currentChat = Skyblock.ChatTypes.ALL_CHAT;
     private static Skyblock plugin = Skyblock.getPlugin();
 
 
@@ -102,33 +99,6 @@ public class GodspunkyPlayer {
         }
     }
 
-    public void setCurrentParty(Object partyInstance) {
-        if(partyInstance instanceof PartyInstance) {
-            currentParty = (PartyInstance) partyInstance;
-        } else {
-            currentParty = null;
-        }
-    }
-
-    public void setPartyPermissions(int partyPermission) {
-        if(!inParty()) return;
-
-        getCurrentParty().setPermissions(this, partyPermission);
-    }
-
-    public PartyInstance getCurrentParty() {
-        return currentParty;
-    }
-
-    public boolean inParty() {
-        return currentParty != null;
-    }
-
-    public int getPartyPermissions() {
-        if(!inParty()) return 0;
-
-        return getCurrentParty().getPlayerPermissions(this);
-    }
 
     //hm
 

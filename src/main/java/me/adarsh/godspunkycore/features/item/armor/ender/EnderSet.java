@@ -64,6 +64,7 @@ public class EnderSet implements ArmorSet {
                 public double getBaseHealth() {
                     return player.getMaxHealth() * 2;
                 }
+
             };
         }
         return null;

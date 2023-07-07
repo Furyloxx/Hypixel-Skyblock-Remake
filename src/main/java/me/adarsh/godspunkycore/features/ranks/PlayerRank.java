@@ -1,36 +1,32 @@
 package me.adarsh.godspunkycore.features.ranks;
 
 public enum PlayerRank {
-    DEFAULT("skyblock.player", "&7", 1),
-    VIP("skyblock.vip", "&a[VIP]", 2),
-    VIPPLUS("skyblock.vipp", "&a[VIP&6+&a]", 3),
-    MVP("skyblock.mvp", "&b[MVP]", 4),
-    MVPPLUS("skyblock.mvpp", "&b[MVP&c+&b]", 5),
-    MVPPLUSPLUS("skyblock.mvppp", "&6[MVP&c++&6]", 6),
-    YOUTUBE("skyblock.yt", "&c[&fYOUTUBE&c]", 7),
-    BETA("skyblock.beta", "&d[BT]", 8),
-    SPECIAL("skyblock.special", "&e[SPECIAL]", 9),
-    JRHELPER("skyblock.jrhelper", "&9[JR HELPER]", 10),
-    HELPER("skyblock.helper", "&9[HELPER]", 11),
-    MOD("skyblock.mod", "&2[MOD]", 12),
-    GAMEMASTER("skyblock.gm", "&2[GM]", 13),
-    BUILD("skyblock.build", "&3[BUILD TEAM]", 14),
-    ADMIN("skyblock.admin", "&c[ADMIN]", 15),
-    OWNER("skyblock.owner", "&c[OWNER]", 16);
+    DEFAULT("&7", 1),
+    VIP("&a[VIP]", 2),
+    VIPPLUS("&a[VIP&6+&a]", 3),
+    MVP("&b[MVP]", 4),
+    MVPPLUS("&b[MVP&c+&b]", 5),
+    MVPPLUSPLUS("&6[MVP&c++&6]", 6),
+    YOUTUBE("&c[&fYOUTUBE&c]", 7),
+    BETA("&d[BT]", 8),
+    SPECIAL("&e[SPECIAL]", 9),
+    JRHELPER("&9[JR HELPER]", 10),
+    HELPER("&9[HELPER]", 11),
+    MOD("&2[MOD]", 12),
+    GAMEMASTER("&2[GM]", 13),
+    BUILD("&3[BUILD TEAM]", 14),
+    ADMIN("&c[ADMIN]", 15),
+    OWNER("&c[OWNER]", 16);
 
-    private final String permission;
+
     private final String prefix;
     private final int level;
 
-    PlayerRank(String permission, String prefix, int level) {
-        this.permission = permission;
+    PlayerRank( String prefix, int level) {
         this.prefix = prefix;
         this.level = level;
     }
 
-    public String getPermission() {
-        return permission;
-    }
 
     public String getPrefix() {
         return prefix;
