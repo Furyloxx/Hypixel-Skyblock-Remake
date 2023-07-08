@@ -98,7 +98,8 @@ public final class Skyblock extends JavaPlugin {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Found Bukkit server v" + Bukkit.getVersion());
         long start = System.currentTimeMillis();
 
-
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
         // Wardrobe data
         Page_1 = new Page1Data(this);
         Page_1.saveDefaultConfig();
@@ -180,7 +181,6 @@ public final class Skyblock extends JavaPlugin {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading YAML Data...");
         long start = System.currentTimeMillis();
 
-        config = new Config("config.yml");
         heads = new Config("heads.yml");
         blocks = new Config("blocks.yml");
         spawners = new Config("spawners.yml");
@@ -239,6 +239,7 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new HubCommand());
         cl.register(new ChangeStatsCommand());
         cl.register(new MortCommand());
+        cl.register(new SetHubCommand());
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
