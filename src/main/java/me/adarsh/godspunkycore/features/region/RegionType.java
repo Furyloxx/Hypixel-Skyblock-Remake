@@ -44,6 +44,7 @@ public enum RegionType {
     BLAZING_FORTRESS("Blazing Fortress", ChatColor.RED),
     THE_END("The End", ChatColor.LIGHT_PURPLE),
     THE_END_NEST("The End", ChatColor.LIGHT_PURPLE),
+    DUNGEON_HUB("Dungeon Hub", ChatColor.RED),
     DRAGONS_NEST("Dragon's Nest", ChatColor.DARK_PURPLE);
 
     private final String name;

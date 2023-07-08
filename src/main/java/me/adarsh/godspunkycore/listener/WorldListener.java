@@ -230,7 +230,7 @@ public class WorldListener extends PListener {
         Player player = (Player) e.getEntity();
         Region region = Region.getRegionOfEntity(player);
 
-        if (player.getWorld().getName().contains("island") || player.getWorld().getName().equals(plugin.getConfig().getString("dhub.world"))){
+        if (player.getWorld().getName().contains("island")){
             int x = plugin.getConfig().getInt("hub.x");
             int y = plugin.getConfig().getInt("hub.y");
             int z = plugin.getConfig().getInt("hub.z");
@@ -239,6 +239,7 @@ public class WorldListener extends PListener {
             World hub = Bukkit.getWorld(plugin.getConfig().getString("hub.world"));
             player.sendMessage(ChatColor.GRAY + "Sending to hub...");
             player.teleport(new Location(hub, x, y, z, yaw, pitch));
+
         }
 
         if (region != null && region.getType().equals(RegionType.VILLAGE)){
@@ -255,6 +256,16 @@ public class WorldListener extends PListener {
             World dhub = Bukkit.getWorld(plugin.getConfig().getString("dhub.world"));
             player.sendMessage(ChatColor.GRAY + "Sending to Dungeon hub...");
             player.teleport(new Location(dhub, x, y, z, yaw, pitch));
+        }
+
+        if (region != null && region.getType().equals(RegionType.DUNGEON_HUB)){
+            World hub = Bukkit.getWorld(plugin.getConfig().getString("hub.world"));
+            int x = plugin.getConfig().getInt("hub.mountain_x");
+            int y = plugin.getConfig().getInt("hub.mountain_y");
+            int z = plugin.getConfig().getInt("hub.mountain_z");
+            int yaw = plugin.getConfig().getInt("hub.mountain_yaw");
+            int pitch = plugin.getConfig().getInt("hub.mountain_pitch");
+            player.teleport(new Location(hub, x, y, z, yaw, pitch));
         }
     }
 

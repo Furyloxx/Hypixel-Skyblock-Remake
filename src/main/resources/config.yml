@@ -5,6 +5,11 @@ hub:
   z: 0
   yaw: 0
   pitch: 0
+  mountain_x: 0
+  mountain_y: 100
+  mountain_z: 0
+  mountain_yaw: 0
+  mountain_pitch: 0
 dhub:
   world: 'dhub'
   x: 0
