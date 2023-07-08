@@ -19,8 +19,12 @@ public class HubCommand extends SCommand{
             player.sendMessage(ChatColor.RED + "You need a higher rank to use this command.");
             return;
         }
-
-        World hub = Bukkit.getWorld(!plugin.config.getString("hub_world").isEmpty() ? plugin.config.getString("hub_world") : "hub");
-        player.teleport(new Location(hub, -3 , 70 , -68));
+        int x = plugin.getConfig().getInt("hub.x");
+        int y = plugin.getConfig().getInt("hub.y");
+        int z = plugin.getConfig().getInt("hub.z");
+        int yaw = plugin.getConfig().getInt("hub.yaw");
+        int pitch = plugin.getConfig().getInt("hub.pitch");
+        World hub = Bukkit.getWorld(plugin.getConfig().getString("hub.world"));
+        player.teleport(new Location(hub, x, y, z, yaw, pitch));
     }
 }

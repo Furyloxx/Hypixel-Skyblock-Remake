@@ -3,6 +3,7 @@ package me.adarsh.godspunkycore.features.entity;
 import lombok.Getter;
 import me.adarsh.godspunkycore.features.entity.caverns.*;
 import me.adarsh.godspunkycore.features.entity.den.*;
+import me.adarsh.godspunkycore.features.entity.dungeon.Undead;
 import me.adarsh.godspunkycore.features.entity.dungeon.bosses.*;
 import me.adarsh.godspunkycore.features.entity.dungeon.minibosses.AngryArchaeologist;
 import me.adarsh.godspunkycore.features.entity.dungeon.minibosses.KingMidas;
@@ -97,7 +98,8 @@ public enum SEntityType {
     SMALL_MAGMA_CUBE(EntityType.MAGMA_CUBE, SmallMagmaCube.class),
     MEDIUM_MAGMA_CUBE(EntityType.MAGMA_CUBE, MediumMagmaCube.class),
     LARGE_MAGMA_CUBE(EntityType.MAGMA_CUBE, LargeMagmaCube.class),
-    BONZO(EntityType.ZOMBIE, Bonzo.class),
+    BONZO_PHASE_1(EntityType.ZOMBIE, BonzoPhase1.class),
+    BONZO_PHASE_2(EntityType.ZOMBIE, BonzoPhase2.class),
     SCARF(EntityType.ZOMBIE ,Scarf.class),
     THE_PROFESSOR(EntityType.ZOMBIE , TheProfessor.class),
     THORN(EntityType.GHAST , Thorn.class),
@@ -111,6 +113,7 @@ public enum SEntityType {
     ANGRY_ARCHAEOLOGIST(EntityType.ZOMBIE, AngryArchaeologist.class),
     SHADOW_ASSASSIN(EntityType.ZOMBIE, ShadowAssassin.class),
     KING_MIDAS(EntityType.ZOMBIE, KingMidas.class),
+    UNDEAD(EntityType.ZOMBIE, Undead.class),
     ;
 
     @Getter

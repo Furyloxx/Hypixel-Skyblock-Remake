@@ -1,5 +1,17 @@
-hub_world: 'world'
-dungeon_world: 'world'
+hub:
+  world: 'world'
+  x: 0
+  y: 100
+  z: 0
+  yaw: 0
+  pitch: 0
+dhub:
+  world: 'dhub'
+  x: 0
+  y: 100
+  z: 0
+  yaw: 0
+  pitch: 0
 database:
   user: "skyblock"
   name: "minecraft"

@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore.listener;
 
+import com.comphenix.protocol.PacketType;
 import me.adarsh.godspunkycore.gui.GUIType;
 import me.adarsh.godspunkycore.user.User;
 import org.bukkit.entity.Player;
@@ -9,6 +10,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 public class PlayerProfileListener implements Listener {
     public String name;
+    public Player rightClickedPlayer;
 
     @EventHandler
     public void RightClick(PlayerInteractEntityEvent event) {
@@ -22,7 +24,7 @@ public class PlayerProfileListener implements Listener {
             GUIType.OTHERPLAYER_PROFILE.getGUI().open(player);
             GUIType.OTHERPLAYER_PROFILE.getGUI().setTitle(name);
 
-            name = rightClickedPlayer.getDisplayName();
+            rightClickedPlayer = rightClickedPlayer;
 
             // TODO: Update Gui with Listener
         }

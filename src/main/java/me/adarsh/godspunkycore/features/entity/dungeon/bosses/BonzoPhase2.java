@@ -1,30 +1,22 @@
 package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
+import com.google.common.util.concurrent.AtomicDouble;
 import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
 import me.adarsh.godspunkycore.features.entity.*;
-import me.adarsh.godspunkycore.features.entity.dungeon.Abilities.BonzoBossAbility;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
-import me.adarsh.godspunkycore.features.item.weapon.Abilites.bonzo.BonzoStaffProjectile;
 import me.adarsh.godspunkycore.user.User;
-import net.minecraft.server.v1_8_R3.EntityPlayer;
-import net.minecraft.server.v1_8_R3.EntityZombie;
-import net.minecraft.server.v1_8_R3.PathfinderGoalAvoidTarget;
-import net.minecraft.server.v1_8_R3.World;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
+import me.adarsh.godspunkycore.util.SUtil;
+import org.bukkit.*;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
-public class Bonzo extends EntityZombie implements ZombieStatistics ,EntityStatistics, EntityFunction {
-    public Bonzo(World world) {
-        super(world);
-    }
-
+public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
         return "✪ Bonzo ✪";
@@ -65,26 +57,20 @@ public class Bonzo extends EntityZombie implements ZombieStatistics ,EntityStati
     }
 
     @Override
-    public void onSpawn(LivingEntity entity, SEntity sEntity) {
-        initPathfinder();
-    }
-
-    @Override
     public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
-        if (!killed.getWorld().getName().startsWith("Dungeon_")) return;
         Player player = (Player) damager;
+
+        SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fAlright, maybe I'm just weak after all..")) , 20);
+        SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fBut my masters are a lot stronger..")) , 40);
+        SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fJust you wait...")) , 60);
+
+        if (!killed.getWorld().getName().startsWith("Dungeon_")) return;
+
         User user = User.getUser(player.getUniqueId());
-        player.teleport(new Location(Bukkit.getWorld("islands"), user.getIslandX() , 100 , user.getIslandZ()));
+        SUtil.delay( () -> player.teleport(new Location(Bukkit.getWorld("islands"), user.getIslandX() , 100 , user.getIslandZ())) , 200);
         DungeonGenerator generator = new DungeonGenerator();
         generator.deleteDungeon(player);
-        player.sendMessage("Dungeon Finished");
     }
-
-    public void initPathfinder() {
-        this.goalSelector.a(0, new PathfinderGoalAvoidTarget<EntityPlayer>(this, EntityPlayer.class, 45, 1.0D, 1.0D));
-    }
-
-
 
 }
 

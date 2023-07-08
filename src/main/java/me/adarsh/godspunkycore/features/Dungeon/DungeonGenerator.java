@@ -4,10 +4,7 @@ import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
 import me.adarsh.godspunkycore.util.BlankWorldCreator;
 import me.adarsh.godspunkycore.util.SUtil;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 
 import java.io.File;
@@ -27,6 +24,7 @@ public class DungeonGenerator {
         player.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Generated Dungeon in ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
         Location loc = new Location(world, 15, 102 , -12);
         entity = new SEntity(loc, type);
+        player.playSound(player.getLocation(), Sound.EXPLODE,1.0f,1.0f);
         player.sendMessage(ChatColor.GOLD+"Kill " + entity.getStatistics().getEntityName() + " To Spawn Bonzo");
     }
 

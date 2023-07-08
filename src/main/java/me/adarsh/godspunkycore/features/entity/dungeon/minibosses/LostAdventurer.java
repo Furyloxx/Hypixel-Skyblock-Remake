@@ -5,10 +5,7 @@ import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.user.User;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
@@ -50,10 +47,10 @@ public class LostAdventurer implements ZombieStatistics, EntityStatistics, Entit
 
     @Override
     public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
-        SEntityType type = SEntityType.BONZO;
+        SEntityType type = SEntityType.BONZO_PHASE_1;
         World world = damager.getWorld();
         Location loc = new Location(world, 15, 102 , -12);
         sEntity = new SEntity(loc , type);
-        damager.sendMessage(ChatColor.GOLD+"Kill " + sEntity.getStatistics().getEntityName() + " To Win the Run");
+        damager.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fYou little brat!!"));
     }
 }

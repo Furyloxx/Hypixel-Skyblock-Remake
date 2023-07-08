@@ -98,7 +98,8 @@ public final class Skyblock extends JavaPlugin {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Found Bukkit server v" + Bukkit.getVersion());
         long start = System.currentTimeMillis();
 
-
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
         // Wardrobe data
         Page_1 = new Page1Data(this);
         Page_1.saveDefaultConfig();
@@ -112,6 +113,7 @@ public final class Skyblock extends JavaPlugin {
         plugin = this;
         loadymldata();
         loadIslandWorld();
+        loadDungeonWorld();
         loadCommandMap();
         loadDatabase();
         cl = new CommandLoader();
@@ -180,7 +182,6 @@ public final class Skyblock extends JavaPlugin {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading YAML Data...");
         long start = System.currentTimeMillis();
 
-        config = new Config("config.yml");
         heads = new Config("heads.yml");
         blocks = new Config("blocks.yml");
         spawners = new Config("spawners.yml");
@@ -239,6 +240,8 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new HubCommand());
         cl.register(new ChangeStatsCommand());
         cl.register(new MortCommand());
+        cl.register(new SetHubCommand());
+        cl.register(new SetDungeonHubCommand());
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
@@ -447,6 +450,7 @@ public final class Skyblock extends JavaPlugin {
     public void loadIslandWorld() {
         new BlankWorldCreator("islands").createWorld();
     }
+    public void loadDungeonWorld(){new BlankWorldCreator("dhub").createWorld();}
 
     public LaunchPadHandler getLaunchPadHandler() {
         return new LaunchPadHandler();
