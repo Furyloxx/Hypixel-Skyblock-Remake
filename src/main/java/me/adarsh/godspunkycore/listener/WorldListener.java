@@ -229,6 +229,7 @@ public class WorldListener extends PListener {
     public void onPortalEnter(EntityPortalEnterEvent e) {
         Material portalType = e.getLocation().getBlock().getType();
         Entity entity = e.getEntity();
+        Region region = Region.getRegionOfEntity(entity);
         if (ALREADY_TELEPORTING.contains(entity.getUniqueId()))
             return;
         if (portalType == Material.PORTAL) {
