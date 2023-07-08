@@ -230,7 +230,7 @@ public class WorldListener extends PListener {
         Player player = (Player) e.getEntity();
         Region region = Region.getRegionOfEntity(player);
 
-        if (player.getWorld().getName().contains("island")){
+        if (player.getWorld().getName().contains("island") || player.getWorld().getName().equals(plugin.getConfig().getString("dhub.world"))){
             int x = plugin.getConfig().getInt("hub.x");
             int y = plugin.getConfig().getInt("hub.y");
             int z = plugin.getConfig().getInt("hub.z");
