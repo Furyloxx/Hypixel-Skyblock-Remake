@@ -3,6 +3,7 @@ package me.adarsh.godspunkycore.features.Dungeon;
 import me.adarsh.godspunkycore.Skyblock;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
@@ -29,17 +30,17 @@ public class DungeonDoorAnimation extends BukkitRunnable {
         double progress = (double) currentTick / animationTicks;
 
         for (Location doorPos : doorPositions) {
-            double deltaY = progress * doorPos.getBlockY();
-            int currentY = doorPos.getBlockY() - (int) Math.round(deltaY);
+            Block block = doorPos.getBlock();
 
-            Location currentPos = doorPos.clone();
-            currentPos.setY(currentY);
-
-            currentPos.getBlock().setType(Material.MOSSY_COBBLESTONE); //todo set the real material
+            if (block.getType() == Material.MOSSY_COBBLESTONE) {
+                // Set mossy cobblestone to air
+                block.setType(Material.AIR);
+            }
         }
 
         currentTick++;
     }
+
 
     public void startAnimation() {
         this.runTaskTimer(Skyblock.getPlugin(), 0, 1);
