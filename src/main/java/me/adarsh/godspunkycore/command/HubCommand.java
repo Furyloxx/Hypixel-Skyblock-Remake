@@ -24,7 +24,7 @@ public class HubCommand extends SCommand{
         int z = plugin.getConfig().getInt("hub.z");
         int yaw = plugin.getConfig().getInt("hub.yaw");
         int pitch = plugin.getConfig().getInt("hub.pitch");
-        World hub = Bukkit.getWorld(!plugin.config.getString("hub.world").isEmpty() ? plugin.config.getString("hub.world") : "hub");
+        World hub = Bukkit.getWorld(plugin.getConfig().getString("hub.world"));
         player.teleport(new Location(hub, x, y, z, yaw, pitch));
     }
 }
