@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
 import com.google.common.util.concurrent.AtomicDouble;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
@@ -67,7 +68,15 @@ public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFu
         if (!killed.getWorld().getName().startsWith("Dungeon_")) return;
 
         User user = User.getUser(player.getUniqueId());
-        SUtil.delay( () -> player.teleport(new Location(Bukkit.getWorld("islands"), user.getIslandX() , 100 , user.getIslandZ())) , 200);
+
+        int x = Skyblock.getPlugin().getConfig().getInt("dhub.x");
+        int y = Skyblock.getPlugin().getConfig().getInt("dhub.y");
+        int z = Skyblock.getPlugin().getConfig().getInt("dhub.z");
+        int yaw = Skyblock.getPlugin().getConfig().getInt("dhub.yaw");
+        int pitch = Skyblock.getPlugin().getConfig().getInt("dhub.pitch");
+        World dhub = Bukkit.getWorld(Skyblock.getPlugin().getConfig().getString("dhub.world"));
+
+        SUtil.delay( () -> player.teleport(new Location(dhub, x, y, z, yaw, pitch)) , 200);
         DungeonGenerator generator = new DungeonGenerator();
         generator.deleteDungeon(player);
     }
