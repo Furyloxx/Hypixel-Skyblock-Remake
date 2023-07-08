@@ -25,10 +25,7 @@ import me.adarsh.godspunkycore.features.item.armor.emerald.EmeraldBoots;
 import me.adarsh.godspunkycore.features.item.armor.emerald.EmeraldChestplate;
 import me.adarsh.godspunkycore.features.item.armor.emerald.EmeraldHelmet;
 import me.adarsh.godspunkycore.features.item.armor.emerald.EmeraldLeggings;
-import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorBoots;
-import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorChestplate;
-import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorHelmet;
-import me.adarsh.godspunkycore.features.item.armor.ender.EnderArmorLeggings;
+import me.adarsh.godspunkycore.features.item.armor.ender.*;
 import me.adarsh.godspunkycore.features.item.armor.fancytuxedo.FancyTuxedoBoots;
 import me.adarsh.godspunkycore.features.item.armor.fancytuxedo.FancyTuxedoChestplate;
 import me.adarsh.godspunkycore.features.item.armor.fancytuxedo.FancyTuxedoLeggings;
@@ -1208,6 +1205,7 @@ public enum SMaterial {
     public static PackSet PACK_SET = registerArmorSet(PackSet.class);
     public static BatPersonSet BATPERSON_SET = registerArmorSet(BatPersonSet.class);
     public static WereWolfSet WERE_WOLF_SET = registerArmorSet(WereWolfSet.class);
+    public static EnderSet enderset = registerArmorSet(EnderSet.class);
 
     @Getter
     private final Material craftMaterial;
