@@ -5,7 +5,7 @@ hub:
   z: 0
   yaw: 0
   pitch: 0
-dungeon_hub:
+dhub:
   world: 'dhub'
   x: 0
   y: 100

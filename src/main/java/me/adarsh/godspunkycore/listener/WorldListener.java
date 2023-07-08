@@ -245,6 +245,17 @@ public class WorldListener extends PListener {
             player.sendMessage(ChatColor.GRAY + "Sending to island...");
             PlayerUtils.sendToIsland(player);
         }
+
+        if (region != null && region.getType().equals(RegionType.MOUNTAIN)){
+            int x = plugin.getConfig().getInt("dhub.x");
+            int y = plugin.getConfig().getInt("dhub.y");
+            int z = plugin.getConfig().getInt("dhub.z");
+            int yaw = plugin.getConfig().getInt("dhub.yaw");
+            int pitch = plugin.getConfig().getInt("dhub.pitch");
+            World dhub = Bukkit.getWorld(plugin.getConfig().getString("dhub.world"));
+            player.sendMessage(ChatColor.GRAY + "Sending to Dungeon hub...");
+            player.teleport(new Location(dhub, x, y, z, yaw, pitch));
+        }
     }
 
     @EventHandler
