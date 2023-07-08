@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
 import com.google.common.util.concurrent.AtomicDouble;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
@@ -10,6 +11,7 @@ import org.bukkit.Effect;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
 
@@ -93,7 +95,14 @@ public class BonzoPhase1 implements ZombieStatistics, EntityStatistics, EntityFu
         player.playEffect(damager.getLocation(),Effect.EXPLOSION_HUGE,2);
 
         // TODO: ADD SOME WAIT TIME HERE FOR BONZO PHASE 2 TO SPAWN
-        sEntity = new SEntity(damager.getLocation() , type);
+        new BukkitRunnable(){
+            @Override
+            public void run() {
+                SEntity sEntity = new SEntity(damager.getLocation() , type);
+                cancel();
+            }
+        }.runTaskLater(Skyblock.getPlugin(), 100L);
+
     }
 
 }

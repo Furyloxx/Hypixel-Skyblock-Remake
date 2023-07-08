@@ -1,5 +1,9 @@
 hub_world: 'world'
-dungeon_world: 'world'
+dungeon_hub:
+  world: 'dhub'
+  x: 0
+  y: 100
+  z: 0
 database:
   user: "skyblock"
   name: "minecraft"
