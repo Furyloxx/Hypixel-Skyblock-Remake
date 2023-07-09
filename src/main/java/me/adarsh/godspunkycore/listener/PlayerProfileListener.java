@@ -1,6 +1,6 @@
 package me.adarsh.godspunkycore.listener;
 
-import com.comphenix.protocol.PacketType;
+
 import me.adarsh.godspunkycore.gui.GUIType;
 import me.adarsh.godspunkycore.user.User;
 import org.bukkit.entity.Player;

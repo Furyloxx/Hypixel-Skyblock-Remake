@@ -2,38 +2,39 @@ package me.adarsh.godspunkycore.util;
 
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
+import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 
+import java.util.List;
 import java.util.Random;
 
-public class BlankWorldCreator extends WorldCreator // todo: fix this
-{
+public class BlankWorldCreator extends org.bukkit.WorldCreator {
+
     public BlankWorldCreator(String name) {
         super(name);
+        this.generator(new BlankChunkGenerator());
     }
 
-    @Override
-    public ChunkGenerator generator() {
-        return new ChunkGenerator() {
-            @Override
-            public ChunkData generateChunkData(World world, Random random, int x, int z, BiomeGrid biome) {
-                return this.createChunkData(world);
-            }
+    private class BlankChunkGenerator extends ChunkGenerator {
 
-            @Override
-            public byte[] generate(World world, Random random, int x, int z) {
-                return new byte[32768];
-            }
+        @Override
+        public List<BlockPopulator> getDefaultPopulators(World world) {
+            return super.getDefaultPopulators(world);
+        }
 
-            @Override
-            public byte[][] generateBlockSections(World world, Random random, int x, int z, BiomeGrid biomes) {
-                return new byte[16][16];
-            }
+        @Override
+        public boolean canSpawn(World world, int x, int z) {
+            return true;
+        }
 
-            @Override
-            public short[][] generateExtBlockSections(World world, Random random, int x, int z, BiomeGrid biomes) {
-                return new short[world.getMaxHeight() / 16][];
-            }
-        };
+        @Override
+        public byte[][] generateBlockSections(World world, Random random, int x, int z, BiomeGrid biomes) {
+            return new byte[world.getMaxHeight() / 16][];
+        }
+
+        @Override
+        public byte[] generate(World world, Random random, int x, int z) {
+            return new byte[32768];
+        }
     }
 }

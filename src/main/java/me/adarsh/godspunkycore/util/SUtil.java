@@ -5,6 +5,7 @@ import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import com.sk89q.worldedit.EditSession;
+import com.sk89q.worldedit.EditSessionFactory;
 import com.sk89q.worldedit.WorldEdit;
 import com.sk89q.worldedit.WorldEditException;
 import com.sk89q.worldedit.bukkit.BukkitWorld;
@@ -562,14 +563,18 @@ public class SUtil {
     }
 
     public static boolean pasteSchematic(File schematicFile, Location location, boolean withAir) {
-        try {
-            com.sk89q.worldedit.Vector pasteLocation = new com.sk89q.worldedit.Vector(
-                    location.getX(), location.getY(), location.getZ());
-            World pasteWorld = new BukkitWorld(location.getWorld());
-            WorldData pasteWorldData = pasteWorld.getWorldData();
-            Clipboard clipboard = ClipboardFormat.SCHEMATIC.getReader(new FileInputStream(schematicFile)).read(pasteWorldData);
+        com.sk89q.worldedit.Vector pasteLocation = new com.sk89q.worldedit.Vector(
+                location.getX(), location.getY(), location.getZ());
+        World pasteWorld = new BukkitWorld(location.getWorld());
+        WorldData pasteWorldData = pasteWorld.getWorldData();
+
+        try (FileInputStream fileInputStream = new FileInputStream(schematicFile)) {
+            Clipboard clipboard = ClipboardFormat.SCHEMATIC.getReader(fileInputStream).read(pasteWorldData);
             ClipboardHolder clipboardHolder = new ClipboardHolder(clipboard, pasteWorldData);
-            EditSession editSession = WorldEdit.getInstance().getEditSessionFactory().getEditSession(pasteWorld, -1);
+
+            EditSessionFactory editSessionFactory = WorldEdit.getInstance().getEditSessionFactory();
+            EditSession editSession = editSessionFactory.getEditSession(pasteWorld, -1);
+
             Operation operation = clipboardHolder
                     .createPaste(editSession, pasteWorldData)
                     .to(pasteLocation)
@@ -582,6 +587,7 @@ public class SUtil {
             return false;
         }
     }
+
 
 
     public static void setBlocks(Location c1, Location c2, Material material, boolean applyPhysics) {

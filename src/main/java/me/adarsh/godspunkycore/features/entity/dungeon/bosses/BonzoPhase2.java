@@ -1,6 +1,5 @@
 package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
-import com.google.common.util.concurrent.AtomicDouble;
 import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
@@ -10,13 +9,14 @@ import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+
 
 public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFunction {
+
+
     @Override
     public String getEntityName() {
         return "✪ Bonzo ✪";
@@ -67,10 +67,10 @@ public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFu
         if (!killed.getWorld().getName().startsWith("Dungeon_")) return;
 
         User user = User.getUser(player.getUniqueId());
+        player.sendMessage(SUtil.getRandomVisibleColor() + "Sending to Island");
         SUtil.delay( () -> player.teleport(new Location(Bukkit.getWorld("islands"), user.getIslandX() , 100 , user.getIslandZ())) , 200);
-        DungeonGenerator generator = new DungeonGenerator();
-        generator.deleteDungeon(player);
-    }
+        SUtil.delay( () -> DungeonGenerator.deleteDungeon(player) , 250);
 
+    }
 }
 

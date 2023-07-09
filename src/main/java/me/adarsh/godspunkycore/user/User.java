@@ -95,7 +95,6 @@ public class User {
     @Setter
     private boolean auctionCreationBIN;
 
-    ArmorStand petDisplay;
     @Getter
     @Setter
     private AuctionEscrow auctionEscrow;
@@ -453,68 +452,16 @@ public class User {
                 break;
             }
         }
-        spawnPet(pet);
         pet.setActive(true);
     }
 
 
-    public void spawnPet(Pet.PetItem pet) {
-           Player bukkitPlayer = Bukkit.getPlayer(uuid);
-            Location loc = bukkitPlayer.getLocation();
-            Vector dir = loc.getDirection();
-            dir.normalize();
-            dir.multiply(-2);
-            loc.add(dir);
-
-            petDisplay = bukkitPlayer.getWorld().spawn(loc, ArmorStand.class);
-
-            petDisplay.setVisible(false);
-            petDisplay.setGravity(false);
-            petDisplay.setSmall(true);
-            petDisplay.setHelmet(new ItemStack(Material.SKULL_ITEM));
-
-            int level = Pet.getLevel(pet.getXp(), pet.getRarity());
-
-            petDisplay.setCustomName(ChatColor.DARK_GRAY + "[" + ChatColor.GRAY + "Lv" + level + ChatColor.DARK_GRAY + "] " +
-                    pet.getRarity().getColor() + bukkitPlayer.getName() + "'s " + Objects.requireNonNull(pet.getType().getStatistics()).getDisplayName());
-
-            petDisplay.setCustomNameVisible(true);
-
-          // petDisplay.setMetadata("owner" , new FixedMetadataValue(Skyblock.getPlugin() , bukkitPlayer.getUniqueId().toString()));
-          // petDisplay.setMetadata("isPet" , new FixedMetadataValue(Skyblock.getPlugin() , true));
-    }
-
-    public ArmorStand getPetDisplay(){
-        return petDisplay;
-    }
-    public void updatePetLocation(){
-        Player bukkitPlayer = Bukkit.getPlayer(uuid);
-        Location loc = bukkitPlayer.getLocation();
-        Vector dir = loc.getDirection();
-        Location playerLocation = bukkitPlayer.getLocation();
-        dir.normalize();
-        dir.multiply(-2);
-        dir.setZ(dir.getZ() + 1);
-        loc.add(dir);
-        float newYaw = playerLocation.getYaw();
-        float newPitch = playerLocation.getPitch();
-        petDisplay.teleport(new Location(playerLocation.getWorld(), playerLocation.getX() + 2, playerLocation.getY() + 0.75, playerLocation.getZ(), newYaw, newPitch));
-    }
-
-
-
 
     public void removePet(Pet.PetItem pet) {
-        if (this.petDisplay != null) {
-            this.petDisplay.remove();
-            this.petDisplay = null;
-        }
         for (Iterator<Pet.PetItem> iter = pets.iterator(); iter.hasNext(); ) {
             Pet.PetItem p = iter.next();
             if (pet.equals(p)) {
                 iter.remove();
-                pet.getStand(getUser(uuid)).remove();
-                pet.getStand(getUser(uuid)).setHealth(0.0);
                 break;
             }
         }

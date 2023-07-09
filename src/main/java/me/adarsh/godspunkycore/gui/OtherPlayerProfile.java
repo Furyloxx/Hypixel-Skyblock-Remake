@@ -137,6 +137,8 @@ public class OtherPlayerProfile extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
+
+
             }
 
             @Override

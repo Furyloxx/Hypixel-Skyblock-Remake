@@ -19,7 +19,7 @@ public class DungeonGenerator {
         File file = new File("plugins/GodSpunkySkyblockCore/floor1.schematic");
         SEntityType type = SEntityType.LOST_ADVENTURER;
         SEntity entity;
-        SUtil.pasteSchematic(file, new Location(world, 0, 100.0, 0 ), true);
+        SUtil.pasteSchematic(file, new Location(world, 0, 100.0, 0 ), false);
         player.teleport(new Location(world , 15 , 104 , -50));
         player.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Generated Dungeon in ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
         Location loc = new Location(world, 15, 102 , -12);
@@ -29,10 +29,12 @@ public class DungeonGenerator {
     }
 
 
-    public void deleteDungeon(Player player){
+    public static void deleteDungeon(Player player){
         World world = Bukkit.getWorld("Dungeon_" + player.getUniqueId());
         Bukkit.unloadWorld(world , false);
+        world.getWorldFolder().deleteOnExit();
         SUtil.deleteFolderRecursive(world.getWorldFolder());
+
     }
     public void deleteAllDungeons(){
         for (World world : Bukkit.getWorlds()){

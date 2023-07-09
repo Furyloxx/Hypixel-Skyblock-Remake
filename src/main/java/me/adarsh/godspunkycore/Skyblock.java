@@ -40,6 +40,7 @@ import me.adarsh.godspunkycore.sql.SQLWorldData;
 import me.adarsh.godspunkycore.user.AuctionSettings;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.*;
+import me.libraryaddict.disguise.DisguiseAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

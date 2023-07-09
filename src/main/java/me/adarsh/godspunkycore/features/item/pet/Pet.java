@@ -285,12 +285,6 @@ public abstract class Pet implements SkullStatistics, LoreableMaterialStatistics
             return type == item.getType() && rarity == item.getRarity() && xp == item.getData().getDouble("xp");
         }
 
-        public ArmorStand getStand(User user) {
-            if (user.getPetDisplay() != null) {
-                return user.getPetDisplay();
-            }
-            return null;
-        }
 
         public SItem toItem() {
             SItem sItem = SItem.of(type);

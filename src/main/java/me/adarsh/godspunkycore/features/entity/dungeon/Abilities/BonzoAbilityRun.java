@@ -36,8 +36,6 @@ public class BonzoAbilityRun implements Runnable{
                         e2 = (LivingEntity) e;
                     }
                     if (!(e instanceof Player) && e2 != null && !(e2 instanceof Villager) && !(e2 instanceof ArmorStand)) {
-                        User user = User.getUser(p.getUniqueId());
-                        user.damageEntity(e2);
                         BonzoAbilityRun.this.stand.remove();
                         BonzoAbilityRun.this.p.getWorld().playSound(e2.getLocation(), Sound.FIREWORK_BLAST2, 1.0f, 1.0f);
                         BonzoAbilityRun.this.p.getWorld().playEffect(e2.getEyeLocation(), Effect.FIREWORKS_SPARK, 1);
