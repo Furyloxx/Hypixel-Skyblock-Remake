@@ -170,6 +170,9 @@ public class Repeater {
                     if (user.isOnIsland())
                         location = ChatColor.GREEN + "Your Island";
 
+                    if(user.isPlayerOnDungeonWorld(player))
+                        location = ChatColor.RED + "The Catacombs " + ChatColor.GRAY +"(F1)";
+
                     sidebar.add(ChatColor.GRAY + " ⏣ " + location);
                     sidebar.add(" ");
                     StringBuilder coinsDisplay = new StringBuilder();
