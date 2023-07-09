@@ -486,6 +486,9 @@ public enum SMaterial {
     SPEED_ARTIFACT(Material.SKULL_ITEM, SpeedArtifact.class),
     WOOD_AFFINITY_TALISMAN(Material.SKULL_ITEM, WoodAffinityTalisman.class),
 
+    //
+    FAIRY_SOUL(Material.SKULL_ITEM,FairySoul.class),
+
     // Enchanted Items
     ENCHANTED_BONE(Material.BONE, EnchantedBone.class),
     ENCHANTED_OBSIDIAN(Material.OBSIDIAN, EnchantedObsidian.class),

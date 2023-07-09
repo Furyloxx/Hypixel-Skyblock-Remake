@@ -34,6 +34,7 @@ public enum RegionType {
     BIRCH_PARK("Birch Park", ChatColor.GREEN),
     SPRUCE_WOODS("Spruce Woods", ChatColor.GREEN),
     DARK_THICKET("Dark Thicket", ChatColor.GREEN),
+    DARK_AUCTION("Dark Auction", ChatColor.DARK_PURPLE),
     SAVANNA_WOODLAND("Savanna Woodland", ChatColor.GREEN),
     JUNGLE_ISLAND("Jungle Island", ChatColor.GREEN),
     HOWLING_CAVE("Howling Cave"),

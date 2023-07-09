@@ -24,6 +24,7 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.inventory.ItemStack;
@@ -230,7 +231,7 @@ public class WorldListener extends PListener {
         Player player = (Player) e.getEntity();
         Region region = Region.getRegionOfEntity(player);
 
-        if (player.getWorld().getName().contains("island")){
+        if (player.getWorld().getName().contains("island")) {
             int x = plugin.getConfig().getInt("hub.x");
             int y = plugin.getConfig().getInt("hub.y");
             int z = plugin.getConfig().getInt("hub.z");
@@ -242,12 +243,12 @@ public class WorldListener extends PListener {
 
         }
 
-        if (region != null && region.getType().equals(RegionType.VILLAGE)){
+        if (region != null && region.getType().equals(RegionType.VILLAGE)) {
             player.sendMessage(ChatColor.GRAY + "Sending to island...");
             PlayerUtils.sendToIsland(player);
         }
 
-        if (region != null && region.getType().equals(RegionType.MOUNTAIN)){
+        if (region != null && region.getType().equals(RegionType.MOUNTAIN)) {
             int x = plugin.getConfig().getInt("dhub.x");
             int y = plugin.getConfig().getInt("dhub.y");
             int z = plugin.getConfig().getInt("dhub.z");
@@ -258,13 +259,13 @@ public class WorldListener extends PListener {
             player.teleport(new Location(dhub, x, y, z, yaw, pitch));
         }
 
-        if (region != null && region.getType().equals(RegionType.DUNGEON_HUB)){
+        if (region != null && region.getType().equals(RegionType.DUNGEON_HUB)) {
             World hub = Bukkit.getWorld(plugin.getConfig().getString("hub.world"));
-            int x = plugin.getConfig().getInt("hub.mountain_x");
-            int y = plugin.getConfig().getInt("hub.mountain_y");
-            int z = plugin.getConfig().getInt("hub.mountain_z");
-            int yaw = plugin.getConfig().getInt("hub.mountain_yaw");
-            int pitch = plugin.getConfig().getInt("hub.mountain_pitch");
+            int x = plugin.getConfig().getInt("hub.x");
+            int y = plugin.getConfig().getInt("hub.y");
+            int z = plugin.getConfig().getInt("hub.z");
+            int yaw = plugin.getConfig().getInt("hub.yaw");
+            int pitch = plugin.getConfig().getInt("hub.pitch");
             player.teleport(new Location(hub, x, y, z, yaw, pitch));
         }
     }
@@ -420,5 +421,4 @@ public class WorldListener extends PListener {
             }
         }.runTaskLater(Skyblock.getPlugin(), ticks);
     }
-
 }
