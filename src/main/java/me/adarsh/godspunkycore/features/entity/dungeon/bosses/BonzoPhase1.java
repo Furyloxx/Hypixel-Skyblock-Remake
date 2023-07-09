@@ -8,6 +8,7 @@ import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -94,14 +95,14 @@ public class BonzoPhase1 implements ZombieStatistics, EntityStatistics, EntityFu
         SEntityType type = SEntityType.BONZO_PHASE_2;
         player.playEffect(damager.getLocation(),Effect.EXPLOSION_HUGE,2);
 
-        // TODO: ADD SOME WAIT TIME HERE FOR BONZO PHASE 2 TO SPAWN
         new BukkitRunnable(){
             @Override
             public void run() {
-                SEntity sEntity = new SEntity(damager.getLocation() , type);
+                Location loc = sEntity.getEntity().getLocation();
+                SEntity sEntity = new SEntity(loc , type);
                 cancel();
             }
-        }.runTaskLater(Skyblock.getPlugin(), 100L);
+        }.runTaskLater(Skyblock.getPlugin(), 70L);
 
     }
 

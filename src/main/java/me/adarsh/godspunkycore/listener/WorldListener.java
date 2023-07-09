@@ -268,6 +268,11 @@ public class WorldListener extends PListener {
             int pitch = plugin.getConfig().getInt("hub.mountain_pitch");
             player.teleport(new Location(hub, x, y, z, yaw, pitch));
         }
+
+        if (player.getWorld().getName().startsWith("Dungeon_")) {
+            player.sendMessage(ChatColor.GRAY + "Sending to island...");
+            PlayerUtils.sendToIsland(player);
+        }
     }
 
     @EventHandler

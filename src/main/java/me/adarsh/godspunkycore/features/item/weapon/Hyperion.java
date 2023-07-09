@@ -61,7 +61,7 @@ public class Hyperion implements ToolStatistics, MaterialFunction , Ability{
 
     @Override
     public String getAbilityDescription() {
-        return "legit will add this";
+        return "Deals +50% damage to withers. Grants +1 damage and +2 intelligence per Catacombs level.";
     }
 
     @Override
