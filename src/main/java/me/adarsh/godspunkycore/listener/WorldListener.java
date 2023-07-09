@@ -259,13 +259,13 @@ public class WorldListener extends PListener {
             player.teleport(new Location(dhub, x, y, z, yaw, pitch));
         }
 
-        if (region != null && region.getType().equals(RegionType.DUNGEON_HUB)) {
+        if (region != null && region.getType().equals(RegionType.DUNGEON_HUB)){
             World hub = Bukkit.getWorld(plugin.getConfig().getString("hub.world"));
-            int x = plugin.getConfig().getInt("hub.x");
-            int y = plugin.getConfig().getInt("hub.y");
-            int z = plugin.getConfig().getInt("hub.z");
-            int yaw = plugin.getConfig().getInt("hub.yaw");
-            int pitch = plugin.getConfig().getInt("hub.pitch");
+            int x = plugin.getConfig().getInt("hub.mountain_x");
+            int y = plugin.getConfig().getInt("hub.mountain_y");
+            int z = plugin.getConfig().getInt("hub.mountain_z");
+            int yaw = plugin.getConfig().getInt("hub.mountain_yaw");
+            int pitch = plugin.getConfig().getInt("hub.mountain_pitch");
             player.teleport(new Location(hub, x, y, z, yaw, pitch));
         }
     }

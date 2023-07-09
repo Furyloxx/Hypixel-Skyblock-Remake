@@ -48,8 +48,8 @@ public class LostAdventurer implements ZombieStatistics, EntityStatistics, Entit
     @Override
     public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
         SEntityType type = SEntityType.BONZO_PHASE_1;
-        World world = damager.getWorld();
-        Location loc = new Location(world, sEntity.getEntity().get,67,13);
+        World world = damager.getWorld();// and now finding something to do ;-;
+        Location loc = new Location(world, sEntity.getEntity().getLocation().getBlockX(), sEntity.getEntity().getLocation().getBlockY(), sEntity.getEntity().getLocation().getBlockZ());
         sEntity = new SEntity(loc , type);
         damager.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fYou little brat!!"));
     }
