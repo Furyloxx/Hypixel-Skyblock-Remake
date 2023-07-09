@@ -33,6 +33,7 @@ import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
 import me.adarsh.godspunkycore.features.wardrobe.Listener.CheckPlayerGUIListener;
 import me.adarsh.godspunkycore.features.wardrobe.Listener.WardrobeListener;
 import me.adarsh.godspunkycore.gui.GUIListener;
+import me.adarsh.godspunkycore.gui.OtherPlayerProfile;
 import me.adarsh.godspunkycore.listener.*;
 import me.adarsh.godspunkycore.sql.SQLDatabase;
 import me.adarsh.godspunkycore.sql.SQLRegionData;
@@ -50,6 +51,7 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
@@ -133,7 +135,7 @@ public final class Skyblock extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
         getServer().getPluginManager().registerEvents(new BazaarGui(), this);
-        getServer().getPluginManager().registerEvents(new PlayerProfileListener(), this);
+        getServer().getPluginManager().registerEvents(new OtherPlayerProfile(), this);
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
