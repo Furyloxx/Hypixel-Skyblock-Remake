@@ -243,6 +243,8 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new MortCommand());
         cl.register(new SetHubCommand());
         cl.register(new SetDungeonHubCommand());
+        cl.register(new PlayerLocationCommand());
+        cl.register(new SetMountainCommand());
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
