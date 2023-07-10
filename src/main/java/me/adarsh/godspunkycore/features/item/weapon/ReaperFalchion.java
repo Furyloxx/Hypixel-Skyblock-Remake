@@ -1,66 +1,38 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
-public class ReaperFalchion implements ToolStatistics, MaterialFunction, Ability {
-
-    @Override
-    public String getDisplayName() {
-        return "Reaper Falchion";
-    }
-
-    @Override
+public class ReaperFalchion implements ToolStatistics, MaterialFunction {
     public int getBaseDamage() {
         return 120;
     }
 
-    @Override
     public double getBaseStrength() {
-        return 100;
+        return 100.0D;
     }
 
-    @Override
     public double getBaseIntelligence() {
-        return 200;
+        return 200.0D;
     }
 
-    @Override
-    public int getManaCost() {
-        return 0;
+    public String getDisplayName() {
+        return "Reaper Falchion";
     }
 
-    @Override
-    public int getAbilityCooldownTicks() {
-        return 0;
-    }
-
-    @Override
-    public String getAbilityName() {
-        return null;
-    }
-
-    @Override
-    public String getAbilityDescription() {
-        return "Heal 10❤ per hit. Deal +200% damage to Zombies. Receive 20% less damage from Zombies when held.";
-    }
-
-    @Override
     public Rarity getRarity() {
         return Rarity.EPIC;
     }
 
-    @Override
     public GenericItemType getType() {
         return GenericItemType.WEAPON;
     }
 
-    @Override
-    public SpecificItemType getSpecificType() {
-        return SpecificItemType.SWORD;
+    public String getLore() {
+        return "Heal " + ChatColor.RED + "10" + ChatColor.RED + "❤" + ChatColor.GRAY + " per hit. Deal " + ChatColor.GREEN + "+200% " + ChatColor.GRAY + "damage to Zombies. Receive " + ChatColor.GREEN + "20% " + ChatColor.GRAY + "less damage from Zombies when held.";
     }
 
-    @Override
-    public String getLore() {
-        return null;
+    public SpecificItemType getSpecificType() {
+        return SpecificItemType.SWORD;
     }
 }

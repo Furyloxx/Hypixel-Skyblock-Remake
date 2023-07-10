@@ -56,6 +56,21 @@ public class DungeonGenerator {
                             new Location(world, 22, 103, -38),
                             new Location(world, 23, 103, -38)
                     );
+                    List<Location> row1 = Arrays.asList(
+                            new Location(world, 23, 105, -38),
+                            new Location(world, 22, 105, -38),
+                            new Location(world, 21, 105, -38)
+                    );
+                    List<Location> row2 = Arrays.asList(
+                            new Location(world, 23, 104, -38),
+                            new Location(world, 22, 104, -38),
+                            new Location(world, 21, 104, -38)
+                    );
+                    List<Location> row3 = Arrays.asList(
+                            new Location(world, 23, 103, -38),
+                            new Location(world, 22, 103, -38),
+                            new Location(world, 21, 103, -38)
+                    );
 
                     int animationTicks = 40;
 
@@ -68,7 +83,6 @@ public class DungeonGenerator {
                     entity = new SEntity(npcLocation, type);
                     player.playSound(player.getLocation(), Sound.EXPLODE, 1.0f, 1.0f);
                     player.sendMessage(ChatColor.GOLD + "Kill " + entity.getStatistics().getEntityName() + " To Spawn Bonzo");
-
 
                 }
             }
