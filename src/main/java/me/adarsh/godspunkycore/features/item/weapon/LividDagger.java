@@ -4,8 +4,10 @@ import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.listener.PlayerListener;
 import me.adarsh.godspunkycore.user.User;
+import me.adarsh.godspunkycore.util.FerocityCalculation;
 import me.adarsh.godspunkycore.util.Groups;
 import me.adarsh.godspunkycore.util.SUtil;
+import me.adarsh.godspunkycore.util.Sputnik;
 import net.minecraft.server.v1_8_R3.Entity;
 import net.minecraft.server.v1_8_R3.Packet;
 import net.minecraft.server.v1_8_R3.PacketPlayOutAnimation;
@@ -77,85 +79,104 @@ public class LividDagger implements ToolStatistics, MaterialFunction, Ability {
 
     private boolean active;
 
+    @Override
     public void onAbilityUse(final Player player1, final SItem sItem) {
-        Location throwLoc = player1.getLocation().add(0.0D, 1.2D, 0.0D);
-        final Vector throwVec = player1.getLocation().add(player1.getLocation().getDirection().multiply(10)).toVector().subtract(player1.getLocation().toVector()).normalize().multiply(1.2D);
-        for (Player p : player1.getWorld().getPlayers())
-            (((CraftPlayer)p).getHandle()).playerConnection.sendPacket((Packet)new PacketPlayOutAnimation((Entity)((CraftLivingEntity)player1).getHandle(), 0));
+        final Location throwLoc = player1.getLocation().add(0.0, 1.2, 0.0);
+        final Vector throwVec = player1.getLocation().add(player1.getLocation().getDirection().multiply(10)).toVector().subtract(player1.getLocation().toVector()).normalize().multiply(1.2);
+        for (final Player p : player1.getWorld().getPlayers()) {
+            ((CraftPlayer)p).getHandle().playerConnection.sendPacket((Packet)new PacketPlayOutAnimation((Entity)((CraftLivingEntity)player1).getHandle(), 0));
+        }
         final ArmorStand armorStand1 = (ArmorStand)player1.getWorld().spawnEntity(throwLoc, EntityType.ARMOR_STAND);
         armorStand1.getEquipment().setItemInHand(SItem.of(SMaterial.IRON_SWORD).getStack());
         armorStand1.setGravity(false);
         armorStand1.setVisible(false);
-        Player bukkitPlayer = player1.getPlayer();
+        final Player bukkitPlayer = player1.getPlayer();
         final Vector teleportTo = bukkitPlayer.getLocation().getDirection().normalize().multiply(1);
         final Vector[] previousVector = { throwVec };
-        (new BukkitRunnable() {
+        new BukkitRunnable() {
             private int run = -1;
 
             public void run() {
-                int ran = 0;
-                int i = ran;
-                int num = 90;
-                Location loc = null;
-                this.run++;
+                final int i;
+                final int ran = i = 0;
+                final int num = 90;
+                final Location loc = null;
+                ++this.run;
                 if (this.run > 100) {
-                    cancel();
+                    this.cancel();
                     return;
                 }
-                for (int j = 0; j < 7; j++)
-                    armorStand1.getWorld().spigot().playEffect(armorStand1.getLocation().clone().add(0.0D, 1.75D, 0.0D), Effect.CRIT, 0, 1,
-                            (float) SUtil.random(-0.5D, 0.5D), (float)SUtil.random(0.0D, 0.5D), (float)SUtil.random(-0.5D, 0.5D), 0.0F, 1, 100);
+                for (int j = 0; j < 7; ++j) {
+                    armorStand1.getWorld().spigot().playEffect(armorStand1.getLocation().clone().add(0.0, 1.75, 0.0), Effect.CRIT, 0, 1, (float)SUtil.random(-0.5, 0.5), (float)SUtil.random(0.0, 0.5), (float)SUtil.random(-0.5, 0.5), 0.0f, 1, 100);
+                }
                 if (!armorStand1.getLocation().getBlock().getType().isTransparent() || armorStand1.isOnGround()) {
                     armorStand1.remove();
-                    cancel();
+                    this.cancel();
                     return;
                 }
-                double xPos = armorStand1.getRightArmPose().getX();
-                armorStand1.setRightArmPose(new EulerAngle(xPos + 0.35D, 0.0D, 0.0D));
-                Vector newVector = new Vector(throwVec.getX(), previousVector[0].getY() - 0.03D, throwVec.getZ());
+                final double xPos = armorStand1.getRightArmPose().getX();
+                armorStand1.setRightArmPose(new EulerAngle(xPos + 0.35, 0.0, 0.0));
+                final Vector newVector = new Vector(throwVec.getX(), previousVector[0].getY() - 0.03, throwVec.getZ());
                 previousVector[0] = newVector;
                 armorStand1.setVelocity(newVector);
                 if (i < 13) {
-                    int angle = i * 20 + num;
-                    boolean back = false;
-                } else {
-                    int angle = i * 20 - num;
-                    boolean back = true;
+                    final int angle = i * 20 + num;
+                    final boolean back = false;
+                }
+                else {
+                    final int angle = i * 20 - num;
+                    final boolean back = true;
                 }
                 if (!armorStand1.getLocation().getBlock().getType().isTransparent()) {
                     armorStand1.remove();
-                    cancel();
+                    this.cancel();
                     return;
                 }
                 if (i % 2 == 0 && i < 13) {
-                    armorStand1.teleport(armorStand1.getLocation().add(teleportTo).multiply(1.0D));
-                } else if (i % 2 == 0) {
+                    armorStand1.teleport(armorStand1.getLocation().add(teleportTo).multiply(1.0));
+                }
+                else if (i % 2 == 0) {
                     armorStand1.teleport(armorStand1.getLocation().subtract(loc.getDirection().normalize().multiply(1)));
                 }
-                for (org.bukkit.entity.Entity e : armorStand1.getNearbyEntities(0.7D, 0.7D, 0.7D)) {
+                for (final org.bukkit.entity.Entity e : armorStand1.getNearbyEntities(0.7, 0.7, 0.7)) {
                     if (e instanceof LivingEntity && e != player1.getPlayer()) {
-                        Damageable entity = (Damageable)e;
-                        if (entity.isDead() == true ||
-                                !(entity instanceof LivingEntity) ||
-                                entity instanceof Player || entity instanceof org.bukkit.entity.EnderDragonPart || entity instanceof org.bukkit.entity.Villager || entity instanceof ArmorStand || entity instanceof org.bukkit.entity.Item || entity instanceof org.bukkit.entity.ItemFrame ||
-                                entity.hasMetadata("GiantSword"))
+                        final Damageable entity = (Damageable)e;
+                        if (entity.isDead()) {
                             continue;
-                        User user = User.getUser(player1.getUniqueId());
-                        player1.playSound(player1.getLocation(), Sound.ITEM_BREAK, 1.0F, 1.0F);
-                        player1.sendMessage(ChatColor.translateAlternateColorCodes('&',"&7Your Livid Dagger hit &c1 &7enemy for &7damage."));
-                        cancel();
+                        }
+                        if (!(entity instanceof LivingEntity)) {
+                            continue;
+                        }
+                        if (entity instanceof Player || entity instanceof EnderDragonPart || entity instanceof Villager || entity instanceof ArmorStand || entity instanceof Item) {
+                            continue;
+                        }
+                        if (entity instanceof ItemFrame) {
+                            continue;
+                        }
+                        if (entity.hasMetadata("GiantSword")) {
+                            continue;
+                        }
+
+                        final User user = User.getUser(player1.getUniqueId());
+                        final Object[] atp = Sputnik.calculateDamage(player1, player1, sItem.getStack(), (LivingEntity)entity, false);
+                        final double finalDamage1 = (float)atp[0];
+                        FerocityCalculation.activeFerocityTimes(player1, (LivingEntity)entity, (int)finalDamage1, (boolean)atp[1]);
+                        user.damageEntity((LivingEntity) entity, finalDamage1);
+                        player1.playSound(player1.getLocation(), Sound.ITEM_BREAK, 1.0f, 1.0f);
+                        player1.sendMessage(ChatColor.translateAlternateColorCodes('&',"&7Your Livid Dagger hit &c1 &7enemy for &c" + SUtil.commaify(new BigDecimal(finalDamage1).setScale(1, RoundingMode.HALF_EVEN).doubleValue()) + " &7damage."));
+                        this.cancel();
                         armorStand1.remove();
                         break;
                     }
                 }
             }
-        }).runTaskTimer((Plugin) Skyblock.getPlugin(), 1L, 1L);
-        (new BukkitRunnable() {
+        }.runTaskTimer((Plugin)Skyblock.getPlugin(), 1L, 1L);
+        new BukkitRunnable() {
             public void run() {
                 armorStand1.remove();
-                cancel();
+                this.cancel();
             }
-        }).runTaskLater((Plugin)Skyblock.getPlugin(), 100L);
+        }.runTaskLater((Plugin)Skyblock.getPlugin(), 100L);
     }
 
     public int getAbilityCooldownTicks() {
