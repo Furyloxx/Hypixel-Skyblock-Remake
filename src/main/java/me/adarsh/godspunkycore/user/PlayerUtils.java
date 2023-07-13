@@ -21,10 +21,7 @@ import me.adarsh.godspunkycore.features.reforge.Reforge;
 import me.adarsh.godspunkycore.features.skill.CombatSkill;
 import me.adarsh.godspunkycore.features.skill.Skill;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
-import me.adarsh.godspunkycore.util.BlankWorldCreator;
-import me.adarsh.godspunkycore.util.DefenseReplacement;
-import me.adarsh.godspunkycore.util.Groups;
-import me.adarsh.godspunkycore.util.SUtil;
+import me.adarsh.godspunkycore.util.*;
 import org.bukkit.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -40,6 +37,7 @@ import java.util.*;
 public final class PlayerUtils {
 
     public static Skyblock skyblock;
+    public static final Map<UUID, Long> COOKIE_DURATION_CACHE;
 
     public static final Map<UUID, PlayerStatistics> STATISTICS_CACHE = new HashMap<>();
 
@@ -387,8 +385,15 @@ public final class PlayerUtils {
             AbilityActivation activation = ability.getAbilityActivation();
             if (activation != AbilityActivation.NO_ACTIVATION) {
                 UUID uuid = player.getUniqueId();
-                if (COOLDOWN_MAP.containsKey(uuid) && COOLDOWN_MAP.get(uuid).contains(sItem.getType()))
-                    player.sendMessage(ChatColor.RED + "You currently have a cooldown for this ability!");
+                if (ability.requirementsUse(player, sItem)) {
+                    player.sendMessage(Sputnik.trans(ability.getAbilityReq()));
+                    return;
+                }
+                if (PlayerUtils.COOLDOWN_MAP.containsKey(uuid) && PlayerUtils.COOLDOWN_MAP.get(uuid).contains(sItem.getType())) {
+                    if (ability.displayCooldown()) {
+                        player.sendMessage(ChatColor.RED + "You currently have a cooldown for this ability!");
+                    }
+                }
                 else {
                     int mana = Repeater.MANA_MAP.get(uuid);
                     int cost = getFinalManaCost(player, sItem, ability.getManaCost());
@@ -595,6 +600,66 @@ public final class PlayerUtils {
         }
     }
 
+    public static long getCookieDurationTicks(final Player p) {
+        if (PlayerUtils.COOKIE_DURATION_CACHE.containsKey(p.getUniqueId())) {
+            return PlayerUtils.COOKIE_DURATION_CACHE.get(p.getUniqueId());
+        }
+        PlayerUtils.COOKIE_DURATION_CACHE.put(p.getUniqueId(), 0L);
+        return 0L;
+    }
+
+    public static void setCookieDurationTicks(final Player p, final long ticks) {
+        PlayerUtils.COOKIE_DURATION_CACHE.put(p.getUniqueId(), ticks);
+    }
+
+    public static String getCookieDurationDisplay(final Player p) {
+        if (getCookieDurationTicks(p) > 0L) {
+            return SUtil.getFormattedTimeToDay(getCookieDurationTicks(p));
+        }
+        return Sputnik.trans("&7Not active! Obtain booster cookies from the") + "\n" + Sputnik.trans("&7community shop in the hub.");
+    }
+
+    public static String getCookieDurationDisplayGUI(final Player p) {
+        if (getCookieDurationTicks(p) > 0L) {
+            return ChatColor.GREEN + SUtil.getFormattedTimeToDay(getCookieDurationTicks(p));
+        }
+        return Sputnik.trans("&cNot active!");
+    }
+
+    public static void subtractDurationCookie(final Player p, final long sub) {
+        if (getCookieDurationTicks(p) > 0L) {
+            setCookieDurationTicks(p, getCookieDurationTicks(p) - sub);
+        }
+        if (getCookieDurationTicks(p) <= 0L) {
+            wipeCookieStatsBuff(p);
+        }
+        else {
+            loadCookieStatsBuff(p);
+        }
+    }
+
+    public static boolean cookieBuffActive(final Player p) {
+        return getCookieDurationTicks(p) > 0L;
+    }
+
+    public static void loadCookieStatsBuff(final Player player) {
+        final User user = User.getUser(player.getUniqueId());
+        final PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(user.getUuid());
+        statistics.zeroAll(151);
+        statistics.getFerocity().set(151, Double.valueOf(35.0));
+        statistics.getDefense().set(151, Double.valueOf(200.0));
+        statistics.getCritDamage().set(151, Double.valueOf(0.25));
+        statistics.getIntelligence().set(151, Double.valueOf(2000.0));
+        statistics.getMagicFind().set(151, Double.valueOf(0.3));
+        statistics.getStrength().set(151, Double.valueOf(100.0));
+    }
+
+    public static void wipeCookieStatsBuff(final Player player) {
+        final User user = User.getUser(player.getUniqueId());
+        final PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(user.getUuid());
+        statistics.zeroAll(151);
+    }
+
     public static boolean takeMana(Player player, int amount) {
         int n = Repeater.MANA_MAP.get(player.getUniqueId()) - amount;
         if (n < 0)
@@ -652,9 +717,14 @@ public final class PlayerUtils {
         magicFind.add(slot, boostStatistics.getBaseMagicFind());
     }
 
+
     public interface DamageResult {
         double getFinalDamage();
 
         boolean didCritDamage();
+    }
+
+    static {
+        COOKIE_DURATION_CACHE = new HashMap<UUID, Long>();
     }
 }

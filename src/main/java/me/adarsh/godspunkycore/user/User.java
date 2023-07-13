@@ -945,4 +945,29 @@ public class User {
     public static Collection<User> getCachedUsers() {
         return USER_CACHE.values();
     }
+    public void loadCookieStatus() {
+        final Player player = Bukkit.getPlayer(this.uuid);
+        PlayerUtils.setCookieDurationTicks(player, this.config.getLong("user.cookieDuration"));
+        PlayerUtils.loadCookieStatsBuff(player);
+    }
+
+    public static void wipeCookieStatsBuff(final Player player) {
+        final User user = User.getUser(player.getUniqueId());
+        final PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(user.getUuid());
+        statistics.zeroAll(151);
+    }
+
+    public void saveCookie() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        if (!Bukkit.getPlayer(this.uuid).isOnline()) {
+            return;
+        }
+        if (!PlayerUtils.COOKIE_DURATION_CACHE.containsKey(this.uuid)) {
+            return;
+        }
+        this.config.set("user.cookieDuration", (Object)PlayerUtils.getCookieDurationTicks(Bukkit.getPlayer(this.uuid)));
+        this.config.save();
+    }
 }

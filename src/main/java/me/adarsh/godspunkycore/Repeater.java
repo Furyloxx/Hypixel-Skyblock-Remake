@@ -8,7 +8,7 @@ import me.adarsh.godspunkycore.features.potion.ActivePotionEffect;
 import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.region.RegionType;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
-import me.adarsh.godspunkycore.sidebar.Sidebar;
+import me.adarsh.godspunkycore.features.sidebar.Sidebar;
 import me.adarsh.godspunkycore.user.PlayerStatistic;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
@@ -74,6 +74,7 @@ public class Repeater {
                     for (ActivePotionEffect effect : user.getEffects())
                         effect.setRemaining(effect.getRemaining() - 10);
                     PlayerUtils.updatePotionEffects(user, statistics);
+                    PlayerUtils.subtractDurationCookie(player, 20L);
 
                     if (hand != null)
                     {
