@@ -4,29 +4,28 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class SkyBlockCalendar {
-    public static final List<String> MONTH_NAMES = Arrays.asList("Early Spring", "Spring",
-            "Late Spring", "Early Summer", "Summer", "Late Summer", "Early Autumn",
-            "Autumn", "Late Autumn", "Early Winter", "Winter", "Late Winter");
+    public static final List<String> MONTH_NAMES = Arrays.asList(new String[] {
+            "Early Spring", "Spring", "Late Spring", "Early Summer", "Summer", "Late Summer", "Early Autumn", "Autumn", "Late Autumn", "Early Winter",
+            "Winter", "Late Winter" });
 
     public static long ELAPSED = 0L;
-    public static final int YEAR = 8928000;
-    public static final int MONTH = 744000;
-    public static final int DAY = 24000;
-    //public static final long HOUR = 50000L;
 
-    private SkyBlockCalendar() {
-    }
+    public static final int YEAR = 8928000;
+
+    public static final int MONTH = 744000;
+
+    public static final int DAY = 24000;
 
     public static int getYear() {
-        return (int) (ELAPSED / YEAR);
+        return (int)(ELAPSED / 8928000L);
     }
 
     public static int getMonth() {
-        return ((int) (ELAPSED / MONTH) % 12) + 1;
+        return (int)(ELAPSED / 744000L) % 12 + 1;
     }
 
     public static int getDay() {
-        return ((int) (ELAPSED / DAY) % 31) + 1;
+        return (int)(ELAPSED / 24000L) % 31 + 1;
     }
 
     public static String getMonthName(int month) {
@@ -41,7 +40,7 @@ public final class SkyBlockCalendar {
 
     public static void saveElapsed() {
         Skyblock plugin = Skyblock.getPlugin();
-        plugin.getConfig().set("timeElapsed", ELAPSED);
-        plugin.saveConfig();
+        plugin.config.set("timeElapsed", Long.valueOf(ELAPSED));
+        plugin.config.save();
     }
 }

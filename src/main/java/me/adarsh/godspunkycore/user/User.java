@@ -28,7 +28,6 @@ import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
-import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -297,6 +296,8 @@ public class User {
         collections.put(collection, 0);
         updateCollection(collection, prevTier);
     }
+
+
 
     private void updateCollection(ItemCollection collection, int prevTier) {
         int tier = collection.getTier(getCollection(collection));
@@ -573,6 +574,7 @@ public class User {
     public int getSlayerXP(SlayerBossType.SlayerMobType type) {
         return slayerXP[type.ordinal()];
     }
+
 
     public int getSlayerCombatXPBuff() {
         int buff = 0;
@@ -923,6 +925,16 @@ public class User {
                 player.teleport(player.getWorld().getSpawnLocation());
         }
     }
+
+
+    public boolean isPlayerOnDungeonWorld(Player player) {
+        String dungeonWorldName = "Dungeon_" + player.getUniqueId();
+        String playerWorldName = player.getWorld().getName();
+
+        return playerWorldName.equalsIgnoreCase(dungeonWorldName);
+    }
+
+
 
     public static User getUser(UUID uuid) {
         if (uuid == null) return null;

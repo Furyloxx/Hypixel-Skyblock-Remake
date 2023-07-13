@@ -196,6 +196,11 @@ public enum SMaterial {
     YETI_SWORD(Material.IRON_SWORD, YetiSword.class),
     GIANT_SWORD(Material.IRON_SWORD, GiantSword.class),
     SPIRIT_SCEPTRE(Material.RED_ROSE, SpiritSceptre.class),
+    SOUL_WHIP(Material.FISHING_ROD, SoulWhip.class),
+    VOIDWALKER_KATANA(Material.IRON_SWORD, VoidwalkerKatana.class),
+    VALKYIRE(Material.IRON_SWORD, Valkyrie.class),
+    SHADOW_FURY(Material.DIAMOND_SWORD, ShadowFury.class),
+    LIVID_DAGGER(Material.IRON_SWORD, LividDagger.class),
 
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),

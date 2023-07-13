@@ -35,6 +35,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
@@ -56,6 +57,100 @@ public class PlayerListener extends PListener {
 
     public PlayerListener(Skyblock skyblock) {
         this.plugin = skyblock;
+    }
+
+    public static void ferocityActive(final int times, final Player p, final double finalDMG, final Entity damaged, final Boolean crit) {
+        if (times > 0) {
+            p.playSound(p.getLocation(), Sound.FIRE_IGNITE, 0.4f, 0.0f);
+        }
+        for (int i = 0; i < times; ++i) {
+            final LivingEntity le = (LivingEntity)damaged;
+            if (le.isDead()) {
+                break;
+            }
+            if (le.isDead()) {
+                return;
+            }
+            final User user = User.getUser(p.getUniqueId());
+            new BukkitRunnable() {
+                public void run() {
+                    //
+                    // This method could not be decompiled.
+                    //
+                    // Original Bytecode:
+                    //
+                    //     1: getfield        vn/giakhanhvn/skysim/listener/PlayerListener$4.val$damaged:Lorg/bukkit/entity/Entity;
+                    //     4: invokeinterface org/bukkit/entity/Entity.isDead:()Z
+                    //     9: ifeq            13
+                    //    12: return
+                    //    13: aload_0         /* this */
+                    //    14: getfield        vn/giakhanhvn/skysim/listener/PlayerListener$4.val$p:Lorg/bukkit/entity/Player;
+                    //    17: aload_0         /* this */
+                    //    18: getfield        vn/giakhanhvn/skysim/listener/PlayerListener$4.val$p:Lorg/bukkit/entity/Player;
+                    //    21: invokeinterface org/bukkit/entity/Player.getLocation:()Lorg/bukkit/Location;
+                    //    26: getstatic       org/bukkit/Sound.FIRE_IGNITE:Lorg/bukkit/Sound;
+                    //    29: ldc             0.4
+                    //    31: fconst_0
+                    //    32: invokeinterface org/bukkit/entity/Player.playSound:(Lorg/bukkit/Location;Lorg/bukkit/Sound;FF)V
+                    //    37: aload_0         /* this */
+                    //    38: getfield        vn/giakhanhvn/skysim/listener/PlayerListener$4.val$damaged:Lorg/bukkit/entity/Entity;
+                    //    41: aload_0         /* this */
+                    //    42: getfield        vn/giakhanhvn/skysim/listener/PlayerListener$4.val$finalDMG:D
+                    //    45: aload_0         /* this */
+                    //    46: getfield        vn/giakhanhvn/skysim/listener/PlayerListener$4.val$p:Lorg/bukkit/entity/Player;
+                    //    49: aload_0         /* this */
+                    //    50: getfield        vn/giakhanhvn/skysim/listener/PlayerListener$4.val$crit:Ljava/lang/Boolean;
+                    //    53: aload_0         /* this */
+                    //    54: getfield        vn/giakhanhvn/skysim/listener/PlayerListener$4.val$user:Lvn/giakhanhvn/skysim/user/User;
+                    //    57: invokedynamic   BootstrapMethod #0, run:(Lorg/bukkit/entity/Entity;DLorg/bukkit/entity/Player;Ljava/lang/Boolean;Lvn/giakhanhvn/skysim/user/User;)Ljava/lang/Runnable;
+                    //    62: ldc2_w          10
+                    //    65: invokestatic    vn/giakhanhvn/skysim/util/SUtil.delay:(Ljava/lang/Runnable;J)V
+                    //    68: return
+                    //    StackMapTable: 00 01 0D
+                    //
+                    // The error that occurred was:
+                    //
+                    // java.lang.IllegalStateException: Could not infer any expression.
+                    //     at com.strobel.decompiler.ast.TypeAnalysis.runInference(TypeAnalysis.java:374)
+                    //     at com.strobel.decompiler.ast.TypeAnalysis.run(TypeAnalysis.java:96)
+                    //     at com.strobel.decompiler.ast.AstOptimizer.optimize(AstOptimizer.java:344)
+                    //     at com.strobel.decompiler.ast.AstOptimizer.optimize(AstOptimizer.java:42)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.createMethodBody(AstMethodBodyBuilder.java:214)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.createMethodBody(AstMethodBodyBuilder.java:99)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.createMethodBody(AstBuilder.java:782)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.createMethod(AstBuilder.java:675)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.addTypeMembers(AstBuilder.java:552)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.createTypeCore(AstBuilder.java:519)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.createTypeNoCache(AstBuilder.java:161)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.createType(AstBuilder.java:150)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.transformCall(AstMethodBodyBuilder.java:1164)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.transformByteCode(AstMethodBodyBuilder.java:1009)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.transformExpression(AstMethodBodyBuilder.java:540)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.transformByteCode(AstMethodBodyBuilder.java:554)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.transformExpression(AstMethodBodyBuilder.java:540)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.transformNode(AstMethodBodyBuilder.java:392)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.transformBlock(AstMethodBodyBuilder.java:333)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.transformNode(AstMethodBodyBuilder.java:425)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.transformBlock(AstMethodBodyBuilder.java:333)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.createMethodBody(AstMethodBodyBuilder.java:294)
+                    //     at com.strobel.decompiler.languages.java.ast.AstMethodBodyBuilder.createMethodBody(AstMethodBodyBuilder.java:99)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.createMethodBody(AstBuilder.java:782)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.createMethod(AstBuilder.java:675)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.addTypeMembers(AstBuilder.java:552)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.createTypeCore(AstBuilder.java:519)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.createTypeNoCache(AstBuilder.java:161)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.createType(AstBuilder.java:150)
+                    //     at com.strobel.decompiler.languages.java.ast.AstBuilder.addType(AstBuilder.java:125)
+                    //     at com.strobel.decompiler.languages.java.JavaLanguage.buildAst(JavaLanguage.java:71)
+                    //     at com.strobel.decompiler.languages.java.JavaLanguage.decompileType(JavaLanguage.java:59)
+                    //     at com.strobel.decompiler.DecompilerDriver.decompileType(DecompilerDriver.java:330)
+                    //     at com.strobel.decompiler.DecompilerDriver.decompileJar(DecompilerDriver.java:251)
+                    //     at com.strobel.decompiler.DecompilerDriver.main(DecompilerDriver.java:126)
+                    //
+                    throw new IllegalStateException("An error occurred while decompiling this method.");
+                }
+            }.runTaskLater((Plugin)Skyblock.getPlugin(), (long)(4 * i));
+        }
     }
 
 

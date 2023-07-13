@@ -24,6 +24,7 @@ public class PlayerStatistics {
     private  DoublePlayerStatistic magicFind;
     private  DoublePlayerStatistic intelligence;
     private  DoublePlayerStatistic trueDefense;
+    private  DoublePlayerStatistic ferocity;
 
     @Setter
     private double healthRegenerationPercentBonus;
@@ -38,6 +39,7 @@ public class PlayerStatistics {
                             DoublePlayerStatistic critChance, DoublePlayerStatistic critDamage,
                             DoublePlayerStatistic magicFind,
                             DoublePlayerStatistic intelligence, DoublePlayerStatistic trueDefense,
+                            final DoublePlayerStatistic ferocity,
                             double healthRegenerationPercentBonus,
                             double manaRegenerationPercentBonus, ArmorSet armorSet) {
         this.uuid = uuid;
@@ -48,6 +50,7 @@ public class PlayerStatistics {
         this.critChance = critChance;
         this.critDamage = critDamage;
         this.magicFind = magicFind;
+        this.ferocity = ferocity;
         this.intelligence = intelligence;
         this.trueDefense = trueDefense;
         this.healthRegenerationPercentBonus = healthRegenerationPercentBonus;
@@ -88,12 +91,13 @@ public class PlayerStatistics {
         critDamage.zero(slot);
         magicFind.zero(slot);
         trueDefense.zero(slot);
+        this.ferocity.zero(slot);
         cancelTickingItem(slot);
     }
 
     @Override
     public String toString() {
-        return maxHealth.addAll() + ", " + defense.addAll() + ", " + strength.addAll() + ", " + speed.addAll() + ", " + critChance.addAll() + ", " +
+        return maxHealth.addAll() + ", " + defense.addAll() + ", " + strength.addAll() + ", " + this.ferocity.addAll() + speed.addAll() + ", " + critChance.addAll() + ", " +
                 critDamage.addAll() + ", " + magicFind.addAll() + ", " + intelligence.addAll();
     }
 
@@ -120,6 +124,10 @@ public class PlayerStatistics {
                 new DoublePlayerStatistic(), new DoublePlayerStatistic(1.0),
                 new DoublePlayerStatistic(0.3), new DoublePlayerStatistic(0.5), new DoublePlayerStatistic(),
                 new DoublePlayerStatistic(), new DoublePlayerStatistic(),
+                new DoublePlayerStatistic(),
                 0.0, 0.0, null);
+    }
+    public DoublePlayerStatistic getFerocity() {
+        return this.ferocity;
     }
 }

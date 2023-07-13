@@ -1,47 +1,87 @@
 package me.adarsh.godspunkycore.gui;
 
-import me.adarsh.godspunkycore.listener.PlayerProfileListener;
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 
-public class OtherPlayerProfile extends GUI {
-    public OtherPlayerProfile() {
-        super("'s Profile", 54);
+public class OtherPlayerProfile extends GUI implements Listener {
+    public PlayerInteractEntityEvent eEvent;
+
+    @EventHandler
+    public void RightClick(PlayerInteractEntityEvent event) {
+        Player player = event.getPlayer();
+
+        if (event.getRightClicked() instanceof Player) {
+            Player rightClickedPlayer = (Player) event.getRightClicked();
+            GUIType.OTHERPLAYER_PROFILE.getGUI().open(player);
+        }
     }
+
+    public OtherPlayerProfile() {
+        super("Default Profile", 54);
+    }
+
     @Override
     public void onOpen(GUIOpenEvent e) {
         fill(BLACK_STAINED_GLASS_PANE);
 
         Player player = e.getPlayer();
-
         User user = User.getUser(player.getUniqueId());
         PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(player.getUniqueId());
         set(GUIClickableItem.getCloseItem(49));
+        Player p = (Player) eEvent.getRightClicked();
 
         // HELD ITEM
-        set(new GUIClickableItem() {
-            @Override
-            public void run(InventoryClickEvent e) {
-            }
+        if (p.getItemInHand().getType().equals(Material.AIR)){
+            set(new GUIClickableItem() {
+                @Override
+                public void run(InventoryClickEvent e) {
+                }
 
-            @Override
-            public int getSlot() {
-                return 1;
-            }
+                @Override
+                public int getSlot() {
+                    return 1;
+                }
 
-            @Override
-            public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.YELLOW + "Held Item", Material.STAINED_GLASS_PANE, (short) 0, 1,
-                        ChatColor.RED + "Empty!");
-            }
-        });
+                @Override
+                public ItemStack getItem() {
+                    return SUtil.getStack(ChatColor.YELLOW + "Held Item", Material.STAINED_GLASS_PANE, (short) 0, 1,
+                            ChatColor.RED + "Empty!");
+                }
+            });
+        }else{
+            set(new GUIClickableItem() {
+                @Override
+                public void run(InventoryClickEvent e) {
+                }
+
+                @Override
+                public int getSlot() {
+                    return 1;
+                }
+
+                @Override
+                public ItemStack getItem() {
+                    return SUtil.getStack(ChatColor.YELLOW + "Held Item", p.getItemInHand().getType(), (short) 0, 1,
+                            ChatColor.RED + p.getItemInHand().getItemMeta().getDisplayName());
+                }
+            });
+        }
 
         // HELMET
         set(new GUIClickableItem() {

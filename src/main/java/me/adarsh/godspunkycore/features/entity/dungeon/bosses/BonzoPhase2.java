@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
@@ -64,12 +65,13 @@ public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFu
         SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fBut my masters are a lot stronger..")) , 40);
         SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fJust you wait...")) , 60);
 
-        if (!killed.getWorld().getName().startsWith("Dungeon_")) return;
+        if (player.getWorld().getName().startsWith("Dungeon_")) {
+            // activate portal
+            World f1 = player.getWorld();
+            SUtil.setBlocks(new Location(f1,23,103,-7.5),new Location(f1,21,107,-7.5), Material.PORTAL, false);
+        }
 
-        User user = User.getUser(player.getUniqueId());
-        player.sendMessage(SUtil.getRandomVisibleColor() + "Sending to Island");
-        SUtil.delay( () -> player.teleport(new Location(Bukkit.getWorld("islands"), user.getIslandX() , 100 , user.getIslandZ())) , 200);
-        SUtil.delay( () -> DungeonGenerator.deleteDungeon(player) , 250);
+        if (!killed.getWorld().getName().startsWith("Dungeon_")) return;
 
     }
 }

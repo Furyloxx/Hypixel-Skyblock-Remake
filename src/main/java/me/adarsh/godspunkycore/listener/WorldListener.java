@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.listener;
 
 import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.command.CommandFailException;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SlimeStatistics;
 import me.adarsh.godspunkycore.features.entity.caverns.CreeperFunction;
@@ -228,6 +229,9 @@ public class WorldListener extends PListener {
 
     @EventHandler
     public void onPortalEnter(EntityPortalEnterEvent e) {
+        if (!e.getEntity().getType().equals(EntityType.PLAYER)){
+            throw new CommandFailException("Some Entity Is Near Any Portal!");
+        }
         Player player = (Player) e.getEntity();
         Region region = Region.getRegionOfEntity(player);
 
@@ -267,6 +271,11 @@ public class WorldListener extends PListener {
             int yaw = plugin.getConfig().getInt("hub.mountain_yaw");
             int pitch = plugin.getConfig().getInt("hub.mountain_pitch");
             player.teleport(new Location(hub, x, y, z, yaw, pitch));
+        }
+
+        if (player.getWorld().getName().startsWith("Dungeon_")) {
+            player.sendMessage(ChatColor.GRAY + "Sending to island...");
+            PlayerUtils.sendToIsland(player);
         }
     }
 
