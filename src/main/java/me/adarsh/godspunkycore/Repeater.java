@@ -14,6 +14,7 @@ import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.DefenseReplacement;
+import me.adarsh.godspunkycore.util.ManaReplacement;
 import me.adarsh.godspunkycore.util.SUtil;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.Bukkit;
@@ -30,6 +31,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Repeater {
     public static final Map<UUID, Integer> MANA_MAP = new HashMap<>();
     public static final Map<UUID, DefenseReplacement> DEFENSE_REPLACEMENT_MAP = new HashMap<>();
+
+    public static final Map<UUID, ManaReplacement> MANA_REPLACEMENT_MAP = new HashMap<>();
 
     private final List<BukkitTask> tasks;
     private final List<AtomicInteger> counters;
@@ -127,9 +130,14 @@ public class Repeater {
                     float absorption = human.getAbsorptionHearts();
                     ChatColor color = absorption > 0.0f ? ChatColor.GOLD : ChatColor.RED;
                     DefenseReplacement replacement = DEFENSE_REPLACEMENT_MAP.get(player.getUniqueId());
+                    ManaReplacement replacement1 = MANA_REPLACEMENT_MAP.get(player.getUniqueId());
                     if (replacement != null && System.currentTimeMillis() >= replacement.getEnd()) {
                         DEFENSE_REPLACEMENT_MAP.remove(player.getUniqueId());
                         replacement = null;
+                    }
+                    if (replacement1 != null && System.currentTimeMillis() >= replacement1.getEnd()) {
+                        MANA_REPLACEMENT_MAP.remove(player.getUniqueId());
+                        replacement1 = null;
                     }
                     SUtil.sendActionBar(player, color + "" + Math.round(player.getHealth() + absorption)
                             + "/" + SUtil.blackMagic(statistics.getMaxHealth().addAll()) + "❤     " +
