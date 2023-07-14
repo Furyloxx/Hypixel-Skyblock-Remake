@@ -34,6 +34,7 @@ public class Repeater {
     public static final Map<UUID, DefenseReplacement> DEFENSE_REPLACEMENT_MAP = new HashMap<>();
 
     public static final Map<UUID, ManaReplacement> MANA_REPLACEMENT_MAP = new HashMap<>();
+    public static final Map<UUID, Integer> PTN_CACHE;
 
     private final List<BukkitTask> tasks;
     private final List<AtomicInteger> counters;
@@ -239,9 +240,15 @@ public class Repeater {
         }.runTaskTimer(Skyblock.getPlugin(), 0, 10));
     }
 
+    public static String get(final Player p) {
+        return "";
+    }
+
     public void stop() {
         for (BukkitTask task : this.tasks)
             task.cancel();
     }
-
+    static {
+        PTN_CACHE = new HashMap<UUID, Integer>();
+    }
 }

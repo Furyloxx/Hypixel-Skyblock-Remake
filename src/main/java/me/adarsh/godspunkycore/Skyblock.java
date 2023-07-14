@@ -74,6 +74,7 @@ public final class Skyblock extends JavaPlugin {
     public Config config;
     public Config heads;
     public Config blocks;
+    private String serverName;
     public Config spawners;
     public Config launchpads;
     public CommandMap commandMap;
@@ -87,6 +88,9 @@ public final class Skyblock extends JavaPlugin {
 
     public static Economy getEconomy() {
         return Skyblock.econ;
+    }
+    public Skyblock(){
+        this.serverName = "Loading...";
     }
 
     // todo Minions
@@ -136,6 +140,7 @@ public final class Skyblock extends JavaPlugin {
         loadAuctions();
         CategoryManger.initItems();
         synchronizeTime();
+        new Placeholding().register();
         this.getCommand("setrank").setExecutor(new SetRankCommand());
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
@@ -486,5 +491,9 @@ public final class Skyblock extends JavaPlugin {
 
     static {
         Skyblock.econ = null;
+    }
+
+    public String getServerName() {
+        return this.serverName;
     }
 }
