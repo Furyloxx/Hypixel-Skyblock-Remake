@@ -37,7 +37,6 @@ import me.adarsh.godspunkycore.listener.*;
 import me.adarsh.godspunkycore.sql.SQLDatabase;
 import me.adarsh.godspunkycore.sql.SQLRegionData;
 import me.adarsh.godspunkycore.sql.SQLWorldData;
-import me.adarsh.godspunkycore.updater.DependencyUpdater;
 import me.adarsh.godspunkycore.user.AuctionSettings;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.*;
@@ -109,7 +108,6 @@ public final class Skyblock extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         this.setupEconomy();
-        new DependencyUpdater(this).update();
         // Wardrobe data
         Page_1 = new Page1Data(this);
         Page_1.saveDefaultConfig();
