@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.user;
 
 import com.google.common.util.concurrent.AtomicDouble;
+import de.tr7zw.nbtapi.NBTItem;
 import lombok.Getter;
 import lombok.Setter;
 import me.adarsh.godspunkycore.Skyblock;
@@ -23,7 +24,10 @@ import me.adarsh.godspunkycore.features.region.RegionType;
 import me.adarsh.godspunkycore.features.skill.*;
 import me.adarsh.godspunkycore.features.slayer.SlayerBossType;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
+import me.adarsh.godspunkycore.util.BukkitSerializeClass;
 import me.adarsh.godspunkycore.util.SUtil;
+import me.adarsh.godspunkycore.util.Sputnik;
+import net.milkbowl.vault.economy.Economy;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -32,7 +36,9 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.util.Vector;
 
 import java.io.File;
@@ -42,6 +48,7 @@ import java.util.stream.Collectors;
 
 public class User {
     public static final int ISLAND_SIZE = 125;
+    private List<ItemStack> stashedItems;
 
     private static final Map<UUID, User> USER_CACHE = new HashMap<>();
     private static final Skyblock plugin = Skyblock.getPlugin();
@@ -100,6 +107,7 @@ public class User {
 
     private User(UUID uuid) {
         this.uuid = uuid;
+        this.stashedItems = new ArrayList<ItemStack>();
         this.collections = ItemCollection.getDefaultCollections();
         this.coins = 0;
         this.bankCoins = 0;
@@ -729,8 +737,13 @@ public class User {
         player.playSound(player.getLocation(), Sound.HURT_FLESH, 1f, 1f);
         player.sendMessage(ChatColor.RED + " ☠ " + ChatColor.GRAY + message);
         SUtil.broadcastExcept(ChatColor.RED + " ☠ " + ChatColor.GRAY + String.format(out, player.getName()), player);
-        if ((isOnIsland() && cause == EntityDamageEvent.DamageCause.VOID) || permanentCoins)
+        if (PlayerUtils.cookieBuffActive(player)) {
+            player.sendMessage(ChatColor.RED + "You died!");
             return;
+        }
+        if ((isOnIsland() && cause == EntityDamageEvent.DamageCause.VOID) || this.permanentCoins || player.getWorld().getName().equalsIgnoreCase("limbo") || player.getWorld().getName().contains("f6")) {
+            return;
+        }
         if (player.getWorld().getName().startsWith("Dungeon_"))
             return;
         int piggyIndex = PlayerUtils.getSpecItemIndex(player, SMaterial.PIGGY_BANK);
@@ -761,6 +774,33 @@ public class User {
         player.sendMessage(ChatColor.RED + "You died and lost " + SUtil.commaify(sub) + " coins!");
         coins -= sub;
         save();
+    }
+
+    public void loadEconomy() {
+        final Economy eco = Skyblock.getEconomy();
+        final Player player = Bukkit.getPlayer(this.uuid);
+        if (this.config.contains("database.skysim_bits")) {
+            eco.withdrawPlayer((OfflinePlayer)player, eco.getBalance((OfflinePlayer)player));
+            eco.depositPlayer((OfflinePlayer)player, this.config.getDouble("database.skysim_bits"));
+        }
+    }
+
+
+
+    public long getCoins() {
+        return this.coins;
+    }
+
+    public long getBankCoins() {
+        return this.bankCoins;
+    }
+
+    public boolean isPermanentCoins() {
+        return this.permanentCoins;
+    }
+
+    public void setPermanentCoins(final boolean permanentCoins) {
+        this.permanentCoins = permanentCoins;
     }
 
     public void addPotionEffect(PotionEffect effect) {
@@ -831,6 +871,140 @@ public class User {
         double x = location.getX();
         double z = location.getZ();
         return world.getUID().equals(location.getWorld().getUID());
+    }
+
+    public void saveAllVanillaInstances() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        this.saveArmor();
+        this.saveEnderChest();
+        this.saveInventory();
+        this.saveExp();
+        this.saveBitsAmount();
+        this.saveLastSlot();
+        this.saveStash();
+    }
+
+    public void saveInventory() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        Object a = null;
+        final PlayerInventory piv = Bukkit.getPlayer(this.uuid).getInventory();
+        a = this.getPureListFrom((Inventory)piv);
+        this.config.set("database.inventory", a);
+        this.config.save();
+    }
+
+    public String getPureListFrom(final Inventory piv) {
+        final ItemStack[] ist = piv.getContents();
+        final List<ItemStack> arraylist = Arrays.asList(ist);
+        for (int i = 0; i < ist.length; ++i) {
+            final ItemStack stack = ist[i];
+            if (stack != null) {
+                final NBTItem nbti = new NBTItem(stack);
+                if (nbti.hasKey("dontSaveToProfile")) {
+                    arraylist.remove(i);
+                }
+            }
+        }
+        final ItemStack[] arrl = (ItemStack[])arraylist.toArray();
+        return BukkitSerializeClass.itemStackArrayToBase64(arrl);
+    }
+
+    public void saveBitsAmount() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        this.config.set("database.skysim_bits", (Object)Skyblock.getEconomy().getBalance((OfflinePlayer)Bukkit.getPlayer(this.uuid)));
+        this.config.save();
+    }
+
+    public void saveArmor() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        Object a = null;
+        a = BukkitSerializeClass.itemStackArrayToBase64(Bukkit.getPlayer(this.uuid).getInventory().getArmorContents());
+        this.config.set("database.armor", a);
+        this.config.save();
+    }
+
+    public void saveEnderChest() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        Object a = null;
+        final Inventory inv = Bukkit.getPlayer(this.uuid).getEnderChest();
+        a = this.getPureListFrom(inv);
+        this.config.set("database.enderchest", a);
+        this.config.save();
+    }
+
+    public void saveExp() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        this.config.set("database.minecraft_xp", Sputnik.getTotalExperience(Bukkit.getPlayer(this.uuid)));
+        this.config.save();
+    }
+
+    public void loadPlayerData() throws IllegalArgumentException, IOException {
+        final Player player = Bukkit.getPlayer(this.uuid);
+        if (this.config.getString("database.inventory") != null) {
+            player.getInventory().setContents(BukkitSerializeClass.itemStackArrayFromBase64(this.config.getString("database.inventory")));
+        }
+        else {
+            player.getInventory().setContents(new ItemStack[player.getInventory().getSize()]);
+        }
+        if (this.config.getString("database.enderchest") != null) {
+            player.getEnderChest().setContents(BukkitSerializeClass.itemStackArrayFromBase64(this.config.getString("database.enderchest")));
+        }
+        else {
+            player.getInventory().setContents(new ItemStack[player.getEnderChest().getSize()]);
+        }
+        if (this.config.getString("database.armor") != null) {
+            player.getInventory().setArmorContents(BukkitSerializeClass.itemStackArrayFromBase64(this.config.getString("database.armor")));
+        }
+        else {
+            player.getInventory().setContents(new ItemStack[player.getInventory().getArmorContents().length]);
+        }
+        if (this.config.contains("database.minecraft_xp")) {
+            Sputnik.setTotalExperience(player, this.config.getInt("database.minecraft_xp"));
+        }
+        if (this.config.contains("database.stashed")) {
+            final ItemStack[] arr = BukkitSerializeClass.itemStackArrayFromBase64(this.config.getString("database.stashed"));
+            this.stashedItems = Arrays.asList(arr);
+        }
+        else {
+            this.stashedItems = new ArrayList<ItemStack>();
+        }
+        this.loadEconomy();
+        if (this.config.contains("configures.slot_selected")) {
+            player.getInventory().setHeldItemSlot(this.config.getInt("configures.slot_selected"));
+        }
+    }
+
+    public void saveLastSlot() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        this.config.set("configures.slot_selected", (Object)Bukkit.getPlayer(this.uuid).getInventory().getHeldItemSlot());
+        this.config.save();
+    }
+
+    public void saveStash() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        if (this.stashedItems == null) {
+            return;
+        }
+        ItemStack[] is = new ItemStack[this.stashedItems.size()];
+        is = this.stashedItems.toArray(is);
+        this.config.set("database.stashed", (Object)BukkitSerializeClass.itemStackArrayToBase64(is));
+        this.config.save();
     }
 
 

@@ -40,6 +40,7 @@ import me.adarsh.godspunkycore.sql.SQLWorldData;
 import me.adarsh.godspunkycore.user.AuctionSettings;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.*;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -53,6 +54,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.reflect.Field;
@@ -81,6 +83,11 @@ public final class Skyblock extends JavaPlugin {
     public CommandLoader cl;
 
     public Repeater repeater;
+    private static Economy econ;
+
+    public static Economy getEconomy() {
+        return Skyblock.econ;
+    }
 
     // todo Minions
 
@@ -100,6 +107,7 @@ public final class Skyblock extends JavaPlugin {
 
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+        this.setupEconomy();
         // Wardrobe data
         Page_1 = new Page1Data(this);
         Page_1.saveDefaultConfig();
@@ -135,6 +143,18 @@ public final class Skyblock extends JavaPlugin {
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
+    }
+
+    private boolean setupEconomy() {
+        if (this.getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        final RegisteredServiceProvider<Economy> rsp = (RegisteredServiceProvider<Economy>)this.getServer().getServicesManager().getRegistration((Class)Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+        Skyblock.econ = rsp.getProvider();
+        return Skyblock.econ != null;
     }
 
     @Override
@@ -462,5 +482,9 @@ public final class Skyblock extends JavaPlugin {
     }
     public void sendMessage(String message) {
         Bukkit.getConsoleSender().sendMessage(getPrefix() + ChatColor.translateAlternateColorCodes('&', message) + ChatColor.RESET + " ");
+    }
+
+    static {
+        Skyblock.econ = null;
     }
 }

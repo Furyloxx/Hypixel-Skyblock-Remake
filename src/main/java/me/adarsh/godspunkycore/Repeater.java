@@ -16,6 +16,7 @@ import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.DefenseReplacement;
 import me.adarsh.godspunkycore.util.ManaReplacement;
 import me.adarsh.godspunkycore.util.SUtil;
+import me.clip.placeholderapi.PlaceholderAPI;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -192,6 +193,8 @@ public class Repeater {
                     else
                         coinsDisplay.append("Purse: ");
                     sidebar.add(coinsDisplay.append(ChatColor.GOLD).append(SUtil.commaify(user.getCoins())).toString());
+                    final String bits = PlaceholderAPI.setPlaceholders(player, "%royaleeconomy_balance_purse%") + " " + PlaceholderAPI.setPlaceholders(player, "%royaleeconomy_dynamic_coins%");
+                    sidebar.add("Bits: " + ChatColor.AQUA + bits);
                     sidebar.add("   ");
                     SlayerQuest quest = user.getSlayerQuest();
                     if (quest != null && quest.getDied() == 0) {
