@@ -7,6 +7,7 @@ import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -527,8 +528,9 @@ public class SkyBlockMenuGUI extends GUI {
             }
         });
 
-        // BOOSTER COOKIE TODO:
+        // BOOSTER COOKIE
         set(new GUIClickableItem() {
+            String bits = PlaceholderAPI.setPlaceholders(player, "%royaleeconomy_balance_purse%");
             @Override
             public void run(InventoryClickEvent e) {
                 GUIType.COOKIE_INFO.getGUI().open(player);
@@ -547,8 +549,8 @@ public class SkyBlockMenuGUI extends GUI {
                         ChatColor.GRAY + "from Booster Cookie in the",
                         ChatColor.GRAY + "hub'sCommunity Shop.",
                         " ",
-                        ChatColor.GRAY + "Duration: " + ChatColor.GREEN + "0 d",
-                        ChatColor.GRAY + "Bits Available: " + ChatColor.AQUA + "0",
+                        ChatColor.GRAY + "Duration: " + ChatColor.GREEN + PlayerUtils.getCookieDurationTicks(player),
+                        ChatColor.GRAY + "Bits Available: " + ChatColor.AQUA + bits,
                         " ",
                         ChatColor.YELLOW + "Click to get all info!");
             }
