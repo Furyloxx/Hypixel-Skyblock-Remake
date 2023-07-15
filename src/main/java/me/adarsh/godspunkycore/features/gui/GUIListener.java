@@ -16,7 +16,9 @@ import java.util.Map;
 import java.util.UUID;
 
 public class GUIListener extends PListener {
-    private static final Map<UUID, GUIQueryItem> QUERY_MAP = new HashMap<>();
+
+    public static final Map<UUID, GUIQueryItem> QUERY_MAP;
+    public static final Map<UUID, Boolean> QUERY_MAPPING;
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
@@ -87,5 +89,10 @@ public class GUIListener extends PListener {
         if (gui == null) return;
         gui.onClose(e);
         GUI.GUI_MAP.remove(player.getUniqueId());
+    }
+
+    static {
+        QUERY_MAP = new HashMap<UUID, GUIQueryItem>();
+        QUERY_MAPPING = new HashMap<UUID, Boolean>();
     }
 }

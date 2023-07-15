@@ -36,4 +36,12 @@ public interface PlayerBoostStatistics extends MaterialStatistics {
     default double getBaseDefense() {
         return 0;
     }
+
+    default double getBaseFerocity() {
+        return 0.0;
+    }
+
+    default double getBaseAttackSpeed() {
+        return 0.0;
+    }
 }

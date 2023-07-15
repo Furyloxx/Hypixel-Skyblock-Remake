@@ -1,12 +1,27 @@
 package me.adarsh.godspunkycore.util;
 
 import com.google.common.util.concurrent.AtomicDouble;
+import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.command.AccessTimedCommand;
+import me.adarsh.godspunkycore.features.gui.TradeMenu;
 import me.adarsh.godspunkycore.user.PlayerUtils;
+import me.adarsh.godspunkycore.user.User;
+import me.adarsh.godspunkycore.user.UserStash;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.text.DecimalFormat;
+import java.util.UUID;
 
 public class Sputnik {
 
@@ -83,5 +98,106 @@ public class Sputnik {
 
     public static String trans(String content) {
         return ChatColor.translateAlternateColorCodes('&', content);
+    }
+
+    public static String formatFull(float value) {
+        final String[] arr = { "", "k", "M", "B", "T", "P", "E" };
+        int index = 0;
+        final float realvalue = value;
+        while (value / 1000.0f >= 1.0f) {
+            value /= 1000.0f;
+            ++index;
+        }
+        final DecimalFormat decimalFormat = new DecimalFormat("#.#");
+        final String finalr = String.format("%s%s", decimalFormat.format(value), arr[index]);
+        String fin = finalr.replaceAll(",", ".");
+        if (realvalue <= 1000.0f && realvalue > 0.0f) {
+            fin = SUtil.commaify(Math.round(realvalue));
+        }
+        return fin;
+    }
+
+    public static void smartGiveItem(final ItemStack item, final Player p) {
+        if (p.getInventory().firstEmpty() != -1) {
+            p.getInventory().addItem(new ItemStack[] { item });
+        }
+        else if (User.getUser(p.getUniqueId()) != null) {
+            final UserStash us = UserStash.getStash(p.getUniqueId());
+            us.addItemInStash(item);
+        }
+    }
+
+    public static boolean isFullInv(final Player p) {
+        return p.getInventory().firstEmpty() == -1;
+    }
+
+    public static void tradeIntitize(final Player target, final Player p) {
+        if (Skyblock.getPlugin() != null && !Skyblock.getPlugin().config.getBoolean("enableTrade")) {
+            p.sendMessage(trans("&cTrading has been temporary disabled!"));
+            return;
+        }
+        if (p == target) {
+            p.sendMessage(trans("&cYou cannot trade with yourself!"));
+            p.playSound(p.getLocation(), Sound.VILLAGER_NO, 1.0f, 1.0f);
+            return;
+        }
+        final UUID uuid = UUID.randomUUID();
+        if (!target.isOnline()) {
+            p.sendMessage(trans("&cCannot find player with that name, maybe they've gone offline?"));
+            p.playSound(p.getLocation(), Sound.VILLAGER_IDLE, 1.0f, 1.0f);
+            return;
+        }
+        if (!p.getWorld().equals(target.getWorld())) {
+            p.sendMessage(net.md_5.bungee.api.ChatColor.RED + "You can't trade with that player!");
+            p.playSound(p.getLocation(), Sound.VILLAGER_IDLE, 1.0f, 1.0f);
+            return;
+        }
+        if (p.getLocation().distance(target.getLocation()) > 5.0) {
+            p.sendMessage(net.md_5.bungee.api.ChatColor.RED + "You are too far away to trade with that player!");
+            p.playSound(p.getLocation(), Sound.VILLAGER_IDLE, 1.0f, 1.0f);
+            return;
+        }
+        if (TradeUtil.hasRequest(target, p)) {
+            p.sendMessage(net.md_5.bungee.api.ChatColor.RED + "Woah there! You already have an /trade request");
+            p.playSound(p.getLocation(), Sound.VILLAGER_IDLE, 1.0f, 1.0f);
+            return;
+        }
+        new BukkitRunnable() {
+            int t = 0;
+
+            public void run() {
+                ++this.t;
+                if (TradeUtil.isTrading(p) || TradeUtil.isTrading(target)) {
+                    this.cancel();
+                    return;
+                }
+                if (this.t >= 200 && !TradeUtil.hasRequest(p, target) && !TradeUtil.isTrading(p) && !TradeUtil.isTrading(target)) {
+                    this.cancel();
+                    p.sendMessage(Sputnik.trans("&cThe /trade request to " + target.getDisplayName() + " &cexpired!"));
+                    target.sendMessage(Sputnik.trans("&cThe /trade request from " + p.getDisplayName() + " &cexpired!"));
+                    p.playSound(p.getLocation(), Sound.VILLAGER_NO, 1.0f, 1.0f);
+                    target.playSound(target.getLocation(), Sound.VILLAGER_NO, 1.0f, 1.0f);
+                    TradeUtil.resetTrade(p);
+                    TradeUtil.resetTrade(target);
+                }
+            }
+        }.runTaskTimer((Plugin)Skyblock.getPlugin(), 0L, 1L);
+        if (TradeUtil.hasRequest(p, target)) {
+            p.playSound(p.getLocation(), Sound.VILLAGER_HAGGLE, 1.0f, 1.0f);
+            target.playSound(target.getLocation(), Sound.VILLAGER_HAGGLE, 1.0f, 1.0f);
+            new TradeMenu(p, target, uuid).open();
+            return;
+        }
+        p.playSound(p.getLocation(), Sound.VILLAGER_HAGGLE, 1.0f, 1.0f);
+        target.playSound(target.getLocation(), Sound.VILLAGER_HAGGLE, 1.0f, 1.0f);
+        p.sendMessage(trans("&aYou have sent a trade request to &b" + target.getDisplayName() + "&a."));
+        final TextComponent message = new TextComponent(trans("&b" + p.getName() + " &ahas sent you a trade request. &bClick here &ato accept."));
+        final UUID accessKey = UUID.randomUUID();
+        AccessTimedCommand.KEYS.add(accessKey);
+        SUtil.delay(() -> AccessTimedCommand.KEYS.remove(accessKey), 200L);
+        message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, (BaseComponent[])new TextComponent[] { new TextComponent(net.md_5.bungee.api.ChatColor.GOLD + "Click to trade!") }));
+        message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/attc " + accessKey + " " + p.getName()));
+        target.spigot().sendMessage((BaseComponent)message);
+        TradeUtil.requestTrade(p, target);
     }
 }
