@@ -46,6 +46,9 @@ public enum GUIType {
     TRASH(TrashGUI.class),
     COOKIE_CONFIRM(CookieConfirmGUI.class),
     BOOSTER_COOKIE_SHOP(BoosterCookieShop.class),
+    CITY_PROJECT(CityProjectGUI.class),
+    FIRE_SALE(FireSaleGUI.class),
+    BIT_SHOP(BitShopGUI.class),
     ;
 
     private final Class<? extends GUI> gui;

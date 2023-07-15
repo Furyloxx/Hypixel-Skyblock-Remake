@@ -5,19 +5,22 @@ import me.adarsh.godspunkycore.util.SUtil;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class BoosterCookieShop extends GUI {
-    public BoosterCookieShop() {
+public class BitShopGUI extends GUI {
+    public BitShopGUI() {
         super("Community Shop", 54);
     }
 
     @Override
     public void onOpen(GUIOpenEvent e) {
-        fill(BLACK_STAINED_GLASS_PANE);
+        fill(BLACK_STAINED_GLASS_PANE,0,18);
+        fill(BLACK_STAINED_GLASS_PANE,26,27);
+        fill(BLACK_STAINED_GLASS_PANE,35,36);
+        fill(BLACK_STAINED_GLASS_PANE,44,53);
+
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
 
@@ -77,6 +80,7 @@ public class BoosterCookieShop extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
+                GUIType.BOOSTER_COOKIE_SHOP.getGUI().open(player);
             }
 
             @Override
@@ -91,7 +95,7 @@ public class BoosterCookieShop extends GUI {
                         ChatColor.GRAY + "letting you earn " + ChatColor.AQUA + "bits",
                         ChatColor.GRAY + "as well as " + ChatColor.LIGHT_PURPLE + "tons of perks.",
                         " ",
-                        ChatColor.GREEN + "Currently selected!");
+                        ChatColor.YELLOW + "Click to view!");
             }
         });
 
@@ -99,7 +103,6 @@ public class BoosterCookieShop extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                GUIType.BIT_SHOP.getGUI().open(player);
             }
 
             @Override
@@ -115,7 +118,7 @@ public class BoosterCookieShop extends GUI {
                         "",
                         ChatColor.GRAY + "Earn bits from " + ChatColor.GOLD + "Booster Cookie.",
                         " ",
-                        ChatColor.YELLOW + "Click to view!");
+                        ChatColor.GREEN + "Currently Selected!");
             }
         });
 
@@ -176,7 +179,7 @@ public class BoosterCookieShop extends GUI {
 
             @Override
             public int getSlot() {
-                return 10;
+                return 12;
             }
 
             @Override
@@ -208,7 +211,7 @@ public class BoosterCookieShop extends GUI {
 
             @Override
             public int getSlot() {
-                return 13;
+                return 10;
             }
 
             @Override
@@ -258,7 +261,7 @@ public class BoosterCookieShop extends GUI {
 
             @Override
             public int getSlot() {
-                return 12;
+                return 13;
             }
 
             @Override
@@ -268,131 +271,6 @@ public class BoosterCookieShop extends GUI {
             }
         });
 
-        // Single Cookie
-        set(new GUIClickableItem() {
-            @Override
-            public void run(InventoryClickEvent e) {
-                player.sendMessage(ChatColor.RED+"Coming Soon!");
-                player.playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT,1.0f,1.0f);
-            }
-
-            @Override
-            public int getSlot() {
-                return 29;
-            }
-
-            @Override
-            public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.GOLD + "Single Cookie", Material.COOKIE, (short) 0, 1,
-                        "",
-                        ChatColor.GOLD + "Booster Cookie " + ChatColor.DARK_GRAY + "x1",
-                        ChatColor.translateAlternateColorCodes('&',"&7Consume to gain the &dCookie Buff"),
-                        ChatColor.translateAlternateColorCodes('&',"&7for &b5 &7days:"),
-                        " ",
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Ability to gain &bBis&7!"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &b+20% &7 Skill XP"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &b+15 &7Magic Find"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Keep &6coins &7and &beffects &7on death"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &ePermafly &7 on private islands"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Access &6/ah &7and &6/bazaar &7 anywhere"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Sell items directly to the trades menu"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7AFK &aimmunity &7on your island"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Toggle specific &dpotion effects"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Access to &6/anvil &7and &6/etable"),
-                        "",
-                        ChatColor.GOLD+""+ChatColor.BOLD+"LEGENDARY",
-                        "",
-                        ChatColor.GRAY+"Cost",
-                        ChatColor.GREEN+"325 SkyBlock Gems",
-                        "",
-                        ChatColor.GRAY+"You have: ",
-                        ChatColor.RED+"Coming Soon!");
-            }
-        });
-
-        // Half Dozen
-        set(new GUIClickableItem() {
-            @Override
-            public void run(InventoryClickEvent e) {
-                player.sendMessage(ChatColor.RED+"Coming Soon!");
-                player.playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT,1.0f,1.0f);
-            }
-
-            @Override
-            public int getSlot() {
-                return 31;
-            }
-
-            @Override
-            public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.GOLD + "Hafl-Dozen Cookie", Material.COOKIE, (short) 0, 1,
-                        "",
-                        ChatColor.GOLD + "Booster Cookie " + ChatColor.DARK_GRAY + "x6",
-                        ChatColor.translateAlternateColorCodes('&',"&7Consume to gain the &dCookie Buff"),
-                        ChatColor.translateAlternateColorCodes('&',"&7for &b5 &7days:"),
-                        " ",
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Ability to gain &bBis&7!"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &b+20% &7 Skill XP"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &b+15 &7Magic Find"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Keep &6coins &7and &beffects &7on death"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &ePermafly &7 on private islands"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Access &6/ah &7and &6/bazaar &7 anywhere"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Sell items directly to the trades menu"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7AFK &aimmunity &7on your island"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Toggle specific &dpotion effects"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Access to &6/anvil &7and &6/etable"),
-                        "",
-                        ChatColor.GOLD+""+ChatColor.BOLD+"LEGENDARY",
-                        "",
-                        ChatColor.GRAY+"Cost",
-                        ChatColor.GREEN+"1,950 SkyBlock Gems",
-                        "",
-                        ChatColor.GRAY+"You have: ",
-                        ChatColor.RED+"Coming Soon!");
-            }
-        });
-
-        // Dozen
-        set(new GUIClickableItem() {
-            @Override
-            public void run(InventoryClickEvent e) {
-                player.sendMessage(ChatColor.RED+"Coming Soon!");
-                player.playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT,1.0f,1.0f);
-            }
-
-            @Override
-            public int getSlot() {
-                return 33;
-            }
-
-            @Override
-            public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.GOLD + "A Dozen Cookie", Material.COOKIE, (short) 0, 1,
-                        "",
-                        ChatColor.GOLD + "Booster Cookie " + ChatColor.DARK_GRAY + "x12",
-                        ChatColor.translateAlternateColorCodes('&',"&7Consume to gain the &dCookie Buff"),
-                        ChatColor.translateAlternateColorCodes('&',"&7for &b5 &7days:"),
-                        " ",
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Ability to gain &bBis&7!"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &b+20% &7 Skill XP"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &b+15 &7Magic Find"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Keep &6coins &7and &beffects &7on death"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &ePermafly &7 on private islands"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Access &6/ah &7and &6/bazaar &7 anywhere"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Sell items directly to the trades menu"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7AFK &aimmunity &7on your island"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Toggle specific &dpotion effects"),
-                        ChatColor.translateAlternateColorCodes('&',"&8► &7Access to &6/anvil &7and &6/etable"),
-                        "",
-                        ChatColor.GOLD+""+ChatColor.BOLD+"LEGENDARY",
-                        "",
-                        ChatColor.GRAY+"Cost",
-                        ChatColor.GREEN+"3,900 SkyBlock Gems",
-                        "",
-                        ChatColor.GRAY+"You have: ",
-                        ChatColor.RED+"Coming Soon!");
-            }
-        });
 
         // Link
         set(new GUIClickableItem() {
@@ -416,7 +294,7 @@ public class BoosterCookieShop extends GUI {
                         ChatColor.translateAlternateColorCodes('&',"&7Gems: "),
                         ChatColor.translateAlternateColorCodes('&',"&8Purchase on godspunky.store"),
                         " ",
-                        ChatColor.translateAlternateColorCodes('&',"&7Bits: " + bits),
+                        ChatColor.translateAlternateColorCodes('&',"&7Bits: " + ChatColor.AQUA+bits),
                         ChatColor.translateAlternateColorCodes('&',"&8Earn from Booster Cookies!"),
                         "",
                         ChatColor.translateAlternateColorCodes('&',"&7Fame Rank: &eNew player"),
