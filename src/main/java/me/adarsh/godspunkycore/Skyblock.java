@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore;
 
+import com.onarandombox.MultiverseCore.MultiverseCore;
 import lombok.SneakyThrows;
 import me.adarsh.godspunkycore.command.*;
 import me.adarsh.godspunkycore.config.Config;
@@ -62,6 +63,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public final class Skyblock extends JavaPlugin {
+
     private static Skyblock plugin;
     public static Page1Data Page_1;
     public static Page2Data Page_2;
@@ -318,6 +320,14 @@ public final class Skyblock extends JavaPlugin {
             this.sendMessage(SUtil.getRandomVisibleColor() + "CANNOT LOAD COMMAND MAPS U FKIN.......");
         }
 
+    }
+
+    public static Player findPlayerByIPAddress(String ip) {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (p.getAddress().toString().contains(ip))
+                return p;
+        }
+        return null;
     }
 
     public void registerTraits() {

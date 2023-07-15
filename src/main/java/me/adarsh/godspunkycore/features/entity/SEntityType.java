@@ -45,6 +45,10 @@ public enum SEntityType {
     REVENANT_SYCOPHANT(EntityType.ZOMBIE, RevenantSycophant.class),
     REVENANT_CHAMPION(EntityType.ZOMBIE, RevenantChampion.class),
     DEFORMED_REVENANT(EntityType.ZOMBIE, DeformedRevenant.class),
+
+    ATONED_HORROR(EntityType.ZOMBIE , AtonedRevenant.class, true),
+
+    ATONED_CHAMPION(EntityType.ZOMBIE, AtonedChampion.class),
     SVEN_PACKMASTER(EntityType.WOLF, SvenPackmaster.class, true),
     SVEN_PUP(EntityType.WOLF, SvenPup.class, true),
     SVEN_FOLLOWER(EntityType.WOLF, SvenFollower.class),

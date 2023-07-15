@@ -62,8 +62,8 @@ public class CatacombsGUI extends GUI {
             @Override
             public void run(InventoryClickEvent e) {
                 player1.closeInventory();
-                player1.sendMessage(ChatColor.YELLOW+"Sending you to Dungeon!");
-                player1.sendMessage(ChatColor.YELLOW+"Please wait...");
+                player1.sendMessage(ChatColor.RED + "[Dungeon]:" + ChatColor.YELLOW+" Sending you to Dungeon!");
+                player1.sendMessage(ChatColor.RED + "[Dungeon]:" + ChatColor.YELLOW+" Please wait...");
                 player1.playSound(player1.getLocation(), Sound.CREEPER_HISS,1.0f,1.0f);
                 generator.CreateDungeon(player1);
             }

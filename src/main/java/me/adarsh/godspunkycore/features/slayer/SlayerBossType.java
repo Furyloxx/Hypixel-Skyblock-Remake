@@ -34,6 +34,13 @@ public class SlayerBossType {
     private static final SlayerAbility CALL_THE_PUPS = new SlayerAbility(ChatColor.AQUA + "Call the pups!",
             "At 50% health, calls its deadly pack", "of pups.");
 
+    private static final SlayerAbility HEAL = new SlayerAbility(ChatColor.GREEN + "Redemption", new String[] { "Heals rapidly." });
+
+    private static final SlayerAbility EXPLOSION = new SlayerAbility(ChatColor.RED + "Explosive Assault", new String[] { "Throws explosive TNT." });
+
+    private static final SlayerAbility ONEHIT = new SlayerAbility(ChatColor.DARK_PURPLE + "Thermonuclear", new String[] { "Charges up and releases a massive", "explosion." });
+
+
     public static final SlayerBossType REVENANT_HORROR_I = new SlayerBossType("revenant_horror_i", "Revenant Horror", SEntityType.REVENANT_HORROR, 1,
             "Beginner", SlayerMobType.ZOMBIE, 500, 15, 5, 150, 100, LIFE_DRAIN);
     public static final SlayerBossType REVENANT_HORROR_II = new SlayerBossType("revenant_horror_ii",
@@ -45,6 +52,7 @@ public class SlayerBossType {
     public static final SlayerBossType REVENANT_HORROR_IV = new SlayerBossType("revenant_horror_iv",
             "Revenant Horror", SEntityType.REVENANT_HORROR, 4, "Deadly", SlayerMobType.ZOMBIE, 1500000,
             1000, 500, 4800, 50000, LIFE_DRAIN, PESTILENCE, ENRAGE);
+
 
     public static final SlayerBossType TARANTULA_BROODFATHER_I = new SlayerBossType("tarantula_broodfather_i", "Tarantula Broodfather",
             SEntityType.TARANTULA_BROODFATHER, 1, "Beginner", SlayerMobType.SPIDER, 750,
