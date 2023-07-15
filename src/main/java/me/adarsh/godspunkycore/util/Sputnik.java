@@ -132,7 +132,7 @@ public class Sputnik {
     }
 
     public static void tradeIntitize(final Player target, final Player p) {
-        if (Skyblock.getPlugin() != null && !Skyblock.getPlugin().config.getBoolean("enableTrade")) {
+        if (Skyblock.getPlugin() != null && !Skyblock.getPlugin().getConfig().getBoolean("enableTrade")) {
             p.sendMessage(trans("&cTrading has been temporary disabled!"));
             return;
         }

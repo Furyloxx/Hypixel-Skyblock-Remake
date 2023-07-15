@@ -23,6 +23,7 @@ import me.adarsh.godspunkycore.features.skill.Skill;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
 import me.adarsh.godspunkycore.util.*;
 import org.bukkit.*;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -482,7 +483,7 @@ public final class PlayerUtils {
             world = new BlankWorldCreator("islands").createWorld();
         User user = User.getUser(player.getUniqueId());
         if (user.getIslandX() == null) {
-            Config config = Skyblock.getPlugin().config;
+            FileConfiguration config = Skyblock.getPlugin().getConfig();
             double xOffset = config.getDouble("islands.x");
             double zOffset = config.getDouble("islands.z");
             if (xOffset < -25000000.0 || xOffset > 25000000.0)
@@ -502,7 +503,7 @@ public final class PlayerUtils {
             }
             config.set("islands.x", xOffset);
             config.set("islands.z", zOffset);
-            config.save();
+            Skyblock.getPlugin().saveConfig();
         }
         World finalWorld = world;
         player.teleport(finalWorld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
@@ -677,13 +678,7 @@ public final class PlayerUtils {
             if (set.equals(SMaterial.WISE_DRAGON_SET))
                 updated /= 2;
         }
-        Enchantment ultimateWise = sItem.getEnchantment(EnchantmentType.ULTIMATE_WISE);
-        if (ultimateWise != null)
-            updated = Math.max(0, ((Long) Math.round(updated - updated * (((double) ultimateWise.getLevel()) / 10.0))).intValue());
-        if (cost == -1)
-            updated = manaPool;
-        if (cost == -2)
-            updated = manaPool / 2;
+
         return updated;
     }
 

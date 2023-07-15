@@ -6,6 +6,7 @@ import me.adarsh.godspunkycore.features.enchantment.Enchantment;
 import me.adarsh.godspunkycore.features.enchantment.EnchantmentType;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
+import me.adarsh.godspunkycore.features.gui.ProfileViewerGUI;
 import me.adarsh.godspunkycore.features.item.SBlock;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
@@ -21,6 +22,7 @@ import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
+import me.adarsh.godspunkycore.util.Sputnik;
 import org.bukkit.*;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
 import org.bukkit.entity.*;
@@ -569,6 +571,23 @@ public class PlayerListener extends PListener {
             player.sendMessage(ChatColor.RED+"Your Inventory is full!");
             SUtil.sendTitle(player,ChatColor.RED+"Inventory full!");
             player.playSound(player.getLocation(),Sound.LEVEL_UP,1.0f,1.0f);
+        }
+    }
+
+    @EventHandler
+    public void listen(final PlayerInteractEntityEvent e) {
+        if (e.getRightClicked().hasMetadata("NPC")) {
+            return;
+        }
+        final Player performer = e.getPlayer();
+        if (e.getRightClicked() instanceof Player) {
+            final Player clicked = (Player)e.getRightClicked();
+            if (performer.isSneaking()) {
+                Sputnik.tradeIntitize(clicked, performer);
+            }
+            else if (!performer.getWorld().getName().contains("f6")) {
+                new ProfileViewerGUI(clicked).open(performer);
+            }
         }
     }
 }

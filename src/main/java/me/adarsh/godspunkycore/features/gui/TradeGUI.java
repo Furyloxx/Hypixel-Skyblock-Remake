@@ -25,20 +25,21 @@ import java.util.ArrayList;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 public class TradeGUI extends GUI
 {
-    private UUID tradeUUID;
+    private final UUID tradeUUID;
     public static final Map<UUID, List<ItemStack>> itemOfferP1;
     public static final Map<UUID, List<ItemStack>> itemOfferP2;
     public static final Map<UUID, Player> player1;
     public static final Map<UUID, Player> player2;
     public static final Map<UUID, Integer> tradeCountdown;
-    private int[] ls;
-    private int[] rs;
+    private final int[] ls;
+    private final int[] rs;
 
     public void fillFrom(final Inventory i, final int startFromSlot, final int height, final ItemStack stacc) {
         i.setItem(startFromSlot, stacc);
@@ -58,10 +59,10 @@ public class TradeGUI extends GUI
         this.rs = new int[] { 5, 6, 7, 8, 14, 15, 16, 17, 23, 24, 25, 26, 32, 33, 34, 35 };
         this.tradeUUID = uuid;
         if (!TradeGUI.itemOfferP1.containsKey(uuid) && TradeGUI.itemOfferP1.get(uuid) == null) {
-            TradeGUI.itemOfferP1.put(uuid, new ArrayList<ItemStack>());
+            TradeGUI.itemOfferP1.put(uuid, new ArrayList<>());
         }
         if (!TradeGUI.itemOfferP2.containsKey(uuid) && TradeGUI.itemOfferP2.get(uuid) == null) {
-            TradeGUI.itemOfferP2.put(uuid, new ArrayList<ItemStack>());
+            TradeGUI.itemOfferP2.put(uuid, new ArrayList<>());
         }
     }
 
@@ -69,7 +70,7 @@ public class TradeGUI extends GUI
     public void onOpen(final GUIOpenEvent e) {
         final Player player = e.getPlayer();
         final Inventory i = e.getInventory();
-        final ItemStack stk = SUtil.getSingleLoreStack(ChatColor.GRAY + "\u21e6 Your stuff", Material.STAINED_GLASS_PANE, (short)0, 1, ChatColor.GRAY + "Their stuff \u21e8");
+        final ItemStack stk = SUtil.getSingleLoreStack(ChatColor.GRAY + "⇦ Your stuff", Material.STAINED_GLASS_PANE, (short)0, 1, ChatColor.GRAY + "Their stuff \u21e8");
         stk.setDurability((short)7);
         this.fillFrom(i, 4, 5, stk);
         TradeMenu.tradeP1Ready.put(this.tradeUUID, false);
@@ -90,8 +91,7 @@ public class TradeGUI extends GUI
 
             @Override
             public ItemStack getItem() {
-                final ItemStack stack = SUtil.getStack(Sputnik.trans("&aTrading!"), Material.STAINED_CLAY, (short)13, 1, ChatColor.GRAY + "Click an item in your", ChatColor.GRAY + "inventory to offer it for", ChatColor.GRAY + "trade.");
-                return stack;
+                return SUtil.getStack(Sputnik.trans("&aTrading!"), Material.STAINED_CLAY, (short)13, 1, ChatColor.GRAY + "Click an item in your", ChatColor.GRAY + "inventory to offer it for", ChatColor.GRAY + "trade.");
             }
         });
         this.set(new GUIClickableItem() {
@@ -106,8 +106,7 @@ public class TradeGUI extends GUI
 
             @Override
             public ItemStack getItem() {
-                final ItemStack stack = SUtil.getStack(Sputnik.trans("&eNew deal"), Material.INK_SACK, (short)8, 1, ChatColor.GRAY + "Trading with " + TradeGUI.player2.get(TradeGUI.this.tradeUUID).getName() + ".");
-                return stack;
+                return SUtil.getStack(Sputnik.trans("&eNew deal"), Material.INK_SACK, (short)8, 1, ChatColor.GRAY + "Trading with " + TradeGUI.player2.get(TradeGUI.this.tradeUUID).getName() + ".");
             }
         });
         new BukkitRunnable() {
@@ -169,7 +168,7 @@ public class TradeGUI extends GUI
                 }
                 final List<ItemStack> stl1 = TradeGUI.itemOfferP1.get(TradeGUI.this.tradeUUID);
                 final List<ItemStack> stl2 = TradeGUI.itemOfferP2.get(TradeGUI.this.tradeUUID);
-                final ItemStack stk = SUtil.getSingleLoreStack(ChatColor.GRAY + "\u21e6 Your stuff", Material.STAINED_GLASS_PANE, (short)0, 1, ChatColor.GRAY + "Their stuff \u21e8");
+                final ItemStack stk = SUtil.getSingleLoreStack(ChatColor.GRAY + "⇦ Your stuff", Material.STAINED_GLASS_PANE, (short)0, 1, ChatColor.GRAY + "Their stuff \u21e8");
                 stk.setDurability((short)7);
                 TradeGUI.this.fillFrom(i, 4, 5, stk);
                 int a = -1;
@@ -180,11 +179,11 @@ public class TradeGUI extends GUI
                             i.setItem(slot, User.getUser(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getUniqueId()).updateItemBoost(SItem.find(stl1.get(a))));
                         }
                         else {
-                            i.setItem(slot, (ItemStack)stl1.get(a));
+                            i.setItem(slot, stl1.get(a));
                         }
                     }
                     else {
-                        i.setItem(slot, (ItemStack)null);
+                        i.setItem(slot, null);
                     }
                 }
                 int b = -1;
@@ -195,11 +194,11 @@ public class TradeGUI extends GUI
                             i.setItem(slot2, User.getUser(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getUniqueId()).updateItemBoost(SItem.find(stl2.get(b))));
                         }
                         else {
-                            i.setItem(slot2, (ItemStack)stl2.get(b));
+                            i.setItem(slot2, stl2.get(b));
                         }
                     }
                     else {
-                        i.setItem(slot2, (ItemStack)null);
+                        i.setItem(slot2, null);
                     }
                 }
             }
@@ -215,7 +214,7 @@ public class TradeGUI extends GUI
                     TradeMenu.triggerCloseEvent(TradeGUI.this.tradeUUID, false, TradeGUI.player2.get(TradeGUI.this.tradeUUID));
                 }
             }
-        }.runTaskTimer((Plugin)Skyblock.getPlugin(), 0L, 1L);
+        }.runTaskTimer(Skyblock.getPlugin(), 0L, 1L);
         this.set(new GUISignItem() {
             @Override
             public GUI onSignClose(final String query, final Player target) {
@@ -228,7 +227,7 @@ public class TradeGUI extends GUI
                 try {
                     final Economy econ = Skyblock.getEconomy();
                     final long add = Long.parseLong(query);
-                    final double cur = econ.getBalance((OfflinePlayer)TradeGUI.player1.get(TradeGUI.this.tradeUUID));
+                    final double cur = econ.getBalance(TradeGUI.player1.get(TradeGUI.this.tradeUUID));
                     if (add <= 0L) {
                         TradeGUI.player1.get(TradeGUI.this.tradeUUID).playSound(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getLocation(), Sound.ENDERMAN_TELEPORT, 1.0f, -4.0f);
                         player.sendMessage(ChatColor.RED + "Couldn't validate this Bits amount!");
@@ -313,7 +312,7 @@ public class TradeGUI extends GUI
                         TradeGUI.itemOfferP1.get(this.tradeUUID).add(cs);
                         TradeGUI.player1.get(this.tradeUUID).playSound(TradeGUI.player1.get(this.tradeUUID).getLocation(), Sound.VILLAGER_HAGGLE, 1.0f, 1.0f);
                         TradeGUI.player2.get(this.tradeUUID).playSound(TradeGUI.player2.get(this.tradeUUID).getLocation(), Sound.VILLAGER_HAGGLE, 1.0f, 1.0f);
-                        TradeGUI.player1.get(this.tradeUUID).getInventory().setItem(e.getSlot(), (ItemStack)null);
+                        TradeGUI.player1.get(this.tradeUUID).getInventory().setItem(e.getSlot(), null);
                         TradeMenu.tradeP1Countdown.put(this.tradeUUID, 3);
                         TradeMenu.tradeP2Countdown.put(this.tradeUUID, 3);
                     }
@@ -370,7 +369,7 @@ public class TradeGUI extends GUI
             }
             else {
                 final Economy econ = Skyblock.getEconomy();
-                econ.depositPlayer((OfflinePlayer)p, (double)nmsStack.getTag().getLong("data_bits"));
+                econ.depositPlayer(p, (double)nmsStack.getTag().getLong("data_bits"));
             }
         }
     }
@@ -384,7 +383,7 @@ public class TradeGUI extends GUI
             }
             else {
                 final Economy econ = Skyblock.getEconomy();
-                econ.depositPlayer((OfflinePlayer)p, (double)nmsStack.getTag().getLong("data_bits"));
+                econ.depositPlayer(p, (double)nmsStack.getTag().getLong("data_bits"));
             }
         }
     }

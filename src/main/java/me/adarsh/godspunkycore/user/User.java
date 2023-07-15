@@ -1248,26 +1248,6 @@ public class User {
                             sitem.setReforge(ReforgeType.STRONK.getReforge());
                             player.getInventory().setItem(i, sitem.getStack());
                         }
-                        if (sitem.getEnchantment(EnchantmentType.LEGION) != null && !player.isOp() && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 5) {
-                            sitem.removeEnchantment(EnchantmentType.LEGION);
-                            player.sendMessage(ChatColor.RED + "you have illegal enchant in ur inv, that ench got wiped, haha sike u bruh lol sus.");
-                            player.getInventory().setItem(i, sitem.getStack());
-                        }
-                        if (sitem.getEnchantment(EnchantmentType.LEGION) != null && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 10) {
-                            sitem.removeEnchantment(EnchantmentType.LEGION);
-                            player.sendMessage(ChatColor.RED + "you have illegal enchant in ur inv, that ench got wiped, haha sike u bruh lol sus, epik hole ze cum amogus hahaha bruh lol amogus.");
-                            player.getInventory().setItem(i, sitem.getStack());
-                        }
-                        if (sitem.getEnchantment(EnchantmentType.SHARPNESS) != null && sitem.getEnchantment(EnchantmentType.SHARPNESS).getLevel() > 400 && !player.isOp()) {
-                            sitem.removeEnchantment(EnchantmentType.SHARPNESS);
-                            sitem.addEnchantment(EnchantmentType.SHARPNESS, 400);
-                            player.getInventory().setItem(i, sitem.getStack());
-                        }
-                        if (sitem.getEnchantment(EnchantmentType.POWER) != null && sitem.getEnchantment(EnchantmentType.POWER).getLevel() > 320 && !player.isOp()) {
-                            sitem.removeEnchantment(EnchantmentType.POWER);
-                            sitem.addEnchantment(EnchantmentType.POWER, 320);
-                            player.getInventory().setItem(i, sitem.getStack());
-                        }
                         sitem.update();
                         player.getInventory().setItem(i, this.updateItemBoost(sitem));
                     }
@@ -1288,26 +1268,6 @@ public class User {
                             sitem.setReforge(ReforgeType.STRONK.getReforge());
                             player.getEnderChest().setItem(i, sitem.getStack());
                         }
-                        if (sitem.getEnchantment(EnchantmentType.LEGION) != null && !player.isOp() && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 5) {
-                            sitem.removeEnchantment(EnchantmentType.LEGION);
-                            player.sendMessage(ChatColor.RED + "you have illegal enchant in ur echest, that ench got wiped, haha sike u bruh lol sus.");
-                            player.getEnderChest().setItem(i, sitem.getStack());
-                        }
-                        if (sitem.getEnchantment(EnchantmentType.LEGION) != null && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 10) {
-                            sitem.removeEnchantment(EnchantmentType.LEGION);
-                            player.sendMessage(ChatColor.RED + "you have illegal enchant in ur echest, that ench got wiped, haha sike u bruh lol sus, epik hole ze cum amogus hahaha bruh lol amogus.");
-                            player.getEnderChest().setItem(i, sitem.getStack());
-                        }
-                        if (sitem.getEnchantment(EnchantmentType.SHARPNESS) != null && sitem.getEnchantment(EnchantmentType.SHARPNESS).getLevel() > 400 && !player.isOp()) {
-                            sitem.removeEnchantment(EnchantmentType.SHARPNESS);
-                            sitem.addEnchantment(EnchantmentType.SHARPNESS, 400);
-                            player.getEnderChest().setItem(i, sitem.getStack());
-                        }
-                        if (sitem.getEnchantment(EnchantmentType.POWER) != null && sitem.getEnchantment(EnchantmentType.POWER).getLevel() > 300 && !player.isOp()) {
-                            sitem.removeEnchantment(EnchantmentType.POWER);
-                            sitem.addEnchantment(EnchantmentType.POWER, 300);
-                            player.getEnderChest().setItem(i, sitem.getStack());
-                        }
                         sitem.update();
                         player.getEnderChest().setItem(i, this.updateItemBoost(sitem));
                     }
@@ -1326,16 +1286,6 @@ public class User {
                     sitem.setReforge(ReforgeType.STRONK.getReforge());
                     player.getInventory().setHelmet(sitem.getStack());
                 }
-                if (sitem.getEnchantment(EnchantmentType.LEGION) != null && !player.isOp() && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 5) {
-                    sitem.removeEnchantment(EnchantmentType.LEGION);
-                    player.sendMessage(ChatColor.RED + "you have illegal enchant in ur inv, that ench got wiped, haha sike u bruh lol sus.");
-                    player.getInventory().setHelmet(sitem.getStack());
-                }
-                if (sitem.getEnchantment(EnchantmentType.LEGION) != null && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 10) {
-                    sitem.removeEnchantment(EnchantmentType.LEGION);
-                    player.sendMessage(ChatColor.RED + "you have illegal enchant in ur inv, that ench got wiped, haha sike u bruh lol sus, epik hole ze cum amogus hahaha bruh lol amogus.");
-                    player.getInventory().setHelmet(sitem.getStack());
-                }
                 sitem.update();
                 player.getInventory().setHelmet(this.updateItemBoost(sitem));
             }
@@ -1350,16 +1300,6 @@ public class User {
             if (sitem != null) {
                 if (sitem.getReforge() != null && !player.isOp() && (sitem.getReforge().toString().toUpperCase().contains("OVERPOWERED") | sitem.getReforge().toString().toUpperCase().contains("SUPERGENIUS"))) {
                     sitem.setReforge(ReforgeType.STRONK.getReforge());
-                    player.getInventory().setChestplate(sitem.getStack());
-                }
-                if (sitem.getEnchantment(EnchantmentType.LEGION) != null && !player.isOp() && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 5) {
-                    sitem.removeEnchantment(EnchantmentType.LEGION);
-                    player.sendMessage(ChatColor.RED + "you have illegal enchant in ur inv, that ench got wiped, haha sike u bruh lol sus.");
-                    player.getInventory().setChestplate(sitem.getStack());
-                }
-                if (sitem.getEnchantment(EnchantmentType.LEGION) != null && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 10) {
-                    sitem.removeEnchantment(EnchantmentType.LEGION);
-                    player.sendMessage(ChatColor.RED + "you have illegal enchant in ur inv, that ench got wiped, haha sike u bruh lol sus, epik hole ze cum amogus hahaha bruh lol amogus.");
                     player.getInventory().setChestplate(sitem.getStack());
                 }
                 sitem.update();
@@ -1378,16 +1318,6 @@ public class User {
                     sitem.setReforge(ReforgeType.STRONK.getReforge());
                     player.getInventory().setLeggings(sitem.getStack());
                 }
-                if (sitem.getEnchantment(EnchantmentType.LEGION) != null && !player.isOp() && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 5) {
-                    sitem.removeEnchantment(EnchantmentType.LEGION);
-                    player.sendMessage(ChatColor.RED + "you have illegal enchant in ur inv, that ench got wiped, haha sike u bruh lol sus.");
-                    player.getInventory().setLeggings(sitem.getStack());
-                }
-                if (sitem.getEnchantment(EnchantmentType.LEGION) != null && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 10) {
-                    sitem.removeEnchantment(EnchantmentType.LEGION);
-                    player.sendMessage(ChatColor.RED + "you have illegal enchant in ur inv, that ench got wiped, haha sike u bruh lol sus, epik hole ze cum amogus hahaha bruh lol amogus.");
-                    player.getInventory().setLeggings(sitem.getStack());
-                }
                 sitem.update();
                 player.getInventory().setLeggings(this.updateItemBoost(sitem));
             }
@@ -1402,16 +1332,6 @@ public class User {
             if (sitem != null) {
                 if (sitem.getReforge() != null && !player.isOp() && (sitem.getReforge().toString().toUpperCase().contains("OVERPOWERED") | sitem.getReforge().toString().toUpperCase().contains("SUPERGENIUS"))) {
                     sitem.setReforge(ReforgeType.STRONK.getReforge());
-                    player.getInventory().setBoots(sitem.getStack());
-                }
-                if (sitem.getEnchantment(EnchantmentType.LEGION) != null && !player.isOp() && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 5) {
-                    sitem.removeEnchantment(EnchantmentType.LEGION);
-                    player.sendMessage(ChatColor.RED + "you have illegal enchant in ur inv, that ench got wiped, haha sike u bruh lol sus.");
-                    player.getInventory().setBoots(sitem.getStack());
-                }
-                if (sitem.getEnchantment(EnchantmentType.LEGION) != null && sitem.getEnchantment(EnchantmentType.LEGION).getLevel() > 10) {
-                    sitem.removeEnchantment(EnchantmentType.LEGION);
-                    player.sendMessage(ChatColor.RED + "you have illegal enchant in ur inv, that ench got wiped, haha sike u bruh lol sus, epik hole ze cum amogus hahaha bruh lol amogus.");
                     player.getInventory().setBoots(sitem.getStack());
                 }
                 sitem.update();
