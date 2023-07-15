@@ -45,6 +45,7 @@ public enum GUIType {
     PROFILE_VIEWER(ProfileViewerGUI.class),
     TRASH(TrashGUI.class),
     COOKIE_CONFIRM(CookieConfirmGUI.class),
+    BOOSTER_COOKIE_SHOP(BoosterCookieShop.class),
     ;
 
     private final Class<? extends GUI> gui;
