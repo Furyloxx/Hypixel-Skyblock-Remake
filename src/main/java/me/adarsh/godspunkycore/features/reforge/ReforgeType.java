@@ -12,6 +12,7 @@ public enum ReforgeType {
     ODD(OddReforge.class),
     RAPID(RapidReforge.class),
     EPIC(EpicReforge.class),
+    STRONK(StronkReforge.class),
     FAIR(FairReforge.class),
     GENTLE(GentleReforge.class),
     LEGENDARY(LegendaryReforge.class),

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SoundSequenceType {
+    public static final SoundSequenceType TRADE_COMPLETE;
     private static final List<SoundSequenceType> TYPES = new ArrayList<>();
 
     public static final SoundSequenceType MADDOX_BATPHONE = new SoundSequenceType("maddox_batphone", new SoundSequence(
@@ -82,5 +83,9 @@ public class SoundSequenceType {
                 return type;
         }
         return null;
+    }
+
+    static {
+        TRADE_COMPLETE = new SoundSequenceType("trade_completed", new SoundSequence(new SoundSequence.DelayedSound[] { new SoundSequence.DelayedSound(Sound.NOTE_PLING, 0.3f, 0.5f, 1L), new SoundSequence.DelayedSound(Sound.NOTE_PLING, 0.3f, 0.69f, 1L), new SoundSequence.DelayedSound(Sound.NOTE_PLING, 0.3f, 0.84f, 1L), new SoundSequence.DelayedSound(Sound.NOTE_PLING, 0.3f, 1.12f, 3L), new SoundSequence.DelayedSound(Sound.NOTE_PLING, 0.3f, 0.55f, 3L), new SoundSequence.DelayedSound(Sound.NOTE_PLING, 0.3f, 0.69f, 3L), new SoundSequence.DelayedSound(Sound.NOTE_PLING, 0.3f, 0.84f, 5L), new SoundSequence.DelayedSound(Sound.NOTE_PLING, 0.3f, 1.12f, 5L) }));
     }
 }

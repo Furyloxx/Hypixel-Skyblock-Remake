@@ -208,5 +208,8 @@ public abstract class GUI {
     public void onBottomClick(InventoryClickEvent e) {
     }
 
+    public void onTopClick(final InventoryClickEvent e) {
+    }
+
 
 }

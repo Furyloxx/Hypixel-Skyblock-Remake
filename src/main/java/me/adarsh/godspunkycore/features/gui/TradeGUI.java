@@ -1,1136 +1,408 @@
 package me.adarsh.godspunkycore.features.gui;
 
-import me.adarsh.godspunkycore.features.collection.ItemCollection;
-import me.adarsh.godspunkycore.features.item.SMaterial;
-import me.adarsh.godspunkycore.user.PlayerStatistics;
-import me.adarsh.godspunkycore.user.PlayerUtils;
+import java.util.HashMap;
+
+import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.features.item.SItem;
+import me.adarsh.godspunkycore.features.item.Untradeable;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
+import me.adarsh.godspunkycore.util.Sputnik;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import net.milkbowl.vault.economy.Economy;
+import net.minecraft.server.v1_8_R3.NBTBase;
+import net.minecraft.server.v1_8_R3.NBTTagLong;
+import net.minecraft.server.v1_8_R3.NBTTagCompound;
+import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.Sound;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.Material;
+import org.bukkit.ChatColor;
+import java.util.ArrayList;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
-public class TradeGUI extends GUI {
+public class TradeGUI extends GUI
+{
+    private UUID tradeUUID;
+    public static final Map<UUID, List<ItemStack>> itemOfferP1;
+    public static final Map<UUID, List<ItemStack>> itemOfferP2;
+    public static final Map<UUID, Player> player1;
+    public static final Map<UUID, Player> player2;
+    public static final Map<UUID, Integer> tradeCountdown;
+    private int[] ls;
+    private int[] rs;
+
+    public void fillFrom(final Inventory i, final int startFromSlot, final int height, final ItemStack stacc) {
+        i.setItem(startFromSlot, stacc);
+        i.setItem(startFromSlot + 9, stacc);
+        i.setItem(startFromSlot + 9 + 9, stacc);
+        i.setItem(startFromSlot + 9 + 9 + 9, stacc);
+        i.setItem(startFromSlot + 9 + 9 + 9 + 9, stacc);
+    }
+
     public TradeGUI() {
-        super("Trade", 54);
+        this(UUID.randomUUID());
+    }
+
+    public TradeGUI(final UUID uuid) {
+        super("You                  " + TradeGUI.player2.get(uuid).getName(), 45);
+        this.ls = new int[] { 0, 1, 2, 3, 9, 10, 11, 12, 18, 19, 20, 21, 27, 28, 29, 30 };
+        this.rs = new int[] { 5, 6, 7, 8, 14, 15, 16, 17, 23, 24, 25, 26, 32, 33, 34, 35 };
+        this.tradeUUID = uuid;
+        if (!TradeGUI.itemOfferP1.containsKey(uuid) && TradeGUI.itemOfferP1.get(uuid) == null) {
+            TradeGUI.itemOfferP1.put(uuid, new ArrayList<ItemStack>());
+        }
+        if (!TradeGUI.itemOfferP2.containsKey(uuid) && TradeGUI.itemOfferP2.get(uuid) == null) {
+            TradeGUI.itemOfferP2.put(uuid, new ArrayList<ItemStack>());
+        }
     }
 
     @Override
-    public void onOpen(GUIOpenEvent e) {
-
-        fill(BLACK_STAINED_GLASS_PANE, 0, 9);
-        fill(BLACK_STAINED_GLASS_PANE, 17, 18);
-        fill(BLACK_STAINED_GLASS_PANE, 26, 27);
-        fill(BLACK_STAINED_GLASS_PANE, 35, 36);
-        fill(BLACK_STAINED_GLASS_PANE, 44, 53);
-
-        Player player = e.getPlayer();
-
-        User user = User.getUser(player.getUniqueId());
-        PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(player.getUniqueId());
-        set(GUIClickableItem.getCloseItem(49));
-
-        // Arrow (back)
-        set(new GUIClickableItem() {
+    public void onOpen(final GUIOpenEvent e) {
+        final Player player = e.getPlayer();
+        final Inventory i = e.getInventory();
+        final ItemStack stk = SUtil.getSingleLoreStack(ChatColor.GRAY + "\u21e6 Your stuff", Material.STAINED_GLASS_PANE, (short)0, 1, ChatColor.GRAY + "Their stuff \u21e8");
+        stk.setDurability((short)7);
+        this.fillFrom(i, 4, 5, stk);
+        TradeMenu.tradeP1Ready.put(this.tradeUUID, false);
+        this.set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e) {
-                GUIType.SKYBLOCK_MENU.getGUI().open(player);
-            }
-
-            @Override
-            public int getSlot() {
-                return 48;
-            }
-
-            @Override
-            public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.GREEN + "Go Back", Material.ARROW, (short) 0, 1,
-                        ChatColor.GRAY + "To SkyBlock Menu");
-            }
-        });
-
-        // TODO : MAKE IT FOR SB ITEMS {IT WORKS FOR VANILLA ONLY}
-
-        // COAL
-        set(new GUIClickableItem() {
-            @Override
-            public void run(InventoryClickEvent e) {
-
-                if (player.getInventory().contains(new ItemStack(Material.LOG))) {
-                    player.getInventory().removeItem(new ItemStack(Material.LOG, 1));
-                    player.getInventory().addItem(new ItemStack(SMaterial.COAL.getCraftMaterial(), 2));
-                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 2x Coal");
-                    player.updateInventory();
-                } else {
-                    player.sendMessage(ChatColor.RED + "You don't have required items.");
+            public void run(final InventoryClickEvent e) {
+                if (TradeMenu.tradeP1Countdown.containsKey(TradeGUI.this.tradeUUID) && TradeMenu.tradeP1Countdown.get(TradeGUI.this.tradeUUID) <= 0 && (TradeGUI.itemOfferP1.get(TradeGUI.this.tradeUUID).size() > 0 || TradeGUI.itemOfferP2.get(TradeGUI.this.tradeUUID).size() > 0) && !TradeMenu.tradeP1Ready.get(TradeGUI.this.tradeUUID)) {
+                    TradeMenu.tradeP1Ready.put(TradeGUI.this.tradeUUID, true);
+                    TradeGUI.player2.get(TradeGUI.this.tradeUUID).playSound(TradeGUI.player2.get(TradeGUI.this.tradeUUID).getLocation(), Sound.VILLAGER_YES, 1.0f, 1.0f);
+                    TradeGUI.player1.get(TradeGUI.this.tradeUUID).playSound(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getLocation(), Sound.VILLAGER_YES, 1.0f, 1.0f);
                 }
             }
 
             @Override
             public int getSlot() {
-                return 10;
+                return 39;
             }
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.WHITE + "Coal", Material.COAL, (short) 0, 1,
-                        ChatColor.GRAY + "increases the speed of",
-                        ChatColor.GRAY + "your minion by " + ChatColor.GREEN + "5%",
-                        ChatColor.GRAY + "for 30 minutes!",
-                        "",
-                        ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                        "",
-                        ChatColor.GRAY + "Cost",
-                        ChatColor.WHITE + "Oak Wood",
-                        "",
-                        ChatColor.YELLOW + "Click to trade!");
+                final ItemStack stack = SUtil.getStack(Sputnik.trans("&aTrading!"), Material.STAINED_CLAY, (short)13, 1, ChatColor.GRAY + "Click an item in your", ChatColor.GRAY + "inventory to offer it for", ChatColor.GRAY + "trade.");
+                return stack;
             }
         });
-
-        // GRASS
-        set(new GUIClickableItem() {
+        this.set(new GUIClickableItem() {
             @Override
-            public void run(InventoryClickEvent e) {
-
-                if (player.getInventory().contains(new ItemStack(Material.DIRT))) {
-                    player.getInventory().removeItem(new ItemStack(Material.DIRT, 4));
-                    player.getInventory().addItem(new ItemStack(Material.GRASS, 4));
-                    player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 4x Grass");
-                    player.updateInventory();
-                } else {
-                    player.sendMessage(ChatColor.RED + "You don't have required items.");
-                }
+            public void run(final InventoryClickEvent e) {
             }
 
             @Override
             public int getSlot() {
-                return 11;
+                return 41;
             }
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.WHITE + "Grass", Material.GRASS, (short) 0, 1,
-                        ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                        "",
-                        ChatColor.GRAY + "Cost",
-                        ChatColor.WHITE + "Dirt" + ChatColor.GRAY + " x4",
-                        "",
-                        ChatColor.YELLOW + "Click to trade!");
+                final ItemStack stack = SUtil.getStack(Sputnik.trans("&eNew deal"), Material.INK_SACK, (short)8, 1, ChatColor.GRAY + "Trading with " + TradeGUI.player2.get(TradeGUI.this.tradeUUID).getName() + ".");
+                return stack;
             }
         });
-
-        // DIRT
-        if (user.hasCollection(ItemCollection.SEEDS, 1)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.SEEDS))) {
-                        player.getInventory().removeItem(new ItemStack(Material.SEEDS, 8));
-                        player.getInventory().addItem(new ItemStack(Material.DIRT, 2));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 2x Dirt");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
+        new BukkitRunnable() {
+            public void run() {
+                if (TradeGUI.this != GUI.GUI_MAP.get(player.getUniqueId())) {
+                    this.cancel();
+                    return;
+                }
+                if (TradeMenu.tradeP1Countdown.containsKey(TradeGUI.this.tradeUUID) && TradeMenu.tradeP1Countdown.get(TradeGUI.this.tradeUUID) > 0) {
+                    TradeMenu.tradeP1Countdown.put(TradeGUI.this.tradeUUID, TradeMenu.tradeP1Countdown.get(TradeGUI.this.tradeUUID) - 1);
+                }
+            }
+        }.runTaskTimer((Plugin)Skyblock.getPlugin(), 0L, 20L);
+        new BukkitRunnable() {
+            public void run() {
+                if (TradeGUI.this != GUI.GUI_MAP.get(player.getUniqueId())) {
+                    this.cancel();
+                    return;
+                }
+                if (TradeMenu.tradeP2Ready.containsKey(TradeGUI.this.tradeUUID) && TradeMenu.tradeP1Countdown.containsKey(TradeGUI.this.tradeUUID)) {
+                    if (TradeMenu.tradeP2Ready.get(TradeGUI.this.tradeUUID)) {
+                        i.setItem(41, SUtil.getStack(Sputnik.trans("&aOther player confirmed!"), Material.INK_SACK, (short)10, 1, ChatColor.GRAY + "Trading with " + TradeGUI.player2.get(TradeGUI.this.tradeUUID).getName() + ".", ChatColor.GRAY + "Waiting for you to confirm..."));
+                    }
+                    else if (TradeMenu.tradeP1Countdown.get(TradeGUI.this.tradeUUID) > 0 && !TradeMenu.tradeP1Ready.get(TradeGUI.this.tradeUUID)) {
+                        i.setItem(41, SUtil.getStack(Sputnik.trans("&eDeal timer..."), Material.INK_SACK, (short)8, 1, ChatColor.GRAY + "Trading with " + TradeGUI.player2.get(TradeGUI.this.tradeUUID).getName() + ".", ChatColor.GRAY + "The trade changed recently."));
+                    }
+                    else if (TradeMenu.tradeP1Ready.get(TradeGUI.this.tradeUUID)) {
+                        i.setItem(41, SUtil.getStack(Sputnik.trans("&ePending their confirm."), Material.INK_SACK, (short)8, 1, ChatColor.GRAY + "Trading with " + TradeGUI.player2.get(TradeGUI.this.tradeUUID).getName() + ".", ChatColor.GRAY + "Waiting for them to confirm."));
+                    }
+                    else {
+                        i.setItem(41, SUtil.getStack(Sputnik.trans("&eNew deal"), Material.INK_SACK, (short)8, 1, ChatColor.GRAY + "Trading with " + TradeGUI.player2.get(TradeGUI.this.tradeUUID).getName() + "."));
                     }
                 }
+                if (TradeMenu.tradeP1Countdown.containsKey(TradeGUI.this.tradeUUID)) {
+                    if (TradeMenu.tradeP1Countdown.get(TradeGUI.this.tradeUUID) > 0) {
+                        i.setItem(39, SUtil.getStack(Sputnik.trans("&eDeal timer! &7(&e" + TradeMenu.tradeP1Countdown.get(TradeGUI.this.tradeUUID) + "&7)"), Material.STAINED_CLAY, (short)4, TradeMenu.tradeP1Countdown.get(TradeGUI.this.tradeUUID), ChatColor.GRAY + "The trade recently changed.", ChatColor.GRAY + "Please review it before", ChatColor.GRAY + "accepting."));
+                        TradeMenu.tradeP1Ready.put(TradeGUI.this.tradeUUID, false);
+                    }
+                    else if (TradeMenu.tradeP1Ready.get(TradeGUI.this.tradeUUID)) {
+                        i.setItem(39, SUtil.getStack(Sputnik.trans("&aDeal accepted!"), Material.STAINED_CLAY, (short)13, 1, ChatColor.GRAY + "You accepted the trade.", ChatColor.GRAY + "wait for the other party to", ChatColor.GRAY + "accept."));
+                    }
+                    else if (TradeGUI.itemOfferP1.get(TradeGUI.this.tradeUUID).size() <= 0 && TradeGUI.itemOfferP2.get(TradeGUI.this.tradeUUID).size() <= 0) {
+                        i.setItem(39, SUtil.getStack(Sputnik.trans("&aTrading!"), Material.STAINED_CLAY, (short)13, 1, ChatColor.GRAY + "Click an item in your", ChatColor.GRAY + "inventory to offer it for", ChatColor.GRAY + "trade."));
+                    }
+                    else if (TradeGUI.itemOfferP2.get(TradeGUI.this.tradeUUID).size() <= 0 && !TradeMenu.tradeP1Ready.get(TradeGUI.this.tradeUUID)) {
+                        i.setItem(39, SUtil.getStack(Sputnik.trans("&eWarning!"), Material.STAINED_CLAY, (short)1, 1, ChatColor.GRAY + "You are offering items", ChatColor.GRAY + "without getting anything in", ChatColor.GRAY + "return.", " ", ChatColor.YELLOW + "Click to accept anyway!"));
+                    }
+                    else if (TradeGUI.itemOfferP1.get(TradeGUI.this.tradeUUID).size() <= 0) {
+                        i.setItem(39, SUtil.getStack(Sputnik.trans("&bGift!"), Material.STAINED_CLAY, (short)11, 1, ChatColor.GRAY + "You are receiving items", ChatColor.GRAY + "without offering anything in", ChatColor.GRAY + "return.", " ", ChatColor.YELLOW + "Click to accept!"));
+                    }
+                    else if (TradeGUI.itemOfferP1.get(TradeGUI.this.tradeUUID).size() > 0 && TradeGUI.itemOfferP2.get(TradeGUI.this.tradeUUID).size() > 0) {
+                        i.setItem(39, SUtil.getStack(Sputnik.trans("&eDeal!"), Material.STAINED_CLAY, (short)5, 1, ChatColor.GRAY + "All trades are final and", ChatColor.GRAY + "cannot be reverted.", " ", ChatColor.GREEN + "Make sure to review the", ChatColor.GREEN + "trade before accepting", " ", ChatColor.YELLOW + "Click to accept the trade!"));
+                    }
+                }
+                if (TradeMenu.tradeP1Ready.get(TradeGUI.this.tradeUUID) && TradeMenu.tradeP2Ready.get(TradeGUI.this.tradeUUID)) {
+                    this.cancel();
+                    TradeMenu.successTrade.put(TradeGUI.this.tradeUUID, true);
+                    TradeMenu.triggerCloseEvent(TradeGUI.this.tradeUUID, true, e.getPlayer());
+                }
+                final List<ItemStack> stl1 = TradeGUI.itemOfferP1.get(TradeGUI.this.tradeUUID);
+                final List<ItemStack> stl2 = TradeGUI.itemOfferP2.get(TradeGUI.this.tradeUUID);
+                final ItemStack stk = SUtil.getSingleLoreStack(ChatColor.GRAY + "\u21e6 Your stuff", Material.STAINED_GLASS_PANE, (short)0, 1, ChatColor.GRAY + "Their stuff \u21e8");
+                stk.setDurability((short)7);
+                TradeGUI.this.fillFrom(i, 4, 5, stk);
+                int a = -1;
+                for (final int slot : TradeGUI.this.ls) {
+                    if (a < stl1.size() - 1) {
+                        ++a;
+                        if (SItem.find(stl1.get(a)) != null) {
+                            i.setItem(slot, User.getUser(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getUniqueId()).updateItemBoost(SItem.find(stl1.get(a))));
+                        }
+                        else {
+                            i.setItem(slot, (ItemStack)stl1.get(a));
+                        }
+                    }
+                    else {
+                        i.setItem(slot, (ItemStack)null);
+                    }
+                }
+                int b = -1;
+                for (final int slot2 : TradeGUI.this.rs) {
+                    if (b < stl2.size() - 1) {
+                        ++b;
+                        if (SItem.find(stl2.get(b)) != null) {
+                            i.setItem(slot2, User.getUser(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getUniqueId()).updateItemBoost(SItem.find(stl2.get(b))));
+                        }
+                        else {
+                            i.setItem(slot2, (ItemStack)stl2.get(b));
+                        }
+                    }
+                    else {
+                        i.setItem(slot2, (ItemStack)null);
+                    }
+                }
+            }
+        }.runTaskTimer((Plugin) Skyblock.getPlugin(), 0L, 1L);
+        new BukkitRunnable() {
+            public void run() {
+                if (!TradeGUI.player1.get(TradeGUI.this.tradeUUID).isOnline() || !TradeGUI.player1.get(TradeGUI.this.tradeUUID).getWorld().equals(TradeGUI.player2.get(TradeGUI.this.tradeUUID).getWorld())) {
+                    this.cancel();
+                    TradeMenu.triggerCloseEvent(TradeGUI.this.tradeUUID, false, TradeGUI.player1.get(TradeGUI.this.tradeUUID));
+                }
+                else if (!TradeGUI.player2.get(TradeGUI.this.tradeUUID).isOnline() || !TradeGUI.player2.get(TradeGUI.this.tradeUUID).getWorld().equals(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getWorld())) {
+                    this.cancel();
+                    TradeMenu.triggerCloseEvent(TradeGUI.this.tradeUUID, false, TradeGUI.player2.get(TradeGUI.this.tradeUUID));
+                }
+            }
+        }.runTaskTimer((Plugin)Skyblock.getPlugin(), 0L, 1L);
+        this.set(new GUISignItem() {
+            @Override
+            public GUI onSignClose(final String query, final Player target) {
+                if (target != TradeGUI.player1.get(TradeGUI.this.tradeUUID)) {
+                    return null;
+                }
+                if (query == "$canc") {
+                    return new TradeGUI(TradeGUI.this.tradeUUID);
+                }
+                try {
+                    final Economy econ = Skyblock.getEconomy();
+                    final long add = Long.parseLong(query);
+                    final double cur = econ.getBalance((OfflinePlayer)TradeGUI.player1.get(TradeGUI.this.tradeUUID));
+                    if (add <= 0L) {
+                        TradeGUI.player1.get(TradeGUI.this.tradeUUID).playSound(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getLocation(), Sound.ENDERMAN_TELEPORT, 1.0f, -4.0f);
+                        player.sendMessage(ChatColor.RED + "Couldn't validate this Bits amount!");
+                        return new TradeGUI(TradeGUI.this.tradeUUID);
+                    }
+                    if (add > cur) {
+                        TradeGUI.player1.get(TradeGUI.this.tradeUUID).playSound(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getLocation(), Sound.ENDERMAN_TELEPORT, 1.0f, -4.0f);
+                        player.sendMessage(ChatColor.RED + "You don't have that much Bits for this.");
+                        return new TradeGUI(TradeGUI.this.tradeUUID);
+                    }
+                    if (add > 640000L) {
+                        TradeGUI.player1.get(TradeGUI.this.tradeUUID).playSound(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getLocation(), Sound.ENDERMAN_TELEPORT, 1.0f, -4.0f);
+                        player.sendMessage(ChatColor.RED + "You cannot transfer more than 640,000 Bits at once!");
+                        return new TradeGUI(TradeGUI.this.tradeUUID);
+                    }
+                    if (TradeGUI.itemOfferP1.get(TradeGUI.this.tradeUUID).size() < 16) {
+                        if (econ.withdrawPlayer((OfflinePlayer)TradeGUI.player1.get(TradeGUI.this.tradeUUID), (double)add).transactionSuccess()) {
+                            TradeGUI.player1.get(TradeGUI.this.tradeUUID).playSound(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getLocation(), Sound.VILLAGER_HAGGLE, 1.0f, 1.0f);
+                            TradeGUI.player2.get(TradeGUI.this.tradeUUID).playSound(TradeGUI.player2.get(TradeGUI.this.tradeUUID).getLocation(), Sound.VILLAGER_HAGGLE, 1.0f, 1.0f);
+                            final long stackamount = Math.min(64L, Math.max(10000L, add) / 10000L);
+                            ItemStack coinsStack = SUtil.getSkullURLStack(ChatColor.AQUA + Sputnik.formatFull((float)add) + " Bits", "7b951fed6a7b2cbc2036916dec7a46c4a56481564d14f945b6ebc03382766d3b", (int)stackamount, ChatColor.GRAY + "Lump-sum amount");
+                            final net.minecraft.server.v1_8_R3.ItemStack tagStack = CraftItemStack.asNMSCopy(coinsStack);
+                            final NBTTagCompound tagCompound = tagStack.hasTag() ? tagStack.getTag() : new NBTTagCompound();
+                            tagCompound.set("data_bits", (NBTBase)new NBTTagLong(add));
+                            tagStack.setTag(tagCompound);
+                            coinsStack = CraftItemStack.asBukkitCopy(tagStack);
+                            TradeGUI.itemOfferP1.get(TradeGUI.this.tradeUUID).add(coinsStack);
+                            TradeMenu.tradeP1Countdown.put(TradeGUI.this.tradeUUID, 3);
+                            TradeMenu.tradeP2Countdown.put(TradeGUI.this.tradeUUID, 3);
+                        }
+                        else {
+                            TradeGUI.player1.get(TradeGUI.this.tradeUUID).playSound(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getLocation(), Sound.ENDERMAN_TELEPORT, 1.0f, -4.0f);
+                            player.sendMessage(ChatColor.RED + "An unexpected error occured while attempting to access the economy!");
+                        }
+                    }
+                    return new TradeGUI(TradeGUI.this.tradeUUID);
+                }
+                catch (NumberFormatException ex) {
+                    player.sendMessage(ChatColor.RED + "Couldn't parse this Bits amount!");
+                    TradeGUI.player1.get(TradeGUI.this.tradeUUID).playSound(TradeGUI.player1.get(TradeGUI.this.tradeUUID).getLocation(), Sound.ENDERMAN_TELEPORT, 1.0f, -4.0f);
+                    return new TradeGUI(TradeGUI.this.tradeUUID);
+                }
+            }
 
-                @Override
-                public int getSlot() {
-                    return 12;
-                }
+            @Override
+            public void run(final InventoryClickEvent e) {
+                player.playSound(player.getLocation(), Sound.CLICK, 1.0f, 1.0f);
+            }
 
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Dirt", Material.DIRT, (short) 0, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Seed" + ChatColor.GRAY + " x8",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-                    player.sendMessage(ChatColor.RED + "Trade is locked!");
-                }
+            @Override
+            public int getSlot() {
+                return 36;
+            }
 
-                @Override
-                public int getSlot() {
-                    return 12;
-                }
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getSkullURLStack(ChatColor.AQUA + "Bits transaction", "7b951fed6a7b2cbc2036916dec7a46c4a56481564d14f945b6ebc03382766d3b", 1, ChatColor.GRAY + " ", ChatColor.YELLOW + "Click to add bits!");
+            }
 
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                            "");
-                }
-            });
+            @Override
+            public UUID inti() {
+                return TradeGUI.this.tradeUUID;
+            }
+        });
+    }
+
+    @Override
+    public void onBottomClick(final InventoryClickEvent e) {
+        if (e.getSlot() < 0) {
+            e.setCancelled(true);
+            return;
         }
-
-        // CLAY
-        if (user.hasCollection(ItemCollection.SEEDS, 2)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-                    player.sendMessage(ChatColor.RED + "Trade is locked!");
-                }
-
-                @Override
-                public int getSlot() {
-                    return 12;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                            "");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-                    player.sendMessage(ChatColor.RED + "Trade is locked!");
-                }
-
-                @Override
-                public int getSlot() {
-                    return 13;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1, "");
-                }
-            });
+        ItemStack cs = null;
+        if (TradeGUI.player1.get(this.tradeUUID).getInventory().getItem(e.getSlot()) != null) {
+            cs = TradeGUI.player1.get(this.tradeUUID).getInventory().getItem(e.getSlot());
         }
-
-            // OAK LEAVE
-        if (user.hasCollection(ItemCollection.OAK_WOOD, 2)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.SAPLING))) {
-                        player.getInventory().removeItem(new ItemStack(Material.SAPLING, 1));
-                        player.getInventory().addItem(new ItemStack(Material.LEAVES, 1));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Oak Leave");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
+        if (cs != null) {
+            final SItem sItem = SItem.find(cs);
+            if (sItem != null && SItem.isSpecItem(cs)) {
+                if (!(sItem.getType().getGenericInstance() instanceof Untradeable)) {
+                    if (TradeGUI.itemOfferP1.get(this.tradeUUID).size() < 16) {
+                        TradeGUI.itemOfferP1.get(this.tradeUUID).add(cs);
+                        TradeGUI.player1.get(this.tradeUUID).playSound(TradeGUI.player1.get(this.tradeUUID).getLocation(), Sound.VILLAGER_HAGGLE, 1.0f, 1.0f);
+                        TradeGUI.player2.get(this.tradeUUID).playSound(TradeGUI.player2.get(this.tradeUUID).getLocation(), Sound.VILLAGER_HAGGLE, 1.0f, 1.0f);
+                        TradeGUI.player1.get(this.tradeUUID).getInventory().setItem(e.getSlot(), (ItemStack)null);
+                        TradeMenu.tradeP1Countdown.put(this.tradeUUID, 3);
+                        TradeMenu.tradeP2Countdown.put(this.tradeUUID, 3);
+                    }
+                    else {
+                        TradeGUI.player1.get(this.tradeUUID).playSound(TradeGUI.player1.get(this.tradeUUID).getLocation(), Sound.VILLAGER_NO, 1.0f, 1.0f);
+                        TradeGUI.player1.get(this.tradeUUID).sendMessage(Sputnik.trans("&c&lIT'S FULL! &7Your trade window is full!"));
                     }
                 }
-
-                @Override
-                public int getSlot() {
-                    return 14;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Oak Leave", Material.LEAVES, (short) 0, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Oak Sapling",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-                    player.sendMessage(ChatColor.RED + "Trade is locked!");
-                }
-
-                @Override
-                public int getSlot() {
-                    return 14;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                            "");
-                }
-            });
-        }
-
-            // SPRUCE LEAVE
-        if (user.hasCollection(ItemCollection.SPRUCE_WOOD, 2)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.SAPLING, (short) 1))) {
-                        player.getInventory().removeItem(new ItemStack(Material.SAPLING, 1, (short) 1));
-                        player.getInventory().addItem(new ItemStack(Material.LEAVES, 1, (short) 1));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Spruce Leave");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 15;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Spruce Leave", Material.LEAVES, (short) 1, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Spruce Sapling",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-                    player.sendMessage(ChatColor.RED + "Trade is locked!");
-                }
-
-                @Override
-                public int getSlot() {
-                    return 15;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                            "");
-                }
-            });
-        }
-
-            // BIRCH LEAVE
-        if (user.hasCollection(ItemCollection.BIRCH_WOOD, 2)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.SAPLING, (short) 2))) {
-                        player.getInventory().removeItem(new ItemStack(Material.SAPLING, 1, (short) 2));
-                        player.getInventory().addItem(new ItemStack(Material.LEAVES, 1, (short) 2));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Birch Leave");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 16;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Birch Leave", Material.LEAVES, (short) 2, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Birch Sapling",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-                    player.sendMessage(ChatColor.RED + "Trade is locked!");
-                }
-
-                @Override
-                public int getSlot() {
-                    return 16;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                            "");
-                }
-            });
-        }
-
-        //JUNGLE LEAVE
-        if (user.hasCollection(ItemCollection.JUNGLE_WOOD, 2)) {
-        set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.SAPLING, (short) 3))) {
-                        player.getInventory().removeItem(new ItemStack(Material.SAPLING, 1, (short) 3));
-                        player.getInventory().addItem(new ItemStack(Material.LEAVES, 1, (short) 3));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Jungle Leave");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 19;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Jungle Leave", Material.LEAVES, (short) 3, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Jungle Sapling",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-        set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 19;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-        // VINE
-        if (user.hasCollection(ItemCollection.JUNGLE_WOOD, 4)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.LEAVES, (short) 3))) {
-                        player.getInventory().removeItem(new ItemStack(Material.LEAVES, 5, (short) 3));
-                        player.getInventory().addItem(new ItemStack(Material.VINE, 1));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Vine");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 20;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Vine", Material.VINE, (short) 1, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Jungle Leaves" + ChatColor.GRAY + " x5",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 20;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-        // ACACIA LEAVE
-        if (user.hasCollection(ItemCollection.ACACIA_WOOD, 2)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.SAPLING, (short) 4))) {
-                        player.getInventory().removeItem(new ItemStack(Material.SAPLING, 1, (short) 4));
-                        player.getInventory().addItem(new ItemStack(Material.LEAVES_2, 1));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Acacia Leave");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 21;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Acacia Leave", Material.LEAVES_2, (short) 0, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Acacia Sapling",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 21;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-        // DARK OAK LEAVE
-        if (user.hasCollection(ItemCollection.DARK_OAK_WOOD, 2)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.SAPLING, (short) 5))) {
-                        player.getInventory().removeItem(new ItemStack(Material.SAPLING, 1, (short) 5));
-                        player.getInventory().addItem(new ItemStack(Material.LEAVES_2, 1, (short) 1));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Dark Oak Leave");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 22;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Dark Oak Leave", Material.LEAVES_2, (short) 1, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Dark Oak Sapling",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 22;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-        // ENCH BONE MEAL
-        if (user.hasCollection(ItemCollection.BONE, 4)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.BONE))) {
-                        player.getInventory().removeItem(new ItemStack(Material.BONE, 64));
-                        player.getInventory().addItem(new ItemStack(SMaterial.ENCHANTED_BONE.getCraftMaterial(), 1));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Enchanted Bone Meal");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 23;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Enchanted Bone Meal", Material.INK_SACK, (short) 15, 1,
-                            ChatColor.GRAY + "Instantly grow crops and",
-                            ChatColor.GRAY + "saplings.",
-                            "",
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Bone" + ChatColor.GRAY + " x64",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-                    player.sendMessage(ChatColor.RED + "Trade is locked!");
-                }
-
-                @Override
-                public int getSlot() {
-                    return 23;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                            "");
-                }
-            });
-        }
-
-        // LONG GRASS
-        if (user.hasCollection(ItemCollection.SEEDS, 3)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.DIRT))) {
-                        player.getInventory().removeItem(new ItemStack(Material.DIRT, 8));
-                        player.getInventory().addItem(new ItemStack(Material.LONG_GRASS, 1));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Long Grass");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 24;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Long Grass", Material.LONG_GRASS, (short) 1, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Dirt" + ChatColor.GRAY + " x8",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 24;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-        // Fern
-        if (user.hasCollection(ItemCollection.SEEDS, 4)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.DIRT))) {
-                        player.getInventory().removeItem(new ItemStack(Material.DIRT, 8));
-                        player.getInventory().addItem(new ItemStack(Material.LONG_GRASS, 1, (short) 2));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Fern");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 25;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Fern", Material.LONG_GRASS, (short) 2, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Dirt" + ChatColor.GRAY + " x8",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 25;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-            // DEAD BUSH
-        if (user.hasCollection(ItemCollection.SEEDS, 5)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.DIRT))) {
-                        player.getInventory().removeItem(new ItemStack(Material.DIRT, 8));
-                        player.getInventory().addItem(new ItemStack(Material.DEAD_BUSH, 1));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Dead Bush");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 28;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Dead Bush", Material.DEAD_BUSH, (short) 0, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Dirt" + ChatColor.GRAY + " x8",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 28;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-        // DOUBLE TALL GRASS
-        if (user.hasCollection(ItemCollection.SEEDS, 6)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.DIRT))) {
-                        player.getInventory().removeItem(new ItemStack(Material.DIRT, 8));
-                        player.getInventory().addItem(new ItemStack(Material.DOUBLE_PLANT, 1, (short) 2));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Dead Bush");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 29;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Double Tall Grass", Material.DOUBLE_PLANT, (short) 2, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Dirt" + ChatColor.GRAY + " x8",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 29;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-        // Water Bucket
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (user.getCoins() >= 12) {
-                        player.getInventory().addItem(new ItemStack(Material.WATER_BUCKET, 1));
-                        user.subCoins(12);
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Water Bucket");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required coins.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 30;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Water Bucket", Material.WATER_BUCKET, (short) 0, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.GOLD + "12 coins",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-
-        // Lava Bucket
-        if (user.hasCollection(ItemCollection.MAGMA_CREAM, 5)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (user.getCoins() >= 20) {
-                        player.getInventory().addItem(new ItemStack(Material.LAVA_BUCKET, 1));
-                        user.subCoins(20);
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Lava Bucket");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required coins.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 31;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Lava Bucket", Material.LAVA_BUCKET, (short) 0, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.GOLD + "20 coins",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 31;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-        // Milk Bucket
-        if (user.hasCollection(ItemCollection.LEATHER, 2)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (user.getCoins() >= 50) {
-                        player.getInventory().addItem(new ItemStack(Material.MILK_BUCKET, 1));
-                        user.subCoins(50);
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Milk Bucket");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required coins.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 32;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Milk Bucket", Material.MILK_BUCKET, (short) 0, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.GOLD + "50 coins",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 32;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-        // Soul Sand
-        if (user.hasCollection(ItemCollection.SAND, 3)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.SAND)) && player.getInventory().contains(Material.FERMENTED_SPIDER_EYE)) {
-                        player.getInventory().removeItem(new ItemStack(Material.SAND, 2));
-                        player.getInventory().removeItem(new ItemStack(Material.FERMENTED_SPIDER_EYE, 1));
-                        player.getInventory().addItem(new ItemStack(Material.SOUL_SAND, 1));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Soul Sand");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 33;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Soul Sand", Material.SOUL_SAND, (short) 0, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Sand" + ChatColor.GRAY + " x2",
-                            ChatColor.WHITE + "Fermented Spider Eye",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 33;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-        // Nether Brick
-        if (user.hasCollection(ItemCollection.NETHERRACK, 3)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.NETHERRACK))) {
-                        player.getInventory().removeItem(new ItemStack(Material.NETHERRACK, 1));
-                        player.getInventory().addItem(new ItemStack(Material.NETHER_BRICK_ITEM, 1));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Nether Brick");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 34;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Nether Brick", Material.NETHER_BRICK_ITEM, (short) 0, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Netherrack",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 34;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
-        }
-
-        // WET SPONGE
-        if (user.hasCollection(ItemCollection.SPONGE, 2)) {
-            set(new GUIClickableItem() {
-                @Override
-                public void run(InventoryClickEvent e) {
-
-                    if (player.getInventory().contains(new ItemStack(Material.SPONGE, (short) 1))) {
-                        player.getInventory().removeItem(new ItemStack(Material.SPONGE, 1, (short) 1));
-                        player.getInventory().addItem(new ItemStack(Material.SPONGE, 1));
-                        player.sendMessage(ChatColor.GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.GRAY + "] 1x Sponge");
-                        player.updateInventory();
-                    } else {
-                        player.sendMessage(ChatColor.RED + "You don't have required items.");
-                    }
-                }
-
-                @Override
-                public int getSlot() {
-                    return 37;
-                }
-
-                @Override
-                public ItemStack getItem() {
-                    return SUtil.getStack(ChatColor.WHITE + "Sponge", Material.SPONGE, (short) 0, 1,
-                            ChatColor.WHITE + "" + ChatColor.BOLD + "COMMON",
-                            "",
-                            ChatColor.GRAY + "Cost",
-                            ChatColor.WHITE + "Wet Sponge",
-                            "",
-                            ChatColor.YELLOW + "Click to trade!");
-                }
-            });
-        } else {
-            set(new GUIClickableItem() {
-                    @Override
-                    public void run(InventoryClickEvent e) {
-                        player.sendMessage(ChatColor.RED + "Trade is locked!");
-                    }
-
-                    @Override
-                    public int getSlot() {
-                        return 37;
-                    }
-
-                    @Override
-                    public ItemStack getItem() {
-                        return SUtil.getStack(ChatColor.RED + "Trade is locked!", Material.INK_SACK, (short) 8, 1,
-                                "");
-                    }
-                });
+                else {
+                    TradeGUI.player1.get(this.tradeUUID).sendMessage(Sputnik.trans("&cYou cannot trade this item!"));
+                    TradeGUI.player1.get(this.tradeUUID).playSound(TradeGUI.player1.get(this.tradeUUID).getLocation(), Sound.ENDERMAN_TELEPORT, 1.0f, -4.0f);
+                }
+            }
+            else {
+                TradeGUI.player1.get(this.tradeUUID).sendMessage(Sputnik.trans("&cYou cannot trade this item!"));
+                TradeGUI.player1.get(this.tradeUUID).playSound(TradeGUI.player1.get(this.tradeUUID).getLocation(), Sound.ENDERMAN_TELEPORT, 1.0f, -4.0f);
+            }
         }
     }
-}
 
+    @Override
+    public void onTopClick(final InventoryClickEvent e) {
+        if (TradeGUI.itemOfferP1.get(this.tradeUUID).contains(e.getInventory().getItem(e.getSlot())) && isContain(this.ls, e.getSlot())) {
+            TradeGUI.itemOfferP1.get(this.tradeUUID).remove(e.getInventory().getItem(e.getSlot()));
+            final ItemStack stack = e.getInventory().getItem(e.getSlot());
+            TradeGUI.player1.get(this.tradeUUID).playSound(TradeGUI.player1.get(this.tradeUUID).getLocation(), Sound.VILLAGER_HAGGLE, 1.0f, 1.0f);
+            final net.minecraft.server.v1_8_R3.ItemStack nmsStack = CraftItemStack.asNMSCopy(stack);
+            if (!nmsStack.getTag().hasKey("data_bits")) {
+                Sputnik.smartGiveItem(stack, TradeGUI.player1.get(this.tradeUUID));
+            }
+            else {
+                final Economy econ = Skyblock.getEconomy();
+                econ.depositPlayer((OfflinePlayer)TradeGUI.player1.get(this.tradeUUID), (double)nmsStack.getTag().getLong("data_bits"));
+            }
+            TradeMenu.tradeP1Countdown.put(this.tradeUUID, 3);
+            TradeMenu.tradeP2Countdown.put(this.tradeUUID, 3);
+        }
+    }
+
+    @Override
+    public void onClose(final InventoryCloseEvent e) {
+        TradeMenu.triggerCloseEvent(this.tradeUUID, false, (Player)e.getPlayer());
+        ((Player)e.getPlayer()).playSound(((Player)e.getPlayer()).getLocation(), Sound.VILLAGER_IDLE, 1.0f, 1.0f);
+        GUIListener.QUERY_MAP.remove(e.getPlayer().getUniqueId());
+        GUIListener.QUERY_MAPPING.remove(e.getPlayer().getUniqueId());
+    }
+
+    public void aRm(final Player p) {
+        TradeMenu.triggerCloseEvent(this.tradeUUID, false, p);
+        for (final ItemStack i : TradeGUI.itemOfferP1.get(this.tradeUUID)) {
+            final net.minecraft.server.v1_8_R3.ItemStack nmsStack = CraftItemStack.asNMSCopy(i);
+            if (!nmsStack.getTag().hasKey("data_bits")) {
+                Sputnik.smartGiveItem(i, p);
+            }
+            else {
+                final Economy econ = Skyblock.getEconomy();
+                econ.depositPlayer((OfflinePlayer)p, (double)nmsStack.getTag().getLong("data_bits"));
+            }
+        }
+    }
+
+    public void aRmP(final Player p) {
+        TradeMenu.triggerCloseEvent(this.tradeUUID, false, p);
+        for (final ItemStack i : TradeGUI.itemOfferP2.get(this.tradeUUID)) {
+            final net.minecraft.server.v1_8_R3.ItemStack nmsStack = CraftItemStack.asNMSCopy(i);
+            if (!nmsStack.getTag().hasKey("data_bits")) {
+                Sputnik.smartGiveItem(i, p);
+            }
+            else {
+                final Economy econ = Skyblock.getEconomy();
+                econ.depositPlayer((OfflinePlayer)p, (double)nmsStack.getTag().getLong("data_bits"));
+            }
+        }
+    }
+
+    public static boolean isContain(final int[] array, final int key) {
+        for (final int i : array) {
+            if (i == key) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    static {
+        itemOfferP1 = new HashMap<UUID, List<ItemStack>>();
+        itemOfferP2 = new HashMap<UUID, List<ItemStack>>();
+        player1 = new HashMap<UUID, Player>();
+        player2 = new HashMap<UUID, Player>();
+        tradeCountdown = new HashMap<UUID, Integer>();
+    }
+}
