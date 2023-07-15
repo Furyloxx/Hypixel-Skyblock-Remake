@@ -549,7 +549,7 @@ public class SkyBlockMenuGUI extends GUI {
                         ChatColor.GRAY + "from Booster Cookie in the",
                         ChatColor.GRAY + "hub'sCommunity Shop.",
                         " ",
-                        ChatColor.GRAY + "Duration: " + ChatColor.GREEN + PlayerUtils.getCookieDurationTicks(player),
+                        ChatColor.GRAY + "Duration: " + ChatColor.GREEN + PlayerUtils.getCookieDurationDisplayGUI(player),
                         ChatColor.GRAY + "Bits Available: " + ChatColor.AQUA + bits,
                         " ",
                         ChatColor.YELLOW + "Click to get all info!");

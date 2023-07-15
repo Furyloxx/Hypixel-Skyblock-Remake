@@ -230,7 +230,7 @@ public class WorldListener extends PListener {
     @EventHandler
     public void onPortalEnter(EntityPortalEnterEvent e) {
         if (!e.getEntity().getType().equals(EntityType.PLAYER)){
-            throw new CommandFailException("Some Entity Is Near Any Portal!");
+            e.getEntity().remove();
         }
         Player player = (Player) e.getEntity();
         Region region = Region.getRegionOfEntity(player);

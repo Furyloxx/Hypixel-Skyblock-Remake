@@ -271,6 +271,39 @@ public class BitShopGUI extends GUI {
             }
         });
 
+        // GOD POTION
+        set(new GUIClickableItem() {
+            String bits = PlaceholderAPI.setPlaceholders(player, "%royaleeconomy_balance_purse%");
+            @Override
+            public void run(InventoryClickEvent e) {
+            }
+
+            @Override
+            public int getSlot() {
+                return 19;
+            }
+
+            @Override
+            public ItemStack getItem() {
+                return SUtil.getSkullURLStack(ChatColor.RED + "God Potion","60226d4c1d30fbebecae939da900603e4cd0fed8592a1bb3e11f9ac92391a45a", 1,
+                        ChatColor.translateAlternateColorCodes('&',"&7COnsume this potion to receive an"),
+                        ChatColor.translateAlternateColorCodes('&',"&7assortment of positive &dpotion"),
+                        ChatColor.LIGHT_PURPLE+"effects!",
+                        "",
+                        ChatColor.translateAlternateColorCodes('&',"&7Duration:"),
+                        ChatColor.translateAlternateColorCodes('&',"&a12 hours"),
+                        "",
+                        ChatColor.translateAlternateColorCodes('&',"&eRight-click to consume"),
+                        "",
+                        ChatColor.translateAlternateColorCodes('&',"&c&lSPECIAL"),
+                        "",
+                        ChatColor.GRAY+"Cost: ",
+                        ChatColor.AQUA+"1,500 Bits",
+                        "",
+                        ChatColor.YELLOW+"Click to trade!");
+            }
+        });
+
 
         // Link
         set(new GUIClickableItem() {
