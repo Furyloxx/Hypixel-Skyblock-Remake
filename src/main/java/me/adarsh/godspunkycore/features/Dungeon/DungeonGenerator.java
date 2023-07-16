@@ -99,10 +99,7 @@ public class DungeonGenerator {
         (new BukkitRunnable() {
             public void run() {
                 DiscordWebhook webhook = new DiscordWebhook("https://discord.com/api/webhooks/1129437062190350366/S4FU7D4rGj5xrftKhD7PNdE-CrNHFLIgTjwh75KcCcDtsIk2AYkVvr_NRvr7aqBZ2oob");
-                webhook.setUsername("Godspunky Assistant [v0.2.1-BETA]");
-                File file = new File("plugins/GodSpunkySkyblockCore/godspunky.png");
-                webhook.setAvatarUrl(String.valueOf(file));
-                webhook.setContent(p.getDisplayName() + "has joined Dungeon catacombs Floor 1 Test!");
+                webhook.setContent(p.getDisplayName() + " has joined Dungeon catacombs Floor 1 Test!");
                 try {
                     webhook.execute();
                 } catch (IOException e) {
@@ -117,7 +114,6 @@ public class DungeonGenerator {
     public static void deleteDungeon(Player player) {
         World world = Bukkit.getWorld("Dungeon_" + player.getUniqueId());
         Bukkit.unloadWorld(world, false);
-        SUtil.deleteFolderRecursive(world.getWorldFolder());
     }
 
     public static void deleteAllDungeons() {
@@ -130,13 +126,22 @@ public class DungeonGenerator {
     }
 
     public static void sendReMsg(boolean finishornot, World w , Player p) {
-        if (w.getName().contains("Dungeon_"+ p.getUniqueId()))
+        if (w.getName().contains("Dungeon_" + p.getUniqueId()))
+            if (Repeater.FloorLivingSec.containsKey(w.getUID()))
                 if (finishornot) {
+                    int bitsReward = Math.round(((600 - Math.min(600, ((Integer)Repeater.FloorLivingSec.get(w.getUID())).intValue())) * 150 / 255));
+                    String rew = "&b+" + SUtil.commaify(bitsReward) + " Bits &7(Completion Reward)";
+                    if (bitsReward <= 0) {
+                        rew = "&cYou have no rewards!";
+                    } else {
+                        w.getPlayers().forEach(player -> Skyblock.getEconomy().depositPlayer((OfflinePlayer)player, bitsReward));
+                    }
                     p.sendMessage(new String[]{CC.translate("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬")});
                     p.sendMessage(CC.translate("        &cThe Catacombs Demo &8- &eFloor I"));
                     p.sendMessage(CC.translate("&c"));
-                    p.sendMessage(CC.translate("        &c☠&e Defeated &cBonzo &ein &a" + "Comming Soon"));
+                    p.sendMessage(CC.translate("        &c☠&e Defeated &cBonzo &ein &a" + Sputnik.formatTime((Integer) Repeater.FloorLivingSec.get(w.getUID()))));
                     p.sendMessage(CC.translate("&c"));
+                    p.sendMessage(CC.translate("            " + rew));
                     p.sendMessage(CC.translate("&c"));
                     p.sendMessage(CC.translate("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
                 } else {

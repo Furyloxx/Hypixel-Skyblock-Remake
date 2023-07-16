@@ -16,6 +16,7 @@ import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.DefenseReplacement;
 import me.adarsh.godspunkycore.util.ManaReplacement;
 import me.adarsh.godspunkycore.util.SUtil;
+import me.adarsh.godspunkycore.util.Sputnik;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.Bukkit;
@@ -38,6 +39,8 @@ public class Repeater {
 
     private final List<BukkitTask> tasks;
     private final List<AtomicInteger> counters;
+
+    public static final Map<UUID, Integer> FloorLivingSec = new HashMap<>();
 
     public Repeater() {
         this.tasks = new ArrayList<>();
@@ -225,7 +228,38 @@ public class Repeater {
                             double dealt = StaticDragonManager.DRAGON.getDamageDealt().get(uuid);
                             sidebar.add("Your Damage: " + ChatColor.RED + SUtil.commaify(SUtil.roundTo(dealt, 1)));
                         }
-                        sidebar.add("     ");
+                        else if (player.getWorld().getName().contains("Dungeon_" + player.getUniqueId()) && !player.getWorld().getName().equals("Dungeon_" + player.getUniqueId())) {
+                            sidebar.add(ChatColor.RED + " ");
+                            if (FloorLivingSec.containsKey(player.getWorld().getUID())) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a" + Sputnik.formatTime(((Integer) FloorLivingSec.get(player.getWorld().getUID())).intValue())));
+                            } else {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a00m 00s"));
+                            }
+                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &cN/A%"));
+                            sidebar.add(ChatColor.RED + "  ");
+                            String nameofplayer = player.getName();
+                            if (player.getWorld().getPlayers().size() > 1) {
+                                for (Player dungeonmate : player.getWorld().getPlayers()) {
+                                    String colorcode;
+                                    if (dungeonmate.getHealth() <= dungeonmate.getMaxHealth() / 2.0D && dungeonmate.getHealth() > dungeonmate.getMaxHealth() * 25.0D / 100.0D) {
+                                        colorcode = "e";
+                                    } else if (dungeonmate.getHealth() <= dungeonmate.getMaxHealth() * 25.0D / 100.0D) {
+                                        colorcode = "c";
+                                    } else {
+                                        colorcode = "a";
+                                    }
+                                    String backend = " &" + colorcode + (int) dungeonmate.getHealth() + "&c❤";
+                                    if (dungeonmate.getName() == nameofplayer)
+                                        continue;
+                                    sidebar.add(ChatColor.translateAlternateColorCodes('&', "&e[N/A&e] &b" + dungeonmate.getName() + backend));
+                                }
+                            } else if (player.getWorld().getPlayers().size() == 1) {
+                                sidebar.add(ChatColor.DARK_GRAY + "No Teammates");
+                            } else if (player.getWorld().getPlayers().size() > 5) {
+                                sidebar.add(ChatColor.RED + "Something went wrong!");
+                            }
+                            sidebar.add(ChatColor.AQUA + "     ");
+                        }
                     }
                     sidebar.add(ChatColor.YELLOW + "mc.godspunky.in");
                     sidebar.apply(player);

@@ -77,19 +77,15 @@ public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFu
 
         DungeonGenerator.sendReMsg(true, world, player);
 
-        player.sendMessage(CC.translate("&e"));
-        player.sendMessage(CC.translate("&aThis demo floor currently in development so you can't respawn or get reward yet, sorry! We will update later on, leave rating of this boss on #server-rating, thank you."));
-        player.sendMessage(CC.translate("&e"));
-        SUtil.delay(() -> player.sendMessage(CC.translate("&c[Warning] &eThis dungeon will close in &c5s")), 200L);
+        /*SUtil.delay(() -> player.sendMessage(CC.translate("&c[Warning] &eThis dungeon will close in &c5s")), 200L);
         SUtil.delay(() -> player.sendMessage(CC.translate("&c[Warning] &eThis dungeon will close in &c4s")), 220L);
         SUtil.delay(() -> player.sendMessage(CC.translate("&c[Warning] &eThis dungeon will close in &c3s")), 240L);
         SUtil.delay(() -> player.sendMessage(CC.translate("&c[Warning] &eThis dungeon will close in &c2s")), 260L);
         SUtil.delay(() -> player.sendMessage(CC.translate("&c[Warning] &eThis dungeon will close in &c1s")), 280L);
-        SUtil.delay(() -> player.sendMessage(CC.translate("&c[Warning] &eWarping you back to the Hub")), 300L);
+        SUtil.delay(() -> player.sendMessage(CC.translate("&c[Warning] &eWarping you back to the Hub")), 300L);*/
 
         if (!killed.getWorld().getName().startsWith("Dungeon_")) return;
 
-        SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fI will come back once again")) , 200);
         DungeonGenerator.deleteDungeon(player);
 
     }

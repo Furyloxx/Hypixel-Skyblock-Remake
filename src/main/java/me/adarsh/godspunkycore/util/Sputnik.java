@@ -133,6 +133,19 @@ public class Sputnik {
         return fin;
     }
 
+    public static String formatTime(int z) {
+        int seconds = z, p1 = seconds % 60, p2 = seconds / 60, p3 = p2 % 60;
+        p2 /= 60;
+        String a = String.valueOf(p1), b = String.valueOf(p2), c = String.valueOf(p3);
+        if (p1 < 10)
+            a = "0" + String.valueOf(p1);
+        if (p2 < 10)
+            b = "0" + String.valueOf(p2);
+        if (p3 < 10)
+            c = "0" + String.valueOf(p3);
+        return (p2 == 0) ? (c + "m " + a + "s") : (b + "h " + c + "m " + a + "s");
+    }
+
     public static void smartGiveItem(final ItemStack item, final Player p) {
         if (p.getInventory().firstEmpty() != -1) {
             p.getInventory().addItem(new ItemStack[] { item });
