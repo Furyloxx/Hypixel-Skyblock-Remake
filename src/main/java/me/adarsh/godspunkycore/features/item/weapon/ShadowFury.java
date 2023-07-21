@@ -3,6 +3,8 @@ package me.adarsh.godspunkycore.features.item.weapon;
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.user.User;
+import me.adarsh.godspunkycore.util.FerocityCalculation;
+import me.adarsh.godspunkycore.util.Sputnik;
 import net.md_5.bungee.api.ChatColor;
 import net.minecraft.server.v1_8_R3.Entity;
 import net.minecraft.server.v1_8_R3.Packet;
@@ -11,6 +13,7 @@ import org.bukkit.Sound;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftLivingEntity;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Damageable;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -79,11 +82,15 @@ public class ShadowFury implements ToolStatistics, MaterialFunction, Ability {
 
                 public void run() {
                     if (this.run < filteredList.size()) {
-                        if (((Entity)filteredList.get(this.run)).isAlive()) {
+                        if (!((Entity)filteredList.get(this.run)).getBukkitEntity().isDead()) {
                             player.teleport(((Entity)filteredList.get(this.run)).getBukkitEntity().getLocation().add(((Entity)filteredList.get(this.run)).getBukkitEntity().getLocation().getDirection().multiply(-1)));
                             player.playSound(player.getLocation(), Sound.ENDERMAN_TELEPORT, 3.0F, 1.0F);
                             User user = User.getUser(player.getUniqueId());
                             Entity e = filteredList.get(this.run);
+                            Object[] atp = Sputnik.calculateDamage(player, player, sItem.getStack(), (LivingEntity)e, false);
+                            double finalDamage1 = ((Float)atp[0]).floatValue();
+                            FerocityCalculation.activeFerocityTimes(player, (LivingEntity)e, (int)finalDamage1, ((Boolean)atp[1]).booleanValue());
+                            user.damageEntity((LivingEntity) e, finalDamage1);
                             for (Player p : player.getWorld().getPlayers())
                                 (((CraftPlayer)p).getHandle()).playerConnection.sendPacket((Packet)new PacketPlayOutAnimation((Entity)((CraftLivingEntity)player).getHandle(), 0));
                         }
@@ -92,7 +99,7 @@ public class ShadowFury implements ToolStatistics, MaterialFunction, Ability {
                         cancel();
                     }
                 }
-            }).runTaskTimer((Plugin) Skyblock.getPlugin(), 1L, 5L);
+            }).runTaskTimer((Plugin)Skyblock.getPlugin(), 1L, 5L);
         } else {
             player.sendMessage(ChatColor.RED + "No nearby target found.");
         }

@@ -1,0 +1,392 @@
+-2,70,-43,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-6,70,-47,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-7,70,-47,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-11,70,-47,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-13,70,-47,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-15,70,-43,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-38,70,-55,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-38,71,-55,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-38,72,-55,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-38,73,-55,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-45,71,-55,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-45,72,-55,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-45,73,-55,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-45,74,-55,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-45,75,-55,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-45,76,-55,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-45,77,-55,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-40,84,-53,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-41,85,-53,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-37,70,-45,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-35,70,-46,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-36,70,-46,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-37,71,-46,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-38,70,-46,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-36,70,-44,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-37,70,-44,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-35,70,-44,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-37,70,-47,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-519,101,-273,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-520,101,-273,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-522,101,-273,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-521,101,-271,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-521,101,-270,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-545,73,-272,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-547,20,-271,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-547,20,-270,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-671,10,-278,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+11,70,-86,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-1,70,-89,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+2,70,-89,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+6,70,-89,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+8,70,-90,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-551,9,-269,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-552,9,-269,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+4,70,-88,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+5,70,-88,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+5,70,-87,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+14,70,-67,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+0,70,-86,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-1,70,-87,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+15,70,-80,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+17,70,-82,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-1,70,-86,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-8,70,-86,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+0,70,-91,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+5,71,-95,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+7,71,-94,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+11,71,-94,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+10,70,-92,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+8,70,-91,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+3,70,-88,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+1,70,-86,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-2,70,-86,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+9,70,-89,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+14,70,-78,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-14,70,-87,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-13,70,-92,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-10,70,-92,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+14,70,-83,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+26,69,-78,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+27,69,-77,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+27,69,-78,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+25,70,-80,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+24,70,-83,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+20,70,-85,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+14,70,-86,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+13,70,-89,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+10,70,-89,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+6,70,-87,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-14,70,-96,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-565,14,-345,endisland:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-672,9,-278,dragon:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-673,9,-277,dragon:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-673,9,-275,dragon:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-672,9,-274,dragon:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-670,9,-274,dragon:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-669,9,-275,dragon:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-669,9,-277,dragon:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-670,9,-278,dragon:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-4,70,-52,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-3,70,-51,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-3,70,-50,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-3,70,-49,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-4,70,-48,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-6,70,-48,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-7,70,-48,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-15,70,-49,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39
+-20,70,-48,world:
+  type: SUMMONING_FRAME
+  Unbreakable: 1
+  HideFlags: 39

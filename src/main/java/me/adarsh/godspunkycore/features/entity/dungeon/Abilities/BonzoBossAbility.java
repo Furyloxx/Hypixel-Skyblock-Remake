@@ -22,7 +22,7 @@ public class BonzoBossAbility {
         loc.setY(loc.getY() + 1.2);
         Float yaw = (float)(Math.random() * 15.0);
         yaw = (float)(yaw - 7.5);
-        //loc.setYaw(loc.getYaw() + yaw);
+        loc.setYaw(loc.getYaw() + yaw);
         final Vector vecTo = loc.getDirection().normalize().multiply(0.8);
         final Entity ent = p.getWorld().spawn(loc, (Class) ArmorStand.class);
         final ArmorStand stand = (ArmorStand)ent;

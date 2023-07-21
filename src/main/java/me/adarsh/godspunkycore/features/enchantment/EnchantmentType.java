@@ -3,10 +3,12 @@ package me.adarsh.godspunkycore.features.enchantment;
 import lombok.Getter;
 import me.adarsh.godspunkycore.features.item.SpecificItemType;
 import org.bukkit.enchantments.Enchantment;
+import me.adarsh.godspunkycore.util.Sputnik;
 
 import java.util.*;
 
 public class EnchantmentType {
+    public static final EnchantmentType LEGION = new EnchantmentType("Legion", "legion", Sputnik.trans("Increases most of your player stats by &e+%s% &7per player per level within &b30 &7blocks of you, up to &a20 &7players."), true, new SpecificItemType[] { SpecificItemType.HELMET, SpecificItemType.CHESTPLATE, SpecificItemType.LEGGINGS, SpecificItemType.BOOTS });
     private static final Map<String, EnchantmentType> ENCHANTMENT_TYPE_CACHE = new HashMap<>();
 
     public static final EnchantmentType SHARPNESS = new EnchantmentType("Sharpness", "sharpness",
@@ -45,6 +47,7 @@ public class EnchantmentType {
     public static final EnchantmentType HARVESTING = new EnchantmentType("Harvesting", "harvesting",
             "Increases the chance for crops to drop double the amount of items by %s%.",
             SpecificItemType.HOE);
+    public static final EnchantmentType ONE_FOR_ALL = new EnchantmentType("One for All", "one_for_all", Sputnik.trans("Removes all other enchants but increases your weapon damage by &a%s%"), true, new SpecificItemType[] { SpecificItemType.SWORD, SpecificItemType.LONGSWORD, SpecificItemType.AXE });
 
     @Getter
     private final String name;

@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore;
 
+import com.onarandombox.MultiverseCore.MultiverseCore;
 import lombok.SneakyThrows;
 import me.adarsh.godspunkycore.command.*;
 import me.adarsh.godspunkycore.config.Config;
@@ -32,8 +33,7 @@ import me.adarsh.godspunkycore.features.wardrobe.DataManager.Page2Data;
 import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
 import me.adarsh.godspunkycore.features.wardrobe.Listener.CheckPlayerGUIListener;
 import me.adarsh.godspunkycore.features.wardrobe.Listener.WardrobeListener;
-import me.adarsh.godspunkycore.gui.GUIListener;
-import me.adarsh.godspunkycore.gui.OtherPlayerProfile;
+import me.adarsh.godspunkycore.features.gui.GUIListener;
 import me.adarsh.godspunkycore.listener.*;
 import me.adarsh.godspunkycore.sql.SQLDatabase;
 import me.adarsh.godspunkycore.sql.SQLRegionData;
@@ -41,7 +41,7 @@ import me.adarsh.godspunkycore.sql.SQLWorldData;
 import me.adarsh.godspunkycore.user.AuctionSettings;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.*;
-import me.libraryaddict.disguise.DisguiseAPI;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -51,18 +51,21 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
 
 public final class Skyblock extends JavaPlugin {
+
     private static Skyblock plugin;
     public static Page1Data Page_1;
     public static Page2Data Page_2;
@@ -75,6 +78,7 @@ public final class Skyblock extends JavaPlugin {
     public Config config;
     public Config heads;
     public Config blocks;
+    private String serverName;
     public Config spawners;
     public Config launchpads;
     public CommandMap commandMap;
@@ -84,6 +88,14 @@ public final class Skyblock extends JavaPlugin {
     public CommandLoader cl;
 
     public Repeater repeater;
+    private static Economy econ;
+
+    public static Economy getEconomy() {
+        return Skyblock.econ;
+    }
+    public Skyblock(){
+        this.serverName = "Loading...";
+    }
 
     // todo Minions
 
@@ -103,6 +115,7 @@ public final class Skyblock extends JavaPlugin {
 
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+        this.setupEconomy();
         // Wardrobe data
         Page_1 = new Page1Data(this);
         Page_1.saveDefaultConfig();
@@ -131,14 +144,56 @@ public final class Skyblock extends JavaPlugin {
         loadAuctions();
         CategoryManger.initItems();
         synchronizeTime();
+        new Placeholding().register();
         this.getCommand("setrank").setExecutor(new SetRankCommand());
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
         getServer().getPluginManager().registerEvents(new BazaarGui(), this);
-        getServer().getPluginManager().registerEvents(new OtherPlayerProfile(), this);
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
+
+        serveron();
+    }
+
+    void serveron() {
+        (new BukkitRunnable() {
+            public void run() {
+                DiscordWebhook webhook = new DiscordWebhook("https://discord.com/api/webhooks/1129437062190350366/S4FU7D4rGj5xrftKhD7PNdE-CrNHFLIgTjwh75KcCcDtsIk2AYkVvr_NRvr7aqBZ2oob");
+                webhook.setContent("The Skyblock Server Has started!");
+                try {
+                    webhook.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).runTaskAsynchronously(Skyblock.getPlugin());
+    }
+
+    void serveroff() {
+        (new BukkitRunnable() {
+            public void run() {
+                DiscordWebhook webhook = new DiscordWebhook("https://discord.com/api/webhooks/1129437062190350366/S4FU7D4rGj5xrftKhD7PNdE-CrNHFLIgTjwh75KcCcDtsIk2AYkVvr_NRvr7aqBZ2oob");
+                webhook.setContent("The Skyblock Server has closed!");
+                try {
+                    webhook.execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).runTaskAsynchronously(Skyblock.getPlugin());
+    }
+
+    private boolean setupEconomy() {
+        if (this.getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        final RegisteredServiceProvider<Economy> rsp = (RegisteredServiceProvider<Economy>)this.getServer().getServicesManager().getRegistration((Class)Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+        Skyblock.econ = rsp.getProvider();
+        return Skyblock.econ != null;
     }
 
     @Override
@@ -178,6 +233,7 @@ public final class Skyblock extends JavaPlugin {
         plugin = null;
         SLog.info("Disabled " + this.getDescription().getFullName());
         GodspunkyPlayer.savePlayers();
+        serveroff();
     }
 
 
@@ -247,6 +303,8 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new SetDungeonHubCommand());
         cl.register(new PlayerLocationCommand());
         cl.register(new SetMountainCommand());
+        cl.register(new TradeCommand());
+        cl.register(new AccessTimedCommand());
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
@@ -295,6 +353,14 @@ public final class Skyblock extends JavaPlugin {
             this.sendMessage(SUtil.getRandomVisibleColor() + "CANNOT LOAD COMMAND MAPS U FKIN.......");
         }
 
+    }
+
+    public static Player findPlayerByIPAddress(String ip) {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            if (p.getAddress().toString().contains(ip))
+                return p;
+        }
+        return null;
     }
 
     public void registerTraits() {
@@ -466,5 +532,13 @@ public final class Skyblock extends JavaPlugin {
     }
     public void sendMessage(String message) {
         Bukkit.getConsoleSender().sendMessage(getPrefix() + ChatColor.translateAlternateColorCodes('&', message) + ChatColor.RESET + " ");
+    }
+
+    static {
+        Skyblock.econ = null;
+    }
+
+    public String getServerName() {
+        return this.serverName;
     }
 }

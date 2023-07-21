@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.ranks.PlayerRank;
-import me.adarsh.godspunkycore.gui.GUIType;
+import me.adarsh.godspunkycore.features.gui.GUIType;
 
 @CommandParameters(aliases = "mort", permission = PlayerRank.DEFAULT)
 public class MortCommand extends SCommand{

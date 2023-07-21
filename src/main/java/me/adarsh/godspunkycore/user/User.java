@@ -1,29 +1,44 @@
 package me.adarsh.godspunkycore.user;
 
 import com.google.common.util.concurrent.AtomicDouble;
+import de.tr7zw.nbtapi.NBTItem;
 import lombok.Getter;
 import lombok.Setter;
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.config.Config;
+import me.adarsh.godspunkycore.features.Dungeon.ItemSerial;
 import me.adarsh.godspunkycore.features.auction.AuctionBid;
 import me.adarsh.godspunkycore.features.auction.AuctionEscrow;
 import me.adarsh.godspunkycore.features.auction.AuctionItem;
 import me.adarsh.godspunkycore.features.collection.ItemCollection;
 import me.adarsh.godspunkycore.features.collection.ItemCollectionReward;
 import me.adarsh.godspunkycore.features.collection.ItemCollectionRewards;
+import me.adarsh.godspunkycore.features.enchantment.Enchantment;
+import me.adarsh.godspunkycore.features.enchantment.EnchantmentType;
 import me.adarsh.godspunkycore.features.entity.SEntity;
+import me.adarsh.godspunkycore.features.item.GenericItemType;
+import me.adarsh.godspunkycore.features.item.PlayerBoostStatistics;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.features.item.pet.Pet;
 import me.adarsh.godspunkycore.features.potion.ActivePotionEffect;
 import me.adarsh.godspunkycore.features.potion.PotionEffect;
 import me.adarsh.godspunkycore.features.potion.PotionEffectType;
+import me.adarsh.godspunkycore.features.reforge.Reforge;
+import me.adarsh.godspunkycore.features.reforge.ReforgeType;
 import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.region.RegionType;
 import me.adarsh.godspunkycore.features.skill.*;
 import me.adarsh.godspunkycore.features.slayer.SlayerBossType;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
+import me.adarsh.godspunkycore.util.BukkitSerializeClass;
 import me.adarsh.godspunkycore.util.SUtil;
+import me.adarsh.godspunkycore.util.Sputnik;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.milkbowl.vault.economy.Economy;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -32,7 +47,9 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.util.Vector;
 
 import java.io.File;
@@ -42,6 +59,7 @@ import java.util.stream.Collectors;
 
 public class User {
     public static final int ISLAND_SIZE = 125;
+    private List<ItemStack> stashedItems;
 
     private static final Map<UUID, User> USER_CACHE = new HashMap<>();
     private static final Skyblock plugin = Skyblock.getPlugin();
@@ -79,6 +97,7 @@ public class User {
     @Getter
     private double foragingXP;
     private final int[] highestSlayers;
+    private double cataXP;
     private final int[] slayerXP;
     @Getter
     @Setter
@@ -100,6 +119,7 @@ public class User {
 
     private User(UUID uuid) {
         this.uuid = uuid;
+        this.stashedItems = new ArrayList<ItemStack>();
         this.collections = ItemCollection.getDefaultCollections();
         this.coins = 0;
         this.bankCoins = 0;
@@ -226,6 +246,7 @@ public class User {
         config.set("xp.mining", miningXP);
         config.set("xp.combat", combatXP);
         config.set("xp.foraging", foragingXP);
+        this.config.set("xp.dungeons.cata", (Object)this.cataXP);
         config.set("slayer.revenantHorror.highest", highestSlayers[0]);
         config.set("slayer.tarantulaBroodfather.highest", highestSlayers[1]);
         config.set("slayer.svenPackmaster.highest", highestSlayers[2]);
@@ -503,7 +524,11 @@ public class User {
             return combatXP;
         if (skill instanceof ForagingSkill)
             return foragingXP;
+        if (skill instanceof CatacombsSkill) {
+            return this.cataXP;
+        }
         return 0.0;
+
     }
 
     public void setSkillXP(Skill skill, double xp) {
@@ -523,6 +548,10 @@ public class User {
         if (skill instanceof ForagingSkill) {
             prev = this.foragingXP;
             this.foragingXP = xp;
+        }
+        if (skill instanceof CatacombsSkill) {
+            prev = this.cataXP;
+            this.cataXP = xp;
         }
         skill.onSkillUpdate(this, prev);
     }
@@ -741,8 +770,13 @@ public class User {
         player.playSound(player.getLocation(), Sound.HURT_FLESH, 1f, 1f);
         player.sendMessage(ChatColor.RED + " ☠ " + ChatColor.GRAY + message);
         SUtil.broadcastExcept(ChatColor.RED + " ☠ " + ChatColor.GRAY + String.format(out, player.getName()), player);
-        if ((isOnIsland() && cause == EntityDamageEvent.DamageCause.VOID) || permanentCoins)
+        if (PlayerUtils.cookieBuffActive(player)) {
+            player.sendMessage(ChatColor.RED + "You died!");
             return;
+        }
+        if ((isOnIsland() && cause == EntityDamageEvent.DamageCause.VOID) || this.permanentCoins || player.getWorld().getName().equalsIgnoreCase("limbo") || player.getWorld().getName().contains("f6")) {
+            return;
+        }
         if (player.getWorld().getName().startsWith("Dungeon_"))
             return;
         int piggyIndex = PlayerUtils.getSpecItemIndex(player, SMaterial.PIGGY_BANK);
@@ -773,6 +807,33 @@ public class User {
         player.sendMessage(ChatColor.RED + "You died and lost " + SUtil.commaify(sub) + " coins!");
         coins -= sub;
         save();
+    }
+
+    public void loadEconomy() {
+        final Economy eco = Skyblock.getEconomy();
+        final Player player = Bukkit.getPlayer(this.uuid);
+        if (this.config.contains("database.skysim_bits")) {
+            eco.withdrawPlayer((OfflinePlayer)player, eco.getBalance((OfflinePlayer)player));
+            eco.depositPlayer((OfflinePlayer)player, this.config.getDouble("database.skysim_bits"));
+        }
+    }
+
+
+
+    public long getCoins() {
+        return this.coins;
+    }
+
+    public long getBankCoins() {
+        return this.bankCoins;
+    }
+
+    public boolean isPermanentCoins() {
+        return this.permanentCoins;
+    }
+
+    public void setPermanentCoins(final boolean permanentCoins) {
+        this.permanentCoins = permanentCoins;
     }
 
     public void addPotionEffect(PotionEffect effect) {
@@ -843,6 +904,140 @@ public class User {
         double x = location.getX();
         double z = location.getZ();
         return world.getUID().equals(location.getWorld().getUID());
+    }
+
+    public void saveAllVanillaInstances() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        this.saveArmor();
+        this.saveEnderChest();
+        this.saveInventory();
+        this.saveExp();
+        this.saveBitsAmount();
+        this.saveLastSlot();
+        this.saveStash();
+    }
+
+    public void saveInventory() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        Object a = null;
+        final PlayerInventory piv = Bukkit.getPlayer(this.uuid).getInventory();
+        a = this.getPureListFrom((Inventory)piv);
+        this.config.set("database.inventory", a);
+        this.config.save();
+    }
+
+    public String getPureListFrom(final Inventory piv) {
+        final ItemStack[] ist = piv.getContents();
+        final List<ItemStack> arraylist = Arrays.asList(ist);
+        for (int i = 0; i < ist.length; ++i) {
+            final ItemStack stack = ist[i];
+            if (stack != null) {
+                final NBTItem nbti = new NBTItem(stack);
+                if (nbti.hasKey("dontSaveToProfile")) {
+                    arraylist.remove(i);
+                }
+            }
+        }
+        final ItemStack[] arrl = (ItemStack[])arraylist.toArray();
+        return BukkitSerializeClass.itemStackArrayToBase64(arrl);
+    }
+
+    public void saveBitsAmount() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        this.config.set("database.skysim_bits", (Object)Skyblock.getEconomy().getBalance((OfflinePlayer)Bukkit.getPlayer(this.uuid)));
+        this.config.save();
+    }
+
+    public void saveArmor() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        Object a = null;
+        a = BukkitSerializeClass.itemStackArrayToBase64(Bukkit.getPlayer(this.uuid).getInventory().getArmorContents());
+        this.config.set("database.armor", a);
+        this.config.save();
+    }
+
+    public void saveEnderChest() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        Object a = null;
+        final Inventory inv = Bukkit.getPlayer(this.uuid).getEnderChest();
+        a = this.getPureListFrom(inv);
+        this.config.set("database.enderchest", a);
+        this.config.save();
+    }
+
+    public void saveExp() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        this.config.set("database.minecraft_xp", Sputnik.getTotalExperience(Bukkit.getPlayer(this.uuid)));
+        this.config.save();
+    }
+
+    public void loadPlayerData() throws IllegalArgumentException, IOException {
+        final Player player = Bukkit.getPlayer(this.uuid);
+        if (this.config.getString("database.inventory") != null) {
+            player.getInventory().setContents(BukkitSerializeClass.itemStackArrayFromBase64(this.config.getString("database.inventory")));
+        }
+        else {
+            player.getInventory().setContents(new ItemStack[player.getInventory().getSize()]);
+        }
+        if (this.config.getString("database.enderchest") != null) {
+            player.getEnderChest().setContents(BukkitSerializeClass.itemStackArrayFromBase64(this.config.getString("database.enderchest")));
+        }
+        else {
+            player.getInventory().setContents(new ItemStack[player.getEnderChest().getSize()]);
+        }
+        if (this.config.getString("database.armor") != null) {
+            player.getInventory().setArmorContents(BukkitSerializeClass.itemStackArrayFromBase64(this.config.getString("database.armor")));
+        }
+        else {
+            player.getInventory().setContents(new ItemStack[player.getInventory().getArmorContents().length]);
+        }
+        if (this.config.contains("database.minecraft_xp")) {
+            Sputnik.setTotalExperience(player, this.config.getInt("database.minecraft_xp"));
+        }
+        if (this.config.contains("database.stashed")) {
+            final ItemStack[] arr = BukkitSerializeClass.itemStackArrayFromBase64(this.config.getString("database.stashed"));
+            this.stashedItems = Arrays.asList(arr);
+        }
+        else {
+            this.stashedItems = new ArrayList<ItemStack>();
+        }
+        this.loadEconomy();
+        if (this.config.contains("configures.slot_selected")) {
+            player.getInventory().setHeldItemSlot(this.config.getInt("configures.slot_selected"));
+        }
+    }
+
+    public void saveLastSlot() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        this.config.set("configures.slot_selected", (Object)Bukkit.getPlayer(this.uuid).getInventory().getHeldItemSlot());
+        this.config.save();
+    }
+
+    public void saveStash() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        if (this.stashedItems == null) {
+            return;
+        }
+        ItemStack[] is = new ItemStack[this.stashedItems.size()];
+        is = this.stashedItems.toArray(is);
+        this.config.set("database.stashed", (Object)BukkitSerializeClass.itemStackArrayToBase64(is));
+        this.config.save();
     }
 
 
@@ -956,5 +1151,227 @@ public class User {
 
     public static Collection<User> getCachedUsers() {
         return USER_CACHE.values();
+    }
+    public void loadCookieStatus() {
+        final Player player = Bukkit.getPlayer(this.uuid);
+        PlayerUtils.setCookieDurationTicks(player, this.config.getLong("user.cookieDuration"));
+        PlayerUtils.loadCookieStatsBuff(player);
+    }
+
+    public static void wipeCookieStatsBuff(final Player player) {
+        final User user = User.getUser(player.getUniqueId());
+        final PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(user.getUuid());
+        statistics.zeroAll(151);
+    }
+
+    public void saveCookie() {
+        if (Bukkit.getPlayer(this.uuid) == null) {
+            return;
+        }
+        if (!Bukkit.getPlayer(this.uuid).isOnline()) {
+            return;
+        }
+        if (!PlayerUtils.COOKIE_DURATION_CACHE.containsKey(this.uuid)) {
+            return;
+        }
+        this.config.set("user.cookieDuration", (Object)PlayerUtils.getCookieDurationTicks(Bukkit.getPlayer(this.uuid)));
+        this.config.save();
+    }
+
+    public ItemStack updateItemBoost(final SItem sitem) {
+        if (sitem.getDataBoolean("dungeons_item") && sitem.getType().getStatistics().getType() != GenericItemType.ITEM && sitem.getType().getStatistics().getType() != GenericItemType.PET && sitem.getType().getStatistics().getType() != GenericItemType.BLOCK && sitem.getType().getStatistics().getType() != GenericItemType.ACCESSORY) {
+            final int itemstar = sitem.getDataInt("itemStar");
+            double hpbboostweapons = 0.0;
+            double hpbboosthp = 0.0;
+            double hpbboostdef = 0.0;
+            final PlayerBoostStatistics hs = sitem.getType().getBoostStatistics();
+            final ItemSerial is = ItemSerial.getItemBoostStatistics(sitem);
+            final Reforge reforge = (sitem.getReforge() == null) ? Reforge.blank() : sitem.getReforge();
+            double bonusEn = 0.0;
+            if (sitem.getType().getStatistics().getType() == GenericItemType.WEAPON && sitem.getEnchantment(EnchantmentType.ONE_FOR_ALL) != null) {
+                final Enchantment e = sitem.getEnchantment(EnchantmentType.ONE_FOR_ALL);
+                bonusEn = hs.getBaseDamage() * (e.getLevel() * 210) / 100;
+            }
+            if (sitem.getType().getStatistics().getType() == GenericItemType.WEAPON || sitem.getType().getStatistics().getType() == GenericItemType.RANGED_WEAPON) {
+                hpbboostweapons = sitem.getDataInt("hpb") * 2;
+            }
+            else if (sitem.getType().getStatistics().getType() == GenericItemType.ARMOR) {
+                hpbboosthp = sitem.getDataInt("hpb") * 4;
+                hpbboostdef = sitem.getDataInt("hpb") * 2;
+            }
+            is.setDamage(this.getFinal(hs.getBaseDamage() + hpbboostweapons + bonusEn, itemstar));
+            is.setStrength(this.getFinal(hs.getBaseStrength() + (hpbboostweapons + reforge.getStrength().getForRarity(sitem.getRarity())), itemstar));
+            is.setCritchance(this.getFinal(hs.getBaseCritChance() + reforge.getCritChance().getForRarity(sitem.getRarity()), itemstar));
+            is.setCritdamage(this.getFinal(hs.getBaseCritDamage() + reforge.getCritDamage().getForRarity(sitem.getRarity()), itemstar));
+            is.setIntelligence(this.getFinal(hs.getBaseIntelligence() + reforge.getIntelligence().getForRarity(sitem.getRarity()), itemstar));
+            is.setFerocity(this.getFinal(hs.getBaseFerocity() + reforge.getFerocity().getForRarity(sitem.getRarity()), itemstar));
+            is.setSpeed(this.getFinal(hs.getBaseSpeed(), itemstar));
+            is.setAtkSpeed(this.getFinal(hs.getBaseAttackSpeed() + reforge.getAttackSpeed().getForRarity(sitem.getRarity()), itemstar));
+            is.setMagicFind(this.getFinal(hs.getBaseMagicFind(), itemstar));
+            double health = hs.getBaseHealth();
+            double defense = hs.getBaseDefense();
+            if (sitem.isEnchantable()) {
+                for (final Enchantment enchantment : sitem.getEnchantments()) {
+                    if (enchantment.getType() == EnchantmentType.GROWTH) {
+                        health += 15.0 * enchantment.getLevel();
+                    }
+                    if (enchantment.getType() == EnchantmentType.PROTECTION) {
+                        defense += 3.0 * enchantment.getLevel();
+                    }
+                }
+            }
+            is.setHealth(this.getFinal(health + hpbboosthp, itemstar));
+            is.setDefense(this.getFinal(defense + hpbboostdef, itemstar));
+            is.saveTo(sitem);
+            return sitem.getStack();
+        }
+        return sitem.getStack();
+    }
+
+    public double getFinal(final double stat, final int starNum) {
+        final int cataLVL = Skill.getLevel(this.getCataXP(), false);
+        final int cataBuffPercentage = cataLVL * 5;
+        int percentMstars = (starNum - 5) * 5;
+        if (starNum <= 5) {
+            percentMstars *= 0;
+        }
+        final double d = 1.0 + percentMstars / 100.0;
+        return stat * ((1 + percentMstars / 100) * (1.0 + 0.1 * Math.min(5, starNum)) * (1 + cataBuffPercentage / 100) * d);
+    }
+
+    public double getCataXP() {
+        return this.cataXP;
+    }
+
+    public void updateInventory() {
+        final Player player = Bukkit.getPlayer(this.uuid);
+        if (player != null) {
+            this.updateHelmet();
+            this.updateChestplate();
+            this.updateLeggings();
+            this.updateBoots();
+            this.updateEnderChest();
+            for (int i = 0; i < player.getInventory().getContents().length; ++i) {
+                final ItemStack is = player.getInventory().getItem(i);
+                if (is != null) {
+                    final SItem sitem = SItem.find(is);
+                    if (sitem != null) {
+                        if (sitem.getReforge() != null && !player.isOp() && (sitem.getReforge().toString().toUpperCase().contains("OVERPOWERED") | sitem.getReforge().toString().toUpperCase().contains("SUPERGENIUS"))) {
+                            sitem.setReforge(ReforgeType.STRONK.getReforge());
+                            player.getInventory().setItem(i, sitem.getStack());
+                        }
+                        sitem.update();
+                        player.getInventory().setItem(i, this.updateItemBoost(sitem));
+                    }
+                }
+            }
+        }
+    }
+
+    public void updateEnderChest() {
+        final Player player = Bukkit.getPlayer(this.uuid);
+        if (player != null) {
+            for (int i = 0; i < player.getEnderChest().getContents().length; ++i) {
+                final ItemStack is = player.getEnderChest().getItem(i);
+                if (is != null) {
+                    final SItem sitem = SItem.find(is);
+                    if (sitem != null) {
+                        if (sitem.getReforge() != null && !player.isOp() && (sitem.getReforge().toString().toUpperCase().contains("OVERPOWERED") | sitem.getReforge().toString().toUpperCase().contains("SUPERGENIUS"))) {
+                            sitem.setReforge(ReforgeType.STRONK.getReforge());
+                            player.getEnderChest().setItem(i, sitem.getStack());
+                        }
+                        sitem.update();
+                        player.getEnderChest().setItem(i, this.updateItemBoost(sitem));
+                    }
+                }
+            }
+        }
+    }
+
+    public void updateHelmet() {
+        final Player player = Bukkit.getPlayer(this.uuid);
+        final ItemStack is = player.getInventory().getHelmet();
+        if (is != null) {
+            final SItem sitem = SItem.find(is);
+            if (sitem != null) {
+                if (sitem.getReforge() != null && !player.isOp() && (sitem.getReforge().toString().toUpperCase().contains("OVERPOWERED") | sitem.getReforge().toString().toUpperCase().contains("SUPERGENIUS"))) {
+                    sitem.setReforge(ReforgeType.STRONK.getReforge());
+                    player.getInventory().setHelmet(sitem.getStack());
+                }
+                sitem.update();
+                player.getInventory().setHelmet(this.updateItemBoost(sitem));
+            }
+        }
+    }
+
+    public void updateChestplate() {
+        final Player player = Bukkit.getPlayer(this.uuid);
+        final ItemStack is = player.getInventory().getChestplate();
+        if (is != null) {
+            final SItem sitem = SItem.find(is);
+            if (sitem != null) {
+                if (sitem.getReforge() != null && !player.isOp() && (sitem.getReforge().toString().toUpperCase().contains("OVERPOWERED") | sitem.getReforge().toString().toUpperCase().contains("SUPERGENIUS"))) {
+                    sitem.setReforge(ReforgeType.STRONK.getReforge());
+                    player.getInventory().setChestplate(sitem.getStack());
+                }
+                sitem.update();
+                player.getInventory().setChestplate(this.updateItemBoost(sitem));
+            }
+        }
+    }
+
+    public void updateLeggings() {
+        final Player player = Bukkit.getPlayer(this.uuid);
+        final ItemStack is = player.getInventory().getLeggings();
+        if (is != null) {
+            final SItem sitem = SItem.find(is);
+            if (sitem != null) {
+                if (sitem.getReforge() != null && !player.isOp() && (sitem.getReforge().toString().toUpperCase().contains("OVERPOWERED") | sitem.getReforge().toString().toUpperCase().contains("SUPERGENIUS"))) {
+                    sitem.setReforge(ReforgeType.STRONK.getReforge());
+                    player.getInventory().setLeggings(sitem.getStack());
+                }
+                sitem.update();
+                player.getInventory().setLeggings(this.updateItemBoost(sitem));
+            }
+        }
+    }
+
+    public void updateBoots() {
+        final Player player = Bukkit.getPlayer(this.uuid);
+        final ItemStack is = player.getInventory().getBoots();
+        if (is != null) {
+            final SItem sitem = SItem.find(is);
+            if (sitem != null) {
+                if (sitem.getReforge() != null && !player.isOp() && (sitem.getReforge().toString().toUpperCase().contains("OVERPOWERED") | sitem.getReforge().toString().toUpperCase().contains("SUPERGENIUS"))) {
+                    sitem.setReforge(ReforgeType.STRONK.getReforge());
+                    player.getInventory().setBoots(sitem.getStack());
+                }
+                sitem.update();
+                player.getInventory().setBoots(this.updateItemBoost(sitem));
+            }
+        }
+    }
+
+    public void sendClickableMessage(final String message, final TextComponent[] hover, final String commandToRun) {
+        final TextComponent tcp = new TextComponent(Sputnik.trans(message));
+        if (hover != null) {
+            tcp.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, (BaseComponent[])hover));
+        }
+        if (commandToRun != null) {
+            tcp.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, commandToRun));
+        }
+        this.toBukkitPlayer().spigot().sendMessage((BaseComponent)tcp);
+    }
+
+    public Player toBukkitPlayer() {
+        return Bukkit.getPlayer(this.uuid);
+    }
+
+    public List<ItemStack> getStashedItems() {
+        return this.stashedItems;
+    }
+
+    public void setStashedItems(final List<ItemStack> stashedItems) {
+        this.stashedItems = stashedItems;
     }
 }

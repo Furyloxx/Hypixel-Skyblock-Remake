@@ -9,6 +9,10 @@ public class ItemCollectionRewards extends ArrayList<ItemCollectionReward> {
     @Getter
     private final int requirement;
 
+    public int getRequirement() {
+        return this.requirement;
+    }
+
     public ItemCollectionRewards(int requirement, ItemCollectionReward... rewards) {
         super(Arrays.asList(rewards));
         this.requirement = requirement;

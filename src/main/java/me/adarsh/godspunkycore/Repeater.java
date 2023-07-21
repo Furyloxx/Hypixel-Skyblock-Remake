@@ -8,13 +8,16 @@ import me.adarsh.godspunkycore.features.potion.ActivePotionEffect;
 import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.region.RegionType;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
-import me.adarsh.godspunkycore.sidebar.Sidebar;
+import me.adarsh.godspunkycore.features.sidebar.Sidebar;
 import me.adarsh.godspunkycore.user.PlayerStatistic;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.DefenseReplacement;
+import me.adarsh.godspunkycore.util.ManaReplacement;
 import me.adarsh.godspunkycore.util.SUtil;
+import me.adarsh.godspunkycore.util.Sputnik;
+import me.clip.placeholderapi.PlaceholderAPI;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -31,8 +34,13 @@ public class Repeater {
     public static final Map<UUID, Integer> MANA_MAP = new HashMap<>();
     public static final Map<UUID, DefenseReplacement> DEFENSE_REPLACEMENT_MAP = new HashMap<>();
 
+    public static final Map<UUID, ManaReplacement> MANA_REPLACEMENT_MAP = new HashMap<>();
+    public static final Map<UUID, Integer> PTN_CACHE;
+
     private final List<BukkitTask> tasks;
     private final List<AtomicInteger> counters;
+
+    public static final Map<UUID, Integer> FloorLivingSec = new HashMap<>();
 
     public Repeater() {
         this.tasks = new ArrayList<>();
@@ -71,6 +79,7 @@ public class Repeater {
                     for (ActivePotionEffect effect : user.getEffects())
                         effect.setRemaining(effect.getRemaining() - 10);
                     PlayerUtils.updatePotionEffects(user, statistics);
+                    PlayerUtils.subtractDurationCookie(player, 20L);
 
                     if (hand != null)
                     {
@@ -127,9 +136,14 @@ public class Repeater {
                     float absorption = human.getAbsorptionHearts();
                     ChatColor color = absorption > 0.0f ? ChatColor.GOLD : ChatColor.RED;
                     DefenseReplacement replacement = DEFENSE_REPLACEMENT_MAP.get(player.getUniqueId());
+                    ManaReplacement replacement1 = MANA_REPLACEMENT_MAP.get(player.getUniqueId());
                     if (replacement != null && System.currentTimeMillis() >= replacement.getEnd()) {
                         DEFENSE_REPLACEMENT_MAP.remove(player.getUniqueId());
                         replacement = null;
+                    }
+                    if (replacement1 != null && System.currentTimeMillis() >= replacement1.getEnd()) {
+                        MANA_REPLACEMENT_MAP.remove(player.getUniqueId());
+                        replacement1 = null;
                     }
                     SUtil.sendActionBar(player, color + "" + Math.round(player.getHealth() + absorption)
                             + "/" + SUtil.blackMagic(statistics.getMaxHealth().addAll()) + "❤     " +
@@ -183,6 +197,8 @@ public class Repeater {
                     else
                         coinsDisplay.append("Purse: ");
                     sidebar.add(coinsDisplay.append(ChatColor.GOLD).append(SUtil.commaify(user.getCoins())).toString());
+                    final String bits = PlaceholderAPI.setPlaceholders(player, "%royaleeconomy_balance_purse%") + " " + PlaceholderAPI.setPlaceholders(player, "%royaleeconomy_dynamic_coins%");
+                    sidebar.add("Bits: " + ChatColor.AQUA + bits);
                     sidebar.add("   ");
                     SlayerQuest quest = user.getSlayerQuest();
                     if (quest != null && quest.getDied() == 0) {
@@ -212,7 +228,38 @@ public class Repeater {
                             double dealt = StaticDragonManager.DRAGON.getDamageDealt().get(uuid);
                             sidebar.add("Your Damage: " + ChatColor.RED + SUtil.commaify(SUtil.roundTo(dealt, 1)));
                         }
-                        sidebar.add("     ");
+                        else if (player.getWorld().getName().contains("Dungeon_" + player.getUniqueId()) && !player.getWorld().getName().equals("Dungeon_" + player.getUniqueId())) {
+                            sidebar.add(ChatColor.RED + " ");
+                            if (FloorLivingSec.containsKey(player.getWorld().getUID())) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a" + Sputnik.formatTime(((Integer) FloorLivingSec.get(player.getWorld().getUID())).intValue())));
+                            } else {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a00m 00s"));
+                            }
+                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &cN/A%"));
+                            sidebar.add(ChatColor.RED + "  ");
+                            String nameofplayer = player.getName();
+                            if (player.getWorld().getPlayers().size() > 1) {
+                                for (Player dungeonmate : player.getWorld().getPlayers()) {
+                                    String colorcode;
+                                    if (dungeonmate.getHealth() <= dungeonmate.getMaxHealth() / 2.0D && dungeonmate.getHealth() > dungeonmate.getMaxHealth() * 25.0D / 100.0D) {
+                                        colorcode = "e";
+                                    } else if (dungeonmate.getHealth() <= dungeonmate.getMaxHealth() * 25.0D / 100.0D) {
+                                        colorcode = "c";
+                                    } else {
+                                        colorcode = "a";
+                                    }
+                                    String backend = " &" + colorcode + (int) dungeonmate.getHealth() + "&c❤";
+                                    if (dungeonmate.getName() == nameofplayer)
+                                        continue;
+                                    sidebar.add(ChatColor.translateAlternateColorCodes('&', "&e[N/A&e] &b" + dungeonmate.getName() + backend));
+                                }
+                            } else if (player.getWorld().getPlayers().size() == 1) {
+                                sidebar.add(ChatColor.DARK_GRAY + "No Teammates");
+                            } else if (player.getWorld().getPlayers().size() > 5) {
+                                sidebar.add(ChatColor.RED + "Something went wrong!");
+                            }
+                            sidebar.add(ChatColor.AQUA + "     ");
+                        }
                     }
                     sidebar.add(ChatColor.YELLOW + "mc.godspunky.in");
                     sidebar.apply(player);
@@ -227,9 +274,15 @@ public class Repeater {
         }.runTaskTimer(Skyblock.getPlugin(), 0, 10));
     }
 
+    public static String get(final Player p) {
+        return "";
+    }
+
     public void stop() {
         for (BukkitTask task : this.tasks)
             task.cancel();
     }
-
+    static {
+        PTN_CACHE = new HashMap<UUID, Integer>();
+    }
 }

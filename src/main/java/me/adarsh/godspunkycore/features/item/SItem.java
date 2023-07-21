@@ -654,4 +654,8 @@ public class SItem implements Cloneable, ConfigurationSerializable {
                 compound.hasKey("origin") ? ItemOrigin.valueOf(compound.getString("origin")) : ItemOrigin.UNKNOWN,
                 compound.hasKey("recombobulated"), data, false);
     }
+
+    public boolean getDataBoolean(final String key) {
+        return this.data.getBoolean(key);
+    }
 }
