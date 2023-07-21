@@ -61,7 +61,7 @@ public class ShapedRecipe extends Recipe<ShapedRecipe> {
         return set(k, new MaterialQuantifiable(material));
     }
 
-    public MaterialQuantifiable[][] toMQ2DArray() {
+    private MaterialQuantifiable[][] toMQ2DArray() {
         MaterialQuantifiable[][] materials = new MaterialQuantifiable[3][3];
         String l1 = SUtil.pad(SUtil.getOrDefault(shape, 0, "   "), 3);
         String l2 = SUtil.pad(SUtil.getOrDefault(shape, 1, "   "), 3);

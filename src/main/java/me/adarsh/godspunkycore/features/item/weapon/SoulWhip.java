@@ -2,11 +2,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
-import me.adarsh.godspunkycore.user.User;
-import me.adarsh.godspunkycore.util.FerocityCalculation;
-import me.adarsh.godspunkycore.util.Sputnik;
 import net.minecraft.server.v1_8_R3.EnumParticle;
-import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import net.minecraft.server.v1_8_R3.Packet;
 import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
 import org.bukkit.Location;
@@ -14,7 +10,6 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
-import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -63,11 +58,6 @@ public class SoulWhip implements ToolStatistics, MaterialFunction, Ability {
                             SoulWhip.hit.put(Integer.valueOf(e.getEntityId()), Boolean.valueOf(true));
                             (new BukkitRunnable() {
                                 public void run() {
-                                    User user = User.getUser(player.getUniqueId());
-                                    Object[] atp = Sputnik.calculateDamage(player, player, sItem.getStack(), (LivingEntity)e, false);
-                                    double finalDamage1 = ((Float)atp[0]).floatValue();
-                                    FerocityCalculation.activeFerocityTimes(player, (LivingEntity)e, (int)finalDamage1, ((Boolean)atp[1]).booleanValue());
-                                    user.damageEntity((LivingEntity) e, finalDamage1);
                                 }
                             }).runTaskLater((Plugin)Skyblock.getPlugin(), 0L);
                             (new BukkitRunnable() {
@@ -106,7 +96,7 @@ public class SoulWhip implements ToolStatistics, MaterialFunction, Ability {
                 public void run() {
                     SoulWhip.cd.remove(p.getUniqueId());
                 }
-            }).runTaskLater((Plugin)Skyblock.getPlugin(), 10L);
+            }).runTaskLater((Plugin) Skyblock.getPlugin(), 10L);
         }
     }
 
@@ -128,6 +118,10 @@ public class SoulWhip implements ToolStatistics, MaterialFunction, Ability {
 
     public boolean displayUsage() {
         return false;
+    }
+
+    public String getAbilityReq() {
+        return "&cYou do not have requirement to use this item!\n&cYou need at least &525 Sadan Kills &cto use it!";
     }
 
     public Rarity getRarity() {

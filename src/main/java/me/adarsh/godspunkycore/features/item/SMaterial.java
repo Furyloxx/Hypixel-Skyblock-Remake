@@ -137,7 +137,8 @@ import me.adarsh.godspunkycore.features.item.hoe.vanilla.*;
 import me.adarsh.godspunkycore.features.item.mining.*;
 import me.adarsh.godspunkycore.features.item.oddities.*;
 import me.adarsh.godspunkycore.features.item.orb.*;
-import me.adarsh.godspunkycore.features.item.pet.*;
+import me.adarsh.godspunkycore.features.item.pet.EndermanPet;
+import me.adarsh.godspunkycore.features.item.pet.GungaPet;
 import me.adarsh.godspunkycore.features.item.pickaxe.vanilla.*;
 import me.adarsh.godspunkycore.features.item.revenant.*;
 import me.adarsh.godspunkycore.features.item.rune.*;
@@ -200,7 +201,6 @@ public enum SMaterial {
     VALKYIRE(Material.IRON_SWORD, Valkyrie.class),
     SHADOW_FURY(Material.DIAMOND_SWORD, ShadowFury.class),
     LIVID_DAGGER(Material.IRON_SWORD, LividDagger.class),
-    FLOWER_OF_TRUTH(Material.RED_ROSE, FlowerOfTruth.class),
 
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),
@@ -530,8 +530,6 @@ public enum SMaterial {
     BOUNCER(Material.SLIME_BLOCK, Bouncer.class),
     WATER_BOTTLE(Material.POTION, WaterBottle.class),
     MADDOX_BATPHONE(Material.SKULL_ITEM, MaddoxBatphone.class),
-    BOOSTER_COOKIE(Material.COOKIE, BoosterCookie.class),
-
     // Entity Drops
     CRYSTAL_FRAGMENT(Material.QUARTZ, CrystalFragment.class),
     GOLDEN_POWDER(Material.GLOWSTONE_DUST, GoldenPowder.class),
@@ -539,16 +537,13 @@ public enum SMaterial {
     // Entity Items
     REVENANT_HORROR_HEAD(Material.SKULL_ITEM, RevenantHorrorHead.class),
     BONZO_MASK(Material.SKULL_ITEM, BonzoMask.class),
-
     // Power Orbs
     RADIANT_POWER_ORB(Material.SKULL_ITEM, RadiantPowerOrb.class),
     MANA_FLUX_POWER_ORB(Material.SKULL_ITEM, ManaFluxPowerOrb.class),
     OVERFLUX_POWER_ORB(Material.SKULL_ITEM, OverfluxPowerOrb.class),
     PLASMAFLUX_POWER_ORB(Material.SKULL_ITEM, PlasmafluxPowerOrb.class),
-
     // Floating Crystal Items
     WHEAT_CRYSTAL(Material.SKULL_ITEM, WheatCrystal.class),
-
     // Enchanting & Reforging
     ENCHANTED_BOOK(Material.ENCHANTED_BOOK, EnchantedBook.class, true),
     RECOMBOBULATOR_3000(Material.SKULL_ITEM, Recombobulator3000.class),
@@ -559,7 +554,6 @@ public enum SMaterial {
     LARGE_BACKPACK(Material.SKULL_ITEM, LargeBackpack.class),
     GREATER_BACKPACK(Material.SKULL_ITEM, GreaterBackpack.class),
     JUMBO_BACKPACK(Material.SKULL_ITEM, JumboBackpack.class),
-
     // Revenant Horror
     REVENANT_FLESH(Material.ROTTEN_FLESH, RevenantFlesh.class),
     FOUL_FLESH(Material.COAL, FoulFlesh.class, (short) 1),
@@ -567,36 +561,27 @@ public enum SMaterial {
     BEHEADED_HORROR(Material.SKULL_ITEM, BeheadedHorror.class),
     REVENANT_CATALYST(Material.SKULL_ITEM, RevenantCatalyst.class),
     SCYTHE_BLADE(Material.DIAMOND, ScytheBlade.class),
-
     // Tarantula Broodfather
     TARANTULA_WEB(Material.STRING, TarantulaWeb.class),
     TOXIC_ARROW_POISON(Material.INK_SACK, ToxicArrowPoison.class, (short) 10),
     SPIDER_CATALYST(Material.SKULL_ITEM, SpiderCatalyst.class),
     FLY_SWATTER(Material.GOLD_SPADE, FlySwatter.class),
     DIGESTED_MOSQUITO(Material.ROTTEN_FLESH, DigestedMosquito.class),
-
     // Sven Packmaster
     WOLF_TOOTH(Material.GHAST_TEAR, WolfTooth.class),
     HAMSTER_WHEEL(Material.TRAP_DOOR, HamsterWheel.class),
     RED_CLAW_EGG(Material.MONSTER_EGG, RedClawEgg.class, (short) 96),
     OVERFLUX_CAPACITOR(Material.QUARTZ, OverfluxCapacitor.class),
     GRIZZLY_BAIT(Material.RAW_FISH, GrizzlyBait.class, (short) 1),
-
     // Runes
     PESTILENCE_RUNE(Material.SKULL_ITEM, PestilenceRune.class),
     SNAKE_RUNE(Material.SKULL_ITEM, SnakeRune.class),
     BITE_RUNE(Material.SKULL_ITEM, BiteRune.class),
     SPIRIT_RUNE(Material.SKULL_ITEM, SpiritRune.class),
     COUTURE_RUNE(Material.SKULL_ITEM, CoutureRune.class),
-
     // Pets
     ENDERMAN_PET(Material.SKULL_ITEM, EndermanPet.class),
     GUNGA_PET(Material.SKULL_ITEM, GungaPet.class),
-    ARAGORN_PET(Material.SKULL_ITEM, AragornPet.class),
-    BABY_YETI_PET(Material.SKULL_ITEM, BabyYeti.class),
-    BLACK_CAT_PET(Material.SKULL_ITEM, BlackCat.class),
-    ENDER_DRAGON_PET(Material.SKULL_ITEM, EnderDragonPet.class),
-
     // Craft Materials
     AIR(Material.AIR),
     STONE(Material.STONE, Stone.class, true),

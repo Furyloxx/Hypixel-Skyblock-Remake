@@ -9,12 +9,6 @@ public interface Ability {
 
     default void onAbilityUse(Player player, SItem sItem) {
     }
-    default boolean requirementsUse(final Player player, final SItem sItem) {
-        return false;
-    }
-    default String getAbilityReq() {
-        return "";
-    }
 
     int getAbilityCooldownTicks();
 
@@ -25,9 +19,6 @@ public interface Ability {
     }
 
     default boolean displayUsage() {
-        return true;
-    }
-    default boolean displayCooldown() {
         return true;
     }
 }

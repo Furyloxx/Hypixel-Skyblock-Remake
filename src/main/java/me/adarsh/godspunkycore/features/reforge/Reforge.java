@@ -44,12 +44,4 @@ public interface Reforge {
     static Reforge blank() {
         return () -> "Blank";
     }
-
-    default RarityValue<Double> getFerocity() {
-        return RarityValue.zeroDouble();
-    }
-
-    default RarityValue<Double> getAttackSpeed() {
-        return RarityValue.zeroDouble();
-    }
 }

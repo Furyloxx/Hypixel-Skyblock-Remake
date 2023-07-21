@@ -1,7 +1,7 @@
 package me.adarsh.godspunkycore.command;
 
 import me.adarsh.godspunkycore.features.ranks.PlayerRank;
-import me.adarsh.godspunkycore.features.gui.ItemBrowserGUI;
+import me.adarsh.godspunkycore.gui.ItemBrowserGUI;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;

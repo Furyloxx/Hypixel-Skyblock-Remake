@@ -25,7 +25,7 @@ import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.features.potion.PotionColor;
 import me.adarsh.godspunkycore.features.potion.PotionEffect;
-import me.adarsh.godspunkycore.features.gui.GUI;
+import me.adarsh.godspunkycore.gui.GUI;
 import net.minecraft.server.v1_8_R3.*;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Material;
@@ -60,7 +60,6 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
@@ -100,7 +99,6 @@ public class SUtil {
             names.add(player.getName());
         return names;
     }
-
 
     public static int random(int min, int max) {
         return new Random().nextInt((max - min) + 1) + min;
@@ -1119,15 +1117,6 @@ public class SUtil {
         } else {
             return ChatColor.DARK_RED;
         }
-    }
-
-    public static String getFormattedTimeToDay(final long l) {
-        final long seconds = Math.round((float)(l / 20L));
-        final int day = (int) TimeUnit.SECONDS.toDays(seconds);
-        final int hours = (int)(TimeUnit.SECONDS.toHours(seconds) - TimeUnit.DAYS.toHours(day));
-        final int minute = (int)(TimeUnit.SECONDS.toMinutes(seconds) - TimeUnit.DAYS.toMinutes(day) - TimeUnit.HOURS.toMinutes(hours));
-        final int second = (int)(TimeUnit.SECONDS.toSeconds(seconds) - TimeUnit.DAYS.toSeconds(day) - TimeUnit.HOURS.toSeconds(hours) - TimeUnit.MINUTES.toSeconds(minute));
-        return day + "d " + hours + "h " + minute + "m " + second + "s";
     }
 
 }
