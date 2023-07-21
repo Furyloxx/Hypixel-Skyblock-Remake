@@ -2,6 +2,7 @@ package me.adarsh.godspunkycore.features.entity;
 
 import lombok.Getter;
 import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.features.entity.dungeon.bosses.WatcherBonzo;
 import me.adarsh.godspunkycore.features.entity.end.EndermanStatistics;
 import me.adarsh.godspunkycore.features.entity.nms.SNMSEntity;
 import me.adarsh.godspunkycore.features.entity.wolf.WolfStatistics;

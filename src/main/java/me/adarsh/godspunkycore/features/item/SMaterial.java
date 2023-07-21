@@ -127,8 +127,8 @@ import me.adarsh.godspunkycore.features.item.dragon.wise.*;
 import me.adarsh.godspunkycore.features.item.dragon.young.*;
 import me.adarsh.godspunkycore.features.item.enchanted.*;
 import me.adarsh.godspunkycore.features.item.enchanting.EnchantedBook;
+import me.adarsh.godspunkycore.features.item.entity.*;
 import me.adarsh.godspunkycore.features.item.entity.Bonzo.BonzoMask;
-import me.adarsh.godspunkycore.features.item.entity.RevenantHorrorHead;
 import me.adarsh.godspunkycore.features.item.exclusive.TestItem;
 import me.adarsh.godspunkycore.features.item.exclusive.WheatCrystal;
 import me.adarsh.godspunkycore.features.item.farming.*;
@@ -1181,7 +1181,16 @@ public enum SMaterial {
     BROWN_WOOL(Material.WOOL, (short) 12, "Brown Wool"),
     GREEN_WOOL(Material.WOOL, (short) 13, "Green Wool"),
     RED_WOOL(Material.WOOL, (short) 14, "Red Wool"),
-    BLACK_WOOL(Material.WOOL, (short) 15, "Black Wool");
+    BLACK_WOOL(Material.WOOL, (short) 15, "Black Wool"),
+    BONZO_BALLOON_1(Material.SKULL_ITEM, BS1.class),
+    BONZO_BALLOON_2(Material.SKULL_ITEM, BS2.class),
+    BONZO_BALLOON_3(Material.SKULL_ITEM, BS3.class),
+    BONZO_BALLOON_4(Material.SKULL_ITEM, BS4.class),
+    BONZO_BALLOON_5(Material.SKULL_ITEM, BS5.class),
+    BONZO_BALLOON_6(Material.SKULL_ITEM, BS6.class),
+    BONZO_BALLOON_7(Material.SKULL_ITEM, BS7.class),
+    BONZO_BALLOON_8(Material.SKULL_ITEM, BS8.class),
+    BONZO_BALLOON_9(Material.SKULL_ITEM, BS9.class);
 
     private static final List<ArmorSet> CACHED_SETS = new ArrayList<>();
 

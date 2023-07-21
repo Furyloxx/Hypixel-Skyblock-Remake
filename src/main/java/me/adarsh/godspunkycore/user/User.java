@@ -238,7 +238,19 @@ public class User {
         config.set("auction.settings", auctionSettings);
         config.set("auction.creationBIN", auctionCreationBIN);
         config.set("auction.escrow", auctionEscrow);
+        config.set("inventory" , null);
         config.save();
+    }
+
+    public void saveInventory(Player player) {
+        if (player == null) return;
+        if (player.getInventory().getContents() == null) return; // no need to save is inventory is empty
+        config.set("inventory" , player.getInventory().getContents());
+    }
+    public void getInventory(){
+        Player player = Bukkit.getPlayer(uuid);
+        if (player == null) return;
+
     }
 
     public void setIslandLocation(double x, double z) {

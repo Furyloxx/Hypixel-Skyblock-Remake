@@ -38,6 +38,7 @@ public enum SEntityType {
     OLD_DRAGON(EntityType.ENDER_DRAGON, OldDragon.class),
     WISE_DRAGON(EntityType.ENDER_DRAGON, WiseDragon.class),
     UNSTABLE_DRAGON(EntityType.ENDER_DRAGON, UnstableDragon.class),
+    WATCHER_BONZO(EntityType.ZOMBIE, WatcherBonzo.class),
     YOUNG_DRAGON(EntityType.ENDER_DRAGON, YoungDragon.class),
     STRONG_DRAGON(EntityType.ENDER_DRAGON, StrongDragon.class),
     SUPERIOR_DRAGON(EntityType.ENDER_DRAGON, SuperiorDragon.class),

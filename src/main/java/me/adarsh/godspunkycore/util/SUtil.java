@@ -391,6 +391,13 @@ public class SUtil {
         return item;
     }
 
+    public static SItem toShopItem(SItem item , int amount , Long price , Long value){
+        item.getStack().setAmount(amount);
+        item.setPrice(price);
+        item.setValue(value);
+        return item;
+    }
+
     public static double roundTo(double d, int decimalPlaces) {
         if (decimalPlaces < 1)
             throw new IllegalArgumentException();
