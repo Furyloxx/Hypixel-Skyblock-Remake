@@ -4,7 +4,7 @@ import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.util.SUtil;
 
-public class FarmMerchantGUI extends ShopGUI {
+public class LumberMerchantGUI extends ShopGUI {
     private static final SItem[] ITEMS = new SItem[]
             {
                     /*
@@ -19,26 +19,27 @@ public class FarmMerchantGUI extends ShopGUI {
                      * | ----------------------------------------------------------------A|
                      */
 
-                    SUtil.toShopItem(SMaterial.WHEAT, 3 , 10L , 6L),
-                    SUtil.toShopItem(SMaterial.CARROT_ITEM, 3 , 10L , 3L),
-                    SUtil.toShopItem(SMaterial.POTATO_ITEM, 3 , 10L , 3L),
-                    SUtil.toShopItem(SMaterial.MELON, 10 , 4L , 2L),
-                    SUtil.toShopItem(SMaterial.SUGAR_CANE, 3 , 10L , 4L),
-                    SUtil.toShopItem(SMaterial.PUMPKIN, 1 , 25L , 10L),
-                    SUtil.toShopItem(SMaterial.COCOA_BEANS, 1 , 5L , 3L),
-                    SUtil.toShopItem(SMaterial.RED_MUSHROOM, 1 , 12L , 10L),
-                    SUtil.toShopItem(SMaterial.BROWN_MUSHROOM, 1 , 12L , 10L),
-                    SUtil.toShopItem(SMaterial.SAND, 2 , 4L , 2L),
-                    SUtil.toShopItem(SMaterial.CACTUS, 1 , 10L , 3L),
-                    SUtil.toShopItem(SMaterial.ROOKIE_HOE, 1 , 10L , 3L),
-
+                    SUtil.toShopItem(SMaterial.OAK_WOOD, 5 , 25L , 5L),
+                    SUtil.toShopItem(SMaterial.BIRCH_WOOD, 5 , 25L , 5L),
+                    SUtil.toShopItem(SMaterial.SPRUCE_WOOD, 5 , 25L , 5L),
+                    SUtil.toShopItem(SMaterial.DARK_OAK_WOOD, 5 , 25L , 5L),
+                    SUtil.toShopItem(SMaterial.ACACIA_WOOD, 5 , 25L , 5L),
+                    SUtil.toShopItem(SMaterial.JUNGLE_WOOD, 5 , 25L , 5L),
+                    SUtil.toShopItem(SMaterial.STICK, 32 , 2L , 1L),
+                    SUtil.toShopItem(SMaterial.PODZOL, 1 , 20L , 10L),
+                    // TODO : ADD AXE
+                    SUtil.toShopItem(SMaterial.WOOD_SWORD, 1 , 5L , 1L),
+                    SUtil.toShopItem(SMaterial.WOOD_PICKAXE, 1 , 5L , 1L),
+                    SUtil.toShopItem(SMaterial.WOOD_SHOVEL, 1 , 5L , 1L),
+                    SUtil.toShopItem(SMaterial.WOOD_HOE, 1 , 5L , 1L),
+                    SUtil.toShopItem(SMaterial.WOOD_AXE, 1 , 5L , 1L),
             };
 
-    public FarmMerchantGUI(int page) {
-        super("Farm Merchant", page, ITEMS);
+    public LumberMerchantGUI(int page) {
+        super("Lumber Merchant", page, ITEMS);
     }
 
-    public FarmMerchantGUI() {
+    public LumberMerchantGUI() {
         this(1);
     }
 }

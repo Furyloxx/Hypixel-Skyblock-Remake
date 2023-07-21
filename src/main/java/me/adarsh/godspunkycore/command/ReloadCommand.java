@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore.command;
 
+import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 
 @CommandParameters(aliases = "sb", permission = PlayerRank.ADMIN)
@@ -10,9 +11,9 @@ public class ReloadCommand extends SCommand{
         if (args.length == 1){
             switch (args[0].toLowerCase()) {
                 case "reload": {
-                    plugin.onDisable();
-                    plugin.onEnable();
-                    sender.send(plugin.getPrefix() + "Successfully reloaded Skyblock");
+                    Skyblock.getPlugin().onDisable();
+                    Skyblock.getPlugin().onEnable();
+                    sender.send(Skyblock.getPlugin().getPrefix() + "Successfully reloaded Skyblock");
                 }
             }
         }

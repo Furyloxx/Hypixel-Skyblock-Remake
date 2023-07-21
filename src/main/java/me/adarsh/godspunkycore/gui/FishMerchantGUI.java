@@ -4,7 +4,7 @@ import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.util.SUtil;
 
-public class FarmMerchantGUI extends ShopGUI {
+public class FishMerchantGUI extends ShopGUI {
     private static final SItem[] ITEMS = new SItem[]
             {
                     /*
@@ -19,26 +19,17 @@ public class FarmMerchantGUI extends ShopGUI {
                      * | ----------------------------------------------------------------A|
                      */
 
-                    SUtil.toShopItem(SMaterial.WHEAT, 3 , 10L , 6L),
-                    SUtil.toShopItem(SMaterial.CARROT_ITEM, 3 , 10L , 3L),
-                    SUtil.toShopItem(SMaterial.POTATO_ITEM, 3 , 10L , 3L),
-                    SUtil.toShopItem(SMaterial.MELON, 10 , 4L , 2L),
-                    SUtil.toShopItem(SMaterial.SUGAR_CANE, 3 , 10L , 4L),
-                    SUtil.toShopItem(SMaterial.PUMPKIN, 1 , 25L , 10L),
-                    SUtil.toShopItem(SMaterial.COCOA_BEANS, 1 , 5L , 3L),
-                    SUtil.toShopItem(SMaterial.RED_MUSHROOM, 1 , 12L , 10L),
-                    SUtil.toShopItem(SMaterial.BROWN_MUSHROOM, 1 , 12L , 10L),
-                    SUtil.toShopItem(SMaterial.SAND, 2 , 4L , 2L),
-                    SUtil.toShopItem(SMaterial.CACTUS, 1 , 10L , 3L),
-                    SUtil.toShopItem(SMaterial.ROOKIE_HOE, 1 , 10L , 3L),
-
+                    SUtil.toShopItem(SMaterial.FISHING_ROD, 1 , 100L , 40L),
+                    SUtil.toShopItem(SMaterial.RAW_FISH, 1 , 20L , 6L),
+                    SUtil.toShopItem(SMaterial.RAW_SALMON, 1 , 30L , 10L),
+                    SUtil.toShopItem(SMaterial.PUFFERFISH, 1 , 40L , 15L),
             };
 
-    public FarmMerchantGUI(int page) {
-        super("Farm Merchant", page, ITEMS);
+    public FishMerchantGUI(int page) {
+        super("Fish Merchant", page, ITEMS);
     }
 
-    public FarmMerchantGUI() {
+    public FishMerchantGUI() {
         this(1);
     }
 }

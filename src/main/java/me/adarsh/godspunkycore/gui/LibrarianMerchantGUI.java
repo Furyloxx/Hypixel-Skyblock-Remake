@@ -4,7 +4,7 @@ import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.util.SUtil;
 
-public class FarmMerchantGUI extends ShopGUI {
+public class LibrarianMerchantGUI extends ShopGUI {
     private static final SItem[] ITEMS = new SItem[]
             {
                     /*
@@ -19,26 +19,15 @@ public class FarmMerchantGUI extends ShopGUI {
                      * | ----------------------------------------------------------------A|
                      */
 
-                    SUtil.toShopItem(SMaterial.WHEAT, 3 , 10L , 6L),
-                    SUtil.toShopItem(SMaterial.CARROT_ITEM, 3 , 10L , 3L),
-                    SUtil.toShopItem(SMaterial.POTATO_ITEM, 3 , 10L , 3L),
-                    SUtil.toShopItem(SMaterial.MELON, 10 , 4L , 2L),
-                    SUtil.toShopItem(SMaterial.SUGAR_CANE, 3 , 10L , 4L),
-                    SUtil.toShopItem(SMaterial.PUMPKIN, 1 , 25L , 10L),
-                    SUtil.toShopItem(SMaterial.COCOA_BEANS, 1 , 5L , 3L),
-                    SUtil.toShopItem(SMaterial.RED_MUSHROOM, 1 , 12L , 10L),
-                    SUtil.toShopItem(SMaterial.BROWN_MUSHROOM, 1 , 12L , 10L),
-                    SUtil.toShopItem(SMaterial.SAND, 2 , 4L , 2L),
-                    SUtil.toShopItem(SMaterial.CACTUS, 1 , 10L , 3L),
-                    SUtil.toShopItem(SMaterial.ROOKIE_HOE, 1 , 10L , 3L),
-
+                    SUtil.toShopItem(SMaterial.EXP_BOTTLE, 1 , 30L , 5L),
+                    SUtil.toShopItem(SMaterial.BOOK, 1 , 20L , 2L),
             };
 
-    public FarmMerchantGUI(int page) {
-        super("Farm Merchant", page, ITEMS);
+    public LibrarianMerchantGUI(int page) {
+        super("Librarian", page, ITEMS);
     }
 
-    public FarmMerchantGUI() {
+    public LibrarianMerchantGUI() {
         this(1);
     }
 }

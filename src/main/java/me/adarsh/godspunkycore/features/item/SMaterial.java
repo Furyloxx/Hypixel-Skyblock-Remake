@@ -114,10 +114,7 @@ import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieChestplate;
 import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieLeggings;
 import me.adarsh.godspunkycore.features.item.axe.vanilla.*;
 import me.adarsh.godspunkycore.features.item.bow.Bow;
-import me.adarsh.godspunkycore.features.item.bow.bows.EndStoneBow;
-import me.adarsh.godspunkycore.features.item.bow.bows.HurricaneBow;
-import me.adarsh.godspunkycore.features.item.bow.bows.MosquitoBow;
-import me.adarsh.godspunkycore.features.item.bow.bows.RunaanBow;
+import me.adarsh.godspunkycore.features.item.bow.bows.*;
 import me.adarsh.godspunkycore.features.item.dragon.old.*;
 import me.adarsh.godspunkycore.features.item.dragon.protector.*;
 import me.adarsh.godspunkycore.features.item.dragon.strong.*;
@@ -516,6 +513,7 @@ public enum SMaterial {
     END_STONE_BOW(Material.BOW, EndStoneBow.class),
     MOSQUITO_BOW(Material.BOW, MosquitoBow.class),
     HURRICANE_BOW(Material.BOW, HurricaneBow.class),
+    ARTISANAL_SHORTBOW(Material.BOW, ArtisanalShortbow.class),
 
     RUNAAN_BOW(Material.BOW, RunaanBow.class),
     // Special
@@ -820,6 +818,7 @@ public enum SMaterial {
     IRON_HOE(Material.IRON_HOE, IronHoe.class, true),
     DIAMOND_HOE(Material.DIAMOND_HOE, DiamondHoe.class, true),
     GOLD_HOE(Material.GOLD_HOE, GoldenHoe.class, true),
+    ROOKIE_HOE(Material.STONE_HOE, RookieHoe.class),
     SEEDS(Material.SEEDS),
     WHEAT(Material.WHEAT),
     BREAD(Material.BREAD),
