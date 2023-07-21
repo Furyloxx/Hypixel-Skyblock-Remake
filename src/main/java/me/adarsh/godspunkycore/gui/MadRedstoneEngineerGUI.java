@@ -28,7 +28,7 @@ public class MadRedstoneEngineerGUI extends ShopGUI {
                     SUtil.toShopItem(SMaterial.GOLD_PLATE, 1 , 16L , 7L),
                     SUtil.toShopItem(SMaterial.LEVER, 1 , 2L , 1L),
                     SUtil.toShopItem(SMaterial.REDSTONE_COMPARATOR, 1 , 5L , 2L),
-                    SUtil.toShopItem(SMaterial.TRIPWIRE, 1 , 4L , 2L),
+                    SUtil.toShopItem(SMaterial.TRIPWIRE_HOOK, 1 , 4L , 2L),
                     SUtil.toShopItem(SMaterial.TNT, 1 , 50L , 20L),
                     SUtil.toShopItem(SMaterial.HOPPER, 1 , 50L , 20L),
             };

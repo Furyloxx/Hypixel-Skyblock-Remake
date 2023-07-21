@@ -1,4 +1,4 @@
-package me.adarsh.godspunkycore.features.item.hoe.vanilla;
+package me.adarsh.godspunkycore.features.item.hoe.vanilla.hoe;
 
 import me.adarsh.godspunkycore.features.item.*;
 import org.bukkit.ChatColor;

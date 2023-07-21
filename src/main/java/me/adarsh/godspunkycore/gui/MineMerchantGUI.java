@@ -22,7 +22,9 @@ public class MineMerchantGUI extends ShopGUI {
                     SUtil.toShopItem(SMaterial.COAL, 2 , 4L , 2L),
                     SUtil.toShopItem(SMaterial.IRON_INGOT, 4 , 5L , 3L),
                     SUtil.toShopItem(SMaterial.GOLD_INGOT, 4 , 5L , 4L),
-                    // TODO : ADD PICKAXE
+                    SUtil.toShopItem(SMaterial.ROOKIE_PICKAXE, 1 , 12L , 6L),
+                    SUtil.toShopItem(SMaterial.PROMISING_PICKAXE, 1 , 35L , 15L),
+                    SUtil.toShopItem(SMaterial.GOLD_PICKAXE, 1 , 20L , 10L),
                     SUtil.toShopItem(SMaterial.TORCH, 32 , 1L , 1L),
                     SUtil.toShopItem(SMaterial.GRAVEL, 2 , 8L , 4L),
                     SUtil.toShopItem(SMaterial.COBBLESTONE, 1 , 3L , 1L),

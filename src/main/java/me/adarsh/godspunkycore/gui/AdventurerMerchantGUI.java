@@ -24,9 +24,12 @@ public class AdventurerMerchantGUI extends ShopGUI {
                     SUtil.toShopItem(SMaterial.STRING, 1 , 10L , 3L),
                     SUtil.toShopItem(SMaterial.SLIME_BALL, 1 , 14L , 5L),
                     SUtil.toShopItem(SMaterial.GUNPOWDER, 1 , 10L , 4L),
-
-                    // TODO : MAKE TALISMAN AND ADD HERE
-
+                    SUtil.toShopItem(SMaterial.ZOMBIE_TALISMAN, 1 , 500L , 50L),
+                    SUtil.toShopItem(SMaterial.SKELETON_TALISMAN, 1 , 500L , 50L),
+                    SUtil.toShopItem(SMaterial.VILLAGE_AFFINITY_TALISMAN, 1 , 2500L , 50L),
+                    SUtil.toShopItem(SMaterial.MINE_AFFINITY_TALISMAN, 1 , 2500L , 100L),
+                    SUtil.toShopItem(SMaterial.Intimidation_Talisman, 1 , 1000L , 200L),
+                    SUtil.toShopItem(SMaterial.Scavenger_Talisman, 1 , 1000L , 200L),
             };
 
     public AdventurerMerchantGUI(int page) {

@@ -26,8 +26,9 @@ public class LumberMerchantGUI extends ShopGUI {
                     SUtil.toShopItem(SMaterial.ACACIA_WOOD, 5 , 25L , 5L),
                     SUtil.toShopItem(SMaterial.JUNGLE_WOOD, 5 , 25L , 5L),
                     SUtil.toShopItem(SMaterial.STICK, 32 , 2L , 1L),
+                    SUtil.toShopItem(SMaterial.ROOKIE_AXE, 1 , 12L , 6L),
+                    SUtil.toShopItem(SMaterial.PROMISING_AXE, 1 , 35L , 15L),
                     SUtil.toShopItem(SMaterial.PODZOL, 1 , 20L , 10L),
-                    // TODO : ADD AXE
                     SUtil.toShopItem(SMaterial.WOOD_SWORD, 1 , 5L , 1L),
                     SUtil.toShopItem(SMaterial.WOOD_PICKAXE, 1 , 5L , 1L),
                     SUtil.toShopItem(SMaterial.WOOD_SHOVEL, 1 , 5L , 1L),
