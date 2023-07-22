@@ -113,11 +113,10 @@ import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieBoots;
 import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieChestplate;
 import me.adarsh.godspunkycore.features.item.armor.zombie.ZombieLeggings;
 import me.adarsh.godspunkycore.features.item.axe.vanilla.*;
+import me.adarsh.godspunkycore.features.item.axe.vanilla.axe.PromisingAxe;
+import me.adarsh.godspunkycore.features.item.axe.vanilla.axe.RookieAxe;
 import me.adarsh.godspunkycore.features.item.bow.Bow;
-import me.adarsh.godspunkycore.features.item.bow.bows.EndStoneBow;
-import me.adarsh.godspunkycore.features.item.bow.bows.HurricaneBow;
-import me.adarsh.godspunkycore.features.item.bow.bows.MosquitoBow;
-import me.adarsh.godspunkycore.features.item.bow.bows.RunaanBow;
+import me.adarsh.godspunkycore.features.item.bow.bows.*;
 import me.adarsh.godspunkycore.features.item.dragon.old.*;
 import me.adarsh.godspunkycore.features.item.dragon.protector.*;
 import me.adarsh.godspunkycore.features.item.dragon.strong.*;
@@ -134,12 +133,15 @@ import me.adarsh.godspunkycore.features.item.exclusive.WheatCrystal;
 import me.adarsh.godspunkycore.features.item.farming.*;
 import me.adarsh.godspunkycore.features.item.foraging.*;
 import me.adarsh.godspunkycore.features.item.hoe.vanilla.*;
+import me.adarsh.godspunkycore.features.item.hoe.vanilla.hoe.RookieHoe;
 import me.adarsh.godspunkycore.features.item.mining.*;
 import me.adarsh.godspunkycore.features.item.oddities.*;
 import me.adarsh.godspunkycore.features.item.orb.*;
 import me.adarsh.godspunkycore.features.item.pet.EndermanPet;
 import me.adarsh.godspunkycore.features.item.pet.GungaPet;
 import me.adarsh.godspunkycore.features.item.pickaxe.vanilla.*;
+import me.adarsh.godspunkycore.features.item.pickaxe.vanilla.pickaxe.PromisingPickaxe;
+import me.adarsh.godspunkycore.features.item.pickaxe.vanilla.pickaxe.RookiePickaxe;
 import me.adarsh.godspunkycore.features.item.revenant.*;
 import me.adarsh.godspunkycore.features.item.rune.*;
 import me.adarsh.godspunkycore.features.item.shovel.vanilla.*;
@@ -477,6 +479,12 @@ public enum SMaterial {
     HARDENED_DIAMOND_BOOTS(Material.DIAMOND_BOOTS, HardenedDiamondBoots.class),
     // Accessories
     SUPERSPEED_TALISMAN(Material.SKULL_ITEM, SuperspeedTalisman.class),
+    ZOMBIE_TALISMAN(Material.SKULL_ITEM, ZombieTalisman.class),
+    SKELETON_TALISMAN(Material.SKULL_ITEM, SkeletonTalisman.class),
+    VILLAGE_AFFINITY_TALISMAN(Material.SKULL_ITEM, VillageAffinity.class),
+    MINE_AFFINITY_TALISMAN(Material.SKULL_ITEM, MineAffinity.class),
+    Intimidation_Talisman(Material.SKULL_ITEM, IntimidationTalisman.class),
+    Scavenger_Talisman(Material.SKULL_ITEM, ScavengerTalisman.class),
     BLANK_TALISMAN(Material.SKULL_ITEM, BlankTalisman.class),
     AUTO_RECOMBOBULATOR(Material.SKULL_ITEM, AutoRecombobulator.class),
     PERFECT_TALISMAN(Material.SKULL_ITEM, PerfectTalisman.class),
@@ -516,6 +524,7 @@ public enum SMaterial {
     END_STONE_BOW(Material.BOW, EndStoneBow.class),
     MOSQUITO_BOW(Material.BOW, MosquitoBow.class),
     HURRICANE_BOW(Material.BOW, HurricaneBow.class),
+    ARTISANAL_SHORTBOW(Material.BOW, ArtisanalShortbow.class),
 
     RUNAAN_BOW(Material.BOW, RunaanBow.class),
     // Special
@@ -784,6 +793,8 @@ public enum SMaterial {
     IRON_SHOVEL(Material.IRON_SPADE, IronShovel.class, true),
     IRON_PICKAXE(Material.IRON_PICKAXE, IronPickaxe.class, true),
     IRON_AXE(Material.IRON_AXE, IronAxe.class, true),
+    ROOKIE_AXE(Material.STONE_AXE, RookieAxe.class),
+    PROMISING_AXE(Material.IRON_AXE, PromisingAxe.class),
     FLINT_AND_STEEL(Material.FLINT_AND_STEEL),
     APPLE(Material.APPLE),
     BOW(Material.BOW, Bow.class, true),
@@ -800,6 +811,8 @@ public enum SMaterial {
     STONE_SWORD(Material.STONE_SWORD, StoneSword.class, true),
     STONE_SHOVEL(Material.STONE_SPADE, StoneShovel.class, true),
     STONE_PICKAXE(Material.STONE_PICKAXE, StonePickaxe.class, true),
+    ROOKIE_PICKAXE(Material.STONE_PICKAXE, RookiePickaxe.class),
+    PROMISING_PICKAXE(Material.IRON_PICKAXE, PromisingPickaxe.class),
     STONE_AXE(Material.STONE_AXE, StoneAxe.class, true),
     DIAMOND_SWORD(Material.DIAMOND_SWORD, DiamondSword.class, true),
     DIAMOND_SHOVEL(Material.DIAMOND_SPADE, DiamondShovel.class, true),
@@ -820,6 +833,7 @@ public enum SMaterial {
     IRON_HOE(Material.IRON_HOE, IronHoe.class, true),
     DIAMOND_HOE(Material.DIAMOND_HOE, DiamondHoe.class, true),
     GOLD_HOE(Material.GOLD_HOE, GoldenHoe.class, true),
+    ROOKIE_HOE(Material.STONE_HOE, RookieHoe.class),
     SEEDS(Material.SEEDS),
     WHEAT(Material.WHEAT),
     BREAD(Material.BREAD),
