@@ -67,11 +67,6 @@ public class BazaarCategory {
         stack.setItemMeta(meta);
       return stack;
     }
-    public static void init(){
-//        ArrayList<SMaterial> items = new ArrayList<>();
-//        items.add(SMaterial.WHEAT);
-//        BazaarCategory category = new BazaarCategory(new ItemStack(Material.WHEAT) , "Wheat & Seeds" ,items);
-//        CategoryManger.addToCategories(category);
-    }
+
 }
 

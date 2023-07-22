@@ -13,6 +13,7 @@ import me.adarsh.godspunkycore.util.SUtil;
 import me.adarsh.godspunkycore.util.SerialNBTTagCompound;
 import net.minecraft.server.v1_8_R3.Item;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
@@ -57,6 +58,16 @@ public class SItem implements Cloneable, ConfigurationSerializable {
             this.stack.setItemMeta(meta);
             update();
         }
+    }
+    public ItemStack toBazaarItem() {
+        ItemStack item = stack.clone();
+        ItemMeta meta = item.getItemMeta();
+        List<String> lore = new ArrayList<>();
+        lore.add(ChatColor.GOLD + "Right Click to Buy menu");
+        lore.add(ChatColor.AQUA + "Left Click for Sell menu");
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+        return item;
     }
 
     public void enchant(boolean enchant) {

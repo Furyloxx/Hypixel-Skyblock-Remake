@@ -391,7 +391,8 @@ public class SUtil {
         return item;
     }
 
-    public static SItem toShopItem(SItem item , int amount , Long price , Long value){
+    public static SItem toShopItem(SMaterial smaterial , int amount , Long price , Long value){
+        SItem item = SItem.of(smaterial);
         item.getStack().setAmount(amount);
         item.setPrice(price);
         item.setValue(value);

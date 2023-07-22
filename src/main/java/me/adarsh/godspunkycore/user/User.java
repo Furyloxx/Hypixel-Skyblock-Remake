@@ -1,5 +1,7 @@
 package me.adarsh.godspunkycore.user;
 
+import boardinggamer.mcmoney.McMoney;
+import boardinggamer.mcmoney.McMoneyAPI;
 import com.google.common.util.concurrent.AtomicDouble;
 import lombok.Getter;
 import lombok.Setter;
@@ -51,10 +53,11 @@ public class User {
     private UUID uuid;
     private final Config config;
     private final Map<ItemCollection, Integer> collections;
-    @Getter
     private long coins;
     @Getter
     private long bankCoins;
+
+    McMoneyAPI api;
     @Getter
     private Double islandX;
     @Getter
@@ -100,6 +103,7 @@ public class User {
 
     private User(UUID uuid) {
         this.uuid = uuid;
+        this.api = McMoneyAPI.getInstance();
         this.collections = ItemCollection.getDefaultCollections();
         this.coins = 0;
         this.bankCoins = 0;
@@ -145,7 +149,7 @@ public class User {
             for (String identifier : config.getConfigurationSection("collections").getKeys(false))
                 this.collections.put(ItemCollection.getByIdentifier(identifier), config.getInt("collections." + identifier));
         }
-        this.coins = config.getLong("coins");
+        this.coins = (long) api.getMoney(getBukkitPlayer());
         this.bankCoins = config.getLong("bankCoins");
         this.islandX = config.contains("island.x") ? config.getDouble("island.x") : null;
         this.islandZ = config.contains("island.z") ? config.getDouble("island.z") : null;
@@ -200,7 +204,7 @@ public class User {
         config.set("collections", null);
         for (Map.Entry<ItemCollection, Integer> entry : collections.entrySet())
             config.set("collections." + entry.getKey().getIdentifier(), entry.getValue());
-        config.set("coins", coins);
+        //config.set("coins", coins);
         config.set("bankCoins", bankCoins);
         config.set("island.x", islandX);
         config.set("island.z", islandZ);
@@ -238,20 +242,9 @@ public class User {
         config.set("auction.settings", auctionSettings);
         config.set("auction.creationBIN", auctionCreationBIN);
         config.set("auction.escrow", auctionEscrow);
-        config.set("inventory" , null);
         config.save();
     }
 
-    public void saveInventory(Player player) {
-        if (player == null) return;
-        if (player.getInventory().getContents() == null) return; // no need to save is inventory is empty
-        config.set("inventory" , player.getInventory().getContents());
-    }
-    public void getInventory(){
-        Player player = Bukkit.getPlayer(uuid);
-        if (player == null) return;
-
-    }
 
     public void setIslandLocation(double x, double z) {
         this.islandX = x;
@@ -263,19 +256,26 @@ public class User {
     }
 
     public void addCoins(long coins) {
-        this.coins += coins;
+        api.addMoney(getBukkitPlayer() , coins);
+    }
+
+    public Player getBukkitPlayer() {
+        return Bukkit.getPlayer(uuid);
     }
 
     public void subCoins(long coins) {
-        this.coins -= coins;
+        api.removeMoney(getBukkitPlayer() , coins);
     }
 
     public void setCoins(long coins) {
-        this.coins = coins;
+        api.setMoney(getBukkitPlayer() , coins);
     }
 
     public void addBankCoins(long bankCoins) {
         this.bankCoins += bankCoins;
+    }
+    public Long getCoins(){
+        return (long) api.getMoney(getBukkitPlayer());
     }
 
     public void subBankCoins(long bankCoins) {

@@ -15,6 +15,9 @@ public enum GUIType {
     QUIVER(QuiverGUI.class),
     LIFT(LiftGUI.class),
     SLAYER(SlayerGUI.class),
+
+    RECIPE_BOOK(RecipeBookListGUI.class),
+
     REVENANT_HORROR(RevenantHorrorGUI.class),
     TARANTULA_BROODFATHER(TarantulaBroodfatherGUI.class),
     SVEN_PACKMASTER(SvenPackmasterGUI.class),

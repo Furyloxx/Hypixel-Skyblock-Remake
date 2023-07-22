@@ -19,8 +19,8 @@ public class FarmMerchantGUI extends ShopGUI {
                      * | ----------------------------------------------------------------A|
                      */
 
-                   SUtil.toShopItem(SItem.of(SMaterial.WHEAT), 3 , 100L , 10L),
-                   SUtil.toShopItem(SItem.of(SMaterial.CARROT_ITEM), 3 , 150L , 20L),
+                   SUtil.toShopItem(SMaterial.WHEAT, 3 , 100L , 10L),
+                   SUtil.toShopItem(SMaterial.CARROT_ITEM, 3 , 150L , 20L),
 
             };
 

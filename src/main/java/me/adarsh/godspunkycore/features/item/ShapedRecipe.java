@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.*;
 
 public class ShapedRecipe extends Recipe<ShapedRecipe> {
-    private static final List<ShapedRecipe> CACHED_RECIPES = new ArrayList<>();
+    public static final List<ShapedRecipe> CACHED_RECIPES = new ArrayList<>();
 
     @Getter
     protected String[] shape;
@@ -61,7 +61,7 @@ public class ShapedRecipe extends Recipe<ShapedRecipe> {
         return set(k, new MaterialQuantifiable(material));
     }
 
-    private MaterialQuantifiable[][] toMQ2DArray() {
+    public MaterialQuantifiable[][] toMQ2DArray() {
         MaterialQuantifiable[][] materials = new MaterialQuantifiable[3][3];
         String l1 = SUtil.pad(SUtil.getOrDefault(shape, 0, "   "), 3);
         String l2 = SUtil.pad(SUtil.getOrDefault(shape, 1, "   "), 3);
