@@ -9,10 +9,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ShapelessRecipe extends Recipe<ShapelessRecipe> {
-    private static final List<ShapelessRecipe> CACHED_RECIPES = new ArrayList<>();
+    public static final List<ShapelessRecipe> CACHED_RECIPES = new ArrayList<>();
 
     @Getter
-    private final List<MaterialQuantifiable> ingredientList;
+    public final List<MaterialQuantifiable> ingredientList;
 
     public ShapelessRecipe(SItem result, boolean usesExchangeables) {
         super(result, usesExchangeables);

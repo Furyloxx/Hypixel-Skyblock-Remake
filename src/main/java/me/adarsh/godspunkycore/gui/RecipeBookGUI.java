@@ -1,18 +1,6 @@
-/*
- * Decompiled with CFR 0.150.
- *
- * Could not load the following classes:
- *  org.bukkit.ChatColor
- *  org.bukkit.Material
- *  org.bukkit.entity.Player
- *  org.bukkit.inventory.ItemStack
- */
 package me.adarsh.godspunkycore.gui;
 
-import me.adarsh.godspunkycore.features.item.MaterialQuantifiable;
-import me.adarsh.godspunkycore.features.item.SItem;
-import me.adarsh.godspunkycore.features.item.SMaterial;
-import me.adarsh.godspunkycore.features.item.ShapedRecipe;
+import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.util.SUtil;
 import me.adarsh.godspunkycore.util.Sputnik;
 import org.bukkit.ChatColor;
@@ -58,6 +46,18 @@ public class RecipeBookGUI
                     }
                     ++z;
                 }
+            }
+        }
+        for (ShapelessRecipe shapelessRecipe : ShapelessRecipe.CACHED_RECIPES){
+            if (shapelessRecipe.getResult().getType() != this.targetItem.getType()) continue;
+            for (MaterialQuantifiable lr : shapelessRecipe.getIngredientList()){
+                if (lr == null) continue;
+                ItemStack is = SItem.of(lr.getMaterial()).getStack();
+                if (is == null) continue;
+                is.setAmount(lr.getAmount());
+                if (z >= CRAFT_SLOTS.length) continue;
+                this.set(CRAFT_SLOTS[z], is);
+                ++z;
             }
         }
     }

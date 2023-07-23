@@ -2,6 +2,7 @@ package me.adarsh.godspunkycore.gui;
 
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.ShapedRecipe;
+import me.adarsh.godspunkycore.features.item.ShapelessRecipe;
 import me.adarsh.godspunkycore.util.PaginationList;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;
@@ -22,6 +23,9 @@ public class RecipeBookListGUI extends GUI {
         for (ShapedRecipe sr : ShapedRecipe.CACHED_RECIPES) {
             String lc = sr.getResult().getType().toString().toLowerCase();
             pagedMaterials.add(sr.getResult());
+        }
+        for(ShapelessRecipe slr : ShapelessRecipe.CACHED_RECIPES){
+            pagedMaterials.add(slr.getResult());
         }
         if (pagedMaterials.size() == 0) {
             page = 0;
