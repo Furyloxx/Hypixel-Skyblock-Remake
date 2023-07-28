@@ -41,8 +41,6 @@ public class DungeonGenerator {
             if (!world.getName().startsWith("Dungeon")) return;
             Bukkit.unloadWorld(world , false);
             SUtil.deleteFolderRecursive(world.getWorldFolder());
-            }
         }
     }
-
-
+}

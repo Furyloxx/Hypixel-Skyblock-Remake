@@ -26,6 +26,6 @@ public class SetDungeonHubCommand extends SCommand{
         // Save the changes to the config file
         plugin.saveConfig();
 
-        player.sendMessage("Hub location set!");
+        player.sendMessage("Dungeon Hub location set!");
     }
 }

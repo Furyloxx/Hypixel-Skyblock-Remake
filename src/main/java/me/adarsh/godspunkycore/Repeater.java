@@ -8,6 +8,7 @@ import me.adarsh.godspunkycore.features.potion.ActivePotionEffect;
 import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.region.RegionType;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
+import me.adarsh.godspunkycore.listener.ServerRestartListener;
 import me.adarsh.godspunkycore.sidebar.Sidebar;
 import me.adarsh.godspunkycore.user.PlayerStatistic;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
@@ -33,6 +34,10 @@ public class Repeater {
 
     private final List<BukkitTask> tasks;
     private final List<AtomicInteger> counters;
+
+    private boolean serverRestartScheduled = false;
+
+    private long restartStartTime = 0;
 
     public Repeater() {
         this.tasks = new ArrayList<>();
@@ -145,7 +150,13 @@ public class Repeater {
 
                     // Sidebar
                     Sidebar sidebar = new Sidebar("" + ChatColor.YELLOW + ChatColor.BOLD + "SKYBLOCK", "SKYBLOCK");
+                    if (serverRestartScheduled) {
+                        int secondsLeft = (int) Math.max(0, (restartStartTime + (ServerRestartListener.RESTART_INTERVAL_SECONDS * 1000) - System.currentTimeMillis()) / 1000);
+                        String strd = ChatColor.RED + "Server closing: 00:" + (secondsLeft >= 10 ? secondsLeft : "0" + secondsLeft);
+                        sidebar.add("  ");
+                    }
                     sidebar.add(ChatColor.GRAY + SUtil.getDate());
+
                     sidebar.add("  ");
                     sidebar.add(" " + SkyBlockCalendar.getMonthName() + " " + SUtil.ntify(SkyBlockCalendar.getDay()));
                     boolean day = true;
@@ -225,6 +236,15 @@ public class Repeater {
                     counters[1] = 1;
             }
         }.runTaskTimer(Skyblock.getPlugin(), 0, 10));
+    }
+
+    public void setServerRestartScheduled(boolean value) {
+        serverRestartScheduled = value;
+        if (value) {
+            restartStartTime = System.currentTimeMillis();
+        } else {
+            restartStartTime = 0;
+        }
     }
 
     public void stop() {

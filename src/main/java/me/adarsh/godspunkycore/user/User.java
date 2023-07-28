@@ -911,12 +911,12 @@ public class User {
             World world = Bukkit.getWorld("islands");
             player.teleport(world.getHighestBlockAt(SUtil.blackMagic(islandX),
                     SUtil.blackMagic(islandZ)).getLocation().add(0.5, 1.0, 0.5));
-         }
-         if (player.getWorld().getName().startsWith("Dungeon_")){
-             player.teleport(new Location(Bukkit.getWorld("Dungeon_" + player.getUniqueId()) , 2 , 100 , -1));
-         }
+        }
+        if (player.getWorld().getName().startsWith("Dungeon_")){
+            player.teleport(new Location(Bukkit.getWorld("Dungeon_" + player.getUniqueId()) , 2 , 100 , -1));
+        }
 
-         else {
+        else {
             if (lastRegion != null) {
                 switch (lastRegion.getType()) {
                     case BANK:

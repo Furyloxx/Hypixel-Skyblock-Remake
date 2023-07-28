@@ -25,7 +25,7 @@ public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFu
 
     @Override
     public double getEntityMaxHealth() {
-        return 250000.0;
+        return 750000.0;
     }
 
     @Override
