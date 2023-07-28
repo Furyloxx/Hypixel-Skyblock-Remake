@@ -1,6 +1,5 @@
 package me.adarsh.godspunkycore.user;
 
-import boardinggamer.mcmoney.McMoney;
 import boardinggamer.mcmoney.McMoneyAPI;
 import com.google.common.util.concurrent.AtomicDouble;
 import lombok.Getter;
@@ -72,6 +71,8 @@ public class User {
     @Getter
     private final Map<SMaterial, Integer> potionbag;
     @Getter
+    private final Map<SMaterial, Integer> chestpageone;
+    @Getter
     private final List<ActivePotionEffect> effects;
     @Getter
     private double farmingXP;
@@ -113,6 +114,7 @@ public class User {
         this.quiver = new HashMap<>();
         this.accessory = new HashMap<>();
         this.potionbag = new HashMap<>();
+        this.chestpageone = new HashMap<>();
         this.effects = new ArrayList<>();
         this.farmingXP = 0.0;
         this.miningXP = 0.0;
@@ -167,6 +169,10 @@ public class User {
             for (String m : config.getConfigurationSection("potionbag").getKeys(false))
                 this.potionbag.put(SMaterial.getMaterial(m), config.getInt("potionbag." + m));
         }
+        if (config.contains("chestpageone")) {
+            for (String m : config.getConfigurationSection("chestpageone").getKeys(false))
+                this.chestpageone.put(SMaterial.getMaterial(m), config.getInt("chestpageone." + m));
+        }
 
         if (config.contains("effects")) {
             for (String key : config.getConfigurationSection("effects").getKeys(false)) {
@@ -219,6 +225,9 @@ public class User {
         config.set("potionbag", null);
         for (Map.Entry<SMaterial, Integer> entry : potionbag.entrySet())
             config.set("potionbag." + entry.getKey().name().toLowerCase(), entry.getValue());
+        config.set("chestpageone", null);
+        for (Map.Entry<SMaterial, Integer> entry : chestpageone.entrySet())
+            config.set("chestpageone." + entry.getKey().name().toLowerCase(), entry.getValue());
         config.set("effects", null);
         for (ActivePotionEffect effect : effects) {
             PotionEffectType type = effect.getEffect().getType();
@@ -245,6 +254,9 @@ public class User {
         config.save();
     }
 
+    public HashMap<SMaterial , Integer> getchestpage1(){
+        return (HashMap<SMaterial, Integer>) chestpageone;
+    }
 
     public void setIslandLocation(double x, double z) {
         this.islandX = x;
@@ -364,6 +376,11 @@ public class User {
         setPotionbag(material, i + amount);
     }
 
+    public void addToChestPageOne(SMaterial material, int amount) {
+        int i = chestpageone.getOrDefault(material, 0);
+        setChestpageone(material, i + amount);
+    }
+
     public void addToQuiver(SMaterial material) {
         addToQuiver(material, 1);
     }
@@ -372,6 +389,9 @@ public class User {
     }
     public void addToPotionbag(SMaterial material) {
         addToPotionbag(material, 1);
+    }
+    public void addToChestPageOne(SMaterial material) {
+        addToChestPageOne(material, 1);
     }
 
     public void setQuiver(SMaterial material, int amount) {
@@ -395,6 +415,13 @@ public class User {
         }
         potionbag.put(material, amount);
     }
+    public void setChestpageone(SMaterial material, int amount) {
+        if (amount == 0) {
+            chestpageone.remove(material);
+            return;
+        }
+        chestpageone.put(material, amount);
+    }
 
     public int getQuiver(SMaterial material) {
         return quiver.get(material);
@@ -402,9 +429,11 @@ public class User {
     public int getAccessory(SMaterial material) {
         return accessory.get(material);
     }
-
     public int getPotionbag(SMaterial material) {
         return potionbag.get(material);
+    }
+    public int getChestPageOne(SMaterial material) {
+        return chestpageone.get(material);
     }
 
     public void subFromQuiver(SMaterial material, int amount) {
@@ -415,10 +444,13 @@ public class User {
         if (!accessory.containsKey(material)) return;
         setAccessory(material, accessory.get(material) - amount);
     }
-
     public void subFromPotionbag(SMaterial material, int amount) {
         if (!potionbag.containsKey(material)) return;
         setPotionbag(material, potionbag.get(material) - amount);
+    }
+    public void subFromChestPageOne(SMaterial material, int amount) {
+        if (!chestpageone.containsKey(material)) return;
+        setChestpageone(material, chestpageone.get(material) - amount);
     }
 
     public void subFromQuiver(SMaterial material) {
@@ -433,6 +465,10 @@ public class User {
         subFromPotionbag(material, 1);
     }
 
+    public void subFromChestPageOne(SMaterial material) {
+        subFromChestPageOne(material, 1);
+    }
+
     public boolean hasQuiverItem(SMaterial material) {
         return quiver.containsKey(material);
     }
@@ -443,6 +479,9 @@ public class User {
     public boolean hasPotionbagItem(SMaterial material) {
         return potionbag.containsKey(material);
     }
+    public boolean hasChestPageOneItem(SMaterial material) {
+        return chestpageone.containsKey(material);
+    }
 
     public void clearQuiver() {
         quiver.clear();
@@ -450,8 +489,11 @@ public class User {
     public void clearAccessory() {
         accessory.clear();
     }
-    public void clearPotionbag() {
+    public void clearPotionBag() {
         potionbag.clear();
+    }
+    public void clearChestPageOne() {
+        chestpageone.clear();
     }
 
     public void addPet(SItem item) {
@@ -957,4 +999,5 @@ public class User {
     public static Collection<User> getCachedUsers() {
         return USER_CACHE.values();
     }
+
 }

@@ -71,7 +71,7 @@ public class StorageGUI extends GUI {
             @Override
             public void run(InventoryClickEvent e) {
                 player1.playSound(player1.getLocation(), Sound.CHEST_OPEN, 1f, 0f);
-                player1.openInventory(player1.getEnderChest());
+                GUIType.ENDERCHEST1.getGUI().open(player1);
             }
 
             @Override
@@ -92,7 +92,7 @@ public class StorageGUI extends GUI {
             @Override
             public void run(InventoryClickEvent e) {
                 player1.playSound(player1.getLocation(), Sound.CHEST_OPEN, 1f, 0f);
-                player1.openInventory(player1.getEnderChest());
+                GUIType.ENDERCHEST2.getGUI().open(player1);
             }
 
             @Override
@@ -113,7 +113,7 @@ public class StorageGUI extends GUI {
             @Override
             public void run(InventoryClickEvent e) {
                 player1.playSound(player1.getLocation(), Sound.CHEST_OPEN, 1f, 0f);
-                player1.openInventory(player1.getEnderChest());
+                GUIType.ENDERCHEST3.getGUI().open(player1);
             }
 
             @Override

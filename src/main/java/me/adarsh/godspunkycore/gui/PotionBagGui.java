@@ -24,7 +24,7 @@ public class PotionBagGui extends GUI {
         set(GUIClickableItem.createGUIOpenerItem(GUIType.SKYBLOCK_MENU, e.getPlayer(), ChatColor.GREEN + "Go Back", 12, Material.ARROW));
         User user = User.getUser(e.getPlayer().getUniqueId());
         Inventory inventory = e.getInventory();
-        for (Map.Entry<SMaterial, Integer> entry : user.getQuiver().entrySet())
+        for (Map.Entry<SMaterial, Integer> entry : user.getPotionbag().entrySet())
             inventory.addItem(SUtil.setStackAmount(SItem.of(entry.getKey()).getStack(), entry.getValue()));
     }
 
@@ -32,7 +32,7 @@ public class PotionBagGui extends GUI {
     public void onClose(InventoryCloseEvent e) {
         User user = User.getUser(e.getPlayer().getUniqueId());
         Inventory inventory = e.getInventory();
-        user.clearQuiver();
+        user.clearPotionBag();
         for (int i = 0; i < 9; i++) {
             ItemStack stack = inventory.getItem(i);
             SItem sItem = SItem.find(stack);

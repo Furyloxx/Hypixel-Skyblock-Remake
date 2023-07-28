@@ -15,9 +15,7 @@ public enum GUIType {
     QUIVER(QuiverGUI.class),
     LIFT(LiftGUI.class),
     SLAYER(SlayerGUI.class),
-
     RECIPE_BOOK(RecipeBookListGUI.class),
-
     REVENANT_HORROR(RevenantHorrorGUI.class),
     TARANTULA_BROODFATHER(TarantulaBroodfatherGUI.class),
     SVEN_PACKMASTER(SvenPackmasterGUI.class),
@@ -54,6 +52,9 @@ public enum GUIType {
     CATACOMB_RULE(CatacombsGUI.class),
     ProfileManagementGUI(ProfileManagementGUI.class),
     OTHERPLAYER_PROFILE(OtherPlayerProfile.class),
+    ENDERCHEST1(EnderChest1.class),
+    ENDERCHEST2(EnderChest2.class),
+    ENDERCHEST3(EnderChest3.class),
     ;
 
     private final Class<? extends GUI> gui;
