@@ -982,7 +982,7 @@ public class User {
 
 
     public boolean isPlayerOnDungeonWorld(Player player) {
-        String dungeonWorldName = "Dungeon_" + player.getUniqueId();
+        String dungeonWorldName = "f1_" + player.getUniqueId();
         String playerWorldName = player.getWorld().getName();
 
         return playerWorldName.equalsIgnoreCase(dungeonWorldName);

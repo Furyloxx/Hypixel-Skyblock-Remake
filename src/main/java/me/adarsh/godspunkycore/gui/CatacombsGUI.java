@@ -5,6 +5,7 @@ import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
+import me.adarsh.godspunkycore.util.Sputnik;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -62,10 +63,8 @@ public class CatacombsGUI extends GUI {
             @Override
             public void run(InventoryClickEvent e) {
                 player1.closeInventory();
-                player1.sendMessage(ChatColor.YELLOW+"Sending you to Dungeon!");
-                player1.sendMessage(ChatColor.YELLOW+"Please wait...");
                 player1.playSound(player1.getLocation(), Sound.CREEPER_HISS,1.0f,1.0f);
-                generator.CreateDungeon(player1);
+                Sputnik.startRoom(player1);
             }
 
             @Override

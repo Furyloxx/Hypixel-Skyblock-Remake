@@ -65,7 +65,6 @@ public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFu
         SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fBut my masters are a lot stronger..")) , 40);
         SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fJust you wait...")) , 60);
 
-        SUtil.delay(() -> DungeonGenerator.sendReMsg(true, killed.getWorld(), player), 30L);
 
         if (player.getWorld().getName().startsWith("Dungeon_")) {
             // activate portal
@@ -73,7 +72,9 @@ public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFu
             SUtil.setBlocks(new Location(f1,23,103,-7.5),new Location(f1,21,107,-7.5), Material.PORTAL, false);
         }
 
-        if (!killed.getWorld().getName().startsWith("Dungeon_")) return;
+        SUtil.delay(() -> DungeonGenerator.sendReMsg(true, killed.getWorld(),player), 30L);
+        SUtil.delay(() -> DungeonGenerator.endRoom2(killed.getWorld(), player), 200L);
+
 
     }
 }

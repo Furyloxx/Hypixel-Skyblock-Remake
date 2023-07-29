@@ -235,7 +235,7 @@ public class Repeater {
                     }
                     else if (player.getWorld().getName().contains("Dungeon_") && !player.getWorld().getName().equals("Dungeon_")) {
                         if (FloorLivingSec.containsKey(player.getWorld().getUID())) {
-                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a" + Sputnik.formatTime(((Integer)FloorLivingSec.get(player.getWorld().getUID())).intValue())));
+                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a" + Sputnik.formatTime((Integer) FloorLivingSec.get(player.getWorld().getUID()))));
                         } else {
                             sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a00m 00s"));
                         }

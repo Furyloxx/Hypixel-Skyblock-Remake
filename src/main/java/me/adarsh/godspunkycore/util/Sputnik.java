@@ -2,7 +2,9 @@ package me.adarsh.godspunkycore.util;
 
 import com.comphenix.protocol.wrappers.WrappedSignedProperty;
 import com.google.common.util.concurrent.AtomicDouble;
+import com.sk89q.worldedit.world.World;
 import me.adarsh.godspunkycore.Skyblock;
+import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.libraryaddict.disguise.disguisetypes.FlagWatcher;
 import me.libraryaddict.disguise.disguisetypes.PlayerDisguise;
@@ -10,6 +12,7 @@ import net.minecraft.server.v1_8_R3.EntityItem;
 import net.minecraft.server.v1_8_R3.PacketPlayOutSpawnEntity;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Server;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
@@ -22,8 +25,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Sputnik {
+
+    public static final Map<Server, Integer> RunThisSession = new HashMap<>();
 
     public static Object[] calculateDamage(final Player player, final Player damager, final ItemStack weapon, final LivingEntity damaged, final boolean isBow) {
         final PlayerUtils.DamageResult result = PlayerUtils.getDamageDealt(weapon, player, (Entity)damaged, isBow);
@@ -53,6 +61,20 @@ public class Sputnik {
         playerDisguise.setEntity(entity);
         playerDisguise.startDisguise();
         return playerDisguise;
+    }
+
+
+    public static void startRoom(Player player) {
+        Skyblock plugin = Skyblock.getPlugin();
+        plugin.config.set("runMade", plugin.config.getLong("runMade") + 1L);
+        plugin.config.save();
+        ArrayList<Player> plist = new ArrayList<>();
+        plist.add(player);
+        SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GREEN + "Entering The Catacombs Demo - Floor 1!"), 10L);
+        SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GRAY + "Preparing the boss for you, please wait..."), 20L);
+        SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GRAY + "Hooking up request, and sending you to that world..."), 30L);
+        SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GRAY + " "), 40L);
+        SUtil.delay(() -> DungeonGenerator.startFloor(plist), 50L);
     }
 
     public static String formatTime(int z) {
