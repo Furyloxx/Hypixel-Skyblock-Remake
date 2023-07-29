@@ -1,6 +1,10 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class RaiderAxe implements ToolStatistics, MaterialFunction {
 
@@ -35,8 +39,14 @@ public class RaiderAxe implements ToolStatistics, MaterialFunction {
     }
 
     @Override
-    public String getLore() {
-        return null;
+    public List<String> getListLore() {
+        return Arrays.asList(ChatColor.GRAY+"Earn "+ChatColor.GOLD+"+20 coins"+ChatColor.GRAY+" from killing monsters",
+                "",
+                ChatColor.RED+"+1 Damage "+ChatColor.GRAY+"per "+ChatColor.GRAY+"500 kills.",
+                ChatColor.DARK_GRAY+"Max +35.",
+                "",
+                ChatColor.RED+"+1 ❁ Strength "+ChatColor.GRAY+"per "+ChatColor.YELLOW+"500 "+ChatColor.GRAY+"wood",
+                ChatColor.DARK_GRAY+"Max +100");
     }
 }
 

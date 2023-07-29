@@ -2,10 +2,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
-import org.bukkit.Effect;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
 import org.bukkit.entity.FallingBlock;
 import org.bukkit.entity.Player;
@@ -51,7 +48,7 @@ public class MidasStaff implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Cast a wave of molten gold in the direction you are facing! Deals up to 6,000 - 32,000 damage.";
+        return ChatColor.GRAY +"Cast a wave of molten gold in the direction you are facing! Deals up to "+ChatColor.RED+"6,000 "+ChatColor.GRAY+"damage.";
     }
 
     @Override

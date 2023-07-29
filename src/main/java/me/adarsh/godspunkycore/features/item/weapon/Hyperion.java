@@ -3,6 +3,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
 import net.minecraft.server.v1_8_R3.EntityHuman;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -61,7 +62,7 @@ public class Hyperion implements ToolStatistics, MaterialFunction , Ability{
 
     @Override
     public String getAbilityDescription() {
-        return "Deals +50% damage to withers. Grants +1 damage and +2 intelligence per Catacombs level.";
+        return ChatColor.GRAY+"Deals"+ChatColor.GREEN+" +50% "+ChatColor.GRAY+"damage to withers. Grants "+ChatColor.RED+"+1 damage "+ChatColor.GRAY+"and"+ChatColor.GREEN+" +2 "+ChatColor.AQUA+"intelligence"+ChatColor.GRAY+" per "+ChatColor.RED+"Catacombs"+ChatColor.GRAY+" level.";
     }
 
     @Override

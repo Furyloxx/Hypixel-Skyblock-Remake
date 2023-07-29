@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class AspectOfTheVoid implements ToolStatistics, MaterialFunction, Ability {
 
@@ -36,7 +37,7 @@ public class AspectOfTheVoid implements ToolStatistics, MaterialFunction, Abilit
 
     @Override
     public String getAbilityDescription() {
-        return "Teleport 8 blocks ahead of you and gain +50 ✦ Speed for 3 seconds.";
+        return ChatColor.GRAY +"Teleports you "+ChatColor.GREEN+"8 blocks "+ChatColor.GRAY+"ahead and gain "+ChatColor.GREEN+"50% "+ChatColor.WHITE+"Speed"+ChatColor.GRAY+" for 3 seconds.";
     }
 
     @Override

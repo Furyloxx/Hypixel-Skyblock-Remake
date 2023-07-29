@@ -7,10 +7,7 @@ import me.adarsh.godspunkycore.util.PacketEntityManager;
 import net.minecraft.server.v1_8_R3.Entity;
 import net.minecraft.server.v1_8_R3.EntityBat;
 import net.minecraft.server.v1_8_R3.World;
-import org.bukkit.Effect;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld;
 import org.bukkit.entity.*;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -50,7 +47,7 @@ public class SpiritSceptre implements ToolStatistics, MaterialFunction, Ability 
 
     @Override
     public String getAbilityDescription() {
-        return "Shoots a guided spirit bat, following your aim and exploding for 2,000 damage.";
+        return ChatColor.GRAY +"Shoots a guided spirit bat, following your aim and exploding for "+ChatColor.RED+"2,000"+ChatColor.GRAY+" damage.";
     }
 
     @Override

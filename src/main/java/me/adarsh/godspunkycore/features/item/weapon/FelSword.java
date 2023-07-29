@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class FelSword implements ToolStatistics, MaterialFunction, Ability {
 
@@ -36,7 +37,7 @@ public class FelSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Every 100 Kills with this sword grants +1 ❁ Damage, up to 100 extra.";
+        return ChatColor.GRAY+"Every"+ChatColor.GREEN+" 100 "+ChatColor.GRAY+"Kills with this sword grants "+ChatColor.RED+"1 "+ChatColor.GRAY+"Damage, up to"+ChatColor.RED+" 100 "+ChatColor.GRAY+"extra.";
     }
 
     @Override

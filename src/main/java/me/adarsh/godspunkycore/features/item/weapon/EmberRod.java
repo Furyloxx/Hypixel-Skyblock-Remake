@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class EmberRod implements ToolStatistics, MaterialFunction, Ability {
 
@@ -21,7 +22,7 @@ public class EmberRod implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Shoot 3 Fireballs which deal 30 damage in rapid succession in front of you!";
+        return ChatColor.GRAY+"Shoot 3 Fireballs which deal"+ ChatColor.RED +" 30 "+ChatColor.GRAY+"damage in rapid succession in front of you!";
     }
 
     @Override

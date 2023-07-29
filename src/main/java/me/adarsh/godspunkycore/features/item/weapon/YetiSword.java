@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class YetiSword implements ToolStatistics, MaterialFunction, Ability {
 
@@ -41,7 +42,7 @@ public class YetiSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Throws a chunk of terrain in the direction you are facing! Deals up to 15000 damage.";
+        return ChatColor.GRAY+"Throws a chunk of terrain in the direction you are facing! Deals up to "+ ChatColor.RED +"15000"+ChatColor.GRAY+" damage.";
     }
 
     @Override

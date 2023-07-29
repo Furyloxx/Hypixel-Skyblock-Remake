@@ -2,6 +2,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.features.item.weapon.Abilites.FrozenScythe.FrozenScytheAbility;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class FrozenScythe implements ToolStatistics, MaterialFunction, Ability {
@@ -37,7 +38,7 @@ public class FrozenScythe implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Shoots 1 Ice Bolt that deals 1000 ๑ Ability Damage and slows enemies hit!";
+        return ChatColor.GRAY +"Shoots"+ChatColor.GREEN+" 1 "+ChatColor.GRAY+"Ice Bolt that deals"+ChatColor.RED+" 1000 "+ChatColor.GRAY+"Ability Damage and slows enemies hit for"+ChatColor.GREEN+" 5 "+ChatColor.GRAY+"seconds!";
     }
 
     @Override

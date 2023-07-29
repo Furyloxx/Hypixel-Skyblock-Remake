@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class FlamingSword implements ToolStatistics, MaterialFunction {
 
@@ -34,7 +35,7 @@ public class FlamingSword implements ToolStatistics, MaterialFunction {
 
     @Override
     public String getLore() {
-        return null;
+        return ChatColor.GRAY+"Ignites enemies for "+ChatColor.GREEN+"3s.";
     }
 }
 

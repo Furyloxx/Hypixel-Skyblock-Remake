@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class MidasSword implements ToolStatistics, MaterialFunction, Ability {
 
@@ -31,7 +32,7 @@ public class MidasSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "The ❁ Strength and damage bonus of this item is dependent on the price paid for it at the Dark Auction! The maximum bonus of this item is 120 if the bid was 50,000,000 coins or higher!";
+        return ChatColor.GRAY+"The Strength and damage bonus of this item is dependent on the price paid for it at the "+ ChatColor.DARK_PURPLE +"Dark Auction!\n"+ChatColor.GRAY+" The maximum bonus of this item is "+ChatColor.RED+"120"+ChatColor.GRAY+" if the bid was "+ChatColor.GOLD+"50,000,000 coins "+ChatColor.GRAY+"or higher!";
     }
 
     @Override

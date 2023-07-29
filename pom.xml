@@ -186,6 +186,13 @@
             <scope>system</scope>
             <systemPath>${basedir}/lib/McMoney_Recode.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>com.onarandombox</groupId>
+            <artifactId>MultiverseCore</artifactId>
+            <version>4.3.1</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/Multiverse-Core-4.3.1.jar</systemPath>
+        </dependency>
 
     </dependencies>
 

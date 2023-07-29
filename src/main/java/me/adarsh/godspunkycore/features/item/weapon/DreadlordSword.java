@@ -1,6 +1,10 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import me.adarsh.godspunkycore.features.item.weapon.Abilites.dreadlord.DreadlordProjectile;
+import me.adarsh.godspunkycore.features.item.weapon.Abilites.jerry.JerryChineGunProjectile;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 
 public class DreadlordSword implements ToolStatistics, MaterialFunction, Ability  {
 
@@ -21,7 +25,7 @@ public class DreadlordSword implements ToolStatistics, MaterialFunction, Ability
 
     @Override
     public String getAbilityDescription() {
-        return "Shoots a Skull that deals 500-750 damage";
+        return ChatColor.GRAY +"Shoots a Skull that deals"+ChatColor.GREEN+" 500-750 "+"damage";
     }
 
     @Override
@@ -37,6 +41,11 @@ public class DreadlordSword implements ToolStatistics, MaterialFunction, Ability
     @Override
     public String getDisplayName() {
         return "Dreadlord Sword";
+    }
+
+    @Override
+    public void onAbilityUse(Player player, SItem sItem) {
+        DreadlordProjectile projectile = new DreadlordProjectile(player);
     }
 
     @Override

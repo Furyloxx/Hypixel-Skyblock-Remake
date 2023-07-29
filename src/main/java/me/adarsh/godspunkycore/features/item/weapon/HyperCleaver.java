@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class HyperCleaver implements ToolStatistics, MaterialFunction, Ability {
 
@@ -36,7 +37,7 @@ public class HyperCleaver implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "When hitting an entity, monsters in a 4 block range will be hit for a portion of that damage too.";
+        return ChatColor.GRAY+"When hitting an entity, monsters in a"+ChatColor.GRAY+" 4 "+ ChatColor.GRAY +"block range will be hit for a portion of that damage too.";
     }
 
     @Override

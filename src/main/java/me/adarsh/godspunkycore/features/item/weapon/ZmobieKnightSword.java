@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class ZmobieKnightSword implements ToolStatistics, MaterialFunction, Ability {
 
@@ -36,7 +37,7 @@ public class ZmobieKnightSword implements ToolStatistics, MaterialFunction, Abil
 
     @Override
     public String getAbilityDescription() {
-        return "Gains +30❁ Strength when used with Zombie Knight Armor";
+        return ChatColor.GRAY +"Gains"+ChatColor.RED+" +30❁"+ChatColor.GRAY+" Strength when used with Zombie Knight Armor";
     }
 
     @Override
@@ -56,6 +57,6 @@ public class ZmobieKnightSword implements ToolStatistics, MaterialFunction, Abil
 
     @Override
     public String getLore() {
-        return null;
+        return ChatColor.GREEN+"Perfect 52500/52500";
     }
 }

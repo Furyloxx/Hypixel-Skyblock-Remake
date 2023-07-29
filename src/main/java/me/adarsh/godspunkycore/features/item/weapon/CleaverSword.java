@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class CleaverSword implements ToolStatistics, MaterialFunction {
 
@@ -36,7 +37,7 @@ public class CleaverSword implements ToolStatistics, MaterialFunction {
 
     @Override
     public String getLore() {
-        return null;
+        return ChatColor.GRAY+"When hitting a mob, any entity within a "+ChatColor.GREEN+"3 " +"block radius will take a small portion of damage.";
     }
 }
 

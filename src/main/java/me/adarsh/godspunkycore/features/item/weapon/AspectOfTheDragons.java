@@ -1,7 +1,9 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import me.adarsh.godspunkycore.features.skill.CombatSkill;
 import me.adarsh.godspunkycore.user.User;
+import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.*;
 
@@ -48,7 +50,7 @@ public class AspectOfTheDragons implements ToolStatistics, MaterialFunction, Abi
 
     @Override
     public String getAbilityDescription() {
-        return "All Monsters in front of you take 5,000 Ability Damage. Hit monsters take large knockback.";
+        return ChatColor.GRAY+"All Monsters in front of you take"+ChatColor.GREEN+" 12,000 "+ChatColor.GRAY+"Ability Damage. Hit monsters take large knockback.";
     }
 
     @Override

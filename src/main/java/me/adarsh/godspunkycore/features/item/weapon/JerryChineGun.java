@@ -2,6 +2,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.features.item.weapon.Abilites.jerry.JerryChineGunProjectile;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class JerryChineGun implements ToolStatistics, MaterialFunction, Ability {
@@ -38,7 +39,7 @@ public class JerryChineGun implements ToolStatistics, MaterialFunction, Ability 
 
     @Override
     public String getAbilityDescription() {
-        return "Shoots a Jerry bullet, dealing 500+ damage on impact and knocking you back.";
+        return "Shoots a Jerry bullet, dealing "+ChatColor.RED+"500+ "+ ChatColor.GRAY +"damage on impact and knocking you back.";
     }
 
     @Override
@@ -63,8 +64,6 @@ public class JerryChineGun implements ToolStatistics, MaterialFunction, Ability 
 
     @Override
     public void onAbilityUse(Player player, SItem sItem) {
-
         JerryChineGunProjectile projectile = new JerryChineGunProjectile(player);
-
     }
 }

@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class EdibleMace implements ToolStatistics, MaterialFunction, Ability {
     @Override
@@ -45,7 +46,7 @@ public class EdibleMace implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Your next attack deals double ❁ Damage and weakens animals, making them deal -35% Damage for 30 seconds.";
+        return ChatColor.GRAY +"Your next attack deals"+ChatColor.RED+" double Damage"+ChatColor.GRAY+" and weakens animals, making them deal"+ChatColor.RED+" -35% "+"Damage for"+ChatColor.GREEN+" 30 "+ChatColor.GRAY+"seconds.";
     }
 
     @Override

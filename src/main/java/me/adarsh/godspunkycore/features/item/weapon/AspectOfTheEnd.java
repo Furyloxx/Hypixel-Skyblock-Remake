@@ -2,6 +2,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.user.PlayerUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -52,7 +53,7 @@ public class AspectOfTheEnd implements ToolStatistics, MaterialFunction, Ability
 
     @Override
     public String getAbilityDescription() {
-        return "Teleports you 8 blocks ahead and gain +50% Speed for 3 seconds.";
+        return ChatColor.GRAY +"Teleports you "+ChatColor.GREEN+"8 blocks "+ChatColor.GRAY+"ahead and gain "+ChatColor.GREEN+"50% "+ChatColor.WHITE+"Speed"+ChatColor.GRAY+" for 3 seconds.";
     }
 
     @Override

@@ -2,6 +2,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -56,7 +57,7 @@ public class LeapingSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Leap into the air and deal damage to any nearby enemies upon landing on the ground. Damaged enemies will also be frozen for 1 second.";
+        return ChatColor.GRAY +"Jump into the air and deal "+ChatColor.RED+"350"+ChatColor.GRAY+" damage to nearby enemies upon landing on the ground. Damaged enemies will also be frozen for"+ChatColor.GREEN+" 1.0 "+ChatColor.GRAY+"second.";
     }
 
     @Override

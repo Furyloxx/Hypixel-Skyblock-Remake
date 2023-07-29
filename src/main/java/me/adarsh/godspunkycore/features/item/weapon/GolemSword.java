@@ -3,6 +3,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.user.User;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftEntity;
@@ -17,7 +18,7 @@ public class GolemSword implements ToolStatistics, MaterialFunction, Ability, Pl
 
     @Override
     public String getAbilityDescription() {
-        return "Punch the ground, damaging enemies aroung you";
+        return "Punch the ground, damaging enemies in a hexagon around you for"+ChatColor.GREEN+" 460 "+ ChatColor.GRAY +"base Magic Damage.";
     }
 
     @Override

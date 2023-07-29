@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class InkWand implements ToolStatistics, MaterialFunction, Ability {
 
@@ -27,7 +28,7 @@ public class InkWand implements ToolStatistics, MaterialFunction, Ability {
     @Override
     public String getAbilityDescription() {
         return "Shoot an ink bomb in front of you dealing\n" +
-                "10,000 damage and giving Blindness!";
+                ChatColor.GREEN+"10,000"+ChatColor.GRAY+" damage and giving Blindness!";
     }
 
     @Override

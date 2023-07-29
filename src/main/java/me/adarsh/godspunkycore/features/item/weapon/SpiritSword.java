@@ -1,8 +1,12 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
-public class SpiritSword implements ToolStatistics, MaterialFunction, Ability {
+import java.util.Arrays;
+import java.util.List;
+
+public class SpiritSword implements ToolStatistics, MaterialFunction {
 
     @Override
     public String getDisplayName() {
@@ -17,26 +21,6 @@ public class SpiritSword implements ToolStatistics, MaterialFunction, Ability {
     @Override
     public double getBaseStrength() {
         return 50;
-    }
-
-    @Override
-    public int getManaCost() {
-        return 0;
-    }
-
-    @Override
-    public int getAbilityCooldownTicks() {
-        return 200;
-    }
-
-    @Override
-    public String getAbilityName() {
-        return "Spirit Bomb";
-    }
-
-    @Override
-    public String getAbilityDescription() {
-        return "Shoot a Spirit that does 8000 Damage on impact!";
     }
 
     @Override
@@ -55,7 +39,13 @@ public class SpiritSword implements ToolStatistics, MaterialFunction, Ability {
     }
 
     @Override
-    public String getLore() {
-        return null;
+    public List<String> getListLore() {
+        return Arrays.asList(ChatColor.GRAY+"Deal"+ChatColor.GREEN+" +2% "+ChatColor.GRAY+"more damage to Undead",
+                ChatColor.GREEN+"monster "+ChatColor.GRAY+"for every"+ChatColor.GREEN+" 1% "+ChatColor.GRAY+"of",
+                "your missing health.",
+                "",
+                ChatColor.GOLD+"Spirit Ability: Spirit Bomb",
+                "Shoot a Spirit that does",
+                ChatColor.RED+"8,000 "+ChatColor.GRAY+"Damage on impact!");
     }
 }

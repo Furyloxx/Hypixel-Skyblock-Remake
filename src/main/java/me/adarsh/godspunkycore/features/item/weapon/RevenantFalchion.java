@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class RevenantFalchion implements ToolStatistics, MaterialFunction, Ability {
     @Override
@@ -10,9 +11,8 @@ public class RevenantFalchion implements ToolStatistics, MaterialFunction, Abili
 
     @Override
     public String getAbilityDescription() {
-        return "Deals +150% damage against Zombies.";
+        return ChatColor.GRAY +"Deals"+ChatColor.GREEN+" +150% "+ChatColor.GRAY+"damage against Zombies.";
     }
-
 
     @Override
     public int getAbilityCooldownTicks() {

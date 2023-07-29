@@ -2,6 +2,8 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
+import net.milkbowl.vault.chat.Chat;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -42,7 +44,7 @@ public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Slam your sword into the ground dealing 100,000 damage to nearby enemies.";
+        return "Slam your sword into the ground dealing"+ChatColor.RED+" 100,000 "+ChatColor.GRAY+"damage to nearby enemies.";
     }
 
     @Override

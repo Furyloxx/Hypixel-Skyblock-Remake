@@ -1,6 +1,7 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import org.bukkit.ChatColor;
 
 public class GiantCleaver implements ToolStatistics, MaterialFunction, Ability {
 
@@ -41,7 +42,7 @@ public class GiantCleaver implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "When hitting an entity, monsters in a 5 block range will be hit for a portion of that damage too.";
+        return ChatColor.GRAY +"When hitting an entity, monsters in a"+ChatColor.GREEN+" 5 "+ChatColor.GRAY+"block range will be hit for a portion of that damage too.";
     }
 
     @Override
@@ -61,6 +62,6 @@ public class GiantCleaver implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getLore() {
-        return null;
+        return ChatColor.GREEN+"Perfect 52500/52500";
     }
 }

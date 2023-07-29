@@ -2,6 +2,7 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.user.PlayerUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class RogueSword implements ToolStatistics, MaterialFunction, Ability {
@@ -12,7 +13,7 @@ public class RogueSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Increases your Speed by +20 for 30 seconds.";
+        return "Grant "+ ChatColor.WHITE +"+100✦ Speed"+ChatColor.GRAY+" for"+ChatColor.GREEN+" 30"+ChatColor.GRAY+" seconds.";
     }
 
     @Override
@@ -35,7 +36,7 @@ public class RogueSword implements ToolStatistics, MaterialFunction, Ability {
 
             @Override
             public double getBaseSpeed() {
-                return 0.2;
+                return 1.0;
             }
         }, 20 * 30);
     }
@@ -47,7 +48,7 @@ public class RogueSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public int getManaCost() {
-        return 60;
+        return 50;
     }
 
     @Override
