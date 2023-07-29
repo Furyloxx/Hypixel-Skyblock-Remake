@@ -1,16 +1,14 @@
 package me.adarsh.godspunkycore;
 
-import com.comphenix.protocol.wrappers.PlayerInfoData;
 import me.adarsh.godspunkycore.features.entity.StaticDragonManager;
 import me.adarsh.godspunkycore.features.item.*;
 import me.adarsh.godspunkycore.features.item.armor.ArmorSet;
 import me.adarsh.godspunkycore.features.item.armor.TickingSet;
 import me.adarsh.godspunkycore.features.potion.ActivePotionEffect;
-import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
-import me.adarsh.godspunkycore.features.ranks.PlayerRank;
 import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.region.RegionType;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
+import me.adarsh.godspunkycore.listener.ServerRestartListener;
 import me.adarsh.godspunkycore.sidebar.Sidebar;
 import me.adarsh.godspunkycore.user.PlayerStatistic;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
@@ -18,18 +16,16 @@ import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.DefenseReplacement;
 import me.adarsh.godspunkycore.util.SUtil;
-import net.minecraft.server.v1_8_R3.*;
+import me.adarsh.godspunkycore.util.Sputnik;
+import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_8_R3.CraftServer;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
-import java.lang.reflect.Field;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -39,6 +35,12 @@ public class Repeater {
 
     private final List<BukkitTask> tasks;
     private final List<AtomicInteger> counters;
+
+    private boolean serverRestartScheduled = false;
+
+    private long restartStartTime = 0;
+
+    public static final Map<UUID, Integer> FloorLivingSec = new HashMap<>();
 
     public Repeater() {
         this.tasks = new ArrayList<>();
@@ -151,7 +153,13 @@ public class Repeater {
 
                     // Sidebar
                     Sidebar sidebar = new Sidebar("" + ChatColor.YELLOW + ChatColor.BOLD + "SKYBLOCK", "SKYBLOCK");
+                    if (serverRestartScheduled) {
+                        int secondsLeft = (int) Math.max(0, (restartStartTime + (ServerRestartListener.RESTART_INTERVAL_SECONDS * 1000) - System.currentTimeMillis()) / 1000);
+                        String strd = ChatColor.RED + "Server closing: 00:" + (secondsLeft >= 10 ? secondsLeft : "0" + secondsLeft);
+                        sidebar.add("  ");
+                    }
                     sidebar.add(ChatColor.GRAY + SUtil.getDate());
+
                     sidebar.add("  ");
                     sidebar.add(" " + SkyBlockCalendar.getMonthName() + " " + SUtil.ntify(SkyBlockCalendar.getDay()));
                     boolean day = true;
@@ -220,38 +228,39 @@ public class Repeater {
                         }
                         sidebar.add("     ");
                     }
+                    else if (player.getWorld().getName().contains("Dungeon_") && !player.getWorld().getName().equals("Dungeon_")) {
+                        if (FloorLivingSec.containsKey(player.getWorld().getUID())) {
+                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a" + Sputnik.formatTime(((Integer)FloorLivingSec.get(player.getWorld().getUID())).intValue())));
+                        } else {
+                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a00m 00s"));
+                        }
+                        sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &cN/A%"));
+                        sidebar.add(ChatColor.RED + "  ");
+                        String nameofplayer = player.getName();
+                        if (player.getWorld().getPlayers().size() > 1) {
+                            for (Player dungeonmate : player.getWorld().getPlayers()) {
+                                String colorcode;
+                                if (dungeonmate.getHealth() <= dungeonmate.getMaxHealth() / 2.0D && dungeonmate.getHealth() > dungeonmate.getMaxHealth() * 25.0D / 100.0D) {
+                                    colorcode = "e";
+                                } else if (dungeonmate.getHealth() <= dungeonmate.getMaxHealth() * 25.0D / 100.0D) {
+                                    colorcode = "c";
+                                } else {
+                                    colorcode = "a";
+                                }
+                                String backend = " &" + colorcode + (int)dungeonmate.getHealth() + "&c❤";
+                                if (dungeonmate.getName() == nameofplayer)
+                                    continue;
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&e[N/A&e] &b" + dungeonmate.getName() + backend));
+                            }
+                        } else if (player.getWorld().getPlayers().size() == 1) {
+                            sidebar.add(ChatColor.DARK_GRAY + "No Teammates");
+                        } else if (player.getWorld().getPlayers().size() > 5) {
+                            sidebar.add(ChatColor.RED + "Something went wrong!");
+                        }
+                        sidebar.add(ChatColor.AQUA + "     ");
+                    }
                     sidebar.add(ChatColor.YELLOW + "mc.godspunky.in");
                     sidebar.apply(player);
-
-                    // Tablist
-                    String activeEffects = user.getEffects().toString();
-                    boolean hasActiveEffects = user.getEffects().size() > 0;
-
-                    IChatBaseComponent header = new ChatComponentText(
-                            ChatColor.AQUA + "You are" +  ChatColor.RESET + " " +  ChatColor.AQUA + "playing on " + ChatColor.YELLOW + "" + ChatColor.BOLD + "MC.GODSPUNKY.IN\n");
-                    IChatBaseComponent footer = new ChatComponentText(
-                            "\n" + ChatColor.GREEN + "" + ChatColor.BOLD + "Active Effects\n" + "" +
-                                    (hasActiveEffects ? ChatColor.GRAY + "        You have " + ChatColor.YELLOW + user.getEffects().size() + ChatColor.GRAY + " active effects. Use\n" + ChatColor.GRAY + "\"" + ChatColor.GOLD + "/effects" + ChatColor.GRAY + "\" to see them!\n" + activeEffects + "\n" : ChatColor.GRAY + "         No effects active. Drink potions or splash\n" + ChatColor.GRAY + "them on the ground to buff yourself!\n\n") +
-                                    ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Cookie Buff\n" + "" +
-                                    ChatColor.GRAY + "Not active! Obtain booster cookies from the\n" + "community shop in the hub\n\n"+
-                                    ChatColor.GREEN + "Ranks, Boosters, & MORE!" + ChatColor.RESET + " " + ChatColor.RED + "" + ChatColor.BOLD + "STORE.GODSPUNKY.IN");
-
-                    PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter();
-
-                    try {
-                        Field headerField = packet.getClass().getDeclaredField("a");
-                        Field footerField = packet.getClass().getDeclaredField("b");
-                        headerField.setAccessible(true);
-                        footerField.setAccessible(true);
-                        headerField.set(packet, header);
-                        footerField.set(packet, footer);
-                        headerField.setAccessible(!headerField.isAccessible());
-                        footerField.setAccessible(!footerField.isAccessible());
-                    } catch (Exception ex) {
-                        Skyblock.getPlugin().sendMessage("&cFailed to register tab list for &8" + user.getBukkitPlayer().getName() + "&c: &8" + ex.getMessage() + "&c!");
-                    }
-
-                    ((CraftPlayer) user.getBukkitPlayer()).getHandle().playerConnection.sendPacket(packet);
                 }
                 counters[0]++;
                 counters[1]++;
@@ -260,8 +269,16 @@ public class Repeater {
                 if (counters[1] == 5)
                     counters[1] = 1;
             }
-
         }.runTaskTimer(Skyblock.getPlugin(), 0, 10));
+    }
+
+    public void setServerRestartScheduled(boolean value) {
+        serverRestartScheduled = value;
+        if (value) {
+            restartStartTime = System.currentTimeMillis();
+        } else {
+            restartStartTime = 0;
+        }
     }
 
     public void stop() {

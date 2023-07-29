@@ -25,7 +25,7 @@ public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFu
 
     @Override
     public double getEntityMaxHealth() {
-        return 250000.0;
+        return 750000.0;
     }
 
     @Override
@@ -64,6 +64,8 @@ public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFu
         SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fAlright, maybe I'm just weak after all..")) , 20);
         SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fBut my masters are a lot stronger..")) , 40);
         SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fJust you wait...")) , 60);
+
+        SUtil.delay(() -> DungeonGenerator.sendReMsg(true, killed.getWorld(), player), 30L);
 
         if (player.getWorld().getName().startsWith("Dungeon_")) {
             // activate portal

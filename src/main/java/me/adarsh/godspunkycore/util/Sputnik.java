@@ -54,6 +54,19 @@ public class Sputnik {
         playerDisguise.startDisguise();
         return playerDisguise;
     }
+
+    public static String formatTime(int z) {
+        int seconds = z, p1 = seconds % 60, p2 = seconds / 60, p3 = p2 % 60;
+        p2 /= 60;
+        String a = String.valueOf(p1), b = String.valueOf(p2), c = String.valueOf(p3);
+        if (p1 < 10)
+            a = "0" + String.valueOf(p1);
+        if (p2 < 10)
+            b = "0" + String.valueOf(p2);
+        if (p3 < 10)
+            c = "0" + String.valueOf(p3);
+        return (p2 == 0) ? (c + "m " + a + "s") : (b + "h " + c + "m " + a + "s");
+    }
     public static void showFakeItem(Location loc, ItemStack material, Player p) {
         EntityItem item = new EntityItem(((CraftWorld) loc.getWorld()).getHandle());
         item.setLocation(loc.getX(), loc.getY(), loc.getZ(), 0.0f, 0.0f);

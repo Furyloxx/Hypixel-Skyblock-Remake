@@ -1,5 +1,6 @@
 package me.adarsh.godspunkycore;
 
+import com.onarandombox.MultiverseCore.MultiverseCore;
 import lombok.SneakyThrows;
 import me.adarsh.godspunkycore.command.*;
 import me.adarsh.godspunkycore.config.Config;
@@ -63,6 +64,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 public final class Skyblock extends JavaPlugin {
+
+    public static MultiverseCore core = (MultiverseCore)Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
     private static Skyblock plugin;
     public static Page1Data Page_1;
     public static Page2Data Page_2;
@@ -86,9 +89,6 @@ public final class Skyblock extends JavaPlugin {
     public Repeater repeater;
 
     // todo Minions
-
-
-
     @Override
     public void onLoad() {
         SLog.info("Loading Bukkit-serializable classes...");
