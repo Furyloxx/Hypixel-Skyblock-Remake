@@ -17,15 +17,20 @@ import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.DefenseReplacement;
 import me.adarsh.godspunkycore.util.SUtil;
 import me.adarsh.godspunkycore.util.Sputnik;
+import net.minecraft.server.v1_8_R3.ChatComponentText;
 import net.minecraft.server.v1_8_R3.EntityHuman;
+import net.minecraft.server.v1_8_R3.IChatBaseComponent;
+import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerListHeaderFooter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.lang.reflect.Field;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -261,6 +266,35 @@ public class Repeater {
                     }
                     sidebar.add(ChatColor.YELLOW + "mc.godspunky.in");
                     sidebar.apply(player);
+                    // Tablist
+                    String activeEffects = user.getEffects().toString();
+                    boolean hasActiveEffects = user.getEffects().size() > 0;
+
+                    IChatBaseComponent header = new ChatComponentText(
+                            ChatColor.AQUA + "You are" +  ChatColor.RESET + " " +  ChatColor.AQUA + "playing on " + ChatColor.YELLOW + "" + ChatColor.BOLD + "MC.GODSPUNKY.IN\n");
+                    IChatBaseComponent footer = new ChatComponentText(
+                            "\n" + ChatColor.GREEN + "" + ChatColor.BOLD + "Active Effects\n" + "" +
+                                    (hasActiveEffects ? ChatColor.GRAY + "        You have " + ChatColor.YELLOW + user.getEffects().size() + ChatColor.GRAY + " active effects. Use\n" + ChatColor.GRAY + "\"" + ChatColor.GOLD + "/effects" + ChatColor.GRAY + "\" to see them!\n" + activeEffects + "\n" : ChatColor.GRAY + "         No effects active. Drink potions or splash\n" + ChatColor.GRAY + "them on the ground to buff yourself!\n\n") +
+                                    ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Cookie Buff\n" + "" +
+                                    ChatColor.GRAY + "Not active! Obtain booster cookies from the\n" + "community shop in the hub\n\n"+
+                                    ChatColor.GREEN + "Ranks, Boosters, & MORE!" + ChatColor.RESET + " " + ChatColor.RED + "" + ChatColor.BOLD + "STORE.GODSPUNKY.IN");
+
+                    PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter();
+
+                    try {
+                        Field headerField = packet.getClass().getDeclaredField("a");
+                        Field footerField = packet.getClass().getDeclaredField("b");
+                        headerField.setAccessible(true);
+                        footerField.setAccessible(true);
+                        headerField.set(packet, header);
+                        footerField.set(packet, footer);
+                        headerField.setAccessible(!headerField.isAccessible());
+                        footerField.setAccessible(!footerField.isAccessible());
+                    } catch (Exception ex) {
+                        Skyblock.getPlugin().sendMessage("&cFailed to register tab list for &8" + user.getBukkitPlayer().getName() + "&c: &8" + ex.getMessage() + "&c!");
+                    }
+
+                    ((CraftPlayer) user.getBukkitPlayer()).getHandle().playerConnection.sendPacket(packet);
                 }
                 counters[0]++;
                 counters[1]++;
