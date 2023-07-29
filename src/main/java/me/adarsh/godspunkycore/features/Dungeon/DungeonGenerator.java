@@ -10,12 +10,19 @@ import me.adarsh.godspunkycore.util.BlankWorldCreator;
 import me.adarsh.godspunkycore.util.SLog;
 import me.adarsh.godspunkycore.util.SUtil;
 import me.adarsh.godspunkycore.util.Sputnik;
+import org.apache.commons.io.FileUtils;
 import org.bukkit.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -38,27 +45,87 @@ public class DungeonGenerator {
     }*/
 
 
-    public static void startFloor(ArrayList<Player> plist) {
-        String worldname = "f1_" + generateRandom();
-        MVWorldManager worldManager = Skyblock.core.getMVWorldManager();
-        if (worldManager == null) {
-            SLog.severe("WorldManager is not enabled!");
+    public static void startFloor(Player plist) {
+        Skyblock plugin = Skyblock.getPlugin();
+        String worldname = "f1_" + plist.getName();
+
+        // Ensure that the world does not exist before creating it
+        if (Bukkit.getWorld(worldname) != null) {
+            SLog.severe("World '" + worldname + "' already exists!");
             return;
         }
-        worldManager.cloneWorld("f1", worldname);
-        worldManager.loadWorld(worldname);
-        World world = Bukkit.getWorld(worldname);
-        for (Player tm : plist)
-            tm.teleport(new Location(world, 213.0D, 71.0D, 221.0D, 0.0F, 0.0F));
-        SUtil.delay(() -> r(plist, world), 1L);
-        SUtil.delay(() -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "rg flag __global__ -w " + world.getName() + " build deny"), 1L);
-        SUtil.delay(() -> Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "rg flag __global__ -w " + world.getName() + " pvp deny"), 2L);
-        SUtil.delay(() -> new SEntity(new Location(world, 183.0D, 100.0D, 251.0D), SEntityType.SADAN, new Object[0]), 1L);
+
+        // Manually copy the 'f1' world from the plugin directory to the server's 'worlds' directory
+        Path sourceWorldDir = plugin.getDataFolder().toPath().resolve("f1");
+        Path targetWorldDir = Bukkit.getWorldContainer().toPath().resolve(worldname);
+
+        try {
+            // Copy the entire 'f1' directory to the new world directory
+            Files.walk(sourceWorldDir)
+                    .forEach(source -> {
+                        try {
+                            Path target = targetWorldDir.resolve(sourceWorldDir.relativize(source));
+                            if (!Files.exists(target)) {
+                                Files.copy(source, target);
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+        } catch (IOException e) {
+            SLog.severe("Failed to copy world 'f1' to '" + worldname + "'!");
+            e.printStackTrace();
+            return;
+        }
+
+        World world = Bukkit.createWorld(new WorldCreator(worldname));
+
+        if (world == null) {
+            SLog.severe("Failed to create the world '" + worldname + "'!");
+            return;
+        }
+
+        plist.teleport(new Location(world, 157.0D, 71.0D, 220.0D, 0.0F, 0.0F));
+
+        SUtil.delay(() -> {
+            try {
+                r(plist, world);
+            } catch (Exception e) {
+                SLog.severe("Error occurred while executing r method: " + e.getMessage());
+            }
+        }, 1L);
+
+        SUtil.delay(() -> {
+            try {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "rg flag __global__ -w " + world.getName() + " build deny");
+            } catch (Exception e) {
+                SLog.severe("Error occurred while setting build flag: " + e.getMessage());
+            }
+        }, 1L);
+
+        SUtil.delay(() -> {
+            try {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "rg flag __global__ -w " + world.getName() + " pvp deny");
+            } catch (Exception e) {
+                SLog.severe("Error occurred while setting pvp flag: " + e.getMessage());
+            }
+        }, 2L);
+
+        SUtil.delay(() -> {
+            try {
+                new SEntity(new Location(world, 183.0D, 100.0D, 251.0D), SEntityType.SADAN, new Object[0]);
+            } catch (Exception e) {
+                SLog.severe("Error occurred while spawning SEntity: " + e.getMessage());
+            }
+        }, 1L);
     }
 
-    public static void r(ArrayList<Player> plist, World world) {
-        for (Player tm : plist)
-            tm.teleport(new Location(world, 191.5D, 69.0D, 199.5D, 0.0F, 0.0F));
+
+
+
+
+    public static void r(Player plist, World world) {
+      plist.teleport(new Location(world, 191.5D, 69.0D, 199.5D, 0.0F, 0.0F));
     }
 
     public static String generateRandom() {
@@ -100,7 +167,7 @@ public class DungeonGenerator {
     }
 
     public static void sendReMsg(boolean finishornot, World w , Player player) {
-        if (w.getName().contains("f1_"))
+        if (w.getName().contains("f1"))
             if (Repeater.FloorLivingSec.containsKey(w.getUID()))
                 if (finishornot) {
                     int bitsReward = Math.round(((600 - Math.min(600, (Integer) Repeater.FloorLivingSec.get(w.getUID()))) * 150 / 255));

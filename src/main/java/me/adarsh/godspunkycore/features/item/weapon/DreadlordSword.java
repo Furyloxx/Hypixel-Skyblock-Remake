@@ -1,8 +1,6 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
-import me.adarsh.godspunkycore.features.item.weapon.Abilites.dreadlord.DreadlordProjectile;
-import me.adarsh.godspunkycore.features.item.weapon.Abilites.jerry.JerryChineGunProjectile;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -45,7 +43,6 @@ public class DreadlordSword implements ToolStatistics, MaterialFunction, Ability
 
     @Override
     public void onAbilityUse(Player player, SItem sItem) {
-        DreadlordProjectile projectile = new DreadlordProjectile(player);
     }
 
     @Override
