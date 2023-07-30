@@ -71,6 +71,12 @@ public class Sputnik {
         SUtil.delay(() -> DungeonGenerator.startFloor(player), 30L);
     }
 
+    public static boolean isFullInv(Player p) {
+        if (p.getInventory().firstEmpty() != -1)
+            return false;
+        return true;
+    }
+
     public static String formatTime(int z) {
         int seconds = z, p1 = seconds % 60, p2 = seconds / 60, p3 = p2 % 60;
         p2 /= 60;

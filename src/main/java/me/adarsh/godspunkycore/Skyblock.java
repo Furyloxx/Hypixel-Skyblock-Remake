@@ -34,7 +34,7 @@ import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
 import me.adarsh.godspunkycore.features.wardrobe.Listener.CheckPlayerGUIListener;
 import me.adarsh.godspunkycore.features.wardrobe.Listener.WardrobeListener;
 import me.adarsh.godspunkycore.gui.GUIListener;
-import me.adarsh.godspunkycore.gui.OtherPlayerProfile;
+import me.adarsh.godspunkycore.gui.ProfileViewerGUI;
 import me.adarsh.godspunkycore.listener.*;
 import me.adarsh.godspunkycore.sql.SQLDatabase;
 import me.adarsh.godspunkycore.sql.SQLRegionData;
@@ -135,7 +135,6 @@ public final class Skyblock extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
         getServer().getPluginManager().registerEvents(new BazaarGui(), this);
-        getServer().getPluginManager().registerEvents(new OtherPlayerProfile(), this);
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
@@ -243,6 +242,7 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new HubCommand());
         cl.register(new ChangeStatsCommand());
         cl.register(new MortCommand());
+        this.cl.register(new MembersEnchantCommand());
         cl.register(new SetHubCommand());
         cl.register(new SetDungeonHubCommand());
         cl.register(new PlayerLocationCommand());

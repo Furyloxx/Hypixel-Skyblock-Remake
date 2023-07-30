@@ -17,6 +17,10 @@ public enum SpecificItemType {
     HOE(false),
     SHEARS(false),
     DUNGEON_ITEM,
+
+    LONGSWORD(false),
+
+    WAND(false),
     NONE,
     ROD(false),
     ARROW_POISON;

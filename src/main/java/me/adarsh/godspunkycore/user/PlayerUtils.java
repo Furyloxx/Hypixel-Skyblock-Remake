@@ -334,8 +334,6 @@ public final class PlayerUtils {
                             enchantBonus += (double) (level * 8) / 100.0;
                         if (type == EnchantmentType.FLAME && arrowHit)
                             damaged.setFireTicks(level * 3 * 20);
-                        if (type == EnchantmentType.SUPERS_BLESSING)
-                            enchantBonus += (double) level * 2.0;
                         if (type == EnchantmentType.SMITE && !arrowHit && Groups.UNDEAD_MOBS.contains(damaged.getType()))
                             enchantBonus += (double) (level * 8) / 100.0;
                         if (type == EnchantmentType.BANE_OF_ARTHROPODS && !arrowHit && Groups.ARTHROPODS.contains(damaged.getType()))

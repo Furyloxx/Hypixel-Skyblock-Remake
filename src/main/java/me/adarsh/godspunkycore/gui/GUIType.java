@@ -51,7 +51,7 @@ public enum GUIType {
     CATACOMB(CatacombsGUI.class),
     CATACOMB_RULE(CatacombsGUI.class),
     ProfileManagementGUI(ProfileManagementGUI.class),
-    OTHERPLAYER_PROFILE(OtherPlayerProfile.class),
+    OTHERPLAYER_PROFILE(ProfileViewerGUI.class),
     ENDERCHEST1(EnderChest1.class),
     ENDERCHEST2(EnderChest2.class),
     ENDERCHEST3(EnderChest3.class),

@@ -153,17 +153,17 @@ public class DungeonGenerator {
             }
         }.runTaskTimer(Skyblock.getPlugin(), 0L, 20L);
 
-        SEntityType type = SEntityType.UNDEAD;
+        SEntityType type = SEntityType.UNDEAD_SKELETON;
         SEntity entity;
         Location npcLocation = new Location(world, 109,69,104);
         entity = new SEntity(npcLocation, type);
 
-        SEntityType type1 = SEntityType.UNDEAD;
+        SEntityType type1 = SEntityType.CRYPT_DREADLORD;
         SEntity entity1;
         Location npcLocation1 = new Location(world, 104,69,110);
         entity1 = new SEntity(npcLocation1, type1);
 
-        SEntityType type2 = SEntityType.UNDEAD;
+        SEntityType type2 = SEntityType.TANK_ZOMBIE;
         SEntity entity2;
         Location npcLocation2 = new Location(world, 111,69,108);
         entity2 = new SEntity(npcLocation2, type2);

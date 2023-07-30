@@ -17,6 +17,7 @@ import me.adarsh.godspunkycore.features.launchpads.LaunchPadHandler;
 import me.adarsh.godspunkycore.features.potion.PotionEffect;
 import me.adarsh.godspunkycore.features.skill.Skill;
 import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
+import me.adarsh.godspunkycore.gui.GUIType;
 import me.adarsh.godspunkycore.user.PlayerStatistics;
 import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.user.User;
@@ -485,6 +486,19 @@ public class PlayerListener extends PListener {
             }
         }
     }
+
+    @EventHandler
+    public void RightClick(PlayerInteractEntityEvent event) {
+        if (event.getRightClicked().hasMetadata("NPC"))
+            return;
+        Player player = event.getPlayer();
+
+        if (event.getRightClicked() instanceof Player) {
+            Player rightClickedPlayer = (Player) event.getRightClicked();
+            GUIType.OTHERPLAYER_PROFILE.getGUI().open(player);
+        }
+    }
+
     @EventHandler
     public void onInvFull(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
