@@ -6,6 +6,7 @@ import me.adarsh.godspunkycore.Repeater;
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
+import me.adarsh.godspunkycore.user.PlayerUtils;
 import me.adarsh.godspunkycore.util.BlankWorldCreator;
 import me.adarsh.godspunkycore.util.SLog;
 import me.adarsh.godspunkycore.util.SUtil;
@@ -48,8 +49,9 @@ public class DungeonGenerator {
 
 
     public static void startFloor(Player plist) {
+        long start = System.currentTimeMillis();
         Skyblock plugin = Skyblock.getPlugin();
-        String worldname = "f1_" + plist.getName();
+        String worldname = "f1_" + generateRandom();
 
         // Ensure that the world does not exist before creating it
         if (Bukkit.getWorld(worldname) != null) {
@@ -86,6 +88,8 @@ public class DungeonGenerator {
             SLog.severe("Failed to create the world '" + worldname + "'!");
             return;
         }
+
+        plist.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Generated Dungeon in ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
 
 
         SUtil.delay(() -> {
@@ -175,7 +179,7 @@ public class DungeonGenerator {
 
 
     public static void r(Player plist, World world) {
-      plist.teleport(new Location(world, 76,72,108));
+      plist.teleport(new Location(world, 76,72,108 , 0 , 0));
     }
 
     public static String generateRandom() {
@@ -204,6 +208,7 @@ public class DungeonGenerator {
                 e.remove();
             }
             Bukkit.unloadWorld(w , false);
+            w.getWorldFolder().deleteOnExit();
             SUtil.deleteFolderRecursive(w.getWorldFolder());
             SLog.severe("[DUNGEON BOSSROOM] Deleted " + w.getName() + " and cleaned the memory !");
         }
@@ -217,40 +222,48 @@ public class DungeonGenerator {
         }
     }
 
-    public static void sendReMsg(boolean finishornot, World w , Player player) {
-        if (w.getName().contains("f1"))
-            if (Repeater.FloorLivingSec.containsKey(w.getUID()))
-                if (finishornot) {
-                    int bitsReward = Math.round(((600 - Math.min(600, (Integer) Repeater.FloorLivingSec.get(w.getUID()))) * 150 / 255));
-                    String rew = "&b+" + SUtil.commaify(bitsReward) + " Bits &7(Completion Reward)";
-                    player.sendMessage(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
-                    player.sendMessage(Sputnik.trans("        &cThe Catacombs Demo &8- &eFloor I"));
-                    player.sendMessage(Sputnik.trans("&c"));
-                    player.sendMessage(Sputnik.trans("        &c☠&e Defeated &cSadan &ein &a" + Sputnik.formatTime((Integer) Repeater.FloorLivingSec.get(w.getUID()))));
-                    player.sendMessage(Sputnik.trans("&c"));
-                    player.sendMessage(Sputnik.trans("            " + rew));
-                    player.sendMessage(Sputnik.trans("&c"));
-                    player.sendMessage(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
-                } else {
-                    player.sendMessage(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
-                    player.sendMessage(Sputnik.trans("        &cThe Catacombs Demo &8- &eFloor VI"));
-                    player.sendMessage(Sputnik.trans("&c"));
-                    player.sendMessage(Sputnik.trans("        &c☠&e You died, but you can try again!"));
-                    player.sendMessage(Sputnik.trans("&c"));
-                    player.sendMessage(Sputnik.trans("           &cYou have no rewards cause you died."));
-                    player.sendMessage(Sputnik.trans("&c"));
-                    player.sendMessage(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
-                }
+    public static void sendReMsg(boolean finishornot, World w, Player player) {
+        if (w == null || player == null) {
+            return; // One of the required objects is null, so we cannot proceed.
+        }
+
+        if (w.getName().contains("f1_")) {
+            int floorLivingSec = Repeater.FloorLivingSec.getOrDefault(w.getUID(), 0);
+
+            if (finishornot) {
+                int bitsReward = Math.round(((600 - Math.min(600, floorLivingSec)) * 150 / 255));
+                String rew = "&b+" + SUtil.commaify(bitsReward) + " Bits &7(Completion Reward)";
+                player.sendMessage(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
+                player.sendMessage(Sputnik.trans("        &cThe Catacombs Demo &8- &eFloor I"));
+                player.sendMessage(Sputnik.trans("&c"));
+                player.sendMessage(Sputnik.trans("        &c☠&e Defeated &cSadan &ein &a" + Sputnik.formatTime(floorLivingSec)));
+                player.sendMessage(Sputnik.trans("&c"));
+                player.sendMessage(Sputnik.trans("            " + rew));
+                player.sendMessage(Sputnik.trans("&c"));
+                player.sendMessage(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
+            } else {
+                player.sendMessage(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
+                player.sendMessage(Sputnik.trans("        &cThe Catacombs Demo &8- &eFloor VI"));
+                player.sendMessage(Sputnik.trans("&c"));
+                player.sendMessage(Sputnik.trans("        &c☠&e You died, but you can try again!"));
+                player.sendMessage(Sputnik.trans("&c"));
+                player.sendMessage(Sputnik.trans("           &cYou have no rewards cause you died."));
+                player.sendMessage(Sputnik.trans("&c"));
+                player.sendMessage(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
+            }
+        }
     }
+
 
     public static void endRoom2(World w, Player p) {
         if (w.getName().contains("f1")) {
-            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Warning] &eThis dungeon will close in &c5s")), 200L);
-            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Warning] &eThis dungeon will close in &c4s")), 220L);
-            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Warning] &eThis dungeon will close in &c3s")), 240L);
-            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Warning] &eThis dungeon will close in &c2s")), 260L);
-            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Warning] &eThis dungeon will close in &c1s")), 280L);
-            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Warning] &eWarping you back to the Hub")), 300L);
+            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Dungeon] &eThis dungeon will close in &c5s")), 200L);
+            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Dungeon] &eThis dungeon will close in &c4s")), 220L);
+            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Dungeon] &eThis dungeon will close in &c3s")), 240L);
+            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Dungeon] &eThis dungeon will close in &c2s")), 260L);
+            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Dungeon] &eThis dungeon will close in &c1s")), 280L);
+            SUtil.delay(() -> p.sendMessage(Sputnik.trans("&c[Dungeon] &eWarping you back to the Hub")), 300L);
+            SUtil.delay(() -> PlayerUtils.sendToIsland(p),310L);
             SUtil.delay(() -> endFloor(w), 300L);
         }
     }

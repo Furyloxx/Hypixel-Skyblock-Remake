@@ -67,10 +67,8 @@ public class Sputnik {
     public static void startRoom(Player player) {
         Skyblock plugin = Skyblock.getPlugin();
         SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GREEN + "Entering The Catacombs Demo - Floor 1!"), 10L);
-        SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GRAY + "Preparing the boss for you, please wait..."), 20L);
-        SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GRAY + "Hooking up request, and sending you to that world..."), 30L);
-        SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GRAY + " "), 40L);
-        SUtil.delay(() -> DungeonGenerator.startFloor(player), 50L);
+        SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GRAY + "Sending to server Dungeon_Alpha"), 20L);
+        SUtil.delay(() -> DungeonGenerator.startFloor(player), 30L);
     }
 
     public static String formatTime(int z) {

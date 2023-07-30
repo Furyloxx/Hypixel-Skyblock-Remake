@@ -193,7 +193,7 @@ public class Repeater {
                     if (user.isOnIsland())
                         location = ChatColor.GREEN + "Your Island";
 
-                    if(user.isPlayerOnDungeonWorld(player))
+                    if(player.getWorld().getName().startsWith("f1_"))
                         location = ChatColor.RED + "The Catacombs " + ChatColor.GRAY +"(F1)";
 
                     sidebar.add(ChatColor.GRAY + " ⏣ " + location);
@@ -237,9 +237,9 @@ public class Repeater {
                         }
                         sidebar.add("     ");
                     }
-                    else if (player.getWorld().getName().contains("Dungeon_") && !player.getWorld().getName().equals("Dungeon_")) {
+                    else if (player.getWorld().getName().contains("f1_") && !player.getWorld().getName().equals("f1_")) {
                         if (FloorLivingSec.containsKey(player.getWorld().getUID())) {
-                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a" + Sputnik.formatTime((Integer) FloorLivingSec.get(player.getWorld().getUID()))));
+                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a" + Sputnik.formatTime(FloorLivingSec.get(player.getWorld().getUID()))));
                         } else {
                             sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a00m 00s"));
                         }
