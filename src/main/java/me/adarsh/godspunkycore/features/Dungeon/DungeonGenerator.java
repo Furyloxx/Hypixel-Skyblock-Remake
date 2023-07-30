@@ -16,6 +16,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,6 +25,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -85,7 +87,6 @@ public class DungeonGenerator {
             return;
         }
 
-        plist.teleport(new Location(world, 157.0D, 71.0D, 220.0D, 0.0F, 0.0F));
 
         SUtil.delay(() -> {
             try {
@@ -111,13 +112,62 @@ public class DungeonGenerator {
             }
         }, 2L);
 
-        SUtil.delay(() -> {
-            try {
-                new SEntity(new Location(world, 183.0D, 100.0D, 251.0D), SEntityType.SADAN, new Object[0]);
-            } catch (Exception e) {
-                SLog.severe("Error occurred while spawning SEntity: " + e.getMessage());
+
+        // Start the countdown after teleportation
+        int countdownDuration = 10; // in seconds
+        new BukkitRunnable() {
+            int countdown = countdownDuration;
+
+            @Override
+            public void run() {
+                if (countdown > 0) {
+                    plist.sendMessage(ChatColor.RED + "[Dungeon]: " + ChatColor.YELLOW + "Dungeon will start in " + countdown + " seconds.");
+                    countdown--;
+                } else {
+                    plist.sendMessage(ChatColor.GREEN + "Dungeon has started!");
+                    // Trigger dungeon door animation here
+                    cancel(); // Stop the countdown
+                    List<Location> doorPositions = Arrays.asList(
+                            new Location(world, 95, 71, 109),
+                            new Location(world, 95, 71, 108),
+                            new Location(world, 95, 71, 107),
+                            new Location(world, 95, 70, 109),
+                            new Location(world, 95, 70, 108),
+                            new Location(world, 95, 70, 107),
+                            new Location(world, 95, 69, 109),
+                            new Location(world, 95, 69, 108),
+                            new Location(world, 95, 69, 107)
+                    );
+
+                    int animationTicks = 40;
+
+                    DungeonDoorAnimation doorAnimation = new DungeonDoorAnimation(doorPositions, animationTicks);
+                    doorAnimation.startAnimation();
+
+                    plist.playSound(plist.getLocation(), Sound.EXPLODE, 1.0f, 1.0f);
+                }
             }
-        }, 1L);
+        }.runTaskTimer(Skyblock.getPlugin(), 0L, 20L);
+
+        SEntityType type = SEntityType.UNDEAD;
+        SEntity entity;
+        Location npcLocation = new Location(world, 109,69,104);
+        entity = new SEntity(npcLocation, type);
+
+        SEntityType type1 = SEntityType.UNDEAD;
+        SEntity entity1;
+        Location npcLocation1 = new Location(world, 104,69,110);
+        entity1 = new SEntity(npcLocation1, type1);
+
+        SEntityType type2 = SEntityType.UNDEAD;
+        SEntity entity2;
+        Location npcLocation2 = new Location(world, 111,69,108);
+        entity2 = new SEntity(npcLocation2, type2);
+
+        SEntityType type0 = SEntityType.LOST_ADVENTURER;
+        SEntity entity0;
+        Location npcLocation0 = new Location(world, 118,73,106);
+        entity0 = new SEntity(npcLocation0, type0);
     }
 
 
@@ -125,7 +175,7 @@ public class DungeonGenerator {
 
 
     public static void r(Player plist, World world) {
-      plist.teleport(new Location(world, 191.5D, 69.0D, 199.5D, 0.0F, 0.0F));
+      plist.teleport(new Location(world, 76,72,108));
     }
 
     public static String generateRandom() {
@@ -153,14 +203,15 @@ public class DungeonGenerator {
                     continue;
                 e.remove();
             }
-            Skyblock.core.deleteWorld(w.getName());
+            Bukkit.unloadWorld(w , false);
+            SUtil.deleteFolderRecursive(w.getWorldFolder());
             SLog.severe("[DUNGEON BOSSROOM] Deleted " + w.getName() + " and cleaned the memory !");
         }
     }
 
     public void deleteAllDungeons(){
         for (World world : Bukkit.getWorlds()){
-            if (!world.getName().startsWith("Dungeon")) return;
+            if (!world.getName().startsWith("f1")) return;
             Bukkit.unloadWorld(world , false);
             SUtil.deleteFolderRecursive(world.getWorldFolder());
         }

@@ -66,10 +66,10 @@ public class BonzoPhase2 implements ZombieStatistics ,EntityStatistics, EntityFu
         SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fJust you wait...")) , 60);
 
 
-        if (player.getWorld().getName().startsWith("Dungeon_")) {
+        if (player.getWorld().getName().startsWith("f1_")) {
             // activate portal
             World f1 = player.getWorld();
-            SUtil.setBlocks(new Location(f1,23,103,-7.5),new Location(f1,21,107,-7.5), Material.PORTAL, false);
+            SUtil.setBlocks(new Location(f1,119,85,243), new Location(f1,119,85,243), Material.PORTAL, false);
         }
 
         SUtil.delay(() -> DungeonGenerator.sendReMsg(true, killed.getWorld(),player), 30L);

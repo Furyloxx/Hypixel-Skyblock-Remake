@@ -44,4 +44,13 @@ public class ShadowAssassin implements ZombieStatistics, EntityStatistics, Entit
         return 0.4;
     }
 
+    @Override
+    public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
+        SEntityType type = SEntityType.BONZO_PHASE_1;
+        World world = damager.getWorld();// and now finding something to do ;-;
+        Location loc = new Location(world, 111,80,218);
+        sEntity = new SEntity(loc , type);
+        damager.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fYou little brat!!"));
+    }
+
 }
