@@ -14,6 +14,8 @@ public class SpecTestCommand extends SCommand implements Listener {
         if (sender instanceof ConsoleCommandSender)
             throw new CommandFailException("Console senders cannot use this command!");
 
+        player.sendMessage(player.getItemInHand().getItemMeta().getDisplayName());
+
 
     }
 }
