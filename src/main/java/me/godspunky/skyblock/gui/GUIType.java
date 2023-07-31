@@ -55,6 +55,10 @@ public enum GUIType {
     ENDERCHEST1(EnderChest1.class),
     ENDERCHEST2(EnderChest2.class),
     ENDERCHEST3(EnderChest3.class),
+    BOOSTER_COOKIE_SHOP(BoosterCookieShop.class),
+    CITY_PROJECT(CityProjectGUI.class),
+    FIRE_SALE(FireSaleGUI.class),
+    BIT_SHOP(BitShopGUI.class),
     ;
 
     private final Class<? extends GUI> gui;

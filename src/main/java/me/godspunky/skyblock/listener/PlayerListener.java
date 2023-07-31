@@ -15,6 +15,8 @@ import me.godspunky.skyblock.features.item.pet.Pet;
 import me.godspunky.skyblock.features.item.pet.PetAbility;
 import me.godspunky.skyblock.features.launchpads.LaunchPadHandler;
 import me.godspunky.skyblock.features.potion.PotionEffect;
+import me.godspunky.skyblock.features.ranks.GodspunkyPlayer;
+import me.godspunky.skyblock.features.ranks.PlayerRank;
 import me.godspunky.skyblock.features.skill.Skill;
 import me.godspunky.skyblock.features.slayer.SlayerQuest;
 import me.godspunky.skyblock.gui.GUIType;
