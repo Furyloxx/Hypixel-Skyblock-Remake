@@ -8,7 +8,7 @@ public enum PlayerRank {
     MVPPLUS("&b[MVP&c+&b]", 5),
     MVPPLUSPLUS("&6[MVP&c++&6]", 6),
     YOUTUBE("&c[&fYOUTUBE&c]", 7),
-    BETA("&d[BT]", 8),
+    BT("&d[BT]", 8),
     SPECIAL("&e[SPECIAL]", 9),
     JRHELPER("&9[JR HELPER]", 10),
     HELPER("&9[HELPER]", 11),

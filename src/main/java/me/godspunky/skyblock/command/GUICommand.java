@@ -6,7 +6,7 @@ import me.godspunky.skyblock.gui.GUIType;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Opens a GUI.", permission = PlayerRank.BETA)
+@CommandParameters(description = "Opens a GUI.", permission = PlayerRank.BT)
 public class GUICommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {
