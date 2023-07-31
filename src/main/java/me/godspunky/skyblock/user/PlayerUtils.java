@@ -476,6 +476,7 @@ public final class PlayerUtils {
         User user = User.getUser(player.getUniqueId());
         if (user.getIslandX() == null) {
             Config config = Skyblock.getPlugin().config;
+
             double xOffset = config.getDouble("islands.x");
             double zOffset = config.getDouble("islands.z");
             if (xOffset < -25000000.0 || xOffset > 25000000.0)

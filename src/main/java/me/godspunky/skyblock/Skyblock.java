@@ -68,7 +68,6 @@ public final class Skyblock extends JavaPlugin {
     public static Skyblock getPlugin() {
         return plugin;
     }
-
     public Config config;
     public Config heads;
     public Config blocks;
@@ -94,7 +93,7 @@ public final class Skyblock extends JavaPlugin {
     public void onEnable() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Found Bukkit server v" + Bukkit.getVersion());
         long start = System.currentTimeMillis();
-
+        plugin = this;
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         // Wardrobe data
@@ -107,7 +106,6 @@ public final class Skyblock extends JavaPlugin {
         this.getCommand("wardrobe").setTabCompleter(new WardrobeTabCompleter());
         new WardrobeListener(this);
         new CheckPlayerGUIListener(this);
-        plugin = this;
         loadymldata();
         loadIslandWorld();
         loadDungeonWorld();
@@ -175,7 +173,7 @@ public final class Skyblock extends JavaPlugin {
     public void loadymldata(){
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading YAML Data...");
         long start = System.currentTimeMillis();
-
+        config = new Config("config.yml");
         heads = new Config("heads.yml");
         blocks = new Config("blocks.yml");
         spawners = new Config("spawners.yml");
@@ -292,7 +290,6 @@ public final class Skyblock extends JavaPlugin {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Registering Traits...");
         long start = System.currentTimeMillis();
 
-        // Nothing is here. We can add later
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered Traits ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }

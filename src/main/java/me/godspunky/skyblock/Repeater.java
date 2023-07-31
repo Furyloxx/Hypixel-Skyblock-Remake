@@ -23,6 +23,7 @@ import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutPlayerListHeaderFooter;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -73,10 +74,11 @@ public class Repeater {
                     // Hand Validation and Hand Statistics
 
                     SItem hand = SItem.find(inventory.getItemInHand());
+                    if (inventory.getItemInHand().hasItemMeta() && inventory.getItemInHand() != null && inventory.getItemInHand().getItemMeta().hasDisplayName() && inventory.getItemInHand().getItemMeta().getDisplayName().contains("Minion") && inventory.getItemInHand().getType() != Material.AIR) return;
                     if (hand == null)
                     {
                         hand = SItem.of(inventory.getItemInHand());
-                        if (hand != null && !inventory.getItemInHand().getItemMeta().getDisplayName().contains("Minion"))
+                        if (hand != null)
                             player.setItemInHand(hand.getStack());
                     }
                     PlayerUtils.updateHandStatistics(hand, statistics);

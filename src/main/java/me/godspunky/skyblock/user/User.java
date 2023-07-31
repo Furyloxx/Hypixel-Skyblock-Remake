@@ -924,7 +924,7 @@ public class User {
         Player player = Bukkit.getPlayer(uuid);
         World w1 = Bukkit.getWorld("world");
         if (player == null) return;
-        if (isOnIsland()) {
+        if (player.getWorld() == Bukkit.getWorld("islands")) {
             World world = Bukkit.getWorld("islands");
             player.teleport(world.getHighestBlockAt(SUtil.blackMagic(islandX),
                     SUtil.blackMagic(islandZ)).getLocation().add(0.5, 1.0, 0.5));
