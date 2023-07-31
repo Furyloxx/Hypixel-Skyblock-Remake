@@ -1,0 +1,36 @@
+package me.godspunky.skyblock.features.item.armor.zombie;
+
+import me.godspunky.skyblock.features.item.*;
+import me.godspunky.skyblock.features.item.*;
+
+public class ZombieChestplate implements ToolStatistics, MaterialFunction {
+    @Override
+    public String getDisplayName() {
+        return "Zombie Chestplate";
+    }
+
+    @Override
+    public Rarity getRarity() {
+        return Rarity.EPIC;
+    }
+
+    @Override
+    public GenericItemType getType() {
+        return GenericItemType.ARMOR;
+    }
+
+    @Override
+    public SpecificItemType getSpecificType() {
+        return SpecificItemType.CHESTPLATE;
+    }
+
+    @Override
+    public double getBaseHealth() {
+        return 200;
+    }
+
+    @Override
+    public double getBaseDefense() {
+        return 30;
+    }
+}

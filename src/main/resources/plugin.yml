@@ -1,6 +1,6 @@
 name: GodSpunkySkyblockCore
 version: ${project.version}
-main: me.adarsh.godspunkycore.Skyblock
+main: me.godspunky.skyblock.Skyblock
 authors: [ Adarsh, Epicportal, Devil, Legit]
 description: A core for godspunky skyblock
 commands:
