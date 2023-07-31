@@ -16,7 +16,8 @@ public enum PlayerRank {
     GAMEMASTER("&2[GM]", 13),
     BUILD("&3[BUILD TEAM]", 14),
     ADMIN("&c[ADMIN]", 15),
-    OWNER("&c[OWNER]", 16);
+    BLOODGOD("&c[BLOOD GOD]",16),
+    OWNER("&c[OWNER]", 17);
 
 
     private final String prefix;
