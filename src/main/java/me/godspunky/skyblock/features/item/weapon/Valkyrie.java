@@ -2,7 +2,6 @@ package me.godspunky.skyblock.features.item.weapon;
 
 import me.godspunky.skyblock.Skyblock;
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import net.md_5.bungee.api.ChatColor;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.Effect;

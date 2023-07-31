@@ -5,7 +5,6 @@ import me.godspunky.skyblock.features.item.SMaterial;
 import me.godspunky.skyblock.features.slayer.SlayerQuest;
 import me.godspunky.skyblock.user.User;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.entity.*;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;

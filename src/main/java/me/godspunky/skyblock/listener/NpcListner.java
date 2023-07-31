@@ -1,7 +1,7 @@
-package me.adarsh.godspunkycore.listener;
+package me.godspunky.skyblock.listener;
 
-import me.adarsh.godspunkycore.user.User;
-import me.adarsh.godspunkycore.util.SUtil;
+import me.godspunky.skyblock.user.User;
+import me.godspunky.skyblock.util.SUtil;
 import net.citizensnpcs.api.event.NPCRightClickEvent;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;

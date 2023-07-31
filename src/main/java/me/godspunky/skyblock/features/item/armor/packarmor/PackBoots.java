@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.packarmor;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class PackBoots implements ToolStatistics, MaterialFunction {
     @Override

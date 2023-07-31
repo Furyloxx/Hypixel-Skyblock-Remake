@@ -2,9 +2,7 @@ package me.godspunky.skyblock.features.reforge;
 
 import lombok.Getter;
 import me.godspunky.skyblock.features.reforge.armor.*;
-import me.godspunky.skyblock.features.reforge.armor.*;
 import me.godspunky.skyblock.features.reforge.ranged_weapon.RapidReforge;
-import me.godspunky.skyblock.features.reforge.weapon.*;
 import me.godspunky.skyblock.features.reforge.weapon.*;
 
 public enum ReforgeType {

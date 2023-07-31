@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.sharkscale;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class SharkScaleHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

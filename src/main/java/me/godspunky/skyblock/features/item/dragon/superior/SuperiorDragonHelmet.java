@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.dragon.superior;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class SuperiorDragonHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

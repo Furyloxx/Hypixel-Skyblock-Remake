@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.goblin;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class GoblinHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.weapon;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import net.md_5.bungee.api.ChatColor;
 
 public class VoidwalkerKatana implements ToolStatistics, MaterialFunction {

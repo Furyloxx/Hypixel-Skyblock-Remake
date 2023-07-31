@@ -2,7 +2,6 @@ package me.godspunky.skyblock.features.item.accessory;
 
 import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 

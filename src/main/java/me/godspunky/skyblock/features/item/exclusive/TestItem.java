@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.exclusive;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class TestItem implements SkullStatistics, MaterialFunction, Enchantable {
     @Override

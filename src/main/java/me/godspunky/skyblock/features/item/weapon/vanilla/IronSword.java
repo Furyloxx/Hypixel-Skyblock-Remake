@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.weapon.vanilla;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class IronSword implements ToolStatistics, MaterialFunction {
     @Override

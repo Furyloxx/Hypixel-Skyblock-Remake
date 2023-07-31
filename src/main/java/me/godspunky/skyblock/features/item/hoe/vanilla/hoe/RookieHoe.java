@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.hoe.vanilla.hoe;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
 
 public class RookieHoe implements ToolStatistics, MaterialFunction {

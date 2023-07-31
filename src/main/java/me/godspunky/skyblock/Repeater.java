@@ -2,7 +2,6 @@ package me.godspunky.skyblock;
 
 import me.godspunky.skyblock.features.entity.StaticDragonManager;
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
 import me.godspunky.skyblock.features.item.armor.TickingSet;
 import me.godspunky.skyblock.features.potion.ActivePotionEffect;

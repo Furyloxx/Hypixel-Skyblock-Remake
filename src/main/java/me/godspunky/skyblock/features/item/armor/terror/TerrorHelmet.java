@@ -2,7 +2,6 @@ package me.godspunky.skyblock.features.item.armor.terror;
 
 import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.LeatherArmorStatistics;
-import me.godspunky.skyblock.features.item.*;
 
 public class TerrorHelmet implements SkullStatistics, MaterialFunction, LeatherArmorStatistics {
     @Override

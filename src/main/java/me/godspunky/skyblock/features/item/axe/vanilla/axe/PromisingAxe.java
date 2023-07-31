@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.axe.vanilla.axe;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
 
 public class PromisingAxe implements ToolStatistics, MaterialFunction {

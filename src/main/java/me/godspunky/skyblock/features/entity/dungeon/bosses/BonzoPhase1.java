@@ -4,7 +4,6 @@ import com.google.common.util.concurrent.AtomicDouble;
 import me.godspunky.skyblock.Skyblock;
 import me.godspunky.skyblock.features.entity.*;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.entity.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;

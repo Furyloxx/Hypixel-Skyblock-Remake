@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.weapon;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class Dagger implements ToolStatistics, MaterialFunction {
     @Override

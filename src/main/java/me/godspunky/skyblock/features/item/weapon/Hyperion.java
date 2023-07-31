@@ -2,7 +2,6 @@ package me.godspunky.skyblock.features.item.weapon;
 
 import me.godspunky.skyblock.Skyblock;
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;

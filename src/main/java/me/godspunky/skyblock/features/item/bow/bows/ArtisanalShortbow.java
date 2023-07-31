@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.bow.bows;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
 
 public class ArtisanalShortbow implements ToolStatistics, MaterialFunction {

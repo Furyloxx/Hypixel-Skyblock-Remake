@@ -3,7 +3,6 @@ package me.godspunky.skyblock.features.item.bow.bows;
 import com.google.common.util.concurrent.AtomicDouble;
 import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.bow.BowFunction;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.Location;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;

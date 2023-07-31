@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.lapis;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class LapisArmorHelmet implements ToolStatistics, MaterialFunction {
     @Override

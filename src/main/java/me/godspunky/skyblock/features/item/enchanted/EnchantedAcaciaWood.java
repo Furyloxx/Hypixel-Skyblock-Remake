@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.enchanted;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class EnchantedAcaciaWood implements EnchantedMaterialStatistics, MaterialFunction {
     @Override

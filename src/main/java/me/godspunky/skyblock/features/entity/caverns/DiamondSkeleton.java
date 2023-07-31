@@ -2,7 +2,6 @@ package me.godspunky.skyblock.features.entity.caverns;
 
 import me.godspunky.skyblock.features.entity.*;
 import me.godspunky.skyblock.features.item.SMaterial;
-import me.godspunky.skyblock.features.entity.*;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 

@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.werewolf;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class WerewolfHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

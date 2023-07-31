@@ -1,48 +1,45 @@
-package me.adarsh.godspunkycore;
+package me.godspunky.skyblock;
 
 import com.onarandombox.MultiverseCore.MultiverseCore;
 import lombok.SneakyThrows;
-import me.adarsh.godspunkycore.command.*;
-import me.adarsh.godspunkycore.config.Config;
-import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
-import me.adarsh.godspunkycore.features.auction.AuctionBid;
-import me.adarsh.godspunkycore.features.auction.AuctionEscrow;
-import me.adarsh.godspunkycore.features.auction.AuctionItem;
-import me.adarsh.godspunkycore.features.bazaar.BazaarGui;
-import me.adarsh.godspunkycore.features.bazaar.CategoryManger;
-import me.adarsh.godspunkycore.features.entity.EntityPopulator;
-import me.adarsh.godspunkycore.features.entity.EntitySpawner;
-import me.adarsh.godspunkycore.features.entity.SEntityType;
-import me.adarsh.godspunkycore.features.entity.StaticDragonManager;
-import me.adarsh.godspunkycore.features.item.ItemListener;
-import me.adarsh.godspunkycore.features.item.SItem;
-import me.adarsh.godspunkycore.features.item.SMaterial;
-import me.adarsh.godspunkycore.features.item.pet.Pet;
-import me.adarsh.godspunkycore.features.launchpads.LaunchPadHandler;
-import me.adarsh.godspunkycore.features.ranks.GodspunkyPlayer;
-import me.adarsh.godspunkycore.features.ranks.PlayerChatListener;
-import me.adarsh.godspunkycore.features.ranks.PlayerJoinQuitListener;
-import me.adarsh.godspunkycore.features.ranks.SetRankCommand;
-import me.adarsh.godspunkycore.features.region.Region;
-import me.adarsh.godspunkycore.features.region.RegionType;
-import me.adarsh.godspunkycore.features.slayer.SlayerQuest;
-import me.adarsh.godspunkycore.features.wardrobe.Command.WardrobeCommand;
-import me.adarsh.godspunkycore.features.wardrobe.Command.WardrobeTabCompleter;
-import me.adarsh.godspunkycore.features.wardrobe.DataManager.Page1Data;
-import me.adarsh.godspunkycore.features.wardrobe.DataManager.Page2Data;
-import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
-import me.adarsh.godspunkycore.features.wardrobe.Listener.CheckPlayerGUIListener;
-import me.adarsh.godspunkycore.features.wardrobe.Listener.WardrobeListener;
-import me.adarsh.godspunkycore.gui.GUIListener;
-import me.adarsh.godspunkycore.gui.ProfileViewerGUI;
-import me.adarsh.godspunkycore.listener.*;
-import me.adarsh.godspunkycore.sql.SQLDatabase;
-import me.adarsh.godspunkycore.sql.SQLRegionData;
-import me.adarsh.godspunkycore.sql.SQLWorldData;
-import me.adarsh.godspunkycore.user.AuctionSettings;
-import me.adarsh.godspunkycore.user.User;
-import me.adarsh.godspunkycore.util.*;
-import me.libraryaddict.disguise.DisguiseAPI;
+import me.godspunky.skyblock.command.*;
+import me.godspunky.skyblock.config.Config;
+import me.godspunky.skyblock.features.Dungeon.DungeonGenerator;
+import me.godspunky.skyblock.features.auction.AuctionBid;
+import me.godspunky.skyblock.features.auction.AuctionEscrow;
+import me.godspunky.skyblock.features.auction.AuctionItem;
+import me.godspunky.skyblock.features.entity.EntityPopulator;
+import me.godspunky.skyblock.features.entity.EntitySpawner;
+import me.godspunky.skyblock.features.entity.SEntityType;
+import me.godspunky.skyblock.features.entity.StaticDragonManager;
+import me.godspunky.skyblock.features.item.ItemListener;
+import me.godspunky.skyblock.features.item.SItem;
+import me.godspunky.skyblock.features.item.SMaterial;
+import me.godspunky.skyblock.features.item.pet.Pet;
+import me.godspunky.skyblock.features.launchpads.LaunchPadHandler;
+import me.godspunky.skyblock.features.ranks.GodspunkyPlayer;
+import me.godspunky.skyblock.features.ranks.PlayerChatListener;
+import me.godspunky.skyblock.features.ranks.PlayerJoinQuitListener;
+import me.godspunky.skyblock.features.ranks.SetRankCommand;
+import me.godspunky.skyblock.features.region.Region;
+import me.godspunky.skyblock.features.region.RegionType;
+import me.godspunky.skyblock.features.slayer.SlayerQuest;
+import me.godspunky.skyblock.features.wardrobe.Command.WardrobeCommand;
+import me.godspunky.skyblock.features.wardrobe.Command.WardrobeTabCompleter;
+import me.godspunky.skyblock.features.wardrobe.DataManager.Page1Data;
+import me.godspunky.skyblock.features.wardrobe.DataManager.Page2Data;
+import me.godspunky.skyblock.features.wardrobe.GUI.WardrobeGUI;
+import me.godspunky.skyblock.features.wardrobe.Listener.CheckPlayerGUIListener;
+import me.godspunky.skyblock.features.wardrobe.Listener.WardrobeListener;
+import me.godspunky.skyblock.gui.GUIListener;
+import me.godspunky.skyblock.gui.ProfileViewerGUI;
+import me.godspunky.skyblock.listener.*;
+import me.godspunky.skyblock.sql.SQLDatabase;
+import me.godspunky.skyblock.sql.SQLRegionData;
+import me.godspunky.skyblock.sql.SQLWorldData;
+import me.godspunky.skyblock.user.AuctionSettings;
+import me.godspunky.skyblock.user.User;
+import me.godspunky.skyblock.util.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -52,7 +49,6 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
@@ -129,12 +125,10 @@ public final class Skyblock extends JavaPlugin {
         establishRegions();
         loadItems();
         loadAuctions();
-        CategoryManger.initItems();
         synchronizeTime();
         this.getCommand("setrank").setExecutor(new SetRankCommand());
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
-        getServer().getPluginManager().registerEvents(new BazaarGui(), this);
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
@@ -265,7 +259,6 @@ public final class Skyblock extends JavaPlugin {
         new ItemListener();
         new GUIListener();
         new WorldListener();
-        new BazaarGui();
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded listeners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
@@ -357,7 +350,7 @@ public final class Skyblock extends JavaPlugin {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading Items...");
         long start = System.currentTimeMillis();
 
-        Class.forName("me.adarsh.godspunkycore.features.item.SMaterial"); // ensuring materials are loaded prior to this
+        Class.forName("me.godspunky.skyblock.features.item.SMaterial"); // ensuring materials are loaded prior to this
         for (SMaterial material : SMaterial.values()) {
             if (material.hasClass())
                 material.getStatistics().load();
@@ -377,7 +370,7 @@ public final class Skyblock extends JavaPlugin {
             Material result = recipe.getResult().getType();
             if (recipe instanceof ShapedRecipe) {
                 ShapedRecipe shaped = (ShapedRecipe) recipe;
-                me.adarsh.godspunkycore.features.item.ShapedRecipe specShaped = new me.adarsh.godspunkycore.features.item.ShapedRecipe(SItem.convert(shaped.getResult()),
+                me.godspunky.skyblock.features.item.ShapedRecipe specShaped = new me.godspunky.skyblock.features.item.ShapedRecipe(SItem.convert(shaped.getResult()),
                         Groups.EXCHANGEABLE_RECIPE_RESULTS.contains(result))
                         .shape(shaped.getShape());
                 for (Map.Entry<Character, ItemStack> entry : shaped.getIngredientMap().entrySet()) {
@@ -389,7 +382,7 @@ public final class Skyblock extends JavaPlugin {
             }
             if (recipe instanceof ShapelessRecipe) {
                 ShapelessRecipe shapeless = (ShapelessRecipe) recipe;
-                me.adarsh.godspunkycore.features.item.ShapelessRecipe specShapeless = new me.adarsh.godspunkycore.features.item.ShapelessRecipe(SItem.convert(shapeless.getResult()),
+                me.godspunky.skyblock.features.item.ShapelessRecipe specShapeless = new me.godspunky.skyblock.features.item.ShapelessRecipe(SItem.convert(shapeless.getResult()),
                         Groups.EXCHANGEABLE_RECIPE_RESULTS.contains(result));
                 for (ItemStack stack : shapeless.getIngredientList())
                     specShapeless.add(SMaterial.getSpecEquivalent(stack.getType(), stack.getDurability()), stack.getAmount());

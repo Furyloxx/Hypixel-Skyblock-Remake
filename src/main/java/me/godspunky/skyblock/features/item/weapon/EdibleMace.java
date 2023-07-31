@@ -1,7 +1,7 @@
-package me.adarsh.godspunkycore.features.item.weapon;
+package me.godspunky.skyblock.features.item.weapon;
 
-import me.adarsh.godspunkycore.features.item.*;
-import me.adarsh.godspunkycore.user.User;
+import me.godspunky.skyblock.features.item.*;
+import me.godspunky.skyblock.user.User;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.*;
 

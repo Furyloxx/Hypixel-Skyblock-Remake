@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.hoe.vanilla;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class IronHoe implements ToolStatistics, MaterialFunction {
     @Override

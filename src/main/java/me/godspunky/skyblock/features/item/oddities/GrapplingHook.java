@@ -2,7 +2,6 @@ package me.godspunky.skyblock.features.item.oddities;
 
 import me.godspunky.skyblock.Skyblock;
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;

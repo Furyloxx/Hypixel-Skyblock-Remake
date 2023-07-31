@@ -4,7 +4,6 @@ import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.region.Region;
 import me.godspunky.skyblock.features.region.RegionType;
 import me.godspunky.skyblock.user.PlayerUtils;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 

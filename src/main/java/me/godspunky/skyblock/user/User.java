@@ -23,7 +23,6 @@ import me.godspunky.skyblock.features.region.Cuboid;
 import me.godspunky.skyblock.features.region.Region;
 import me.godspunky.skyblock.features.region.RegionType;
 import me.godspunky.skyblock.features.skill.*;
-import me.godspunky.skyblock.features.skill.*;
 import me.godspunky.skyblock.features.slayer.SlayerBossType;
 import me.godspunky.skyblock.features.slayer.SlayerQuest;
 import me.godspunky.skyblock.util.SUtil;

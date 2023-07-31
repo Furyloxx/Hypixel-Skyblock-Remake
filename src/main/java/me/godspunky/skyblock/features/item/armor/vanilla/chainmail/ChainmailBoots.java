@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.vanilla.chainmail;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class ChainmailBoots implements ToolStatistics, MaterialFunction {
     @Override

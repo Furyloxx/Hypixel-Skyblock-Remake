@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.weapon;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
 
 public class RevenantFalchion implements ToolStatistics, MaterialFunction, Ability {

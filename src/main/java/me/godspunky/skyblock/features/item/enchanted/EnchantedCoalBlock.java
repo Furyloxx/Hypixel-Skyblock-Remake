@@ -1,6 +1,6 @@
-package me.adarsh.godspunkycore.features.item.enchanted;
+package me.godspunky.skyblock.features.item.enchanted;
 
-import me.adarsh.godspunkycore.features.item.*;
+import me.godspunky.skyblock.features.item.*;
 
 public class EnchantedCoalBlock implements EnchantedMaterialStatistics, MaterialFunction {
     @Override

@@ -6,7 +6,6 @@ import me.godspunky.skyblock.user.User;
 import me.godspunky.skyblock.util.FerocityCalculation;
 import me.godspunky.skyblock.util.SUtil;
 import me.godspunky.skyblock.util.Sputnik;
-import me.godspunky.skyblock.features.item.*;
 import net.minecraft.server.v1_8_R3.Entity;
 import net.minecraft.server.v1_8_R3.Packet;
 import net.minecraft.server.v1_8_R3.PacketPlayOutAnimation;

@@ -2,7 +2,6 @@ package me.godspunky.skyblock.features.item.weapon;
 
 import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.user.User;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.*;

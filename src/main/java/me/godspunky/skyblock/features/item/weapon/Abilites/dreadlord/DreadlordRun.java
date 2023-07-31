@@ -1,7 +1,7 @@
-package me.adarsh.godspunkycore.features.item.weapon.Abilites.dreadlord;
+package me.godspunky.skyblock.features.item.weapon.Abilites.dreadlord;
 
-import me.adarsh.godspunkycore.Skyblock;
-import me.adarsh.godspunkycore.user.User;
+import me.godspunky.skyblock.Skyblock;
+import me.godspunky.skyblock.user.User;
 import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.util.Vector;

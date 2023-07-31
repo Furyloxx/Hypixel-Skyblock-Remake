@@ -17,7 +17,6 @@ import me.godspunky.skyblock.user.PlayerUtils;
 import me.godspunky.skyblock.user.User;
 import me.godspunky.skyblock.util.Groups;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;

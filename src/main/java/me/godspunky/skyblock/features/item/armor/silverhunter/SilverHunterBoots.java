@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.silverhunter;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class SilverHunterBoots implements ToolStatistics, MaterialFunction {
     @Override
