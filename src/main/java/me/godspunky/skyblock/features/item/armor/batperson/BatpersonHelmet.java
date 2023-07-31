@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.batperson;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class BatpersonHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

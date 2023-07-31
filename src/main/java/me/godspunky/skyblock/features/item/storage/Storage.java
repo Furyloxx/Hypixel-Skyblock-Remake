@@ -2,7 +2,6 @@ package me.godspunky.skyblock.features.item.storage;
 
 import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.item.*;
 import net.minecraft.server.v1_8_R3.MojangsonParseException;
 import net.minecraft.server.v1_8_R3.MojangsonParser;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;

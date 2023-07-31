@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.blaze;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class BlazeHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

@@ -1,7 +1,7 @@
 package me.godspunky.skyblock;
 
+import com.onarandombox.MultiverseCore.MultiverseCore;
 import lombok.SneakyThrows;
-import me.godspunky.skyblock.command.*;
 import me.godspunky.skyblock.command.*;
 import me.godspunky.skyblock.config.Config;
 import me.godspunky.skyblock.features.Dungeon.DungeonGenerator;
@@ -32,14 +32,13 @@ import me.godspunky.skyblock.features.wardrobe.GUI.WardrobeGUI;
 import me.godspunky.skyblock.features.wardrobe.Listener.CheckPlayerGUIListener;
 import me.godspunky.skyblock.features.wardrobe.Listener.WardrobeListener;
 import me.godspunky.skyblock.gui.GUIListener;
-import me.godspunky.skyblock.listener.*;
+import me.godspunky.skyblock.gui.ProfileViewerGUI;
 import me.godspunky.skyblock.listener.*;
 import me.godspunky.skyblock.sql.SQLDatabase;
 import me.godspunky.skyblock.sql.SQLRegionData;
 import me.godspunky.skyblock.sql.SQLWorldData;
 import me.godspunky.skyblock.user.AuctionSettings;
 import me.godspunky.skyblock.user.User;
-import me.godspunky.skyblock.util.*;
 import me.godspunky.skyblock.util.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -62,7 +61,7 @@ import java.util.Map;
 
 public final class Skyblock extends JavaPlugin {
 
-
+    public static MultiverseCore core = (MultiverseCore)Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
     private static Skyblock plugin;
     public static Page1Data Page_1;
     public static Page2Data Page_2;
@@ -130,7 +129,6 @@ public final class Skyblock extends JavaPlugin {
         this.getCommand("setrank").setExecutor(new SetRankCommand());
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
-        getServer().getPluginManager().registerEvents(new ProtectionListener(), this);
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");

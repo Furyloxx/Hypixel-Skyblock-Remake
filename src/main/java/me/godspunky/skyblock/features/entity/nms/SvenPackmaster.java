@@ -9,7 +9,6 @@ import me.godspunky.skyblock.features.item.SItem;
 import me.godspunky.skyblock.features.item.SMaterial;
 import me.godspunky.skyblock.user.User;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.entity.*;
 import net.minecraft.server.v1_8_R3.EntityWolf;
 import net.minecraft.server.v1_8_R3.GenericAttributes;
 import net.minecraft.server.v1_8_R3.World;

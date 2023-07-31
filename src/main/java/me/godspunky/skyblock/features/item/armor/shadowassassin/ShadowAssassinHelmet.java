@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.shadowassassin;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class ShadowAssassinHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

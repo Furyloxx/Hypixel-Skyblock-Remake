@@ -2,7 +2,6 @@ package me.godspunky.skyblock.gui;
 
 import me.godspunky.skyblock.features.collection.ItemCollection;
 import me.godspunky.skyblock.features.skill.*;
-import me.godspunky.skyblock.features.skill.*;
 import me.godspunky.skyblock.user.User;
 import me.godspunky.skyblock.util.SUtil;
 import org.bukkit.ChatColor;

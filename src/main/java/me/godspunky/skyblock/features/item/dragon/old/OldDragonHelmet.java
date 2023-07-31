@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.dragon.old;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class OldDragonHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

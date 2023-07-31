@@ -5,7 +5,6 @@ import me.godspunky.skyblock.features.entity.*;
 import me.godspunky.skyblock.features.item.SMaterial;
 import me.godspunky.skyblock.util.EntityManager;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.entity.*;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;

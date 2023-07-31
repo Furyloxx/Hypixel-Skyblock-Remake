@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.glacite;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class GlaciteHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

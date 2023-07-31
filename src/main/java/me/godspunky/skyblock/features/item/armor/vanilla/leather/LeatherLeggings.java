@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.vanilla.leather;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class LeatherLeggings implements ToolStatistics, MaterialFunction {
     @Override

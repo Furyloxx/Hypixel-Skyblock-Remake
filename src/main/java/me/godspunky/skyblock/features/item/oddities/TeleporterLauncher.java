@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.oddities;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 
 public class TeleporterLauncher implements MaterialStatistics, MaterialFunction, ItemData {

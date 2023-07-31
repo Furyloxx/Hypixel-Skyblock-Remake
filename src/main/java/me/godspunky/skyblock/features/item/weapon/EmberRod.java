@@ -1,8 +1,10 @@
 package me.godspunky.skyblock.features.item.weapon;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Fireball;
+import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
 
 public class EmberRod implements ToolStatistics, MaterialFunction, Ability {
 
@@ -24,6 +26,15 @@ public class EmberRod implements ToolStatistics, MaterialFunction, Ability {
     @Override
     public String getAbilityDescription() {
         return ChatColor.GRAY+"Shoot 3 Fireballs which deal"+ ChatColor.RED +" 30 "+ChatColor.GRAY+"damage in rapid succession in front of you!";
+    }
+
+    @Override
+    public void onAbilityUse(Player player, SItem sItem) {
+        Vector direction = player.getLocation().getDirection();
+        for (int i = 0; i < 4; i++) {
+            Fireball fireball = player.getWorld().spawn(player.getEyeLocation().add(direction), Fireball.class);
+            fireball.setVelocity(direction.multiply(0.2));
+        }
     }
 
     @Override

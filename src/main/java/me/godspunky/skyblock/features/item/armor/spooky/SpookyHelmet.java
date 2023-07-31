@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.spooky;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class SpookyHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

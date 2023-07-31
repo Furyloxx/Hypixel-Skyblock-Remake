@@ -8,7 +8,6 @@ import me.godspunky.skyblock.features.item.bow.BowFunction;
 import me.godspunky.skyblock.user.PlayerUtils;
 import me.godspunky.skyblock.util.DefenseReplacement;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Arrow;

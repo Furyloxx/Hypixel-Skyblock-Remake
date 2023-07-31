@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.miner;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class MinerHelmet implements ToolStatistics, MaterialFunction {
     @Override

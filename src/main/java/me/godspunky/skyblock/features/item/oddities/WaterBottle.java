@@ -4,7 +4,6 @@ import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.potion.PotionEffect;
 import me.godspunky.skyblock.features.potion.PotionEffectType;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.item.*;
 import net.minecraft.server.v1_8_R3.NBTTagCompound;
 import org.bukkit.ChatColor;
 

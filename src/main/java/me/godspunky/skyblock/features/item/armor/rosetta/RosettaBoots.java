@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.rosetta;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class RosettaBoots implements ToolStatistics, MaterialFunction {
     @Override

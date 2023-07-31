@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.snow;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class SnowSuitHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

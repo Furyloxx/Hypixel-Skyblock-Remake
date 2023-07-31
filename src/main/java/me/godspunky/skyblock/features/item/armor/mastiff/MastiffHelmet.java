@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.mastiff;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class MastiffHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override

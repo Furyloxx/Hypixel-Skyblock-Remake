@@ -4,7 +4,6 @@ import me.godspunky.skyblock.command.BatphoneCommand;
 import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.sequence.SoundSequenceType;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.item.*;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;

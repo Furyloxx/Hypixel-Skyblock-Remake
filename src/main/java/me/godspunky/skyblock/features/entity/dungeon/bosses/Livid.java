@@ -2,7 +2,6 @@ package me.godspunky.skyblock.features.entity.dungeon.bosses;
 
 import me.godspunky.skyblock.features.entity.*;
 import me.godspunky.skyblock.features.item.SMaterial;
-import me.godspunky.skyblock.features.entity.*;
 
 import java.util.Arrays;
 import java.util.List;

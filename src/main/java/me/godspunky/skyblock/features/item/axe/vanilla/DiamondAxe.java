@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.axe.vanilla;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class DiamondAxe implements ToolStatistics, MaterialFunction {
     @Override

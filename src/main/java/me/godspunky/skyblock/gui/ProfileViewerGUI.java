@@ -6,6 +6,7 @@ import me.godspunky.skyblock.util.SUtil;
 import me.godspunky.skyblock.util.Sputnik;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -27,6 +28,9 @@ public class ProfileViewerGUI extends GUI {
     }
 
     public void onOpen(GUIOpenEvent e) {
+        if (e.getPlayer().getType().equals(EntityType.FAKE_PLAYER)){
+            e.setCancelled(true);
+        }
         if (this.p == null)
             return;
         fill(BLACK_STAINED_GLASS_PANE);

@@ -2,7 +2,6 @@ package me.godspunky.skyblock.features.item.enchanting;
 
 import me.godspunky.skyblock.features.enchantment.Enchantment;
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class EnchantedBook implements MaterialStatistics, MaterialFunction, Enchantable {
     private static final MaterialQuantifiable PAPER_16 = new MaterialQuantifiable(SMaterial.PAPER, 16);

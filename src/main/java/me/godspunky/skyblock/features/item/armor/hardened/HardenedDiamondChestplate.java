@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.hardened;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 
 public class HardenedDiamondChestplate implements ToolStatistics, MaterialFunction {

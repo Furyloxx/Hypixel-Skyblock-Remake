@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.flamebreaker;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class Flamebreakerboots implements ToolStatistics, MaterialFunction {
     @Override

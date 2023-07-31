@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.tarantula;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class ToxicArrowPoison implements MaterialStatistics, MaterialFunction {
     @Override

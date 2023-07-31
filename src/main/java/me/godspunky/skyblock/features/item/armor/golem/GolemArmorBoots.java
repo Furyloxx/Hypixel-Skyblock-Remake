@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.golem;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class GolemArmorBoots implements ToolStatistics, MaterialFunction {
     @Override

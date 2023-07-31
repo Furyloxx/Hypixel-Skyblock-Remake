@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.armor.vanilla.diamond;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class DiamondChestplate implements ToolStatistics, MaterialFunction {
     @Override

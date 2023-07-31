@@ -2,7 +2,6 @@ package me.godspunky.skyblock.features.item.weapon;
 
 import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.weapon.Abilites.FrozenScythe.FrozenScytheAbility;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 

@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.pickaxe.vanilla.pickaxe;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
 
 public class PromisingPickaxe implements ToolStatistics, MaterialFunction {

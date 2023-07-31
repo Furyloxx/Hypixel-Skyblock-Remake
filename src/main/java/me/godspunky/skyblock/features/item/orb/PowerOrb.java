@@ -5,7 +5,6 @@ import me.godspunky.skyblock.features.entity.SEntity;
 import me.godspunky.skyblock.features.entity.SEntityType;
 import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.item.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.Location;

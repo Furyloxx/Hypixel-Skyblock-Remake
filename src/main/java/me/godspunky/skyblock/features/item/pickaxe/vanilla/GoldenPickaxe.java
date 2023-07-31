@@ -1,7 +1,6 @@
 package me.godspunky.skyblock.features.item.pickaxe.vanilla;
 
 import me.godspunky.skyblock.features.item.*;
-import me.godspunky.skyblock.features.item.*;
 
 public class GoldenPickaxe implements ToolStatistics, MaterialFunction {
     @Override

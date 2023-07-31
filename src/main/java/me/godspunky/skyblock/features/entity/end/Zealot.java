@@ -7,7 +7,6 @@ import me.godspunky.skyblock.features.item.SMaterial;
 import me.godspunky.skyblock.features.item.pet.Pet;
 import me.godspunky.skyblock.user.User;
 import me.godspunky.skyblock.util.SUtil;
-import me.godspunky.skyblock.features.entity.*;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
