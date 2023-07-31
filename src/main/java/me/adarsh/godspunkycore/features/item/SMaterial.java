@@ -504,6 +504,8 @@ public enum SMaterial {
 
     // Enchanted Items
     ENCHANTED_BONE(Material.BONE, EnchantedBone.class),
+    ENCHANTED_COAL_BLOCK(Material.COAL_BLOCK, EnchantedCoalBlock.class),
+    ENCHANTED_COBBLESTONE(Material.COBBLESTONE, EnchantedCobblestone.class),
     ENCHANTED_OBSIDIAN(Material.OBSIDIAN, EnchantedObsidian.class),
     ENCHANTED_ENDER_PEARL(Material.ENDER_PEARL, EnchantedEnderPearl.class),
     ENCHANTED_EYE_OF_ENDER(Material.EYE_OF_ENDER, EnchantedEyeOfEnder.class),

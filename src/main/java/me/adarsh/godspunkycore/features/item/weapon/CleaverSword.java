@@ -1,7 +1,10 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
+import me.adarsh.godspunkycore.user.User;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
+import org.bukkit.entity.*;
 
 public class CleaverSword implements ToolStatistics, MaterialFunction {
 

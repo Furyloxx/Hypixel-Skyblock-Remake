@@ -61,7 +61,6 @@ public class AspectOfTheDragons implements ToolStatistics, MaterialFunction, Abi
             if (entity instanceof Player || entity instanceof EnderDragon || entity instanceof EnderDragonPart)
                 continue;
             User user = User.getUser(player.getUniqueId());
-            entity.setVelocity(player.getLocation().toVector().subtract(entity.getLocation().toVector()).normalize().multiply(-1.0).multiply(50.0));
             user.damageEntity((LivingEntity) entity, 12000.0);
         }
     }

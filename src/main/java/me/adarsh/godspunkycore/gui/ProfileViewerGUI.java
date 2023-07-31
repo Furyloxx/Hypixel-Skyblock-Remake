@@ -6,6 +6,8 @@ import me.adarsh.godspunkycore.util.SUtil;
 import me.adarsh.godspunkycore.util.Sputnik;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -29,6 +31,9 @@ public class ProfileViewerGUI extends GUI {
     }
 
     public void onOpen(GUIOpenEvent e) {
+        if (e.getPlayer().getType().equals(EntityType.FAKE_PLAYER)){
+            e.setCancelled(true);
+        }
         if (this.p == null)
             return;
         fill(BLACK_STAINED_GLASS_PANE);
