@@ -858,9 +858,12 @@ public class User {
             return false;
         }
         World world = Bukkit.getWorld("islands");
+        if (world == null)
+            return false;
         User user = User.getUser(player.getUniqueId());
         double x = player.getLocation().getX();
         double z = player.getLocation().getZ();
+        if (islandX == null && islandZ == null) return false;
         Location loc1 = new Location(world, islandX, 100, islandZ);
         loc1.add(100, 100, 100);
         Location loc2 = new Location(world, islandX, 100, islandZ);

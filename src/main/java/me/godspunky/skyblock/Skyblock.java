@@ -1,6 +1,5 @@
 package me.godspunky.skyblock;
 
-import com.onarandombox.MultiverseCore.MultiverseCore;
 import lombok.SneakyThrows;
 import me.godspunky.skyblock.command.*;
 import me.godspunky.skyblock.config.Config;
@@ -61,7 +60,6 @@ import java.util.Map;
 
 public final class Skyblock extends JavaPlugin {
 
-    public static MultiverseCore core = (MultiverseCore)Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
     private static Skyblock plugin;
     public static Page1Data Page_1;
     public static Page2Data Page_2;

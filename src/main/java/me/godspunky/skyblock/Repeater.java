@@ -71,11 +71,12 @@ public class Repeater {
                     int manaPool = SUtil.blackMagic(100 + statistics.getIntelligence().addAll());
 
                     // Hand Validation and Hand Statistics
+
                     SItem hand = SItem.find(inventory.getItemInHand());
                     if (hand == null)
                     {
                         hand = SItem.of(inventory.getItemInHand());
-                        if (hand != null)
+                        if (hand != null && !inventory.getItemInHand().getItemMeta().getDisplayName().contains("Minion"))
                             player.setItemInHand(hand.getStack());
                     }
                     PlayerUtils.updateHandStatistics(hand, statistics);
