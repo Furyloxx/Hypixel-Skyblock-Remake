@@ -2,10 +2,8 @@ package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.item.*;
-import me.adarsh.godspunkycore.listener.PlayerListener;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.FerocityCalculation;
-import me.adarsh.godspunkycore.util.Groups;
 import me.adarsh.godspunkycore.util.SUtil;
 import me.adarsh.godspunkycore.util.Sputnik;
 import net.minecraft.server.v1_8_R3.Entity;

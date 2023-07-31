@@ -1,13 +1,11 @@
 package me.adarsh.godspunkycore.features.entity.dungeon.minibosses;
 
-import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
-import me.adarsh.godspunkycore.user.User;
-import org.bukkit.*;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
 
 public class LostAdventurer implements ZombieStatistics, EntityStatistics, EntityFunction {
     @Override

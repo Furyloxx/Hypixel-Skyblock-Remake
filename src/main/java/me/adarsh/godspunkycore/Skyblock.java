@@ -1,6 +1,5 @@
 package me.adarsh.godspunkycore;
 
-import com.onarandombox.MultiverseCore.MultiverseCore;
 import lombok.SneakyThrows;
 import me.adarsh.godspunkycore.command.*;
 import me.adarsh.godspunkycore.config.Config;
@@ -8,8 +7,6 @@ import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
 import me.adarsh.godspunkycore.features.auction.AuctionBid;
 import me.adarsh.godspunkycore.features.auction.AuctionEscrow;
 import me.adarsh.godspunkycore.features.auction.AuctionItem;
-import me.adarsh.godspunkycore.features.bazaar.BazaarGui;
-import me.adarsh.godspunkycore.features.bazaar.CategoryManger;
 import me.adarsh.godspunkycore.features.entity.EntityPopulator;
 import me.adarsh.godspunkycore.features.entity.EntitySpawner;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
@@ -34,7 +31,6 @@ import me.adarsh.godspunkycore.features.wardrobe.GUI.WardrobeGUI;
 import me.adarsh.godspunkycore.features.wardrobe.Listener.CheckPlayerGUIListener;
 import me.adarsh.godspunkycore.features.wardrobe.Listener.WardrobeListener;
 import me.adarsh.godspunkycore.gui.GUIListener;
-import me.adarsh.godspunkycore.gui.ProfileViewerGUI;
 import me.adarsh.godspunkycore.listener.*;
 import me.adarsh.godspunkycore.sql.SQLDatabase;
 import me.adarsh.godspunkycore.sql.SQLRegionData;
@@ -42,7 +38,6 @@ import me.adarsh.godspunkycore.sql.SQLWorldData;
 import me.adarsh.godspunkycore.user.AuctionSettings;
 import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.*;
-import me.libraryaddict.disguise.DisguiseAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -52,7 +47,6 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
@@ -65,7 +59,7 @@ import java.util.Map;
 
 public final class Skyblock extends JavaPlugin {
 
-    public static MultiverseCore core = (MultiverseCore)Bukkit.getServer().getPluginManager().getPlugin("Multiverse-Core");
+
     private static Skyblock plugin;
     public static Page1Data Page_1;
     public static Page2Data Page_2;
@@ -129,12 +123,11 @@ public final class Skyblock extends JavaPlugin {
         establishRegions();
         loadItems();
         loadAuctions();
-        CategoryManger.initItems();
         synchronizeTime();
         this.getCommand("setrank").setExecutor(new SetRankCommand());
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
-        getServer().getPluginManager().registerEvents(new BazaarGui(), this);
+        getServer().getPluginManager().registerEvents(new ProtectionListener(), this);
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");
@@ -265,7 +258,6 @@ public final class Skyblock extends JavaPlugin {
         new ItemListener();
         new GUIListener();
         new WorldListener();
-        new BazaarGui();
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded listeners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }

@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.util;
 
 import org.bukkit.World;
-import org.bukkit.WorldCreator;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 

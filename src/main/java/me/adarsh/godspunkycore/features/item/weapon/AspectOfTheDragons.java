@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.features.item.weapon;
 
 import me.adarsh.godspunkycore.features.item.*;
-import me.adarsh.godspunkycore.features.skill.CombatSkill;
 import me.adarsh.godspunkycore.user.User;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;

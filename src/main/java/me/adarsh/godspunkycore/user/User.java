@@ -19,6 +19,7 @@ import me.adarsh.godspunkycore.features.item.pet.Pet;
 import me.adarsh.godspunkycore.features.potion.ActivePotionEffect;
 import me.adarsh.godspunkycore.features.potion.PotionEffect;
 import me.adarsh.godspunkycore.features.potion.PotionEffectType;
+import me.adarsh.godspunkycore.features.region.Cuboid;
 import me.adarsh.godspunkycore.features.region.Region;
 import me.adarsh.godspunkycore.features.region.RegionType;
 import me.adarsh.godspunkycore.features.skill.*;
@@ -853,9 +854,19 @@ public class User {
 
     public boolean isOnIsland() {
         Player player = Bukkit.getPlayer(uuid);
-        if (player == null)
+        if (player == null) {
             return false;
-        return isOnIsland(player.getLocation());
+        }
+        World world = Bukkit.getWorld("islands");
+        User user = User.getUser(player.getUniqueId());
+        double x = player.getLocation().getX();
+        double z = player.getLocation().getZ();
+        Location loc1 = new Location(world, islandX, 100, islandZ);
+        loc1.add(100, 100, 100);
+        Location loc2 = new Location(world, islandX, 100, islandZ);
+        loc2.subtract(100, 100, 100);
+        Cuboid cuboid = new Cuboid(loc1, loc2);
+        return cuboid.contains(player.getLocation());
     }
 
     public boolean isOnUserIsland() {
@@ -868,9 +879,12 @@ public class User {
         User user = User.getUser(player.getUniqueId());
         double x = player.getLocation().getX();
         double z = player.getLocation().getZ();
-        double islandX = user.getIslandX();
-        double islandZ = user.getIslandZ();
-        return true;
+        Location loc1 = new Location(world, islandX, 100, islandZ);
+        loc1.add(100, 100, 100);
+        Location loc2 = new Location(world, islandX, 100, islandZ);
+        loc2.subtract(100, 100, 100);
+        Cuboid cuboid = new Cuboid(loc1, loc2);
+        return !cuboid.contains(player.getLocation());
     }
 
     public boolean isOnIsland(Block block) {

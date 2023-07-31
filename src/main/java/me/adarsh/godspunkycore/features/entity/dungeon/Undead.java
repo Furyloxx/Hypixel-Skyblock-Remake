@@ -1,8 +1,8 @@
 package me.adarsh.godspunkycore.features.entity.dungeon;
 
-import me.adarsh.godspunkycore.features.entity.*;
-import me.adarsh.godspunkycore.features.item.SItem;
-import me.adarsh.godspunkycore.features.item.SMaterial;
+import me.adarsh.godspunkycore.features.entity.EntityFunction;
+import me.adarsh.godspunkycore.features.entity.EntityStatistics;
+import me.adarsh.godspunkycore.features.entity.ZombieStatistics;
 
 public class Undead implements ZombieStatistics, EntityStatistics, EntityFunction {
     @Override

@@ -1,7 +1,6 @@
 package me.adarsh.godspunkycore.listener;
 
 import me.adarsh.godspunkycore.Skyblock;
-import me.adarsh.godspunkycore.command.CommandFailException;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SlimeStatistics;
 import me.adarsh.godspunkycore.features.entity.caverns.CreeperFunction;
@@ -25,7 +24,6 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.inventory.ItemStack;

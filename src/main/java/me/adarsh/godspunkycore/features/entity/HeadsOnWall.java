@@ -4,8 +4,6 @@
 
 package me.adarsh.godspunkycore.features.entity;
 
-import me.adarsh.godspunkycore.features.entity.EnumWatcherType;
-
 public class HeadsOnWall {
     public String skullTexture;
     public String stype;

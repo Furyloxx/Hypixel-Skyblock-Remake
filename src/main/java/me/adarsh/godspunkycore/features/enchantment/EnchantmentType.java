@@ -1,15 +1,11 @@
 package me.adarsh.godspunkycore.features.enchantment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import me.adarsh.godspunkycore.features.item.SpecificItemType;
 import me.adarsh.godspunkycore.util.Sputnik;
 import org.bukkit.ChatColor;
 import org.bukkit.enchantments.Enchantment;
+
+import java.util.*;
 
 public class EnchantmentType {
     private static final Map<String, EnchantmentType> ENCHANTMENT_TYPE_CACHE = new HashMap<>();

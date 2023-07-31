@@ -4,7 +4,6 @@ import me.adarsh.godspunkycore.features.item.GenericItemType;
 import me.adarsh.godspunkycore.features.item.MaterialFunction;
 import me.adarsh.godspunkycore.features.item.Rarity;
 import me.adarsh.godspunkycore.features.item.SkullStatistics;
-import org.bukkit.ChatColor;
 
 public class FairySoul implements SkullStatistics, MaterialFunction {
     @Override

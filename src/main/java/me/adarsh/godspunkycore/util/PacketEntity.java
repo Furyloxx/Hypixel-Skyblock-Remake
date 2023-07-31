@@ -1,14 +1,11 @@
 package me.adarsh.godspunkycore.util;
 
 import me.adarsh.godspunkycore.Skyblock;
-import me.adarsh.godspunkycore.user.User;
 import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitTask;
-
 
 import java.util.ArrayList;
 import java.util.List;

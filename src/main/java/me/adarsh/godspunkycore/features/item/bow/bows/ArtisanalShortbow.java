@@ -2,7 +2,6 @@ package me.adarsh.godspunkycore.features.item.bow.bows;
 
 import me.adarsh.godspunkycore.features.item.*;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 
 public class ArtisanalShortbow implements ToolStatistics, MaterialFunction{
 

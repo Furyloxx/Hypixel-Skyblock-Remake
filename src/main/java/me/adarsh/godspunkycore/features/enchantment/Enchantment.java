@@ -1,13 +1,13 @@
 package me.adarsh.godspunkycore.features.enchantment;
 
+import me.adarsh.godspunkycore.util.SUtil;
+import org.bukkit.ChatColor;
+import org.bukkit.configuration.serialization.ConfigurationSerializable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import me.adarsh.godspunkycore.util.SUtil;
-import org.bukkit.ChatColor;
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 public class Enchantment implements ConfigurationSerializable {
     private final EnchantmentType type;

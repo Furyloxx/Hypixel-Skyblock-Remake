@@ -3,8 +3,6 @@ package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 import com.google.common.util.concurrent.AtomicDouble;
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.*;
-import me.adarsh.godspunkycore.features.item.SItem;
-import me.adarsh.godspunkycore.features.item.SMaterial;
 import me.adarsh.godspunkycore.util.SUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;

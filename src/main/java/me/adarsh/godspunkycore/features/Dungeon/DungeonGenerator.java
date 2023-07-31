@@ -1,54 +1,29 @@
 package me.adarsh.godspunkycore.features.Dungeon;
 
-import com.onarandombox.MultiverseCore.MultiverseCore;
-import com.onarandombox.MultiverseCore.api.MVWorldManager;
+
 import me.adarsh.godspunkycore.Repeater;
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.SEntity;
 import me.adarsh.godspunkycore.features.entity.SEntityType;
 import me.adarsh.godspunkycore.user.PlayerUtils;
-import me.adarsh.godspunkycore.util.BlankWorldCreator;
 import me.adarsh.godspunkycore.util.SLog;
 import me.adarsh.godspunkycore.util.SUtil;
 import me.adarsh.godspunkycore.util.Sputnik;
-import org.apache.commons.io.FileUtils;
 import org.bukkit.*;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class DungeonGenerator {
 
-    /*public void CreateDungeon(Player player){
-        long start = System.currentTimeMillis();
-        World world = new BlankWorldCreator("Dungeon_" + player.getUniqueId()).createWorld(); // todo use team id instead of player
-        File file = new File("plugins/GodSpunkySkyblockCore/floor1.schematic");
-        SEntityType type = SEntityType.LOST_ADVENTURER;
-        SEntity entity;
-        SUtil.pasteSchematic(file, new Location(world, 0, 100.0, 0 ), false);
-        player.teleport(new Location(world , 15 , 104 , -50));
-        player.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Generated Dungeon in ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
-        Location loc = new Location(world, 15, 102 , -12);
-        entity = new SEntity(loc, type);
-        player.playSound(player.getLocation(), Sound.EXPLODE,1.0f,1.0f);
-        player.sendMessage(ChatColor.GOLD+"Kill " + entity.getStatistics().getEntityName() + " To Spawn Bonzo");
-    }*/
-
-
-    public static void startFloor(Player plist) {
+    public static void startFloor(Player player) {
         long start = System.currentTimeMillis();
         Skyblock plugin = Skyblock.getPlugin();
         String worldname = "f1_" + generateRandom();
@@ -78,6 +53,7 @@ public class DungeonGenerator {
                     });
         } catch (IOException e) {
             SLog.severe("Failed to copy world 'f1' to '" + worldname + "'!");
+            player.sendMessage(ChatColor.AQUA + "[GodSpunky] : " + ChatColor.RED + "Failed to create dungeon! " + ChatColor.GREEN+" Report to admin");
             e.printStackTrace();
             return;
         }
@@ -86,17 +62,19 @@ public class DungeonGenerator {
 
         if (world == null) {
             SLog.severe("Failed to create the world '" + worldname + "'!");
+            player.sendMessage(ChatColor.AQUA + "[GodSpunky] : " + ChatColor.RED + "Failed to create dungeon! " + ChatColor.GREEN+" Report to admin");
             return;
         }
 
-        plist.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Generated Dungeon in ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        player.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Generated Dungeon in ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
 
 
         SUtil.delay(() -> {
             try {
-                r(plist, world);
+                r(player, world);
             } catch (Exception e) {
                 SLog.severe("Error occurred while executing r method: " + e.getMessage());
+                player.sendMessage(ChatColor.AQUA + "[GodSpunky] : " + ChatColor.RED + "Failed to create dungeon! " + ChatColor.GREEN+" Report to admin");
             }
         }, 1L);
 
@@ -125,10 +103,10 @@ public class DungeonGenerator {
             @Override
             public void run() {
                 if (countdown > 0) {
-                    plist.sendMessage(ChatColor.RED + "[Dungeon]: " + ChatColor.YELLOW + "Dungeon will start in " + countdown + " seconds.");
+                    player.sendMessage(ChatColor.RED + "[Dungeon]: " + ChatColor.YELLOW + "Dungeon will start in " + countdown + " seconds.");
                     countdown--;
                 } else {
-                    plist.sendMessage(ChatColor.GREEN + "Dungeon has started!");
+                    player.sendMessage(ChatColor.GREEN + "Dungeon has started!");
                     // Trigger dungeon door animation here
                     cancel(); // Stop the countdown
                     List<Location> doorPositions = Arrays.asList(
@@ -148,7 +126,7 @@ public class DungeonGenerator {
                     DungeonDoorAnimation doorAnimation = new DungeonDoorAnimation(doorPositions, animationTicks);
                     doorAnimation.startAnimation();
 
-                    plist.playSound(plist.getLocation(), Sound.EXPLODE, 1.0f, 1.0f);
+                    player.playSound(player.getLocation(), Sound.EXPLODE, 1.0f, 1.0f);
                 }
             }
         }.runTaskTimer(Skyblock.getPlugin(), 0L, 20L);

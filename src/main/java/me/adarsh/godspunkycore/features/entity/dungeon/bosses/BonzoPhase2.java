@@ -1,14 +1,14 @@
 package me.adarsh.godspunkycore.features.entity.dungeon.bosses;
 
-import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.Dungeon.DungeonGenerator;
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SItem;
 import me.adarsh.godspunkycore.features.item.SMaterial;
-import me.adarsh.godspunkycore.user.PlayerUtils;
-import me.adarsh.godspunkycore.user.User;
 import me.adarsh.godspunkycore.util.SUtil;
-import org.bukkit.*;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 

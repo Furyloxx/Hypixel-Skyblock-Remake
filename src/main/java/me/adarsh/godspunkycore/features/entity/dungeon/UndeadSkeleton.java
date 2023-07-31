@@ -1,8 +1,5 @@
 package me.adarsh.godspunkycore.features.entity.dungeon;
 
-import java.util.Arrays;
-import java.util.List;
-
 import me.adarsh.godspunkycore.Skyblock;
 import me.adarsh.godspunkycore.features.entity.*;
 import me.adarsh.godspunkycore.features.item.SMaterial;
@@ -14,6 +11,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.metadata.MetadataValue;
 import org.bukkit.plugin.Plugin;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class UndeadSkeleton implements EntityFunction, EntityStatistics {
     public String getEntityName() {
