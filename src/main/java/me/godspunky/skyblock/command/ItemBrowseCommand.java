@@ -6,7 +6,7 @@ import org.apache.commons.lang.StringUtils;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-@CommandParameters(description = "Browse from a catalog of items.", aliases = "browseitem,browseitems,browsei,bi,ib", permission = PlayerRank.BETA)
+@CommandParameters(description = "Browse from a catalog of items.", aliases = "browseitem,browseitems,browsei,bi,ib", permission = PlayerRank.BT)
 public class ItemBrowseCommand extends SCommand {
     @Override
     public void run(CommandSource sender, String[] args) {
