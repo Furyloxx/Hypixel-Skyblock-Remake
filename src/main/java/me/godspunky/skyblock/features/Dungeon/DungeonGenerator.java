@@ -214,14 +214,14 @@ public class DungeonGenerator {
                 player.sendMessage(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
                 player.sendMessage(Sputnik.trans("        &cThe Catacombs Demo &8- &eFloor I"));
                 player.sendMessage(Sputnik.trans("&c"));
-                player.sendMessage(Sputnik.trans("        &c☠&e Defeated &cSadan &ein &a" + Sputnik.formatTime(floorLivingSec)));
+                player.sendMessage(Sputnik.trans("        &c☠&e Defeated &cBonzo &ein &a" + Sputnik.formatTime(floorLivingSec)));
                 player.sendMessage(Sputnik.trans("&c"));
                 player.sendMessage(Sputnik.trans("            " + rew));
                 player.sendMessage(Sputnik.trans("&c"));
                 player.sendMessage(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
             } else {
                 player.sendMessage(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
-                player.sendMessage(Sputnik.trans("        &cThe Catacombs Demo &8- &eFloor VI"));
+                player.sendMessage(Sputnik.trans("        &cThe Catacombs &8- &eFloor I"));
                 player.sendMessage(Sputnik.trans("&c"));
                 player.sendMessage(Sputnik.trans("        &c☠&e You died, but you can try again!"));
                 player.sendMessage(Sputnik.trans("&c"));

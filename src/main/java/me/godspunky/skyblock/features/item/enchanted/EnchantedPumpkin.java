@@ -1,17 +1,11 @@
 package me.godspunky.skyblock.features.item.enchanted;
 
 import me.godspunky.skyblock.features.item.*;
-import org.bukkit.ChatColor;
 
-public class EnchantedCoal implements EnchantedMaterialStatistics, MaterialFunction {
+public class EnchantedPumpkin implements EnchantedMaterialStatistics, MaterialFunction {
     @Override
     public String getDisplayName() {
-        return "Enchanted Coal";
-    }
-
-    @Override
-    public String getLore(){
-        return ChatColor.GRAY+"Increases the speed of your minion by "+ChatColor.GREEN+"10% "+ChatColor.GRAY+"for 24 hours.";
+        return "Enchanted Pumpkin";
     }
 
     @Override
@@ -31,16 +25,11 @@ public class EnchantedCoal implements EnchantedMaterialStatistics, MaterialFunct
 
     @Override
     public SMaterial getCraftingMaterial() {
-        return SMaterial.COAL;
+        return SMaterial.PUMPKIN;
     }
 
     @Override
     public MaterialQuantifiable getResult() {
-        return new MaterialQuantifiable(SMaterial.ENCHANTED_COAL);
-    }
-
-    @Override
-    public SMaterial getBlockCraftingMaterial() {
-        return SMaterial.COAL_BLOCK;
+        return new MaterialQuantifiable(SMaterial.ENCHANTED_PUMPKIN);
     }
 }
