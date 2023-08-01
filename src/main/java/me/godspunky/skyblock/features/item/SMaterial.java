@@ -124,7 +124,12 @@ import me.godspunky.skyblock.features.item.dragon.superior.*;
 import me.godspunky.skyblock.features.item.dragon.unstable.*;
 import me.godspunky.skyblock.features.item.dragon.wise.*;
 import me.godspunky.skyblock.features.item.dragon.young.*;
-import me.godspunky.skyblock.features.item.enchanted.*;
+import me.godspunky.skyblock.features.item.enchanted.Woodandfish.*;
+import me.godspunky.skyblock.features.item.enchanted.combat.EnchantedBone;
+import me.godspunky.skyblock.features.item.enchanted.combat.EnchantedEnderPearl;
+import me.godspunky.skyblock.features.item.enchanted.combat.EnchantedEyeOfEnder;
+import me.godspunky.skyblock.features.item.enchanted.farming.*;
+import me.godspunky.skyblock.features.item.enchanted.mining.*;
 import me.godspunky.skyblock.features.item.enchanting.EnchantedBook;
 import me.godspunky.skyblock.features.item.entity.*;
 import me.godspunky.skyblock.features.item.entity.Bonzo.BonzoMask;
@@ -527,6 +532,22 @@ public enum SMaterial {
     ENCHANTED_COCOA_BEANS(Material.COCOA, EnchantedCocoaBean.class),
     ENCHANTED_COOKIE(Material.COOKIE, EnchantedCookie.class),
     ENCHANTED_CACTUS(Material.CACTUS, EnchantedCactus.class),
+    ENCHANTED_SUGAR(Material.SUGAR, EnchantedSugar.class),
+    ENCHANTED_PAPER(Material.PAPER, EnchantedPaper.class),
+    ENCHANTED_SUGARCANE(Material.SUGAR_CANE, EnchantedSugarCane.class),
+    ENCHANTED_LEATHER(Material.LEATHER, EnchantedLeather.class),
+    ENCHANTED_RAW_BEEF(Material.RAW_BEEF, EnchantedRawBeef.class),
+    ENCHANTED_RAW_PORK(Material.PORK, EnchantedRawPork.class),
+    ENCHANTED_GRILLED_PORK(Material.GRILLED_PORK, EnchantedGrilledPork.class),
+    ENCHANTED_RAW_CHICKEN(Material.RAW_CHICKEN,EnchantedRawChicken.class),
+    ENCHANTED_CAKE(Material.CAKE, EnchantedCake.class),
+    ENCHANTED_FEATHER(Material.FEATHER, EnchantedFeather.class),
+    ENCHANTED_MUTTON(Material.MUTTON, EnchantedMutton.class),
+    ENCHANTED_COOKED_MUTTON(Material.COOKED_MUTTON, EnchantedCookedMutton.class),
+    ENCHANTED_RAW_RABBIT(Material.RABBIT, EnchantedRawRabbit.class),
+    ENCHANTED_RABBIT_HIDE(Material.RABBIT_HIDE, EnchantedRabbitHide.class),
+    ENCHANTED_RABBIT_FOOT(Material.RABBIT_FOOT, EnchantedRabbitFoot.class),
+    ENCHANTED_NETHER_WART(Material.NETHER_STALK, EnchantedNetherWart.class),
     ENCHANTED_BONE(Material.BONE, EnchantedBone.class),
     ENCHANTED_REDSTONE(Material.REDSTONE, EnchantedRedstone.class),
     ENCHANTED_COAL_BLOCK(Material.COAL_BLOCK, EnchantedCoalBlock.class),
