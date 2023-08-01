@@ -135,6 +135,8 @@ import me.godspunky.skyblock.features.item.foraging.*;
 import me.godspunky.skyblock.features.item.hoe.vanilla.*;
 import me.godspunky.skyblock.features.item.hoe.vanilla.hoe.RookieHoe;
 import me.godspunky.skyblock.features.item.mining.*;
+import me.godspunky.skyblock.features.item.minions.Compactor;
+import me.godspunky.skyblock.features.item.minions.SuperCompactor3000;
 import me.godspunky.skyblock.features.item.oddities.*;
 import me.godspunky.skyblock.features.item.orb.*;
 import me.godspunky.skyblock.features.item.pet.EndermanPet;
@@ -502,8 +504,31 @@ public enum SMaterial {
     //
     FAIRY_SOUL(Material.SKULL_ITEM,FairySoul.class),
 
+    // Minions Upgrade
+    COMPACTOR(Material.DROPPER, Compactor.class),
+    SUPER_COMPACTOR_3000(Material.DROPPER, SuperCompactor3000.class),
+
     // Enchanted Items
+    ENCHANTED_BREAD(Material.BREAD, EnchantedBread.class),
+    ENCHANTED_HAY_BALE(Material.HAY_BLOCK, EnchantedHayBale.class),
+    ENCHANTED_WHEAT_SEED(Material.SEEDS, EnchantedSeed.class),
+    ENCHANTED_CARROT(Material.CARROT_ITEM, EnchantedCarrot.class),
+    ENCHANTED_CARROT_ON_A_STICK(Material.CARROT_STICK, EnchantedCarrotOnStick.class),
+    ENCHANTED_GOLDEN_CARROT(Material.GOLDEN_CARROT, EncahntedGoldenCarrot.class),
+    ENCHANTED_BAKED_POTATO(Material.BAKED_POTATO, EnchantedBakedPotato.class),
+    ENCHANTED_PUMPKIN(Material.PUMPKIN, EnchantedPumpkin.class),
+    ENCHANTED_MELON(Material.MELON, EncahntedMelon.class),
+    ENCHANTED_GLISTERING_MELON(Material.SPECKLED_MELON, EnchantedGlisteringMelon.class),
+    ENCHANTED_MELON_BLOCK(Material.MELON_BLOCK, EnchantedMelonBlock.class),
+    ENCHANTED_RED_MUSHROOM(Material.RED_MUSHROOM, EnchantedRedMushroom.class),
+    ENCHANTED_RED_MUSHROOM_BLOCK(Material.HUGE_MUSHROOM_2, EnchantedRedMushroomBlock.class),
+    ENCHANTED_BROWN_MUSHROOM(Material.BROWN_MUSHROOM, EnchantedBrownMushroom.class),
+    ENCHANTED_BROWN_MUSHROOM_BLOCK(Material.HUGE_MUSHROOM_1, EnchantedBronwMushroomBlock.class),
+    ENCHANTED_COCOA_BEANS(Material.COCOA, EnchantedCocoaBean.class),
+    ENCHANTED_COOKIE(Material.COOKIE, EnchantedCookie.class),
+    ENCHANTED_CACTUS(Material.CACTUS, EnchantedCactus.class),
     ENCHANTED_BONE(Material.BONE, EnchantedBone.class),
+    ENCHANTED_REDSTONE(Material.REDSTONE, EnchantedRedstone.class),
     ENCHANTED_COAL_BLOCK(Material.COAL_BLOCK, EnchantedCoalBlock.class),
     ENCHANTED_COBBLESTONE(Material.COBBLESTONE, EnchantedCobblestone.class),
     ENCHANTED_OBSIDIAN(Material.OBSIDIAN, EnchantedObsidian.class),
@@ -521,7 +546,7 @@ public enum SMaterial {
     ENCHANTED_ACACIA_WOOD(Material.LOG_2, EnchantedAcaciaWood.class),
     ENCHANTED_DARK_OAK_WOOD(Material.LOG_2, EnchantedDarkOakWood.class, (short) 1),
     ENCHANTED_POTATO(Material.POTATO_ITEM, EnchantedPotato.class),
-    ENCHANTED_BAKED_POTATO(Material.BAKED_POTATO, EnchantedPotato.class),
+
     // Bows
     END_STONE_BOW(Material.BOW, EndStoneBow.class),
     MOSQUITO_BOW(Material.BOW, MosquitoBow.class),

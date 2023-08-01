@@ -497,7 +497,6 @@ public class PlayerListener extends PListener {
 
         if (event.getRightClicked() instanceof Player) {
             Player rightClickedPlayer = (Player) event.getRightClicked();
-            GUIType.OTHERPLAYER_PROFILE.getGUI().open(player);
         }
     }
 
