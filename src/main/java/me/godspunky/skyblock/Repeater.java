@@ -117,12 +117,18 @@ public class Repeater {
                         }
                     }
 
+
                     // Health Addition
                     if (counters[1] == 4) {
                         if (player.getHealth() <= player.getMaxHealth()) {
                             player.setHealth(Math.min(player.getMaxHealth(), player.getHealth() + 1.5 + ((int) player.getMaxHealth() * 0.01) +
                                     ((1.5 + ((int) player.getMaxHealth() * 0.01)) * statistics.getHealthRegenerationPercentBonus())));
                         }
+                    }
+
+                    // fix mana
+                    if (MANA_MAP.get(player.getUniqueId()) > manaPool ){
+                        MANA_MAP.put(player.getUniqueId() , manaPool);
                     }
 
                     // Update Set

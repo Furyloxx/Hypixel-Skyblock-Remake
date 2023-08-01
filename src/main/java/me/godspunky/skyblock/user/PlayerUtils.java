@@ -71,30 +71,68 @@ public final class PlayerUtils {
     }
 
     public static PlayerStatistics updateHandStatistics(SItem hand, PlayerStatistics statistics) {
-        DoublePlayerStatistic strength = statistics.getStrength(),
-                intelligence = statistics.getIntelligence();
-        DoublePlayerStatistic critChance = statistics.getCritChance(), critDamage = statistics.getCritDamage(), speed = statistics.getSpeed();
-        DoublePlayerStatistic defence = statistics.getDefense(),
-                health = statistics.getMaxHealth();
-        if (hand != null && hand.getType().getStatistics().getType() != GenericItemType.ARMOR) {
+        double hpbwea = 0.0;
+        double a = 0.0;
+        Player player = Bukkit.getPlayer(statistics.getUuid());
+        User user = User.getUser(player.getUniqueId());
+        Pet.PetItem active = user.getActivePet();
+        int level = 0;
+        Pet pet = (Pet) SMaterial.GUNGA_PET.getGenericInstance();
+        DoublePlayerStatistic strength = statistics.getStrength();
+        DoublePlayerStatistic intelligence = statistics.getIntelligence();
+        DoublePlayerStatistic speed = statistics.getSpeed();
+        DoublePlayerStatistic critChance = statistics.getCritChance();
+        DoublePlayerStatistic critDamage = statistics.getCritDamage();
+        DoublePlayerStatistic ferocity = statistics.getFerocity();
+        DoublePlayerStatistic magicFind = statistics.getMagicFind();
+        DoublePlayerStatistic defense = statistics.getDefense();
+        DoublePlayerStatistic trueDefense = statistics.getTrueDefense();
+        statistics.zeroAll(4);
+        if (hand != null && hand.getType().getStatistics().getType() != GenericItemType.ARMOR && hand.getType().getStatistics().getType() != GenericItemType.ACCESSORY) {
             Reforge reforge = hand.getReforge() == null ? Reforge.blank() : hand.getReforge();
-            strength.set(PlayerStatistic.HAND, reforge.getStrength().getForRarity(hand.getRarity()));
-            critDamage.set(PlayerStatistic.HAND, reforge.getCritDamage().getForRarity(hand.getRarity()));
-            critChance.set(PlayerStatistic.HAND, reforge.getCritChance().getForRarity(hand.getRarity()));
-            intelligence.set(PlayerStatistic.HAND, reforge.getIntelligence().getForRarity(hand.getRarity()));
-            defence.set(PlayerStatistic.HAND, reforge.getDefence().getForRarity(hand.getRarity()));
-            health.set(PlayerStatistic.HAND, reforge.getHealth().getForRarity(hand.getRarity()));
-            speed.set(PlayerStatistic.HAND, reforge.getSpeed().getForRarity(hand.getRarity()));
+            strength.set(4, reforge.getStrength().getForRarity(hand.getRarity()));
+            critDamage.set(4, reforge.getCritDamage().getForRarity(hand.getRarity()));
+            critChance.set(4, reforge.getCritChance().getForRarity(hand.getRarity()));
+            intelligence.set(4, reforge.getIntelligence().getForRarity(hand.getRarity()));
             PlayerBoostStatistics handStatistics = hand.getType().getBoostStatistics();
-            if (handStatistics != null)
-                strength.add(PlayerStatistic.HAND, handStatistics.getBaseStrength());
+            if (handStatistics != null) {
+                strength.add(4, handStatistics.getBaseStrength());
+                critDamage.add(4, handStatistics.getBaseCritDamage());
+                critChance.add(4, handStatistics.getBaseCritChance());
+                intelligence.add(4, handStatistics.getBaseIntelligence());
+            }
         } else {
-            strength.zero(PlayerStatistic.HAND);
-            intelligence.zero(PlayerStatistic.HAND);
-            critChance.zero(PlayerStatistic.HAND);
-            critDamage.zero(PlayerStatistic.HAND);
+            strength.zero(4);
+            intelligence.zero(4);
+            critChance.zero(4);
+            critDamage.zero(4);
+            intelligence.zero(4);
+            speed.zero(4);
+            ferocity.zero(4);
         }
-        updateHealth(Bukkit.getPlayer(statistics.getUuid()), statistics);
+
+        if (hand != null && hand.getEnchantment(EnchantmentType.CHIMERA) != null) {
+            double lvl = hand.getEnchantment(EnchantmentType.CHIMERA).getLevel();
+            if (active != null) {
+                level = Pet.getLevel(active.getXp(), active.getRarity());
+                pet = (Pet) active.getType().getGenericInstance();
+                a = 20.0 * lvl / 100.0;
+            }
+        }
+        if (hand != null && hand.getDataInt("hpb") > 0) {
+            hpbwea = hand.getDataInt("hpb") * 2;
+        }
+        strength.add(4, hpbwea);
+
+        defense.add(4, a * (pet.getPerDefense() * (double) level));
+        strength.add(4, a * (pet.getPerStrength() * (double) level));
+        intelligence.add(4, a * (pet.getPerIntelligence() * (double) level));
+        speed.add(4, a * (pet.getPerSpeed() * (double) level));
+        critChance.add(4, a * (pet.getPerCritChance() * (double) level));
+        critDamage.add(4, a * (pet.getPerCritDamage() * (double) level));
+        magicFind.add(4, a * (pet.getPerMagicFind() * (double) level));
+        trueDefense.add(4, a * (pet.getPerTrueDefense() * (double) level));
+        PlayerUtils.updateHealth(Bukkit.getPlayer(statistics.getUuid()), statistics);
         return statistics;
     }
 
