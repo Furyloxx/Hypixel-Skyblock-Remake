@@ -11,6 +11,7 @@ import me.godspunky.skyblock.features.entity.EntityPopulator;
 import me.godspunky.skyblock.features.entity.EntitySpawner;
 import me.godspunky.skyblock.features.entity.SEntityType;
 import me.godspunky.skyblock.features.entity.StaticDragonManager;
+import me.godspunky.skyblock.features.gift.GiftListener;
 import me.godspunky.skyblock.features.item.ItemListener;
 import me.godspunky.skyblock.features.item.SItem;
 import me.godspunky.skyblock.features.item.SMaterial;
@@ -125,6 +126,7 @@ public final class Skyblock extends JavaPlugin {
         this.getCommand("setrank").setExecutor(new SetRankCommand());
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
+        getServer().getPluginManager().registerEvents(new GiftListener(), this);
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");

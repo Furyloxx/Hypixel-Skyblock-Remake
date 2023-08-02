@@ -597,7 +597,9 @@ public enum SMaterial {
     ARTISANAL_SHORTBOW(Material.BOW, ArtisanalShortbow.class),
 
     RUNAAN_BOW(Material.BOW, RunaanBow.class),
+
     // Special
+    WHITE_GIFT(Material.SKULL_ITEM, WhiteGift.class),
     EXTERMINATOR(Material.IRON_SWORD, Exterminator.class),
     TEST_ITEM(Material.SKULL_ITEM, TestItem.class),
     BAG_OF_COINS(Material.SKULL_ITEM, BagOfCoins.class),
