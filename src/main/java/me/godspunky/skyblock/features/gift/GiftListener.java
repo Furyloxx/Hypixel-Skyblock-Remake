@@ -28,8 +28,17 @@ public class GiftListener implements Listener {
         Location loc = player.getLocation().add(0, -1.5, 0);
         Location loc1 = player.getLocation().add(0, -0.5, 0);
         Location loc2 = player.getLocation().add(0, -1, 0);
+        Entity rightClickedEntity = e.getRightClicked();
+
+        if (!(rightClickedEntity instanceof Player)) {
+            return;
+        }
 
         // WHITE GIFT
+        ItemStack itemInHand = player.getInventory().getItemInHand();
+        if (itemInHand == null || itemInHand.getType() == null) {
+            return;
+        }
         if (rightclickedplayer.getType().equals(EntityType.PLAYER)) {
 
             if (player.getInventory().getItemInHand().getType() == null) {
@@ -89,7 +98,7 @@ public class GiftListener implements Listener {
                 }
 
             } else {
-                player.sendMessage("Item is not white gift !");
+                player.sendMessage("not an gift");
             }
         }
     }

@@ -274,6 +274,7 @@ public class SUtil {
         return stack;
     }
 
+
     public static void border(Inventory inventory, GUI gui, ItemStack stack, int cornerSlot, int cornerSlot2, boolean overwrite, boolean pickup) {
         if (cornerSlot < 0 || cornerSlot > inventory.getSize())
             throw new IllegalArgumentException("Corner 1 of the border described is out of bounds");

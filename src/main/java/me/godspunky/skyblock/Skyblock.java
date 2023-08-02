@@ -53,8 +53,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
@@ -172,6 +176,8 @@ public final class Skyblock extends JavaPlugin {
     }
 
 
+
+
     public void loadymldata(){
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading YAML Data...");
         long start = System.currentTimeMillis();
@@ -239,6 +245,8 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new SetDungeonHubCommand());
         cl.register(new PlayerLocationCommand());
         cl.register(new SetMountainCommand());
+        cl.register(new ReforgeCommand());
+
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
