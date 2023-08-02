@@ -292,7 +292,7 @@ public class Repeater {
                     }
                     String activeEffects = user.getEffects().toString();
                     boolean hasActiveEffects = user.getEffects().size() > 0;
-
+                    //header
                     IChatBaseComponent header = new ChatComponentText(
                             ChatColor.AQUA + "You are" +  ChatColor.RESET + " " +  ChatColor.AQUA + "playing on " + ChatColor.YELLOW + "" + ChatColor.BOLD + "MC.GODSPUNKY.IN\n");
                     //footer
