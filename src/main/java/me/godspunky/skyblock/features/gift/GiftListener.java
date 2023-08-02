@@ -1,5 +1,7 @@
 package me.godspunky.skyblock.features.gift;
 
+import me.godspunky.skyblock.features.item.SItem;
+import me.godspunky.skyblock.features.item.SMaterial;
 import me.godspunky.skyblock.features.ranks.GodspunkyPlayer;
 import me.godspunky.skyblock.util.SUtil;
 import me.godspunky.skyblock.util.SkullMaker;
@@ -31,25 +33,23 @@ public class GiftListener implements Listener {
         Entity rightClickedEntity = e.getRightClicked();
 
         if (!(rightClickedEntity instanceof Player)) {
+            e.setCancelled(true);
             return;
+        }
+
+        // CLICK LISTENER
+        if (rightClickedEntity.getType().equals(EntityType.ARMOR_STAND) && rightClickedEntity.getCustomName().contains("White Gift")){
+
         }
 
         // WHITE GIFT
-        ItemStack itemInHand = player.getInventory().getItemInHand();
-        if (itemInHand == null || itemInHand.getType() == null) {
-            return;
-        }
-        if (rightclickedplayer.getType().equals(EntityType.PLAYER)) {
+        if (rightClickedEntity.getType().equals(EntityType.PLAYER)) {
 
             if (player.getInventory().getItemInHand().getType() == null) {
+                e.setCancelled(true);
                 return;
             }
             if (player.getInventory().getItemInHand().getItemMeta().getDisplayName().contains("White Gift")) {
-                if (player.getWorld() == null) {
-                    e.setCancelled(true);
-                    player.sendMessage("Null World");
-                    return;
-                }
 
                 Entity ent = player.getWorld().spawn(loc, (Class) ArmorStand.class);
                 ArmorStand stand = (ArmorStand) ent;
@@ -64,8 +64,8 @@ public class GiftListener implements Listener {
                     player.getInventory().setItemInHand(null);
                 }
 
-                stand1.setCustomName(ChatColor.YELLOW + "From: " + ChatColor.translateAlternateColorCodes('&', userplayer.rank.getFormattedRank().toString()) + player.getDisplayName());
-                stand2.setCustomName(ChatColor.YELLOW + "To: " + ChatColor.translateAlternateColorCodes('&', rightclickplayer.rank.getFormattedRank().toString()) + rightclickedplayer.getDisplayName());
+                stand1.setCustomName(ChatColor.YELLOW + "From: " + player.getDisplayName());
+                stand2.setCustomName(ChatColor.YELLOW + "To: " + rightclickedplayer.getDisplayName());
                 stand.setCustomName("White Gift");
 
                 stand.setCustomNameVisible(false);
@@ -94,11 +94,9 @@ public class GiftListener implements Listener {
                     SUtil.delay(() -> ent2.remove(), 100);
 
                     // RETURN GIFT
-                    player.getInventory().addItem();
+                    SItem sItem = SItem.of(SMaterial.WHITE_GIFT);
+                    SUtil.delay(() -> player.getInventory().addItem(SItem.of(sItem.getType(), sItem.getVariant()).getStack()),100);
                 }
-
-            } else {
-                player.sendMessage("not an gift");
             }
         }
     }

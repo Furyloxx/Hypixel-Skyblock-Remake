@@ -5,6 +5,8 @@ import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
 import me.godspunky.skyblock.features.item.armor.TickingSet;
 import me.godspunky.skyblock.features.potion.ActivePotionEffect;
+import me.godspunky.skyblock.features.ranks.GodspunkyPlayer;
+import me.godspunky.skyblock.features.ranks.PlayerRank;
 import me.godspunky.skyblock.features.region.Region;
 import me.godspunky.skyblock.features.region.RegionType;
 import me.godspunky.skyblock.features.slayer.SlayerQuest;
@@ -275,12 +277,25 @@ public class Repeater {
                     }
                     sidebar.add(ChatColor.YELLOW + "mc.godspunky.in");
                     sidebar.apply(player);
+
                     // Tablist
+
+                    GodspunkyPlayer data = GodspunkyPlayer.getUser(player);
+                    try {
+                        if (data != null) {
+                            PlayerRank rank = data.rank;
+                            player.setDisplayName(ChatColor.translateAlternateColorCodes('&', rank.getPrefix()) +" "+ player.getName());
+                            player.setPlayerListName(ChatColor.translateAlternateColorCodes('&', rank.getPrefix()) +" "+ player.getName());
+                        }
+                    }catch (Exception ex){
+                        ex.printStackTrace();
+                    }
                     String activeEffects = user.getEffects().toString();
                     boolean hasActiveEffects = user.getEffects().size() > 0;
 
                     IChatBaseComponent header = new ChatComponentText(
                             ChatColor.AQUA + "You are" +  ChatColor.RESET + " " +  ChatColor.AQUA + "playing on " + ChatColor.YELLOW + "" + ChatColor.BOLD + "MC.GODSPUNKY.IN\n");
+                    //footer
                     IChatBaseComponent footer = new ChatComponentText(
                             "\n" + ChatColor.GREEN + "" + ChatColor.BOLD + "Active Effects\n" + "" +
                                     (hasActiveEffects ? ChatColor.GRAY + "        You have " + ChatColor.YELLOW + user.getEffects().size() + ChatColor.GRAY + " active effects. Use\n" + ChatColor.GRAY + "\"" + ChatColor.GOLD + "/effects" + ChatColor.GRAY + "\" to see them!\n" + activeEffects + "\n" : ChatColor.GRAY + "         No effects active. Drink potions or splash\n" + ChatColor.GRAY + "them on the ground to buff yourself!\n\n") +
