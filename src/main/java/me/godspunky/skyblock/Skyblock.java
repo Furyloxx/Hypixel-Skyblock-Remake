@@ -17,6 +17,10 @@ import me.godspunky.skyblock.features.item.SItem;
 import me.godspunky.skyblock.features.item.SMaterial;
 import me.godspunky.skyblock.features.item.pet.Pet;
 import me.godspunky.skyblock.features.launchpads.LaunchPadHandler;
+import me.godspunky.skyblock.features.partyandfriends.command.ChatCommand;
+import me.godspunky.skyblock.features.partyandfriends.command.PartyCommand;
+import me.godspunky.skyblock.features.partyandfriends.listener.ChatListener;
+import me.godspunky.skyblock.features.partyandfriends.party.PartyManager;
 import me.godspunky.skyblock.features.ranks.GodspunkyPlayer;
 import me.godspunky.skyblock.features.ranks.PlayerChatListener;
 import me.godspunky.skyblock.features.ranks.PlayerJoinQuitListener;
@@ -86,6 +90,15 @@ public final class Skyblock extends JavaPlugin {
 
     public Repeater repeater;
 
+    private static PartyManager partyManager;
+
+    public enum ChatTypes {
+        ALL_CHAT,
+        PARTY_CHAT,
+        REPLY_CHAT,
+        NO_CHAT
+    }
+
     // todo Minions
     @Override
     public void onLoad() {
@@ -99,6 +112,8 @@ public final class Skyblock extends JavaPlugin {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Found Bukkit server v" + Bukkit.getVersion());
         long start = System.currentTimeMillis();
         plugin = this;
+
+        partyManager = new PartyManager();
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         // Wardrobe data
@@ -175,6 +190,10 @@ public final class Skyblock extends JavaPlugin {
         GodspunkyPlayer.savePlayers();
     }
 
+    public static PartyManager getPartyManager() {
+        return partyManager;
+    }
+
 
 
 
@@ -246,6 +265,8 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new PlayerLocationCommand());
         cl.register(new SetMountainCommand());
         cl.register(new ReforgeCommand());
+        cl.register(new PartyCommand());
+        cl.register(new ChatCommand());
 
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
@@ -265,6 +286,7 @@ public final class Skyblock extends JavaPlugin {
         new ItemListener();
         new GUIListener();
         new WorldListener();
+        new ChatListener();
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded listeners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }

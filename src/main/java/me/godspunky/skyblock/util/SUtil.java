@@ -14,7 +14,6 @@ import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormat;
 import com.sk89q.worldedit.function.operation.Operation;
 import com.sk89q.worldedit.function.operation.Operations;
 import com.sk89q.worldedit.session.ClipboardHolder;
-import com.sk89q.worldedit.world.World;
 import com.sk89q.worldedit.world.registry.WorldData;
 import lombok.experimental.UtilityClass;
 import me.godspunky.skyblock.Skyblock;
@@ -30,6 +29,7 @@ import net.minecraft.server.v1_8_R3.*;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.*;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
@@ -539,7 +539,7 @@ public class SUtil {
             WorldEdit worldEdit = WorldEdit.getInstance();
             WorldData pasteWorldData = null;
             EditSession editSession = null;
-            World pasteWorld = null;
+            com.sk89q.worldedit.world.World pasteWorld = null;
 
             for (int i = 0; i < schematicFiles.size(); i++) {
                 File schematicFile = schematicFiles.get(i);
@@ -549,7 +549,7 @@ public class SUtil {
                         location.getX(), location.getY(), location.getZ());
 
                 if (i == 0) {
-                    pasteWorld = new BukkitWorld(location.getWorld());
+                    pasteWorld =  new BukkitWorld(location.getWorld());
                     pasteWorldData = pasteWorld.getWorldData();
                     editSession = worldEdit.getEditSessionFactory().getEditSession(pasteWorld, -1);
                 }
@@ -574,7 +574,7 @@ public class SUtil {
     public static boolean pasteSchematic(File schematicFile, Location location, boolean withAir) {
         com.sk89q.worldedit.Vector pasteLocation = new com.sk89q.worldedit.Vector(
                 location.getX(), location.getY(), location.getZ());
-        World pasteWorld = new BukkitWorld(location.getWorld());
+        com.sk89q.worldedit.world.World pasteWorld = new BukkitWorld(location.getWorld());
         WorldData pasteWorldData = pasteWorld.getWorldData();
 
         try (FileInputStream fileInputStream = new FileInputStream(schematicFile)) {
@@ -1089,6 +1089,14 @@ public class SUtil {
             if (minutes != 1) dur += "s";
         }
         return dur;
+    }
+
+    public static void broadcastWorld(String message, World world) {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player.getWorld().equals(world)) {
+                player.sendMessage(message);
+            }
+        }
     }
 
     public boolean deleteFolderRecursive(File folder) {

@@ -266,7 +266,7 @@ public class Repeater {
                                 String backend = " &" + colorcode + (int)dungeonmate.getHealth() + "&c❤";
                                 if (dungeonmate.getName() == nameofplayer)
                                     continue;
-                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&e[N/A&e] &b" + dungeonmate.getName() + backend));
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&e[&aA&e] &b" + dungeonmate.getName() + backend));
                             }
                         } else if (player.getWorld().getPlayers().size() == 1) {
                             sidebar.add(ChatColor.DARK_GRAY + "No Teammates");

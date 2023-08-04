@@ -62,19 +62,21 @@ public class BonzoPhase2 implements ZombieStatistics, EntityStatistics, EntityFu
     public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
         Player player = (Player) damager;
 
-        SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fAlright, maybe I'm just weak after all..")) , 20);
-        SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fBut my masters are a lot stronger..")) , 40);
-        SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fJust you wait...")) , 60);
+        World w = player.getWorld();
+
+        SUtil.delay( () -> SUtil.broadcastWorld(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fAlright, maybe I'm just weak after all.."),  w) , 20);
+        SUtil.delay( () -> SUtil.broadcastWorld(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fBut my masters are a lot stronger.."),  w) , 40);
+        SUtil.delay( () -> SUtil.broadcastWorld(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fJust you wait..."),  w) , 60);
 
 
         if (player.getWorld().getName().startsWith("f1_")) {
             // activate portal
             World f1 = player.getWorld();
-            SUtil.setBlocks(new Location(f1,119,85,243), new Location(f1,119,85,243), Material.PORTAL, false);
+            SUtil.setBlocks(new Location(f1,112,81,243), new Location(f1,110,85,243), Material.PORTAL, false);
         }
 
-        SUtil.delay(() -> DungeonGenerator.sendReMsg(true, killed.getWorld(),player), 30L);
-        SUtil.delay(() -> DungeonGenerator.endRoom2(killed.getWorld(), player), 200L);
+        SUtil.delay(() -> DungeonGenerator.sendReMsg(true, killed.getWorld()), 30L);
+        SUtil.delay(() -> DungeonGenerator.endRoom2(killed.getWorld()), 200L);
 
 
     }
