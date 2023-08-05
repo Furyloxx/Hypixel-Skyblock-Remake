@@ -267,6 +267,7 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new ReforgeCommand());
         cl.register(new PartyCommand());
         cl.register(new ChatCommand());
+        cl.register(new APICommand());
 
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
