@@ -145,7 +145,6 @@ public final class Skyblock extends JavaPlugin {
         this.getCommand("setrank").setExecutor(new SetRankCommand());
         getServer().getPluginManager().registerEvents(new PlayerChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinQuitListener(), this);
-        getServer().getPluginManager().registerEvents(new GiftListener(), this);
 
         long end = System.currentTimeMillis();
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully enabled Skyblock in " + SUtil.getTimeDifferenceAndColor(start, end) + ChatColor.WHITE + ".");

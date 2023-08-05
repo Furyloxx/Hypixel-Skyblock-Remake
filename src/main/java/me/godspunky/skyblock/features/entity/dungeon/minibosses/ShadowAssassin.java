@@ -6,6 +6,7 @@ import me.godspunky.skyblock.features.item.SMaterial;
 import me.godspunky.skyblock.util.SUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 

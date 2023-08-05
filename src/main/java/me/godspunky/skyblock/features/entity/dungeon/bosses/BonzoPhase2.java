@@ -5,12 +5,16 @@ import me.godspunky.skyblock.features.entity.*;
 import me.godspunky.skyblock.features.item.SItem;
 import me.godspunky.skyblock.features.item.SMaterial;
 import me.godspunky.skyblock.util.SUtil;
+import me.godspunky.skyblock.util.SkullMaker;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 import java.util.List;
@@ -76,9 +80,8 @@ public class BonzoPhase2 implements ZombieStatistics, EntityStatistics, EntityFu
         }
 
         SUtil.delay(() -> DungeonGenerator.sendReMsg(true, killed.getWorld()), 30L);
-        SUtil.delay(() -> DungeonGenerator.endRoom2(killed.getWorld()), 200L);
-
-
+        SUtil.delay(() -> damager.sendMessage(ChatColor.YELLOW+"Dungeon will be closed in"+ChatColor.GREEN+ " 60s!"), 40L);
+        SUtil.delay(() -> DungeonGenerator.endRoom2(killed.getWorld()), 1240L);
     }
 }
 

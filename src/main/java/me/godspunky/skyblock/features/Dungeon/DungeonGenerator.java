@@ -244,7 +244,7 @@ public class DungeonGenerator {
                     SUtil.broadcastWorld(Sputnik.trans("&a▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"),  w);
                     SUtil.broadcastWorld(Sputnik.trans("        &cThe Catacombs Demo &8- &eFloor I"),  w);
                     SUtil.broadcastWorld(Sputnik.trans("&c"),  w);
-                    SUtil.broadcastWorld(Sputnik.trans("        &c☠&e Defeated &cBonzo &ein &a" + Sputnik.formatTime((Integer) Repeater.FloorLivingSec.get(w.getUID()))),  w);
+                    SUtil.broadcastWorld(Sputnik.trans("        &c☠&e Defeated &cBonzo &ein &a"), w);
                     SUtil.broadcastWorld(Sputnik.trans("&c"),  w);
                     SUtil.broadcastWorld(Sputnik.trans("            " + rew),  w);
                     SUtil.broadcastWorld(Sputnik.trans("&c"),  w);

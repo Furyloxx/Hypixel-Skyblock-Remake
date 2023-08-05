@@ -21,11 +21,11 @@ public class UndeadSkeleton implements EntityFunction, EntityStatistics {
     }
 
     public double getEntityMaxHealth() {
-        return 1.0E8D;
+        return 50000.0;
     }
 
     public double getDamageDealt() {
-        return 800000.0D;
+        return 1280.0;
     }
 
     public double getXPDropped() {

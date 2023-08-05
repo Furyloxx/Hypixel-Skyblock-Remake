@@ -246,11 +246,24 @@ public class Repeater {
                     }
                     else if (player.getWorld().getName().contains("f1_") && !player.getWorld().getName().equals("f1_")) {
                         if (FloorLivingSec.containsKey(player.getWorld().getUID())) {
-                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a" + Sputnik.formatTime(FloorLivingSec.get(player.getWorld().getUID()))));
-                        } else {
+                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a" + FloorLivingSec.get(player.getWorld().getUID())));
+                        }else {
                             sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a00m 00s"));
+                        }if (player.getWorld().getName().contains("f1_")) {
+                            if (player.getWorld().getLivingEntities().size() == player.getWorld().getPlayers().size()+4) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &c0%"));
+                            } else if (player.getWorld().getLivingEntities().size() == player.getWorld().getPlayers().size()+3) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &c25%"));
+                            } else if (player.getWorld().getLivingEntities().size() == player.getWorld().getPlayers().size()+2) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &c50%"));
+                            } else if (player.getWorld().getLivingEntities().size() == player.getWorld().getPlayers().size()+1) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &c75%"));
+                            } else if (player.getWorld().getLivingEntities().size() <= player.getWorld().getPlayers().size()) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &c100%"));
+                            }else{
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &cN/A%"));
+                            }
                         }
-                        sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &cN/A%"));
                         sidebar.add(ChatColor.RED + "  ");
                         String nameofplayer = player.getName();
                         if (player.getWorld().getPlayers().size() > 1) {
@@ -298,7 +311,7 @@ public class Repeater {
                     //footer
                     IChatBaseComponent footer = new ChatComponentText(
                             "\n" + ChatColor.GREEN + "" + ChatColor.BOLD + "Active Effects\n" + "" +
-                                    (hasActiveEffects ? ChatColor.GRAY + "        You have " + ChatColor.YELLOW + user.getEffects().size() + ChatColor.GRAY + " active effects. Use\n" + ChatColor.GRAY + "\"" + ChatColor.GOLD + "/effects" + ChatColor.GRAY + "\" to see them!\n" + activeEffects + "\n" : ChatColor.GRAY + "         No effects active. Drink potions or splash\n" + ChatColor.GRAY + "them on the ground to buff yourself!\n\n") +
+                                    (hasActiveEffects ? ChatColor.GRAY + "        You have " + ChatColor.YELLOW + user.getEffects().size() + ChatColor.GRAY + " active effects. Use\n" + ChatColor.GRAY + "\"" + ChatColor.GOLD + "/effects" + ChatColor.GRAY + "\" to see them!\n"  + "\n" : ChatColor.GRAY + "         No effects active. Drink potions or splash\n" + ChatColor.GRAY + "them on the ground to buff yourself!\n\n") +
                                     ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Cookie Buff\n" + "" +
                                     ChatColor.GRAY + "Not active! Obtain booster cookies from the\n" + "community shop in the hub\n\n"+
                                     ChatColor.GREEN + "Ranks, Boosters, & MORE!" + ChatColor.RESET + " " + ChatColor.RED + "" + ChatColor.BOLD + "STORE.GODSPUNKY.IN");
