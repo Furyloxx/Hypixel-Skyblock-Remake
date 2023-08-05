@@ -125,9 +125,7 @@ import me.godspunky.skyblock.features.item.dragon.unstable.*;
 import me.godspunky.skyblock.features.item.dragon.wise.*;
 import me.godspunky.skyblock.features.item.dragon.young.*;
 import me.godspunky.skyblock.features.item.enchanted.Woodandfish.*;
-import me.godspunky.skyblock.features.item.enchanted.combat.EnchantedBone;
-import me.godspunky.skyblock.features.item.enchanted.combat.EnchantedEnderPearl;
-import me.godspunky.skyblock.features.item.enchanted.combat.EnchantedEyeOfEnder;
+import me.godspunky.skyblock.features.item.enchanted.combat.*;
 import me.godspunky.skyblock.features.item.enchanted.farming.*;
 import me.godspunky.skyblock.features.item.enchanted.mining.*;
 import me.godspunky.skyblock.features.item.enchanting.EnchantedBook;
@@ -580,9 +578,22 @@ public enum SMaterial {
     ENCHANTED_END_STONE(Material.ENDER_STONE, EnchantedEndStone.class),
     ENCHANTED_SNOW_BLOCK(Material.SNOW_BLOCK, EnchantedSnowBlock.class),
     ENCHANTED_MYCELIUM(Material.MYCEL, EnchantedMyceliun.class),
+    ENCHANTED_ROTTEN_FLESH(Material.ROTTEN_FLESH, EnchantedRottenFlesh.class),
     ENCHANTED_ENDER_PEARL(Material.ENDER_PEARL, EnchantedEnderPearl.class),
     ENCHANTED_BONE(Material.BONE, EnchantedBone.class),
+    ENCHANTED_BONE_MEAL(Material.INK_SACK, EnchantedBoneMeal.class, (short) 15),
+    ENCHANTED_STRING(Material.STRING, EnchantedString.class),
+    ENCHANTED_SPIDER_EYE(Material.SPIDER_EYE,EnchantedSpiderEye.class),
+    ENCHANTED_FERMENTED_SPIDER_EYE(Material.FERMENTED_SPIDER_EYE, EnchantedFermentedEye.class),
+    ENCHANTED_GUNPOWDER(Material.SULPHUR, EnchantedGunpowder.class),
+    ENCHANTED_FIREWORK_ROCKET(Material.FIREWORK, EnchantedFireworkRocket.class),
     ENCHANTED_EYE_OF_ENDER(Material.EYE_OF_ENDER, EnchantedEyeOfEnder.class),
+    ENCHANTED_GHAST_TEAR(Material.GHAST_TEAR, EnchantedGhastTear.class),
+    ENCHANTED_SLIMEBALL(Material.SLIME_BALL, EnchantedSlimeball.class),
+    ENCHANTED_SLIME_BLOCK(Material.SLIME_BLOCK, EnchantedSlimeBlock.class),
+    ENCHANTED_MAGMA_CREAM(Material.MAGMA_CREAM, EnchantedMagmaCream.class),
+    ENCHANTED_BLAZE_POWDER(Material.BLAZE_POWDER, EnchantedBlazePowder.class),
+    ENCHANTED_BLAZE_ROD(Material.BLAZE_ROD, EnchantedBlazeRod.class),
     ENCHANTED_OAK_WOOD(Material.LOG, EnchantedOakWood.class),
     ENCHANTED_SPRUCE_WOOD(Material.LOG, EnchantedSpruceWood.class, (short) 1),
     ENCHANTED_BIRCH_WOOD(Material.LOG, EnchantedBirchWood.class, (short) 2),
