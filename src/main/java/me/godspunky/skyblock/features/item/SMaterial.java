@@ -1287,7 +1287,9 @@ public enum SMaterial {
     BONZO_BALLOON_6(Material.SKULL_ITEM, BS6.class),
     BONZO_BALLOON_7(Material.SKULL_ITEM, BS7.class),
     BONZO_BALLOON_8(Material.SKULL_ITEM, BS8.class),
-    BONZO_BALLOON_9(Material.SKULL_ITEM, BS9.class);
+    BONZO_BALLOON_9(Material.SKULL_ITEM, BS9.class),
+
+    GOD_POT(Material.SKULL_ITEM, GodPot.class);
 
     private static final List<ArmorSet> CACHED_SETS = new ArrayList<>();
 
