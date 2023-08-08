@@ -2,10 +2,13 @@ package me.godspunky.skyblock.features.entity.dungeon;
 
 import com.google.common.util.concurrent.AtomicDouble;
 import me.godspunky.skyblock.Skyblock;
+import me.godspunky.skyblock.features.entity.EntityDrop;
+import me.godspunky.skyblock.features.entity.EntityDropType;
 import me.godspunky.skyblock.features.entity.SEntity;
 import me.godspunky.skyblock.features.entity.SEntityEquipment;
 import me.godspunky.skyblock.features.entity.zombie.BaseZombie;
 import me.godspunky.skyblock.features.entity.zombie.NPCMobs;
+import me.godspunky.skyblock.features.item.SMaterial;
 import me.godspunky.skyblock.util.EntityManager;
 import me.godspunky.skyblock.util.SUtil;
 import me.godspunky.skyblock.util.Sputnik;
@@ -28,6 +31,9 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.projectiles.ProjectileSource;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class CryptDreadlord extends BaseZombie implements NPCMobs {
     private boolean skullShoot = false;
 
@@ -38,11 +44,11 @@ public class CryptDreadlord extends BaseZombie implements NPCMobs {
     }
 
     public double getEntityMaxHealth() {
-        return 1.0E8D;
+        return 32000.0;
     }
 
     public double getDamageDealt() {
-        return 1500000.0D;
+        return 760.0;
     }
 
     public static ItemStack b(int hexcolor, Material m) {
@@ -51,6 +57,10 @@ public class CryptDreadlord extends BaseZombie implements NPCMobs {
         itemMeta.spigot().setUnbreakable(true);
         stack.setItemMeta(itemMeta);
         return stack;
+    }
+
+    public List<EntityDrop> drops() {
+        return Arrays.asList(new EntityDrop(SMaterial.DREADLORD_SWORD, EntityDropType.RARE, 0.05D));
     }
 
     public void onSpawn(final LivingEntity entity, SEntity sEntity) {

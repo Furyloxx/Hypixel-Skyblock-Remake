@@ -84,6 +84,7 @@ public class PlayerListener extends PListener {
     }
 
 
+
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent e) {
         Location to = e.getTo();
@@ -142,6 +143,33 @@ public class PlayerListener extends PListener {
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
+        GodspunkyPlayer data = GodspunkyPlayer.getUser(e.getPlayer());
+        try{
+            if (data != null){
+
+                if (!player.hasPlayedBefore()) {
+                    data.setRank(PlayerRank.BT);
+                }
+
+                PlayerRank rank = data.rank;
+                String userTag;
+
+                if (rank == PlayerRank.DEFAULT) {
+                    userTag = rank.getPrefix() + e.getPlayer().getName();
+                } else {
+                    userTag = rank.getPrefix() + " " + e.getPlayer().getName();
+                }
+
+                if (!e.getPlayer().getDisplayName().equals(ChatColor.translateAlternateColorCodes('&', userTag))) {
+                    e.getPlayer().setDisplayName(ChatColor.translateAlternateColorCodes('&', userTag));
+                }
+                e.getPlayer().setDisplayName(userTag);
+
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
         if (!PlayerUtils.STATISTICS_CACHE.containsKey(player.getUniqueId()))
             PlayerUtils.STATISTICS_CACHE.put(player.getUniqueId(), PlayerUtils.getStatistics(player));
         for (Skill skill : Skill.getSkills())

@@ -4,6 +4,8 @@ import com.comphenix.protocol.wrappers.WrappedSignedProperty;
 import com.google.common.util.concurrent.AtomicDouble;
 import me.godspunky.skyblock.Skyblock;
 import me.godspunky.skyblock.features.Dungeon.DungeonGenerator;
+import me.godspunky.skyblock.features.partyandfriends.party.PartyInstance;
+import me.godspunky.skyblock.features.ranks.GodspunkyPlayer;
 import me.godspunky.skyblock.user.PlayerUtils;
 import me.libraryaddict.disguise.disguisetypes.FlagWatcher;
 import me.libraryaddict.disguise.disguisetypes.PlayerDisguise;
@@ -64,9 +66,28 @@ public class Sputnik {
 
     public static void startRoom(Player player) {
         Skyblock plugin = Skyblock.getPlugin();
-        SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GREEN + "Entering The Catacombs Demo - Floor 1!"), 10L);
-        SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GRAY + "Sending to server Dungeon_Alpha"), 20L);
-        SUtil.delay(() -> DungeonGenerator.startFloor(player), 30L);
+        GodspunkyPlayer sbPlayer = GodspunkyPlayer.getUser(player);
+        assert sbPlayer != null;
+        if(!sbPlayer.inParty()) {
+            sbPlayer.sendMessages("&cYou have to be in a party to use this feature!");
+            return;
+        }
+
+        PartyInstance party = sbPlayer.getCurrentParty();
+        if(sbPlayer.getPartyPermissions() != 2) {
+            sbPlayer.sendMessages("&cYou have to be the party leader to use this feature!");
+            party.getMembers();
+            return ;
+        }
+
+        try {
+            SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GREEN + "Entering The Catacombs Demo - Floor 1!"), 10L);
+            SUtil.delay(() -> player.sendMessage(net.md_5.bungee.api.ChatColor.GRAY + "Sending to server Dungeon_Alpha"), 20L);
+            SUtil.delay(() -> DungeonGenerator.startFloor(player), 30L);
+        } catch (NumberFormatException e) {
+            player.sendMessage(Sputnik.trans("&cAn Error Has been occured we will fix it soon!"));
+        }
+
     }
 
     public static boolean isFullInv(Player p) {

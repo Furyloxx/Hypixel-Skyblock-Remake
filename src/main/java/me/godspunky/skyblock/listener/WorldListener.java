@@ -271,7 +271,7 @@ public class WorldListener extends PListener {
                 player.teleport(new Location(hub, x, y, z, yaw, pitch));
             }
 
-            if (player.getWorld().getName().startsWith("Dungeon_")) {
+            if (player.getWorld().getName().startsWith("f1_")) {
                 player.sendMessage(ChatColor.GRAY + "Sending to island...");
                 PlayerUtils.sendToIsland(player);
             }

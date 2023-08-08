@@ -3,8 +3,10 @@ package me.godspunky.skyblock.features.entity.dungeon.minibosses;
 import me.godspunky.skyblock.features.entity.*;
 import me.godspunky.skyblock.features.item.SItem;
 import me.godspunky.skyblock.features.item.SMaterial;
+import me.godspunky.skyblock.util.SUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 
@@ -48,9 +50,9 @@ public class ShadowAssassin implements ZombieStatistics, EntityStatistics, Entit
     public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
         SEntityType type = SEntityType.BONZO_PHASE_1;
         World world = damager.getWorld();// and now finding something to do ;-;
-        Location loc = new Location(world, 111,80,218);
+        Location loc = new Location(world, 111,81,218);
         sEntity = new SEntity(loc , type);
-        damager.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fYou little brat!!"));
+        SUtil.broadcastWorld(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fYou little brat!!"), world);
     }
 
 }

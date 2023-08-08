@@ -124,7 +124,10 @@ import me.godspunky.skyblock.features.item.dragon.superior.*;
 import me.godspunky.skyblock.features.item.dragon.unstable.*;
 import me.godspunky.skyblock.features.item.dragon.wise.*;
 import me.godspunky.skyblock.features.item.dragon.young.*;
-import me.godspunky.skyblock.features.item.enchanted.*;
+import me.godspunky.skyblock.features.item.enchanted.Woodandfish.*;
+import me.godspunky.skyblock.features.item.enchanted.combat.*;
+import me.godspunky.skyblock.features.item.enchanted.farming.*;
+import me.godspunky.skyblock.features.item.enchanted.mining.*;
 import me.godspunky.skyblock.features.item.enchanting.EnchantedBook;
 import me.godspunky.skyblock.features.item.entity.*;
 import me.godspunky.skyblock.features.item.entity.Bonzo.BonzoMask;
@@ -515,6 +518,7 @@ public enum SMaterial {
     ENCHANTED_CARROT(Material.CARROT_ITEM, EnchantedCarrot.class),
     ENCHANTED_CARROT_ON_A_STICK(Material.CARROT_STICK, EnchantedCarrotOnStick.class),
     ENCHANTED_GOLDEN_CARROT(Material.GOLDEN_CARROT, EncahntedGoldenCarrot.class),
+    ENCHANTED_POTATO(Material.POTATO_ITEM, EnchantedPotato.class),
     ENCHANTED_BAKED_POTATO(Material.BAKED_POTATO, EnchantedBakedPotato.class),
     ENCHANTED_PUMPKIN(Material.PUMPKIN, EnchantedPumpkin.class),
     ENCHANTED_MELON(Material.MELON, EncahntedMelon.class),
@@ -527,25 +531,75 @@ public enum SMaterial {
     ENCHANTED_COCOA_BEANS(Material.COCOA, EnchantedCocoaBean.class),
     ENCHANTED_COOKIE(Material.COOKIE, EnchantedCookie.class),
     ENCHANTED_CACTUS(Material.CACTUS, EnchantedCactus.class),
-    ENCHANTED_BONE(Material.BONE, EnchantedBone.class),
-    ENCHANTED_REDSTONE(Material.REDSTONE, EnchantedRedstone.class),
-    ENCHANTED_COAL_BLOCK(Material.COAL_BLOCK, EnchantedCoalBlock.class),
+    ENCHANTED_SUGAR(Material.SUGAR, EnchantedSugar.class),
+    ENCHANTED_PAPER(Material.PAPER, EnchantedPaper.class),
+    ENCHANTED_SUGARCANE(Material.SUGAR_CANE, EnchantedSugarCane.class),
+    ENCHANTED_LEATHER(Material.LEATHER, EnchantedLeather.class),
+    ENCHANTED_RAW_BEEF(Material.RAW_BEEF, EnchantedRawBeef.class),
+    ENCHANTED_RAW_PORK(Material.PORK, EnchantedRawPork.class),
+    ENCHANTED_GRILLED_PORK(Material.GRILLED_PORK, EnchantedGrilledPork.class),
+    ENCHANTED_RAW_CHICKEN(Material.RAW_CHICKEN,EnchantedRawChicken.class),
+    ENCHANTED_CAKE(Material.CAKE, EnchantedCake.class),
+    ENCHANTED_FEATHER(Material.FEATHER, EnchantedFeather.class),
+    ENCHANTED_MUTTON(Material.MUTTON, EnchantedMutton.class),
+    ENCHANTED_COOKED_MUTTON(Material.COOKED_MUTTON, EnchantedCookedMutton.class),
+    ENCHANTED_RAW_RABBIT(Material.RABBIT, EnchantedRawRabbit.class),
+    ENCHANTED_RABBIT_HIDE(Material.RABBIT_HIDE, EnchantedRabbitHide.class),
+    ENCHANTED_RABBIT_FOOT(Material.RABBIT_FOOT, EnchantedRabbitFoot.class),
+    ENCHANTED_NETHER_WART(Material.NETHER_STALK, EnchantedNetherWart.class),
     ENCHANTED_COBBLESTONE(Material.COBBLESTONE, EnchantedCobblestone.class),
-    ENCHANTED_OBSIDIAN(Material.OBSIDIAN, EnchantedObsidian.class),
-    ENCHANTED_ENDER_PEARL(Material.ENDER_PEARL, EnchantedEnderPearl.class),
-    ENCHANTED_EYE_OF_ENDER(Material.EYE_OF_ENDER, EnchantedEyeOfEnder.class),
-    ENCHANTED_END_STONE(Material.ENDER_STONE, EnchantedEndStone.class),
     ENCHANTED_COAL(Material.COAL, EnchantedCoal.class),
+    ENCHANTED_COAL_BLOCK(Material.COAL_BLOCK, EnchantedCoalBlock.class),
     ENCHANTED_CHARCOAL(Material.COAL, EnchantedCharcoal.class, (short) 1),
+    ENCHANTED_IRON(Material.IRON_INGOT, EnchantedIron.class),
+    ENCHANTED_IRON_BLOCK(Material.IRON_BLOCK, EnchantedIronBlock.class),
+    ENCHANTED_GOLD(Material.GOLD_INGOT, EnchantedGold.class),
+    ENCHANTED_GOLD_BLOCK(Material.GOLD_BLOCK, EnchantedGoldBlock.class),
     ENCHANTED_DIAMOND(Material.DIAMOND, EnchantedDiamond.class),
     ENCHANTED_DIAMOND_BLOCK(Material.DIAMOND_BLOCK, EnchantedDiamondBlock.class),
+    ENCHANTED_LAPIS_LAZULI(Material.INK_SACK, EnchantedLapis.class, (short)4 ),
+    ENCHANTED_LAPIS_LAZULI_BLOCK(Material.LAPIS_BLOCK, EnchantedLapisBlock.class),
+    ENCHANTED_EMERALD(Material.EMERALD, EnchantedEmerald.class),
+    ENCHANTED_EMERALD_BLOCK(Material.EMERALD_BLOCK, EnchantedEmeraldBlock.class),
+    ENCHANTED_REDSTONE(Material.REDSTONE, EnchantedRedstone.class),
+    ENCHANTED_REDSTONE_BLOCK(Material.REDSTONE_BLOCK, EnchantedRedstoneBlock.class),
+    ENCHANTED_QUARTZ(Material.QUARTZ, EnchantedQuartz.class),
+    ENCHANTED_QUARTZ_BLOCK(Material.QUARTZ_BLOCK, EnchantedQuartzBlock.class),
+    ENCHANTED_OBSIDIAN(Material.OBSIDIAN, EnchantedObsidian.class),
+    ENCHANTED_GLOWSTONE_DUST(Material.GLOWSTONE_DUST, EnchantedGlowstoneDust.class),
+    ENCHANTED_GLOWSTONE(Material.GLOWSTONE, EnchantedGlowstone.class),
+    ENCHANTED_REDSTONE_LAMP(Material.REDSTONE_LAMP_OFF, EnchantedRedstoneLamp.class),
+    ENCHANTED_FLINT(Material.FLINT, EnchantedFlint.class),
+    ENCHANTED_ICE(Material.ICE, EnchantedIce.class),
+    ENCHANTED_PACKED_ICE(Material.PACKED_ICE, EnchantedPackedIce.class),
+    ENCHANTED_NETHERRACK(Material.NETHERRACK, EnchantedNetherrack.class),
+    ENCHANTED_SAND(Material.SAND, EnchantedSand.class),
+    ENCHANTED_RED_SAND(Material.SAND, EnchantedRedSand.class, (short) 1),
+    ENCHANTED_END_STONE(Material.ENDER_STONE, EnchantedEndStone.class),
+    ENCHANTED_SNOW_BLOCK(Material.SNOW_BLOCK, EnchantedSnowBlock.class),
+    ENCHANTED_MYCELIUM(Material.MYCEL, EnchantedMyceliun.class),
+    ENCHANTED_ROTTEN_FLESH(Material.ROTTEN_FLESH, EnchantedRottenFlesh.class),
+    ENCHANTED_ENDER_PEARL(Material.ENDER_PEARL, EnchantedEnderPearl.class),
+    ENCHANTED_BONE(Material.BONE, EnchantedBone.class),
+    ENCHANTED_BONE_MEAL(Material.INK_SACK, EnchantedBoneMeal.class, (short) 15),
+    ENCHANTED_STRING(Material.STRING, EnchantedString.class),
+    ENCHANTED_SPIDER_EYE(Material.SPIDER_EYE,EnchantedSpiderEye.class),
+    ENCHANTED_FERMENTED_SPIDER_EYE(Material.FERMENTED_SPIDER_EYE, EnchantedFermentedEye.class),
+    ENCHANTED_GUNPOWDER(Material.SULPHUR, EnchantedGunpowder.class),
+    ENCHANTED_FIREWORK_ROCKET(Material.FIREWORK, EnchantedFireworkRocket.class),
+    ENCHANTED_EYE_OF_ENDER(Material.EYE_OF_ENDER, EnchantedEyeOfEnder.class),
+    ENCHANTED_GHAST_TEAR(Material.GHAST_TEAR, EnchantedGhastTear.class),
+    ENCHANTED_SLIMEBALL(Material.SLIME_BALL, EnchantedSlimeball.class),
+    ENCHANTED_SLIME_BLOCK(Material.SLIME_BLOCK, EnchantedSlimeBlock.class),
+    ENCHANTED_MAGMA_CREAM(Material.MAGMA_CREAM, EnchantedMagmaCream.class),
+    ENCHANTED_BLAZE_POWDER(Material.BLAZE_POWDER, EnchantedBlazePowder.class),
+    ENCHANTED_BLAZE_ROD(Material.BLAZE_ROD, EnchantedBlazeRod.class),
     ENCHANTED_OAK_WOOD(Material.LOG, EnchantedOakWood.class),
     ENCHANTED_SPRUCE_WOOD(Material.LOG, EnchantedSpruceWood.class, (short) 1),
     ENCHANTED_BIRCH_WOOD(Material.LOG, EnchantedBirchWood.class, (short) 2),
     ENCHANTED_JUNGLE_WOOD(Material.LOG, EnchantedJungleWood.class, (short) 3),
     ENCHANTED_ACACIA_WOOD(Material.LOG_2, EnchantedAcaciaWood.class),
     ENCHANTED_DARK_OAK_WOOD(Material.LOG_2, EnchantedDarkOakWood.class, (short) 1),
-    ENCHANTED_POTATO(Material.POTATO_ITEM, EnchantedPotato.class),
 
     // Bows
     END_STONE_BOW(Material.BOW, EndStoneBow.class),
@@ -554,7 +608,9 @@ public enum SMaterial {
     ARTISANAL_SHORTBOW(Material.BOW, ArtisanalShortbow.class),
 
     RUNAAN_BOW(Material.BOW, RunaanBow.class),
+
     // Special
+    WHITE_GIFT(Material.SKULL_ITEM, WhiteGift.class),
     EXTERMINATOR(Material.IRON_SWORD, Exterminator.class),
     TEST_ITEM(Material.SKULL_ITEM, TestItem.class),
     BAG_OF_COINS(Material.SKULL_ITEM, BagOfCoins.class),
@@ -1231,7 +1287,9 @@ public enum SMaterial {
     BONZO_BALLOON_6(Material.SKULL_ITEM, BS6.class),
     BONZO_BALLOON_7(Material.SKULL_ITEM, BS7.class),
     BONZO_BALLOON_8(Material.SKULL_ITEM, BS8.class),
-    BONZO_BALLOON_9(Material.SKULL_ITEM, BS9.class);
+    BONZO_BALLOON_9(Material.SKULL_ITEM, BS9.class),
+
+    GOD_POT(Material.SKULL_ITEM, GodPot.class);
 
     private static final List<ArmorSet> CACHED_SETS = new ArrayList<>();
 

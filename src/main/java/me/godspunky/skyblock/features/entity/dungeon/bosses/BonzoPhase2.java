@@ -5,12 +5,16 @@ import me.godspunky.skyblock.features.entity.*;
 import me.godspunky.skyblock.features.item.SItem;
 import me.godspunky.skyblock.features.item.SMaterial;
 import me.godspunky.skyblock.util.SUtil;
+import me.godspunky.skyblock.util.SkullMaker;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 import java.util.List;
@@ -62,21 +66,22 @@ public class BonzoPhase2 implements ZombieStatistics, EntityStatistics, EntityFu
     public void onDeath(SEntity sEntity, Entity killed, Entity damager) {
         Player player = (Player) damager;
 
-        SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fAlright, maybe I'm just weak after all..")) , 20);
-        SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fBut my masters are a lot stronger..")) , 40);
-        SUtil.delay( () -> player.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fJust you wait...")) , 60);
+        World w = player.getWorld();
+
+        SUtil.delay( () -> SUtil.broadcastWorld(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fAlright, maybe I'm just weak after all.."),  w) , 20);
+        SUtil.delay( () -> SUtil.broadcastWorld(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fBut my masters are a lot stronger.."),  w) , 40);
+        SUtil.delay( () -> SUtil.broadcastWorld(ChatColor.translateAlternateColorCodes('&',"&4[BOSS] &cBonzo: &fJust you wait..."),  w) , 60);
 
 
         if (player.getWorld().getName().startsWith("f1_")) {
             // activate portal
             World f1 = player.getWorld();
-            SUtil.setBlocks(new Location(f1,119,85,243), new Location(f1,119,85,243), Material.PORTAL, false);
+            SUtil.setBlocks(new Location(f1,112,81,243), new Location(f1,110,85,243), Material.PORTAL, false);
         }
 
-        SUtil.delay(() -> DungeonGenerator.sendReMsg(true, killed.getWorld(),player), 30L);
-        SUtil.delay(() -> DungeonGenerator.endRoom2(killed.getWorld(), player), 200L);
-
-
+        SUtil.delay(() -> DungeonGenerator.sendReMsg(true, killed.getWorld()), 30L);
+        SUtil.delay(() -> damager.sendMessage(ChatColor.YELLOW+"Dungeon will be closed in"+ChatColor.GREEN+ " 60s!"), 40L);
+        SUtil.delay(() -> DungeonGenerator.endRoom2(killed.getWorld()), 1240L);
     }
 }
 

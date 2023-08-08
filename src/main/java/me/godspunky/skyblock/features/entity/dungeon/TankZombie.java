@@ -7,6 +7,7 @@ import me.godspunky.skyblock.features.entity.SEntity;
 import me.godspunky.skyblock.features.entity.SEntityEquipment;
 import me.godspunky.skyblock.util.EntityManager;
 import me.godspunky.skyblock.util.SUtil;
+import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
@@ -23,11 +24,11 @@ public class TankZombie implements EntityFunction, EntityStatistics {
     }
 
     public double getEntityMaxHealth() {
-        return 5.0E7D;
+        return 2500.0;
     }
 
     public double getDamageDealt() {
-        return 1300500.0D;
+        return 464.0;
     }
 
     public SEntityEquipment getEntityEquipment() {
@@ -46,6 +47,6 @@ public class TankZombie implements EntityFunction, EntityStatistics {
     }
 
     public double getXPDropped() {
-        return 400.0D;
+        return 40.0;
     }
 }

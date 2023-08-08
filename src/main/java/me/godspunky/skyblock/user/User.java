@@ -58,6 +58,8 @@ public class User {
     private long bankCoins;
 
     McMoneyAPI api;
+
+    private boolean cooldownAPI = false;
     @Getter
     private Double islandX;
     @Getter
@@ -262,6 +264,14 @@ public class User {
     public void setIslandLocation(double x, double z) {
         this.islandX = x;
         this.islandZ = z;
+    }
+
+    public boolean isCooldownAPI() {
+        return this.cooldownAPI;
+    }
+
+    public void setCooldownAPI(boolean cooldownAPI) {
+        this.cooldownAPI = cooldownAPI;
     }
 
     public void setLastRegion(Region lastRegion) {

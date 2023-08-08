@@ -5,6 +5,8 @@ import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
 import me.godspunky.skyblock.features.item.armor.TickingSet;
 import me.godspunky.skyblock.features.potion.ActivePotionEffect;
+import me.godspunky.skyblock.features.ranks.GodspunkyPlayer;
+import me.godspunky.skyblock.features.ranks.PlayerRank;
 import me.godspunky.skyblock.features.region.Region;
 import me.godspunky.skyblock.features.region.RegionType;
 import me.godspunky.skyblock.features.slayer.SlayerQuest;
@@ -244,11 +246,24 @@ public class Repeater {
                     }
                     else if (player.getWorld().getName().contains("f1_") && !player.getWorld().getName().equals("f1_")) {
                         if (FloorLivingSec.containsKey(player.getWorld().getUID())) {
-                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a" + Sputnik.formatTime(FloorLivingSec.get(player.getWorld().getUID()))));
-                        } else {
+                            sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a" + FloorLivingSec.get(player.getWorld().getUID())));
+                        }else {
                             sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fTime Elapsed: &a00m 00s"));
+                        }if (player.getWorld().getName().contains("f1_")) {
+                            if (player.getWorld().getLivingEntities().size() == player.getWorld().getPlayers().size()+4) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &c0%"));
+                            } else if (player.getWorld().getLivingEntities().size() == player.getWorld().getPlayers().size()+3) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &c25%"));
+                            } else if (player.getWorld().getLivingEntities().size() == player.getWorld().getPlayers().size()+2) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &c50%"));
+                            } else if (player.getWorld().getLivingEntities().size() == player.getWorld().getPlayers().size()+1) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &c75%"));
+                            } else if (player.getWorld().getLivingEntities().size() <= player.getWorld().getPlayers().size()) {
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &c100%"));
+                            }else{
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &cN/A%"));
+                            }
                         }
-                        sidebar.add(ChatColor.translateAlternateColorCodes('&', "&fDungeon Cleared: &cN/A%"));
                         sidebar.add(ChatColor.RED + "  ");
                         String nameofplayer = player.getName();
                         if (player.getWorld().getPlayers().size() > 1) {
@@ -264,7 +279,7 @@ public class Repeater {
                                 String backend = " &" + colorcode + (int)dungeonmate.getHealth() + "&c❤";
                                 if (dungeonmate.getName() == nameofplayer)
                                     continue;
-                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&e[N/A&e] &b" + dungeonmate.getName() + backend));
+                                sidebar.add(ChatColor.translateAlternateColorCodes('&', "&e[&aA&e] &b" + dungeonmate.getName() + backend));
                             }
                         } else if (player.getWorld().getPlayers().size() == 1) {
                             sidebar.add(ChatColor.DARK_GRAY + "No Teammates");
@@ -275,15 +290,28 @@ public class Repeater {
                     }
                     sidebar.add(ChatColor.YELLOW + "mc.godspunky.in");
                     sidebar.apply(player);
+
                     // Tablist
+
+                    GodspunkyPlayer data = GodspunkyPlayer.getUser(player);
+                    try {
+                        if (data != null) {
+                            PlayerRank rank = data.rank;
+                            player.setDisplayName(ChatColor.translateAlternateColorCodes('&', rank.getPrefix()) +" "+ player.getName());
+                            player.setPlayerListName(ChatColor.translateAlternateColorCodes('&', rank.getPrefix()) +" "+ player.getName());
+                        }
+                    }catch (Exception ex){
+                        ex.printStackTrace();
+                    }
                     String activeEffects = user.getEffects().toString();
                     boolean hasActiveEffects = user.getEffects().size() > 0;
-
+                    //header
                     IChatBaseComponent header = new ChatComponentText(
                             ChatColor.AQUA + "You are" +  ChatColor.RESET + " " +  ChatColor.AQUA + "playing on " + ChatColor.YELLOW + "" + ChatColor.BOLD + "MC.GODSPUNKY.IN\n");
+                    //footer
                     IChatBaseComponent footer = new ChatComponentText(
                             "\n" + ChatColor.GREEN + "" + ChatColor.BOLD + "Active Effects\n" + "" +
-                                    (hasActiveEffects ? ChatColor.GRAY + "        You have " + ChatColor.YELLOW + user.getEffects().size() + ChatColor.GRAY + " active effects. Use\n" + ChatColor.GRAY + "\"" + ChatColor.GOLD + "/effects" + ChatColor.GRAY + "\" to see them!\n" + activeEffects + "\n" : ChatColor.GRAY + "         No effects active. Drink potions or splash\n" + ChatColor.GRAY + "them on the ground to buff yourself!\n\n") +
+                                    (hasActiveEffects ? ChatColor.GRAY + "        You have " + ChatColor.YELLOW + user.getEffects().size() + ChatColor.GRAY + " active effects. Use\n" + ChatColor.GRAY + "\"" + ChatColor.GOLD + "/effects" + ChatColor.GRAY + "\" to see them!\n"  + "\n" : ChatColor.GRAY + "         No effects active. Drink potions or splash\n" + ChatColor.GRAY + "them on the ground to buff yourself!\n\n") +
                                     ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Cookie Buff\n" + "" +
                                     ChatColor.GRAY + "Not active! Obtain booster cookies from the\n" + "community shop in the hub\n\n"+
                                     ChatColor.GREEN + "Ranks, Boosters, & MORE!" + ChatColor.RESET + " " + ChatColor.RED + "" + ChatColor.BOLD + "STORE.GODSPUNKY.IN");

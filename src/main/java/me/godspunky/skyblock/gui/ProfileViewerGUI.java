@@ -28,15 +28,15 @@ public class ProfileViewerGUI extends GUI {
     }
 
     public void onOpen(GUIOpenEvent e) {
-        if (e.getPlayer().getType().equals(EntityType.FAKE_PLAYER)){
+        if (this.p == null || this.p.getType().equals(EntityType.FAKE_PLAYER)) {
             e.setCancelled(true);
-        }
-        if (this.p == null)
             return;
+        }
         fill(BLACK_STAINED_GLASS_PANE);
         final Player player = e.getPlayer();
         final User user = User.getUser(this.p.getUniqueId());
         set(GUIClickableItem.getCloseItem(22));
+
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
