@@ -53,6 +53,7 @@ public class GUIListener extends PListener {
     @EventHandler
     public void onBlockInteract(PlayerInteractEvent e) {
         if (e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (e.getClickedBlock() == null) return;
         Block block = e.getClickedBlock();
         for (GUIType type : GUIType.values()) {
             GUI gui = type.getGUI();

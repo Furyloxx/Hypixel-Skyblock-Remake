@@ -1263,7 +1263,7 @@ public enum SMaterial {
     public static PackSet PACK_SET = registerArmorSet(PackSet.class);
     public static BatPersonSet BATPERSON_SET = registerArmorSet(BatPersonSet.class);
     public static WereWolfSet WERE_WOLF_SET = registerArmorSet(WereWolfSet.class);
-    public static EnderSet enderset = registerArmorSet(EnderSet.class);
+    public static EnderSet ender_set = registerArmorSet(EnderSet.class);
 
     @Getter
     private final Material craftMaterial;

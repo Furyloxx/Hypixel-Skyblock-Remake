@@ -14,10 +14,13 @@ import me.godspunky.skyblock.features.entity.nms.SlayerBoss;
 import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.accessory.AccessoryFunction;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
+import me.godspunky.skyblock.features.item.armor.ender.EnderSet;
 import me.godspunky.skyblock.features.item.pet.Pet;
 import me.godspunky.skyblock.features.potion.ActivePotionEffect;
 import me.godspunky.skyblock.features.potion.PotionEffectType;
 import me.godspunky.skyblock.features.reforge.Reforge;
+import me.godspunky.skyblock.features.region.Region;
+import me.godspunky.skyblock.features.region.RegionType;
 import me.godspunky.skyblock.features.skill.CombatSkill;
 import me.godspunky.skyblock.features.skill.Skill;
 import me.godspunky.skyblock.features.slayer.SlayerQuest;
@@ -43,7 +46,6 @@ public final class PlayerUtils {
 
     public static final Map<UUID, PlayerStatistics> STATISTICS_CACHE = new HashMap<>();
 
-    public static final String ISLAND_PREFIX = "island-";
     private static final Map<UUID, List<SMaterial>> COOLDOWN_MAP = new HashMap<>();
 
     public static PlayerStatistics getStatistics(Player player) {
@@ -123,6 +125,7 @@ public final class PlayerUtils {
             hpbwea = hand.getDataInt("hpb") * 2;
         }
         strength.add(4, hpbwea);
+
 
         defense.add(4, a * (pet.getPerDefense() * (double) level));
         strength.add(4, a * (pet.getPerStrength() * (double) level));
@@ -228,6 +231,29 @@ public final class PlayerUtils {
                     magicFind.set(PlayerStatistic.SET, boost.getBaseMagicFind());
                 }
             }
+            User user = User.getUser(statistics.getUuid());
+            Region region = Region.getRegionOfEntity(player);
+            if (set instanceof EnderSet && region.getType() == RegionType.THE_END) {
+                double health1 = statistics.getMaxHealth().addAll();
+                double defense1 = statistics.getDefense().addAll();
+                double strength1 = statistics.getStrength().addAll();
+                double intelligence1 = statistics.getIntelligence().addAll();
+                double speed1 = statistics.getSpeed().addAll();
+                double critChance1 = statistics.getCritChance().addAll();
+                double critDamage1 = statistics.getCritDamage().addAll();
+                double magicFind1 = statistics.getMagicFind().addAll();
+                double trueDefense1 = statistics.getTrueDefense().addAll();
+                defense.add(5, defense1);
+                health.add(5 , health1);
+                strength.add(5, strength1);
+                intelligence.add(5, intelligence1);
+                speed.add(5, speed1);
+                critChance.add(5, critChance1);
+                critDamage.add(5, critDamage1);
+                magicFind.add(5, magicFind1);
+            }
+
+
         } else {
             statistics.setArmorSet(null);
             health.zero(PlayerStatistic.SET);
