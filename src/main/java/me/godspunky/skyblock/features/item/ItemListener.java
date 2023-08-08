@@ -312,7 +312,6 @@ public class ItemListener extends PListener {
             player.getInventory().setItemInHand(SItem.of(SMaterial.SUMMONING_EYE).getStack());
             StaticDragonManager.EYES.get(p.getUniqueId()).remove(block.getLocation());
             player.sendMessage(ChatColor.DARK_PURPLE + "You recovered a Summoning Eye!");
-            return;
         }
     }
 

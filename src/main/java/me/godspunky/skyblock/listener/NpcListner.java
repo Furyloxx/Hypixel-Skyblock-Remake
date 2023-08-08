@@ -10,8 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
-import javax.jws.soap.SOAPBinding;
-
 public class NpcListner implements Listener {
     @EventHandler
     public void onNPCClick(NPCRightClickEvent e){
