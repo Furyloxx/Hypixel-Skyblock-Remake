@@ -194,8 +194,9 @@ public class Repeater {
                         String strd = ChatColor.RED + "Server closing: 00:" + (secondsLeft >= 10 ? secondsLeft : "0" + secondsLeft);
                         sidebar.add("  ");
                     }
-                    sidebar.add(ChatColor.GRAY + SUtil.getDate());
+                    String strd = SUtil.getDate();
 
+                    sidebar.add(ChatColor.GRAY + strd + " " + ChatColor.DARK_GRAY + Skyblock.getPlugin().getServerName());
                     sidebar.add("  ");
                     sidebar.add(" " + SkyBlockCalendar.getMonthName() + " " + SUtil.ntify(SkyBlockCalendar.getDay()));
                     boolean day = true;

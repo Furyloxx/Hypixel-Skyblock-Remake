@@ -38,6 +38,9 @@ import me.godspunky.skyblock.features.wardrobe.Listener.WardrobeListener;
 import me.godspunky.skyblock.gui.GUIListener;
 import me.godspunky.skyblock.gui.ProfileViewerGUI;
 import me.godspunky.skyblock.listener.*;
+import me.godspunky.skyblock.nms.packetevents.Bungee;
+import me.godspunky.skyblock.nms.packetevents.PluginMessageReceived;
+import me.godspunky.skyblock.nms.packetevents.WrappedPluginMessage;
 import me.godspunky.skyblock.sql.SQLDatabase;
 import me.godspunky.skyblock.sql.SQLRegionData;
 import me.godspunky.skyblock.sql.SQLWorldData;
@@ -53,12 +56,15 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.messaging.PluginMessageListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -67,12 +73,14 @@ import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
 
-public final class Skyblock extends JavaPlugin {
+public final class Skyblock extends JavaPlugin implements PluginMessageListener,BungeeChannel.ForwardConsumer{
 
     private static Skyblock plugin;
     public static Page1Data Page_1;
     public static Page2Data Page_2;
     private LaunchPadHandler launchPadHandler;
+
+    private ServerVersion serverVersion = new ServerVersion("beta", 0, 7, 2, 0);
 
     public static Skyblock getPlugin() {
         return plugin;
@@ -88,9 +96,39 @@ public final class Skyblock extends JavaPlugin {
     public SQLWorldData worldData;
     public CommandLoader cl;
 
+    private int onlinePlayerAcrossServers;
+
     public Repeater repeater;
 
     private static PartyManager partyManager;
+
+    private BungeeChannel bc;
+
+    public ServerVersion getServerVersion() {
+        return this.serverVersion;
+    }
+
+    public int getOnlinePlayerAcrossServers() {
+        return this.onlinePlayerAcrossServers;
+    }
+
+    public void setOnlinePlayerAcrossServers(int onlinePlayerAcrossServers) {
+        this.onlinePlayerAcrossServers = onlinePlayerAcrossServers;
+    }
+
+    public BungeeChannel getBc() {
+        return this.bc;
+    }
+
+    private String serverName = "Loading...";
+
+    public String getServerName() {
+        return this.serverName;
+    }
+
+    public void setServerName(String serverName) {
+        this.serverName = serverName;
+    }
 
     public enum ChatTypes {
         ALL_CHAT,
@@ -109,6 +147,9 @@ public final class Skyblock extends JavaPlugin {
     @SneakyThrows
     @Override
     public void onEnable() {
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
+        this.bc = new BungeeChannel(this);
         this.sendMessage(SUtil.getRandomVisibleColor() + "Found Bukkit server v" + Bukkit.getVersion());
         long start = System.currentTimeMillis();
         plugin = this;
@@ -267,6 +308,7 @@ public final class Skyblock extends JavaPlugin {
         cl.register(new PartyCommand());
         cl.register(new ChatCommand());
         cl.register(new APICommand());
+        cl.register(new ServerCommand());
 
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
@@ -287,6 +329,7 @@ public final class Skyblock extends JavaPlugin {
         new GUIListener();
         new WorldListener();
         new ChatListener();
+        new PacketListener();
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded listeners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
     }
@@ -486,5 +529,29 @@ public final class Skyblock extends JavaPlugin {
     }
     public void sendMessage(String message) {
         Bukkit.getConsoleSender().sendMessage(getPrefix() + ChatColor.translateAlternateColorCodes('&', message) + ChatColor.RESET + " ");
+    }
+
+    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+        PluginMessageReceived e = new PluginMessageReceived(new WrappedPluginMessage(channel, player, message));
+        Bukkit.getPluginManager().callEvent(e);
+    }
+
+    public void updateServerName(Player player) {
+        Bungee.getNewBungee().sendData(player, "GetServer", null);
+    }
+
+    public void updateServerPlayerCount() {
+        if (Bukkit.getOnlinePlayers().size() > 0)
+            Bungee.getNewBungee().sendData(null, "PlayerCount", "ALL");
+    }
+
+    public void accept(String channel, Player player, byte[] data) {
+        if (channel == "savePlayerData") {
+            SLog.info("YES IT WORK");
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                User u = User.getUser(p.getUniqueId());
+                u.save();
+            }
+        }
     }
 }

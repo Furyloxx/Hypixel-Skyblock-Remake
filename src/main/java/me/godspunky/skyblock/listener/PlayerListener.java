@@ -144,6 +144,10 @@ public class PlayerListener extends PListener {
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
         GodspunkyPlayer data = GodspunkyPlayer.getUser(e.getPlayer());
+        SUtil.delay(() -> {
+            if (player.isOnline())
+                Skyblock.getPlugin().updateServerName(player);
+        },10L);
         try{
             if (data != null){
 
