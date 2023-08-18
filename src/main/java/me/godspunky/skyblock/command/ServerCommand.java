@@ -17,7 +17,6 @@ public class ServerCommand extends SCommand {
     public Map<UUID, List<String>> servers = new HashMap<>();
 
     public void run(CommandSource sender, String[] args) {
-        UUID runUUID = UUID.randomUUID();
         if (Skyblock.getPlugin().getBc() == null) {
             send(Sputnik.trans("&cThis is not a BungeeCord based server!"));
             return;
@@ -51,7 +50,7 @@ public class ServerCommand extends SCommand {
             send(Sputnik.trans("&7Sending you to " + targetServer + "..."));
 
             User user = User.getUser(p.getUniqueId());
-            user.save();
+            user.syncSavingData();
 
             SUtil.delay(() -> {
                 Skyblock.getPlugin().getBc().connect(p, targetServer);

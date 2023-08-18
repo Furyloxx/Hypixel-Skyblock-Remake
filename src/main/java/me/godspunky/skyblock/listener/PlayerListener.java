@@ -149,6 +149,19 @@ public class PlayerListener extends PListener {
                 Skyblock.getPlugin().updateServerName(player);
         },10L);
         try{
+            user.loadPlayerData();
+
+            if(Skyblock.getPlugin().getServerName().equals("is-1")){
+                PlayerUtils.sendToIsland(player);
+            } else {
+                int x = plugin.getConfig().getInt("hub.x");
+                int y = plugin.getConfig().getInt("hub.y");
+                int z = plugin.getConfig().getInt("hub.z");
+                int yaw = plugin.getConfig().getInt("hub.yaw");
+                int pitch = plugin.getConfig().getInt("hub.pitch");
+                World hub = Bukkit.getWorld(plugin.getConfig().getString("hub.world"));
+                player.teleport(new Location(hub, x, y, z, yaw, pitch));
+            }
             if (data != null){
 
                 if (!player.hasPlayedBefore()) {
@@ -174,12 +187,11 @@ public class PlayerListener extends PListener {
             ex.printStackTrace();
         }
 
+
         if (!PlayerUtils.STATISTICS_CACHE.containsKey(player.getUniqueId()))
             PlayerUtils.STATISTICS_CACHE.put(player.getUniqueId(), PlayerUtils.getStatistics(player));
         for (Skill skill : Skill.getSkills())
             skill.onSkillUpdate(user, user.getSkillXP(skill));
-        player.sendMessage(SUtil.getRandomVisibleColor() + "" + ChatColor.BOLD + "[GodSpunky] : Sending to island , Please wait");
-      PlayerUtils.sendToIsland(player);
       // not need delay anymore as island is already loaded at startup
     }
 
@@ -194,7 +206,7 @@ public class PlayerListener extends PListener {
                 quest.getEntity().remove();
             quest.setDied(System.currentTimeMillis());
         }
-        user.save();
+        user.syncSavingData();
     }
 
     @EventHandler

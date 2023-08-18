@@ -550,7 +550,7 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
             SLog.info("YES IT WORK");
             for (Player p : Bukkit.getOnlinePlayers()) {
                 User u = User.getUser(p.getUniqueId());
-                u.save();
+                u.syncSavingData();
             }
         }
     }

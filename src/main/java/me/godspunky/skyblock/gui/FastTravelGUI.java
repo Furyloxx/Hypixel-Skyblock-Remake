@@ -5,6 +5,7 @@ import me.godspunky.skyblock.features.collection.ItemCollection;
 import me.godspunky.skyblock.user.PlayerUtils;
 import me.godspunky.skyblock.user.User;
 import me.godspunky.skyblock.util.SUtil;
+import me.godspunky.skyblock.util.Sputnik;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -46,7 +47,30 @@ public class FastTravelGUI extends GUI{
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                PlayerUtils.sendToIsland(player);
+                String targetServer = "is-1";
+                Skyblock.getPlugin().getBc().getServers().thenAcceptAsync(servers -> {
+                    boolean serverExists = servers.contains(targetServer);
+
+                    if (!serverExists) {
+                        String availableServers = String.join(", ", servers);
+                        player.sendMessage(Sputnik.trans("&cThat server doesn't exist! Available servers: " + availableServers));
+                        return;
+                    }
+
+                    String currentServer = Skyblock.getPlugin().getServerName();
+                    if (currentServer.equalsIgnoreCase(targetServer)) {
+                        player.sendMessage(Sputnik.trans("&cYou're already on " + targetServer));
+                        return;
+                    }
+
+                    player.sendMessage(Sputnik.trans("&7Hooking up request..."));
+                    player.sendMessage(Sputnik.trans("&7Sending you to " + targetServer + "..."));
+
+                    User user = User.getUser(player.getUniqueId());
+                    user.syncSavingData();
+
+                    SUtil.delay(() -> Skyblock.getPlugin().getBc().connect(player, targetServer), 8L);
+                });
             }
 
             @Override
@@ -71,9 +95,30 @@ public class FastTravelGUI extends GUI{
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                Player player1 = (Player) e.getWhoClicked();
-                World hub = Bukkit.getWorld(plugin.getConfig().getString("hub_world"));
-                player1.teleport(new Location(hub, -3 , 70 , -68));
+                String targetServer = "hub-1";
+                Skyblock.getPlugin().getBc().getServers().thenAcceptAsync(servers -> {
+                    boolean serverExists = servers.contains(targetServer);
+
+                    if (!serverExists) {
+                        String availableServers = String.join(", ", servers);
+                        player.sendMessage(Sputnik.trans("&cThat server doesn't exist! Available servers: " + availableServers));
+                        return;
+                    }
+
+                    String currentServer = Skyblock.getPlugin().getServerName();
+                    if (currentServer.equalsIgnoreCase(targetServer)) {
+                        player.sendMessage(Sputnik.trans("&cYou're already on " + targetServer));
+                        return;
+                    }
+
+                    player.sendMessage(Sputnik.trans("&7Hooking up request..."));
+                    player.sendMessage(Sputnik.trans("&7Sending you to " + targetServer + "..."));
+
+                    User user = User.getUser(player.getUniqueId());
+                    user.syncSavingData();
+
+                    SUtil.delay(() -> Skyblock.getPlugin().getBc().connect(player, targetServer), 8L);
+                });
             }
 
             @Override
