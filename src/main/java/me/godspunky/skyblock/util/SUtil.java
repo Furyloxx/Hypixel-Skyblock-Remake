@@ -209,6 +209,7 @@ public class SUtil {
         return builder.toString();
     }
 
+
     public static String getMaterialDisplayName(Material material, short variant) {
         if (variant != 0)
             return SMaterial.getSpecEquivalent(material, variant).getBaseName();
