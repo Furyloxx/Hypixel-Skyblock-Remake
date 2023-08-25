@@ -1,5 +1,7 @@
 package me.godspunky.skyblock;
 
+import me.godspunky.skyblock.features.enchantment.Enchantment;
+import me.godspunky.skyblock.features.enchantment.EnchantmentType;
 import me.godspunky.skyblock.features.entity.StaticDragonManager;
 import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
@@ -161,6 +163,24 @@ public class Repeater {
                                     replacement.getReplacement() + "     ") +
                             ChatColor.AQUA + MANA_MAP.get(player.getUniqueId()) + "/" + manaPool + "✎ Mana");
 
+                    PlayerInventory inventory1 = player.getInventory();
+                    SItem sitem = SItem.find(player.getItemInHand());
+                    if (sitem != null) {
+                        if (sitem.getType() != SMaterial.ENCHANTED_BOOK)
+                            if (sitem.getEnchantments() != null) {
+                                List<Enchantment> enchL = Enchantment.ultimateEnchantsListFromList(sitem.getEnchantments());
+                                if (enchL.size() > 1) {
+                                    for (Enchantment ench : enchL)
+                                        sitem.removeEnchantment(ench.getType());
+                                    player.sendMessage(ChatColor.RED + "Your item have multiple legacy ultimate enchantments so we need to remove all of them, sorry! You can always get a new one, also just to remind you, only 1 ultimate enchantment is allowed per weapon.");
+                                }
+                            }
+                        if (sitem.getEnchantment(EnchantmentType.ONE_FOR_ALL) != null && sitem.getType() != SMaterial.ENCHANTED_BOOK && sitem.getType().getStatistics().getType() == GenericItemType.WEAPON)
+                            for (Enchantment enchantment : sitem.getEnchantments()) {
+                                if (enchantment.getType() != EnchantmentType.TELEKINESIS && enchantment.getType() != EnchantmentType.ONE_FOR_ALL)
+                                    sitem.removeEnchantment(enchantment.getType());
+                            }
+                    }
                     // Ticking Armor Sets
                     statistics.zeroAll(PlayerStatistic.MINER_BUFF);
                     ArmorSet set = SMaterial.getIncompleteArmorSet(inventory);
@@ -174,8 +194,9 @@ public class Repeater {
                         String strd = ChatColor.RED + "Server closing: 00:" + (secondsLeft >= 10 ? secondsLeft : "0" + secondsLeft);
                         sidebar.add("  ");
                     }
-                    sidebar.add(ChatColor.GRAY + SUtil.getDate());
+                    String strd = SUtil.getDate();
 
+                    sidebar.add(ChatColor.GRAY + strd + " " + ChatColor.DARK_GRAY + Skyblock.getPlugin().getServerName());
                     sidebar.add("  ");
                     sidebar.add(" " + SkyBlockCalendar.getMonthName() + " " + SUtil.ntify(SkyBlockCalendar.getDay()));
                     boolean day = true;

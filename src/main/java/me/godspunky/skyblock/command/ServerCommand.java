@@ -1,28 +1,36 @@
 package me.godspunky.skyblock.command;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 import me.godspunky.skyblock.Skyblock;
 import me.godspunky.skyblock.features.ranks.PlayerRank;
-import me.godspunky.skyblock.user.PlayerUtils;
 import me.godspunky.skyblock.user.User;
 import me.godspunky.skyblock.util.SUtil;
 import me.godspunky.skyblock.util.Sputnik;
-import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.UUID;
+@CommandParameters(description = "Modify your coin amount.", usage = "", aliases = "ss", permission = PlayerRank.DEFAULT)
+public class ServerCommand extends SCommand {
+    public Map<UUID, List<String>> servers = new HashMap<>();
 
-
-@CommandParameters(description = "go to or create your island", aliases = "is", permission = PlayerRank.DEFAULT)
-public class IslandCommand extends SCommand {
-
-    @Override
     public void run(CommandSource sender, String[] args) {
-        if (sender instanceof ConsoleCommandSender)
-            throw new CommandFailException("Console senders cannot use this command!");
+        if (Skyblock.getPlugin().getBc() == null) {
+            send(Sputnik.trans("&cThis is not a BungeeCord based server!"));
+            return;
+        }
+        if (sender.getPlayer() == null) {
+            send(Sputnik.trans("&cConsole Sender cannot execute Proxy commands!"));
+            return;
+        }
         Player p = sender.getPlayer();
-        UUID runUUID = UUID.randomUUID();
-        String targetServer = "is-1";
+        if (args.length != 1) {
+            send(Sputnik.trans("&cCorrect Command Usage: /ss <server name>"));
+            return;
+        }
+        String targetServer = args[0];
         Skyblock.getPlugin().getBc().getServers().thenAcceptAsync(servers -> {
             boolean serverExists = servers.contains(targetServer);
 
@@ -44,8 +52,9 @@ public class IslandCommand extends SCommand {
             User user = User.getUser(p.getUniqueId());
             user.syncSavingData();
 
-            SUtil.delay(() -> Skyblock.getPlugin().getBc().connect(p, targetServer), 8L);
+            SUtil.delay(() -> {
+                Skyblock.getPlugin().getBc().connect(p, targetServer);
+            }, 8L);
         });
     }
 }
-

@@ -17,6 +17,7 @@ import me.godspunky.skyblock.user.PlayerUtils;
 import me.godspunky.skyblock.user.User;
 import me.godspunky.skyblock.util.Groups;
 import me.godspunky.skyblock.util.SUtil;
+import me.godspunky.skyblock.util.Sputnik;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
@@ -233,21 +234,58 @@ public class WorldListener extends PListener {
             Player player = (Player) e.getEntity();
             Region region = Region.getRegionOfEntity(player);
 
-            if (player.getWorld().getName().contains("island")) {
-                int x = plugin.getConfig().getInt("hub.x");
-                int y = plugin.getConfig().getInt("hub.y");
-                int z = plugin.getConfig().getInt("hub.z");
-                int yaw = plugin.getConfig().getInt("hub.yaw");
-                int pitch = plugin.getConfig().getInt("hub.pitch");
-                World hub = Bukkit.getWorld(plugin.getConfig().getString("hub.world"));
-                player.sendMessage(ChatColor.GRAY + "Sending to hub...");
-                player.teleport(new Location(hub, x, y, z, yaw, pitch));
+            if (Skyblock.getPlugin().getServerName().equals("is-1")) {
+                String targetServer = "hub-1";
+                Skyblock.getPlugin().getBc().getServers().thenAcceptAsync(servers -> {
+                    boolean serverExists = servers.contains(targetServer);
 
+                    if (!serverExists) {
+                        String availableServers = String.join(", ", servers);
+                        player.sendMessage(Sputnik.trans("&cThat server doesn't exist! Available servers: " + availableServers));
+                        return;
+                    }
+
+                    String currentServer = Skyblock.getPlugin().getServerName();
+                    if (currentServer.equalsIgnoreCase(targetServer)) {
+                        player.sendMessage(Sputnik.trans("&cYou're already on " + targetServer));
+                        return;
+                    }
+
+                    player.sendMessage(Sputnik.trans("&7Hooking up request..."));
+                    player.sendMessage(Sputnik.trans("&7Sending you to " + targetServer + "..."));
+
+                    User user = User.getUser(player.getUniqueId());
+                    user.syncSavingData();
+
+                    SUtil.delay(() -> Skyblock.getPlugin().getBc().connect(player, targetServer), 8L);
+                });
             }
 
             if (region != null && region.getType().equals(RegionType.VILLAGE)) {
-                player.sendMessage(ChatColor.GRAY + "Sending to island...");
-                PlayerUtils.sendToIsland(player);
+                String targetServer = "is-1";
+                Skyblock.getPlugin().getBc().getServers().thenAcceptAsync(servers -> {
+                    boolean serverExists = servers.contains(targetServer);
+
+                    if (!serverExists) {
+                        String availableServers = String.join(", ", servers);
+                        player.sendMessage(Sputnik.trans("&cThat server doesn't exist! Available servers: " + availableServers));
+                        return;
+                    }
+
+                    String currentServer = Skyblock.getPlugin().getServerName();
+                    if (currentServer.equalsIgnoreCase(targetServer)) {
+                        player.sendMessage(Sputnik.trans("&cYou're already on " + targetServer));
+                        return;
+                    }
+
+                    player.sendMessage(Sputnik.trans("&7Hooking up request..."));
+                    player.sendMessage(Sputnik.trans("&7Sending you to " + targetServer + "..."));
+
+                    User user = User.getUser(player.getUniqueId());
+                    user.syncSavingData();
+
+                    SUtil.delay(() -> Skyblock.getPlugin().getBc().connect(player, targetServer), 8L);
+                });
             }
 
             if (region != null && region.getType().equals(RegionType.MOUNTAIN)) {

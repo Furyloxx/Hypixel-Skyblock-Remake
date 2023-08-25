@@ -2,6 +2,7 @@ package me.godspunky.skyblock.user;
 
 import boardinggamer.mcmoney.McMoneyAPI;
 import com.google.common.util.concurrent.AtomicDouble;
+import de.tr7zw.nbtapi.NBTItem;
 import lombok.Getter;
 import lombok.Setter;
 import me.godspunky.skyblock.Skyblock;
@@ -25,7 +26,10 @@ import me.godspunky.skyblock.features.region.RegionType;
 import me.godspunky.skyblock.features.skill.*;
 import me.godspunky.skyblock.features.slayer.SlayerBossType;
 import me.godspunky.skyblock.features.slayer.SlayerQuest;
+import me.godspunky.skyblock.util.BukkitSerializeClass;
 import me.godspunky.skyblock.util.SUtil;
+import me.godspunky.skyblock.util.Sputnik;
+import net.milkbowl.vault.economy.Economy;
 import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -34,7 +38,11 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.io.File;
@@ -255,6 +263,120 @@ public class User {
         config.set("auction.creationBIN", auctionCreationBIN);
         config.set("auction.escrow", auctionEscrow);
         config.save();
+    }
+
+    public void saveInventory() {
+        if (Bukkit.getPlayer(this.uuid) == null)
+            return;
+        Object a = null;
+        PlayerInventory piv = Bukkit.getPlayer(this.uuid).getInventory();
+        a = getPureListFrom(piv);
+        this.config.set("database.inventory", a);
+        this.config.save();
+    }
+
+    public String getPureListFrom(Inventory piv) {
+        ItemStack[] ist = piv.getContents();
+        List<ItemStack> arraylist = Arrays.asList(ist);
+        for (int i = 0; i < ist.length; i++) {
+            ItemStack stack = ist[i];
+            if (stack != null) {
+                NBTItem nbti = new NBTItem(stack);
+                if (nbti.hasKey("dontSaveToProfile").booleanValue())
+                    arraylist.remove(i);
+            }
+        }
+        ItemStack[] arrl = (ItemStack[])arraylist.toArray();
+        return BukkitSerializeClass.itemStackArrayToBase64(arrl);
+    }
+
+    public void saveArmor() {
+        if (Bukkit.getPlayer(this.uuid) == null)
+            return;
+        Object a = null;
+        a = BukkitSerializeClass.itemStackArrayToBase64(Bukkit.getPlayer(this.uuid).getInventory().getArmorContents());
+        this.config.set("database.armor", a);
+        this.config.save();
+    }
+
+    public void saveEnderChest() {
+        if (Bukkit.getPlayer(this.uuid) == null)
+            return;
+        Object a = null;
+        Inventory inv = Bukkit.getPlayer(this.uuid).getEnderChest();
+        a = getPureListFrom(inv);
+        this.config.set("database.enderchest", a);
+        this.config.save();
+    }
+
+
+    public void loadPlayerData() throws IllegalArgumentException, IOException {
+        Player player = Bukkit.getPlayer(this.uuid);
+        if (this.config.getString("database.inventory") != null) {
+            player.getInventory().setContents(BukkitSerializeClass.itemStackArrayFromBase64(this.config.getString("database.inventory")));
+        } else {
+            player.getInventory().setContents(new ItemStack[player.getInventory().getSize()]);
+        }
+        if (this.config.getString("database.enderchest") != null) {
+            player.getEnderChest().setContents(BukkitSerializeClass.itemStackArrayFromBase64(this.config.getString("database.enderchest")));
+        } else {
+            player.getInventory().setContents(new ItemStack[player.getEnderChest().getSize()]);
+        }
+        if (this.config.getString("database.armor") != null) {
+            player.getInventory().setArmorContents(BukkitSerializeClass.itemStackArrayFromBase64(this.config.getString("database.armor")));
+        } else {
+            player.getInventory().setContents(new ItemStack[(player.getInventory().getArmorContents()).length]);
+        }
+        if (this.config.contains("configures.slot_selected"))
+            player.getInventory().setHeldItemSlot(this.config.getInt("configures.slot_selected"));
+    }
+
+
+    public void saveLastSlot() {
+        if (Bukkit.getPlayer(this.uuid) == null)
+            return;
+        this.config.set("configures.slot_selected", Integer.valueOf(Bukkit.getPlayer(this.uuid).getInventory().getHeldItemSlot()));
+        this.config.save();
+    }
+
+    public void saveAttributesForAPI() {
+        if (Bukkit.getPlayer(this.uuid) == null)
+            return;
+        PlayerStatistics statistics = PlayerUtils.STATISTICS_CACHE.get(getUuid());
+        if (statistics == null)
+            return;
+        Double visualcap = Double.valueOf(statistics.getCritChance().addAll().doubleValue() * 100.0D);
+        if (visualcap.doubleValue() > 100.0D)
+            visualcap = Double.valueOf(100.0D);
+        this.config.set("apistats.health", Integer.valueOf(statistics.getMaxHealth().addAll().intValue()));
+        this.config.set("apistats.defense", Integer.valueOf(statistics.getDefense().addAll().intValue()));
+        this.config.set("apistats.strength", Integer.valueOf(statistics.getStrength().addAll().intValue()));
+        this.config.set("apistats.crit_chance", Integer.valueOf(visualcap.intValue()));
+        this.config.set("apistats.speed", Integer.valueOf(Double.valueOf(statistics.getSpeed().addAll().doubleValue() * 100.0D).intValue()));
+        this.config.set("apistats.crit_damage", Integer.valueOf(Double.valueOf(statistics.getCritDamage().addAll().doubleValue() * 100.0D).intValue()));
+        this.config.set("apistats.intelligence", Integer.valueOf(statistics.getIntelligence().addAll().intValue()));
+        this.config.set("apistats.magic_find", Integer.valueOf(Double.valueOf(statistics.getMagicFind().addAll().doubleValue() * 100.0D).intValue()));
+        this.config.set("apistats.ferocity", Integer.valueOf(statistics.getFerocity().addAll().intValue()));
+        this.config.save();
+    }
+
+    public void saveAllVanillaInstances() {
+        if (Bukkit.getPlayer(this.uuid) == null)
+            return;
+        saveArmor();
+        saveEnderChest();
+        saveInventory();
+        saveLastSlot();
+        saveAttributesForAPI();
+    }
+
+    public void syncSavingData() {
+        (new BukkitRunnable() {
+            public void run() {
+                User.this.save();
+                User.this.saveAllVanillaInstances();
+            }
+        }).runTask(plugin);
     }
 
     public HashMap<SMaterial , Integer> getchestpage1(){

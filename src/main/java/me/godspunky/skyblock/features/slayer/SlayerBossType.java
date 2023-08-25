@@ -122,6 +122,20 @@ public class SlayerBossType {
         }
     }
 
+    public static int staticGetXPReqForLevel(int level, EntityType type) {
+        switch (type) {
+            case ZOMBIE:
+                return (Integer) SUtil.getOrDefault(Arrays.asList(new Integer[]{5, 15, 200, Integer.valueOf(1000), Integer.valueOf(5000), Integer.valueOf(20000), Integer.valueOf(100000), Integer.valueOf(400000), Integer.valueOf(1000000)}), level, Integer.valueOf(1000000));
+            case SPIDER:
+                return (Integer) SUtil.getOrDefault(Arrays.asList(new Integer[]{5, 25, 200, Integer.valueOf(1000), Integer.valueOf(5000), Integer.valueOf(20000), Integer.valueOf(100000), Integer.valueOf(400000), Integer.valueOf(1000000)} ), level, Integer.valueOf(1000000));
+            case WOLF:
+                return (Integer) SUtil.getOrDefault(Arrays.asList(new Integer[]{10, 30, 250, 1500, 5000, 20000, Integer.valueOf(100000), Integer.valueOf(400000), Integer.valueOf(1000000)} ), level, Integer.valueOf(1000000));
+            case ENDERMAN:
+                return (Integer) SUtil.getOrDefault(Arrays.asList(10, 30, 250, Integer.valueOf(1500), Integer.valueOf(5000), Integer.valueOf(20000), Integer.valueOf(100000), Integer.valueOf(400000), 1000000), level, 1000000);
+        }
+        return 1000000;
+    }
+
     public int getXPReqForLevel(int level) {
         switch (type) {
             case ZOMBIE:
