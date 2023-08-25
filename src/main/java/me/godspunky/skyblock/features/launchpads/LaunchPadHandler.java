@@ -3,8 +3,12 @@ package me.godspunky.skyblock.features.launchpads;
 import me.godspunky.skyblock.Skyblock;
 import net.minecraft.server.v1_8_R3.EnumParticle;
 import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
+import org.bukkit.World;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.MemoryConfiguration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
@@ -39,7 +43,7 @@ public class LaunchPadHandler {
         ArrayList<String> pads = new ArrayList<>(config.getConfigurationSection("launchpads").getKeys(false));
 
         for (String pad : pads) {
-            Location from = (Location) getField(pad, "from");
+            Location from = deserializeLocation((String) getField(pad, "from"));
             if (player.getWorld().equals(from.getWorld()) && player.getLocation().distance(from) < 2) return pad;
         }
 
@@ -47,30 +51,50 @@ public class LaunchPadHandler {
     }
 
     public void savePad(String start, String end, Location from, Location to, Location teleport) {
-        Location infront = from.multiply(5);
-        infront.setY(from.getY() + 4);
-
-        String id = "launchpads." + start + "_to_" + end + ".";
+        String id = "launchpads." + start + "_to_" + end;
         FileConfiguration config = YamlConfiguration.loadConfiguration(file);
 
-        config.set(id + "start", start);
-        config.set(id + "end", end);
-        config.set(id + "from", from);
-        config.set(id + "to", to);
-        config.set(id + "infront", infront);
-        config.set(id + "teleport", teleport);
+        config.set(id + ".start", start);
+        config.set(id + ".end", end);
+        config.set(id + ".from", serializeLocation(from));
+        config.set(id + ".to", serializeLocation(to));
+        config.set(id + ".infront", serializeLocation(from.multiply(5).add(0, 4, 0)));
+        config.set(id + ".teleport", serializeLocation(teleport));
 
         try {
             config.save(file);
         } catch (IOException ignored) {}
     }
 
+    private String serializeLocation(Location location) {
+        return location.getWorld().getName() + ","
+                + location.getX() + ","
+                + location.getY() + ","
+                + location.getZ() + ","
+                + location.getPitch() + ","
+                + location.getYaw();
+    }
+
+    private Location deserializeLocation(String input) {
+        String[] parts = input.split(",");
+        World world = Bukkit.getWorld(parts[0]);
+        double x = Double.parseDouble(parts[1]);
+        double y = Double.parseDouble(parts[2]);
+        double z = Double.parseDouble(parts[3]);
+        float pitch = Float.parseFloat(parts[4]);
+        float yaw = Float.parseFloat(parts[5]);
+
+        return new Location(world, x, y, z, yaw, pitch);
+    }
+
+
+
     public void launch(Player player, String padName) {
         if (onLaunchpad.contains(player)) return;
 
-        Location to = (Location) getField(padName, "to");
-        Location front = (Location) getField(padName, "infront");
-        Location teleport = (Location) getField(padName, "teleport");
+        Location to = deserializeLocation((String) getField(padName, "to"));
+        Location front = deserializeLocation((String) getField(padName, "infront"));
+        Location teleport = deserializeLocation((String) getField(padName, "teleport"));
 
         player.teleport(front);
 
