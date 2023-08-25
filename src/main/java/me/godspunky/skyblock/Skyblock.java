@@ -178,6 +178,8 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         loadListeners();
         registerTraits();
         startEntitySpawners();
+        updateServerPlayerCount();
+        registerLaunchPads();
         buildRecepies();
         establishRegions();
         loadItems();
@@ -309,6 +311,7 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         cl.register(new ChatCommand());
         cl.register(new APICommand());
         cl.register(new ServerCommand());
+        cl.register(new SetLaunchPad());
 
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered commands [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");

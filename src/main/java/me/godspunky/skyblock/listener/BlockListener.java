@@ -1,6 +1,9 @@
 package me.godspunky.skyblock.listener;
 
 import me.godspunky.skyblock.command.RegionCommand;
+import me.godspunky.skyblock.command.SetLaunchPad;
+import me.godspunky.skyblock.features.launchpads.LaunchPadHandler;
+import me.godspunky.skyblock.features.launchpads.PadGenerator;
 import me.godspunky.skyblock.features.region.Cuboid;
 import me.godspunky.skyblock.features.region.Region;
 import me.godspunky.skyblock.features.region.RegionGenerator;
@@ -50,6 +53,43 @@ public class BlockListener extends PListener {
                 break;
             }
         }
+    }
+    @EventHandler
+    public void PadCreation(PlayerInteractEvent e){
+        Block block = e.getClickedBlock();
+        if (block == null) return;
+        Player player = e.getPlayer();
+        if (!SetLaunchPad.PAD_GENERATION_MAP.containsKey(player)) return;
+        e.setCancelled(true);
+        PadGenerator generator = SetLaunchPad.PAD_GENERATION_MAP.get(player);
+        switch (generator.getPhase()){
+            case 1 : {
+                generator.setStartLocation(block.getLocation());
+                generator.setPhase(2);
+                player.sendMessage(ChatColor.GRAY + "added your clicked block as the start location!");
+                player.sendMessage(ChatColor.DARK_AQUA + "Click on the second location block!");
+                break;
+            }
+            case 2 : {
+                generator.setEndLocation(block.getLocation());
+                generator.setPhase(3);
+                player.sendMessage(ChatColor.GRAY + "added your clicked block as the end location!");
+                player.sendMessage(ChatColor.DARK_AQUA + "Click on the 3rd block for teleport location!");
+                break;
+
+            }
+            case 3 : {
+                generator.setTeleportLocation(block.getLocation());
+                LaunchPadHandler handler = new LaunchPadHandler();
+                handler.savePad(generator.getStart() , generator.getEnd() , generator.getStartLocation() , generator.getEndLocation() , generator.getTeleportLocation());
+                player.sendMessage(ChatColor.GREEN + "Created LaunchPad!");
+
+            }
+
+
+        }
+
+
     }
 
     @EventHandler
