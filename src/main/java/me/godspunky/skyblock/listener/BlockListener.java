@@ -83,6 +83,7 @@ public class BlockListener extends PListener {
                 LaunchPadHandler handler = new LaunchPadHandler();
                 handler.savePad(generator.getStart() , generator.getEnd() , generator.getStartLocation() , generator.getEndLocation() , generator.getTeleportLocation());
                 player.sendMessage(ChatColor.GREEN + "Created LaunchPad!");
+                SetLaunchPad.PAD_GENERATION_MAP.remove(player);
 
             }
 
