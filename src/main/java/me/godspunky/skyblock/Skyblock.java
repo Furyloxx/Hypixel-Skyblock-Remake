@@ -11,7 +11,6 @@ import me.godspunky.skyblock.features.entity.EntityPopulator;
 import me.godspunky.skyblock.features.entity.EntitySpawner;
 import me.godspunky.skyblock.features.entity.SEntityType;
 import me.godspunky.skyblock.features.entity.StaticDragonManager;
-import me.godspunky.skyblock.features.gift.GiftListener;
 import me.godspunky.skyblock.features.item.ItemListener;
 import me.godspunky.skyblock.features.item.SItem;
 import me.godspunky.skyblock.features.item.SMaterial;
@@ -36,11 +35,7 @@ import me.godspunky.skyblock.features.wardrobe.GUI.WardrobeGUI;
 import me.godspunky.skyblock.features.wardrobe.Listener.CheckPlayerGUIListener;
 import me.godspunky.skyblock.features.wardrobe.Listener.WardrobeListener;
 import me.godspunky.skyblock.gui.GUIListener;
-import me.godspunky.skyblock.gui.ProfileViewerGUI;
 import me.godspunky.skyblock.listener.*;
-import me.godspunky.skyblock.nms.packetevents.Bungee;
-import me.godspunky.skyblock.nms.packetevents.PluginMessageReceived;
-import me.godspunky.skyblock.nms.packetevents.WrappedPluginMessage;
 import me.godspunky.skyblock.sql.SQLDatabase;
 import me.godspunky.skyblock.sql.SQLRegionData;
 import me.godspunky.skyblock.sql.SQLWorldData;
@@ -56,35 +51,27 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
-import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.plugin.messaging.PluginMessageListener;
-
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
 
-public final class Skyblock extends JavaPlugin implements PluginMessageListener,BungeeChannel.ForwardConsumer{
+public final class Skyblock extends JavaPlugin {
 
     private static Skyblock plugin;
     public static Page1Data Page_1;
     public static Page2Data Page_2;
     private LaunchPadHandler launchPadHandler;
 
-    private ServerVersion serverVersion = new ServerVersion("beta", 0, 7, 2, 0);
 
     public static Skyblock getPlugin() {
         return plugin;
     }
+
     public Config config;
     public Config heads;
     public Config blocks;
@@ -96,39 +83,10 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
     public SQLWorldData worldData;
     public CommandLoader cl;
 
-    private int onlinePlayerAcrossServers;
-
     public Repeater repeater;
 
     private static PartyManager partyManager;
 
-    private BungeeChannel bc;
-
-    public ServerVersion getServerVersion() {
-        return this.serverVersion;
-    }
-
-    public int getOnlinePlayerAcrossServers() {
-        return this.onlinePlayerAcrossServers;
-    }
-
-    public void setOnlinePlayerAcrossServers(int onlinePlayerAcrossServers) {
-        this.onlinePlayerAcrossServers = onlinePlayerAcrossServers;
-    }
-
-    public BungeeChannel getBc() {
-        return this.bc;
-    }
-
-    private String serverName = "Loading...";
-
-    public String getServerName() {
-        return this.serverName;
-    }
-
-    public void setServerName(String serverName) {
-        this.serverName = serverName;
-    }
 
     public enum ChatTypes {
         ALL_CHAT,
@@ -137,7 +95,6 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         NO_CHAT
     }
 
-    // todo Minions
     @Override
     public void onLoad() {
         SLog.info("Loading Bukkit-serializable classes...");
@@ -147,9 +104,6 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
     @SneakyThrows
     @Override
     public void onEnable() {
-        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
-        getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
-        this.bc = new BungeeChannel(this);
         this.sendMessage(SUtil.getRandomVisibleColor() + "Found Bukkit server v" + Bukkit.getVersion());
         long start = System.currentTimeMillis();
         plugin = this;
@@ -178,7 +132,6 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         loadListeners();
         registerTraits();
         startEntitySpawners();
-        updateServerPlayerCount();
         registerLaunchPads();
         buildRecepies();
         establishRegions();
@@ -205,7 +158,7 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         }
         DungeonGenerator generator = new DungeonGenerator();
         generator.deleteAllDungeons();
-        for(Player p : Bukkit.getOnlinePlayers()) {
+        for (Player p : Bukkit.getOnlinePlayers()) {
             if (p.getOpenInventory() != null && (p.getOpenInventory().getTitle().equals(WardrobeGUI.Page1Name) || p.getOpenInventory().getTitle().equals(WardrobeGUI.Page2Name) || p.getOpenInventory().getTitle().contains("'s Wardrobe (1/2)") || p.getOpenInventory().getTitle().contains("'s Wardrobe (2/2)"))) {
                 if (p.getItemOnCursor() != null) {
                     p.getInventory().addItem(p.getItemOnCursor());
@@ -238,9 +191,7 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
     }
 
 
-
-
-    public void loadymldata(){
+    public void loadymldata() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading YAML Data...");
         long start = System.currentTimeMillis();
         config = new Config("config.yml");
@@ -249,11 +200,11 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         spawners = new Config("spawners.yml");
         launchpads = new Config("launchpads.yml");
 
-        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded YAML Data ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded YAML Data [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
-    public void startServerLoop(){
-        this.sendMessage(SUtil.getRandomVisibleColor() +"Starting Server Loop...");
+    public void startServerLoop() {
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Starting Server Loop...");
         long start = System.currentTimeMillis();
 
         repeater = new Repeater();
@@ -310,8 +261,6 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         cl.register(new ReforgeCommand());
         cl.register(new PartyCommand());
         cl.register(new ChatCommand());
-        cl.register(new APICommand());
-        cl.register(new ServerCommand());
         cl.register(new SetLaunchPad());
 
 
@@ -333,12 +282,11 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         new GUIListener();
         new WorldListener();
         new ChatListener();
-        new PacketListener();
 
-        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded listeners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded listeners [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
-    public void loadDatabase(){
+    public void loadDatabase() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading SQL Database...");
         long start = System.currentTimeMillis();
 
@@ -346,10 +294,10 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         regionData = new SQLRegionData();
         worldData = new SQLWorldData();
 
-        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded SQL Database ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded SQL Database [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
-    public void loadCommandMap(){
+    public void loadCommandMap() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading Command Maps...");
         long start = System.currentTimeMillis();
 
@@ -357,7 +305,7 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
             Field f = Bukkit.getServer().getClass().getDeclaredField("commandMap");
             f.setAccessible(true);
             commandMap = (CommandMap) f.get(Bukkit.getServer());
-            this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded Command Maps ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+            this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded Command Maps [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
         } catch (IllegalAccessException | NoSuchFieldException e) {
             e.printStackTrace();
             this.sendMessage(SUtil.getRandomVisibleColor() + "CANNOT LOAD COMMAND MAPS U FKIN.......");
@@ -370,37 +318,37 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         long start = System.currentTimeMillis();
 
 
-        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered Traits ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered Traits [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
-    public void startEntitySpawners(){
+    public void startEntitySpawners() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Starting Entity Spawners...");
         long start = System.currentTimeMillis();
 
         EntitySpawner.startSpawnerTask();
 
-        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully started Entity Spawners ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully started Entity Spawners [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
-    public void establishRegions(){
+    public void establishRegions() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Establishing player regions...");
         long start = System.currentTimeMillis();
 
         Region.cacheRegions();
 
-        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Established Player Regions ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Established Player Regions [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
-    public void loadAuctions(){
+    public void loadAuctions() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading Auctions...");
         long start = System.currentTimeMillis();
 
         AuctionItem.loadAuctionsFromDisk();
 
-        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Loaded Auctions ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Loaded Auctions [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
-    public void synchronizeTime(){
+    public void synchronizeTime() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Synchronizing world time with calendar time and removing world entities...");
         long start = System.currentTimeMillis();
 
@@ -416,11 +364,11 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
             world.setTime(time);
         }
 
-        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Synchronized world time with calendar time and removed world entities ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Synchronized world time with calendar time and removed world entities [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
     @SneakyThrows
-    public void loadItems(){
+    public void loadItems() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading Items...");
         long start = System.currentTimeMillis();
 
@@ -430,10 +378,10 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
                 material.getStatistics().load();
         }
 
-        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Loaded Items ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Loaded Items [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
-    public void buildRecepies(){
+    public void buildRecepies() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Building Recepies...");
         long start = System.currentTimeMillis();
 
@@ -463,7 +411,7 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
             }
         }
 
-        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Built Recepies ["+SUtil.getTimeDifferenceAndColor(start,System.currentTimeMillis()) + ChatColor.WHITE+"]");
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Built Recepies [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
     private void startPopulators() {
@@ -519,10 +467,14 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         ConfigurationSerialization.registerClass(SerialNBTTagCompound.class, "SerialNBTTagCompound");
         ConfigurationSerialization.registerClass(AuctionBid.class, "AuctionBid");
     }
+
     public void loadIslandWorld() {
         new BlankWorldCreator("islands").createWorld();
     }
-    public void loadDungeonWorld(){new BlankWorldCreator("dhub").createWorld();}
+
+    public void loadDungeonWorld() {
+        new BlankWorldCreator("dhub").createWorld();
+    }
 
     public LaunchPadHandler getLaunchPadHandler() {
         return new LaunchPadHandler();
@@ -531,31 +483,8 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
     public String getPrefix() {
         return ChatColor.translateAlternateColorCodes('&', "&7[&aGodspunky&3Skyblock&bCore&7] &f");
     }
+
     public void sendMessage(String message) {
         Bukkit.getConsoleSender().sendMessage(getPrefix() + ChatColor.translateAlternateColorCodes('&', message) + ChatColor.RESET + " ");
-    }
-
-    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
-        PluginMessageReceived e = new PluginMessageReceived(new WrappedPluginMessage(channel, player, message));
-        Bukkit.getPluginManager().callEvent(e);
-    }
-
-    public void updateServerName(Player player) {
-        Bungee.getNewBungee().sendData(player, "GetServer", null);
-    }
-
-    public void updateServerPlayerCount() {
-        if (Bukkit.getOnlinePlayers().size() > 0)
-            Bungee.getNewBungee().sendData(null, "PlayerCount", "ALL");
-    }
-
-    public void accept(String channel, Player player, byte[] data) {
-        if (channel == "savePlayerData") {
-            SLog.info("YES IT WORK");
-            for (Player p : Bukkit.getOnlinePlayers()) {
-                User u = User.getUser(p.getUniqueId());
-                u.syncSavingData();
-            }
-        }
     }
 }

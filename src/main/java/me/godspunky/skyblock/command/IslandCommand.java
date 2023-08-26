@@ -20,32 +20,8 @@ public class IslandCommand extends SCommand {
     public void run(CommandSource sender, String[] args) {
         if (sender instanceof ConsoleCommandSender)
             throw new CommandFailException("Console senders cannot use this command!");
-        Player p = sender.getPlayer();
-        UUID runUUID = UUID.randomUUID();
-        String targetServer = "is-1";
-        Skyblock.getPlugin().getBc().getServers().thenAcceptAsync(servers -> {
-            boolean serverExists = servers.contains(targetServer);
-
-            if (!serverExists) {
-                String availableServers = String.join(", ", servers);
-                send(Sputnik.trans("&cThat server doesn't exist! Available servers: " + availableServers));
-                return;
-            }
-
-            String currentServer = Skyblock.getPlugin().getServerName();
-            if (currentServer.equalsIgnoreCase(targetServer)) {
-                send(Sputnik.trans("&cYou're already on " + targetServer));
-                return;
-            }
-
-            send(Sputnik.trans("&7Hooking up request..."));
-            send(Sputnik.trans("&7Sending you to " + targetServer + "..."));
-
-            User user = User.getUser(p.getUniqueId());
-            user.syncSavingData();
-
-            SUtil.delay(() -> Skyblock.getPlugin().getBc().connect(p, targetServer), 8L);
-        });
+        Player player = sender.getPlayer();
+        PlayerUtils.sendToIsland(player);
     }
 }
 
