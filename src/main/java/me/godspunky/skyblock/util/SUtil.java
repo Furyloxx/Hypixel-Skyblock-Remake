@@ -18,10 +18,7 @@ import com.sk89q.worldedit.world.registry.WorldData;
 import lombok.experimental.UtilityClass;
 import me.godspunky.skyblock.Skyblock;
 import me.godspunky.skyblock.features.enchantment.Enchantment;
-import me.godspunky.skyblock.features.item.GenericItemType;
-import me.godspunky.skyblock.features.item.Rarity;
-import me.godspunky.skyblock.features.item.SItem;
-import me.godspunky.skyblock.features.item.SMaterial;
+import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.potion.PotionColor;
 import me.godspunky.skyblock.features.potion.PotionEffect;
 import me.godspunky.skyblock.gui.GUI;
@@ -1130,4 +1127,45 @@ public class SUtil {
         }
     }
 
+    // Recipe Method For Armor
+    public void HelmetRecipe(SMaterial result, SMaterial material, int amount){
+        ShapedRecipe recipe = new ShapedRecipe(result);
+        recipe.shape("aaa", "a a");
+        recipe.set('a', material, amount);
+    }
+    public void HelmetRecipe(SMaterial result, SMaterial material){
+        ShapedRecipe recipe = new ShapedRecipe(result);
+        recipe.shape("aaa", "a a");
+        recipe.set('a', material, 1);
+    }
+    public void ChestplateRecipe(SMaterial result, SMaterial material, int amount){
+        ShapedRecipe recipe = new ShapedRecipe(result);
+        recipe.shape("a a", "aaa","aaa");
+        recipe.set('a', material, amount);
+    }
+    public void ChestplateRecipe(SMaterial result, SMaterial material){
+        ShapedRecipe recipe = new ShapedRecipe(result);
+        recipe.shape("a a", "aaa","aaa");
+        recipe.set('a', material, 1);
+    }
+    public void LeggingsRecipe(SMaterial result, SMaterial material, int amount){
+        ShapedRecipe recipe = new ShapedRecipe(result);
+        recipe.shape("aaa", "a a","a a");
+        recipe.set('a', material, amount);
+    }
+    public void LeggingsRecipe(SMaterial result, SMaterial material){
+        ShapedRecipe recipe = new ShapedRecipe(result);
+        recipe.shape("aaa", "a a","a a");
+        recipe.set('a', material, 1);
+    }
+    public void BootsRecipe(SMaterial result, SMaterial material, int amount){
+        ShapedRecipe recipe = new ShapedRecipe(result);
+        recipe.shape("a a", "a a");
+        recipe.set('a', material, amount);
+    }
+    public void BootsRecipe(SMaterial result, SMaterial material){
+        ShapedRecipe recipe = new ShapedRecipe(result);
+        recipe.shape("a a", "a a");
+        recipe.set('a', material, 1);
+    }
 }

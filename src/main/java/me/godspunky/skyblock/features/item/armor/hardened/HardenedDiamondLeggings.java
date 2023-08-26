@@ -1,6 +1,7 @@
 package me.godspunky.skyblock.features.item.armor.hardened;
 
 import me.godspunky.skyblock.features.item.*;
+import me.godspunky.skyblock.util.SUtil;
 
 public class HardenedDiamondLeggings implements ToolStatistics, MaterialFunction {
     @Override
@@ -26,6 +27,11 @@ public class HardenedDiamondLeggings implements ToolStatistics, MaterialFunction
     @Override
     public double getBaseDefense() {
         return 95;
+    }
+
+    @Override
+    public void load() {
+        SUtil.LeggingsRecipe(SMaterial.HARDENED_DIAMOND_LEGGINGS,SMaterial.ENCHANTED_DIAMOND);
     }
 
 }

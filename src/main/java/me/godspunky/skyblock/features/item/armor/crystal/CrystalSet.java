@@ -5,6 +5,7 @@ import me.godspunky.skyblock.features.item.MaterialStatistics;
 import me.godspunky.skyblock.features.item.PlayerBoostStatistics;
 import me.godspunky.skyblock.features.item.Rarity;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class CrystalSet implements ArmorSet {
@@ -15,7 +16,7 @@ public class CrystalSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "The stats of this armor change from 0 to 200% depending on the current light level.";
+        return "The stats of this armor change from "+ ChatColor.GREEN +"0"+ChatColor.GRAY+" to"+ChatColor.GREEN+" 200%"+ChatColor.GRAY+" depending on the current light level.";
     }
 
     @Override

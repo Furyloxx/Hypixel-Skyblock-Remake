@@ -1,10 +1,8 @@
 package me.godspunky.skyblock.features.item.armor.cactus;
 
-import me.godspunky.skyblock.features.item.GenericItemType;
-import me.godspunky.skyblock.features.item.MaterialFunction;
-import me.godspunky.skyblock.features.item.Rarity;
-import me.godspunky.skyblock.features.item.SpecificItemType;
+import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.LeatherArmorStatistics;
+import me.godspunky.skyblock.util.SUtil;
 
 public class CactusArmorLeggings implements LeatherArmorStatistics, MaterialFunction {
 
@@ -39,5 +37,10 @@ public class CactusArmorLeggings implements LeatherArmorStatistics, MaterialFunc
     @Override
     public SpecificItemType getSpecificType() {
         return SpecificItemType.LEGGINGS;
+    }
+
+    @Override
+    public void load(){
+        SUtil.LeggingsRecipe(SMaterial.CACTUS_LEGGINGS, SMaterial.CACTUS);
     }
 }

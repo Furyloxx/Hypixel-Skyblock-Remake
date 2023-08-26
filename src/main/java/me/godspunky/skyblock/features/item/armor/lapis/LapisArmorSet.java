@@ -5,6 +5,7 @@ import me.godspunky.skyblock.features.item.MaterialStatistics;
 import me.godspunky.skyblock.features.item.PlayerBoostStatistics;
 import me.godspunky.skyblock.features.item.Rarity;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class LapisArmorSet implements ArmorSet {
@@ -15,7 +16,7 @@ public class LapisArmorSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Increases the wearer's maximum Health by 60.";
+        return "Increases the wearer's maximum"+ ChatColor.RED +"❤ Health "+ChatColor.GRAY+"by"+ChatColor.GREEN+" 60.";
     }
 
     @Override

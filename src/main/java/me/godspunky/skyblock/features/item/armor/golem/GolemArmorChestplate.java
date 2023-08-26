@@ -1,6 +1,7 @@
 package me.godspunky.skyblock.features.item.armor.golem;
 
 import me.godspunky.skyblock.features.item.*;
+import me.godspunky.skyblock.util.SUtil;
 
 public class GolemArmorChestplate implements ToolStatistics, MaterialFunction {
     @Override
@@ -31,5 +32,10 @@ public class GolemArmorChestplate implements ToolStatistics, MaterialFunction {
     @Override
     public SpecificItemType getSpecificType() {
         return SpecificItemType.CHESTPLATE;
+    }
+
+    @Override
+    public void load() {
+        SUtil.ChestplateRecipe(SMaterial.GOLEM_CHESTPLATE,SMaterial.ENCHANTED_IRON,10);
     }
 }

@@ -5,6 +5,7 @@ import me.godspunky.skyblock.features.item.MaterialStatistics;
 import me.godspunky.skyblock.features.item.PlayerBoostStatistics;
 import me.godspunky.skyblock.features.item.Rarity;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class MagmaSet implements ArmorSet {
@@ -15,7 +16,7 @@ public class MagmaSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Every 10 Magma Cubes killed gives the wearer +1 ❤ Health and +1 ✎ Intelligence while wearing the set. Max 200 each.";
+        return "Every"+ ChatColor.BLUE +" 10 Magma Cubes killed"+ChatColor.GRAY+" gives the wearer"+ChatColor.RED+" +1 ❤ Health"+ChatColor.GRAY+" and "+ChatColor.AQUA+"+1 ✎ Intelligence "+ChatColor.GRAY+"while wearing the set. Max 200 each.";
     }
 
     @Override

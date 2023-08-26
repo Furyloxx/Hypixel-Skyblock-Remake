@@ -1,10 +1,8 @@
 package me.godspunky.skyblock.features.item.armor.farm;
 
-import me.godspunky.skyblock.features.item.GenericItemType;
-import me.godspunky.skyblock.features.item.MaterialFunction;
-import me.godspunky.skyblock.features.item.Rarity;
-import me.godspunky.skyblock.features.item.SpecificItemType;
+import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.LeatherArmorStatistics;
+import me.godspunky.skyblock.util.SUtil;
 
 public class FarmSuitLeggings implements LeatherArmorStatistics, MaterialFunction {
     @Override
@@ -35,5 +33,10 @@ public class FarmSuitLeggings implements LeatherArmorStatistics, MaterialFunctio
     @Override
     public SpecificItemType getSpecificType() {
         return SpecificItemType.LEGGINGS;
+    }
+
+    @Override
+    public void load(){
+        SUtil.LeggingsRecipe(SMaterial.FARM_SUIT_LEGGINGS, SMaterial.HAY_BLOCK);
     }
 }

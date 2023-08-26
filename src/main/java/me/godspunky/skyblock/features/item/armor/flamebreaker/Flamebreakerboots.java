@@ -1,6 +1,7 @@
 package me.godspunky.skyblock.features.item.armor.flamebreaker;
 
 import me.godspunky.skyblock.features.item.*;
+import me.godspunky.skyblock.util.SUtil;
 
 public class Flamebreakerboots implements ToolStatistics, MaterialFunction {
     @Override
@@ -31,5 +32,12 @@ public class Flamebreakerboots implements ToolStatistics, MaterialFunction {
     @Override
     public double getBaseHealth() {
         return 35;
+    }
+
+    @Override
+    public void load() {
+        ShapedRecipe recipe = new ShapedRecipe(SMaterial.FLAMEBREAKER_BOOTS);
+        recipe.shape("a a", "a a", "aaa");
+        recipe.set('a', SMaterial.COAL, 1);
     }
 }

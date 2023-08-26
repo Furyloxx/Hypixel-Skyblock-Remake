@@ -1,5 +1,6 @@
 package me.godspunky.skyblock.listener;
 
+import me.godspunky.skyblock.features.skill.CombatSkill;
 import me.godspunky.skyblock.user.User;
 import me.godspunky.skyblock.util.SUtil;
 import net.citizensnpcs.api.event.NPCRightClickEvent;

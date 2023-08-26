@@ -144,6 +144,7 @@ public class PlayerListener extends PListener {
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
         GodspunkyPlayer data = GodspunkyPlayer.getUser(e.getPlayer());
+        e.setJoinMessage(null);
         try{
             if (data != null){
 
@@ -182,6 +183,7 @@ public class PlayerListener extends PListener {
         Player player = e.getPlayer();
         User user = User.getUser(player.getUniqueId());
         SlayerQuest quest = user.getSlayerQuest();
+        e.setQuitMessage(null);
         if (quest != null && quest.getSpawned() != 0 && (quest.getKilled() != 0 || quest.getDied() != 0)) {
             if (quest.getEntity() != null)
                 quest.getEntity().remove();

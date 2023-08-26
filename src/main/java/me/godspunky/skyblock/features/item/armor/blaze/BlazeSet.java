@@ -5,6 +5,8 @@ import me.godspunky.skyblock.features.item.MaterialStatistics;
 import me.godspunky.skyblock.features.item.PlayerBoostStatistics;
 import me.godspunky.skyblock.features.item.Rarity;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
+import net.milkbowl.vault.chat.Chat;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class BlazeSet implements ArmorSet {
@@ -15,7 +17,7 @@ public class BlazeSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Damages mobs in a 5 block range for 3% of their max ❤ Health per second. Also grants permanent Fire and Lava immunity.";
+        return "Damages mobs in a "+ ChatColor.GREEN +"5"+ChatColor.GRAY+" block range for "+ ChatColor.GREEN +"3%"+ChatColor.GRAY+" of their max "+ChatColor.RED+"❤ Health"+ChatColor.GRAY+" per second. Also grants permanent Fire and Lava immunity.";
     }
 
     @Override

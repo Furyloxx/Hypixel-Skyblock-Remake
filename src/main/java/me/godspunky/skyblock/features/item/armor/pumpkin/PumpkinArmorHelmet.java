@@ -1,10 +1,8 @@
 package me.godspunky.skyblock.features.item.armor.pumpkin;
 
-import me.godspunky.skyblock.features.item.GenericItemType;
-import me.godspunky.skyblock.features.item.MaterialFunction;
-import me.godspunky.skyblock.features.item.Rarity;
-import me.godspunky.skyblock.features.item.SpecificItemType;
+import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.LeatherArmorStatistics;
+import me.godspunky.skyblock.util.SUtil;
 
 public class PumpkinArmorHelmet implements LeatherArmorStatistics, MaterialFunction {
     @Override
@@ -40,5 +38,10 @@ public class PumpkinArmorHelmet implements LeatherArmorStatistics, MaterialFunct
     @Override
     public SpecificItemType getSpecificType() {
         return SpecificItemType.HELMET;
+    }
+
+    @Override
+    public void load(){
+        SUtil.HelmetRecipe(SMaterial.PUMPKIN_ARMOR_HELMET, SMaterial.PUMPKIN);
     }
 }

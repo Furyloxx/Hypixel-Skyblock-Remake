@@ -1,10 +1,8 @@
 package me.godspunky.skyblock.features.item.armor.speedster;
 
-import me.godspunky.skyblock.features.item.GenericItemType;
-import me.godspunky.skyblock.features.item.MaterialFunction;
-import me.godspunky.skyblock.features.item.Rarity;
-import me.godspunky.skyblock.features.item.SpecificItemType;
+import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.LeatherArmorStatistics;
+import me.godspunky.skyblock.util.SUtil;
 
 public class SpeedsterLeggings implements LeatherArmorStatistics, MaterialFunction {
     @Override
@@ -40,5 +38,10 @@ public class SpeedsterLeggings implements LeatherArmorStatistics, MaterialFuncti
     @Override
     public int getColor() {
         return 0xE0FCF7;
+    }
+
+    @Override
+    public void load() {
+        SUtil.LeggingsRecipe(SMaterial.SPEEDSTER_LEGGINGS,SMaterial.ENCHANTED_SUGARCANE);
     }
 }

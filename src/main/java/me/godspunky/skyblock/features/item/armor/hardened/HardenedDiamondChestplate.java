@@ -1,6 +1,7 @@
 package me.godspunky.skyblock.features.item.armor.hardened;
 
 import me.godspunky.skyblock.features.item.*;
+import me.godspunky.skyblock.util.SUtil;
 
 
 public class HardenedDiamondChestplate implements ToolStatistics, MaterialFunction {
@@ -27,6 +28,11 @@ public class HardenedDiamondChestplate implements ToolStatistics, MaterialFuncti
     @Override
     public double getBaseDefense() {
         return 120;
+    }
+
+    @Override
+    public void load() {
+        SUtil.ChestplateRecipe(SMaterial.HARDENED_DIAMOND_CHESTPLATE,SMaterial.ENCHANTED_DIAMOND);
     }
 
 }

@@ -1,10 +1,8 @@
 package me.godspunky.skyblock.features.item.armor.angler;
 
-import me.godspunky.skyblock.features.item.GenericItemType;
-import me.godspunky.skyblock.features.item.MaterialFunction;
-import me.godspunky.skyblock.features.item.Rarity;
-import me.godspunky.skyblock.features.item.SpecificItemType;
+import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.LeatherArmorStatistics;
+import me.godspunky.skyblock.util.SUtil;
 
 public class AnglerBoots implements LeatherArmorStatistics, MaterialFunction {
     @Override
@@ -35,5 +33,10 @@ public class AnglerBoots implements LeatherArmorStatistics, MaterialFunction {
     @Override
     public int getColor() {
         return 0x0B004F;
+    }
+
+    @Override
+    public void load(){
+        SUtil.BootsRecipe(SMaterial.ANGLER_BOOTS, SMaterial.RAW_FISH);
     }
 }

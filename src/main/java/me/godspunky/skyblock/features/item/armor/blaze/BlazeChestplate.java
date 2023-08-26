@@ -1,10 +1,8 @@
 package me.godspunky.skyblock.features.item.armor.blaze;
 
-import me.godspunky.skyblock.features.item.GenericItemType;
-import me.godspunky.skyblock.features.item.MaterialFunction;
-import me.godspunky.skyblock.features.item.Rarity;
-import me.godspunky.skyblock.features.item.SpecificItemType;
+import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.LeatherArmorStatistics;
+import me.godspunky.skyblock.util.SUtil;
 
 public class BlazeChestplate implements LeatherArmorStatistics, MaterialFunction {
     @Override
@@ -45,5 +43,10 @@ public class BlazeChestplate implements LeatherArmorStatistics, MaterialFunction
     @Override
     public int getColor() {
         return 0xF7DA33;
+    }
+
+    @Override
+    public void load() {
+        SUtil.ChestplateRecipe(SMaterial.BLAZE_CHESTPLATE,SMaterial.ENCHANTED_BLAZE_ROD);
     }
 }

@@ -5,6 +5,7 @@ import me.godspunky.skyblock.features.item.MaterialStatistics;
 import me.godspunky.skyblock.features.item.PlayerBoostStatistics;
 import me.godspunky.skyblock.features.item.Rarity;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class CactusSet implements ArmorSet {
@@ -15,7 +16,7 @@ public class CactusSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Rebound 33.0% of the damage you take back at your enemy.";
+        return "Rebound"+ ChatColor.GREEN +" 33.0% of the "+ChatColor.RED+"damage+"+ChatColor.GRAY+" you take back at your enemy.";
     }
 
     @Override

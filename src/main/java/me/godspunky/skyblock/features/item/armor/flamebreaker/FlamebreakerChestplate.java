@@ -1,6 +1,7 @@
 package me.godspunky.skyblock.features.item.armor.flamebreaker;
 
 import me.godspunky.skyblock.features.item.*;
+import me.godspunky.skyblock.util.SUtil;
 
 public class FlamebreakerChestplate implements ToolStatistics, MaterialFunction {
     @Override
@@ -31,5 +32,10 @@ public class FlamebreakerChestplate implements ToolStatistics, MaterialFunction 
     @Override
     public double getBaseHealth() {
         return 70;
+    }
+
+    @Override
+    public void load() {
+        SUtil.ChestplateRecipe(SMaterial.FLAMEBREAKER_CHESTPLATE,SMaterial.COAL);
     }
 }

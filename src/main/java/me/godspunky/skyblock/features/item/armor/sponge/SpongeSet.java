@@ -5,6 +5,7 @@ import me.godspunky.skyblock.features.item.MaterialStatistics;
 import me.godspunky.skyblock.features.item.PlayerBoostStatistics;
 import me.godspunky.skyblock.features.item.Rarity;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class SpongeSet implements ArmorSet {
@@ -15,7 +16,7 @@ public class SpongeSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Doubles your ❈ Defense while in water.";
+        return "Doubles your "+ ChatColor.GREEN +"❈ Defense"+ChatColor.GRAY+" while in water.";
     }
 
     @Override

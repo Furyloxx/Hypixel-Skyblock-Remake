@@ -5,6 +5,7 @@ import me.godspunky.skyblock.features.item.MaterialStatistics;
 import me.godspunky.skyblock.features.item.PlayerBoostStatistics;
 import me.godspunky.skyblock.features.item.Rarity;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -17,7 +18,7 @@ public class GolemSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Grants the wearer Absorption III for 20 seconds when they kill an enemy.";
+        return "Grants the wearer"+ ChatColor.GREEN +" Absorption III "+ChatColor.GRAY+"for "+ChatColor.GREEN+"20 seconds "+ChatColor.GRAY+"when they kill an enemy.";
     }
 
     @Override

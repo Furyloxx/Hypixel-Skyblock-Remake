@@ -1,10 +1,8 @@
 package me.godspunky.skyblock.features.item.armor.crystal;
 
-import me.godspunky.skyblock.features.item.GenericItemType;
-import me.godspunky.skyblock.features.item.MaterialFunction;
-import me.godspunky.skyblock.features.item.Rarity;
-import me.godspunky.skyblock.features.item.SpecificItemType;
+import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.LeatherArmorStatistics;
+import me.godspunky.skyblock.util.SUtil;
 
 public class CrystalLeggings implements LeatherArmorStatistics, MaterialFunction {
     @Override
@@ -38,5 +36,10 @@ public class CrystalLeggings implements LeatherArmorStatistics, MaterialFunction
     @Override
     public int getColor() {
         return 0xFFFFFF;
+    }
+
+    @Override
+    public void load() {
+        SUtil.LeggingsRecipe(SMaterial.CRYSTAL_LEGGINGS,SMaterial.CRYSTAL_FRAGMENT);
     }
 }

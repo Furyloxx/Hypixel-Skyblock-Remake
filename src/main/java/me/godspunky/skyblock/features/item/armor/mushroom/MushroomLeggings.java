@@ -1,10 +1,8 @@
 package me.godspunky.skyblock.features.item.armor.mushroom;
 
-import me.godspunky.skyblock.features.item.GenericItemType;
-import me.godspunky.skyblock.features.item.MaterialFunction;
-import me.godspunky.skyblock.features.item.Rarity;
-import me.godspunky.skyblock.features.item.SpecificItemType;
+import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.LeatherArmorStatistics;
+import me.godspunky.skyblock.util.SUtil;
 
 public class MushroomLeggings implements LeatherArmorStatistics, MaterialFunction {
     @Override
@@ -40,5 +38,10 @@ public class MushroomLeggings implements LeatherArmorStatistics, MaterialFunctio
     @Override
     public int getColor() {
         return 0xFF0000;
+    }
+
+    @Override
+    public void load(){
+        SUtil.HelmetRecipe(SMaterial.MUSHROOM_LEGGINGS, SMaterial.RED_MUSHROOM);
     }
 }

@@ -1,6 +1,7 @@
 package me.godspunky.skyblock.features.item.armor.hardened;
 
 import me.godspunky.skyblock.features.item.*;
+import me.godspunky.skyblock.util.SUtil;
 
 public class HardenedDiamondHelmet implements ToolStatistics, MaterialFunction {
     @Override
@@ -26,5 +27,10 @@ public class HardenedDiamondHelmet implements ToolStatistics, MaterialFunction {
     @Override
     public double getBaseDefense() {
         return 60;
+    }
+
+    @Override
+    public void load() {
+        SUtil.HelmetRecipe(SMaterial.HARDENED_DIAMOND_HELMET,SMaterial.ENCHANTED_DIAMOND);
     }
 }

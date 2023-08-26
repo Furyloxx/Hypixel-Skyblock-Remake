@@ -5,6 +5,7 @@ import me.godspunky.skyblock.features.item.MaterialStatistics;
 import me.godspunky.skyblock.features.item.PlayerBoostStatistics;
 import me.godspunky.skyblock.features.item.Rarity;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -17,7 +18,7 @@ public class FlamebreakerSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Grants 5x reduced heat in Magma Fields.";
+        return "Grants"+ ChatColor.GREEN +" 5x"+ChatColor.GRAY+" reduced heat in Magma Fields.";
     }
 
     @Override

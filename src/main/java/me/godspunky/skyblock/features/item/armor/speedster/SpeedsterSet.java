@@ -5,6 +5,7 @@ import me.godspunky.skyblock.features.item.MaterialStatistics;
 import me.godspunky.skyblock.features.item.PlayerBoostStatistics;
 import me.godspunky.skyblock.features.item.Rarity;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class SpeedsterSet implements ArmorSet {
@@ -15,7 +16,7 @@ public class SpeedsterSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Increases ✦ Speed by +20.";
+        return "Increases "+ ChatColor.WHITE +"✦ Speed"+ChatColor.GRAY+" by"+ChatColor.GREEN+" +20.";
     }
 
     @Override

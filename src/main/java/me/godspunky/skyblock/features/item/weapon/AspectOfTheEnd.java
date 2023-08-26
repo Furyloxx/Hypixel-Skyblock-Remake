@@ -107,7 +107,7 @@ public class AspectOfTheEnd implements ToolStatistics, MaterialFunction, Ability
     @Override
     public void load() {
         ShapedRecipe recipe = new ShapedRecipe(SMaterial.ASPECT_OF_THE_END);
-        recipe.shape("a", "b", "c");
+        recipe.shape(" a ", " b ", " c ");
         recipe.set('a', SMaterial.ENCHANTED_EYE_OF_ENDER, 16);
         recipe.set('b', SMaterial.ENCHANTED_EYE_OF_ENDER, 16);
         recipe.set('c', SMaterial.ENCHANTED_DIAMOND);

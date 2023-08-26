@@ -1,10 +1,8 @@
 package me.godspunky.skyblock.features.item.armor.growth;
 
-import me.godspunky.skyblock.features.item.GenericItemType;
-import me.godspunky.skyblock.features.item.MaterialFunction;
-import me.godspunky.skyblock.features.item.Rarity;
-import me.godspunky.skyblock.features.item.SpecificItemType;
+import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.LeatherArmorStatistics;
+import me.godspunky.skyblock.util.SUtil;
 
 public class GrowthChestplate implements LeatherArmorStatistics, MaterialFunction {
     @Override
@@ -38,6 +36,11 @@ public class GrowthChestplate implements LeatherArmorStatistics, MaterialFunctio
     @Override
     public SpecificItemType getSpecificType() {
         return SpecificItemType.CHESTPLATE;
+    }
+
+    @Override
+    public void load() {
+        SUtil.ChestplateRecipe(SMaterial.GROWTH_CHESTPLATE,SMaterial.ENCHANTED_DARK_OAK_WOOD,64);
     }
 }
 

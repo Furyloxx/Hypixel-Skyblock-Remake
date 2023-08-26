@@ -6,6 +6,7 @@ import me.godspunky.skyblock.features.item.PlayerBoostStatistics;
 import me.godspunky.skyblock.features.item.Rarity;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
 import me.godspunky.skyblock.user.User;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class AnglerSet implements ArmorSet {
@@ -16,7 +17,7 @@ public class AnglerSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Gain +10 ❤ HP per Fishing Level.";
+        return "Gain"+ ChatColor.RED +" +10 ❤"+ChatColor.GRAY+" HP per Fishing Level.";
     }
 
     @Override

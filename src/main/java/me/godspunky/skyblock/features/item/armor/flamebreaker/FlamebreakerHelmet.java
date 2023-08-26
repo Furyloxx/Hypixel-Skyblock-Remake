@@ -32,4 +32,11 @@ public class FlamebreakerHelmet implements ToolStatistics, MaterialFunction {
     public double getBaseHealth() {
         return 40;
     }
+
+    @Override
+    public void load() {
+        ShapedRecipe recipe = new ShapedRecipe(SMaterial.FLAMEBREAKER_HELMET);
+        recipe.shape("aaa", "a a", "a a");
+        recipe.set('a', SMaterial.COAL, 1);
+    }
 }

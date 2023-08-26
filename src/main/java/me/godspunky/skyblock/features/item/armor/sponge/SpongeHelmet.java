@@ -1,6 +1,7 @@
 package me.godspunky.skyblock.features.item.armor.sponge;
 
 import me.godspunky.skyblock.features.item.*;
+import me.godspunky.skyblock.util.SUtil;
 
 public class SpongeHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override
@@ -31,5 +32,10 @@ public class SpongeHelmet implements MaterialFunction, SkullStatistics, ToolStat
     @Override
     public String getURL() {
         return "12f096eef87d9f20ccaaba2a02eed6f43e6432a6928fe16467cb4deb5e74118c";
+    }
+
+    @Override
+    public void load() {
+        SUtil.HelmetRecipe(SMaterial.SPONGE_HELMET,SMaterial.ENCHANTED_WET_SPONGE);
     }
 }

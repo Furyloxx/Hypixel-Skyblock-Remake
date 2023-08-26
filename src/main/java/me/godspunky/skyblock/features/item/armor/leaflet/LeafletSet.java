@@ -8,6 +8,8 @@ import me.godspunky.skyblock.features.item.armor.ArmorSet;
 import me.godspunky.skyblock.features.region.Region;
 import me.godspunky.skyblock.features.region.RegionType;
 import me.godspunky.skyblock.user.User;
+import net.milkbowl.vault.chat.Chat;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -20,7 +22,7 @@ public class LeafletSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "While in a forest zone, you regain 5.0 ❤ Health every second.";
+        return "While in a forest zone, you regain "+ ChatColor.RED +"5.0 ❤ Health "+ ChatColor.GRAY +"every second.";
     }
 
     @Override

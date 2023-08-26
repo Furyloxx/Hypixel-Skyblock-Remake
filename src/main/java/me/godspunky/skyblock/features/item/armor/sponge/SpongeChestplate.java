@@ -1,10 +1,8 @@
 package me.godspunky.skyblock.features.item.armor.sponge;
 
-import me.godspunky.skyblock.features.item.GenericItemType;
-import me.godspunky.skyblock.features.item.MaterialFunction;
-import me.godspunky.skyblock.features.item.Rarity;
-import me.godspunky.skyblock.features.item.SpecificItemType;
+import me.godspunky.skyblock.features.item.*;
 import me.godspunky.skyblock.features.item.armor.LeatherArmorStatistics;
+import me.godspunky.skyblock.util.SUtil;
 
 public class SpongeChestplate implements LeatherArmorStatistics, MaterialFunction {
     @Override
@@ -35,5 +33,10 @@ public class SpongeChestplate implements LeatherArmorStatistics, MaterialFunctio
     @Override
     public int getColor() {
         return 0xFFDC51;
+    }
+
+    @Override
+    public void load() {
+        SUtil.ChestplateRecipe(SMaterial.SPONGE_CHESTPLATE,SMaterial.ENCHANTED_WET_SPONGE);
     }
 }

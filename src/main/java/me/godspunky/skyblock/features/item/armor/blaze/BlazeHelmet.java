@@ -1,6 +1,7 @@
 package me.godspunky.skyblock.features.item.armor.blaze;
 
 import me.godspunky.skyblock.features.item.*;
+import me.godspunky.skyblock.util.SUtil;
 
 public class BlazeHelmet implements MaterialFunction, SkullStatistics, ToolStatistics {
     @Override
@@ -41,6 +42,11 @@ public class BlazeHelmet implements MaterialFunction, SkullStatistics, ToolStati
     @Override
     public String getURL() {
         return "78fc823c1a13931230d662e36613b906eb14510a67375251078d5ffa3037dbab";
+    }
+
+    @Override
+    public void load() {
+        SUtil.HelmetRecipe(SMaterial.BLAZE_HELMET,SMaterial.ENCHANTED_BLAZE_ROD);
     }
 }
 

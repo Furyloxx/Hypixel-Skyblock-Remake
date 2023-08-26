@@ -228,13 +228,11 @@ public class WorldListener extends PListener {
 
     @EventHandler
     public void onPortalEnter(EntityPortalEnterEvent e) {
-        if (e.getEntityType() == EntityType.PIG_ZOMBIE) {
-            e.getEntity().getWorld().getLivingEntities().remove(EntityType.PIG_ZOMBIE);
+        if (e.getEntityType() != EntityType.PLAYER) {
             e.getEntity().remove();
         }else {
             Player player = (Player) e.getEntity();
             Region region = Region.getRegionOfEntity(player);
-
 
             if (player.getWorld().getName().contains("island")) {
                 int x = plugin.getConfig().getInt("hub.x");
@@ -413,7 +411,15 @@ public class WorldListener extends PListener {
                         block.setType(Material.STONE);
                         break;
                     }
-                    case THE_END:
+                    case THE_END: {
+                        block.setType(Material.ENDER_STONE);
+                        break;
+                    }
+                    case FOREST:{
+                        block.setType(Material.LOG);
+                        break;
+                    }
+                    case DEEP_CAVERN:
                     case DRAGONS_NEST: {
                         block.setType(Material.ENDER_STONE);
                         break;

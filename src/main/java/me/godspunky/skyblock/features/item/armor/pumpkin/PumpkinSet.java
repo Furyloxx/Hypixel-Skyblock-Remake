@@ -8,6 +8,7 @@ import me.godspunky.skyblock.features.item.armor.ArmorSet;
 import me.godspunky.skyblock.features.item.armor.mushroom.MushroomBoots;
 import me.godspunky.skyblock.features.item.armor.mushroom.MushroomChestplate;
 import me.godspunky.skyblock.features.item.armor.mushroom.MushroomHelmet;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class PumpkinSet implements ArmorSet {
@@ -18,7 +19,7 @@ public class PumpkinSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Reduces all taken damage by +10% and deal +10% damage";
+        return "Reduces all taken damage by"+ ChatColor.GREEN +" +10%"+ChatColor.GRAY+" and deal"+ChatColor.GREEN+" +10%"+ChatColor.GRAY+" damage";
     }
 
     @Override

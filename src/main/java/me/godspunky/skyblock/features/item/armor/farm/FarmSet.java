@@ -8,6 +8,8 @@ import me.godspunky.skyblock.features.item.armor.ArmorSet;
 import me.godspunky.skyblock.features.region.Region;
 import me.godspunky.skyblock.features.region.RegionType;
 import me.godspunky.skyblock.user.User;
+import net.milkbowl.vault.chat.Chat;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class FarmSet implements ArmorSet {
@@ -18,7 +20,7 @@ public class FarmSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Increases your ✦ Speed by +20 near Farming Minions or farming islands.";
+        return "Increases your"+ ChatColor.WHITE +" ✦ Speed"+ChatColor.GRAY+" by "+ ChatColor.GREEN +"+20"+ChatColor.GRAY+" near Farming Minions or farming islands.";
     }
 
     @Override

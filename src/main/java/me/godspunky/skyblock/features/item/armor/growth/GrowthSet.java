@@ -5,6 +5,7 @@ import me.godspunky.skyblock.features.item.MaterialStatistics;
 import me.godspunky.skyblock.features.item.PlayerBoostStatistics;
 import me.godspunky.skyblock.features.item.Rarity;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class GrowthSet implements ArmorSet {
@@ -15,7 +16,7 @@ public class GrowthSet implements ArmorSet {
 
     @Override
     public String getDescription() {
-        return "Heals the wearer for 1.0% ❤ Health after killing a monster. It also increases max ❤ Health bonus for each piece of armor by 1.";
+        return "Heals the wearer for"+ ChatColor.RED +" 1.0% ❤ Health"+ChatColor.GRAY+" after killing a monster. It also increases max "+ChatColor.RED+"❤ Health"+ChatColor.GRAY+" bonus for each piece of armor by 1.";
     }
 
     @Override
