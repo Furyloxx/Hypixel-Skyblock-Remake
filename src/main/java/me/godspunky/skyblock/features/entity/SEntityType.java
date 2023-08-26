@@ -13,7 +13,9 @@ import me.godspunky.skyblock.features.entity.dungeon.minibosses.KingMidas;
 import me.godspunky.skyblock.features.entity.dungeon.minibosses.LostAdventurer;
 import me.godspunky.skyblock.features.entity.dungeon.minibosses.ShadowAssassin;
 import me.godspunky.skyblock.features.entity.end.*;
-import me.godspunky.skyblock.features.entity.insentient.WheatCrystal;
+import me.godspunky.skyblock.features.entity.insentient.CarrotCrystal;
+import me.godspunky.skyblock.features.entity.insentient.PotatoCrystal;
+import me.godspunky.skyblock.features.entity.insentient.WheatCrystalWheat;
 import me.godspunky.skyblock.features.entity.nether.LargeMagmaCube;
 import me.godspunky.skyblock.features.entity.nether.MediumMagmaCube;
 import me.godspunky.skyblock.features.entity.nether.SmallMagmaCube;
@@ -22,7 +24,6 @@ import me.godspunky.skyblock.features.entity.nms.*;
 import me.godspunky.skyblock.features.entity.skeleton.HighLevelSkeleton;
 import me.godspunky.skyblock.features.entity.wolf.*;
 import me.godspunky.skyblock.features.entity.zombie.*;
-import me.godspunky.skyblock.features.item.exclusive.CarrotCrystal;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityTypes;
 import org.bukkit.entity.EntityType;
@@ -64,8 +65,9 @@ public enum SEntityType {
     OBSIDIAN_DEFENDER(EntityType.SKELETON, ObsidianDefender.class),
     VELOCITY_ARMOR_STAND(EntityType.ARMOR_STAND, VelocityArmorStand.class),
     UNCOLLIDABLE_ARMOR_STAND(EntityType.ARMOR_STAND, UncollidableArmorStand.class),
-    WHEAT_CRYSTAL(EntityType.ARMOR_STAND, WheatCrystal.class),
+    WHEAT_CRYSTAL(EntityType.ARMOR_STAND, WheatCrystalWheat.class),
     CARROT_CRYSTAL(EntityType.ARMOR_STAND, CarrotCrystal.class),
+    POTATO_CRYSTAL(EntityType.ARMOR_STAND, PotatoCrystal.class),
     LAPIS_ZOMBIE(EntityType.ZOMBIE, LapisZombie.class),
     PIGMAN(EntityType.PIG_ZOMBIE, Pigman.class),
     SMALL_SLIME(EntityType.SLIME, SmallSlime.class),
