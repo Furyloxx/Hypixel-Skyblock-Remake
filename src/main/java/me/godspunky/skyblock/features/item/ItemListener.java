@@ -189,7 +189,6 @@ public class ItemListener extends PListener {
             else
                 new SBlock(e.getBlockPlaced().getLocation(), sItem.getType(), sItem.getData()).save();
         }
-        e.setCancelled(true);
     }
 
     @EventHandler
