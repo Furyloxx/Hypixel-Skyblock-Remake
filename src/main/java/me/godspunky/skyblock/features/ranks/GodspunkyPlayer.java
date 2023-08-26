@@ -35,7 +35,7 @@ public class GodspunkyPlayer {
         if (config.getString("rank") != null) {
             this.rank = PlayerRank.valueOf(config.getString("rank"));
         } else {
-            this.rank = PlayerRank.DEFAULT;
+            this.rank = PlayerRank.BT;
         }
         this.firstJoined = config.getLong("firstJoined");
         if (firstJoined == 0) {
