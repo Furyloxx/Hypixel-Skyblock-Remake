@@ -405,10 +405,10 @@ public final class Skyblock extends JavaPlugin implements PluginMessageListener,
         long start = System.currentTimeMillis();
 
         for (World world : Bukkit.getWorlds()) {
-            for (Entity entity : world.getEntities()) {
+            /*for (Entity entity : world.getEntities()) {
                 if (entity instanceof HumanEntity) continue;
                 entity.remove();
-            }
+            }*/
             // Time Validator
             int time = (int) ((SkyBlockCalendar.ELAPSED % 24000) - 6000);
             if (time < 0)
