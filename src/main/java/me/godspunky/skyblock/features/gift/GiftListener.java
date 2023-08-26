@@ -1,5 +1,6 @@
 package me.godspunky.skyblock.features.gift;
 
+import me.godspunky.skyblock.Skyblock;
 import me.godspunky.skyblock.features.item.SItem;
 import me.godspunky.skyblock.features.item.SMaterial;
 import me.godspunky.skyblock.features.ranks.GodspunkyPlayer;
@@ -19,6 +20,10 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.metadata.MetadataValue;
+
+import java.util.Random;
 
 public class GiftListener implements Listener {
     @EventHandler
@@ -38,64 +43,78 @@ public class GiftListener implements Listener {
         }
 
         // CLICK LISTENER
-        if (rightClickedEntity.getType().equals(EntityType.ARMOR_STAND) && rightClickedEntity.getCustomName().contains("White Gift")){
+        if (rightClickedEntity.getType().equals(EntityType.ARMOR_STAND) && rightClickedEntity.getCustomName().contains("White Gift")) {
 
-        }
+            ArmorStand gift = (ArmorStand) e.getRightClicked();
+            if (gift.hasMetadata(rightclickedplayer.getName().toString()) && gift.hasMetadata(player.getName().toString())) {
 
-        // WHITE GIFT
-        if (rightClickedEntity.getType().equals(EntityType.PLAYER)) {
+                SUtil.delay(() -> player.playSound(loc, Sound.NOTE_PLING, 1.0f, 1.0f), 0);
+                SUtil.delay(() -> player.playSound(loc, Sound.NOTE_PLING, 1.0f, 1.0f), 10);
+                SUtil.delay(() -> player.playSound(loc, Sound.NOTE_PLING, 1.0f, 1.0f), 20);
+                SUtil.delay(() -> player.playSound(loc, Sound.NOTE_PLING, 1.0f, 1.0f), 30);
+                SUtil.delay(() -> player.playSound(loc, Sound.NOTE_PLING, 1.0f, 1.0f), 40);
 
-            if (player.getInventory().getItemInHand().getType() == null) {
-                e.setCancelled(true);
-                return;
+                // Rewards By Chance
+                // Use Random Function
             }
-            if (player.getInventory().getItemInHand().getItemMeta().getDisplayName().contains("White Gift")) {
 
-                Entity ent = player.getWorld().spawn(loc, (Class) ArmorStand.class);
-                ArmorStand stand = (ArmorStand) ent;
-                Entity ent1 = player.getWorld().spawn(loc1, (Class) ArmorStand.class);
-                ArmorStand stand1 = (ArmorStand) ent1;
-                Entity ent2 = player.getWorld().spawn(loc2, (Class) ArmorStand.class);
-                ArmorStand stand2 = (ArmorStand) ent2;
+            // WHITE GIFT
+            if (rightClickedEntity.getType().equals(EntityType.PLAYER)) {
 
-                if (player.getInventory().getItemInHand().getAmount() > 1) {
-                    player.getInventory().getItemInHand().setAmount(player.getInventory().getItemInHand().getAmount() - 1);
-                } else {
-                    player.getInventory().setItemInHand(null);
+                if (player.getInventory().getItemInHand().getType() == null) {
+                    e.setCancelled(true);
+                    return;
                 }
+                if (player.getInventory().getItemInHand().getItemMeta().getDisplayName().contains("White Gift")) {
 
-                stand1.setCustomName(ChatColor.YELLOW + "From: " + player.getDisplayName());
-                stand2.setCustomName(ChatColor.YELLOW + "To: " + rightclickedplayer.getDisplayName());
-                stand.setCustomName("White Gift");
+                    Entity ent = player.getWorld().spawn(loc, (Class) ArmorStand.class);
+                    ArmorStand stand = (ArmorStand) ent;
+                    Entity ent1 = player.getWorld().spawn(loc1, (Class) ArmorStand.class);
+                    ArmorStand stand1 = (ArmorStand) ent1;
+                    Entity ent2 = player.getWorld().spawn(loc2, (Class) ArmorStand.class);
+                    ArmorStand stand2 = (ArmorStand) ent2;
 
-                stand.setCustomNameVisible(false);
-                stand1.setCustomNameVisible(true);
-                stand2.setCustomNameVisible(true);
-                stand.setVisible(false);
-                stand1.setVisible(false);
-                stand2.setVisible(false);
-                stand.setGravity(false);
-                stand1.setGravity(false);
-                stand2.setGravity(false);
+                    if (player.getInventory().getItemInHand().getAmount() > 1) {
+                        player.getInventory().getItemInHand().setAmount(player.getInventory().getItemInHand().getAmount() - 1);
+                    } else {
+                        player.getInventory().setItemInHand(null);
+                    }
 
-                player.playSound(player.getLocation(), Sound.ITEM_PICKUP, 1.0f, 1.0f);
-                rightclickedplayer.playSound(player.getLocation(), Sound.ITEM_PICKUP, 1.0f, 1.0f);
+                    stand1.setCustomName(ChatColor.YELLOW + "From: " + player.getDisplayName());
+                    stand2.setCustomName(ChatColor.YELLOW + "To: " + rightclickedplayer.getDisplayName());
+                    stand.setCustomName("White Gift");
+                    stand.setMetadata(rightclickedplayer.getName().toString(), new FixedMetadataValue(Skyblock.getPlugin(), "name"));
+                    stand.setMetadata(player.getName().toString(), new FixedMetadataValue(Skyblock.getPlugin(), "playername"));
 
-                ItemStack item = null;
-                item = SkullMaker.CreateFromTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTVjNjk0NDU5MzgyMGQxM2Q3ZDQ3ZGIyYWJjZmNiZjY4M2JiNzRhMDdlMWE5ODJkYjlmMzJlMGE4YjVkYzQ2NiJ9fX0=");
-                final ItemMeta meta = item.getItemMeta();
-                meta.setDisplayName("Head");
-                item.setItemMeta(meta);
-                stand.setHelmet(item);
+                    stand.setCustomNameVisible(false);
+                    stand1.setCustomNameVisible(true);
+                    stand2.setCustomNameVisible(true);
+                    stand.setVisible(false);
+                    stand1.setVisible(false);
+                    stand2.setVisible(false);
+                    stand.setGravity(false);
+                    stand1.setGravity(false);
+                    stand2.setGravity(false);
 
-                if (!ent.isDead()) {
-                    SUtil.delay(() -> ent.remove(), 100);
-                    SUtil.delay(() -> ent1.remove(), 100);
-                    SUtil.delay(() -> ent2.remove(), 100);
+                    player.playSound(player.getLocation(), Sound.ITEM_PICKUP, 1.0f, 1.0f);
+                    rightclickedplayer.playSound(player.getLocation(), Sound.ITEM_PICKUP, 1.0f, 1.0f);
 
-                    // RETURN GIFT
-                    SItem sItem = SItem.of(SMaterial.WHITE_GIFT);
-                    SUtil.delay(() -> player.getInventory().addItem(SItem.of(sItem.getType(), sItem.getVariant()).getStack()),100);
+                    ItemStack item = null;
+                    item = SkullMaker.CreateFromTexture("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTVjNjk0NDU5MzgyMGQxM2Q3ZDQ3ZGIyYWJjZmNiZjY4M2JiNzRhMDdlMWE5ODJkYjlmMzJlMGE4YjVkYzQ2NiJ9fX0=");
+                    final ItemMeta meta = item.getItemMeta();
+                    meta.setDisplayName("Head");
+                    item.setItemMeta(meta);
+                    stand.setHelmet(item);
+
+                    if (!ent.isDead()) {
+                        SUtil.delay(() -> ent.remove(), 100);
+                        SUtil.delay(() -> ent1.remove(), 100);
+                        SUtil.delay(() -> ent2.remove(), 100);
+
+                        // RETURN GIFT
+                        SItem sItem = SItem.of(SMaterial.WHITE_GIFT);
+                        SUtil.delay(() -> player.getInventory().addItem(SItem.of(sItem.getType(), sItem.getVariant()).getStack()), 100);
+                    }
                 }
             }
         }

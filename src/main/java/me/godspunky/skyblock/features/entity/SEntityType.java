@@ -22,6 +22,7 @@ import me.godspunky.skyblock.features.entity.nms.*;
 import me.godspunky.skyblock.features.entity.skeleton.HighLevelSkeleton;
 import me.godspunky.skyblock.features.entity.wolf.*;
 import me.godspunky.skyblock.features.entity.zombie.*;
+import me.godspunky.skyblock.features.item.exclusive.CarrotCrystal;
 import net.minecraft.server.v1_8_R3.EntityInsentient;
 import net.minecraft.server.v1_8_R3.EntityTypes;
 import org.bukkit.entity.EntityType;
@@ -64,6 +65,7 @@ public enum SEntityType {
     VELOCITY_ARMOR_STAND(EntityType.ARMOR_STAND, VelocityArmorStand.class),
     UNCOLLIDABLE_ARMOR_STAND(EntityType.ARMOR_STAND, UncollidableArmorStand.class),
     WHEAT_CRYSTAL(EntityType.ARMOR_STAND, WheatCrystal.class),
+    CARROT_CRYSTAL(EntityType.ARMOR_STAND, CarrotCrystal.class),
     LAPIS_ZOMBIE(EntityType.ZOMBIE, LapisZombie.class),
     PIGMAN(EntityType.PIG_ZOMBIE, Pigman.class),
     SMALL_SLIME(EntityType.SLIME, SmallSlime.class),

@@ -131,6 +131,7 @@ import me.godspunky.skyblock.features.item.enchanted.mining.*;
 import me.godspunky.skyblock.features.item.enchanting.EnchantedBook;
 import me.godspunky.skyblock.features.item.entity.*;
 import me.godspunky.skyblock.features.item.entity.Bonzo.BonzoMask;
+import me.godspunky.skyblock.features.item.exclusive.CarrotCrystal;
 import me.godspunky.skyblock.features.item.exclusive.TestItem;
 import me.godspunky.skyblock.features.item.exclusive.WheatCrystal;
 import me.godspunky.skyblock.features.item.farming.*;
@@ -383,57 +384,67 @@ public enum SMaterial {
     SLEEPING_EYE(Material.SKULL_ITEM, SleepingEye.class),
     REMNANT_OF_THE_EYE(Material.SKULL_ITEM, RemnantOfTheEye.class),
     SUMMONING_FRAME(Material.ENDER_PORTAL_FRAME, SummoningFrame.class),
+
     // Unspecific Armor
     OBSIDIAN_CHESTPLATE(Material.LEATHER_CHESTPLATE, ObsidianChestplate.class),
     SPIDERS_BOOTS(Material.IRON_BOOTS, SpidersBoots.class),
     BIG_BOUNCE_BOOTS(Material.LEATHER_BOOTS, BigBounceBoots.class),
+
     // Wise Dragon Armor
     WISE_DRAGON_HELMET(Material.SKULL_ITEM, WiseDragonHelmet.class),
     WISE_DRAGON_CHESTPLATE(Material.LEATHER_CHESTPLATE, WiseDragonChestplate.class),
     WISE_DRAGON_LEGGINGS(Material.LEATHER_LEGGINGS, WiseDragonLeggings.class),
     WISE_DRAGON_BOOTS(Material.LEATHER_BOOTS, WiseDragonBoots.class),
     WISE_DRAGON_FRAGMENT(Material.SKULL_ITEM, WiseDragonFragment.class),
+
     // Young Dragon Armor
     YOUNG_DRAGON_HELMET(Material.SKULL_ITEM, YoungDragonHelmet.class),
     YOUNG_DRAGON_CHESTPLATE(Material.LEATHER_CHESTPLATE, YoungDragonChestplate.class),
     YOUNG_DRAGON_LEGGINGS(Material.LEATHER_LEGGINGS, YoungDragonLeggings.class),
     YOUNG_DRAGON_BOOTS(Material.LEATHER_BOOTS, YoungDragonBoots.class),
     YOUNG_DRAGON_FRAGMENT(Material.SKULL_ITEM, YoungDragonFragment.class),
+
     // Superior Dragon Armor
     SUPERIOR_DRAGON_HELMET(Material.SKULL_ITEM, SuperiorDragonHelmet.class),
     SUPERIOR_DRAGON_CHESTPLATE(Material.LEATHER_CHESTPLATE, SuperiorDragonChestplate.class),
     SUPERIOR_DRAGON_LEGGINGS(Material.LEATHER_LEGGINGS, SuperiorDragonLeggings.class),
     SUPERIOR_DRAGON_BOOTS(Material.LEATHER_BOOTS, SuperiorDragonBoots.class),
     SUPERIOR_DRAGON_FRAGMENT(Material.SKULL_ITEM, SuperiorDragonFragment.class),
+
     // Unstable Dragon Armor
     UNSTABLE_DRAGON_HELMET(Material.SKULL_ITEM, UnstableDragonHelmet.class),
     UNSTABLE_DRAGON_CHESTPLATE(Material.LEATHER_CHESTPLATE, UnstableDragonChestplate.class),
     UNSTABLE_DRAGON_LEGGINGS(Material.LEATHER_LEGGINGS, UnstableDragonLeggings.class),
     UNSTABLE_DRAGON_BOOTS(Material.LEATHER_BOOTS, UnstableDragonBoots.class),
     UNSTABLE_DRAGON_FRAGMENT(Material.SKULL_ITEM, UnstableDragonFragment.class),
+
     // Strong Dragon Armor
     STRONG_DRAGON_HELMET(Material.SKULL_ITEM, StrongDragonHelmet.class),
     STRONG_DRAGON_CHESTPLATE(Material.LEATHER_CHESTPLATE, StrongDragonChestplate.class),
     STRONG_DRAGON_LEGGINGS(Material.LEATHER_LEGGINGS, StrongDragonLeggings.class),
     STRONG_DRAGON_BOOTS(Material.LEATHER_BOOTS, StrongDragonBoots.class),
     STRONG_DRAGON_FRAGMENT(Material.SKULL_ITEM, StrongDragonFragment.class),
+
     // Old Dragon Armor
     OLD_DRAGON_HELMET(Material.SKULL_ITEM, OldDragonHelmet.class),
     OLD_DRAGON_CHESTPLATE(Material.LEATHER_CHESTPLATE, OldDragonChestplate.class),
     OLD_DRAGON_LEGGINGS(Material.LEATHER_LEGGINGS, OldDragonLeggings.class),
     OLD_DRAGON_BOOTS(Material.LEATHER_BOOTS, OldDragonBoots.class),
     OLD_DRAGON_FRAGMENT(Material.SKULL_ITEM, OldDragonFragment.class),
+
     // Protector Dragon Armor
     PROTECTOR_DRAGON_HELMET(Material.SKULL_ITEM, ProtectorDragonHelmet.class),
     PROTECTOR_DRAGON_CHESTPLATE(Material.LEATHER_CHESTPLATE, ProtectorDragonChestplate.class),
     PROTECTOR_DRAGON_LEGGINGS(Material.LEATHER_LEGGINGS, ProtectorDragonLeggings.class),
     PROTECTOR_DRAGON_BOOTS(Material.LEATHER_BOOTS, ProtectorDragonBoots.class),
     PROTECTOR_DRAGON_FRAGMENT(Material.SKULL_ITEM, ProtectorDragonFragment.class),
+
     //Shadow Assassin Armor
     SHADOW_ASSASSIN_HELMET(Material.SKULL_ITEM, ShadowAssassinHelmet.class),
     SHADOW_ASSASSIN_CHESTPLATE(Material.LEATHER_CHESTPLATE, ShadowAssassinChestplate.class),
     SHADOW_ASSASSIN_LEGGINGS(Material.LEATHER_LEGGINGS, ShadowAssassinLeggings.class),
     SHADOW_ASSASSIN_BOOTS(Material.LEATHER_BOOTS, ShadowAssassinBoots.class),
+
     // Ender Armor
     ENDER_ARMOR_HELMET(Material.SKULL_ITEM, EnderArmorHelmet.class),
     ENDER_ARMOR_CHESTPLATE(Material.CHAINMAIL_CHESTPLATE, EnderArmorChestplate.class),
@@ -445,43 +456,49 @@ public enum SMaterial {
     LAPIS_ARMOR_CHESTPLATE(Material.LEATHER_CHESTPLATE, LapisArmorChestplate.class),
     LAPIS_ARMOR_LEGGINGS(Material.LEATHER_LEGGINGS, LapisArmorLeggings.class),
     LAPIS_ARMOR_BOOTS(Material.LEATHER_BOOTS, LapisArmorBoots.class),
+
     // Pumpkin Armor
     PUMPKIN_ARMOR_HELMET(Material.LEATHER_HELMET, PumpkinArmorHelmet.class),
     PUMPKIN_ARMOR_CHESTPLATE(Material.LEATHER_CHESTPLATE, PumpkinArmorChestplate.class),
     PUMPKIN_ARMOR_LEGGINGS(Material.LEATHER_LEGGINGS, PumpkinArmorLeggings.class),
     PUMPKIN_ARMOR_BOOTS(Material.LEATHER_BOOTS, PumpkinArmorBoots.class),
+
     // Farm Suit
     FARM_SUIT_HELMET(Material.LEATHER_HELMET, FarmSuitHelmet.class),
     FARM_SUIT_CHESTPLATE(Material.LEATHER_CHESTPLATE, FarmSuitChestplate.class),
     FARM_SUIT_LEGGINGS(Material.LEATHER_LEGGINGS, FarmSuitLeggings.class),
     FARM_SUIT_BOOTS(Material.LEATHER_BOOTS, FarmSuitBoots.class),
+
     // Mushroom Armor
     MUSHROOM_HELMET(Material.LEATHER_HELMET, MushroomHelmet.class),
     MUSHROOM_CHESTPLATE(Material.LEATHER_CHESTPLATE, MushroomChestplate.class),
     MUSHROOM_LEGGINGS(Material.LEATHER_LEGGINGS, MushroomLeggings.class),
     MUSHROOM_BOOTS(Material.LEATHER_BOOTS, MushroomBoots.class),
+
     // Angler Armor
     ANGLER_HELMET(Material.DIAMOND_HELMET, AnglerHelmet.class),
     ANGLER_CHESTPLATE(Material.LEATHER_CHESTPLATE, AnglerChestplate.class),
     ANGLER_LEGGINGS(Material.LEATHER_LEGGINGS, AnglerLeggings.class),
     ANGLER_BOOTS(Material.LEATHER_BOOTS, AnglerBoots.class),
+
     // Leaflet Armor
     LEAFLET_HELMET(Material.LEAVES, LeafletHelmet.class),
     LEAFLET_CHESTPLATE(Material.LEATHER_CHESTPLATE, LeafletChestplate.class),
     LEAFLET_LEGGINGS(Material.LEATHER_LEGGINGS, LeafletLeggings.class),
     LEAFLET_BOOTS(Material.LEATHER_BOOTS, LeafletBoots.class),
 
-
     // Miner Armor
     MINER_HELMET(Material.DIAMOND_HELMET, MinerHelmet.class),
     MINER_CHESTPLATE(Material.DIAMOND_CHESTPLATE, MinerChestplate.class),
     MINER_LEGGINGS(Material.DIAMOND_LEGGINGS, MinerLeggings.class),
     MINER_BOOTS(Material.DIAMOND_BOOTS, MinerBoots.class),
+
     // Hardened Diamond Armor
     HARDENED_DIAMOND_HELMET(Material.DIAMOND_HELMET, HardenedDiamondHelmet.class),
     HARDENED_DIAMOND_CHESTPLATE(Material.DIAMOND_CHESTPLATE, HardenedDiamondChestplate.class),
     HARDENED_DIAMOND_LEGGINGS(Material.DIAMOND_LEGGINGS, HardenedDiamondLeggings.class),
     HARDENED_DIAMOND_BOOTS(Material.DIAMOND_BOOTS, HardenedDiamondBoots.class),
+
     // Accessories
     SUPERSPEED_TALISMAN(Material.SKULL_ITEM, SuperspeedTalisman.class),
     ZOMBIE_TALISMAN(Material.SKULL_ITEM, ZombieTalisman.class),
@@ -600,16 +617,27 @@ public enum SMaterial {
     ENCHANTED_JUNGLE_WOOD(Material.LOG, EnchantedJungleWood.class, (short) 3),
     ENCHANTED_ACACIA_WOOD(Material.LOG_2, EnchantedAcaciaWood.class),
     ENCHANTED_DARK_OAK_WOOD(Material.LOG_2, EnchantedDarkOakWood.class, (short) 1),
+    ENCHANTED_RAW_FISH(Material.RAW_FISH, EnchantedRawFish.class),
+    ENCHANTED_COOKED_FISH(Material.COOKED_FISH, EnchantedCookedFish.class),
+    ENCHANTED_RAW_SALMON(Material.RAW_FISH, EnchantedRawSalmon.class,(short) 1),
+    ENCHANTED_COOKED_SALMON(Material.COOKED_FISH, EnchantedCookedSalmon.class, (short) 1),
+    ENCHANTED_PUFFERFISH(Material.RAW_FISH, EnchantedPufferfish.class, (short) 3),
+    ENCHANTED_PRISMARINE_SHARD(Material.PRISMARINE_SHARD, EnchantedPrismarineShard.class),
+    ENCHANTED_PRISMARINE_CRYSTAL(Material.PRISMARINE_CRYSTALS, EnchantedPrismarineCrystal.class),
+    ENCHANTED_CLAY(Material.CLAY_BALL, EnchantedClay.class),
+    ENCHANTED_SPONGE(Material.SPONGE, EnchantedSponge.class),
+    ENCHANTED_WET_SPONGE(Material.SPONGE, EnchantedWetSponge.class, (short)1),
 
     // Bows
     END_STONE_BOW(Material.BOW, EndStoneBow.class),
     MOSQUITO_BOW(Material.BOW, MosquitoBow.class),
     HURRICANE_BOW(Material.BOW, HurricaneBow.class),
     ARTISANAL_SHORTBOW(Material.BOW, ArtisanalShortbow.class),
-
     RUNAAN_BOW(Material.BOW, RunaanBow.class),
 
     // Special
+    GOD_POT(Material.SKULL_ITEM, GodPot.class),
+    BOOSTER_COOKIE(Material.COOKIE, BoosterCookie.class),
     WHITE_GIFT(Material.SKULL_ITEM, WhiteGift.class),
     EXTERMINATOR(Material.IRON_SWORD, Exterminator.class),
     TEST_ITEM(Material.SKULL_ITEM, TestItem.class),
@@ -622,20 +650,26 @@ public enum SMaterial {
     BOUNCER(Material.SLIME_BLOCK, Bouncer.class),
     WATER_BOTTLE(Material.POTION, WaterBottle.class),
     MADDOX_BATPHONE(Material.SKULL_ITEM, MaddoxBatphone.class),
+
     // Entity Drops
     CRYSTAL_FRAGMENT(Material.QUARTZ, CrystalFragment.class),
     GOLDEN_POWDER(Material.GLOWSTONE_DUST, GoldenPowder.class),
     WEAK_WOLF_CATALYST(Material.BONE, WeakWolfCatalyst.class),
+
     // Entity Items
     REVENANT_HORROR_HEAD(Material.SKULL_ITEM, RevenantHorrorHead.class),
     BONZO_MASK(Material.SKULL_ITEM, BonzoMask.class),
+
     // Power Orbs
     RADIANT_POWER_ORB(Material.SKULL_ITEM, RadiantPowerOrb.class),
     MANA_FLUX_POWER_ORB(Material.SKULL_ITEM, ManaFluxPowerOrb.class),
     OVERFLUX_POWER_ORB(Material.SKULL_ITEM, OverfluxPowerOrb.class),
     PLASMAFLUX_POWER_ORB(Material.SKULL_ITEM, PlasmafluxPowerOrb.class),
+
     // Floating Crystal Items
     WHEAT_CRYSTAL(Material.SKULL_ITEM, WheatCrystal.class),
+    CARROT_CRYSTAL(Material.SKULL_ITEM, CarrotCrystal.class),
+
     // Enchanting & Reforging
     ENCHANTED_BOOK(Material.ENCHANTED_BOOK, EnchantedBook.class, true),
     RECOMBOBULATOR_3000(Material.SKULL_ITEM, Recombobulator3000.class),
@@ -1287,9 +1321,7 @@ public enum SMaterial {
     BONZO_BALLOON_6(Material.SKULL_ITEM, BS6.class),
     BONZO_BALLOON_7(Material.SKULL_ITEM, BS7.class),
     BONZO_BALLOON_8(Material.SKULL_ITEM, BS8.class),
-    BONZO_BALLOON_9(Material.SKULL_ITEM, BS9.class),
-
-    GOD_POT(Material.SKULL_ITEM, GodPot.class);
+    BONZO_BALLOON_9(Material.SKULL_ITEM, BS9.class);
 
     private static final List<ArmorSet> CACHED_SETS = new ArrayList<>();
 

@@ -229,6 +229,7 @@ public class WorldListener extends PListener {
     @EventHandler
     public void onPortalEnter(EntityPortalEnterEvent e) {
         if (e.getEntityType() == EntityType.PIG_ZOMBIE) {
+            e.getEntity().getWorld().getLivingEntities().remove(EntityType.PIG_ZOMBIE);
             e.getEntity().remove();
         }else {
             Player player = (Player) e.getEntity();
