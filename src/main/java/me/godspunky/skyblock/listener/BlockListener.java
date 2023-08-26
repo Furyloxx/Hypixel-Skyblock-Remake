@@ -113,6 +113,9 @@ public class BlockListener extends PListener {
             players.sendMessage(SUtil.getRandomVisibleColor() + "" + ChatColor.BOLD + "[GodSpunky] : You cant Place block here");
             e.setCancelled(true);
         }
+        if (players.getWorld() != world){
+            e.setCancelled(true);
+        }
     }
 
     @EventHandler
