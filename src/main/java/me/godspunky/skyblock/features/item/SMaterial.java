@@ -132,6 +132,7 @@ import me.godspunky.skyblock.features.item.enchanting.EnchantedBook;
 import me.godspunky.skyblock.features.item.entity.*;
 import me.godspunky.skyblock.features.item.entity.Bonzo.BonzoMask;
 import me.godspunky.skyblock.features.item.exclusive.CarrotCrystal;
+import me.godspunky.skyblock.features.item.exclusive.PotatoCrystal;
 import me.godspunky.skyblock.features.item.exclusive.TestItem;
 import me.godspunky.skyblock.features.item.exclusive.WheatCrystal;
 import me.godspunky.skyblock.features.item.farming.*;
@@ -669,6 +670,7 @@ public enum SMaterial {
     // Floating Crystal Items
     WHEAT_CRYSTAL(Material.SKULL_ITEM, WheatCrystal.class),
     CARROT_CRYSTAL(Material.SKULL_ITEM, CarrotCrystal.class),
+    POTATO_CRYSTAL(Material.SKULL_ITEM, PotatoCrystal.class),
 
     // Enchanting & Reforging
     ENCHANTED_BOOK(Material.ENCHANTED_BOOK, EnchantedBook.class, true),

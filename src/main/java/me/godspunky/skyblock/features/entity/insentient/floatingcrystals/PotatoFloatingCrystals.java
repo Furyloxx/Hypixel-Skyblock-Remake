@@ -1,4 +1,4 @@
-package me.godspunky.skyblock.features.entity.insentient;
+package me.godspunky.skyblock.features.entity.insentient.floatingcrystals;
 
 import me.godspunky.skyblock.Skyblock;
 import me.godspunky.skyblock.features.entity.SEntity;
@@ -18,7 +18,7 @@ import org.bukkit.util.Vector;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class FloatingCrystal extends VelocityArmorStand {
+public abstract class PotatoFloatingCrystals extends VelocityArmorStand {
     public void onSpawn(LivingEntity entity, SEntity sEntity) {
         ArmorStand stand = (ArmorStand) entity;
         stand.setVisible(false);
@@ -65,9 +65,7 @@ public abstract class FloatingCrystal extends VelocityArmorStand {
                 if (possible.size() == 0) return;
                 Block above = possible.get(SUtil.random(0, possible.size() - 1));
                 if (above == null) return;
-
-
-                above.setType(Material.CROPS);
+                above.setType(Material.POTATO);
                 BlockState state = above.getState();
                 state.setRawData((byte) 7);
                 state.update();
