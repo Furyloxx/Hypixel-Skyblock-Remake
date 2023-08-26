@@ -96,6 +96,11 @@ public class BlockListener extends PListener {
 
     @EventHandler
     public void BlockPlace(BlockPlaceEvent e) {
+        if (e.getPlayer().hasPermission("admin")){
+            e.setCancelled(false);
+        }else {
+            e.setCancelled(true);
+        }
         if (!e.getPlayer().getWorld().equals(Bukkit.getWorld("islands"))) return;
         Player players = e.getPlayer();
         User user = User.getUser(players.getUniqueId());
@@ -111,9 +116,6 @@ public class BlockListener extends PListener {
             e.setCancelled(false);
         } else {
             players.sendMessage(SUtil.getRandomVisibleColor() + "" + ChatColor.BOLD + "[GodSpunky] : You cant Place block here");
-            e.setCancelled(true);
-        }
-        if (players.getWorld() != world){
             e.setCancelled(true);
         }
     }
