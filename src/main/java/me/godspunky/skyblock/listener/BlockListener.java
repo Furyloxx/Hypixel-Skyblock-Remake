@@ -79,7 +79,7 @@ public class BlockListener extends PListener {
 
             }
             case 3 : {
-                generator.setTeleportLocation(block.getLocation());
+                generator.setTeleportLocation(block.getLocation().add(0 , 1 , 0)); // add 1 + to y to prevent teleport inside block
                 LaunchPadHandler handler = new LaunchPadHandler();
                 handler.savePad(generator.getStart() , generator.getEnd() , generator.getStartLocation() , generator.getEndLocation() , generator.getTeleportLocation());
                 player.sendMessage(ChatColor.GREEN + "Created LaunchPad!");

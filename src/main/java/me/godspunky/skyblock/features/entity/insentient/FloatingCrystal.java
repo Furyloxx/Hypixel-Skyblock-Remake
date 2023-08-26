@@ -65,6 +65,8 @@ public abstract class FloatingCrystal extends VelocityArmorStand {
                 if (possible.size() == 0) return;
                 Block above = possible.get(SUtil.random(0, possible.size() - 1));
                 if (above == null) return;
+
+
                 above.setType(Material.CROPS);
                 BlockState state = above.getState();
                 state.setRawData((byte) 7);

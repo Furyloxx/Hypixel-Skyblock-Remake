@@ -43,7 +43,7 @@ public class LaunchPadHandler {
         ArrayList<String> pads = new ArrayList<>(config.getConfigurationSection("launchpads").getKeys(false));
 
         for (String pad : pads) {
-            Location from = deserializeLocation((String) getField(pad, "from"));
+            Location from =  deserializeLocation((String) getField(pad, "from"));
             if (player.getWorld().equals(from.getWorld()) && player.getLocation().distance(from) < 2) return pad;
         }
 
@@ -51,6 +51,8 @@ public class LaunchPadHandler {
     }
 
     public void savePad(String start, String end, Location from, Location to, Location teleport) {
+        Location infront = from.clone();
+        infront.setY(from.getY() + 4);
         String id = "launchpads." + start + "_to_" + end;
         FileConfiguration config = YamlConfiguration.loadConfiguration(file);
 
@@ -58,7 +60,7 @@ public class LaunchPadHandler {
         config.set(id + ".end", end);
         config.set(id + ".from", serializeLocation(from));
         config.set(id + ".to", serializeLocation(to));
-        config.set(id + ".infront", serializeLocation(from.multiply(5).add(0, 4, 0)));
+        config.set(id + ".infront", serializeLocation(infront));
         config.set(id + ".teleport", serializeLocation(teleport));
 
         try {
@@ -83,7 +85,6 @@ public class LaunchPadHandler {
         double z = Double.parseDouble(parts[3]);
         float pitch = Float.parseFloat(parts[4]);
         float yaw = Float.parseFloat(parts[5]);
-
         return new Location(world, x, y, z, yaw, pitch);
     }
 
