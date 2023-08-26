@@ -28,10 +28,10 @@ public class ProfileViewerGUI extends GUI {
     }
 
     public void onOpen(GUIOpenEvent e) {
-        if (this.p == null || this.p.getType().equals(EntityType.FAKE_PLAYER)) {
-            e.setCancelled(true);
-            return;
-        }
+        //if (this.p == null || this.p.getType().equals(EntityType.FAKE_PLAYER)) {
+            //e.setCancelled(true);
+          //  return;
+        //}
         fill(BLACK_STAINED_GLASS_PANE);
         final Player player = e.getPlayer();
         final User user = User.getUser(this.p.getUniqueId());
