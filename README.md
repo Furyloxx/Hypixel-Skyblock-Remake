@@ -11,3 +11,4 @@ implemented. This version of skyblock very difficult to progress in until we rel
 
 This is a Hypixel Skyblock recreation of Skyblock before the Dungeons update. After we complete this, we will start
 adding features after Dungeons.
+[![Maven Package](https://github.com/dumbo-the-developer/GodSpunkySkyblockCore/actions/workflows/maven-publish.yml/badge.svg)](https://github.com/dumbo-the-developer/GodSpunkySkyblockCore/actions/workflows/maven-publish.yml)
