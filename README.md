@@ -1,5 +1,4 @@
-# GodSpunkySkyblockCore
-- Coded by DUMBO, DEVIL, EPICPORTAL and LEGIT
+# Skypixel Skyblock Core!
 - This core contains variety of hypixel skyblock items
 
 # Work in Progress
