@@ -14,9 +14,10 @@ public enum PlayerRank {
     HELPER("&9[HELPER]", 11),
     MOD("&2[MOD]", 12),
     GAMEMASTER("&2[GM]", 13),
-    BUILD("&3[BUILD TEAM]", 14),
-    ADMIN("&c[ADMIN]", 15),
-    BLOODGOD("&c[BLOOD GOD]",16),
+    ADMIN("&c[ADMIN]", 14),
+    DEPUTY("&c[DEPUTY]", 15),
+    MAINADMIN("&c[MAIN ADMIN]"),
+    COOWNER("&c[CO OWNER]"),
     OWNER("&c[OWNER]", 17);
 
 
