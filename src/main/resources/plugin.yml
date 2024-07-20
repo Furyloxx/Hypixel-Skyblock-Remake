@@ -1,8 +1,8 @@
 name: GodSpunkySkyblockCore
 version: ${project.version}
 main: me.godspunky.skyblock.Skyblock
-authors: [ Adarsh, Epicportal, Devil, Legit]
-description: A core for godspunky skyblock
+authors: [ FuryloxxTheDev]
+description: A core for skypixel skyblock
 commands:
   setrank:
   wardrobe:
