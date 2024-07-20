@@ -1,4 +1,4 @@
-name: GodSpunkySkyblockCore
+name: SkypixelSkyblockCore 
 version: ${project.version}
 main: me.godspunky.skyblock.Skyblock
 authors: [ FuryloxxTheDev]
