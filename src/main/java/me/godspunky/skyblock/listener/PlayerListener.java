@@ -512,7 +512,7 @@ public class PlayerListener extends PListener {
                     User user = User.getUser(uuid);
                     player.teleport(targetworld.getHighestBlockAt(SUtil.blackMagic(user.getIslandX()),
                             SUtil.blackMagic(user.getIslandZ())).getLocation().add(0.5, 1.0, 0.5));
-                    player.sendMessage(ChatColor.GREEN + "" + "[GodSpunky] : " + "Visiting " + name + " island");
+                    player.sendMessage(ChatColor.GREEN + "" + "[FuryloxxTheDev] : " + "Visiting " + name + " island");
                 }
             }
         }
