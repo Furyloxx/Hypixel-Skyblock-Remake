@@ -6,10 +6,10 @@
 
     <groupId>GodSpunkySkyblockCore</groupId>
     <artifactId>GodSpunkySkyblockCore</artifactId>
-    <version>0.001</version>
+    <version></version>
     <packaging>jar</packaging>
 
-    <name>Skyblock-Core</name>
+    <name>Skypixel-Skyblock-Core</name>
 
     <description>Skyblock core for sandbox</description>
     <properties>
