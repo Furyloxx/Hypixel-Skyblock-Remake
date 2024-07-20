@@ -73,7 +73,7 @@ public class DungeonGenerator {
 
         if (world == null) {
             SLog.severe("Failed to create the world '" + worldname + "'!");
-            player.sendMessage(ChatColor.AQUA + "[GodSpunky] : " + ChatColor.RED + "Failed to create dungeon! " + ChatColor.GREEN + " Report to admin");
+            player.sendMessage(ChatColor.AQUA + "[FuryloxxTheDev] : " + ChatColor.RED + "Failed to create dungeon! " + ChatColor.GREEN + " Report to admin");
             return;
         }
 
@@ -85,7 +85,7 @@ public class DungeonGenerator {
                 warpParty(party);
             } catch (Exception e) {
                 SLog.severe("Error occurred while executing r method: " + e.getMessage());
-                player.sendMessage(ChatColor.AQUA + "[GodSpunky] : " + ChatColor.RED + "Failed to create dungeon! " + ChatColor.GREEN + " Report to admin");
+                player.sendMessage(ChatColor.AQUA + "[FuryloxxTheDev] : " + ChatColor.RED + "Failed to create dungeon! " + ChatColor.GREEN + " Report to admin");
             }
         }, 1L);
 
