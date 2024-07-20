@@ -115,7 +115,7 @@ public class BlockListener extends PListener {
         if (cuboid.contains(players.getLocation())) {
             e.setCancelled(false);
         } else {
-            players.sendMessage(SUtil.getRandomVisibleColor() + "" + ChatColor.BOLD + "[GodSpunky] : You cant Place block here");
+            players.sendMessage(SUtil.getRandomVisibleColor() + "" + ChatColor.BOLD + "[FuryloxxTheDev] : You cant Place block here");
             e.setCancelled(true);
         }
     }
