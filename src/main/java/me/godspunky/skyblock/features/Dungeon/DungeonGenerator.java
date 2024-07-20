@@ -64,7 +64,7 @@ public class DungeonGenerator {
                     });
         } catch (IOException e) {
             SLog.severe("Failed to copy world 'f1' to '" + worldname + "'!");
-            player.sendMessage(ChatColor.AQUA + "[GodSpunky] : " + ChatColor.RED + "Failed to create dungeon! " + ChatColor.GREEN + " Report to admin");
+            player.sendMessage(ChatColor.AQUA + "[FuryloxxTheDev] : " + ChatColor.RED + "Failed to create dungeon! " + ChatColor.GREEN + " Report to admin");
             e.printStackTrace();
             return;
         }
