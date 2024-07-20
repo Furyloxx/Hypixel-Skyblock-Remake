@@ -16,9 +16,9 @@ public enum PlayerRank {
     GAMEMASTER("&2[GM]", 13),
     ADMIN("&c[ADMIN]", 14),
     DEPUTY("&c[DEPUTY]", 15),
-    MAINADMIN("&c[MAIN ADMIN]"),
-    COOWNER("&c[CO OWNER]"),
-    OWNER("&c[OWNER]", 17);
+    MAINADMIN("&c[MAIN ADMIN]", 16),
+    COOWNER("&c[CO OWNER]", 17),
+    OWNER("&c[OWNER]", 18);
 
 
     private final String prefix;
