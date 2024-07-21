@@ -123,6 +123,7 @@ public final class Skyblock extends JavaPlugin {
         new CheckPlayerGUIListener(this);
         loadymldata();
         loadIslandWorld();
+        saveResource("private_island.schematic" , true); // copy island schematic to plugin folder
         loadDungeonWorld();
         loadCommandMap();
         loadDatabase();
