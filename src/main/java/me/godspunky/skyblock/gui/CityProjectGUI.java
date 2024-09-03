@@ -318,7 +318,7 @@ public class CityProjectGUI extends GUI {
                         ChatColor.translateAlternateColorCodes('&',"&8rank up by spending gems &"),
                         ChatColor.translateAlternateColorCodes('&',"&8bits!"),
                         "",
-                        ChatColor.GRAY+"Store: "+ChatColor.AQUA+"godspunky.store",
+                        ChatColor.GRAY+"Store: "+ChatColor.AQUA+"localhost.store",
                         ChatColor.YELLOW+"Click to get link!");
             }
         });
