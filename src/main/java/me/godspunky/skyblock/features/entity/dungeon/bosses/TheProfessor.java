@@ -7,7 +7,7 @@ import me.godspunky.skyblock.features.entity.ZombieStatistics;
 public class TheProfessor implements ZombieStatistics, EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
-        return "✪ The Professor ✪";
+        return "&cThe Professor";
     }
 
     @Override
