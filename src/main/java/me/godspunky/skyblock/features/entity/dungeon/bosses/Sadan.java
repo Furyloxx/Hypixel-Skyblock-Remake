@@ -7,7 +7,7 @@ import me.godspunky.skyblock.features.entity.ZombieStatistics;
 public class Sadan implements ZombieStatistics, EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
-        return "✪ Sadan ✪";
+        return "&cSadan";
     }
 
     @Override
