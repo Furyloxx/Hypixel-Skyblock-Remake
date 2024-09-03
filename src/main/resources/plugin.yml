@@ -1,7 +1,7 @@
 name: HypixelSkyblockCore 
 version: ${project.version}
 main: me.godspunky.skyblock.Skyblock
-authors: [ FuryloxxTheDev]
+authors: [ Furyloxx]
 description: A core for skypixel skyblock
 commands:
   setrank:
