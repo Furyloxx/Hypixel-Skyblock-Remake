@@ -6,7 +6,7 @@ import me.godspunky.skyblock.features.entity.EntityStatistics;
 public class Necron implements EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
-        return "✪ Necron ✪";
+        return "&e&l{&cNecron&l&e}";
     }
 
     @Override
