@@ -2,7 +2,7 @@ name: HypixelSkyblockCore
 version: ${project.version}
 main: me.godspunky.skyblock.Skyblock
 authors: [ Furyloxx]
-description: A core for skypixel skyblock
+description: A core for Hypixel skyblock
 commands:
   setrank:
   wardrobe:
