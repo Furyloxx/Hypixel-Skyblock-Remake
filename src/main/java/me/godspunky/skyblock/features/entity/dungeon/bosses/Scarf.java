@@ -10,7 +10,7 @@ import me.godspunky.skyblock.features.item.SMaterial;
 public class Scarf implements ZombieStatistics, EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
-        return "✪ Scarf ✪";
+        return "&cScarf";
     }
 
     @Override
