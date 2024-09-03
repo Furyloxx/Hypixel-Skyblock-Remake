@@ -6,7 +6,7 @@ import me.godspunky.skyblock.features.entity.EntityStatistics;
 public class Maxor implements EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
-        return "✪ Maxor ✪";
+        return "&e&l{&cMaxor&l&e}";
     }
 
     @Override
