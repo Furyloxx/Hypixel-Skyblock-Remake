@@ -6,7 +6,7 @@ import me.godspunky.skyblock.features.entity.EntityStatistics;
 public class Strom implements EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
-        return "✪ Strom ✪";
+        return "&e&l{&cMaxor&l&e}";
     }
 
     @Override
