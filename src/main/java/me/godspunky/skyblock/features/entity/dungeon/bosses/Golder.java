@@ -6,7 +6,7 @@ import me.godspunky.skyblock.features.entity.EntityStatistics;
 public class Golder implements EntityStatistics, EntityFunction {
     @Override
     public String getEntityName() {
-        return "✪ Goldor ✪";
+        return "&e&l{&cGoldor&l&e}";
     }
 
     @Override
