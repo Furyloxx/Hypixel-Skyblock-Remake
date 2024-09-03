@@ -1,4 +1,4 @@
-# Skypixel Skyblock Core!
+# Hypixel Skyblock Core!
 - This core contains variety of hypixel skyblock items and features
 
 # UNDER HEAVY DEVELOPMENT BY FURYLOXX!
