@@ -9,16 +9,11 @@ public enum PlayerRank {
     MVPPLUSPLUS("&6[MVP&c++&6]", 6),
     YOUTUBE("&c[&fYOUTUBE&c]", 7),
     BT("&d[BT]", 8),
-    SPECIAL("&e[SPECIAL]", 9),
-    JRHELPER("&9[JR HELPER]", 10),
-    HELPER("&9[HELPER]", 11),
-    MOD("&2[MOD]", 12),
-    GAMEMASTER("&2[GM]", 13),
-    ADMIN("&c[ADMIN]", 14),
-    DEPUTY("&c[DEPUTY]", 15),
-    MAINADMIN("&c[MAIN ADMIN]", 16),
-    COOWNER("&c[CO OWNER]", 17),
-    OWNER("&c[OWNER]", 18);
+    HELPER("&9[HELPER]", 9),
+    MOD("&2[MOD]", 10),
+    GAMEMASTER("&2[GM]", 11),
+    ADMIN("&c[ADMIN]", 12),
+    OWNER("&c[OWNER]", 13);
 
 
     private final String prefix;
