@@ -10,7 +10,7 @@ public class WheatCrystal extends FloatingCrystal {
 
     @Override
     public String getURL() {
-        return "d7d30431c2945ced873c27575eeaac22adb28adac7fbd89b56eb9e93979ce0fd";
+        return "9265f96f54b78885c46e7d2f86b1c1dbfe643c6060fc7fcc9834c3e3fd595135";
     }
 
     @Override
