@@ -50,6 +50,6 @@ public class NecronHelmet implements MaterialFunction, SkullStatistics, ToolStat
 
     @Override
     public String getURL() {
-        return "27883b9d824ff4988677cf062b08a2cc3f47714836a265320684f22a0d240283";
+        return "a78412ee301065696237a934e812b247f8bc4269662323efcab12756f03dc3df";
     }
 }
