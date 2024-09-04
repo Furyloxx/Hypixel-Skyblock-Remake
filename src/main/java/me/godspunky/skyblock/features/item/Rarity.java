@@ -15,6 +15,7 @@ public enum Rarity {
     VERY_SPECIAL(ChatColor.RED),
 
     ADMIN(ChatColor.RED);
+
     EXCLUSIVE(ChatColor.GRAY);
 
     @Getter
