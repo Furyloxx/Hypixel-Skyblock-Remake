@@ -5,6 +5,6 @@ import me.godspunky.skyblock.features.entity.insentient.floatingcrystals.PotatoF
 public class PotatoCrystal extends PotatoFloatingCrystals {
     @Override
     protected String getURL() {
-        return "16ec293db5fa85e27b675fbdba88f871edef395734b5d9e327eada6be3814340";
+        return "9265f96f54b78885c46e7d2f86b1c1dbfe643c6060fc7fcc9834c3e3fd595135";
     }
 }
