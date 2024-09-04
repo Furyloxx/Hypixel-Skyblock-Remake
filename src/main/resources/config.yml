@@ -12,9 +12,9 @@ hub:
   mountain_pitch: 0
 dhub:
   world: 'dhub'
-  x: 0
-  y: 100
-  z: 0
+  x: 0.5
+  y: 125.06250
+  z: 0.5
   yaw: 0
   pitch: 0
 database:
