@@ -1,8 +1,8 @@
 package me.godspunky.skyblock.features.item.accessory;
 
 import me.godspunky.skyblock.features.item.*;
-import java.util.List;
-import java.util.Arrays;
+import java.util.*;
+import java.lang.";
 
 public class SlothHatOfCelebration implements AccessoryStatistics
 {
@@ -23,7 +23,7 @@ public class SlothHatOfCelebration implements AccessoryStatistics
 
     @Override
     public List<String> getListLore() {
-        return (List<String>)Arrays.asList((Object[])new String[] { Sputnik.trans4("&6Ability: Party Time", "&7Gain &b+1 Intelligence&7 while", "&7on your head for each SkyBlock", "&7year you've been playing.") });
+        return (List<String>)Arrays.asList((Object[])new String[] { "&6Ability: Party Time", "&7Gain &b+1 Intelligence&7 while", "&7on your head for each SkyBlock", "&7year you've been playing." });
     }
 
     @Override
