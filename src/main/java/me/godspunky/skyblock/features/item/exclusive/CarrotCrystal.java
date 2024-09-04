@@ -10,7 +10,7 @@ public class CarrotCrystal extends FloatingCrystal {
 
     @Override
     public String getURL() {
-        return "4d3a6bd98ac1833c664c4909ff8d2dc62ce887bdcf3cc5b3848651ae5af6b";
+        return "9265f96f54b78885c46e7d2f86b1c1dbfe643c6060fc7fcc9834c3e3fd595135";
     }
 
     @Override
