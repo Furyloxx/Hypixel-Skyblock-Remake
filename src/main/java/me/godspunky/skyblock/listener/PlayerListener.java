@@ -172,7 +172,7 @@ public class PlayerListener extends PListener {
             PlayerUtils.STATISTICS_CACHE.put(player.getUniqueId(), PlayerUtils.getStatistics(player));
         for (Skill skill : Skill.getSkills())
             skill.onSkillUpdate(user, user.getSkillXP(skill));
-        player.sendMessage(SUtil.getRandomVisibleColor() + "" + ChatColor.BOLD + "[FuryloxxTheDev] : Sending to island , Please wait");
+        player.sendMessage("" + ChatColor.GRAY + "Sending to island , Please wait");
         PlayerUtils.sendToIsland(player);
       // not need delay anymore as island is already loaded at startup
     }
