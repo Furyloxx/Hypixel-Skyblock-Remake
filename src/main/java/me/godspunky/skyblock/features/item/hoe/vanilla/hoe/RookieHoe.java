@@ -26,7 +26,7 @@ public class RookieHoe implements ToolStatistics, MaterialFunction {
 
     @Override
     public String getLore(){
-        return ChatColor.GRAY + "Crops broken with this hoe have a" + ChatColor.GREEN + "50%" +
+        return ChatColor.GRAY + "Crops broken with this hoe have a " + ChatColor.GREEN + "50%" +
     ChatColor.GRAY + "chance to drop a seed.";
     }
 }
