@@ -437,4 +437,54 @@ public final class Skyblock extends JavaPlugin {
         new EntityPopulator(5, 10, 200, SEntityType.OBSIDIAN_DEFENDER, RegionType.DRAGONS_NEST).start();
 
         // Spider's Den
-        new EntityPopulator(5, 20, 300, SEntityType.SPLITTER_SPIDER, Re
+        new EntityPopulator(5, 20, 300, SEntityType.SPLITTER_SPIDER, RegionType.SPIDERS_DEN_HIVE).start();
+        new EntityPopulator(5, 20, 300, SEntityType.WEAVER_SPIDER, RegionType.SPIDERS_DEN_HIVE).start();
+        new EntityPopulator(5, 20, 300, SEntityType.VORACIOUS_SPIDER, RegionType.SPIDERS_DEN_HIVE).start();
+        new EntityPopulator(5, 20, 300, SEntityType.SPIDER_JOCKEY, RegionType.SPIDERS_DEN_HIVE).start();
+        new EntityPopulator(5, 20, 300, SEntityType.DASHER_SPIDER, RegionType.SPIDERS_DEN_HIVE).start();
+
+        // Hub
+        new EntityPopulator(5, 10, 300, SEntityType.HIGH_LEVEL_SKELETON, RegionType.HIGH_LEVEL, (world) -> world.getTime() >= 13188 && world.getTime() <= 22812).start();
+        new EntityPopulator(5, 15, 200, SEntityType.ZOMBIE, RegionType.GRAVEYARD).start();
+        new EntityPopulator(5, 15, 200, SEntityType.ZOMBIE_VILLAGER, RegionType.GRAVEYARD).start();
+        new EntityPopulator(5, 20, 200, SEntityType.WOLF, RegionType.RUINS).start();
+        new EntityPopulator(2, 4, 200, SEntityType.OLD_WOLF, RegionType.RUINS).start();
+        new EntityPopulator(5, 30, 200, SEntityType.CRYPT_GHOUL, RegionType.COAL_MINE_CAVES).start();
+        new EntityPopulator(1, 1, 200, SEntityType.GOLDEN_GHOUL, RegionType.COAL_MINE_CAVES).start();
+
+        // Howling Cave
+        new EntityPopulator(4, 4, 200, SEntityType.SOUL_OF_THE_ALPHA, RegionType.HOWLING_CAVE).start();
+        new EntityPopulator(5, 15, 200, SEntityType.HOWLING_SPIRIT, RegionType.HOWLING_CAVE).start();
+        new EntityPopulator(5, 15, 200, SEntityType.PACK_SPIRIT, RegionType.HOWLING_CAVE).start();
+    }
+
+    private void loadSerializableClasses() {
+        ConfigurationSerialization.registerClass(SlayerQuest.class, "SlayerQuest");
+        ConfigurationSerialization.registerClass(Pet.PetItem.class, "PetItem");
+        ConfigurationSerialization.registerClass(SItem.class, "SItem");
+        ConfigurationSerialization.registerClass(AuctionSettings.class, "AuctionSettings");
+        ConfigurationSerialization.registerClass(AuctionEscrow.class, "AuctionEscrow");
+        ConfigurationSerialization.registerClass(SerialNBTTagCompound.class, "SerialNBTTagCompound");
+        ConfigurationSerialization.registerClass(AuctionBid.class, "AuctionBid");
+    }
+
+    public void loadIslandWorld() {
+        new BlankWorldCreator("islands").createWorld();
+    }
+
+    public void loadDungeonWorld() {
+        new BlankWorldCreator("dhub").createWorld();
+    }
+
+    public LaunchPadHandler getLaunchPadHandler() {
+        return new LaunchPadHandler();
+    }
+
+    public String getPrefix() {
+        return ChatColor.translateAlternateColorCodes('&', "&7[&aHypixel&3Skyblock&bCore&7] &f");
+    }
+
+    public void sendMessage(String message) {
+        Bukkit.getConsoleSender().sendMessage(getPrefix() + ChatColor.translateAlternateColorCodes('&', message) + ChatColor.RESET + " ");
+    }
+}
