@@ -159,9 +159,9 @@ public class CityProjectGUI extends GUI {
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.YELLOW + "GodSpunky Ranks", Material.EMERALD, (short) 0, 1,
+                return SUtil.getStack(ChatColor.YELLOW + "Localhost Ranks", Material.EMERALD, (short) 0, 1,
                         ChatColor.GRAY + "Browse the SkyBlock perks of" ,
-                        ChatColor.GRAY + "our " + ChatColor.YELLOW + "server-wide" + ChatColor.GRAY + "ranks such",
+                        ChatColor.GRAY + "our " + ChatColor.YELLOW + "server-wide" + ChatColor.GRAY + " ranks such",
                         ChatColor.GRAY + "as the " + ChatColor.GOLD+"[MVP"+ChatColor.RED+"++"+ChatColor.GOLD+"]"+ChatColor.GRAY+" rank.",
                         ChatColor.GRAY + "of SkyBlock",
                         " ",
@@ -294,7 +294,7 @@ public class CityProjectGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                player.sendMessage(ChatColor.AQUA+"https://godspunky.store/");
+                player.sendMessage(ChatColor.AQUA+"https://localhost.store/");
             }
 
             @Override
@@ -309,7 +309,7 @@ public class CityProjectGUI extends GUI {
                         ChatColor.DARK_GRAY + "Elizabeth",
                         "",
                         ChatColor.translateAlternateColorCodes('&',"&7Gems: "),
-                        ChatColor.translateAlternateColorCodes('&',"&8Purchase on godspunky.store"),
+                        ChatColor.translateAlternateColorCodes('&',"&8Purchase on localhost.store"),
                         " ",
                         ChatColor.translateAlternateColorCodes('&',"&7Bits: &bN/A"),
                         ChatColor.translateAlternateColorCodes('&',"&8Earn from Booster Cookies!"),
