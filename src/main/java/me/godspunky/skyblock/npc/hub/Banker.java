@@ -47,7 +47,7 @@ public class Banker extends SkyblockNPC {
 
             @Override
             public double z() {
-                return -58.7;
+                return -58.5;
             }
 
             @Override
