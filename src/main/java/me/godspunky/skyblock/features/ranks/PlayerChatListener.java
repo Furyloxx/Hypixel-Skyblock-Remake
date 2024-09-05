@@ -22,7 +22,7 @@ public class PlayerChatListener implements Listener {
         if (!e.getPlayer().getDisplayName().equals(ChatColor.translateAlternateColorCodes('&', userTag))) {
             e.getPlayer().setDisplayName(ChatColor.translateAlternateColorCodes('&', userTag));
         }
-        if (rank.isAboveOrEqual(PlayerRank.MVPPLUSPLUS)) {
+        if (rank.isAboveOrEqual(PlayerRank.MVP)) {
             e.setMessage(e.getMessage().replace("<3", "§c❤").replace("⭐", "§6✭").replace(":owo:", "§dO§5w§dO").replace("o/", "§d(/◕ヮ◕)/").replace(":OOF:", "§c§lOOF").replace(":123:", "§a1§e2§c3").replace(":shrug:", "§e¯\\(ツ)/¯").replace(":yes:", "§a✔").replace(":no:", "§c✖").replace(":java:", "§b♨").replace(":arrow:", "§e➡").replace(":typing:", "§e✎§6..."));
         }
     }
