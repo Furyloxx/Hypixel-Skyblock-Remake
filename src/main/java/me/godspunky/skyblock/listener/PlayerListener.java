@@ -557,8 +557,6 @@ public class PlayerListener extends PListener {
         }
     }
 
-
-
     @EventHandler
     public void onMove(PlayerMoveEvent event) {   // handle auto hide and show
         Player player = event.getPlayer();
