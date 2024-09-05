@@ -58,6 +58,7 @@ import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.reflections.Reflections
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
