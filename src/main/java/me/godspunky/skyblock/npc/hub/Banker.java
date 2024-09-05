@@ -66,7 +66,7 @@ public class Banker extends SkyblockNPC {
 
             @Override
             public void onInteract(Player player, SkyblockNPC npc) {
-                GUIType.BANKER.getGUI().open(player);
+                GUIType.BANKER.getGUI().open(sender.getPlayer());
             }
 
 
