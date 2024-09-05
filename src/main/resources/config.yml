@@ -1,8 +1,8 @@
 hub:
   world: 'world'
-  x: 0
-  y: 100
-  z: 0
+  x: -2.5
+  y: 70.06250
+  z: -67.5
   yaw: 0
   pitch: 0
   mountain_x: 0
