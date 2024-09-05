@@ -344,7 +344,7 @@ public final class Skyblock extends JavaPlugin {
    
     private void registerNPCS()
     {
-        Reflections reflections = new Reflections("me.superischroma.spectaculation.npc");
+        Reflections reflections = new Reflections("me.godspunky.skyblock.npc");
         for (Class<? extends SkyblockNPC> npcClazz : reflections.getSubTypesOf(SkyblockNPC.class)){
             try {
                 npcClazz.getDeclaredConstructor().newInstance();
