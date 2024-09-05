@@ -5,6 +5,8 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelPipeline;
 import me.godspunky.skyblock.npc.SkyblockNPC;
 import me.godspunky.skyblock.npc.SkyblockNPCManager;
+import me.godspunky.skyblock.features.event.PlayerClickNPCEvent;
+import org.bukkit.Bukkit;
 import net.minecraft.server.v1_8_R3.Packet;
 import net.minecraft.server.v1_8_R3.PacketPlayInUseEntity;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
@@ -43,22 +45,25 @@ public class PacketReader {
 
     }
 
-    public void readPacket(Packet<?> packet, Player p)
-    {
-        if(packet.getClass().getSimpleName().equalsIgnoreCase("PacketPlayInUseEntity"))
-        {
+    public void readPacket(Packet<?> packet, Player p) {
+        if (packet.getClass().getSimpleName().equalsIgnoreCase("PacketPlayInUseEntity")) {
             PacketPlayInUseEntity pack = (PacketPlayInUseEntity) packet;
             int id = (int) getValue(packet, "a");
-            if(getValue(packet, "action").toString().equalsIgnoreCase("interact"))
-            {
-               for (SkyblockNPC npc : SkyblockNPCManager.getNPCS()){
-                   if (npc.getEntityID() == id)
-                       npc.getParameters().onInteract(player , npc);
-
-               }
+            if (getValue(packet, "action").toString().equalsIgnoreCase("interact")) {
+                for (SkyblockNPC npc : SkyblockNPCManager.getNPCS()) {
+                    if (npc.getEntityID() == id) {
+                        PlayerClickNPCEvent event = new PlayerClickNPCEvent(p, npc);
+                        Bukkit.getServer().getPluginManager().callEvent(event);
+                        if (event.isCancelled()) {
+                            return;
+                        }
+                        npc.getParameters().onInteract(p, npc);
+                    }
+                }
             }
         }
     }
+
 
     private Object getValue(Object instance, String name)
     {
