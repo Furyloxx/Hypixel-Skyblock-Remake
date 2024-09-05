@@ -5,6 +5,7 @@ import me.godspunky.skyblock.Skyblock;
 import me.godspunky.skyblock.features.enchantment.Enchantment;
 import me.godspunky.skyblock.npc.SkyblockNPC;
 import me.godspunky.skyblock.npc.SkyblockNPCManager;
+import me.godspunky.skyblock.features.event.PlayerClickNPCEvent
 import me.godspunky.skyblock.features.packet.PacketReader;
 import me.godspunky.skyblock.features.enchantment.EnchantmentType;
 import me.godspunky.skyblock.features.entity.SEntity;
