@@ -118,7 +118,7 @@ public class SkyblockNPC {
                     sendHeadRotationPacket(player);
                 }
             }
-        }.runTaskTimer(Spectaculation.getPlugin(), 0, 2);
+        }.runTaskTimer(Skyblock.getPlugin(), 0, 2);
 
     }
 
