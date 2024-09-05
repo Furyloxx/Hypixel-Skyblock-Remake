@@ -2,6 +2,7 @@ package me.godspunky.skyblock.npc.hub;
 
 import me.godspunky.skyblock.npc.*;
 import me.godspunky.skyblock.gui.GUIType;
+import org.bukkit.entity.Player;
 
 public class Banker extends SkyblockNPC {
     public Banker() {
@@ -66,7 +67,7 @@ public class Banker extends SkyblockNPC {
 
             @Override
             public void onInteract(Player player, SkyblockNPC npc) {
-                GUIType.BANKER.getGUI().open(sender.getPlayer());
+               GUIType.BANKER.getGUI().open(player);
             }
 
 
