@@ -4,6 +4,8 @@ import lombok.SneakyThrows;
 import me.godspunky.skyblock.command.*;
 import me.godspunky.skyblock.config.Config;
 import me.godspunky.skyblock.features.Dungeon.DungeonGenerator;
+import me.superischroma.spectaculation.npc.SkyblockNPC;
+import me.superischroma.spectaculation.npc.SkyblockNPCManager;
 import me.godspunky.skyblock.features.auction.AuctionBid;
 import me.godspunky.skyblock.features.auction.AuctionEscrow;
 import me.godspunky.skyblock.features.auction.AuctionItem;
@@ -339,6 +341,19 @@ public final class Skyblock extends JavaPlugin {
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully Established Player Regions [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
+   
+    private void registerNPCS()
+    {
+        Reflections reflections = new Reflections("me.superischroma.spectaculation.npc");
+        for (Class<? extends SkyblockNPC> npcClazz : reflections.getSubTypesOf(SkyblockNPC.class)){
+            try {
+                npcClazz.getDeclaredConstructor().newInstance();
+            }catch (Exception ex){
+                ex.printStackTrace();
+
+            }
+        }
+        SLog.info("Loaded " + SkyblockNPCManager.getNPCS().size() + " npcs");
 
     public void loadAuctions() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading Auctions...");
