@@ -572,6 +572,12 @@ public class PlayerListener extends PListener {
                 }
             }
         }
+
+     @EventHandler
+    public void onInteract(PlayerClickNPCEvent event){
+        event.getPlayer().sendMessage("Clicked " + event.getNPC().getName());
+     }
+
     @EventHandler
     public void onInvFull(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
