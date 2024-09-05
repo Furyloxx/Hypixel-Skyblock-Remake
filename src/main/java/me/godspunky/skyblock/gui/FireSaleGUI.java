@@ -158,9 +158,9 @@ public class FireSaleGUI extends GUI {
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.YELLOW + "GodSpunky Ranks", Material.EMERALD, (short) 0, 1,
+                return SUtil.getStack(ChatColor.YELLOW + "Localhost Ranks", Material.EMERALD, (short) 0, 1,
                         ChatColor.GRAY + "Browse the SkyBlock perks of" ,
-                        ChatColor.GRAY + "our " + ChatColor.YELLOW + "server-wide" + ChatColor.GRAY + "ranks such",
+                        ChatColor.GRAY + "our " + ChatColor.YELLOW + "server-wide" + ChatColor.GRAY + " ranks such",
                         ChatColor.GRAY + "as the " + ChatColor.GOLD+"[MVP"+ChatColor.RED+"++"+ChatColor.GOLD+"]"+ChatColor.GRAY+" rank.",
                         ChatColor.GRAY + "of SkyBlock",
                         " ",
@@ -295,7 +295,7 @@ public class FireSaleGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                player.sendMessage(ChatColor.AQUA+"https://godspunky.store/");
+                player.sendMessage(ChatColor.AQUA+"https://localhost.store/");
             }
 
             @Override
@@ -319,7 +319,7 @@ public class FireSaleGUI extends GUI {
                         ChatColor.translateAlternateColorCodes('&',"&8rank up by spending gems &"),
                         ChatColor.translateAlternateColorCodes('&',"&8bits!"),
                         "",
-                        ChatColor.GRAY+"Store: "+ChatColor.AQUA+"godspunky.store",
+                        ChatColor.GRAY+"Store: "+ChatColor.AQUA+"localhost.store",
                         ChatColor.YELLOW+"Click to get link!");
             }
         });
