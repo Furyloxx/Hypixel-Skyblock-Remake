@@ -1,6 +1,7 @@
 package me.godspunky.skyblock;
 
 import lombok.SneakyThrows;
+import me.godspunky.skyblock.npc.*;
 import me.godspunky.skyblock.command.*;
 import me.godspunky.skyblock.config.Config;
 import me.godspunky.skyblock.features.Dungeon.DungeonGenerator;
@@ -284,6 +285,21 @@ public final class Skyblock extends JavaPlugin {
         new ChatListener();
 
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded listeners [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
+    }
+
+private void registerNPCS()
+    {
+        Reflections reflections = new Reflections("import me.godspunky.skyblock.npc");
+        for (Class<? extends SkyblockNPC> npcClazz : reflections.getSubTypesOf(SkyblockNPC.class)){
+            try {
+                npcClazz.getDeclaredConstructor().newInstance();
+            }catch (Exception ex){
+                ex.printStackTrace();
+
+            }
+        }
+        SLog.info("Loaded " + SkyblockNPCManager.getNPCS().size() + " npcs");
+
     }
 
     public void loadDatabase() {
