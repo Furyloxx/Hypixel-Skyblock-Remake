@@ -162,9 +162,9 @@ public class BitShopGUI extends GUI {
 
             @Override
             public ItemStack getItem() {
-                return SUtil.getStack(ChatColor.YELLOW + "GodSpunky Ranks", Material.EMERALD, (short) 0, 1,
+                return SUtil.getStack(ChatColor.YELLOW + "LocalHost Ranks", Material.EMERALD, (short) 0, 1,
                         ChatColor.GRAY + "Browse the SkyBlock perks of" ,
-                        ChatColor.GRAY + "our " + ChatColor.YELLOW + "server-wide" + ChatColor.GRAY + "ranks such",
+                        ChatColor.GRAY + "our " + ChatColor.YELLOW + "server-wide" + ChatColor.GRAY + " ranks such",
                         ChatColor.GRAY + "as the " + ChatColor.GOLD+"[MVP"+ChatColor.RED+"++"+ChatColor.GOLD+"]"+ChatColor.GRAY+" rank.",
                         ChatColor.GRAY + "of SkyBlock",
                         " ",
