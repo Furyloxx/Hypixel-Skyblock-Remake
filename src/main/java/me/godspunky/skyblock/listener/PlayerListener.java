@@ -3,6 +3,9 @@ package me.godspunky.skyblock.listener;
 import com.google.common.util.concurrent.AtomicDouble;
 import me.godspunky.skyblock.Skyblock;
 import me.godspunky.skyblock.features.enchantment.Enchantment;
+import me.godspunky.skyblock.npc.SkyblockNPC;
+import me.godspunky.skyblock.npc.SkyblockNPCManager;
+import me.godspunky.skyblock.features.packet.PacketReader;
 import me.godspunky.skyblock.features.enchantment.EnchantmentType;
 import me.godspunky.skyblock.features.entity.SEntity;
 import me.godspunky.skyblock.features.entity.SEntityType;
@@ -171,10 +174,10 @@ public class PlayerListener extends PListener {
         if (!PlayerUtils.STATISTICS_CACHE.containsKey(player.getUniqueId()))
             PlayerUtils.STATISTICS_CACHE.put(player.getUniqueId(), PlayerUtils.getStatistics(player));
         for (Skill skill : Skill.getSkills())
-            skill.onSkillUpdate(user, user.getSkillXP(skill));
+            skill.onSkillUpdate(user, user.getSkillXP(skill)); {
         player.sendMessage("" + ChatColor.GRAY + "Sending to island , Please wait");
-        PlayerUtils.sendToIsland(player);
-      // not need delay anymore as island is already loaded at startup
+      new PacketReader().injectPlayer(player);
+        }
     }
 
 
@@ -529,6 +532,47 @@ public class PlayerListener extends PListener {
         }
     }
 
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event){
+        Player player = event.getPlayer();
+        for (SkyblockNPC skyblockNPC : SkyblockNPCManager.getNPCS()){
+            if (skyblockNPC.isShown(player))
+                skyblockNPC.hideFrom(player);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerTeleport(PlayerTeleportEvent event) {
+        Player player = event.getPlayer();
+        World toWorld = event.getTo().getWorld();
+        World fromWorld = event.getFrom().getWorld();
+        if (!toWorld.equals(fromWorld)) {
+            for (SkyblockNPC npc : SkyblockNPCManager.getNPCS()) {
+                if (npc.getWorld().equals(toWorld)) {
+                    SUtil.delay(() -> npc.showTo(player) , 20);  // delay to let world load properly
+                } else if (npc.isShown(player) && npc.getWorld().equals(fromWorld)) {
+                    npc.hideFrom(player);
+                }
+            }
+        }
+    }
+
+
+
+    @EventHandler
+    public void onMove(PlayerMoveEvent event) {   // handle auto hide and show
+        Player player = event.getPlayer();
+        Location from = event.getFrom();
+        Location to = event.getTo();
+            for (SkyblockNPC skyblockNPC : SkyblockNPCManager.getNPCS()) {
+                if (!skyblockNPC.getWorld().equals(player.getWorld())) continue;
+                if (!skyblockNPC.isShown(player) && skyblockNPC.isPlayerNearby(player)) {
+                    skyblockNPC.showTo(player);
+                } else if (skyblockNPC.isShown(player) && !skyblockNPC.isPlayerNearby(player)) {
+                    skyblockNPC.hideFrom(player);
+                }
+            }
+        }
     @EventHandler
     public void onInvFull(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
