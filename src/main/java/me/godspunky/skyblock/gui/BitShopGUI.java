@@ -312,7 +312,7 @@ public class BitShopGUI extends GUI {
         set(new GUIClickableItem() {
             @Override
             public void run(InventoryClickEvent e) {
-                player.sendMessage(ChatColor.AQUA+"https://godspunky.store/");
+                player.sendMessage(ChatColor.AQUA+"https://localhost.store/");
             }
 
             @Override
@@ -327,7 +327,7 @@ public class BitShopGUI extends GUI {
                         ChatColor.DARK_GRAY + "Elizabeth",
                         "",
                         ChatColor.translateAlternateColorCodes('&',"&7Gems: "),
-                        ChatColor.translateAlternateColorCodes('&',"&8Purchase on godspunky.store"),
+                        ChatColor.translateAlternateColorCodes('&',"&8Purchase on localhost.store"),
                         " ",
                         ChatColor.translateAlternateColorCodes('&',"&7Bits: &bN/A"),
                         ChatColor.translateAlternateColorCodes('&',"&8Earn from Booster Cookies!"),
@@ -336,7 +336,7 @@ public class BitShopGUI extends GUI {
                         ChatColor.translateAlternateColorCodes('&',"&8rank up by spending gems &"),
                         ChatColor.translateAlternateColorCodes('&',"&8bits!"),
                         "",
-                        ChatColor.GRAY+"Store: "+ChatColor.AQUA+"godspunky.store",
+                        ChatColor.GRAY+"Store: "+ChatColor.AQUA+"localhost.store",
                         ChatColor.YELLOW+"Click to get link!");
             }
         });
