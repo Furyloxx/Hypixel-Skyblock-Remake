@@ -1,5 +1,5 @@
 # Hypixel Skyblock Core!
-- Current Majdoor - Furyloxx
+- Current Majdoor - Furyloxx & Chyruss
 - This core contains variety of hypixel skyblock items and features
 # Features 
 - Entities 
