@@ -7,15 +7,15 @@ import org.bukkit.event.Listener;
 
 
 @CommandParameters(description = "Spec test command.", aliases = "test", permission = PlayerRank.ADMIN)
-public class SpecTestCommand extends SCommand implements Listener {
+public class SpecTestCommand extends SCommand
+{
     @Override
-    public void run(CommandSource sender, String[] args) {
-        Player player = sender.getPlayer();
-        if (sender instanceof ConsoleCommandSender)
-            throw new CommandFailException("Console senders cannot use this command!");
-
-        player.sendMessage(player.getItemInHand().getItemMeta().getDisplayName());
-
+    public void run(CommandSource sender, String[] args)
+    {
+        for (SkyblockNPC npc : SkyblockNPCManager.getNPCS()){
+            npc.showTo(sender.getPlayer());
+            send("Loading npcs");
+        }
 
     }
 }
