@@ -4,6 +4,7 @@ import me.godspunky.skyblock.features.ranks.PlayerRank;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import me.godspunky.skyblock.npc.*;
 
 
 @CommandParameters(description = "Spec test command.", aliases = "test", permission = PlayerRank.ADMIN)
