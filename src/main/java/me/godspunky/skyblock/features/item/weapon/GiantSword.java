@@ -77,8 +77,8 @@ public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
                 giant.teleport(loc);
                 holder.remove();
                 giant.remove();
-        player.playSound(player.getLocation(), Sound.ANVIL_LAND, 10.0f, 0.0f);
-        player.playSound(player.getLocation(), Sound.AMBIENCE_THUNDER, 0.9f, 0.35f);
+        p.playSound(player.getLocation(), Sound.ANVIL_LAND, 10.0f, 0.0f);
+        p.playSound(player.getLocation(), Sound.AMBIENCE_THUNDER, 0.9f, 0.35f);
             }
 
         }.runTaskLater(Skyblock.getPlugin(), 80);
