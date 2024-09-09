@@ -204,7 +204,7 @@ public enum SMaterial {
     MIDAS_STAFF(Material.GOLD_SPADE, MidasStaff.class),
     YETI_SWORD(Material.IRON_SWORD, YetiSword.class),
     GIANT_SWORD(Material.IRON_SWORD, GiantSword.class),
-    SPIRIT_SCEPTRE(Material.RED_ROSE, SpiritSceptre.class),
+    SPIRIT_SCEPTRE(Material.ALLIUM, SpiritSceptre.class),
     SOUL_WHIP(Material.FISHING_ROD, SoulWhip.class),
     VOIDWALKER_KATANA(Material.IRON_SWORD, VoidwalkerKatana.class),
     VALKYIRE(Material.IRON_SWORD, Valkyrie.class),
