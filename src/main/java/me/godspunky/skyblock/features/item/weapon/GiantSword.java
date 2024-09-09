@@ -12,6 +12,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.EnumSet;
+import java.util.Set;
+
 public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
@@ -41,7 +44,7 @@ public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public String getAbilityDescription() {
-        return "Slam your sword into the ground dealing"+ChatColor.RED+" 100,000 "+ChatColor.GRAY+"damage to nearby enemies.";
+        return "Slam your sword into the ground dealing" + ChatColor.RED + " 100,000 " + ChatColor.GRAY + "damage to nearby enemies.";
     }
 
     @Override
@@ -51,36 +54,49 @@ public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public void onAbilityUse(Player p, SItem sItem) {
-        Location loc = p.getTargetBlock(null, 100).getLocation();
+        // Use EnumSet to specify the blocks that can be targeted (in this case, none are ignored)
+        Set<Material> ignoredBlocks = EnumSet.noneOf(Material.class);
+        Location loc = p.getTargetBlock(ignoredBlocks, 100).getLocation();
+
+        // Create a sword for the giant to hold
         ItemStack sword = new ItemStack(Material.IRON_SWORD);
         sword.addEnchantment(Enchantment.DAMAGE_ALL, 1);
+
+        // Adjust the spawn location to account for the giant's height
         loc.setY(loc.getY() - 2);
+
+        // Spawn an invisible, damage-resistant giant holding the sword
         Giant giant = loc.getWorld().spawn(loc, Giant.class);
-        giant.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 2147483647, 999));
-        giant.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 2147483647, 999));
+        giant.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, Integer.MAX_VALUE, 999));
+        giant.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 999));
         giant.setCustomName("Dinnerbone");
         giant.setCustomNameVisible(false);
         giant.getEquipment().setItemInHand(sword);
+
+        // Spawn an armor stand to hold the giant
         ArmorStand holder = loc.getWorld().spawn(loc, ArmorStand.class);
         holder.setGravity(true);
         holder.setVisible(false);
         holder.setCustomName(" ");
         holder.setCustomNameVisible(false);
         holder.setPassenger(giant);
-        AbilityDamage.DamageNearByEntity(p , 5);
+
+        // Deal damage to nearby entities (radius 5)
+        AbilityDamage.DamageNearByEntity(p, 5);
+
+        // Schedule the removal of the giant and armor stand after 4 seconds (80 ticks)
         new BukkitRunnable() {
             @Override
             public void run() {
-                Location killloc = loc;
-                killloc.setY(0);
-                holder.teleport(loc);
-                giant.teleport(loc);
+                Location killLoc = loc;
+                killLoc.setY(0); // Move the location to the ground
+                holder.teleport(killLoc);
+                giant.teleport(killLoc);
                 holder.remove();
                 giant.remove();
-        p.playSound(p.getLocation(), Sound.ANVIL_LAND, 10.0f, 0.0f);
-        p.playSound(p.getLocation(), Sound.AMBIENCE_THUNDER, 0.9f, 0.35f);
+                p.playSound(p.getLocation(), Sound.ANVIL_LAND, 10.0f, 0.0f);
+                p.playSound(p.getLocation(), Sound.AMBIENCE_THUNDER, 0.9f, 0.35f);
             }
-
         }.runTaskLater(Skyblock.getPlugin(), 80);
     }
 
