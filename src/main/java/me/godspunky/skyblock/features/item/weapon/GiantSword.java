@@ -51,7 +51,7 @@ public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public void onAbilityUse(Player p, SItem sItem) {
-        Location loc = player.getTargetBlock((Set)null, 6).getLocation();
+        Location loc = p.getTargetBlock(null, 100).getLocation();
         ItemStack sword = new ItemStack(Material.IRON_SWORD);
         sword.addEnchantment(Enchantment.DAMAGE_ALL, 1);
         loc.setY(loc.getY() - 2);
