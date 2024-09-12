@@ -13,7 +13,7 @@ public enum Rarity {
     SUPREME(ChatColor.DARK_RED),
     SPECIAL(ChatColor.RED),
     VERY_SPECIAL(ChatColor.RED),
-    DIVINE(ChatColor.LIGHT_BLUE),
+    DIVINE(ChatColor.AQUA),
 
     EXCLUSIVE(ChatColor.GRAY);
 
