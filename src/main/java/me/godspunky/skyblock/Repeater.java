@@ -308,7 +308,7 @@ public class Repeater {
                         }
                         sidebar.add(ChatColor.AQUA + "     ");
                     }
-                    sidebar.add(ChatColor.YELLOW + "-ˏˋ⋆ SᴛʀᴇᴀᴍSᴛᴏʀᴍ ⋆ˊˎ-");
+                    sidebar.add(ChatColor.YELLOW + "☠︎︎ StreamStorm");
                     sidebar.apply(player);
 
                     // Tablist
@@ -327,14 +327,14 @@ public class Repeater {
                     boolean hasActiveEffects = user.getEffects().size() > 0;
                     //header
                     IChatBaseComponent header = new ChatComponentText(
-                            ChatColor.AQUA + "You are" +  ChatColor.RESET + " " +  ChatColor.AQUA + "playing on " + ChatColor.YELLOW + "" + ChatColor.BOLD + "-ˏˋ⋆ SᴛʀᴇᴀᴍSᴛᴏʀᴍ ⋆ˊˎ-\n");
+                            ChatColor.AQUA + "You are" +  ChatColor.RESET + " " +  ChatColor.AQUA + "playing on " + ChatColor.YELLOW + "" + ChatColor.BOLD + "StreamStorm");
                     //footer
                     IChatBaseComponent footer = new ChatComponentText(
                             "\n" + ChatColor.GREEN + "" + ChatColor.BOLD + "Active Effects\n" + "" +
                                     (hasActiveEffects ? ChatColor.GRAY + "        You have " + ChatColor.YELLOW + user.getEffects().size() + ChatColor.GRAY + " active effects. Use\n" + ChatColor.GRAY + "\"" + ChatColor.GOLD + "/effects" + ChatColor.GRAY + "\" to see them!\n"  + "\n" : ChatColor.GRAY + "         No effects active. Drink potions or splash\n" + ChatColor.GRAY + "them on the ground to buff yourself!\n\n") +
                                     ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "Cookie Buff\n" + "" +
                                     ChatColor.GRAY + "Not active! Obtain booster cookies from the\n" + "community shop in the hub\n\n"+
-                                    ChatColor.GREEN + "Ranks, Boosters, & MORE!" + ChatColor.RESET + " " + ChatColor.RED + "" + ChatColor.BOLD + "-ˏˋ⋆ SᴛʀᴇᴀᴍSᴛᴏʀᴍ ⋆ˊˎ-");
+                                    ChatColor.GREEN + "Ranks, Boosters, & MORE!" + ChatColor.RESET + " " + ChatColor.RED + "" + ChatColor.BOLD + "StreamStorm");
 
                     PacketPlayOutPlayerListHeaderFooter packet = new PacketPlayOutPlayerListHeaderFooter();
 
