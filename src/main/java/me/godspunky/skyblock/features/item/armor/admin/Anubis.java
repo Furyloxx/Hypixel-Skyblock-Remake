@@ -10,7 +10,7 @@ public class Anubis implements MaterialFunction, SkullStatistics, ToolStatistics
 
     @Override
     public Rarity getRarity() {
-        return Rarity.LEGENDARY;
+        return Rarity.ADMIN;
     }
 
     @Override
