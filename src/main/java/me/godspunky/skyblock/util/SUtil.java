@@ -840,6 +840,10 @@ public class SUtil {
         return profile;
     }
 
+    public static double square(double value) {
+        return value * value;
+    }
+
     // not my code
     public static float getLookAtYaw(Vector motion) {
         double dx = motion.getX();
