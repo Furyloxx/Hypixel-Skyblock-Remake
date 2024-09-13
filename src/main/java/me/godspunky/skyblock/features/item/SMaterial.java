@@ -5,6 +5,7 @@ import me.godspunky.skyblock.features.entity.SEntityType;
 import me.godspunky.skyblock.features.item.accessory.*;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
 import me.godspunky.skyblock.features.item.armor.BigBounceBoots;
+import me.godspunky.skyblock.features.item.armor.admin.*;
 import me.godspunky.skyblock.features.item.armor.ObsidianChestplate;
 import me.godspunky.skyblock.features.item.armor.SpidersBoots;
 import me.godspunky.skyblock.features.item.armor.angler.*;
@@ -210,6 +211,9 @@ public enum SMaterial {
     VALKYIRE(Material.IRON_SWORD, Valkyrie.class),
     SHADOW_FURY(Material.DIAMOND_SWORD, ShadowFury.class),
     LIVID_DAGGER(Material.IRON_SWORD, LividDagger.class),
+
+    // Admin
+ANUBIS(Material.SKULL_ITEM, Anubis.class),
 
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),
