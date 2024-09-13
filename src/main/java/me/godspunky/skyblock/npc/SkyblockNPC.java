@@ -118,7 +118,7 @@ public class SkyblockNPC {
                     sendHeadRotationPacket(player);
                 }
             }
-        }.runTaskTimer(Skyblock.getPlugin(), 0, 2);
+        }.runTaskTimer(Spectaculation.getPlugin(), 0, 2);
 
     }
 
@@ -160,11 +160,22 @@ public class SkyblockNPC {
     }
 
     public boolean isPlayerNearby(Player player) {
+        if (player == null) return false;
         Location npcLocation = getLocation();
         Location playerLocation = player.getLocation();
+
+        if (!playerLocation.getWorld().equals(npcLocation.getWorld())) {
+            return false;
+        }
+        double hideDistance = 25;
+        double bukkitRange = Bukkit.getViewDistance() << 4;
         double distanceSquared = npcLocation.distanceSquared(playerLocation);
-        return distanceSquared <= 35.0;
+
+        return distanceSquared <= SUtil.square(hideDistance) && distanceSquared <= SUtil.square(bukkitRange);
     }
+
+
+
     public boolean isShown(Player player){
         return viewers.contains(player.getUniqueId());
     }
@@ -203,4 +214,4 @@ public class SkyblockNPC {
         holograms.clear();
     }
 
-}
+                                }
