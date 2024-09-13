@@ -1,5 +1,6 @@
 package me.godspunky.skyblock.npc;
 
+import me.godspunky.skyblock.util.SUtil;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import lombok.Getter;
@@ -118,7 +119,7 @@ public class SkyblockNPC {
                     sendHeadRotationPacket(player);
                 }
             }
-        }.runTaskTimer(Spectaculation.getPlugin(), 0, 2);
+        }.runTaskTimer(Skyblock.getPlugin(), 0, 2);
 
     }
 
