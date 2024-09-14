@@ -214,6 +214,7 @@ public enum SMaterial {
 
     // Admin
 ANUBIS(Material.SKULL_ITEM, Anubis.class),
+ADMIN(Material.SKULL_ITEM, Admin.class),
 
     // Terror Armor
     TERROR_HELMET(Material.SKULL_ITEM, TerrorHelmet.class),
