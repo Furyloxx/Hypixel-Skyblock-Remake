@@ -308,7 +308,7 @@ public class Repeater {
                         }
                         sidebar.add(ChatColor.AQUA + "     ");
                     }
-                    sidebar.add(ChatColor.YELLOW + "☠︎︎ StreamStorm");
+                    sidebar.add(ChatColor.YELLOW + "✮ StreamStorm");
                     sidebar.apply(player);
 
                     // Tablist
