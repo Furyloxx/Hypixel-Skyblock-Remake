@@ -72,6 +72,8 @@ public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
         giant.setCustomName("Dinnerbone");
         giant.setCustomNameVisible(false);
         giant.getEquipment().setItemInHand(sword);
+        p.playSound(p.getLocation(), Sound.ANVIL_LAND, 10.0f, 0.0f);
+        p.playSound(p.getLocation(), Sound.AMBIENCE_THUNDER, 0.9f, 0.35f);
 
         // Spawn an armor stand to hold the giant
         ArmorStand holder = loc.getWorld().spawn(loc, ArmorStand.class);
@@ -94,8 +96,6 @@ public class GiantSword implements ToolStatistics, MaterialFunction, Ability {
                 giant.teleport(killLoc);
                 holder.remove();
                 giant.remove();
-                p.playSound(p.getLocation(), Sound.ANVIL_LAND, 10.0f, 0.0f);
-                p.playSound(p.getLocation(), Sound.AMBIENCE_THUNDER, 0.9f, 0.35f);
             }
         }.runTaskLater(Skyblock.getPlugin(), 80);
     }
