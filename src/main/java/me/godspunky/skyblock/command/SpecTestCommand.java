@@ -9,33 +9,48 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BookMeta
-
+import org.bukkit.inventory.meta.BookMeta;
 
 @CommandParameters(description = "Spec test command.", aliases = "test", permission = PlayerRank.ADMIN)
 public class SpecTestCommand extends SCommand implements Listener {
-    ItemStack book = new ItemStack(org.bukkit.Material.WRITTEN_BOOK);
-        BookMeta meta = (BookMeta) book.getItemMeta();
 
-        // Set book title and author
-        meta.setTitle(ChatColor.GOLD + "SkyBlock Animation");
-        meta.setAuthor("The Hypixel Team");
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
 
-        // Add pages to the book
-        meta.addPage(
-                ChatColor.BLACK + "SkyBlock Animation\n\n" +
-                ChatColor.BLACK + "The Hypixel Team has\n" +
-                ChatColor.BLACK + "released a new\n" +
-                ChatColor.BLACK + "animated video for\n" +
-                ChatColor.BLACK + "SkyBlock! Your\n" +
-                ChatColor.BLACK + "Adventure Awaits!\n\n" +
-                ChatColor.BLACK + ChatColor.BOLD + "CLICK TO WATCH\n" +
-                ChatColor.BLUE + "https://youtu.be/FTOaoMTWH4E?si=dg0zeu5GWttZ9jUi"
-        );
+            // Create a new book and set its meta data
+            ItemStack book = new ItemStack(org.bukkit.Material.WRITTEN_BOOK);
+            BookMeta meta = (BookMeta) book.getItemMeta();
 
-        // Apply the book meta
-        book.setItemMeta(meta);
+            if (meta != null) {
+                // Set book title and author
+                meta.setTitle(ChatColor.GOLD + "SkyBlock Animation");
+                meta.setAuthor("The Hypixel Team");
 
-        // Open the book for the player
-        player.openBook(book);
+                // Add pages to the book
+                meta.addPage(
+                        ChatColor.BLACK + "SkyBlock Animation\n\n" +
+                        ChatColor.BLACK + "The Hypixel Team has\n" +
+                        ChatColor.BLACK + "released a new\n" +
+                        ChatColor.BLACK + "animated video for\n" +
+                        ChatColor.BLACK + "SkyBlock! Your\n" +
+                        ChatColor.BLACK + "Adventure Awaits!\n\n" +
+                        ChatColor.BLACK + ChatColor.BOLD + "CLICK TO WATCH\n" +
+                        ChatColor.BLUE + "https://youtu.be/FTOaoMTWH4E?si=dg0zeu5GWttZ9jUi"
+                );
+
+                // Apply the book meta
+                book.setItemMeta(meta);
+
+                // Open the book for the player
+                player.openBook(book);
+            } else {
+                sender.sendMessage(ChatColor.RED + "Failed to create book meta.");
+            }
+        } else {
+            sender.sendMessage(ChatColor.RED + "This command can only be run by a player.");
+        }
+        return true;
+    }
 }
