@@ -6,6 +6,7 @@ import net.minecraft.server.v1_8_R3.EntityHuman;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftHumanEntity;
 import org.bukkit.entity.Player;
@@ -72,6 +73,7 @@ public class Hyperion implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public void onAbilityUse(Player p, SItem sItem) {
+        p.getWorld().playSound(p.getLocation Sound.ENTITY_GENERIC_EXPLODE, 0.4f, 1.2f);
         Location loc = p.getLocation();
         HashSet<Byte> hashSet = new HashSet<>();
         hashSet.add((byte) 0);

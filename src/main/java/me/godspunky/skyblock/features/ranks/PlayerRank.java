@@ -9,11 +9,12 @@ public enum PlayerRank {
     MVPPLUSPLUS("&6[MVP&c++&6]", 6),
     YOUTUBE("&c[&fYOUTUBE&c]", 7),
     BT("&d[BT]", 8),
-    HELPER("&9[HELPER]", 9),
-    MOD("&2[MOD]", 10),
-    GAMEMASTER("&2[GM]", 11),
-    ADMIN("&c[ADMIN]", 12),
-    OWNER("&c[OWNER]", 13);
+    JR_HELPER("&9[JR HELPER]", 9),
+    HELPER("&9[HELPER]", 10),
+    MOD("&2[MOD]", 11),
+    GM("&2[GM]", 12),
+    ADMIN("&c[ADMIN]", 13),
+    OWNER("&c[OWNER]", 14);
 
 
     private final String prefix;
@@ -56,7 +57,7 @@ public enum PlayerRank {
     }
 
     public boolean isStaff() {
-        return this.level >= HELPER.level;
+        return this.level >= JR_HELPER.level;
     }
 
     public boolean isDefaultPermission() {

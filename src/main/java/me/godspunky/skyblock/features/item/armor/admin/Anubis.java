@@ -27,6 +27,9 @@ public class Anubis implements MaterialFunction, SkullStatistics, ToolStatistics
     public double getBaseHealth() {
         return 3001;
     }
+    public double getBaseMagicFind () {
+      return 3001;
+    }
 
     @Override
     public String getURL() {
