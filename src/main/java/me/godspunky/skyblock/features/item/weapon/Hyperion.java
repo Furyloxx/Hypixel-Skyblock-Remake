@@ -73,13 +73,13 @@ public class Hyperion implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public void onAbilityUse(Player p, SItem sItem) {
-        p.getWorld().playSound(p.getLocation Sound.EXPLODE, 0.4f, 1.2f);
         Location loc = p.getLocation();
         HashSet<Byte> hashSet = new HashSet<>();
         hashSet.add((byte) 0);
         Block block = p.getTargetBlock(hashSet, 8);
         Location playerLocation = p.getLocation();
         Location teleportLocation = new Location(block.getWorld(), block.getX(), block.getY(), block.getZ(), playerLocation.getYaw(), playerLocation.getPitch());
+          p.getWorld().playSound(p.getLocation Sound.EXPLODE, 0.4f, 1.2f);
         if (teleportLocation.getBlock().getType() != Material.AIR) {
             teleportLocation.setY(teleportLocation.getY() + 1.0D);
         }
