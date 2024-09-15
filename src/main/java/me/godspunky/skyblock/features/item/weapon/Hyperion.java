@@ -73,7 +73,7 @@ public class Hyperion implements ToolStatistics, MaterialFunction, Ability {
 
     @Override
     public void onAbilityUse(Player p, SItem sItem) {
-        p.getWorld().playSound(p.getLocation Sound.ENTITY_GENERIC_EXPLODE, 0.4f, 1.2f);
+        p.getWorld().playSound(p.getLocation Sound.EXPLODE, 0.4f, 1.2f);
         Location loc = p.getLocation();
         HashSet<Byte> hashSet = new HashSet<>();
         hashSet.add((byte) 0);
