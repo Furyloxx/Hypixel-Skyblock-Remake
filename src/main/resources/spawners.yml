@@ -1,0 +1,5970 @@
+cec6009b-ae5f-48a5-ae6a-ea86df7fc39d:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -528.0946507941462
+    y: 101.0
+    z: -269.0692472682506
+    pitch: 19.799803
+    yaw: 81.44471
+ab1c0ad0-bf18-42c6-b535-1dbfe064098a:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -528.6991258247195
+    y: 101.0
+    z: -254.3565835810302
+    pitch: 10.222148
+    yaw: -111.85045
+14cb521a-0018-4cce-a332-09974de247c0:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -527.4084459199125
+    y: 101.0
+    z: -254.4373064324656
+    pitch: 8.243641
+    yaw: -190.75746
+5f22814a-46d6-4356-b69b-92a937153a89:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -530.4955628210454
+    y: 101.0
+    z: -270.41001028201265
+    pitch: 7.264102
+    yaw: -220.14355
+7fd93532-98a4-42c1-ae07-61cbcc89c3dd:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -539.081012259752
+    y: 102.0
+    z: -279.29253359087113
+    pitch: 10.311549
+    yaw: -223.7352
+2bcc1bf0-395b-4cf3-a8ae-f58485dbc3f4:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -549.7814939420293
+    y: 101.0
+    z: -284.7735414106751
+    pitch: 21.086449
+    yaw: -264.65805
+5d72e77c-5435-47cd-90ab-63db8f295e82:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -568.4111977776298
+    y: 101.0
+    z: -270.38561420362953
+    pitch: 13.250146
+    yaw: -3.2647095
+533bc656-d0ab-4518-a5fb-4bdc88eedc79:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -571.4899093309369
+    y: 97.0
+    z: -249.34109322080238
+    pitch: 28.8139
+    yaw: -47.45279
+4a37f1c4-afc9-4c6d-9a6f-947820b38b57:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -564.1079254144463
+    y: 98.0
+    z: -244.38111882328937
+    pitch: 24.460413
+    yaw: -69.00253
+73f76c2c-d290-4247-a77d-4deef7420045:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -545.6389852026446
+    y: 96.0
+    z: -244.54566035945132
+    pitch: 27.072506
+    yaw: -71.941284
+36c7ece0-cc15-4d8c-bd74-e1d3b6505db4:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -532.8005592614134
+    y: 99.0
+    z: -243.45843168334144
+    pitch: 23.263205
+    yaw: -125.70697
+9e515db8-78ff-4f44-a2ec-b24cea7bd62f:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -527.9385074345781
+    y: 101.0
+    z: -249.47556607085738
+    pitch: 24.351583
+    yaw: -133.76086
+bf0de56b-fd25-4e4a-ae98-8a38941fb495:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -545.3469688812938
+    y: 99.76636799395752
+    z: -259.3786743533574
+    pitch: 47.533955
+    yaw: -357.6394
+99e89513-370e-4d4e-8cbf-a8a49c409f54:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -584.7316961000722
+    y: 91.0
+    z: -253.20703202883342
+    pitch: 25.004639
+    yaw: -17.9917
+d42491c7-e46a-40cd-a18c-36923280bfcd:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -582.6396665388771
+    y: 87.18584202489768
+    z: -261.41823770044425
+    pitch: 56.042717
+    yaw: -104.15662
+cafc7875-fa26-46f1-8955-e5d2b624669e:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -574.4189877975161
+    y: 84.4807108763317
+    z: -262.1507271600454
+    pitch: 53.430626
+    yaw: -62.36322
+ab630730-2c70-4101-84c0-a26444b3bbd6:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -567.0043092961752
+    y: 78.90291669633328
+    z: -256.3091676503062
+    pitch: 49.621323
+    yaw: -72.267395
+ccf2613f-5b0e-4cc1-991f-bb88b84d3552:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -552.5645328979867
+    y: 74.13963453200465
+    z: -252.88422950624
+    pitch: 50.16551
+    yaw: -82.38922
+528e7828-3603-4e91-af82-72ae1534e07a:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -536.1288685227258
+    y: 72.21684636526697
+    z: -264.2346392751129
+    pitch: 43.199917
+    yaw: -145.18835
+618a3c86-680e-4f83-a967-20ba1d1bc4e4:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -518.2554270948194
+    y: 71.41999998688698
+    z: -262.7046220827363
+    pitch: 36.01667
+    yaw: -136.80753
+b464d764-35c7-4648-abc1-07fd9d626f08:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -517.347708109997
+    y: 68.0
+    z: -286.9544888245985
+    pitch: 42.655743
+    yaw: -262.7323
+89a90c79-7fdc-41a9-a66a-0dfa16b846c3:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -548.416894707865
+    y: 73.0
+    z: -283.244401006232
+    pitch: 38.084583
+    yaw: -279.38428
+1340de0a-b589-4d53-acd4-72ceb7574ac1:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -564.4853071944156
+    y: 73.0
+    z: -269.0683668029179
+    pitch: 60.831577
+    yaw: -40.302734
+e0452ec4-1c3b-41db-8bee-7eda17565f37:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -549.7086170716146
+    y: 74.0
+    z: -253.0239175998202
+    pitch: 49.621338
+    yaw: -28.983826
+1adcd387-304b-4371-94fd-b8542296ca28:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -541.1455126285017
+    y: 61.85489329934836
+    z: -264.02599514876795
+    pitch: 77.81025
+    yaw: -288.2008
+b45db572-d927-4f43-87ac-f28d60ac5c78:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -550.9364181869199
+    y: 59.0
+    z: -258.3292276102277
+    pitch: 67.253006
+    yaw: -183.82587
+32e00747-4651-4822-80fc-ff196d25427f:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -546.8297763349766
+    y: 46.13244101834039
+    z: -276.826736358452
+    pitch: 63.11711
+    yaw: -339.3545
+3177426f-f111-4c54-9a24-d4c40328b4c9:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -554.1294822131828
+    y: 18.0
+    z: -260.7760337942824
+    pitch: 63.11711
+    yaw: -332.71545
+f1f0f5b5-b4d1-417e-bcce-8d07499935d4:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -561.3714844635323
+    y: 18.0
+    z: -253.5844784880864
+    pitch: 38.737583
+    yaw: -299.3023
+129af926-ae12-4adb-a7cb-fc58eb4049a9:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -570.8479099586698
+    y: 20.0625
+    z: -249.30000001192093
+    pitch: 28.398045
+    yaw: -277.09955
+46934b31-8159-45f5-8e40-0eed880b8b06:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -583.5014096465673
+    y: 23.0
+    z: -245.77483927244901
+    pitch: 31.010138
+    yaw: -288.20087
+b7d0c1bd-f8b9-428a-991b-793df9ab282a:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -591.3035727283346
+    y: 27.0
+    z: -240.20151399593556
+    pitch: 38.1934
+    yaw: -19.40686
+21647fb1-f15c-441d-9bb4-cb5aeaddfbd3:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -586.1775419954907
+    y: 30.31168707874468
+    z: -234.14673148799395
+    pitch: 41.24084
+    yaw: -36.820923
+2f1b22e5-35d5-4ab2-bcad-f5ba4bbcb378:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -585.7327962451049
+    y: 31.24918707874468
+    z: -232.16569397555273
+    pitch: 44.070606
+    yaw: -336.30756
+05503a05-fb98-468d-8318-ff051a3e1b4e:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -583.9767688509079
+    y: 32.0
+    z: -224.38424279478957
+    pitch: 63.44364
+    yaw: -75.89392
+31b56e24-e22d-43c8-a6a8-88249afe0c03:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -573.5479770557919
+    y: 29.476341458216847
+    z: -225.85678001892452
+    pitch: 65.620384
+    yaw: -118.23151
+046daa6f-aef4-4672-a458-856a48e9f76a:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -566.7472313575413
+    y: 26.92159999847412
+    z: -229.5578337495637
+    pitch: 63.661293
+    yaw: -129.87714
+71b4943e-46ae-4e75-a56e-0a1d0bd7837b:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -557.6671986367841
+    y: 21.613520648321625
+    z: -237.02744979653804
+    pitch: 78.245514
+    yaw: -33.882507
+4038766a-9212-4ebf-915f-9443eb2e5c47:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -557.3188322090634
+    y: 22.0625
+    z: -225.60979160095175
+    pitch: 40.478943
+    yaw: -11.135681
+a00d2c18-6019-4f13-8307-bb6055ce3290:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -564.2906393028672
+    y: 20.0
+    z: -218.76687641256487
+    pitch: 54.95428
+    yaw: -294.1878
+7c4fc752-7f50-4909-9fcb-aff85c8a6984:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -579.0499616448644
+    y: 13.0
+    z: -217.13512331582658
+    pitch: 54.95428
+    yaw: -270.3523
+ea0e7623-a577-426c-b938-7ee0e0c683aa:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -589.6999999880791
+    y: 16.0
+    z: -215.3000000119209
+    pitch: 29.26866
+    yaw: -309.64252
+b09bee2d-4d9b-44ea-9afa-41bbfead70bd:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -595.6999999880791
+    y: 20.0
+    z: -212.3045813859901
+    pitch: 23.935625
+    yaw: -311.49274
+09424eb0-5403-43db-bb4e-e104fdfd0d2b:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -584.2332336439565
+    y: 5.0
+    z: -249.52173602101087
+    pitch: 41.02312
+    yaw: -174.9364
+58f878f2-ad72-4bd2-baa2-686e68a4eb54:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -571.3752430567108
+    y: 5.0
+    z: -265.36254998192123
+    pitch: 41.02312
+    yaw: -87.75763
+54b6da74-8687-4de5-8efc-a6fdb63071b6:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -549.5824832574368
+    y: 9.76636799395752
+    z: -269.35736792290515
+    pitch: 32.642654
+    yaw: -200.94861
+a0f3fbc5-c282-4ddd-bd54-1ffed347837a:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -562.4775082607372
+    y: 15.0
+    z: -277.64345750536353
+    pitch: 20.561703
+    yaw: -203.66968
+fabe36bb-69d1-4c0a-b141-2b003ca679da:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -559.9400469208906
+    y: 8.0
+    z: -303.2667567378368
+    pitch: 45.158966
+    yaw: -207.00885
+2d6dada5-76bf-4779-ba02-aa56cdccae18:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -548.1111857550898
+    y: 5.05384694166176
+    z: -311.90358185520427
+    pitch: 42.111526
+    yaw: -116.34726
+0c680065-5670-4c2c-9c1c-2f6e166005a5:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -540.9887246614315
+    y: 7.0
+    z: -318.5781572614723
+    pitch: 31.554314
+    yaw: -118.95929
+28150440-a7e2-4b78-9703-5e27676a7ac5:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -523.3000000119209
+    y: 12.0
+    z: -322.3000000119209
+    pitch: 27.745012
+    yaw: -6.0949097
+fa4cbae2-8668-4fbf-85f9-7a4e68fb1604:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -519.3000000119209
+    y: 15.0
+    z: -305.30000001192093
+    pitch: 31.336637
+    yaw: -20.679125
+3c9c6d0c-0b10-4f0a-84a0-2fb0f2f18fd5:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -521.8183042525341
+    y: 18.0
+    z: -297.61374100117536
+    pitch: 34.057568
+    yaw: -1.7414087
+57c191a1-5cd2-4c5f-8bce-a25bc701c391:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -526.3120214984548
+    y: 16.0
+    z: -290.0388441015389
+    pitch: 29.921759
+    yaw: -286.56882
+84b79503-c15d-4e84-86a9-0abf12c9d611:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -526.7952774156855
+    y: 20.0625
+    z: -277.60498250340544
+    pitch: 22.411966
+    yaw: -325.20624
+b1e990ff-91cd-46a7-bd99-6cdc9c2489d8:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -539.5046570326265
+    y: 7.921599998474121
+    z: -294.6387027341057
+    pitch: 54.518986
+    yaw: -197.97525
+81ec7a83-5fdd-4734-abb0-94055b2a9f40:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -546.728408666664
+    y: 5.0
+    z: -307.94467745981524
+    pitch: 49.73012
+    yaw: -126.904396
+bbc75cc4-bedd-4dde-bc49-d3e615023fca:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -562.9208059558882
+    y: 8.249187078744681
+    z: -308.7422751496141
+    pitch: 54.08363
+    yaw: -344.57913
+7ffc276c-f03f-426a-b668-7ef28421ce49:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -556.8713106238255
+    y: 11.785027703789238
+    z: -288.9799049218298
+    pitch: 60.94035
+    yaw: -41.718964
+613ffa4f-e941-4181-9c7c-4655352a18f0:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -548.8168930339309
+    y: 8.13963453200465
+    z: -286.1687045751928
+    pitch: 72.80367
+    yaw: -118.99359
+5cb54b89-d935-451d-8cff-149ac3edc9b6:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -542.6562409568513
+    y: 6.683596133408969
+    z: -293.41478144683754
+    pitch: 72.69483
+    yaw: -14.183319
+689f3991-6d3b-47ca-93db-250f3cf43d16:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -575.6999999880791
+    y: 20.0
+    z: -274.23363029084874
+    pitch: 13.05192
+    yaw: -310.51343
+6a7181c2-182e-47b0-a1db-cd9cf6f7231b:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -580.4920787735917
+    y: 21.15822892177547
+    z: -278.11004457703154
+    pitch: 45.37663
+    yaw: -198.95503
+e1eb7991-65ab-478c-aabb-1e4c712a1533:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -587.2705802706705
+    y: 22.0
+    z: -272.47802655798256
+    pitch: 39.281742
+    yaw: -323.90048
+fb7505f7-4273-4367-935e-fd0ae8c26241:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -592.1039895766899
+    y: 22.472294673126356
+    z: -281.62326961739916
+    pitch: 88.802795
+    yaw: -300.28275
+4442c739-3f61-4d82-8332-b40e5a12e51e:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -541.3000000119209
+    y: 22.0625
+    z: -271.7390198654566
+    pitch: 15.664365
+    yaw: -92.22281
+27fdecdd-dcfd-4367-aeac-6d0f682fcd4f:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -535.7870221163087
+    y: 23.542721789659844
+    z: -266.2800464669725
+    pitch: 25.45972
+    yaw: -131.07767
+68865de1-6f2d-4aac-883f-815b5b5b2595:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -527.7188921967712
+    y: 21.92159999847412
+    z: -276.83834515759287
+    pitch: 47.009476
+    yaw: -174.50342
+98100175-c979-46d1-a260-f72c8db4a379:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -525.9199465513288
+    y: 16.0
+    z: -290.0747509379836
+    pitch: 48.42436
+    yaw: -141.63516
+322c4a8b-30ed-4cdd-b0cc-55b6bde7d51c:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -520.3632441766235
+    y: 18.0
+    z: -298.06090098120217
+    pitch: 50.165752
+    yaw: -185.17017
+6446f5eb-4154-4447-85b9-38ee0b6cad35:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -522.4308795274246
+    y: 14.303606328102054
+    z: -308.8960290183952
+    pitch: 49.83924
+    yaw: -193.5506
+76236873-e717-483a-abd8-a70a96ea3676:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -525.1088943227159
+    y: 13.340707287087998
+    z: -320.86257021372165
+    pitch: 58.655056
+    yaw: -218.58319
+5f26c3e2-5e8e-4fe7-a15b-62d202b9f004:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -536.6485622247349
+    y: 8.449693241165612
+    z: -323.629210817535
+    pitch: 46.791805
+    yaw: -296.29285
+85d32633-3c1e-44dd-aa26-02cf10138b2b:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -545.7217860056204
+    y: 5.105428404303735
+    z: -315.9641975273555
+    pitch: 43.96204
+    yaw: -324.26367
+8dd195ae-b5b6-4606-83ff-d46483cb2a60:
+  type: STRONG_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -550.602190947606
+    y: 18.0
+    z: -259.8451935670201
+    pitch: 32.09879
+    yaw: -327.2024
+c9aa4554-9b83-4cfb-8878-70978dace091:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -551.2074234098827
+    y: 98.08145538525959
+    z: -253.78154563074395
+    pitch: 24.940605
+    yaw: -286.97552
+9881a8c3-2d77-454c-bd3e-7d3889a3bd78:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -559.0348594430006
+    y: 99.0
+    z: -253.2082548173267
+    pitch: 31.035498
+    yaw: -265.75223
+09557c40-4d21-41c4-a0e6-f0f11dbc13c7:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -572.3506670844947
+    y: 101.0625
+    z: -265.69999998807907
+    pitch: 41.91922
+    yaw: -144.83383
+ed36e23e-0c22-4442-8aaa-feb8f78251d3:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -560.0763695111476
+    y: 101.0
+    z: -279.04899425523195
+    pitch: 43.007584
+    yaw: -138.63011
+2510c0b3-9058-43f8-9935-cd1437ec8aca:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -552.0697959420968
+    y: 101.0
+    z: -283.1352924885043
+    pitch: 40.83084
+    yaw: -80.83739
+d3ac583d-c2be-443e-8923-c71ce61f853b:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -556.415828560008
+    y: 96.93798700002905
+    z: -311.610690535357
+    pitch: 56.503414
+    yaw: -53.301453
+ac103a63-4569-442d-87a6-d834e7546a71:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -553.7083535515428
+    y: 96.74247909042928
+    z: -315.15245962100096
+    pitch: 43.33408
+    yaw: -139.50066
+7bab455a-4945-4550-919b-cec2c14de928:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -549.9435544641095
+    y: 94.45072940531817
+    z: -318.1098334111846
+    pitch: 45.94618
+    yaw: -52.21301
+5135a34d-cb22-406b-b922-018202b52f10:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -546.2734112964749
+    y: 93.0
+    z: -315.0970729986773
+    pitch: 41.37499
+    yaw: -39.26135
+e3197027-a437-476f-8686-1c686af6e216:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -543.0508673571935
+    y: 91.5476561885603
+    z: -307.50221010451924
+    pitch: 56.50337
+    yaw: -71.25957
+1ed8afb9-5396-4acf-9d3c-2c6c63f7af64:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -531.7000279294538
+    y: 86.0
+    z: -304.8262024774216
+    pitch: 59.87732
+    yaw: -94.22434
+1bcc322e-1b77-4eda-b89d-e4a40dc274e5:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -536.5161410398915
+    y: 102.0
+    z: -269.3504110003122
+    pitch: 37.130283
+    yaw: -55.6214
+2ccbcdfb-fcd8-4f6c-b02a-c2b1673e1fe1:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -515.9753066869981
+    y: 101.0
+    z: -275.69999998807907
+    pitch: 35.171215
+    yaw: -309.28745
+f1310863-935e-4a50-a5f9-ceed7f556809:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -528.8000991825802
+    y: 101.0
+    z: -268.5313559273394
+    pitch: 37.021446
+    yaw: -281.64288
+13f0348f-2991-4bca-9fa7-e5eaafa293a5:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -542.554847519142
+    y: 101.0
+    z: -257.2979656812706
+    pitch: 43.878197
+    yaw: -311.57315
+10260bb5-486a-4a9c-8b28-fb3dc3540c92:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -570.6999999880791
+    y: 100.0
+    z: -235.3000000119209
+    pitch: 39.089336
+    yaw: -134.05927
+2c12641a-84c6-473b-b7ef-09a22865b980:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -564.9250056947889
+    y: 100.0
+    z: -239.1885986793197
+    pitch: 38.871662
+    yaw: -123.502
+302f45db-562f-43f5-a475-56957cf17353:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -556.9420798162631
+    y: 99.0
+    z: -254.60795100567483
+    pitch: 43.660484
+    yaw: -297.53317
+c41a6b7d-35c5-4115-8da8-a7b525e292ca:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -532.3000000119209
+    y: 99.0
+    z: -240.30000001192093
+    pitch: 27.879053
+    yaw: -117.00589
+76616e0e-4385-43da-ad58-99ff55005045:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -542.297823008655
+    y: 96.0
+    z: -239.45521162521345
+    pitch: -2.4865913
+    yaw: -190.7973
+54594a0a-c983-4755-9bce-26b9a3ee0a98:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -551.2676505893934
+    y: 98.0
+    z: -251.69999998807907
+    pitch: 27.552544
+    yaw: -174.7981
+72d2a4b4-d1c1-4cc5-ae06-865c947d7ac0:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -525.1244611108879
+    y: 101.0
+    z: -273.9911476325393
+    pitch: 24.613932
+    yaw: -81.41562
+269e76fd-3ded-4291-90c7-54eb45ab7dd2:
+  type: WEAK_ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -525.2984011110228
+    y: 102.0
+    z: -261.0145886527672
+    pitch: 29.51161
+    yaw: -270.5408
+6c964ea1-39e6-4218-a05b-9ad6be09866a:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -548.7124591971932
+    y: 73.0
+    z: -259.6012236840863
+    pitch: 48.01397
+    yaw: -83.81
+f852ee6c-8255-4bba-93b4-0ba525291e33:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -539.7154892564072
+    y: 74.0
+    z: -275.0984843339086
+    pitch: 41.157215
+    yaw: -155.96924
+cea33b2b-bdf9-4f26-9f19-0333390e04cb:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -537.9802873798617
+    y: 73.0
+    z: -281.75604176108544
+    pitch: 48.34047
+    yaw: -161.84644
+7ee8460f-32f3-4da3-8b55-2ad593b966f5:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -534.8399293935114
+    y: 70.0
+    z: -289.6493933939354
+    pitch: 53.020466
+    yaw: -116.78784
+26b9bc49-3a79-4e8c-885f-f26b169ea9b1:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -527.7012187815776
+    y: 68.0
+    z: -289.75913564241256
+    pitch: 52.367443
+    yaw: -63.348846
+4f81aee3-a962-4a1e-8894-a8be58cd0e24:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -536.9099746829123
+    y: 70.0
+    z: -312.18144898939516
+    pitch: 32.776707
+    yaw: -237.37982
+29f0ac7f-e285-4f7e-9ef5-5870c11f4c16:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -557.2272886664122
+    y: 68.0
+    z: -328.70029240371514
+    pitch: 47.03437
+    yaw: -268.28955
+7fa7911c-ba35-49eb-898f-181afe2388ed:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -574.7242683973163
+    y: 76.0
+    z: -322.3353615106633
+    pitch: 35.4976
+    yaw: -235.6383
+3daf896f-4270-47f4-b11f-e180cc051922:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -577.5597834568041
+    y: 84.27086870946835
+    z: -312.3633372828947
+    pitch: 26.46409
+    yaw: -46.186768
+efbadca9-cc9f-4aed-a352-c465babcc8de:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -567.9851864660778
+    y: 72.0
+    z: -326.9298636965406
+    pitch: 74.679115
+    yaw: -77.85861
+313d4bc5-f41b-4a45-86c1-12411c8786dc:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -552.0833850262987
+    y: 68.78113638527373
+    z: -323.09827638113137
+    pitch: 35.171146
+    yaw: -57.61499
+e137f05a-4ba2-42c7-a9db-0d83e6fbd34b:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -545.3000000119209
+    y: 71.23614176333065
+    z: -321.6366658012748
+    pitch: 35.715343
+    yaw: -118.23749
+fc7bed06-3062-4151-9324-58f590297498:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -536.651820849834
+    y: 74.0
+    z: -324.65371089819865
+    pitch: 43.225143
+    yaw: -101.04123
+0b4798d2-9e98-4a80-99c2-5b64aae9f73b:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -531.2597542667511
+    y: 76.289765855795
+    z: -325.91401109943325
+    pitch: 50.299583
+    yaw: -100.17047
+5955aa38-4c84-4815-9f27-14a6be2a664b:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -528.7225283136246
+    y: 77.96716273842014
+    z: -325.3769963077453
+    pitch: 38.32748
+    yaw: -128.9035
+168cdce8-b2f8-4e55-aff5-ce29113ad82d:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -523.2202880485373
+    y: 82.79849022947626
+    z: -322.6560231872107
+    pitch: 38.98052
+    yaw: -23.331177
+07dffb8c-00e9-4aa2-bd8f-fb94db735105:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -520.6186146429335
+    y: 81.52010332918097
+    z: -315.5924316512341
+    pitch: 48.5582
+    yaw: -355.0335
+7c389394-3ff4-46c1-83e8-e8c06c3d0e59:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -518.9337813929936
+    y: 81.0
+    z: -305.6114217691509
+    pitch: 39.63354
+    yaw: -8.855743
+4f68e571-0e27-4bce-b8aa-85ce6d466943:
+  type: ENDERMAN
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -543.7315310751884
+    y: 101.0
+    z: -300.16168568833245
+    pitch: 71.30516
+    yaw: -38.13315
+a7d61167-f51a-4f2c-ab11-b57f45112c82:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -46.71921588533358
+    y: 58.0
+    z: -141.849396614318
+    pitch: 24.371052
+    yaw: -36.983322
+6691de49-866e-4878-82f4-a81ccd64aaa2:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -46.2966189730247
+    y: 56.0
+    z: -133.6053769535838
+    pitch: 47.771084
+    yaw: 49.54243
+94c8bf06-5b3a-49c5-bbfa-30f4357dd2d3:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -53.44449006789558
+    y: 54.0
+    z: -130.1061124428669
+    pitch: 46.573875
+    yaw: 96.124855
+283d3cd8-5f0a-4a25-b48e-e5a09018e2b9:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -58.86150632732578
+    y: 54.0
+    z: -130.3816202600099
+    pitch: 38.193394
+    yaw: 92.750885
+6d29663b-dc09-46ba-b5a8-feebbff083bf:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -57.00420090213465
+    y: 53.0
+    z: -124.85340916022434
+    pitch: 35.145947
+    yaw: 13.40839
+437a4cdc-3344-4b73-92e0-5881b869f23f:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -62.34175582493349
+    y: 52.0
+    z: -125.32399958219048
+    pitch: 43.417595
+    yaw: 67.93592
+2c53701a-d55b-4eea-b875-3584d928d684:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -66.69999998807907
+    y: 51.0
+    z: -123.51377561357991
+    pitch: 48.0976
+    yaw: -27.949871
+454869a9-9653-4213-9388-367413020766:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -62.5548043915383
+    y: 50.5
+    z: -115.81212409666516
+    pitch: 54.08365
+    yaw: 89.92108
+12c57294-4c71-4b2e-8b44-431061bb8190:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -68.16530882039429
+    y: 50.0
+    z: -117.10368825740534
+    pitch: 43.417603
+    yaw: 69.13318
+09a19352-16d1-445f-87a5-d1bcf7660743:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -70.48771720349407
+    y: 48.0
+    z: -110.23622427126314
+    pitch: 42.43805
+    yaw: 37.67916
+d1a9dacc-5bd2-4e85-babf-7502aa7197f2:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -78.54041261567963
+    y: 47.0
+    z: -104.07028383485752
+    pitch: 52.342236
+    yaw: 62.058735
+265eb6e6-57ce-47a6-a143-c8d18c888ff2:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -86.01309095672865
+    y: 47.0
+    z: -103.98293462641523
+    pitch: 45.594322
+    yaw: 114.40956
+be577021-227e-4dfa-823b-53e552947e66:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -90.25047666654469
+    y: 47.0
+    z: -101.72547147029529
+    pitch: 41.349648
+    yaw: 49.542454
+2d52bc6a-d03d-460f-9d79-1d89b2f34dc0:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -99.04429448973578
+    y: 48.0
+    z: -101.45109899731153
+    pitch: 46.247322
+    yaw: 83.60857
+1a145c78-be44-43eb-8658-02d1a8915d80:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -96.66420446253288
+    y: 48.0
+    z: -108.47587657582993
+    pitch: 20.126333
+    yaw: -161.9287
+becf2121-6aa0-40f0-8172-18c0d486d386:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -97.05626071009858
+    y: 49.0
+    z: -116.8027234679239
+    pitch: 28.615648
+    yaw: -238.22368
+c0442cdc-93b8-4526-8847-8da5bd3acce9:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -110.79857577823769
+    y: 51.5
+    z: -118.48832617338367
+    pitch: 23.609125
+    yaw: -259.44708
+08366d22-8d2a-4b23-9acd-7549a58fa983:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -116.81019860020193
+    y: 55.0
+    z: -127.69853447176865
+    pitch: 31.771929
+    yaw: -271.2015
+aa15686a-2437-49f6-a73b-6f16b7ef4886:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -130.68051252484034
+    y: 58.0
+    z: -126.75528965832275
+    pitch: 32.751465
+    yaw: -288.39774
+c4ffb43d-d7b3-432f-a8b3-c2dd705d7bcb:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -142.5591159645577
+    y: 59.0
+    z: -122.91349964906941
+    pitch: 36.996113
+    yaw: -309.0769
+31a2d1c3-8917-46e9-b804-cabefc98eb6d:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -143.09472295178207
+    y: 58.0
+    z: -109.86658831528
+    pitch: 45.703102
+    yaw: -7.6313477
+12d2d8aa-c66d-490a-82d8-29d8f3e22963:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -148.69999998807907
+    y: 57.72418029922479
+    z: -99.00020279355181
+    pitch: 41.784966
+    yaw: -314.40994
+d79abd0c-88d1-40a4-a0f2-4a53124ca164:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -157.86093969279847
+    y: 61.0
+    z: -99.17239743974304
+    pitch: 35.145885
+    yaw: -235.82925
+283b380a-ac4b-4070-a79e-ec0d43ba50cd:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -150.12194904518634
+    y: 59.78502770378924
+    z: -101.78933413528969
+    pitch: 78.89853
+    yaw: -61.90703
+1f0cfcc0-7853-4326-98fb-5b6411e5864d:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -135.0490398168033
+    y: 53.619533245711295
+    z: -98.84051680780983
+    pitch: 54.410084
+    yaw: -99.891335
+91671ed1-f1b8-4822-b8bf-3ecaeae62339:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -132.05338193695056
+    y: 51.0
+    z: -106.24100955538293
+    pitch: 35.254707
+    yaw: -230.93164
+eedaf343-e1ae-4211-9b61-b648defc1cb8:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -128.63353646773035
+    y: 51.1886805451752
+    z: -104.05916891564499
+    pitch: 37.10494
+    yaw: -43.948956
+fe399d41-e5d0-40ef-bde9-7caecd8c80a7:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -122.82629625542526
+    y: 48.0
+    z: -93.62082802251987
+    pitch: 71.8241
+    yaw: -156.2692
+ffe7d89b-65dd-4c30-be90-0d05944008c5:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -117.30773725763981
+    y: 47.0
+    z: -100.61461417224861
+    pitch: 21.650053
+    yaw: -127.753746
+6e11e763-f1c5-42d2-a09e-4f612eecc21c:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -109.19639450737333
+    y: 47.92159999847412
+    z: -100.56526381462108
+    pitch: 30.792397
+    yaw: -70.06991
+dff66366-6f1c-4508-872d-34cbab4264e7:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -104.32855023976899
+    y: 48.0
+    z: -104.66283469181508
+    pitch: 39.172874
+    yaw: -76.27362
+eecb5cfa-9f1d-4f4d-a319-c74e6b9667a4:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -102.72044153503963
+    y: 49.0
+    z: -116.76785572740935
+    pitch: 35.90774
+    yaw: -296.6695
+3f73fac2-1fcd-4b25-bd3d-58caa315ab67:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -118.56110912155991
+    y: 45.42159999847412
+    z: -91.5926459953086
+    pitch: 41.56728
+    yaw: -41.15329
+d398c9f2-d172-4908-abbc-130fba785542:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -112.39982156863773
+    y: 43.0
+    z: -83.86958345421837
+    pitch: 47.662163
+    yaw: -14.488129
+3fa616ad-054a-4d17-9cf6-eeb45ee5880b:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -110.012789744894
+    y: 41.5546255304959
+    z: -88.69999998807907
+    pitch: 73.56547
+    yaw: -294.6015
+385a0ffd-3ed1-4d6d-9fde-f956ba904b5f:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -104.08776877245758
+    y: 39.72576510722643
+    z: -84.50348987133185
+    pitch: 56.042656
+    yaw: -355.00635
+165c6911-6359-4f1b-9906-3d9badc2a76a:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -96.68795514006185
+    y: 39.0
+    z: -78.78154556028807
+    pitch: 36.45192
+    yaw: -150.53506
+a0238d58-931c-4bfb-9813-2f7975db6794:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -95.45320229034624
+    y: 39.0
+    z: -88.18697672139237
+    pitch: 45.920773
+    yaw: -272.9771
+9a20755f-f68e-4ba0-953c-018111a0005a:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -102.8780332235774
+    y: 39.09229203014824
+    z: -88.61780700990046
+    pitch: 48.20635
+    yaw: -271.23584
+13d29567-9f9c-4d11-af50-e8cd20b67c7e:
+  type: GOLDEN_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -103.58998710440413
+    y: 39.0
+    z: -86.60912426367358
+    pitch: 24.153276
+    yaw: -63.6828
+61dee541-c172-42a2-ab29-0fbe0930af05:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -48.392523498768476
+    y: 55.5
+    z: -132.32562296025625
+    pitch: 33.18679
+    yaw: -153.58234
+4c2859d6-7216-41e0-920c-8d79fd33ef2c:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -46.708760789017255
+    y: 57.0
+    z: -138.8717544936455
+    pitch: 18.276077
+    yaw: -219.32031
+294e268c-6d64-4a54-801a-8d973124ae24:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -80.05036692286794
+    y: 47.0
+    z: -101.12872401716449
+    pitch: 29.486351
+    yaw: -333.7833
+c525c52d-9f94-44a3-9be5-902645ea6abe:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -85.27576988219465
+    y: 44.0
+    z: -89.03381366271405
+    pitch: 17.949585
+    yaw: -136.78763
+469dc7c5-d471-42d8-8feb-11b708598eda:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -134.6419191000761
+    y: 59.41999998688698
+    z: -128.8303701595359
+    pitch: 17.187765
+    yaw: -312.77786
+51fc7518-947e-46a0-b49d-bc23d46804f1:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -169.14589918385934
+    y: 61.0
+    z: -99.028577935354
+    pitch: 34.275234
+    yaw: -253.35255
+4d6882d3-7aa2-4951-90d4-273f5af47cf6:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -183.7627303116215
+    y: 66.0
+    z: -101.35628430163204
+    pitch: 37.64921
+    yaw: -51.493378
+fc25a27e-4588-4bf9-a179-ab38eb285a3a:
+  type: GOLDEN_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -127.20308199427902
+    y: 42.0
+    z: -139.1083053295045
+    pitch: 38.30226
+    yaw: -190.58722
+c2c3ebce-957f-491c-b4cb-ae6ba857549e:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -120.83142514192528
+    y: 42.0
+    z: -140.43150491568366
+    pitch: 49.07716
+    yaw: -73.587006
+7c10b1a3-fbf2-4094-a8da-d9018237dfbd:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -118.25111971707759
+    y: 42.0
+    z: -133.42336649253247
+    pitch: 60.722763
+    yaw: -268.04532
+cd6487ea-f16e-44fd-ad05-3da1340b7194:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -129.44354946431835
+    y: 42.47362875741437
+    z: -131.6438520846092
+    pitch: 56.260433
+    yaw: -226.90466
+e11aefc3-1306-4614-839f-738805e5209c:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -132.52051381662625
+    y: 42.0
+    z: -140.3899690644481
+    pitch: 44.614838
+    yaw: -197.73624
+9c6625e0-b6d4-4528-bbc4-cb4205c6dc6b:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -129.75865434559148
+    y: 45.0
+    z: -123.24516346985953
+    pitch: 19.038052
+    yaw: -342.599
+4e93b179-d8d3-4a85-9547-e5cc300052ee:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -132.24817817357211
+    y: 49.0
+    z: -113.28542423713952
+    pitch: 21.75898
+    yaw: -7.3050537
+21150aa3-dec0-45c2-9798-8074133291fa:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -130.9413155521462
+    y: 51.0
+    z: -105.32232033505875
+    pitch: 34.492947
+    yaw: -68.253876
+ff72418b-d029-45b3-97e9-34675d0b7866:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -134.41113325085527
+    y: 51.0
+    z: -98.32409111239807
+    pitch: 21.541302
+    yaw: -245.29822
+9b00823a-f4ab-469f-99ba-11d2c1212107:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -137.98447886213933
+    y: 54.5
+    z: -100.3953947243701
+    pitch: 32.098526
+    yaw: -259.33826
+44a26891-2419-49f2-919a-196d3a4032b4:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -145.74013200321187
+    y: 57.0
+    z: -100.30823133581572
+    pitch: 29.486433
+    yaw: -224.29257
+53077555-1a9f-41a2-a462-366bba3dce18:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -128.1672080500544
+    y: 42.0
+    z: -136.58866194476855
+    pitch: 43.852974
+    yaw: -218.88513
+8eb21aec-05fe-4e40-bcc5-7aa0ec08543d:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -124.28958696710043
+    y: 42.467110131247146
+    z: -141.25103392680685
+    pitch: 47.444603
+    yaw: -26.6781
+e5c98ccd-6e5f-4cb2-9a67-0ab841ac9a08:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -107.78096970467962
+    y: 46.5
+    z: -129.15725314306047
+    pitch: 22.847366
+    yaw: -27.331055
+75d9342f-f1d2-4762-9521-d6c8ec4cb277:
+  type: CRYPT_GHOUL
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -102.06924454636285
+    y: 49.0
+    z: -116.79099494649182
+    pitch: 67.1442
+    yaw: -109.2858
+694a5745-7cf5-4c5a-8ced-f97b6e6bcc06:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -106.39786581714607
+    y: 72.0
+    z: -141.93308434177249
+    pitch: 40.65046
+    yaw: -156.57422
+e942b0df-4f4d-48b5-8a40-9f65d5a05198:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -101.55753621396957
+    y: 72.0549848574693
+    z: -150.50098966924827
+    pitch: 31.508123
+    yaw: -154.724
+a032c619-e59e-4ab1-985f-56f258c1e9aa:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -102.78974136978928
+    y: 73.0
+    z: -162.94943479126664
+    pitch: 33.14068
+    yaw: -173.98822
+d0b6432a-48ad-4dba-8496-c042164b9c53:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -97.1593226665908
+    y: 74.0
+    z: -168.13953814032163
+    pitch: 29.440207
+    yaw: -94.21045
+6d9e7f18-c4bb-4c45-af53-3aae7cf89438:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -88.44929197009431
+    y: 76.65399091126058
+    z: -175.69999998807904
+    pitch: 22.583447
+    yaw: -141.99008
+db406e9c-9ec9-4235-af40-260aeb75ab69:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -75.72909639451314
+    y: 77.5
+    z: -175.622692291537
+    pitch: 28.569502
+    yaw: -100.740814
+fc42193d-e4c6-4b95-a1b7-a935765ac003:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -70.81677295980822
+    y: 79.0
+    z: -183.9639377174711
+    pitch: 42.718365
+    yaw: -204.68054
+9caad634-ec16-4761-b7c0-a0d5d8b43966:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -79.18604132133125
+    y: 81.55970155395843
+    z: -195.16677507259274
+    pitch: 36.84115
+    yaw: -273.68353
+f50fa3c3-05a0-4d5b-907f-6cfc0108e471:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -94.8493129433137
+    y: 81.0
+    z: -183.2115510946069
+    pitch: 32.922997
+    yaw: -311.12366
+2250b9a6-97c9-4deb-9965-839ae121770e:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -116.47126020748235
+    y: 74.0
+    z: -181.2987044812099
+    pitch: 40.650444
+    yaw: -271.6156
+6dd299b8-98ae-476e-bf9b-204270f6aa21:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -127.31064121708212
+    y: 74.43205273409473
+    z: -179.65022436695088
+    pitch: 31.725788
+    yaw: -283.37
+8cf4e5b5-c871-4dce-9b42-53373f3292ca:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -139.27039979793267
+    y: 74.09712173596176
+    z: -179.80013403439
+    pitch: 32.922985
+    yaw: -110.10062
+c55051f0-94e0-4b98-929e-c3ef5e2ce99f:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -136.87650459066242
+    y: 74.42199274576433
+    z: -184.82477556742478
+    pitch: 63.288616
+    yaw: -83.435394
+2af86fd1-3c88-4f74-bae7-e4baef41f1c5:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -133.42093988049447
+    y: 74.0
+    z: -189.2944552422598
+    pitch: 62.526756
+    yaw: -53.94052
+d111268b-7010-4a70-973a-0fb454517fbb:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -134.10299516932895
+    y: 73.0
+    z: -162.5163272371649
+    pitch: 34.664368
+    yaw: -341.67252
+1675a7cf-2e97-4839-8850-5d2186a7655d:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -148.50073650550922
+    y: 72.0
+    z: -140.9541139697006
+    pitch: 26.719229
+    yaw: -320.55807
+460538ab-2ca1-4570-aa65-42ad1d9f571c:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -140.10890606527636
+    y: 72.52377097421767
+    z: -136.86144625817732
+    pitch: 16.923862
+    yaw: -359.41306
+fe3ecda7-60ed-4179-9093-9c95524caf28:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -137.27983885048877
+    y: 72.0
+    z: -127.71313955869337
+    pitch: 16.923862
+    yaw: -359.41306
+9d936228-7824-4bee-a923-9cdafcfcfda7:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -133.67506497250423
+    y: 71.30859569090298
+    z: -114.74106314773863
+    pitch: 19.971312
+    yaw: -20.309875
+72e123d1-bd60-4088-84d6-567ff2bda9c1:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -119.87712048859882
+    y: 71.0
+    z: -104.32317125829567
+    pitch: 19.644794
+    yaw: -88.33334
+223b649f-1fa1-4563-b2b9-b85b02706c76:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -110.0956311961636
+    y: 72.0
+    z: -107.0000535282912
+    pitch: 13.549908
+    yaw: -197.06189
+bf3bef75-de73-48bf-b08e-f06fbb8791de:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -123.18178716824116
+    y: 72.0
+    z: -126.52506468267123
+    pitch: 36.079254
+    yaw: -197.9325
+35431217-0cfd-4e0d-b859-462c21e668c9:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -130.53058296357895
+    y: 72.05127377126117
+    z: -129.66429248661257
+    pitch: 22.909927
+    yaw: -23.500244
+6a5fdfd0-09b0-402a-bdc9-9d4cefe0d5ff:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -128.773555489633
+    y: 72.0625
+    z: -124.61948907210805
+    pitch: 26.719233
+    yaw: -356.07318
+11f25a77-d29f-4b5a-8706-79e656bf6d7f:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -123.1430927338875
+    y: 72.0
+    z: -112.98679803232461
+    pitch: 26.501558
+    yaw: -331.25793
+1ec4c36d-9c47-413b-a1f5-e3e7a15d175d:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -121.05122668486791
+    y: 71.0
+    z: -97.28216712280886
+    pitch: 21.168524
+    yaw: -15.337158
+3482c6a7-69c4-4e5a-a860-37df415dcc2f:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -108.39363932951383
+    y: 71.0
+    z: -93.92801023300778
+    pitch: 17.576889
+    yaw: -65.72876
+4f1077e8-2ecd-4a70-a9d1-38dac383ab85:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -98.49095098065854
+    y: 72.0
+    z: -99.63098445376335
+    pitch: 19.862478
+    yaw: -210.15613
+90cd95c8-ca28-4087-9c1f-80b1897e98b9:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -99.34870845323655
+    y: 72.0
+    z: -110.91584606959516
+    pitch: 20.406668
+    yaw: -142.4591
+ccc54051-e38c-44cd-8f00-1744e100d23a:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -92.72864398452123
+    y: 73.0544448425996
+    z: -116.84404850458327
+    pitch: 20.515505
+    yaw: -94.24414
+e57da0e4-5a0d-4c91-a6c7-cfbdee6e214c:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -85.11869520873358
+    y: 73.0
+    z: -110.59108120422346
+    pitch: 35.6439
+    yaw: -111.00513
+4b12535d-c2e4-4257-897d-4fdd609f224d:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -79.90211879772923
+    y: 73.0
+    z: -118.07514807523712
+    pitch: 26.066212
+    yaw: -182.07599
+c27bd08d-0e64-421f-915c-7fa18321925b:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -101.34585316815037
+    y: 72.00928169482876
+    z: -102.83117084323047
+    pitch: 54.627842
+    yaw: 197.8529
+10f35be6-f1a6-4241-b5c9-2599710c3d06:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -111.23518758535432
+    y: 72.23284358776199
+    z: -98.01912344753359
+    pitch: 37.431515
+    yaw: 35.90271
+2e36afe5-c5c4-4c4c-9580-3930d05dc6a6:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -117.43743936083578
+    y: 71.0
+    z: -76.05080107829694
+    pitch: 36.45198
+    yaw: 305.6764
+a156e5aa-aca8-4e8f-a1f7-bca10afe131b:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -110.2355593876165
+    y: 71.42994075803628
+    z: -68.8568338512801
+    pitch: 36.669655
+    yaw: 305.45862
+3d4b78a6-1560-43bb-ad0f-fc3880c517a8:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -97.3472920951349
+    y: 71.0
+    z: -69.86884738353636
+    pitch: 39.71711
+    yaw: 264.7536
+a2dab1d2-42ca-4cbf-b4e9-d3a2e17cb1f6:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -97.20969824746896
+    y: 71.23152379758702
+    z: -67.119366460894
+    pitch: 59.85202
+    yaw: 272.15448
+aeae6c14-25ee-485b-9f8b-2e4bd8670625:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -94.33684095827273
+    y: 71.0
+    z: -76.37261508942996
+    pitch: 68.23248
+    yaw: 260.07336
+7098a940-2ecd-43ba-a7c7-4309ac0d9470:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -94.79637875803564
+    y: 71.0
+    z: -72.56736212206059
+    pitch: 61.70223
+    yaw: 200.97485
+5b054c87-b9f4-46f2-8111-826169ef863e:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -93.5545786288304
+    y: 71.39823899538416
+    z: -82.90657384145038
+    pitch: 47.226852
+    yaw: 142.85559
+48274f26-6b0f-4c19-8a0e-20d7337fbfa7:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -96.80006195901791
+    y: 71.0
+    z: -90.21955500341213
+    pitch: 47.00918
+    yaw: 141.76709
+1b8eaf03-2f37-46aa-a083-0c0370c6c4ce:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -96.2803646350221
+    y: 72.0
+    z: -95.23888734620462
+    pitch: 50.2743
+    yaw: 267.36542
+5e1eb42b-e9b3-4c37-888c-b37a49963070:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -88.35805058341222
+    y: 71.0
+    z: -93.00681431524674
+    pitch: 48.5329
+    yaw: 305.8938
+fbbc0810-881b-4392-91aa-0bf0b4bc464f:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -82.32174797704002
+    y: 72.0
+    z: -105.74804119393228
+    pitch: 48.097557
+    yaw: 168.75867
+9ddf246b-2589-4f5f-a979-94dd3abeb733:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -86.70533361588605
+    y: 70.04323873174089
+    z: -92.68593620395862
+    pitch: 42.43802
+    yaw: 2.1626892
+06a5182d-9949-41bc-a26e-98c71111ad55:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -121.55064161618954
+    y: 71.0
+    z: -86.88762093914748
+    pitch: 35.58127
+    yaw: 65.506256
+7aea6d54-fff5-4318-a536-027b9afb5027:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -129.7105488870293
+    y: 72.5
+    z: -70.23270844381828
+    pitch: 33.731037
+    yaw: 134.18271
+141e7e7a-88e2-428c-b418-faea0d6afbdc:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -135.92483369858437
+    y: 71.0
+    z: -85.19396862098948
+    pitch: 61.919937
+    yaw: 90.75644
+bba7f060-f66d-4d54-bb41-f2757eb30163:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -141.6724242659292
+    y: 71.0
+    z: -85.39158697766936
+    pitch: 48.097584
+    yaw: 80.852295
+38c6ecb0-9c22-4cca-abc8-4cc5efb841eb:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -158.2412592254348
+    y: 73.0
+    z: -82.70929918931307
+    pitch: 48.097584
+    yaw: 80.74347
+61a21320-aafc-4780-8dac-b65b09d3dff4:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -165.69999998807907
+    y: 74.0
+    z: -80.91905985319534
+    pitch: 59.634357
+    yaw: 21.318268
+d7f9fbf9-88b8-4703-a553-27f3358d2082:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -174.73830112744594
+    y: 74.0
+    z: -88.32557227941234
+    pitch: 45.376675
+    yaw: 157.69135
+8fbd5b3b-0a7c-4d44-81ba-c1d251c14fcd:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -171.81862508012512
+    y: 73.17915221254356
+    z: -99.48326444928627
+    pitch: 47.009243
+    yaw: 180.32953
+9167a33c-a245-4d49-963f-138b511d6ff1:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -167.4882859645621
+    y: 72.0
+    z: -102.83857792664833
+    pitch: 46.57388
+    yaw: 181.63574
+765bf88d-1081-47a5-993b-6594856a365e:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -168.55394819383565
+    y: 72.0
+    z: -118.50762315036434
+    pitch: 42.220394
+    yaw: 126.01987
+94d45e1d-9d47-4317-81f3-59c3fa0cb0cb:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -158.51759153374448
+    y: 72.0
+    z: -132.54686359233852
+    pitch: 44.61482
+    yaw: 221.90564
+c0158a7b-8dcd-4d41-95d9-68f89f62c3c9:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -150.17601129199878
+    y: 72.0
+    z: -130.37641559386745
+    pitch: 46.79158
+    yaw: 30.895996
+695f7daa-f74e-47b8-aa4d-cdf858d624e9:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -178.6807175017293
+    y: 73.0
+    z: -106.87650616257946
+    pitch: 45.158985
+    yaw: 195.45819
+937ee1bf-5069-462b-b77f-e42ed8dfcd65:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -178.69999998807907
+    y: 73.0
+    z: -116.88727580557898
+    pitch: 52.015755
+    yaw: 6.625305
+ca1958c4-db36-409f-a83a-aede8429204b:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -187.61557239593074
+    y: 73.0
+    z: -111.01015908697788
+    pitch: 85.10232
+    yaw: 210.58661
+21c8127b-eeb5-47c6-acf1-8c4e26ce693d:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -185.63218569777732
+    y: 73.0
+    z: -119.05534334168534
+    pitch: 33.18687
+    yaw: 26.760193
+25672b8e-c0cd-4610-89f0-97ad513d2993:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -192.0536313684757
+    y: 73.0
+    z: -111.92740941799985
+    pitch: 34.27524
+    yaw: 38.7323
+ff7e491a-0782-42c3-9f08-821f807dee81:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -179.97075034693032
+    y: 76.0
+    z: -103.56434334830217
+    pitch: 45.81201
+    yaw: 97.61337
+0f0f0926-e86d-47a5-a4e3-b84a72bce794:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -182.02697236219004
+    y: 77.0
+    z: -97.06327462364904
+    pitch: 21.43243
+    yaw: 298.49316
+d288b825-f46d-4af4-b359-49b6ad5de1c3:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -174.87098381444244
+    y: 74.4807108763317
+    z: -92.20221429634984
+    pitch: 36.88734
+    yaw: 331.90625
+01261c3d-dee6-466b-ab95-0988440d78fb:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -151.29241498615332
+    y: 71.0
+    z: -98.53451618404063
+    pitch: 39.172913
+    yaw: 207.17856
+10aaa864-237e-435e-8e93-806206e26e92:
+  type: ZOMBIE
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -142.30000001192093
+    y: 71.0
+    z: -116.13961143705266
+    pitch: 36.016632
+    yaw: 194.87996
+e8cabce9-8fd7-44ba-b4c8-96e107fef856:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -138.61459491244963
+    y: 72.0
+    z: -123.84296607203737
+    pitch: 60.9404
+    yaw: 308.8327
+bcd03034-8e82-499e-9263-7c02fd705ed4:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -115.22205985326754
+    y: 72.0
+    z: -99.40959434089764
+    pitch: 31.88081
+    yaw: 353.56485
+c0e213be-960d-4caf-a57a-c8b291330e24:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -131.0594567443136
+    y: 71.0
+    z: -83.62796730344424
+    pitch: 33.94872
+    yaw: 134.07394
+3d005628-0530-4d7f-9b88-ac8208a49b8a:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -139.40473227990492
+    y: 71.0
+    z: -92.25933974068123
+    pitch: 34.384068
+    yaw: 143.97812
+4e12848a-3269-4d5e-b6c8-3c18c53528f5:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -146.14659308408477
+    y: 71.05195042462383
+    z: -86.04767285339238
+    pitch: 35.14592
+    yaw: 66.48584
+6902147f-5d30-4b97-a6cc-42c774756b80:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -122.83295163723542
+    y: 71.0
+    z: -74.81072470842187
+    pitch: 18.384947
+    yaw: 323.63434
+13a587a3-b3ab-4c0e-9c58-2d1aac3504bd:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -112.24935399534863
+    y: 71.0
+    z: -59.423254603578286
+    pitch: 23.064949
+    yaw: 297.07797
+c4e46268-b2ba-4df1-9d25-5c7356cd5f5a:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -96.66875859247877
+    y: 72.0
+    z: -65.28030008882804
+    pitch: 50.056625
+    yaw: 108.24504
+9f7491fe-0481-4382-97b8-b8d348049dfa:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -117.30290561963615
+    y: 71.101320605228
+    z: -70.34779078657928
+    pitch: 42.329174
+    yaw: 173.32982
+86d78413-adce-4372-aa4f-92ce62b9cfdc:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -109.85214119793866
+    y: 72.90070052501888
+    z: -98.2272854714949
+    pitch: 30.574736
+    yaw: 186.60799
+fe56bf80-e59d-4a97-90d0-655302ee0167:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -98.53545243901272
+    y: 72.04493809233166
+    z: -118.2110170941007
+    pitch: 20.779371
+    yaw: 162.22841
+de23819e-3932-48b1-8f43-059cb8be9f23:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -110.0713193016078
+    y: 72.0
+    z: -128.1932211373387
+    pitch: 25.350536
+    yaw: 182.47218
+4f95cf66-7ee2-4523-ad3b-fdbe07cc5e29:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -112.27990986090667
+    y: 72.0
+    z: -138.96995161018685
+    pitch: 22.303093
+    yaw: 143.72604
+62ee4b6e-9365-4380-906e-b312dd331f43:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -99.30000001192093
+    y: 72.0
+    z: -147.08247595151857
+    pitch: 20.017515
+    yaw: 211.42284
+5f090afc-0d5b-4ab2-8a82-425bd2b8484c:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -87.22748785465956
+    y: 72.0
+    z: -146.39805277716744
+    pitch: 22.84729
+    yaw: 312.3152
+e656e629-0c06-412f-8245-1f7c7202400f:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -78.84591284691852
+    y: 73.20084776760386
+    z: -132.68958621413321
+    pitch: 25.459385
+    yaw: 352.36737
+996930c5-275a-4cde-ab43-66c5c3a7e339:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -69.6202890511563
+    y: 73.0
+    z: -134.88789073993107
+    pitch: 27.853807
+    yaw: 256.48157
+420059fc-65b8-40f3-afc4-96be4bf344ad:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -58.56868258165049
+    y: 72.0
+    z: -137.4650106664928
+    pitch: 26.874273
+    yaw: 263.9913
+323a4d4b-0c49-4b3f-865d-8c4dcf079df9:
+  type: ZOMBIE_VILLAGER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -117.10745913328759
+    y: 71.0
+    z: -89.35473644612055
+    pitch: 14.140292
+    yaw: -18.659538
+ad995c84-13c2-4d22-9692-9b31ce3659b3:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -221.29134442391722
+    y: 91.7531999805212
+    z: 82.11559366110549
+    pitch: 38.628742
+    yaw: 23.460592
+1192fce7-fea6-46ab-969a-3434ce78ccef:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -220.05597820839876
+    y: 91.5
+    z: 85.99687030473841
+    pitch: 46.02968
+    yaw: -44.345127
+f7e2c9fd-8208-4a83-a15c-2e1521478b2d:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -212.01261233119567
+    y: 91.96934851828848
+    z: 86.32819538862478
+    pitch: 37.32268
+    yaw: -174.7324
+cf3cb4cb-bd50-497e-8ec1-37181b91cf73:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -214.6279471839049
+    y: 91.0
+    z: 77.42754165025046
+    pitch: 30.901272
+    yaw: -206.73062
+763979b7-9917-4474-b71e-45360f262d03:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -217.80200973873787
+    y: 91.05210267163045
+    z: 65.87862224710537
+    pitch: 37.97571
+    yaw: -219.02927
+e98dd4fd-1868-4b8f-8f23-cc73f0bdf5dc:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -222.67839743866534
+    y: 92.0
+    z: 61.7150735507251
+    pitch: 36.56083
+    yaw: -257.77536
+8010a6bf-2573-4132-8c83-98b9b921ad59:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -214.26773192231155
+    y: 91.0
+    z: 60.81413604435778
+    pitch: 42.54694
+    yaw: -172.66455
+f49c9408-ae90-42d1-a05e-b28399e3739c:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -213.0388164134574
+    y: 91.0
+    z: 52.60530541814097
+    pitch: 35.799026
+    yaw: -174.51477
+13497cf2-6dbd-4f55-af56-1fa7419ca6b6:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -207.28370787045347
+    y: 92.1652416625024
+    z: 47.36053474644344
+    pitch: 53.974876
+    yaw: -101.593636
+f03328d1-5bc9-4637-aa48-f88c34bde7dc:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -198.6349097582638
+    y: 90.30688290080114
+    z: 48.80636625173701
+    pitch: 62.355354
+    yaw: -62.41212
+6b96589b-7274-4355-999a-c2c30a0eda74:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -181.73828105596294
+    y: 85.0
+    z: 63.28856493018683
+    pitch: 66.926544
+    yaw: -35.964634
+35ae447e-bc0f-4222-82b4-6ccb4fcdfe5a:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -178.11929889233056
+    y: 84.0
+    z: 73.71444644685835
+    pitch: 49.621387
+    yaw: -10.496675
+dcf1103f-9b24-41fd-be47-ac695f036faf:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -178.33350960638265
+    y: 86.0
+    z: 81.05799620088538
+    pitch: 43.199997
+    yaw: 21.283855
+d2245c51-3366-4c10-96e2-01ec44eb644b:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -186.4218979340523
+    y: 86.73487293513678
+    z: 93.60222822508854
+    pitch: 42.43814
+    yaw: 65.14533
+d0bebffb-439b-4ec0-88d5-4eb658f1628d:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -192.08117332003866
+    y: 87.10408037809304
+    z: 98.81675694678835
+    pitch: 39.49954
+    yaw: 72.76396
+7ae9bb06-93b1-4e57-b3b3-ed54ca23f16c:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -207.61698140981048
+    y: 90.06719321035749
+    z: 104.1699850680147
+    pitch: 67.470764
+    yaw: 17.256863
+c74852e0-9b93-4492-9c9f-1a3928deef7f:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -217.332208690588
+    y: 92.0
+    z: 114.59950598689557
+    pitch: 42.329327
+    yaw: 44.139706
+ee8ac1fd-25f5-4869-863e-ecd546d73a87:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -224.8141830192109
+    y: 96.5
+    z: 73.58423368470726
+    pitch: 68.55914
+    yaw: -243.51761
+cd5013cc-7559-4a2f-8ed1-6ca2eb71754b:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -231.2146597104147
+    y: 103.0
+    z: 71.8032980275397
+    pitch: 26.983236
+    yaw: -273.99203
+78e396a9-3697-432f-9930-364e3aa270d4:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -235.67971204767468
+    y: 105.0
+    z: 73.03328890892311
+    pitch: 39.06419
+    yaw: -327.43118
+38c2dd44-a6a4-472b-ab31-2abf08eeb494:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -241.53427522595075
+    y: 105.43259673410775
+    z: 80.74894444395169
+    pitch: 46.029774
+    yaw: -264.84955
+1a8297be-8502-486d-83bd-9328d265a7ef:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -249.01403268187673
+    y: 106.64235262598191
+    z: 74.32935424921676
+    pitch: 53.86606
+    yaw: -199.8736
+f77316d0-a95a-4f36-af9c-eac24e46fa4e:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -244.9391081168871
+    y: 94.0
+    z: 73.97851811416221
+    pitch: 71.82426
+    yaw: 44.46644
+ffc94d7f-0029-4c07-903a-f17991f7b104:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -246.21314505315863
+    y: 94.42199274576433
+    z: 81.07470363873882
+    pitch: 51.362835
+    yaw: -83.19987
+00f1769d-eba7-45bf-a68a-034330b69ba9:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -236.59360560235987
+    y: 94.5
+    z: 80.64814894894495
+    pitch: 88.69395
+    yaw: -316.22076
+eb7a8c24-043e-4fb2-84eb-1091b20f05c6:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -241.87570935448426
+    y: 94.05178117668734
+    z: 72.90001539818822
+    pitch: 53.32178
+    yaw: -141.97198
+6d9de07b-6cfb-4f2a-8797-e0e7a971f7bf:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -238.53161499496755
+    y: 94.0
+    z: 70.7188181562622
+    pitch: 90.0
+    yaw: -24.971746
+386f66ba-b103-426b-9c8f-fb32df6a32a9:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -241.13413447097975
+    y: 93.72010248372784
+    z: 78.3252943889151
+    pitch: 65.40275
+    yaw: -38.24993
+8a795990-99c0-4834-a5a9-2278ddf4237d:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -233.1629389881763
+    y: 96.24918707874468
+    z: 80.8455236326631
+    pitch: 53.32179
+    yaw: -101.919815
+f7184173-94f1-4ddc-acc6-5a1e04e55cd4:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -230.98476065423924
+    y: 98.55857856839607
+    z: 88.66965288489635
+    pitch: 39.934795
+    yaw: 76.90009
+c9789895-76a7-429a-8d59-4f888968b380:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -237.10842148097387
+    y: 102.5
+    z: 87.72029664303132
+    pitch: 24.588717
+    yaw: 198.68921
+d03c1526-8345-4ff5-8a76-013782707ee0:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -236.80377953476378
+    y: 105.0
+    z: 82.4776389194385
+    pitch: 30.357098
+    yaw: 168.32358
+9e800fe6-afea-44eb-888c-8c8372da50b0:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -231.5683868080535
+    y: 110.0
+    z: 83.99790245883493
+    pitch: 35.14594
+    yaw: 339.52487
+a550d936-9124-4a47-bd21-5e8f9134d9c4:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -247.58309634141366
+    y: 95.0
+    z: 93.63603226663923
+    pitch: 90.0
+    yaw: 48.854156
+c5f0e068-724f-42a2-8f44-39613730f202:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -252.21622282555512
+    y: 94.00133597911214
+    z: 97.56795546261925
+    pitch: 58.32832
+    yaw: 53.316437
+d47bb3f5-881a-48a1-9cf3-6d6f77363795:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -254.80871186606493
+    y: 92.0
+    z: 99.75185850967723
+    pitch: 34.166412
+    yaw: 311.1181
+67846e30-d5a8-4c6c-a30e-f95417915945:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -253.1094089067806
+    y: 92.4807108763317
+    z: 106.07152261313594
+    pitch: 44.614788
+    yaw: 2.9247742
+8df784fa-af9b-4ae4-be92-319fd153ec94:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -254.54808751301616
+    y: 92.26021821954484
+    z: 95.19785603629522
+    pitch: 59.852036
+    yaw: 167.70447
+0f080ee8-2412-4c19-8bc3-4db284b0918e:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -257.77898214012384
+    y: 91.0
+    z: 92.45696501742361
+    pitch: 43.4176
+    yaw: 53.751617
+83cc9cdc-589e-4aa3-a1fe-9352c9f53cf2:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -267.4479639085216
+    y: 91.05983005162264
+    z: 99.15499759849243
+    pitch: 48.532955
+    yaw: 59.846527
+65051b12-1e7f-48d4-ba45-b967954901f1:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -274.8557002914455
+    y: 90.76636799395752
+    z: 107.34622227905842
+    pitch: 55.82503
+    yaw: 128.52286
+5ff8e195-ff30-4a17-8651-cfae5c42cd6a:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -277.49423765264874
+    y: 90.11255193098509
+    z: 87.88067980456867
+    pitch: 44.94129
+    yaw: 180.87372
+11bc6462-ca86-4a8b-999a-985d63280011:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -274.385131018431
+    y: 90.81980060129037
+    z: 78.45896870633875
+    pitch: 50.600834
+    yaw: 212.98071
+f5a051e1-2d6d-4ddc-844f-29d8c4248d79:
+  type: OLD_WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -258.6557209240949
+    y: 106.5
+    z: 76.29072866590737
+    pitch: 70.735756
+    yaw: 267.03833
+2fc1e225-c297-45aa-ac1d-3ddc620437c0:
+  type: OLD_WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -271.879791783129
+    y: 90.0
+    z: 98.56618553623042
+    pitch: 59.198936
+    yaw: 223.39452
+cb6e8a4b-43d4-42a4-976a-3b7e2b461d7d:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -278.6581108074279
+    y: 90.0
+    z: 79.92818868255625
+    pitch: 56.478024
+    yaw: 146.33765
+1e83674b-bd64-4ec8-b1c2-e95e5d717903:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -270.6042099027253
+    y: 90.0
+    z: 61.80119243155734
+    pitch: 46.79149
+    yaw: 24.004301
+2602096f-414b-42a1-8e1f-a0092d89cccd:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -258.53609923534714
+    y: 93.7531999805212
+    z: 57.04320731252633
+    pitch: 51.471535
+    yaw: -288.68567
+6f91c245-4fec-43c9-9830-1326e5d88772:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -256.1589540589953
+    y: 93.39823899538419
+    z: 62.14435406048927
+    pitch: 45.81198
+    yaw: -26.20401
+c1c7826d-51de-485d-a1cb-7b53918cba3d:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -256.03992089779763
+    y: 94.14201254509592
+    z: 73.8688552025649
+    pitch: 46.79152
+    yaw: -308.92938
+4da606d5-8b88-4a5f-b9dc-76430f72c7f5:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -254.3782184759759
+    y: 94.32003536910509
+    z: 80.19963448751162
+    pitch: 42.873363
+    yaw: -146.36044
+2113327d-80f3-4df2-8ab9-3d64af0593fc:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -253.75051766953717
+    y: 93.5
+    z: 74.09040493985789
+    pitch: 38.51987
+    yaw: -167.2575
+90f7976e-d4bc-4b42-a5d0-52533f20d582:
+  type: WOLF
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -237.31061476503467
+    y: 94.0
+    z: 81.68052039051742
+    pitch: 40.80545
+    yaw: -74.418915
+08767b3b-aff6-4327-8e2d-345e4b847fd4:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -233.6161290883343
+    y: 99.5
+    z: 88.31298067110247
+    pitch: 57.892925
+    yaw: -92.34286
+6696b255-2627-4409-a040-09027c310da7:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -221.77252565784366
+    y: 91.0
+    z: 80.14985894057575
+    pitch: 57.89293
+    yaw: -341.14523
+34b3c257-5856-4450-b0b2-65a13474312b:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -224.1617639446875
+    y: 92.0
+    z: 87.10473269109079
+    pitch: 57.89293
+    yaw: -341.14523
+4999521d-9ef2-4909-8b81-2071df76857e:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -227.46232803501573
+    y: 92.5
+    z: 96.83203268022167
+    pitch: 52.23339
+    yaw: -67.45331
+c1e5dec3-cbfc-4d55-94f7-339457280d85:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -221.2583788902391
+    y: 91.5
+    z: 93.30586968719955
+    pitch: 39.281734
+    yaw: -123.286804
+48feae0d-d731-4696-8c90-3f733f51c0ad:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -212.10811761149108
+    y: 91.0
+    z: 80.4142024951507
+    pitch: 50.056633
+    yaw: -207.85333
+211d9ad4-23c1-47de-87b6-aa8ca512d57f:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -216.88979928391743
+    y: 91.09712173596176
+    z: 71.04869067557875
+    pitch: 49.185936
+    yaw: -159.09424
+131e7a84-6cef-46cd-bb34-1af5bc04699f:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -229.32448923156477
+    y: 100.23152379758702
+    z: 54.50541907305501
+    pitch: 53.97477
+    yaw: -352.79068
+7db52d36-8931-41c1-ac99-2789f760ffdd:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -237.1665468898793
+    y: 100.0
+    z: 53.360587188898585
+    pitch: 42.6557
+    yaw: -153.07399
+5b9c37a9-e8e3-44b8-b615-2c14189e731a:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -235.15936356112115
+    y: 106.0
+    z: 62.259256990883216
+    pitch: 37.64917
+    yaw: 72.00181
+0e602e7c-e22f-41d2-8eac-3f00517bc496:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -242.69999998807899
+    y: 105.34908784889045
+    z: 61.81757124448741
+    pitch: 40.261276
+    yaw: 136.97778
+900834eb-da9f-4db3-a639-8aaa602d3e64:
+  type: PACK_SPIRIT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -247.3803794873172
+    y: 101.5
+    z: 53.11778675015269
+    pitch: 42.111507
+    yaw: 202.71558
+e41f8a1a-4c03-45a1-b698-307e6e5a6a6b:
+  type: SOUL_OF_THE_ALPHA
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -255.75285122396343
+    y: 105.0
+    z: 76.72691595201351
+    pitch: 60.08681
+    yaw: 96.2726
+d10a4895-4427-4703-bd34-b7cb4b57e4d5:
+  type: SOUL_OF_THE_ALPHA
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -269.99018752829926
+    y: 90.05423554910982
+    z: 93.32980167311183
+    pitch: 49.2031
+    yaw: -39.774185
+f057d343-8a3b-492b-b1f0-53c0e71e6012:
+  type: SOUL_OF_THE_ALPHA
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -241.6446700558298
+    y: 93.0
+    z: 100.32326620612108
+    pitch: 40.169594
+    yaw: -92.778
+f5b34edf-43db-42fd-bd53-22f81eb469da:
+  type: SOUL_OF_THE_ALPHA
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -242.58362293465487
+    y: 92.78502770378924
+    z: 120.1311551762111
+    pitch: 57.69239
+    yaw: -59.147198
+1ad855f0-44a9-4985-9109-a4abc5e41aa2:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -219.94868113982983
+    y: 88.0
+    z: -252.55592426825893
+    pitch: 15.890257
+    yaw: -158.79349
+e2c203a4-0cd6-43fe-b52b-92cc4166111a:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -224.84998266886407
+    y: 81.00133597911214
+    z: -258.02532900380095
+    pitch: 25.359118
+    yaw: -250.8699
+98fbc338-073d-4702-bce7-e9661fd291ef:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -223.85055210185465
+    y: 80.0
+    z: -263.5264349500768
+    pitch: 23.94423
+    yaw: -173.70416
+4ef7a861-e1fd-4c9f-8296-6925873a6755:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -217.83800673009688
+    y: 80.84015100260613
+    z: -272.557122870767
+    pitch: 21.114456
+    yaw: -161.40555
+98443e2d-ca15-462c-ac98-c6a3abc6ff71:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -214.16337413006215
+    y: 82.0
+    z: -280.93552825725794
+    pitch: 20.243757
+    yaw: -199.28099
+947e6046-e777-4553-a10f-ea5f99554578:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -223.20649491195448
+    y: 84.0
+    z: -286.55330628483375
+    pitch: 20.67911
+    yaw: -271.87552
+caffffd7-e058-43dc-bc88-dd7beb876aee:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -211.1412437290972
+    y: 82.0
+    z: -289.74503464163956
+    pitch: 24.81493
+    yaw: -92.07606
+c4cc5b8b-4f00-48ac-8cb8-cfcac5827009:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -192.16723937664733
+    y: 79.0
+    z: -275.71926240342555
+    pitch: 26.120975
+    yaw: -99.04166
+e9d81e63-4803-42cb-ae01-658110e3ee3a:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -184.30000001192093
+    y: 80.0
+    z: -268.300000011921
+    pitch: 35.37215
+    yaw: 14.584619
+b5ae175e-ac41-4fbb-b5d8-7b509653cd29:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -202.20749872694216
+    y: 82.0
+    z: -290.5266139263777
+    pitch: 26.66516
+    yaw: 136.37376
+14d6df14-f580-4e36-bba2-1ea70a800c83:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -210.53595247898562
+    y: 83.7408674903645
+    z: -303.61284578633695
+    pitch: 33.521923
+    yaw: 230.9535
+d216e7ef-6809-463d-99e8-c246739d6b2b:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -191.78472318243823
+    y: 88.0
+    z: -307.5150438143935
+    pitch: 23.835398
+    yaw: 246.19064
+f9c884a1-7109-4d8e-8d8a-60dd7c3498b5:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -184.2268540528343
+    y: 88.05529617082765
+    z: -302.7342226655956
+    pitch: 36.24286
+    yaw: 351.87177
+4ff2c251-22ed-4c17-ba0c-1d506ce59ede:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -210.6015272110721
+    y: 84.0
+    z: -307.01653640887423
+    pitch: 45.385193
+    yaw: 41.71936
+9588de97-b6ca-4f1b-b593-38fa2816c1a7:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -216.61994721400228
+    y: 82.59991968851189
+    z: -299.79755746556043
+    pitch: 52.02428
+    yaw: 326.29498
+bae490d7-12af-4da1-9df3-781a3e48622f:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -205.56043490312308
+    y: 82.0
+    z: -291.9023975116272
+    pitch: 23.073536
+    yaw: 278.1889
+e8d3207f-e586-4b11-bb9e-9ed38c3032e5:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -200.47075680923723
+    y: 81.66477041675164
+    z: -280.3574830647841
+    pitch: 30.583315
+    yaw: 327.81882
+db6f91e5-2ec3-4d22-bd5e-31bdf4d36301:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -186.58362025617012
+    y: 79.77992499710663
+    z: -274.80466008549905
+    pitch: 21.876318
+    yaw: 234.43628
+2cfaa947-3c8e-484c-94b7-7bddf66d002e:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -185.96337322544724
+    y: 81.86206366579873
+    z: -266.88983199055684
+    pitch: 33.195423
+    yaw: 342.9471
+703e2e24-3d06-47ad-b7d2-4a291a08e19a:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -182.1278494239844
+    y: 83.0
+    z: -257.39827629666826
+    pitch: 29.9303
+    yaw: 298.10608
+7ca0dbca-4c5c-467b-8fed-8acc3071d3db:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -227.54802989211024
+    y: 87.24113967615102
+    z: -286.45413606727595
+    pitch: 10.557245
+    yaw: 57.60965
+bd5b01d2-522f-41e0-ba0c-5fdddd937cc4:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -231.53990690974663
+    y: 104.0
+    z: -292.9891294774233
+    pitch: 71.61502
+    yaw: 185.16724
+a9d75587-28a0-4951-81b0-3babe84112c1:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -230.30000001192093
+    y: 108.7531999805212
+    z: -298.9274249159236
+    pitch: 21.223286
+    yaw: 298.46704
+631902f9-1de2-423a-9ae7-eebe5fd22f49:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -211.8479904741642
+    y: 112.0
+    z: -307.47249294260445
+    pitch: 22.311653
+    yaw: 233.81763
+c1da9688-33dd-4319-9e51-d9b8df39787d:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -216.15052928319886
+    y: 112.08818290840102
+    z: -313.05883206350427
+    pitch: 31.889345
+    yaw: 131.72815
+f24871ad-3250-484f-b666-8aad7f31cb24:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -202.30895923799835
+    y: 112.0
+    z: -300.5811356225142
+    pitch: 41.358204
+    yaw: 174.28357
+18abd9cd-a63b-4d1d-8c3b-53880a5ae8e0:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -196.39682122743733
+    y: 108.0
+    z: -308.6725145878427
+    pitch: 36.787045
+    yaw: 239.15051
+0cec51a7-8fdc-479c-8393-fede216207e8:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -186.68271099204483
+    y: 105.06134978615096
+    z: -316.92205627761575
+    pitch: 40.70518
+    yaw: 224.56653
+34a9f2ff-07e2-4382-b3d9-a4fbd147c8cb:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -172.51439001095204
+    y: 105.0
+    z: -327.5975006526917
+    pitch: 39.072617
+    yaw: 161.00531
+7125009f-869a-455f-8012-8ea13e7a4dc6:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -182.90328572136414
+    y: 101.90291669633328
+    z: -325.2076347422236
+    pitch: 51.697746
+    yaw: 71.21445
+405a0f02-b96a-4918-bbd5-b58788c594c7:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -195.04961892148046
+    y: 98.10086944247115
+    z: -320.6490226932704
+    pitch: 55.180534
+    yaw: 45.964233
+54f85383-63e1-4d75-ad1c-f2d6ddfd8608:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -190.9899114066413
+    y: 95.0
+    z: -317.5164312403103
+    pitch: 63.343338
+    yaw: 204.17963
+e2fde890-41ab-4a92-87e5-691412ffdab1:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -190.85364946997547
+    y: 98.5
+    z: -322.8099910845368
+    pitch: 10.448348
+    yaw: 176.20834
+30f07216-fec6-4b2b-9835-c27e49a17d76:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -177.2853173604235
+    y: 103.5
+    z: -324.419983358652
+    pitch: 35.69863
+    yaw: 267.30533
+8465e689-2002-4134-b22f-5dd162278411:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -173.3686417488495
+    y: 105.0
+    z: -331.6316959394261
+    pitch: 35.916306
+    yaw: 145.08087
+82aac95a-5b28-481b-8aea-34265ef1e389:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -175.15799735047997
+    y: 101.68636327208398
+    z: -342.0645950745065
+    pitch: 74.11824
+    yaw: 215.17227
+b7f82936-cbfb-4764-b849-0b80ca17962a:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -170.28598549351057
+    y: 98.67675951848379
+    z: -350.2909083222062
+    pitch: 74.55359
+    yaw: 271.55008
+0592a5c3-2fc5-43c2-914f-8a637a514205:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -174.31014112864244
+    y: 99.5
+    z: -345.39312532677326
+    pitch: 42.66421
+    yaw: 91.893616
+6cc0be48-ec95-4966-b35a-df1ea6f8c56d:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -171.5980584085595
+    y: 103.35922864317915
+    z: -339.300000011921
+    pitch: 24.053015
+    yaw: 322.8124
+b6791504-a22e-42aa-a17c-f91c4f4c32fa:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -176.69999998807907
+    y: 105.0
+    z: -333.9441555897192
+    pitch: 40.922817
+    yaw: 135.755
+d64d8c61-d02e-4522-8d69-9bc50c9216b1:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -181.59893358677985
+    y: 109.0
+    z: -337.04774766885527
+    pitch: 37.98421
+    yaw: 122.1503
+38a2a696-0d6d-4c3a-904f-7db49e6462a4:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -186.96851983682507
+    y: 111.0
+    z: -334.10356122187085
+    pitch: 39.181423
+    yaw: 24.958496
+ae8bb705-3f2e-4682-9590-fe71ebfe0f86:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -192.14928483582386
+    y: 113.0
+    z: -339.33039792031263
+    pitch: 33.848392
+    yaw: 165.03217
+1f5bb2e9-8128-4495-a44b-fcb3d6b9ede2:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -194.5021302566154
+    y: 113.0
+    z: -338.96371710254
+    pitch: 33.41304
+    yaw: 63.37793
+9da5b9a1-174f-42cf-aa17-11c386c0445d:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -185.48525427052104
+    y: 111.13963453200465
+    z: -335.2706378383948
+    pitch: 50.935867
+    yaw: 310.84012
+f8406947-a521-4f3c-a62b-ceb0ec743c29:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -166.30000001192093
+    y: 107.6068493412753
+    z: -305.300000011921
+    pitch: 28.188852
+    yaw: 338.5937
+b43ef9c5-2ae6-4850-a11f-5fc016357551:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -169.5496974219371
+    y: 107.4807108763317
+    z: -310.7521152052794
+    pitch: 39.94329
+    yaw: 127.884445
+11822af4-231e-4915-bc40-b856d83ce3f8:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -169.4868228814017
+    y: 105.0
+    z: -318.1671715253855
+    pitch: 59.31634
+    yaw: 216.04277
+59ed42b3-c2a1-4b0e-a6f1-7e70c9c7ae2c:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -171.01101977169506
+    y: 106.0
+    z: -312.0204176616532
+    pitch: 38.310707
+    yaw: 5.6942444
+148b5f4e-3a62-4d52-a5b2-90f4604862e0:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -164.33806087281928
+    y: 108.5
+    z: -302.83951321711623
+    pitch: 27.100447
+    yaw: 263.6047
+62ce45a1-a9cb-42bd-882b-89b94e214743:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -158.03432089105831
+    y: 110.0
+    z: -303.38163560734534
+    pitch: 34.936737
+    yaw: 259.4689
+a3a2db4b-8d09-474c-bb5c-651b47edfd04:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -155.69307881309788
+    y: 110.0
+    z: -298.12376559114824
+    pitch: 29.712538
+    yaw: 10.374207
+c1f52082-2676-4915-8a5f-a5a9cbdc7b40:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -161.01739863660038
+    y: 110.0
+    z: -291.3850523876905
+    pitch: 35.48091
+    yaw: 63.269135
+66957b70-eb4e-46a0-8baf-b4c80a5d7dc6:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -166.91520421920833
+    y: 110.0
+    z: -289.7853884855598
+    pitch: 46.146973
+    yaw: 74.58826
+c07530b4-c633-4915-9a56-d5243b8ea610:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -161.59405398793618
+    y: 110.0
+    z: -289.03457568533753
+    pitch: 34.610195
+    yaw: 288.5283
+0fbfdbab-9ec6-4521-9981-daa85529995c:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -153.55059062237606
+    y: 110.46439877316215
+    z: -292.2938495581547
+    pitch: 42.881832
+    yaw: 246.40825
+93bfe5a1-9a91-4a8f-b4cb-f9e6c454c0ae:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -165.2251520534382
+    y: 133.7531999805212
+    z: -304.06449500266467
+    pitch: 42.555294
+    yaw: 169.46031
+cab680e5-8a26-457a-82d1-299a4ecb5cdc:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -165.08553097583916
+    y: 134.0
+    z: -308.6755691940887
+    pitch: 25.141308
+    yaw: 210.60088
+7fd44bba-ca50-459e-9137-9b0636a74d9f:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -161.54459699833035
+    y: 134.0
+    z: -315.9063498658863
+    pitch: 30.692015
+    yaw: 176.42592
+59536ad6-1f71-432f-a802-95b88bc7bea6:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -164.63219286929663
+    y: 134.0918832101118
+    z: -322.3151095228186
+    pitch: 44.840878
+    yaw: 122.00718
+01d20991-20ff-4145-ad3f-2e8ee9fca25d:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -169.58761770280026
+    y: 134.0
+    z: -317.69908848826657
+    pitch: 42.228767
+    yaw: 39.399563
+d7895b54-b582-44c2-9d74-61260c1fef6c:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -172.7383832653321
+    y: 133.0
+    z: -314.00382748538357
+    pitch: 46.36459
+    yaw: 67.80613
+a4cce78b-4b23-4517-ba0b-c0638cd8887c:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -176.69001620603035
+    y: 132.0
+    z: -313.4869831057678
+    pitch: 45.27621
+    yaw: 114.93274
+cd9a0838-4a09-4584-b4ac-816b3be40828:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -181.0579786838292
+    y: 131.60408037809304
+    z: -312.2157558088215
+    pitch: 50.39157
+    yaw: 25.577202
+491b722b-9746-436e-a37f-662bcdab718a:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -187.7895298106551
+    y: 119.22891980968694
+    z: -307.2343814285465
+    pitch: 37.875256
+    yaw: 63.126125
+67f83bdf-08a5-4987-8fad-4107b6935cf0:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -191.3376115742023
+    y: 107.09811669631277
+    z: -308.8940400935202
+    pitch: 47.235283
+    yaw: -54.853638
+c1cce515-a3eb-4444-b63a-88dba9e1ea38:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -186.90788854757565
+    y: 107.0
+    z: -308.49171480336645
+    pitch: 67.04369
+    yaw: 119.721596
+92be302a-c6a2-4ff1-bb21-3171facc9305:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -189.7586545740344
+    y: 106.0
+    z: -310.5819768855165
+    pitch: 58.33669
+    yaw: 123.63976
+f61cb4a3-5fc5-42a6-a3a6-0f325c83f252:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -196.88296642478758
+    y: 108.0
+    z: -305.16680375555427
+    pitch: 34.936638
+    yaw: 62.25545
+753259a7-cf29-43bc-bd0a-4b47310e2d04:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -189.18572773412225
+    y: 112.5
+    z: -297.98182201106835
+    pitch: 23.399866
+    yaw: -5.9856253
+eab6eb35-c3bd-48de-a031-153bd58abbb3:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -193.28931872663085
+    y: 113.5
+    z: -292.7466732545505
+    pitch: 27.100338
+    yaw: 57.35776
+123d7d30-dc12-45cd-9c1d-bfd4940f6160:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -200.17629484825255
+    y: 117.0
+    z: -285.43119829316936
+    pitch: 26.229641
+    yaw: 7.727893
+73af992d-654e-47e5-a0a5-0ad07b74db2d:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -202.01215964219622
+    y: 121.0
+    z: -281.5848702014889
+    pitch: 37.984085
+    yaw: 114.279755
+8274227d-d9a8-46ad-bbc1-f0f6e1aac003:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -205.04502245904888
+    y: 121.10408037809304
+    z: -284.2511004257333
+    pitch: 35.807343
+    yaw: 130.82304
+e5d03aad-64e9-446f-947a-32dff642fa66:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -209.65311796531057
+    y: 121.10408037809304
+    z: -282.33862691055606
+    pitch: 38.092926
+    yaw: 93.05645
+0328376b-67aa-433e-bf98-174d1938bb94:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -206.26122009988964
+    y: 104.0
+    z: -265.7889188682292
+    pitch: 44.187824
+    yaw: -115.040726
+d246e6d7-9fd5-4778-a0a9-e25bfb194e55:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -196.52524539530535
+    y: 95.0
+    z: -260.46164708691316
+    pitch: 53.547825
+    yaw: -4.788401
+808696ec-99e5-46cb-bbfd-13c373333e9e:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -192.5863701135121
+    y: 95.0
+    z: -259.8739111075797
+    pitch: 32.215683
+    yaw: -122.659355
+b3dbc1e2-8e69-4dc4-a33b-c806652317d7:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -188.01411320077978
+    y: 95.2691118251291
+    z: -262.93712525560636
+    pitch: 27.426834
+    yaw: -140.29103
+e852af45-5f31-4d4a-aaac-04c6ab7bf25a:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -182.13086166185445
+    y: 95.4807108763317
+    z: -269.144980235191
+    pitch: 26.773811
+    yaw: -134.52261
+b86399d3-1caf-4bf1-8285-ba014f3dc57f:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -173.75742047508277
+    y: 95.78502770378924
+    z: -274.9532377507134
+    pitch: 31.018461
+    yaw: -120.15609
+bbd9dc94-43ca-4360-b5a7-e435dd6c94b8:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -178.6637495078833
+    y: 95.0
+    z: -275.41980531742485
+    pitch: 11.101212
+    yaw: -253.37311
+cd136656-6878-4ab2-a8d6-8e5d0eebcab9:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -171.71209224536503
+    y: 95.0
+    z: -280.1564396489564
+    pitch: 37.87521
+    yaw: -99.69463
+61e1bc43-5831-4d87-a4f7-e38a83e5dd05:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -176.4506078413726
+    y: 86.0
+    z: -263.4883604338529
+    pitch: 47.452896
+    yaw: 12.407894
+6302b901-d7ba-4912-8b7e-ca5f6f14ba18:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -177.70191680270483
+    y: 85.7714887900419
+    z: -256.3742714860697
+    pitch: 44.405453
+    yaw: 4.571598
+74153b22-483f-4263-8fee-20a5cbcdd8c2:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -180.53766633019765
+    y: 84.71916930180818
+    z: -247.94522481018822
+    pitch: 51.371044
+    yaw: 61.493584
+c70640b8-7f31-4273-a1d7-2cab9ce25db7:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -185.55704831081005
+    y: 83.0
+    z: -246.75965486608987
+    pitch: 53.874306
+    yaw: 78.036865
+aed73531-a7d7-402c-9977-2c712aaba5ad:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -192.4545672570294
+    y: 83.42169818834626
+    z: -248.11912832530743
+    pitch: 42.990566
+    yaw: 104.91971
+d751c920-68fd-412a-8162-72c9a07c32f6:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -200.026041714814
+    y: 84.16610926093821
+    z: -249.55049414965737
+    pitch: 31.562635
+    yaw: 127.01372
+e590b841-4180-452d-b7ec-53e648c20ae3:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -207.15048161958282
+    y: 84.18476023639418
+    z: -254.47803386072604
+    pitch: 32.97752
+    yaw: 127.2314
+754f5b2d-090e-4327-be8a-6e8333d8e699:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -221.93356405247272
+    y: 80.0
+    z: -264.5744961044284
+    pitch: 52.132896
+    yaw: 85.655464
+38295479-6d11-4d6c-af3c-b379ba90774a:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -226.96438711838402
+    y: 80.76242184956983
+    z: -264.53932271698636
+    pitch: 47.670567
+    yaw: 101.54576
+cbf10d04-b50e-498c-afe5-44bbff7afb5a:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -234.94220443229605
+    y: 80.7531999805212
+    z: -267.22968450293814
+    pitch: 33.30403
+    yaw: 154.5496
+11f81e57-7096-4142-8721-4c29e3a17f23:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -240.1617841082841
+    y: 84.043906499118
+    z: -281.21664706625876
+    pitch: 31.997986
+    yaw: 166.95708
+bc63a618-6e13-468b-8f21-ed9d2b306c80:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -243.33628784923434
+    y: 87.0
+    z: -290.71063033025706
+    pitch: 40.16079
+    yaw: 136.37375
+7b0c1eb0-0e84-475e-b6b2-8832f83ff9e4:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -248.71985996674718
+    y: 87.0489842800426
+    z: -295.8368269553174
+    pitch: 45.27614
+    yaw: 154.00539
+32af8415-1472-474b-b61d-995d74ce593d:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -253.2899553269669
+    y: 88.0
+    z: -304.5529240450193
+    pitch: 42.44636
+    yaw: 166.73941
+600f59c9-cbbf-46d8-8f29-1254df597a03:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -255.1916872449773
+    y: 88.0
+    z: -312.9605196041124
+    pitch: 43.534733
+    yaw: 191.66321
+eb4ef870-ea7b-46a2-a239-b13944d11ac5:
+  type: WEAVER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -253.23246919744867
+    y: 88.41766731121326
+    z: -321.3561928691243
+    pitch: 43.752407
+    yaw: 199.28188
+aad12bb5-eaf9-46d2-aa0a-5af31924330e:
+  type: SPIDER_JOCKEY
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -218.27486986480653
+    y: 134.0
+    z: -311.7566135376341
+    pitch: 46.247356
+    yaw: -9.903717
+f6df7e9f-900d-4d1c-bcdf-a1e7ae583bb3:
+  type: SPIDER_JOCKEY
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -216.87727459931338
+    y: 134.42744795117028
+    z: -303.27602382791775
+    pitch: 46.029682
+    yaw: -9.79488
+0bd0e61b-ddcb-4466-b8d4-94ac6856a387:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -220.53333154967638
+    y: 134.0
+    z: -301.15088514236504
+    pitch: 33.839897
+    yaw: 140.83615
+1c4ebec7-c101-455c-a0fc-7065c4ef49c6:
+  type: SPIDER_JOCKEY
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -223.58697778659223
+    y: 134.0
+    z: -305.13395781152127
+    pitch: 32.751526
+    yaw: 159.66507
+2c258301-b08a-4397-87d1-fa9cfcb20985:
+  type: SPIDER_JOCKEY
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -218.30000001192093
+    y: 134.0
+    z: -314.42749388872096
+    pitch: 30.683613
+    yaw: 200.80563
+9c6bc1e2-6de2-40f3-9a45-740708288aab:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -214.82564785643558
+    y: 134.0
+    z: -322.0097368874259
+    pitch: 32.533848
+    yaw: 226.70895
+4c2f00c6-7680-4c06-bf49-20da048cbdd0:
+  type: SPIDER_JOCKEY
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -209.2836754240553
+    y: 134.406268564335
+    z: -332.14483907318476
+    pitch: 31.989658
+    yaw: 216.26056
+f506ab2a-fbc9-478c-945d-e9779b183804:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -204.22553280057824
+    y: 134.04846593276915
+    z: -338.83424990822215
+    pitch: 36.7785
+    yaw: 251.52385
+f89a5b30-31cb-42b5-aad7-e392f86c5600:
+  type: SPIDER_JOCKEY
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -192.81961347364188
+    y: 134.41884238669843
+    z: -339.2051196785968
+    pitch: 60.06971
+    yaw: 279.38617
+b2ecda25-a75c-4447-8dbb-347752c199c7:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -188.44975539657221
+    y: 134.5
+    z: -337.27258010301745
+    pitch: 29.377554
+    yaw: 38.998474
+12226dc1-9fbb-4108-af38-0bc4a5e465a5:
+  type: SPIDER_JOCKEY
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -188.76872499900665
+    y: 139.0
+    z: -331.755001221858
+    pitch: 29.268715
+    yaw: 17.122192
+6a9f299b-4cb7-476a-98a3-f04192c613c6:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -193.3572560996451
+    y: 141.5
+    z: -322.2853806400672
+    pitch: 24.806381
+    yaw: 6.0207825
+dc951883-bf27-4485-b305-bd7bd93c645b:
+  type: SPIDER_JOCKEY
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -196.64685555972034
+    y: 145.0
+    z: -310.9153805267343
+    pitch: 22.847313
+    yaw: 48.467316
+a6d04290-3af3-44b1-8fb9-c9b6c2bae8dd:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -204.47587762205129
+    y: 148.0
+    z: -305.65755759020175
+    pitch: 25.024057
+    yaw: 62.61612
+0a612735-0832-479e-8b7e-46087c953e03:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -201.27627426228196
+    y: 148.80788081821325
+    z: -314.8907875924868
+    pitch: 34.05756
+    yaw: 166.7393
+c781b6b9-f304-43e0-863c-e06805bd74f9:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -205.7874453476226
+    y: 152.0
+    z: -322.1113385595743
+    pitch: 25.677076
+    yaw: 156.72626
+46888870-b348-41ca-a718-b7be4edad216:
+  type: SPIDER_JOCKEY
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -206.4588010757733
+    y: 152.86060676294184
+    z: -326.8421152977651
+    pitch: 58.437145
+    yaw: -41.357883
+5c985d45-489a-4295-a1b7-8d588bb01307:
+  type: SPIDER_JOCKEY
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -189.7025505460927
+    y: 147.18140214701413
+    z: -300.77357976900106
+    pitch: 36.996174
+    yaw: -44.73184
+06f2b425-9193-4a4e-a029-288a07cad79a:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -185.9582052208431
+    y: 147.42169818834626
+    z: -292.52901999030865
+    pitch: 41.67618
+    yaw: -17.848991
+cc01947f-217e-4444-85a9-28758bd57167:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -183.69999998807907
+    y: 128.0
+    z: -279.6835810679583
+    pitch: 69.97392
+    yaw: -294.18726
+d780c67a-0399-4d01-9a1f-16075a39ae5f:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -195.42033132963644
+    y: 121.0
+    z: -275.2359491663691
+    pitch: 41.458534
+    yaw: -242.81601
+c378c5da-2773-495a-8bc4-e583191dc8dc:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -207.00593600581186
+    y: 104.0
+    z: -269.07467289406054
+    pitch: 79.66046
+    yaw: -241.50995
+89382654-02c3-47d3-b740-e5440c946a50:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -214.08430036091707
+    y: 104.05336924736035
+    z: -274.2156719902491
+    pitch: 47.879944
+    yaw: -213.32103
+2bf31c4a-edbe-40b1-a5f5-dae84f4a4213:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -220.24161254571575
+    y: 104.0
+    z: -282.37964063661997
+    pitch: 47.444595
+    yaw: -215.06244
+386c26b1-e2d0-41c0-8111-b96f589df2f2:
+  type: VORACIOUS_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -249.67329168845168
+    y: 92.62753117011606
+    z: -278.6028313359335
+    pitch: 55.933926
+    yaw: -314.64865
+74e72074-e1fd-4259-94e9-adcb1e391ca0:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -259.71842769429486
+    y: 94.14081273776789
+    z: -278.7647332241018
+    pitch: 44.50599
+    yaw: -245.86342
+325f9559-9889-4a70-b198-b86eec36b33d:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -263.78809929285046
+    y: 94.0
+    z: -274.51403075356853
+    pitch: 43.091103
+    yaw: -343.16412
+46ff4afa-37e6-4228-9bc2-7ad7197fa6c0:
+  type: SPLITTER_SPIDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -259.1903403511317
+    y: 94.0
+    z: -283.6458195517587
+    pitch: 36.560856
+    yaw: -102.74219
+8ddcd7b0-c6fc-43b1-b866-05f15ecb0c61:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -581.9271792842675
+    y: 10.0
+    z: -313.21920205905775
+    pitch: 30.357126
+    yaw: 319.25412
+cf23c0c0-3591-4d5b-b7c3-10ac5410f98c:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -579.7466825532962
+    y: 10.0
+    z: -307.31550346207183
+    pitch: 23.82688
+    yaw: 318.27457
+c8609374-7c4c-4299-9d76-484566ce604d:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -577.4109923925109
+    y: 10.0
+    z: -302.5936492298185
+    pitch: 26.547815
+    yaw: 8.013184
+8dbf5032-2f07-48ed-af8c-98bff7293517:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -580.1534166120084
+    y: 10.0
+    z: -295.62588439396416
+    pitch: 24.588749
+    yaw: 37.72577
+5e63c205-ff09-4ee1-b997-747eea8288cb:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -586.4985144574223
+    y: 10.097484894988442
+    z: -292.89858232714073
+    pitch: 25.677124
+    yaw: 136.55017
+288f66b5-da72-4271-bfc2-6c6c3223995b:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -590.2670758026857
+    y: 10.0
+    z: -300.26319746401555
+    pitch: 31.118996
+    yaw: 221.87866
+2919cce7-099d-4ab7-94ec-4d562e860934:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -586.1494646282828
+    y: 10.0
+    z: -305.4485593776504
+    pitch: 21.105957
+    yaw: 182.58826
+230e9984-0b8b-48bd-bb5c-f2fbdefc2083:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -590.3363747895447
+    y: 10.0
+    z: -317.9238578887684
+    pitch: 20.779446
+    yaw: 143.18909
+afba743a-dc1d-458e-88af-ebb3cc21142f:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -590.4496235998722
+    y: 11.0
+    z: -328.2043295499852
+    pitch: 23.500383
+    yaw: 195.3222
+103e8dc6-7247-49ea-ba70-930788fa18eb:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -586.2333881634365
+    y: 12.0
+    z: -340.4594526215176
+    pitch: 23.28271
+    yaw: 200.98181
+6636029d-0914-4846-a2d3-7b38745d5bc0:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -583.7367676054722
+    y: 12.0
+    z: -343.9963719094896
+    pitch: 20.670616
+    yaw: 278.90924
+c0946cc0-6103-4327-8516-51688ab86a51:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -570.3000000119209
+    y: 12.0
+    z: -339.65629166264034
+    pitch: 19.364567
+    yaw: 182.15277
+e5f06943-7b7a-4735-bc0a-2b192e999c2f:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -581.1073217394323
+    y: 12.0
+    z: -359.4654117819901
+    pitch: 28.724586
+    yaw: 108.14343
+ce47776a-9554-428c-ad34-9886c4f0dd80:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -583.2419528369385
+    y: 12.0
+    z: -354.4496167388262
+    pitch: 16.099447
+    yaw: 341.23898
+1d1aae4c-c188-414a-b03c-51e4df2eabb6:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -592.5571861314446
+    y: 11.0
+    z: -338.7551288531329
+    pitch: 27.853888
+    yaw: 65.8056
+2b1538ad-3331-4098-9bf4-5f090df77956:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -601.0580251750225
+    y: 10.30007307561684
+    z: -335.7114128534581
+    pitch: 25.78598
+    yaw: 77.45117
+67ce2e69-2576-4c05-8320-28895fd1ae81:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -610.1167144620466
+    y: 10.0
+    z: -337.40938509926553
+    pitch: 27.853891
+    yaw: 114.891205
+88409339-4697-4e4a-b744-5b92df785096:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -610.5581666535458
+    y: 10.055758198059637
+    z: -344.09972641474394
+    pitch: 33.18692
+    yaw: 191.07733
+d37d6576-a521-4074-a088-7665548344fc:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -612.7230523566755
+    y: 10.0
+    z: -351.7725687406775
+    pitch: 22.738543
+    yaw: 129.47543
+e2490b03-6bbe-4834-804c-14266fe18642:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -607.8372345972083
+    y: 11.0
+    z: -358.2483375960058
+    pitch: 29.377626
+    yaw: 236.78888
+8b0aeaf7-23e7-4b68-8910-b39233e55f92:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -603.6007017970053
+    y: 12.215917570036495
+    z: -364.0360518811792
+    pitch: 30.792513
+    yaw: 229.71454
+8557dc0e-2e98-4a14-96bb-090d55f785e1:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -599.0849960213974
+    y: 13.0
+    z: -364.48138671339734
+    pitch: 31.772047
+    yaw: 306.0094
+4d92913c-a290-40fe-a10f-82790dde628f:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -576.9522486175081
+    y: 26.104080378093037
+    z: -333.6307581031565
+    pitch: 36.01669
+    yaw: 109.775024
+33cf7be8-ec01-4d86-99d3-2ac966b03aaa:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -592.7937671171098
+    y: 26.451274612627024
+    z: -338.2407117441432
+    pitch: 31.22784
+    yaw: 119.57037
+85119a64-0677-459d-901f-e72217a4e1fa:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -599.0361957684861
+    y: 26.0625
+    z: -330.8172252449626
+    pitch: 33.622257
+    yaw: 323.38882
+71c56b30-fe66-4066-9355-e1cf73897e20:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -589.228675693976
+    y: 26.0625
+    z: -331.2091083095313
+    pitch: 32.207363
+    yaw: 227.93835
+d93cccbc-2f29-4ea8-8e8f-33f9d351579c:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -576.0934673560065
+    y: 26.11825819805962
+    z: -331.3531415477436
+    pitch: 39.825977
+    yaw: 320.3413
+73906907-02d7-4840-b63a-fba8ca756c3b:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -576.0804374188311
+    y: 26.0
+    z: -324.52275407143253
+    pitch: 48.315292
+    yaw: 276.58875
+756e1bf2-e37a-424b-9c50-a075d48676e2:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -567.818082569068
+    y: 24.60005834962327
+    z: -324.7816154537431
+    pitch: 47.335754
+    yaw: 267.99054
+ced3e7f0-c578-4cc6-9c84-d838b2e81c38:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -557.4778553406445
+    y: 21.061511635071298
+    z: -325.2106219178399
+    pitch: 48.42413
+    yaw: 276.80627
+354d893f-6da0-4c0d-bfe7-31e3ccc4cda9:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -549.2150949637045
+    y: 21.104080378093037
+    z: -322.12936539103356
+    pitch: 42.32924
+    yaw: 308.36908
+8ddc2e66-ca94-4039-a621-b44b00ede5ae:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -545.3554373319015
+    y: 21.053971988361077
+    z: -314.2616393926872
+    pitch: 41.13202
+    yaw: 5.7263794
+bad7efdb-b6e4-433c-a9fb-97791d128dc3:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -546.4250099970347
+    y: 23.469413554492068
+    z: -306.76011337738356
+    pitch: 46.682724
+    yaw: 19.548798
+e00cc7e8-1c95-449b-a0a2-f4c5c4bb6a56:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -537.4724423998094
+    y: 22.046401665467876
+    z: -306.51151005029766
+    pitch: 28.833384
+    yaw: 185.38283
+a2bdf034-309d-4399-8925-9f5a6e8da749:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -535.4347112720836
+    y: 22.046401665467876
+    z: -314.57668215211584
+    pitch: 34.49293
+    yaw: 177.22002
+e8f59dda-25cf-4c6d-abfb-71a91d5c6ae8:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -541.5233996965391
+    y: 22.24918707874468
+    z: -324.9739270269738
+    pitch: 27.853846
+    yaw: 23.323914
+f6865f1d-9f79-497d-8517-49dee95307a5:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -542.2009620846603
+    y: 21.416806566353205
+    z: -319.7918229462032
+    pitch: 26.221283
+    yaw: -16.401752
+1a32bc9a-cca5-48e3-ac3f-3146f1c19927:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -543.7665293154046
+    y: 26.0
+    z: -333.4534666334534
+    pitch: 15.66405
+    yaw: 192.78384
+6512622d-e85e-41bf-9efe-1515dc3e6ed7:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -543.9192335449474
+    y: 29.72690962007491
+    z: -338.3971506340825
+    pitch: 23.935688
+    yaw: 171.88707
+ddb896f8-a4fd-4d37-85d9-8358c02f5264:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -549.3814061739654
+    y: 31.104080378093045
+    z: -342.81054801931833
+    pitch: 21.650099
+    yaw: 116.706474
+66d7b5e1-3fd0-49e5-a32e-6594af2ea874:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -558.235862027832
+    y: 31.782216432290316
+    z: -344.57367652727845
+    pitch: 44.28829
+    yaw: 102.23109
+1d64eb4d-a4ad-4c0e-bc37-1f38814d4fe3:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -561.8569459378034
+    y: 35.5
+    z: -330.24253125135425
+    pitch: 18.167303
+    yaw: 0.90344083
+01c2a356-9796-4d7a-9979-6c172519fc51:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -561.846669556689
+    y: 39.287058544473645
+    z: -326.30000001192093
+    pitch: 18.058466
+    yaw: 1.5564656
+728b51ba-3d67-4f81-9cba-48199dae4cdf:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -562.5999671136918
+    y: 41.10622394095843
+    z: -321.9996999302616
+    pitch: 18.384977
+    yaw: 9.501598
+848b7d84-82c3-4769-9e6e-bf8c58b4ea11:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -566.2168334027347
+    y: 42.39916312363795
+    z: -317.08340082680525
+    pitch: 26.983137
+    yaw: 92.544556
+be6d39a7-8840-4519-9a52-8746d5362e76:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -575.4401378635849
+    y: 42.009629774976716
+    z: -313.82059395144165
+    pitch: 24.915224
+    yaw: 40.302578
+748c81f8-7b5e-4925-bb25-0534aa76781b:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -578.6450361520881
+    y: 42.009629774976716
+    z: -305.1065327461334
+    pitch: 29.377552
+    yaw: -51.33854
+a2841266-6939-4e09-a881-0841fdaf45ca:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -570.8300216176832
+    y: 42.009629774976716
+    z: -300.22468614144856
+    pitch: 27.744993
+    yaw: -65.92276
+23e0125d-7fca-46bb-ac63-eb94a5c08df9:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -555.5308318672359
+    y: 42.009629774976716
+    z: -297.19462478195135
+    pitch: 22.520796
+    yaw: -157.0197
+1de1bc4a-48c7-490e-ba78-e5c421ca37db:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -555.5265765190012
+    y: 42.009629774976716
+    z: -304.5721142176321
+    pitch: 15.119852
+    yaw: -232.77057
+c9b0f315-b504-4a24-a024-c3a520610bf8:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -569.0612372244963
+    y: 42.009629774976716
+    z: -318.95600084871654
+    pitch: 16.752413
+    yaw: -254.21155
+be8fdcd3-7460-41d9-b888-33c474ffef0c:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -574.8700472386631
+    y: 42.009629774976716
+    z: -318.86981414757764
+    pitch: 13.487289
+    yaw: -260.52417
+a05a718b-6a85-4fbd-9319-e3c6feea7a13:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -590.6999999880791
+    y: 41.32573901026343
+    z: -321.83871029027927
+    pitch: 22.085443
+    yaw: -199.46643
+c91ca7b6-f420-4b5f-9b12-06a79488f1e0:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -583.1870321396215
+    y: 51.0625
+    z: -342.6473070230344
+    pitch: 17.949621
+    yaw: -177.48117
+be291b08-a01b-42cc-b17e-4e076aada6dd:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -568.4546970773112
+    y: 52.4699983989027
+    z: -344.8197958623566
+    pitch: 31.336618
+    yaw: -57.215797
+00935714-7127-4cbc-ae00-44210a3f0843:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -556.6940936965739
+    y: 52.42552269416599
+    z: -344.84842562305397
+    pitch: 27.744982
+    yaw: -192.71835
+19065475-c28a-4098-a799-ddba0f6f4a2f:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -564.2681382639066
+    y: 52.42552269416599
+    z: -353.6547292730748
+    pitch: 31.554289
+    yaw: -235.92683
+1f6437e6-77c2-44dc-abeb-8d08e7629d87:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -582.3860879378526
+    y: 52.42552269416599
+    z: -362.2318207862492
+    pitch: 24.479856
+    yaw: -259.54456
+bf8640ce-2e06-4be9-a452-0a4e1b3a6f19:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -584.8819079424824
+    y: 52.42552269416599
+    z: -358.2488079224471
+    pitch: 26.87428
+    yaw: -54.529022
+044e9857-28e1-477f-8800-677acd765049:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -550.2025851353537
+    y: 50.29169481842663
+    z: -335.1888273252498
+    pitch: 50.05664
+    yaw: -8.164307
+0ada5cf8-0970-413d-b6ea-de9c1cbb9e0d:
+  type: VOIDLING_FANATIC
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -546.6534367652231
+    y: 47.73509108667132
+    z: -320.70585189602303
+    pitch: 61.59339
+    yaw: -312.43945
+75122477-edfc-4998-b6c9-f35aa0dd0416:
+  type: VOIDLING_EXTREMIST
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -553.6905260905809
+    y: 49.82246789453717
+    z: -334.69999998807907
+    pitch: 40.478924
+    yaw: -41.46869
+33d2cb56-2738-4708-ad42-75104b848ff9:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -632.5364744646768
+    y: 7.0
+    z: -294.6090644924509
+    pitch: 6.521654
+    yaw: -225.54584
+5b3c9548-cbca-48ea-a889-dcf63a15b7f0:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -634.805661793422
+    y: 7.0
+    z: -295.77832859176044
+    pitch: 50.927345
+    yaw: -347.7367
+e370eea0-fc51-4b79-8f3b-e0a5f6b1d390:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -634.5572020443228
+    y: 6.0
+    z: -287.8912503520758
+    pitch: 39.717094
+    yaw: -7.762787
+847c3fa2-f6da-4084-bb00-b892680421cd:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -631.3479004770929
+    y: 5.0
+    z: -280.46079599505606
+    pitch: 43.74407
+    yaw: -32.57776
+4fe5f013-9487-4237-ab7a-3b2abe29f701:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -638.0634994642568
+    y: 5.0
+    z: -269.15322977315526
+    pitch: 36.45196
+    yaw: -328.7991
+6ac314ea-b2ca-4d10-a38d-c880b6d9f5a4:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -649.7353170486286
+    y: 5.0
+    z: -274.7268232204338
+    pitch: 24.806353
+    yaw: -228.01566
+fa1a5778-c20f-421f-a567-881393f53c00:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -643.2290544108076
+    y: 10.0
+    z: -292.3695881443979
+    pitch: 33.839848
+    yaw: -175.2295
+aeac45c3-52ef-4111-90fd-5dfe80e0acf1:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -642.6077471400159
+    y: 7.0
+    z: -308.12618579686415
+    pitch: 55.716164
+    yaw: -214.08452
+b6f67073-dd2d-4564-8a8a-d7c5588b5278:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -648.5625881533336
+    y: 6.0762507181411385
+    z: -320.5024301783856
+    pitch: 64.967354
+    yaw: -208.86032
+40b2cf2c-cae0-447b-8dc3-b59c00b97e12:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -662.9129699682164
+    y: 5.749532294706225
+    z: -326.25663860450203
+    pitch: 33.077988
+    yaw: -231.17194
+df55e523-e2e2-4ea2-af75-370fc30759c4:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -678.7325926450483
+    y: 5.749532294706225
+    z: -335.7404181124482
+    pitch: 33.186825
+    yaw: -286.4614
+33b6b8c8-0b1c-4619-b26b-0b7114c9bc87:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -692.6999999880791
+    y: 5.749532294706225
+    z: -323.16050112657985
+    pitch: 32.316128
+    yaw: -323.6838
+a6e5bc9f-6be3-442b-94e8-27511ce7ffc6:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -631.5029987392963
+    y: 5.0
+    z: -265.03715286982714
+    pitch: 25.35053
+    yaw: -39.29158
+0d08927e-ea57-4284-9452-7b755b53cad9:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -630.8419656076585
+    y: 7.216581844168497
+    z: -251.86653290046365
+    pitch: 27.309607
+    yaw: -33.414364
+5495d3fd-e6ec-4c02-bb1b-4ac158dfc152:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -631.700805015345
+    y: 5.0
+    z: -263.1622461225415
+    pitch: 17.168957
+    yaw: -7.4407077
+2562a552-7176-4e3a-a019-664609b34d3d:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -629.0835087793158
+    y: 8.01074064460054
+    z: -239.08028340510157
+    pitch: 26.330069
+    yaw: -9.796638
+1641682e-c629-4b0a-a2fe-101a5237667f:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -639.5232326595218
+    y: 6.539850796710658
+    z: -225.14225010299788
+    pitch: 32.642635
+    yaw: 64.43047
+3c596f3a-23aa-496a-bb2e-684e67f49f20:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -648.6680668005014
+    y: 6.521641975995925
+    z: -217.01139742873937
+    pitch: 32.207287
+    yaw: 26.010857
+8adf06c6-fbe9-40c0-844c-fcad5d30d5fe:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -682.9009939282497
+    y: 8.01276331841618
+    z: -221.32082436552844
+    pitch: 27.63611
+    yaw: 65.95416
+68f0af61-27e0-46d1-a13e-f0fb2a8c7f5e:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -698.44005923208
+    y: 6.0
+    z: -232.37905644981936
+    pitch: 38.737514
+    yaw: 146.38507
+fa619f6a-abbe-46e5-93d8-508937837f61:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -712.879201463689
+    y: 5.0
+    z: -238.4529971473131
+    pitch: 31.445417
+    yaw: 92.4017
+90ccce23-da4f-47e2-8ecf-599b4c8fc646:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -708.5719231467519
+    y: 5.7531999805212015
+    z: -254.69999998807907
+    pitch: 22.738415
+    yaw: 179.79819
+632028d1-1f7a-48cd-b478-fb4a79e29272:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -632.3873830206529
+    y: 7.0
+    z: -236.27965839332958
+    pitch: 13.379657
+    yaw: 131.85374
+064616e2-1353-45e7-b006-fb8139765d18:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -640.1949411656245
+    y: 6.0
+    z: -232.59320589696486
+    pitch: 26.515873
+    yaw: 50.25759
+3048e25d-f242-4bb0-b698-237709efc606:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -646.6879934497019
+    y: 5.0
+    z: -227.62519638502837
+    pitch: 24.242302
+    yaw: 53.137474
+047ea349-dc91-41c5-b860-3dd8dc9dd075:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -715.3227948197747
+    y: 7.0
+    z: -264.6999999880791
+    pitch: 19.799814
+    yaw: 134.08646
+dcdfbd31-9dfb-4466-9101-8bb266ab8600:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -667.4843857166838
+    y: 5.0
+    z: -223.31233254853942
+    pitch: 23.029732
+    yaw: 84.765434
+194b8337-719f-4953-bd91-3e57c302b61f:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -724.2003492024357
+    y: 7.050674636065629
+    z: -273.4767488211287
+    pitch: 42.437996
+    yaw: 235.41415
+051b6971-58d4-481f-a4a7-953b39bbfb3d:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -714.9177424948915
+    y: 5.0
+    z: -292.3470351466263
+    pitch: 38.62869
+    yaw: 265.34445
+875e9c0b-6cca-4d7c-a8d8-5c001e6d8763:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -687.0021245924077
+    y: 5.0
+    z: -216.593176529446
+    pitch: 18.785742
+    yaw: 115.686134
+4931be26-6326-4dea-b5a2-986ac4dd805a:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -696.7923390376862
+    y: 6.0
+    z: -212.41243743390882
+    pitch: 22.726612
+    yaw: 233.96266
+d9b915bf-da9b-47a3-a6cc-d7f4ea8ed78f:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -711.4278733171557
+    y: 5.0
+    z: -302.82883382301384
+    pitch: 29.050993
+    yaw: 215.71458
+c018d0c7-8e3e-437c-bd28-b43ae087114a:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -706.8658438161592
+    y: 6.0
+    z: -316.74983856152323
+    pitch: 31.22774
+    yaw: 199.0624
+549250d8-f220-468c-888c-9365742e653e:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -665.4170030465579
+    y: 6.0
+    z: -292.5901179852516
+    pitch: 38.302174
+    yaw: 305.3966
+3b839fbf-e06b-4439-8953-cdb89ee122cb:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -701.1244821723899
+    y: 6.0
+    z: -218.7480111728679
+    pitch: 18.987864
+    yaw: 151.00241
+dd128477-2e2f-4a11-ac96-2e65c741ccaa:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -695.685185677155
+    y: 7.04042009076545
+    z: -273.524316827323
+    pitch: 14.541723
+    yaw: 198.84816
+8e2dd465-8fcb-48ee-8d90-ad98e483eac4:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -687.986337325021
+    y: 5.936006424067988
+    z: -282.99828106266455
+    pitch: 30.204124
+    yaw: 317.7815
+9a6debfe-8b96-4525-834d-1a807f87100e:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -651.7843426874315
+    y: 5.936006424067988
+    z: -223.16611479148665
+    pitch: 24.343374
+    yaw: 244.52199
+aa1bb308-104c-4530-b1e5-eb74e6e50e2e:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -632.9884039046177
+    y: 5.938598309958616
+    z: -269.334844964607
+    pitch: 23.130814
+    yaw: 169.79745
+e72f4980-5039-43a5-b4a4-fbcb96df6055:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -673.0163467962063
+    y: 5.193392528635805
+    z: -330.8587842858253
+    pitch: -12.488572
+    yaw: 96.73987
+7ad6b60f-cf86-4620-829b-a6a23fd8892b:
+  type: WATCHER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -643.9540858881096
+    y: 8.0
+    z: -256.4717550639199
+    pitch: 28.875677
+    yaw: 149.60353
+18022495-4e10-4ff9-9b76-a5b2bf5822f4:
+  type: WATCHER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -636.4992557196086
+    y: 5.0
+    z: -270.4426736016013
+    pitch: 45.092445
+    yaw: 217.73584
+c8c93b22-24da-4ba8-a1b2-39a0f2fe82c5:
+  type: WATCHER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -648.6560112975282
+    y: 5.0
+    z: -279.48102493252566
+    pitch: 43.133347
+    yaw: 88.9811
+835b0337-313d-4e8e-8122-e5cf459e0860:
+  type: WATCHER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -662.7078419476748
+    y: 5.086563003901404
+    z: -251.75093044030524
+    pitch: 25.501677
+    yaw: 32.2768
+12990feb-3b1d-4472-9b8e-ca3f1e4387ad:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -658.3836761240831
+    y: 6.04208062580861
+    z: -275.32533956264405
+    pitch: 26.1117
+    yaw: -40.230526
+344de2d4-fd37-46d5-ac83-ae600ce9be99:
+  type: WATCHER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -680.7180335722062
+    y: 6.0
+    z: -253.31798451139196
+    pitch: 44.11288
+    yaw: 163.42592
+c9c1d601-5a74-499b-b611-419abfb57751:
+  type: WATCHER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -689.2800041756564
+    y: 5.0
+    z: -263.29859554105286
+    pitch: 39.432865
+    yaw: 133.49565
+8b23f30f-5e8f-4c0f-b820-f1dba45b628f:
+  type: WATCHER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -699.6999999880791
+    y: 6.0
+    z: -285.6999999880791
+    pitch: 42.91566
+    yaw: 136.54306
+4ac7b08a-0037-4622-a457-53380b378f22:
+  type: WATCHER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -686.0723129982445
+    y: 5.0
+    z: -292.0532733726478
+    pitch: 34.97052
+    yaw: 242.87717
+66958abe-92bf-452d-8453-a88b92b2c002:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -689.341098389206
+    y: 6.04208062580861
+    z: -266.3193752952095
+    pitch: 90.0
+    yaw: 86.584656
+057f2fb3-0e40-4516-81f0-b2ea0e58e350:
+  type: WATCHER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -674.1178233091081
+    y: 7.0
+    z: -306.1045213591181
+    pitch: 40.30354
+    yaw: 250.49585
+0b1fb7fe-18b9-4de2-aa29-3afebbed5cb8:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -698.3963751727564
+    y: 6.05164288877748
+    z: -315.595447516622
+    pitch: 23.156822
+    yaw: -29.67124
+1db6ff75-fa87-413c-bdb9-e072ce73420d:
+  type: WATCHER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -640.4391037601212
+    y: 6.0
+    z: -323.71187082845404
+    pitch: 35.950047
+    yaw: 217.51811
+3754e829-a0d6-486d-a556-3d25e1df841f:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -701.3014474613507
+    y: 6.05164288877748
+    z: -321.4448611075499
+    pitch: 88.68638
+    yaw: 30.553288
+a718c637-6e18-4eb2-b87b-be9c57797033:
+  type: WATCHER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -622.3992953827109
+    y: 6.419999986886978
+    z: -313.012892215242
+    pitch: 25.50166
+    yaw: 355.85062
+bb89a70f-1b21-4e51-a017-7b1a736623df:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -656.3320569307418
+    y: 5.0
+    z: -257.64406766809134
+    pitch: 40.956577
+    yaw: 84.98865
+a209c6d1-4be4-40c3-86ea-39d9874e428e:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -680.5385110145447
+    y: 5.0
+    z: -255.1020728904007
+    pitch: 54.778942
+    yaw: 128.52356
+adbe5304-799f-4f0b-a233-d43928e083ce:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -688.5566302856312
+    y: 6.151481798105146
+    z: -267.27184634792155
+    pitch: 37.691475
+    yaw: 179.78577
+38b4edca-c363-41f2-83c1-c5106be88b42:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -688.5566302856312
+    y: 6.151481798105146
+    z: -267.27184634792155
+    pitch: 37.691475
+    yaw: 179.78577
+24961115-83be-4838-9d5e-27bf65684167:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -688.5566302856312
+    y: 6.151481798105146
+    z: -267.27184634792155
+    pitch: 37.691475
+    yaw: 179.78577
+852bf30f-43e4-40bc-bde3-475f3610fc9b:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -680.5629552818035
+    y: 6.603258696667174
+    z: -293.9388284697973
+    pitch: 42.915676
+    yaw: 205.90668
+1a380292-501d-4631-b071-c7e92bfd31dc:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -655.5105409732528
+    y: 6.7081213555176555
+    z: -311.7165295376221
+    pitch: 30.181711
+    yaw: 271.31775
+f5b753fa-bbc6-463f-b9e1-16aa35bacfd7:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -684.1623666653975
+    y: 6.05164288877748
+    z: -267.0731228879456
+    pitch: 22.853678
+    yaw: 176.21349
+948f7b1a-42e6-4d2b-a531-e1d14a98b574:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -627.4567070828193
+    y: 5.0
+    z: -276.36604400423954
+    pitch: 44.874763
+    yaw: 86.76355
+9129897e-701d-4dda-a057-dd8ad2916b3b:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -640.7881827117575
+    y: 6.0
+    z: -258.7305357186681
+    pitch: 53.799427
+    yaw: 185.44482
+3a84446f-9c32-4083-bed7-f1fb2f1d807e:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -683.3983189272216
+    y: 6.05164288877748
+    z: -299.7104814127431
+    pitch: 22.853678
+    yaw: 176.11244
+e33293d9-3e28-4ff9-b929-c407e5650ba8:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -660.6999999880791
+    y: 5.0
+    z: -271.11393504953077
+    pitch: 34.208706
+    yaw: 301.32242
+0b486001-c546-48a0-bdd0-ba5c128cf1bc:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -664.9355500456812
+    y: 6.0
+    z: -253.2820078099072
+    pitch: 32.68498
+    yaw: 80.960815
+b53ebaba-8bc7-47f7-a175-c70b6ed175dc:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -685.4643471210004
+    y: 5.0
+    z: -259.68553389225406
+    pitch: 34.644047
+    yaw: 105.993256
+806a3233-8d40-43e1-9106-dce4f0ced2a8:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -710.2970538075424
+    y: 6.0
+    z: -259.98810752449083
+    pitch: 31.923105
+    yaw: 58.5401
+ea34be6d-b131-47f1-a00d-b3e0a27f4b6e:
+  type: OBSIDIAN_DEFENDER
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -721.8625527347327
+    y: 9.429291403598855
+    z: -261.36336841714365
+    pitch: 67.07759
+    yaw: 87.59967
+346842d4-9466-48f0-b35f-5829dcc70f0c:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -625.3349039522707
+    y: 6.748740879760259
+    z: -319.33227726361343
+    pitch: 47.711445
+    yaw: 82.97977
+59488810-e26a-404c-868c-7a23245e0d40:
+  type: ZEALOT
+  location:
+    ==: org.bukkit.Location
+    world: world
+    x: -651.5337893422645
+    y: 5.644327213062796
+    z: -268.02476528401246
+    pitch: 64.94
+    yaw: 346.83173
