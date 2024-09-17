@@ -506,6 +506,7 @@ ADMIN(Material.SKULL_ITEM, Admin.class),
     HARDENED_DIAMOND_BOOTS(Material.DIAMOND_BOOTS, HardenedDiamondBoots.class),
 
     // Accessories
+    CRUX_HEIRLOOM(Material.SKULL_ITEM, CruxHeirloom.class),
     SUPERSPEED_TALISMAN(Material.SKULL_ITEM, SuperspeedTalisman.class),
     ZOMBIE_TALISMAN(Material.SKULL_ITEM, ZombieTalisman.class),
     SKELETON_TALISMAN(Material.SKULL_ITEM, SkeletonTalisman.class),
