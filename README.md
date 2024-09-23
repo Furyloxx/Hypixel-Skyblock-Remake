@@ -1,5 +1,5 @@
 # Hypixel Skyblock Core!
-- Current Majdoor(slaves) - Furyloxx & Chyruss
+- Current Majdoor(slaves) - Furyloxx , Chyruss & Mahfuz
 - This core contains variety of hypixel skyblock items and features
 # Features 
 - Entities 
@@ -7,6 +7,10 @@
 - Party & Friends
 - Ranks
 - Gifts
+- Accessories
+- Scoreboard
+- Slayer Bosses
+- 
 
 **There is more but I am too lazy to write it**
 # UNDER HEAVY DEVELOPMENT!
