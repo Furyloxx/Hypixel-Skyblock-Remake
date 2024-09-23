@@ -10,7 +10,6 @@
 - Accessories
 - Scoreboard
 - Slayer Bosses
-- 
 
 **There is more but I am too lazy to write it**
 # UNDER HEAVY DEVELOPMENT!
