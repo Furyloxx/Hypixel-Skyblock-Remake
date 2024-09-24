@@ -1,10 +1,7 @@
 
 # Hypixel Skyblock Core
 **Contributors:**
-- NorySight
-
-  
-**Current Majdoor (Slaves):** Furyloxx, Chyruss & Mahfuz
+- NorySight & Furyloxx
 
 This core is designed for Hypixel Skyblock enthusiasts, featuring a variety of items and functionalities to enhance your gameplay experience.
 
