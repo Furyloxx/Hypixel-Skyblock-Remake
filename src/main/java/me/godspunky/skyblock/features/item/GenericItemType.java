@@ -5,6 +5,7 @@ public enum GenericItemType {
     RANGED_WEAPON,
     ARMOR,
     ACCESSORY,
+    TOOL,
     BLOCK,
     ITEM,
     PET,
