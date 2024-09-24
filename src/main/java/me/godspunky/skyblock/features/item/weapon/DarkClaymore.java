@@ -1,6 +1,6 @@
 package me.godspunky.skyblock.features.item.weapon;
   
-  import me.godspunky.skyblock.features.item.*;
+import me.godspunky.skyblock.features.item.*;
   
   public class DarkClaymore implements ToolStatistics, MaterialFunction {
       @Override
@@ -15,8 +15,8 @@ package me.godspunky.skyblock.features.item.weapon;
   
       @Override
     public List<String> getListLore() {
-        return Arrays.asList("§7§7§oThat thing was too big to be called a", +
-        "§7§osword, it was more like a large hunk", +
+        return Arrays.asList("§7§7§oThat thing was too big to be called a",
+        "§7§osword, it was more like a large hunk", 
         "§7§oof stone.");
       }
   
