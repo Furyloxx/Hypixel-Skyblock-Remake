@@ -34,11 +34,13 @@ public class SlayerQuest implements ConfigurationSerializable {
     private SEntityType lastKilled;
     @Setter
     private SEntity entity;
+    private boolean bossSpawned;
 
     public SlayerQuest(SlayerBossType type, long started) {
         this.type = type;
         this.started = started;
         this.entity = null;
+        this.bossSpawned = false;
     }
 
     private SlayerQuest(SlayerBossType type, long started, double xp, long spawned, long killed, long died, SEntityType lastKilled) {
@@ -50,6 +52,7 @@ public class SlayerQuest implements ConfigurationSerializable {
         this.died = died;
         this.lastKilled = lastKilled;
         this.entity = null;
+        this.bossSpawned = false;
     }
 
     @Override
@@ -75,6 +78,7 @@ public class SlayerQuest implements ConfigurationSerializable {
                 SEntityType.valueOf(String.valueOf(map.get("lastKilled"))));
     }
 
+    // Plays the spawn effect for minibosses, similar to Hypixel's flashy visuals
     public static void playMinibossSpawn(Location location, Entity sound) {
         Location clone = location.clone();
         World world = location.getWorld();
@@ -82,12 +86,15 @@ public class SlayerQuest implements ConfigurationSerializable {
             SoundSequenceType.SLAYER_MINIBOSS_SPAWN.play(sound);
         else
             SoundSequenceType.SLAYER_MINIBOSS_SPAWN.play(clone);
-        AtomicDouble additive = new AtomicDouble();
+
+        AtomicDouble height = new AtomicDouble();
         SUtil.runIntervalForTicks(() ->
-                world.spigot().playEffect(clone.clone().add(0.0, additive.getAndAdd(0.5), 0.0), Effect.EXPLOSION_LARGE, 1,
-                        0, 0.0f, 0.0f, 0.0f, 0.0f, 1, 16), 3, 12);
+                        world.spigot().playEffect(clone.clone().add(0.0, height.getAndAdd(0.5), 0.0), Effect.EXPLOSION_LARGE, 1, 0, 0.0f, 0.0f, 0.0f, 0.0f, 1, 16),
+                3, 12
+        );
     }
 
+    // Plays the boss spawn effect with magical particles and explosions
     public static void playBossSpawn(Location location, Entity sound) {
         Location clone = location.clone();
         World world = location.getWorld();
@@ -95,18 +102,20 @@ public class SlayerQuest implements ConfigurationSerializable {
             SoundSequenceType.SLAYER_BOSS_SPAWN.play(sound);
         else
             SoundSequenceType.SLAYER_BOSS_SPAWN.play(clone);
-        SUtil.runIntervalForTicks(() ->
-        {
+
+        SUtil.runIntervalForTicks(() -> {
             for (int i = 0; i < 50; i++) {
-                world.playEffect(clone, Effect.SPELL, Effect.SPELL.getData());
-                world.playEffect(clone, Effect.FLYING_GLYPH, Effect.FLYING_GLYPH.getData());
-                world.playEffect(clone, Effect.WITCH_MAGIC, Effect.WITCH_MAGIC.getData());
+                world.playEffect(clone, Effect.SPELL, 0);
+                world.playEffect(clone, Effect.FLYING_GLYPH, 0);
+                world.playEffect(clone, Effect.WITCH_MAGIC, 0);
             }
         }, 5, 28);
+
         new BukkitRunnable() {
             public void run() {
-                world.playEffect(clone, Effect.EXPLOSION_HUGE, Effect.EXPLOSION_HUGE.getData());
+                world.playEffect(clone, Effect.EXPLOSION_HUGE, 0);
             }
         }.runTaskLater(Skyblock.getPlugin(), 28);
     }
+
 }
