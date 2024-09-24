@@ -18,7 +18,7 @@ public class BeheadedHorror implements SkullStatistics, MaterialFunction {
 
     @Override
     public GenericItemType getType() {
-        return GenericItemType.ITEM;
+        return GenericItemType.SLAYER_ITEM;
     }
 
     @Override

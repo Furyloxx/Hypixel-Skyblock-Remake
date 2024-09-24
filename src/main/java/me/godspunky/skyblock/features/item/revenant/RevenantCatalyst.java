@@ -18,7 +18,7 @@ public class RevenantCatalyst implements SkullStatistics, MaterialFunction {
 
     @Override
     public GenericItemType getType() {
-        return GenericItemType.ITEM;
+        return GenericItemType.SLAYER_ITEM;
     }
 
     @Override

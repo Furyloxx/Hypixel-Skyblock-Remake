@@ -23,7 +23,12 @@ public enum SpecificItemType {
     WAND(false),
     NONE,
     ROD(false),
-    ARROW_POISON;
+    ARROW_POISON,
+    FORGESBLE_ITEM(false),
+    EQUIPMENT(false),
+    REFORGE_STONE(false),
+    ADMIN_ITEMS(false)
+    ;
 
     @Getter
     private final boolean stackable;

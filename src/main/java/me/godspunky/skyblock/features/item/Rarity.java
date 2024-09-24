@@ -25,21 +25,27 @@ public enum Rarity {
     }
 
     public Rarity upgrade() {
-        return values()[Math.min(this.ordinal() + 1, values().length - 1)];
+        int nextOrdinal = this.ordinal() + 1;
+        if (nextOrdinal < values().length) {
+            return values()[nextOrdinal];
+        }
+        return this;
     }
 
     public Rarity downgrade() {
-        if (this.ordinal() - 1 < 0)
-            return this;
-        return values()[this.ordinal() - 1];
+        int prevOrdinal = this.ordinal() - 1;
+        if (prevOrdinal >= 0) {
+            return values()[prevOrdinal];
+        }
+        return this;
     }
 
     public boolean isAtLeast(Rarity rarity) {
-        return ordinal() >= rarity.ordinal();
+        return this.ordinal() >= rarity.ordinal();
     }
 
     public String getDisplay() {
-        return "" + color + ChatColor.BOLD + name().replaceAll("_", " ");
+        return color + "" + ChatColor.BOLD + name().replace("_", " ");
     }
 
     public String getBoldedColor() {
