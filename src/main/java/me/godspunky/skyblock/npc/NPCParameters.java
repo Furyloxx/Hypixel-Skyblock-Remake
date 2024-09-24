@@ -3,18 +3,17 @@ package me.godspunky.skyblock.npc;
 import org.bukkit.entity.Player;
 
 public interface NPCParameters {
-    String name();
-
-    String[] holograms();
-    String texture();
-    String signature();
-    String world();
-    double x();
-    double y();
-    double z();
-    float yaw();
-    float pitch();
-
-    boolean looking();
-    void onInteract(Player player , SkyblockNPC npc);
+    String getName();
+    String[] getHolograms();
+    String getTexture();
+    String getSignature();
+    String getWorld();
+    double getX();
+    double getY();
+    double getZ();
+    float getYaw();
+    float getPitch();
+    boolean isLooking();
+    void onInteract(Player player, SkyblockNPC npc);
 }
+
