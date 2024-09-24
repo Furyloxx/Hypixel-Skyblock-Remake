@@ -169,6 +169,7 @@ import java.util.stream.Collectors;
 
 public enum SMaterial {
     // Standard Weapons
+    DARK_CLAYMORE(Material.STONE_SWORD, DarkClaymore.class),
     HYPERION(Material.IRON_SWORD, Hyperion.class),
     DAGGER(Material.IRON_SWORD, Dagger.class),
     ASPECT_OF_THE_END(Material.DIAMOND_SWORD, AspectOfTheEnd.class),
