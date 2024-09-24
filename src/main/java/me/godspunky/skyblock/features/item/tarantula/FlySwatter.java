@@ -18,6 +18,6 @@ public class FlySwatter implements MaterialStatistics, MaterialFunction {
 
     @Override
     public GenericItemType getType() {
-        return GenericItemType.ITEM;
+        return GenericItemType.SLAYER_ITEM;
     }
 }

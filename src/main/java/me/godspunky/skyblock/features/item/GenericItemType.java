@@ -2,11 +2,26 @@ package me.godspunky.skyblock.features.item;
 
 public enum GenericItemType {
     WEAPON,
-    TOOL,
     RANGED_WEAPON,
     ARMOR,
     ACCESSORY,
+    TOOL,
     BLOCK,
     ITEM,
-    PET
+    PET,
+    POTION,
+    MATERIAL,
+    COSMETIC,
+    RESOURCE,
+    REFORGE_STONE,
+    DUNGEON_ITEM,
+    MINION,
+    TALISMAN,
+    RUNE,
+    SKIN,
+    FISHING_ROD,
+    PET_ITEM,
+    SCROLL,
+    SLAYER_ITEM,
+    WAND
 }
