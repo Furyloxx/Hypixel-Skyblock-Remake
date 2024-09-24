@@ -14,10 +14,10 @@ package me.godspunky.skyblock.features.item.weapon;
       }
   
       @Override
-      public String getLore() {
-          return "§7§7§oThat thing was too big to be called a", +
+    public List<String> getListLore() {
+        return Arrays.asList("§7§7§oThat thing was too big to be called a", +
         "§7§osword, it was more like a large hunk", +
-        "§7§oof stone.";
+        "§7§oof stone.");
       }
   
       @Override
