@@ -53,7 +53,7 @@ public class ItemLore {
                     (int) (reforge.getCritDamage().getForRarity(parent.getRarity()) * 100), "%", false, lore);
             if (damage || strength || critChance || critDamage) lore.add("");
             boolean health = addPossiblePropertyInt("Health", playerBoostStatistics.getBaseHealth(),
-                    SUtil.blackMagic(reforge.getHealth().getForRarity(parent.getRarity())), " HP", true, lore);
+                    SUtil.blackMagic(reforge.getHealth().getForRarity(parent.getRarity())), "", true, lore);
             boolean defense = addPossiblePropertyInt("Defense", playerBoostStatistics.getBaseDefense(),
                     SUtil.blackMagic(reforge.getDefence().getForRarity(parent.getRarity())), "", true, lore);
             boolean speed = addPossiblePropertyInt("Speed", (int) (playerBoostStatistics.getBaseSpeed() * 100),
