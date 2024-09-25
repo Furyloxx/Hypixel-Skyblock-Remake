@@ -61,6 +61,7 @@ import org.reflections.Reflections;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 public final class Skyblock extends JavaPlugin {
 
@@ -293,16 +294,25 @@ private void registerNPCS() {
     this.sendMessage(SUtil.getRandomVisibleColor() + "Registering NPCs...");
     long start = System.currentTimeMillis();
 
-    Reflections reflections = new Reflections("me.godspunky.skyblock.npc");
-    for (Class<? extends SkyblockNPC> npcClazz : reflections.getSubTypesOf(SkyblockNPC.class)) {
-        try {
-            SkyblockNPC npcInstance = npcClazz.getDeclaredConstructor().newInstance();
-            SkyblockNPCManager.addNPC(npcInstance); 
-        } catch (Exception ex) {
+    try {
+        Reflections reflections = new Reflections("me.godspunky.skyblock.npc");
+        Set<Class<? extends SkyblockNPC>> npcClasses = reflections.getSubTypesOf(SkyblockNPC.class);
+        
+        for (Class<? extends SkyblockNPC> npcClazz : npcClasses) {
+            try {
+                SkyblockNPC npcInstance = npcClazz.getDeclaredConstructor().newInstance();
+                SkyblockNPCManager.addNPC(npcInstance);
+            } catch (Exception ex) {
+                this.sendMessage(ChatColor.RED + "Failed to register NPC: " + npcClazz.getSimpleName() + " - " + ex.getMessage());
+                ex.printStackTrace();
+            }
         }
+        
+        this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered " + SkyblockNPCManager.getNPCS().size() + " NPCs [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
+    } catch (Exception e) {
+        this.sendMessage(ChatColor.RED + "Failed to register NPCs: " + e.getMessage());
+        e.printStackTrace();
     }
-    
-    this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered " + SkyblockNPCManager.getNPCS().size() + " NPCs [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
 }
 
 
