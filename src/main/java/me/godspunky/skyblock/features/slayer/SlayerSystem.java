@@ -65,8 +65,8 @@ public class SlayerSystem {
 
     private static void spawnBoss(Player player, SlayerQuest quest) {
         SlayerBossType bossType = quest.getType();
-        // Logic to spawn the boss entity
-        // This would involve creating a custom entity with the boss's attributes
+        // Logic to spawn the boss entity This would involve creating a custom entity
+        // with the boss's attributes
 
         player.sendMessage(ChatColor.RED + "The " + bossType.getDisplayName() + " has spawned!");
         SlayerQuest.playBossSpawn(player.getLocation(), player);

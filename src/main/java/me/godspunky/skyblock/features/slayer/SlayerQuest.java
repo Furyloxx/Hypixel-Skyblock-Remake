@@ -37,7 +37,7 @@ public class SlayerQuest implements ConfigurationSerializable {
     @Setter
     private SEntity entity;
     private boolean bossSpawned;
-    private Player owner;  // Add this field if it doesn't exist
+    private Player owner;
 
     public SlayerQuest(SlayerBossType type, long started) {
         this.type = type;
@@ -81,7 +81,6 @@ public class SlayerQuest implements ConfigurationSerializable {
                 SEntityType.valueOf(String.valueOf(map.get("lastKilled"))));
     }
 
-    // Plays the spawn effect for minibosses, similar to Hypixel's flashy visuals
     public static void playMinibossSpawn(Location location, Entity sound) {
         Location clone = location.clone();
         World world = location.getWorld();
@@ -97,7 +96,6 @@ public class SlayerQuest implements ConfigurationSerializable {
         );
     }
 
-    // Plays the boss spawn effect with magical particles and explosions
     public static void playBossSpawn(Location location, Entity sound) {
         Location clone = location.clone();
         World world = location.getWorld();
@@ -121,11 +119,10 @@ public class SlayerQuest implements ConfigurationSerializable {
         }.runTaskLater(Skyblock.getPlugin(), 28);
     }
 
-    public void complete(Player player) {  // Add Player parameter
+    public void complete(Player player) { 
         killed = System.currentTimeMillis();
 
         // Use the player parameter instead of owner
         player.sendMessage(ChatColor.GREEN + "You completed the " + type.getDisplayName() + " Slayer quest!");
-        // Add any other completion logic here
     }
 }
