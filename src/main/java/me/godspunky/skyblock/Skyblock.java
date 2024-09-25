@@ -124,6 +124,7 @@ public final class Skyblock extends JavaPlugin {
         new WardrobeListener(this);
         new CheckPlayerGUIListener(this);
         loadymldata();
+        registerNPCS();
         loadIslandWorld();
         loadDungeonWorld();
         loadCommandMap();
@@ -288,20 +289,19 @@ public final class Skyblock extends JavaPlugin {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully loaded listeners [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
     }
 
-private void registerNPCS()
-    {
-        Reflections reflections = new Reflections("import me.godspunky.skyblock.npc");
-        for (Class<? extends SkyblockNPC> npcClazz : reflections.getSubTypesOf(SkyblockNPC.class)){
-            try {
-                npcClazz.getDeclaredConstructor().newInstance();
-            }catch (Exception ex){
-                ex.printStackTrace();
-
-            }
+private void registerNPCS() {
+    Reflections reflections = new Reflections("me.godspunky.skyblock.npc");
+    for (Class<? extends SkyblockNPC> npcClazz : reflections.getSubTypesOf(SkyblockNPC.class)) {
+        try {
+            SkyblockNPC npcInstance = npcClazz.getDeclaredConstructor().newInstance();
+            SkyblockNPCManager.addNPC(npcInstance); 
+        } catch (Exception ex) {
+            SLog.error("Failed to register NPC: " + npcClazz.getName(), ex);
         }
-        SLog.info("Loaded " + SkyblockNPCManager.getNPCS().size() + " npcs");
-
     }
+    SLog.info("Loaded " + SkyblockNPCManager.getNPCS().size() + " NPCs");
+}
+
 
     public void loadDatabase() {
         this.sendMessage(SUtil.getRandomVisibleColor() + "Loading SQL Database...");
