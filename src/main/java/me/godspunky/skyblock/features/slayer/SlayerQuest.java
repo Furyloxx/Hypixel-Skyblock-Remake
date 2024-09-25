@@ -13,7 +13,9 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.ChatColor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +37,7 @@ public class SlayerQuest implements ConfigurationSerializable {
     @Setter
     private SEntity entity;
     private boolean bossSpawned;
+    private Player owner;  // Add this field if it doesn't exist
 
     public SlayerQuest(SlayerBossType type, long started) {
         this.type = type;
@@ -118,4 +121,11 @@ public class SlayerQuest implements ConfigurationSerializable {
         }.runTaskLater(Skyblock.getPlugin(), 28);
     }
 
+    public void complete(Player player) {  // Add Player parameter
+        killed = System.currentTimeMillis();
+
+        // Use the player parameter instead of owner
+        player.sendMessage(ChatColor.GREEN + "You completed the " + type.getDisplayName() + " Slayer quest!");
+        // Add any other completion logic here
+    }
 }

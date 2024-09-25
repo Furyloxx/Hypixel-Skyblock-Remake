@@ -1,129 +1,102 @@
 package me.godspunky.skyblock.features.slayer;
 
+import me.godspunky.skyblock.Skyblock;
+import me.godspunky.skyblock.user.User;
+import me.godspunky.skyblock.util.SUtil;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class SlayerSystem {
 
-    public enum SlayerType {
-        ZOMBIE, SPIDER, WOLF, ENDERMAN, VAMPIRE, BLAZE
-    }
+    private static final Map<Player, SlayerQuest> activeQuests = new HashMap<>();
 
-    public static class SlayerBoss {
-        private String name;
-        private int health;
-        private int damage;
-        private int tier;
-        private int xpReward;
-        private Map<String, Double> drops;
+    public static void startQuest(Player player, SlayerBossType bossType) {
+        User user = User.getUser(player.getUniqueId());
+        if (user == null) return;
 
-        public SlayerBoss(String name, int health, int damage, int tier, int xpReward) {
-            this.name = name;
-            this.health = health;
-            this.damage = damage;
-            this.tier = tier;
-            this.xpReward = xpReward;
-            this.drops = new HashMap<>();
+        if (activeQuests.containsKey(player)) {
+            player.sendMessage(ChatColor.RED + "You already have an active Slayer quest!");
+            return;
         }
 
-        public void addDrop(String itemName, double chance) {
-            drops.put(itemName, chance);
+        if (user.getCoins() < bossType.getCost()) {
+            player.sendMessage(ChatColor.RED + "You don't have enough coins to start this quest!");
+            return;
         }
 
-        public Map<String, Integer> rollDrops() {
-            Map<String, Integer> loot = new HashMap<>();
-            Random rand = new Random();
+        user.subCoins(bossType.getCost());
+        SlayerQuest quest = new SlayerQuest(bossType, System.currentTimeMillis());
+        activeQuests.put(player, quest);
+        user.setSlayerQuest(quest);
 
-            for (Map.Entry<String, Double> entry : drops.entrySet()) {
-                if (rand.nextDouble() < entry.getValue()) {
-                    loot.put(entry.getKey(), 1);
+        player.sendMessage(ChatColor.GREEN + "Slayer quest started! Kill " + bossType.getType().getName() + "s to spawn the boss.");
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (!activeQuests.containsKey(player)) {
+                    this.cancel();
+                    return;
+                }
+
+                SlayerQuest currentQuest = activeQuests.get(player);
+                if (currentQuest.getXp() >= bossType.getSpawnXP()) {
+                    spawnBoss(player, currentQuest);
+                    this.cancel();
                 }
             }
-
-            return loot;
-        }
+        }.runTaskTimer(Skyblock.getPlugin(), 20L, 20L);
     }
 
-    public static class SlayerQuest {
-        private SlayerType type;
-        private int tier;
-        private int combatXpRequired;
-        private int cost;
-        private SlayerBoss boss;
+    public static void addSlayerXP(Player player, double xp) {
+        if (!activeQuests.containsKey(player)) return;
 
-        public SlayerQuest(SlayerType type, int tier, int combatXpRequired, int cost, SlayerBoss boss) {
-            this.type = type;
-            this.tier = tier;
-            this.combatXpRequired = combatXpRequired;
-            this.cost = cost;
-            this.boss = boss;
-        }
+        SlayerQuest quest = activeQuests.get(player);
+        quest.setXp(quest.getXp() + xp);
 
-        public boolean canStart(Player player) {
-            return player.getCoins() >= cost;
-        }
-
-        public void start(Player player) {
-            if (canStart(player)) {
-                player.removeCoins(cost);
-                player.setActiveQuest(this);
-            }
-        }
-
-        public boolean isComplete(Player player) {
-            return player.getCombatXpGained() >= combatXpRequired;
-        }
-
-        public void complete(Player player) {
-            if (isComplete(player)) {
-                player.addSlayerXp(type, boss.xpReward);
-                Map<String, Integer> loot = boss.rollDrops();
-                player.addItems(loot);
-            }
-        }
+        double progress = (quest.getXp() / quest.getType().getSpawnXP()) * 100;
+        player.sendMessage(ChatColor.YELLOW + "Slayer XP: " + ChatColor.WHITE + SUtil.roundTo(quest.getXp(), 1) + "/" + quest.getType().getSpawnXP() + " (" + SUtil.roundTo(progress, 1) + "%)");
     }
 
-    public static class Player {
-        private int coins;
-        private Map<SlayerType, Integer> slayerXp;
-        private SlayerQuest activeQuest;
-        private int combatXpGained;
-        private Map<String, Integer> inventory;
+    private static void spawnBoss(Player player, SlayerQuest quest) {
+        SlayerBossType bossType = quest.getType();
+        // Logic to spawn the boss entity
+        // This would involve creating a custom entity with the boss's attributes
 
-        public Player(int coins) {
-            this.coins = coins;
-            this.slayerXp = new HashMap<>();
-            for (SlayerType type : SlayerType.values()) {
-                slayerXp.put(type, 0);
-            }
-            this.inventory = new HashMap<>();
-        }
+        player.sendMessage(ChatColor.RED + "The " + bossType.getDisplayName() + " has spawned!");
+        SlayerQuest.playBossSpawn(player.getLocation(), player);
+    }
 
-        public void removeCoins(int amount) {
-            coins -= amount;
-        }
+    public static void killBoss(Player player, SlayerBossType bossType) {
+        if (!activeQuests.containsKey(player)) return;
 
-        public void setActiveQuest(SlayerQuest quest) {
-            activeQuest = quest;
-            combatXpGained = 0;
-        }
+        SlayerQuest quest = activeQuests.get(player);
+        if (quest.getType() != bossType) return;
 
-        public void addSlayerXp(SlayerType type, int amount) {
-            slayerXp.put(type, slayerXp.get(type) + amount);
-        }
+        User user = User.getUser(player.getUniqueId());
+        if (user == null) return;
 
-        public void addItems(Map<String, Integer> items) {
-            for (Map.Entry<String, Integer> entry : items.entrySet()) {
-                inventory.put(entry.getKey(), inventory.getOrDefault(entry.getKey(), 0) + entry.getValue());
-            }
-        }
+        quest.setKilled(System.currentTimeMillis());
+        user.setSlayerXP(bossType.getType(), user.getSlayerXP(bossType.getType()) + bossType.getRewardXP());
 
-        public int getCoins() { return coins; }
+        player.sendMessage(ChatColor.GREEN + "You killed the " + bossType.getDisplayName() + " and gained " + bossType.getRewardXP() + " Slayer XP!");
 
-        public int getCombatXpGained() { return combatXpGained; }
+        // Logic for boss drops would go here
 
-        public void addCombatXp(int amount) { combatXpGained += amount; }
+        activeQuests.remove(player);
+        user.setSlayerQuest(null);
+    }
+
+    public static boolean hasActiveQuest(Player player) {
+        return activeQuests.containsKey(player);
+    }
+
+    public static SlayerQuest getActiveQuest(Player player) {
+        return activeQuests.get(player);
     }
 }
-

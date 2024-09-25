@@ -13,6 +13,10 @@ public class SkyblockNPCManager {
         }
     }
 
+    public static void addNPC(SkyblockNPC skyblockNPC) {
+        registerNPC(skyblockNPC);
+    }
+
     public static Set<SkyblockNPC> getNPCS(){
         return Collections.unmodifiableSet(SKYBLOCK_NPCS);
     }
