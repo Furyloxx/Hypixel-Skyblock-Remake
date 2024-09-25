@@ -290,16 +290,19 @@ public final class Skyblock extends JavaPlugin {
     }
 
 private void registerNPCS() {
+    this.sendMessage(SUtil.getRandomVisibleColor() + "Registering NPCs...");
+    long start = System.currentTimeMillis();
+
     Reflections reflections = new Reflections("me.godspunky.skyblock.npc");
     for (Class<? extends SkyblockNPC> npcClazz : reflections.getSubTypesOf(SkyblockNPC.class)) {
         try {
             SkyblockNPC npcInstance = npcClazz.getDeclaredConstructor().newInstance();
             SkyblockNPCManager.addNPC(npcInstance); 
         } catch (Exception ex) {
-            SLog.error("Failed to register NPC: " + npcClazz.getName(), ex);
         }
     }
-    SLog.info("Loaded " + SkyblockNPCManager.getNPCS().size() + " NPCs");
+    
+    this.sendMessage(SUtil.getRandomVisibleColor() + "Successfully registered " + SkyblockNPCManager.getNPCS().size() + " NPCs [" + SUtil.getTimeDifferenceAndColor(start, System.currentTimeMillis()) + ChatColor.WHITE + "]");
 }
 
 
