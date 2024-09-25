@@ -125,7 +125,6 @@ public final class Skyblock extends JavaPlugin {
         new WardrobeListener(this);
         new CheckPlayerGUIListener(this);
         loadymldata();
-        registerNPCS();
         loadIslandWorld();
         loadDungeonWorld();
         loadCommandMap();
