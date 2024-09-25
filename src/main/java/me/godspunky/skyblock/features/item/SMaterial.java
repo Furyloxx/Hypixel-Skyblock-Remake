@@ -114,6 +114,7 @@ import me.godspunky.skyblock.features.item.armor.zombie.ZombieBoots;
 import me.godspunky.skyblock.features.item.armor.zombie.ZombieChestplate;
 import me.godspunky.skyblock.features.item.armor.zombie.ZombieLeggings;
 import me.godspunky.skyblock.features.item.axe.vanilla.*;
+import me.godspunky.skyblock.features.item.axe.*;
 import me.godspunky.skyblock.features.item.axe.vanilla.axe.PromisingAxe;
 import me.godspunky.skyblock.features.item.axe.vanilla.axe.RookieAxe;
 import me.godspunky.skyblock.features.item.bow.Bow;
@@ -529,9 +530,9 @@ ADMIN(Material.SKULL_ITEM, Admin.class),
     SPEED_ARTIFACT(Material.SKULL_ITEM, SpeedArtifact.class),
     WOOD_AFFINITY_TALISMAN(Material.SKULL_ITEM, WoodAffinityTalisman.class),
 
-    //
+    // Misc
     FAIRY_SOUL(Material.SKULL_ITEM,FairySoul.class),
-
+    TREE_CAPITATOR(Material.GOLD_AXE, TreeCapitator.class),
     // Minions Upgrade
     COMPACTOR(Material.DROPPER, Compactor.class),
     SUPER_COMPACTOR_3000(Material.DROPPER, SuperCompactor3000.class),
