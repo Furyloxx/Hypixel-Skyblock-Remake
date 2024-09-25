@@ -8,11 +8,14 @@ import me.godspunky.skyblock.features.entity.SEntity;
 import me.godspunky.skyblock.features.entity.SEntityType;
 import me.godspunky.skyblock.sequence.SoundSequenceType;
 import me.godspunky.skyblock.util.SUtil;
-import org.bukkit.*;
+import org.bukkit.Effect;
+import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.ChatColor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,19 +37,16 @@ public class SlayerQuest implements ConfigurationSerializable {
     @Setter
     private SEntity entity;
     private boolean bossSpawned;
-    @Setter
-    private Player owner;
+    private Player owner;  // Add this field if it doesn't exist
 
-    public SlayerQuest(SlayerBossType type, long started, Player owner) {
+    public SlayerQuest(SlayerBossType type, long started) {
         this.type = type;
         this.started = started;
         this.entity = null;
         this.bossSpawned = false;
-        this.owner = owner;
     }
-            
 
-    private SlayerQuest(SlayerBossType type, long started, double xp, long spawned, long killed, long died, SEntityType lastKilled, Player owner) {
+    private SlayerQuest(SlayerBossType type, long started, double xp, long spawned, long killed, long died, SEntityType lastKilled) {
         this.type = type;
         this.started = started;
         this.xp = xp;
@@ -56,7 +56,6 @@ public class SlayerQuest implements ConfigurationSerializable {
         this.lastKilled = lastKilled;
         this.entity = null;
         this.bossSpawned = false;
-        this.owner = owner;
     }
 
     @Override
@@ -69,51 +68,20 @@ public class SlayerQuest implements ConfigurationSerializable {
         map.put("killed", killed);
         map.put("died", died);
         map.put("lastKilled", lastKilled.name());
-        map.put("owner", owner.getUniqueId().toString());
         return map;
     }
 
     public static SlayerQuest deserialize(Map<String, Object> map) {
-        return new SlayerQuest(
-            SlayerBossType.getByNamespace(String.valueOf(map.get("type"))),
-            ((Number) map.get("started")).longValue(),
-            ((Number) map.get("xp")).doubleValue(),
-            ((Number) map.get("spawned")).longValue(),
-            ((Number) map.get("killed")).longValue(),
-            ((Number) map.get("died")).longValue(),
-            SEntityType.valueOf(String.valueOf(map.get("lastKilled"))),
-            Bukkit.getPlayer(UUID.fromString((String) map.get("owner")))
-        );
+        return new SlayerQuest(SlayerBossType.getByNamespace(String.valueOf(map.get("type"))),
+                ((Number) map.get("started")).longValue(),
+                ((Number) map.get("xp")).doubleValue(),
+                ((Number) map.get("spawned")).longValue(),
+                ((Number) map.get("killed")).longValue(),
+                ((Number) map.get("died")).longValue(),
+                SEntityType.valueOf(String.valueOf(map.get("lastKilled"))));
     }
 
-    public void addXP(double amount) {
-        this.xp += amount;
-        double progress = (this.xp / this.type.getSpawnXP()) * 100;
-        owner.sendMessage(ChatColor.YELLOW + "Slayer XP: " + ChatColor.WHITE + SUtil.roundTo(this.xp, 1) + "/" + this.type.getSpawnXP() + " (" + SUtil.roundTo(progress, 1) + "%)");
-        
-        if (this.xp >= this.type.getSpawnXP() && !bossSpawned) {
-            spawnBoss();
-        }
-    }
-
-    private void spawnBoss() {
-        bossSpawned = true;
-        spawned = System.currentTimeMillis();
-        Location spawnLoc = owner.getLocation();
-        
-        // TODO: Implement custom entity spawning logic here
-        // This would involve creating a custom entity with the boss's attributes
-        // entity = SEntityType.spawn(type.getSpecType(), spawnLoc);
-        
-        playBossSpawn(spawnLoc, owner);
-        owner.sendMessage(ChatColor.RED + "The " + type.getDisplayName() + " has spawned!");
-    }
-
-    public void complete() {
-        killed = System.currentTimeMillis();
- 
-
- spawn effect for minibosses, similar to Hypixel's flashy visuals
+    // Plays the spawn effect for minibosses, similar to Hypixel's flashy visuals
     public static void playMinibossSpawn(Location location, Entity sound) {
         Location clone = location.clone();
         World world = location.getWorld();
@@ -140,17 +108,24 @@ public class SlayerQuest implements ConfigurationSerializable {
 
         SUtil.runIntervalForTicks(() -> {
             for (int i = 0; i < 50; i++) {
-                world.spawnParticle(Particle.SPELL_WITCH, clone, 1, 0.5, 0.5, 0.5, 0);
-                world.spawnParticle(Particle.ENCHANTMENT_TABLE, clone, 1, 0.5, 0.5, 0.5, 0);
-                world.spawnParticle(Particle.DRAGON_BREATH, clone, 1, 0.5, 0.5, 0.5, 0);
+                world.playEffect(clone, Effect.SPELL, 0);
+                world.playEffect(clone, Effect.FLYING_GLYPH, 0);
+                world.playEffect(clone, Effect.WITCH_MAGIC, 0);
             }
         }, 5, 28);
 
         new BukkitRunnable() {
             public void run() {
-                world.spawnParticle(Particle.EXPLOSION_HUGE, clone, 1, 0, 0, 0, 0);
-                world.playSound(clone, Sound.ENTITY_GENERIC_EXPLODE, 1.0f, 1.0f);
+                world.playEffect(clone, Effect.EXPLOSION_HUGE, 0);
             }
         }.runTaskLater(Skyblock.getPlugin(), 28);
+    }
+
+    public void complete(Player player) {  // Add Player parameter
+        killed = System.currentTimeMillis();
+
+        // Use the player parameter instead of owner
+        player.sendMessage(ChatColor.GREEN + "You completed the " + type.getDisplayName() + " Slayer quest!");
+        // Add any other completion logic here
     }
 }
