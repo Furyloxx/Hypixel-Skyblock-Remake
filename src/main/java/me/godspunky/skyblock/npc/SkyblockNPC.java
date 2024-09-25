@@ -89,6 +89,10 @@ public class SkyblockNPC {
         sendPacket(player, packetPlayOutPlayerInfo);
         sendPacket(player, packetPlayOutNamedEntitySpawn);
 
+        // Send entity metadata packet to ensure visibility
+        PacketPlayOutEntityMetadata metadataPacket = new PacketPlayOutEntityMetadata(entityPlayer.getId(), entityPlayer.getDataWatcher(), true);
+        sendPacket(player, metadataPacket);
+
         CraftScoreboardManager scoreboardManager = ((CraftServer) Bukkit.getServer()).getScoreboardManager();
         CraftScoreboard craftScoreboard = scoreboardManager.getMainScoreboard();
         Scoreboard scoreboard = craftScoreboard.getHandle();
@@ -117,6 +121,15 @@ public class SkyblockNPC {
                 }
             }
         }.runTaskTimer(Skyblock.getPlugin(), 0, 2);
+
+        // Add a delay before removing the player info to ensure the NPC appears
+        Bukkit.getScheduler().runTaskLater(Skyblock.getPlugin(), () -> {
+            PacketPlayOutPlayerInfo removeInfo = new PacketPlayOutPlayerInfo(
+                    PacketPlayOutPlayerInfo.EnumPlayerInfoAction.REMOVE_PLAYER,
+                    entityPlayer
+            );
+            sendPacket(player, removeInfo);
+        }, 20L); // 1 second delay
     }
 
     public void hideFrom(Player player) {
@@ -144,7 +157,7 @@ public class SkyblockNPC {
                 getId(),
                 yaw,
                 pitch,
-                false
+                true
         );
         sendPacket(player, lookPacket);
     }
@@ -165,7 +178,7 @@ public class SkyblockNPC {
         if (!playerLocation.getWorld().equals(npcLocation.getWorld())) {
             return false;
         }
-        double hideDistance = 25;
+        double hideDistance = 48; // Increased view distance
         double bukkitRange = Bukkit.getViewDistance() << 4;
         double distanceSquared = npcLocation.distanceSquared(playerLocation);
 
@@ -181,30 +194,35 @@ public class SkyblockNPC {
     }
 
     public void sendHologram(Player player, String[] lines) {
-        double yOffset = 0.0;
-        double DELTA = 0.3;
+        double yOffset = 0.3; // Start slightly above the NPC's head
+        double DELTA = 0.25;
 
         for (String text : lines) {
-            EntityArmorStand armorStand = new EntityArmorStand(((CraftPlayer) player).getHandle().getWorld());
+            EntityArmorStand armorStand = new EntityArmorStand(((CraftWorld) world).getHandle());
             Location hologramLocation = getLocation().clone().add(0, yOffset, 0);
             armorStand.setLocation(hologramLocation.getX(), hologramLocation.getY(), hologramLocation.getZ(), 0, 0);
             armorStand.setCustomName(ChatColor.translateAlternateColorCodes('&', text));
             armorStand.setCustomNameVisible(true);
             armorStand.setInvisible(true);
-            armorStand.setGravity(false); // Fix for NPC not appearing in the specified place
+            armorStand.setGravity(false);
+            armorStand.setSmall(true);
 
             PacketPlayOutSpawnEntityLiving packet = new PacketPlayOutSpawnEntityLiving(armorStand);
-            ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+            sendPacket(player, packet);
+
+            // Send metadata packet to ensure visibility
+            PacketPlayOutEntityMetadata metadataPacket = new PacketPlayOutEntityMetadata(armorStand.getId(), armorStand.getDataWatcher(), true);
+            sendPacket(player, metadataPacket);
 
             holograms.add(armorStand);
-            yOffset -= DELTA;
+            yOffset += DELTA;
         }
     }
 
     public void removeHolograms(Player player) {
         for (EntityArmorStand armorStand : holograms) {
             PacketPlayOutEntityDestroy packet = new PacketPlayOutEntityDestroy(armorStand.getId());
-            ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packet);
+            sendPacket(player, packet);
         }
         holograms.clear();
     }

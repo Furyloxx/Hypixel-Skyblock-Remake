@@ -13,7 +13,9 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.ChatColor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +37,7 @@ public class SlayerQuest implements ConfigurationSerializable {
     @Setter
     private SEntity entity;
     private boolean bossSpawned;
+    private Player owner;
 
     public SlayerQuest(SlayerBossType type, long started) {
         this.type = type;
@@ -78,7 +81,6 @@ public class SlayerQuest implements ConfigurationSerializable {
                 SEntityType.valueOf(String.valueOf(map.get("lastKilled"))));
     }
 
-    // Plays the spawn effect for minibosses, similar to Hypixel's flashy visuals
     public static void playMinibossSpawn(Location location, Entity sound) {
         Location clone = location.clone();
         World world = location.getWorld();
@@ -94,7 +96,6 @@ public class SlayerQuest implements ConfigurationSerializable {
         );
     }
 
-    // Plays the boss spawn effect with magical particles and explosions
     public static void playBossSpawn(Location location, Entity sound) {
         Location clone = location.clone();
         World world = location.getWorld();
@@ -118,4 +119,10 @@ public class SlayerQuest implements ConfigurationSerializable {
         }.runTaskLater(Skyblock.getPlugin(), 28);
     }
 
+    public void complete(Player player) { 
+        killed = System.currentTimeMillis();
+
+        // Use the player parameter instead of owner
+        player.sendMessage(ChatColor.GREEN + "You completed the " + type.getDisplayName() + " Slayer quest!");
+    }
 }
