@@ -2,6 +2,7 @@ package me.godspunky.skyblock.features.item;
 
 import lombok.Getter;
 import me.godspunky.skyblock.features.entity.SEntityType;
+import me.godspunky.skyblock.features.item.axe.*;
 import me.godspunky.skyblock.features.item.accessory.*;
 import me.godspunky.skyblock.features.item.armor.ArmorSet;
 import me.godspunky.skyblock.features.item.armor.BigBounceBoots;
@@ -644,6 +645,7 @@ ADMIN(Material.SKULL_ITEM, Admin.class),
     RUNAAN_BOW(Material.BOW, RunaanBow.class),
 
     // Special
+    TREE_CAPITATOR(Material.GOLD_AXE, TreeCapitator.class),
     GOD_POT(Material.SKULL_ITEM, GodPot.class),
     BOOSTER_COOKIE(Material.COOKIE, BoosterCookie.class),
     WHITE_GIFT(Material.SKULL_ITEM, WhiteGift.class),
