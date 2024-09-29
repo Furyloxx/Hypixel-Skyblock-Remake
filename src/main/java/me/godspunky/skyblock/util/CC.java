@@ -99,4 +99,3 @@ public final class CC {
         return ChatColor.translateAlternateColorCodes('&', s);
     }
 }
-

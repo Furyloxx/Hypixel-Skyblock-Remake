@@ -1,7 +1,6 @@
-
 # Hypixel Skyblock Core
 **Contributors:**
-- NorySight & Furyloxx
+- NorySight, Hamza, Dumbo, Epic portal & Furyloxx.
 
 This core is designed for Hypixel Skyblock enthusiasts, featuring a variety of items and functionalities to enhance your gameplay experience.
 
